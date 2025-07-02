@@ -74,7 +74,7 @@ export default function Certificates() {
 					initial={{ y: 20, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ delay: 0.9 }}
-					className="text-3xl font-bold inline-flex items-center gap-2 mb-16 mt-5 cursor-pointer"
+					className="text-xl sm:text-2xl md:text-3xl font-bold inline-flex items-center gap-2 mb-8 sm:mb-12 md:mb-16 mt-3 sm:mt-5 cursor-pointer"
 					whileHover={{ 
 						scale: 1.1,
 						transition: { 
@@ -85,7 +85,7 @@ export default function Certificates() {
 					  }}
 					style={{ fontFamily: "Gamer", }}
 				>
-					<FileText className="w-6 h-6 text-blue-600" />
+					<FileText className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-blue-600" />
 					Professional Certificates
 				</motion.h2>
 			</div>
@@ -93,9 +93,9 @@ export default function Certificates() {
 				initial={{ opacity: 0, y: 50 }}
 				animate={{ opacity: 1, y: 0 }}
 				transition={{ delay: 0.8 }}
-				className="bg-[#FFE4E4] p-5 rounded-3xl ml-8 mr-8"
+				className="bg-[#FFE4E4] p-3 sm:p-4 md:p-5 rounded-2xl sm:rounded-3xl ml-2 sm:ml-4 md:ml-8 mr-2 sm:mr-4 md:mr-8"
 			>
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
 					{certificates.map((cert, index) => (
 						<motion.div
 							key={cert.title}

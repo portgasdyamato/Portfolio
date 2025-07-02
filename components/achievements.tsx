@@ -40,14 +40,14 @@ export default function Achievements() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.8 }}
-      className="p-8 rounded-3xl relative overflow-hidden"
+      className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden"
     >
-      <div className="text-center mb-8">
+      <div className="text-center mb-4 sm:mb-6 md:mb-8">
         <motion.h2
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="text-3xl md:text-4xl my-10 font-bold text-gray-800 tracking-wide cursor-pointer inline-block"
+          className="text-2xl sm:text-3xl md:text-4xl my-6 sm:my-8 md:my-10 font-bold text-gray-800 tracking-wide cursor-pointer inline-block"
           whileHover={{ 
             scale: 1.1,
             color: "#FF6B6B"

@@ -105,18 +105,18 @@ export default function Education() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.8 }}
-      className="p-8 rounded-3xl relative overflow-hidden"
+      className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden"
     >
       {/* Header */}
       <motion.div
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.9 }}
-        className="text-center mb-12"
+        className="text-center mb-6 sm:mb-8 md:mb-12"
       >
         <div className="overflow-hidden">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 tracking-wide cursor-pointer inline-block"
+            className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 tracking-wide cursor-pointer inline-block"
             whileHover={{ 
               scale: 1.05,
               transition: { 
@@ -136,9 +136,9 @@ export default function Education() {
         <p className="text-gray-600 mt-4 text-lg">Click on the icons to explore achievements</p>
       </motion.div>
 
-      <motion.div className="p-8 rounded-3xl relative overflow-hidden">
-        {/* Timeline */}
-        <div className="relative">
+      <motion.div className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden">
+        {/* Desktop Timeline View */}
+        <div className="hidden md:block relative">
           {/* Vertical Line */}
           <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-300 via-pink-300 to-purple-300 rounded-full" />
 
@@ -204,12 +204,50 @@ export default function Education() {
           </div>
         </div>
 
+        {/* Mobile Card View */}
+        <div className="md:hidden grid gap-4">
+          {educationJourney.map((item, index) => {
+            const Icon = item.icon
+            return (
+              <motion.div
+                key={item.level}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 + index * 0.1 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white rounded-xl p-4 shadow-lg border border-gray-100 cursor-pointer"
+                onClick={() => setSelectedItem(selectedItem === index ? null : index)}
+              >
+                <div className="flex items-center space-x-3 mb-3">
+                  <div 
+                    className="w-10 h-10 rounded-full flex items-center justify-center"
+                    style={{ backgroundColor: item.color }}
+                  >
+                    <Icon className="w-5 h-5 text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-gray-800">{item.level}</h3>
+                    <p className="text-sm text-gray-500">{item.date}</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-sm font-bold text-gray-700">{item.gpa}</span>
+                  </div>
+                </div>
+                
+                <p className="text-sm text-purple-600 font-medium mb-2">{item.institution}</p>
+                <p className="text-xs text-gray-600">{item.description}</p>
+                <p className="text-xs italic text-gray-500 mt-2">{item.quote}</p>
+              </motion.div>
+            )
+          })}
+        </div>
+
         {/* Stats Summary */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5 }}
-          className="mt-12 grid grid-cols-2 md:grid-cols-5 gap-4 text-center"
+          className="mt-8 sm:mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 text-center"
         >
           {[
             { number: "10+", label: "Years Learning", color: "#FFB347" },
@@ -223,9 +261,9 @@ export default function Education() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 2.7 + index * 0.1, type: "spring" }}
-              className="p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm"
+              className="p-3 sm:p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm"
             >
-              <div className="text-xl font-bold" style={{ color: stat.color }}>
+              <div className="text-lg sm:text-xl font-bold" style={{ color: stat.color }}>
                 {stat.number}
               </div>
               <div className="text-xs text-gray-600 font-medium">{stat.label}</div>

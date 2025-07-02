@@ -16,7 +16,7 @@ export default function Hero() {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="col-span-2 bg-[#FFE4E4] p-12 rounded-3xl relative overflow-hidden mt-5"
+      className="col-span-1 md:col-span-2 ml-8 mr-8 bg-[#FFE4E4] p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden mt-2 sm:mt-3 md:mt-5"
     >
       {/* Animated Design Elements */}
       {designElements.map((element, index) => (
@@ -87,9 +87,9 @@ export default function Hero() {
         </svg>
       </motion.div>
 
-      {/* Bottom right GIF */}
+      {/* Bottom right GIF - Hidden on mobile, visible on desktop */}
       <motion.div
-        className="absolute top-[190px] right-11 mr-8  w-34 h-64 "
+        className="hidden lg:block absolute top-[190px] right-11 mr-8 w-34 h-64"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
@@ -104,9 +104,9 @@ export default function Hero() {
         />
       </motion.div>
 
-      <div className="max-w-2xl relative z-10 ">
+      <div className="max-w-2xl relative z-10">
         <motion.h1
-          className="text-6xl font-bold leading-tight "
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
@@ -114,13 +114,13 @@ export default function Hero() {
         >
           Innovator Blending  
           
-          <span > Web Aesthetics</span> with
+          <span> Web Aesthetics</span> with
           
           Machine Intelligence
         </motion.h1>
 
         <motion.p
-          className="text-lg text-gray-600 mt-4"
+          className="text-sm sm:text-base md:text-lg lg:text-lg text-gray-600 mt-2 sm:mt-3 md:mt-4"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}

@@ -18,9 +18,9 @@ const skills = [
 
 export default function SkillsSection() {
   return (
-    <motion.div >
+    <motion.div className="w-full h-full flex flex-col">
       <motion.h3
-        className="text-3xl font-semibold  mb-1 text-center text-gray-700   "
+        className="text-xl sm:text-2xl md:text-3xl font-semibold mb-1 text-center text-gray-700"
         style={{
           fontFamily: "Gamer", 
           imageRendering: "pixelated",
@@ -33,7 +33,7 @@ export default function SkillsSection() {
       </motion.h3>
 
       <div 
-        className="grid grid-cols-2 gap-3 max-h-72 overflow-y-auto mt-8 py-2"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 flex-1 overflow-y-auto mt-4 sm:mt-6 md:mt-8 py-2 px-1"
         style={{
           scrollbarWidth: 'none',
           msOverflowStyle: 'none',
@@ -50,14 +50,14 @@ export default function SkillsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 + 0.3 }}
-            className="bg-white/90 rounded-lg p-3 mr-6 border border-pink-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 "
+            className="bg-white/90 rounded-lg p-2 sm:p-3 border border-pink-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
             style={{
               boxShadow: "0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(252,165,165,0.2)",
             }}
           >
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-1 sm:mb-2">
               <span
-                className="text-sm font-bold text-gray-700"
+                className="text-xs sm:text-sm font-bold text-gray-700"
                 style={{
                   fontFamily: "qax",
                   imageRendering: "pixelated",
@@ -76,9 +76,9 @@ export default function SkillsSection() {
               </span>
             </div>
             
-            <div className="w-full bg-pink-100 rounded-full h-3 shadow-inner-md">
+            <div className="w-full bg-pink-100 rounded-full h-2 sm:h-3 shadow-inner-md">
               <motion.div
-                className="h-3 rounded-full shadow-sm bg-gradient-to-br from-[#ffcece] via-[#ffb3b3] to-[#fccfcf] "
+                className="h-2 sm:h-3 rounded-full shadow-sm bg-gradient-to-br from-[#ffcece] via-[#ffb3b3] to-[#fccfcf]"
                 style={{
                   
                   boxShadow: "0 1px 3px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.6)",
