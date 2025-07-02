@@ -5,13 +5,13 @@ import Projects from "@/components/projects"
 import Contact from "@/components/contact"
 import SocialLinks from "@/components/social-links"
 import DesignProcess from "@/components/design-process"
-import Skills from "@/components/skills"
+
 import Achievements from "@/components/achievements"
 import Certificates from "@/components/certificates"
 import Education from "@/components/education"
 import ImageSection from "@/components/image-section"
 import GrowWithMeHeading from "@/components/GrowWithMeHeading"
-import ContactForm from "@/components/contact-form"
+
 import PixelCharacter from "@/components/pixel-character"
 
 export default function Home() {
