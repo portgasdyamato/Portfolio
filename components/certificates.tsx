@@ -5,74 +5,90 @@ import { FileText, CheckCircle, Calendar, ExternalLink } from "lucide-react"
 
 const certificates = [
 	{
-		title: "Advanced React Development",
-		issuer: "Meta",
-		date: "Dec 2023",
+		title: "Gen AI by Hack2skill & GoogleCloud",
+		issuer: "Google Cloud",
+		date: "6 June 2025",
 		status: "Completed",
 		type: "Professional Certificate",
 		color: "#61DAFB",
-		credentialId: "ABC123XYZ",
+		credentialId: "2025H2S04GENAI-A100313",
+		certificateUrl: "https://www.linkedin.com/posts/sakshi-902777290_genaiacademy-certificateofcompletion-googlecloud-activity-7336733236309463040-xgyO?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEaXv1IBLEEy9zfZtZus-NHd9uv4A480gxs",
 	},
 	{
-		title: "UI/UX Design Specialization",
-		issuer: "Google",
-		date: "Oct 2023",
+		title: "AWS APAC - Solutions Architecture Job Simulation",
+		issuer: "AWS",
+		date: "10 May 2025",
 		status: "Completed",
-		type: "Specialization",
+		type: "Vitual Internship",
 		color: "#4285F4",
-		credentialId: "GGL456DEF",
+		credentialId: "QPCDgAGwgXEdJHFMv",
+		certificateUrl: "https://www.linkedin.com/posts/sakshi-902777290_aws-cloudcomputing-solutionsarchitecture-activity-7326979671756079104-NwBG?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEaXv1IBLEEy9zfZtZus-NHd9uv4A480gxs", // Replace with actual URL
 	},
 	{
-		title: "Full Stack Web Development",
-		issuer: "freeCodeCamp",
-		date: "Aug 2023",
-		status: "Completed",
-		type: "Certification",
-		color: "#0A0A23",
-		credentialId: "FCC789GHI",
-	},
-	{
-		title: "AI for Everyone",
-		issuer: "Coursera",
-		date: "Jun 2023",
+		title: "Artificial Intelligence Fundamentals",
+		issuer: "IBM",
+		date: "10 May 2025",
 		status: "Completed",
 		type: "Course Certificate",
-		color: "#FF6B35",
-		credentialId: "CRS012JKL",
+		color: "#0A0A23",
+		credentialId: "",
+		certificateUrl: "https://www.credly.com/badges/35aa2436-4b24-4353-89eb-b206dbb92a09", // Replace with actual URL
 	},
 	{
-		title: "AWS Cloud Practitioner",
-		issuer: "Amazon Web Services",
-		date: "Mar 2024",
-		status: "In Progress",
-		type: "Cloud Certification",
-		color: "#FF9900",
-		credentialId: "Pending",
-	},
-	{
-		title: "TypeScript Fundamentals",
-		issuer: "Microsoft",
-		date: "Jan 2024",
+		title: "Cisco Introduction to Data Science",
+		issuer: "Cisco",
+		date: "16 May 2025",
 		status: "Completed",
-		type: "Technical Certificate",
+		type: "Virtual Internship",
+		color: "#FF6B35",
+		credentialId: "",
+		certificateUrl: "https://www.credly.com/badges/9d346f5d-0765-4dfb-acc2-3406c53d6b60/linked_in_profile", // Replace with actual URL
+	},
+	{
+		title: "Accenture UK - Developer and Technology ",
+		issuer: "Accenture",
+		date: "16 May 2025",
+		status: "Completed",
+		type: "Virtual Internship",
+		color: "#FF9900",
+		credentialId: "RaGN8thJYRkFRd7m5",
+		certificateUrl: "https://www.linkedin.com/posts/sakshi-902777290_forage-certificate-activity-7329145928525762561-kepT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEaXv1IBLEEy9zfZtZus-NHd9uv4A480gxs", // No URL for in-progress certificates
+	},
+	{
+		title: "Azure AI Fundamentals",
+		issuer: "Microsoft",
+		date: "16 May 2025",
+		status: "Completed",
+		type: "Professional Certificate",
 		color: "#3178C6",
-		credentialId: "MSF345MNO",
+		credentialId: "",
+		certificateUrl: "https://learn.microsoft.com/api/achievements/share/en-us/SakshiAgrahari-2382/9YX9KQ2U?sharingId=932EE269EA4F16DA", // Replace with actual URL
 	},
 ]
 
 export default function Certificates() {
 	return (
-		<>
-			<motion.h2
-				initial={{ y: 20, opacity: 0 }}
-				animate={{ y: 0, opacity: 1 }}
-				transition={{ delay: 0.9 }}
-				className="text-3xl font-bold text-center flex items-center justify-center gap-2"
-				style={{ fontFamily: "Gamer", }}
-			>
-				<FileText className="w-6 h-6 mt-8 mb-8 text-blue-600" />
-				Professional Certificates
-			</motion.h2>
+		<div className="overflow-hidden">
+			<div className="text-center mb-4">
+				<motion.h2
+					initial={{ y: 20, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ delay: 0.9 }}
+					className="text-3xl font-bold inline-flex items-center gap-2 mb-16 mt-5 cursor-pointer"
+					whileHover={{ 
+						scale: 1.1,
+						transition: { 
+						  type: "tween", 
+						  duration: 0.15,
+						  ease: "easeOut"
+						}
+					  }}
+					style={{ fontFamily: "Gamer", }}
+				>
+					<FileText className="w-6 h-6 text-blue-600" />
+					Professional Certificates
+				</motion.h2>
+			</div>
 			<motion.div
 				initial={{ opacity: 0, y: 50 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -164,17 +180,22 @@ export default function Certificates() {
 								)}
 
 								{/* View Certificate Link */}
-								{cert.status === "Completed" && (
+								{cert.status === "Completed" && cert.certificateUrl && (
 									<motion.div
 										initial={{ opacity: 0 }}
 										animate={{ opacity: 1 }}
 										transition={{ delay: 1.5 + index * 0.1 }}
 										className="flex items-center justify-end"
 									>
-										<button className="flex items-center space-x-1 text-xs text-blue-600 hover:text-blue-800 transition-colors">
+										<a
+											href={cert.certificateUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="flex items-center space-x-1 text-xs text-blue-600 hover:text-blue-800 transition-colors hover:underline"
+										>
 											<span>View Certificate</span>
 											<ExternalLink className="w-3 h-3" />
-										</button>
+										</a>
 									</motion.div>
 								)}
 							</div>
@@ -227,6 +248,6 @@ export default function Certificates() {
 					))}
 				</motion.div>
 			</motion.div>
-		</>
+		</div>
 	)
 }

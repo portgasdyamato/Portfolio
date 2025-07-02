@@ -1,41 +1,100 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 
 const skills = [
-  "React", "Next.js", "TypeScript", "Tailwind CSS", 
-  "Node.js", "Python", "Figma", "Adobe XD"
-]
+  { name: "React", level: 92, icon: "⚛️" },
+  { name: "Next.js", level: 70, icon: "▲" },
+  { name: "TypeScript", level: 50, icon: "📝" },
+  { name: "Tailwind", level: 91, icon: "🎨" },
+  { name: "Node.js", level: 80, icon: "🟢" },
+  { name: "Python", level: 75, icon: "🐍" },
+  { name: "Three.js", level: 70, icon: "🎲" },
+  { name: "ML/AI", level: 75, icon: "🤖" },
+  { name: "MongoDB", level: 50, icon: "🍃" },
+  { name: "Figma", level: 94, icon: "🎯" },
+  { name: "Git", level: 85, icon: "📚" }
+];
 
 export default function SkillsSection() {
   return (
-    <section className="py-20 bg-secondary/10">
-      <div className="container mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-3xl font-bold text-center mb-12"
-        >
-          Skills & Technologies
-        </motion.h2>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={skill}
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-background p-4 rounded-lg shadow-lg text-center hover:bg-primary/5"
-            >
-              {skill}
-            </motion.div>
-          ))}
-        </div>
+    <motion.div >
+      <motion.h3
+        className="text-3xl font-semibold  mb-1 text-center text-gray-700   "
+        style={{
+          fontFamily: "Gamer", 
+          imageRendering: "pixelated",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
+        🎮 Skills 🎮
+      </motion.h3>
+
+      <div 
+        className="grid grid-cols-2 gap-3 max-h-72 overflow-y-auto mt-8 py-2"
+        style={{
+          scrollbarWidth: 'none',
+          msOverflowStyle: 'none',
+        }}
+      >
+        <style jsx>{`
+          div::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
+        {skills.map((skill, index) => (
+          <motion.div
+            key={skill.name}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: index * 0.1 + 0.3 }}
+            className="bg-white/90 rounded-lg p-3 mr-6 border border-pink-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 "
+            style={{
+              boxShadow: "0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(252,165,165,0.2)",
+            }}
+          >
+            <div className="flex items-center justify-between mb-2">
+              <span
+                className="text-sm font-bold text-gray-700"
+                style={{
+                  fontFamily: "qax",
+                  imageRendering: "pixelated",
+                }}
+              >
+                {skill.icon} {skill.name}
+              </span>
+              <span
+                className="text-xs text-pink-600 font-bold"
+                style={{
+                  fontFamily: "SuperPixel, monospace",
+                  imageRendering: "pixelated",
+                }}
+              >
+                {skill.level}%
+              </span>
+            </div>
+            
+            <div className="w-full bg-pink-100 rounded-full h-3 shadow-inner-md">
+              <motion.div
+                className="h-3 rounded-full shadow-sm bg-gradient-to-br from-[#ffcece] via-[#ffb3b3] to-[#fccfcf] "
+                style={{
+                  
+                  boxShadow: "0 1px 3px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.6)",
+                  width: `${skill.level}%`,
+                }}
+                initial={{ width: "0%" }}
+                animate={{ width: `${skill.level}%` }}
+                transition={{ 
+                  delay: index * 0.1 + 0.5, 
+                  duration: 1,
+                  ease: "easeOut"
+                }}
+              />
+            </div>
+          </motion.div>          ))}
       </div>
-    </section>
-  )
+    </motion.div>
+  );
 }

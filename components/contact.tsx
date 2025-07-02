@@ -2,6 +2,20 @@
 
 import { motion } from "framer-motion"
 import { ArrowUpRight, Mail, Instagram, Linkedin, Github, Code2, MessageCircle } from "lucide-react"
+import Image from "next/image"
+
+const DiscordIcon = ({ className }: { className?: string }) => (
+  <Image 
+    src="/dc.svg" 
+    alt="Discord" 
+    width={24} 
+    height={24} 
+    className={className}
+    style={{
+      filter: 'brightness(0) saturate(100%) invert(64%) sepia(73%) saturate(1458%) hue-rotate(315deg) brightness(102%) contrast(101%)'
+    }}
+  />
+)
 
 const socialLinks = [
   {
@@ -13,12 +27,12 @@ const socialLinks = [
     handle: "sakshiagrahari2004@gmail.com",
   },
   {
-    name: "Instagram",
-    icon: Instagram,
-    url: "https://instagram.com/xo.vibhh",
+    name: "Discord",
+    icon: DiscordIcon,
+    url: "https://discord.com/users/934897501054586900",
     color: "#FF9999",
     description: "Follow my journey",
-    handle: "@xo.vibhh",
+    handle: "@scerilia",
   },
   {
     name: "LinkedIn",
@@ -26,7 +40,7 @@ const socialLinks = [
     url: "https://www.linkedin.com/in/sakshi-902777290/",
     color: "#FFB5B5",
     description: "Let's connect professionally",
-    handle: "Sakshi",
+    handle: "@Sakshi",
   },
   {
     name: "GitHub",
@@ -56,7 +70,7 @@ export default function Contact() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.6 }}
-      className="bg-gradient-to-br from-[#FFE4E4] via-[#FFD1D1] to-[#FFB5B5] p-8 rounded-3xl relative overflow-hidden shadow-lg"
+      className="bg-gradient-to-br from-[#FFE4E4] via-[#FFD1D1] to-[#FFB5B5] p-8 rounded-3xl relative overflow-hidden shadow-lg mt-32" 
     >
       {/* Sharp Petal Flower Pattern Background (2nd pattern style) */}
       <div className="absolute inset-0 opacity-8">
@@ -372,8 +386,8 @@ export default function Contact() {
                     </motion.div>
                   </motion.div>
                   <div className="text-left">
-                    <h3 className="font-bold text-lg text-gray-800">{social.name}</h3>
-                    <p className="text-sm text-gray-600 mb-1">{social.description}</p>
+                    <h3 className="font-bold text-lg text-gray-800" style={{ fontFamily: "Gamer", }}>{social.name}</h3>
+                    <p className="text-sm text-gray-600 mb-1" style={{ fontFamily: "qax", }}>{social.description}</p>
                     <p className="text-xs text-gray-500 font-mono bg-white/30 px-2 py-1 rounded-full inline-block">
                       {social.handle}
                     </p>
@@ -408,7 +422,7 @@ export default function Contact() {
         >
           {[
             { number: "24h", label: "Response Time" },
-            { number: "5+", label: "Platforms" },
+            { number: "3+", label: "Platforms" },
             { number: "100%", label: "Professional" },
           ].map((stat, index) => (
             <motion.div
@@ -449,7 +463,7 @@ export default function Contact() {
               </motion.div>
 
               <div className="text-lg font-bold text-gray-800">{stat.number}</div>
-              <div className="text-sm text-gray-600">{stat.label}</div>
+              <div className="text-xs text-gray-600" style={{ fontFamily: "qax", }}>{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

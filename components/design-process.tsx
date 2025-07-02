@@ -43,19 +43,29 @@ export default function DesignProcess() {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ delay: 0.9 }}
-			className="col-span-3 bg-[#ffdcdc] p-8 rounded-3xl shadow-sm m-10"
+			className="col-span-3 mt-20 overflow-hidden"
 		>
-			<motion.h2
-				initial={{ y: 20, opacity: 0 }}
-				animate={{ y: 0, opacity: 1 }}
-				transition={{ delay: 1 }}
-				className="text-2xl font-bold text-center mb-10"
-				style={{ fontFamily: "Gamer", }}
-			>
-				Inter-Personal / Soft Skills
-			</motion.h2>
+			<div className="text-center mb-24">
+				<motion.h2
+					initial={{ y: 20, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ delay: 1 }}
+					className="text-3xl font-bold cursor-pointer inline-block"
+					whileHover={{ 
+						scale: 1.1,
+						transition: { 
+						  type: "tween", 
+						  duration: 0.15,
+						  ease: "easeOut"
+						}
+					  }}
+					style={{ fontFamily: "Gamer", }}
+				>
+					Inter-Personal / Soft Skills
+				</motion.h2>
+			</div>
 
-			<div className="grid grid-cols-1 md:grid-cols-4 gap-14 ml-8 mr-8">
+			<div className="grid grid-cols-1 md:grid-cols-4 gap-20 ml-8 mr-8 ">
 				{processSteps.map((step, index) => {
 					const Icon = step.icon
 					return (

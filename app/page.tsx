@@ -12,14 +12,15 @@ import Education from "@/components/education"
 import ImageSection from "@/components/image-section"
 import GrowWithMeHeading from "@/components/GrowWithMeHeading"
 import ContactForm from "@/components/contact-form"
+import PixelCharacter from "@/components/pixel-character"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#FFF1F1]">
+    <div className="min-h-screen bg-[#FFF1F1]" id="home">
       <Header />
       <main className="container mx-auto p-4 space-y-4">
         {/* Hero Section */}
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3" >
           <Hero />
           <Profile />
         </div>
@@ -54,7 +55,7 @@ export default function Home() {
             <ImageSection />
           </div>
 
-          <div className="flex pl-36 mb-20 justify-center">
+          <div className="flex ml-24 mb-20 justify-center">
             <GrowWithMeHeading />
           </div>
           <div id="contact" className="w-2/3 ml-40 mr-8 mb-8">
@@ -65,6 +66,9 @@ export default function Home() {
         {/* Social Links */}
         <SocialLinks />
       </main>
+      
+      {/* Floating Pixel Character */}
+      <PixelCharacter />
     </div>
   )
 }

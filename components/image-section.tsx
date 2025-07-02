@@ -1,46 +1,46 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Image from "next/image"
-
-export default function ImageSection() {
+import { motion } from "framer-motion";
+import Image from "next/image";
+import SkillsSection from "./skills-section"; // Assuming you have a skills section component
+const ImageSection = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.5 }}
-      className="rounded-3xl overflow-hidden relative"
-    >
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.6 }}
-        whileHover={{ scale: 1.02 }}
-        className="relative"
+    <div className="relative flex flex-col justify-center items-center h-full">
+            <motion.div 
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ delay: 0.6 }}
+      className="bg-gradient-to-br from-[#FFE4E4] via-[#FFD1D1] to-[#ffc0c0] p-8 rounded-3xl  shadow-xl mb-10 mt-28 h-[450px] w-[450px] "
       >
-        <Image
-          src="/placeholder.svg?height=400&width=600"
-          alt="Portfolio showcase"
-          width={600}
-          height={400}
-          className="w-full h-full object-cover rounded-3xl"
-        />
+        <SkillsSection />
 
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-3xl" />
-
-        {/* Optional caption */}
+      </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="rounded-3xl overflow-hidden "
+      >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 }}
-          className="absolute bottom-4 left-4 right-4"
+          initial={{ scale: 0.95, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          whileHover={{ scale: 1.02 }}
+          className="relative mt-6 mb-5 ml-5 "
         >
-          <p className="text-white text-sm font-medium bg-black/30 backdrop-blur-sm px-3 py-2 rounded-lg">
-            Creative workspace inspiration
-          </p>
+          <Image
+            src="/heh.gif"
+            alt="Portfolio showcase"
+            width={800}
+            height={900}
+            className="rounded-lg "
+          />
         </motion.div>
       </motion.div>
-    </motion.div>
-  )
-}
+      
+
+    </div>
+  );
+};
+
+export default ImageSection;

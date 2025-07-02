@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export default function GrowWithMeHeading() {
   return (
-    <div className="relative h-[1000px] mt-16 w-full flex items-end overflow-hidden">
+    <div className="relative h-[1000px] mt-32 w-full flex items-end overflow-hidden">
       <motion.div
         className="flex flex-col items-center justify-end h-[2400px] w-full"
         style={{ willChange: "transform" }}
@@ -19,13 +19,13 @@ export default function GrowWithMeHeading() {
       >
         <h2
           className="text-8xl font-extrabold text-black tracking-widest uppercase whitespace-nowrap"
-          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" , fontFamily:"Yang" }}
+          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" , fontFamily:"Gamer" }}
         >
         grow with me   grow with me
         </h2>
         <h2
           className="text-8xl mt-8 font-extrabold text-black tracking-widest uppercase whitespace-nowrap"
-          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" , fontFamily:"Yang"}}
+          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" , fontFamily:"Gamer" }}
         >
         grow with me   grow with me
         </h2>

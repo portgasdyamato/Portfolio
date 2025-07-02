@@ -7,12 +7,12 @@ import { Star, Home, Heart, BookOpen, GraduationCap, Award, X } from "lucide-rea
 const educationJourney = [
   {
     level: "Middle School",
-    institution: "Govt Co Edu Sr Sec School",
+    institution: "",
     duration: "2015-2018",
     date: "March 2018",
     icon: BookOpen,
     color: "#FFB347",
-    gpa: "87%",
+    gpa: "79%",
     achievements: ["Top Student", "Science Exhibition Winner", "Dell Code Camp", "Debate Competition Finalist"],
     description:
       "Built strong fundamentals in science and computer. Participated in various competitions and coding camp where my adventurous journey started to unfold to explore.",
@@ -25,8 +25,8 @@ const educationJourney = [
     date: "March 2019",
     icon: Home,
     color: "#FF6B9D",
-    gpa: "95%",
-    achievements: ["Cleared the Entrance exam for admission in this institute", "Got Selected out 800 students only 80 were selected i.e in top 10%", "Gained Leadership Skills", "Participated in Singing competitions"],
+    gpa: "83%",
+    achievements: ["Cleared the Entrance exam for admission in this institute", "Got Selected out of 800 students ,only 80 were selected i.e in top 10%", "Gained Leadership Skills", "Participated in Singing competitions"],
     description:
       "Built a strong academic foundation while actively engaging in co-curricular activities, developing both intellectual and creative skills during the 9th grade.",
     quote: "- Creativity & Excellence Achieved",
@@ -36,7 +36,7 @@ const educationJourney = [
     institution: "School Of Excellence",
     duration: "2019-2020",
     date: "March 2020",
-    icon: Home,
+    icon: Heart,
     color: "#FF6B9D",
     gpa: "86%",
     achievements: ["Participated in Science Clubs", "Joined Music Choir group of the School", "Learned Team work & Time management", "Participated in Various competitions"],
@@ -59,7 +59,7 @@ const educationJourney = [
   },
   {
     level: "Bachelor's in Computer Science",
-    institution: "Indian Institute of Technology",
+    institution: "Dr A.P.J. Abdul Kalam Technical University",
     duration: "2022-2026",
     date: "Expected May 2026",
     icon: GraduationCap,
@@ -114,16 +114,33 @@ export default function Education() {
         transition={{ delay: 0.9 }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 tracking-wide">My Learning Journey</h2>
+        <div className="overflow-hidden">
+          <motion.h2 
+            className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 tracking-wide cursor-pointer inline-block"
+            whileHover={{ 
+              scale: 1.05,
+              transition: { 
+                type: "tween", 
+                duration: 0.15,
+                ease: "easeOut"
+              }
+            }}
+            style={{ 
+              fontFamily: "Gamer",
+            }}
+          >
+            My Learning Journey
+          </motion.h2>
+        </div>
         <div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto rounded-full" />
         <p className="text-gray-600 mt-4 text-lg">Click on the icons to explore achievements</p>
       </motion.div>
 
-      <motion.div className=" p-8 rounded-3xl relative overflow-hidden">
+      <motion.div className="p-8 rounded-3xl relative overflow-hidden">
         {/* Timeline */}
         <div className="relative">
           {/* Vertical Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-300 via-pink-300 via-blue-300 to-purple-300 rounded-full" />
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-300 via-pink-300 to-purple-300 rounded-full" />
 
           {/* Timeline Items */}
           <div className="space-y-12">
@@ -139,8 +156,8 @@ export default function Education() {
                   transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
                   className={`relative flex items-center ${isLeft ? "flex-row" : "flex-row-reverse"}`}
                 >
-                  {/* Timeline Card - Simplified */}
-                  <motion.div className={`w-5/12 bg-[#FFD1D1] py-8 px-8  rounded-xl ${isLeft ? "pr-8" : "pl-8"}`}>
+                  {/* Timeline Card */}
+                  <motion.div className={`w-5/12 bg-[#FFD1D1] py-8 px-8 rounded-xl ${isLeft ? "pr-8" : "pl-8"}`}>
                     <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
                       {/* Header */}
                       <div className={`flex justify-between items-start mb-4 ${isLeft ? "text-left" : "text-right"}`}>
@@ -197,7 +214,7 @@ export default function Education() {
           {[
             { number: "10+", label: "Years Learning", color: "#FFB347" },
             { number: "3", label: "Schools", color: "#FF6B9D" },
-            { number: "92%", label: "Avg Score", color: "#4ECDC4" },
+            { number: "90%", label: "Avg Score", color: "#4ECDC4" },
             { number: "15+", label: "Achievements", color: "#45B7D1" },
             { number: "∞", label: "Future Goals", color: "#96CEB4" },
           ].map((stat, index) => (
@@ -217,7 +234,7 @@ export default function Education() {
         </motion.div>
       </motion.div>
 
-      {/* Popup Modal for Achievements - Only shows when clicked */}
+      {/* Popup Modal for Achievements */}
       <AnimatePresence>
         {selectedItem !== null && (
           <motion.div
@@ -259,21 +276,21 @@ export default function Education() {
               </motion.div>
 
               {/* Title */}
-              <h3 className="text-3xl  text-gray-800 text-center mb-2 " style={{ fontFamily: "qax", }}>
+              <h3 className="text-3xl text-gray-800 text-center mb-2" style={{ fontFamily: "qax" }}>
                 {educationJourney[selectedItem].level}
               </h3>
-              <p className="text-purple-600 font-semibold text-center mb-6 ">
+              <p className="text-purple-600 font-semibold text-center mb-6">
                 {educationJourney[selectedItem].institution}
               </p>
 
               {/* Description */}
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 text-center font-serif" style={{ fontFamily: "qax", }} >
+              <p className="text-gray-600 text-sm leading-relaxed mb-6 text-center font-serif" style={{ fontFamily: "qax" }}>
                 {educationJourney[selectedItem].description}
               </p>
 
               {/* Achievements */}
               <div className="space-y-3">
-                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2" style={{ fontFamily: "qax", }}>
+                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2" style={{ fontFamily: "qax" }}>
                   <Award className="w-5 h-5 text-yellow-500" />
                   Key Achievements
                 </h4>
@@ -289,7 +306,7 @@ export default function Education() {
                       className="w-3 h-3 rounded-full"
                       style={{ backgroundColor: educationJourney[selectedItem].color }}
                     />
-                    <span className="text-gray-700 text-sm font-serif" style={{ fontFamily: "qax", }} >{achievement}</span>
+                    <span className="text-gray-700 text-sm font-serif" style={{ fontFamily: "qax" }}>{achievement}</span>
                   </motion.div>
                 ))}
               </div>

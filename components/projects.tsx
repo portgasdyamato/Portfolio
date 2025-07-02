@@ -4,33 +4,33 @@ import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { ExternalLink, Github, Star, Calendar, Code, X, Award } from "lucide-react"
 const prt = "/prt.png"
-
+const vyn = "/vyn.png"
+const wel = "/wel.png"
 const projectsData = [
   {
     title: "Portflio Website",
     duration: "June 2025 - july 2025",
-    date: "March 2024",
+    date: "June 2025",
     image: prt,
     color: "#FF6B9D",
-    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
-    description: "A complete e-commerce solution with user authentication, payment processing, and admin dashboard.",
+    technologies: [ "TypeScript", "Next.js", "Tailwind CSS","Lucid React", "Shadcn/ui",],
+    description: "A modern, responsive portfolio website showcasing my works and achievements in a pixel game-inspired design.",
     features: [
-      "User Authentication & Authorization",
-      "Shopping Cart & Wishlist",
-      "Payment Integration with Stripe",
-      "Admin Dashboard",
-      "Order Tracking System",
-      "Responsive Design",
+      "Responsive Design: Works perfectly on all devices",
+      "Modern UI/UX: Clean and professional design with smooth animations",
+      "Type Safety: Written in TypeScript ",
+      "Interactive Components: Project cards, modals, and dynamic content",
+      "Aesthetic Appeal: Game-inspired design with vibrant colors",
     ],
-    achievements: ["1000+ Users", "99.9% Uptime", "Featured on ProductHunt"],
+    achievements: ["Deployed", "99.9% Uptime", "High Performance"],
     liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+    githubUrl: "https://github.com/portgasdyamato/Portfolio",
     status: "Completed",
   },
   {
     title: "AI Chat Assistant",
-    duration: "Sep 2023 - Dec 2023",
-    date: "December 2023",
+    duration: "July 2025 - Mid July 2025",
+    date: "July 2025",
     image: "/placeholder.svg?height=300&width=400",
     color: "#4ECDC4",
     technologies: ["Python", "TensorFlow", "React", "FastAPI", "OpenAI API"],
@@ -44,39 +44,39 @@ const projectsData = [
       "Learning from Conversations",
       "Custom Training Data",
     ],
-    achievements: ["10K+ Conversations", "95% Accuracy Rate", "Award Winner"],
+    achievements: ["Fast Response", "95% Accuracy Rate", "Accuracy Improvement"],
     liveUrl: "https://example.com",
     githubUrl: "https://github.com/example",
-    status: "Completed",
+    status: "Ongoing",
   },
   {
-    title: "Task Management App",
-    duration: "May 2023 - Aug 2023",
-    date: "August 2023",
-    image: "/placeholder.svg?height=300&width=400",
+    title: "Vinyl Records",
+    duration: "Dec 2024 - Dec 2024",
+    date: "Dec 2024",
+    image: vyn,
     color: "#87CEEB",
-    technologies: ["React Native", "Firebase", "Redux", "Expo"],
-    description: "A cross-platform mobile app for team collaboration and task management with real-time updates.",
+    technologies: ["React", "Vite", "Tailwind CSS", "YouTube API", "Vercel"],
+    description: "A cross-platform vintage music player with youtube api integration that allows users to discover and hear melodies in classic records without ads.",
     features: [
-      "Real-time Collaboration",
-      "Task Assignment & Tracking",
-      "Team Chat Integration",
-      "File Sharing",
-      "Progress Analytics",
-      "Offline Mode Support",
+      "Spinning Record UI — Feel the motion of vintage vinyl",
+      "Ad-Free Playback via YouTube — No interruptions",
+      "Supports Playlists + Single Tracks — Your music, your way",
+      "Queue List — Know what's coming up next or just play",
+      "Minimal Controls — Stay focused on the music",
+      "Lightweight & Responsive — Fast and fluid experience",
     ],
-    achievements: ["5K+ Downloads", "4.8 Star Rating", "Team Favorite"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+    achievements: ["Deployed", "Good User reviews", "top favorite"],
+    liveUrl: "https://vintage-vinyl.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato/Vintage-Vinyl",
     status: "Completed",
   },
   {
-    title: "Portfolio Website",
-    duration: "Mar 2023 - Apr 2023",
-    date: "April 2023",
-    image: "/placeholder.svg?height=300&width=400",
+    title: "Wellness Tracker App Design",
+    duration: "Nov 2024 - Nov 2024",
+    date: "Nov 2024",
+    image: wel,
     color: "#FFB347",
-    technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
+    technologies: ["Figma", "", "Framer Motion", "Tailwind CSS"],
     description: "A modern, responsive portfolio website with smooth animations and interactive elements.",
     features: [
       "Responsive Design",
@@ -86,28 +86,28 @@ const projectsData = [
       "Blog Integration",
       "SEO Optimized",
     ],
-    achievements: ["100+ Visitors Daily", "Perfect Lighthouse Score", "Client Approved"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
+    achievements: ["Good Reviews", "Perfect Lighthouse Score", "Client Approved"],
+    liveUrl: "https://www.figma.com/design/aih9SixouPHrgM06a2RBj3/wellness-app?node-id=0-1&t=SoY8Elae4F7R2zQj-1",
+    githubUrl: "https://github.com/portgasdyamato/Wellness-App-Design",
     status: "Completed",
   },
   {
-    title: "Blockchain Voting System",
-    duration: "Oct 2024 - Present",
+    title: "Natural Language Processing for Legal Documents",
+    duration: "July 2025 - Present 2025",
     date: "In Progress",
     image: "/placeholder.svg?height=300&width=400",
     color: "#96CEB4",
-    technologies: ["Solidity", "Web3.js", "React", "Ethereum", "MetaMask"],
-    description: "A decentralized voting platform ensuring transparency and security using blockchain technology.",
+    technologies: ["Python", "Transformers", "NLTK", "LLM", "NLP"],
+    description: "An AI system that can extract and summarize key legal information from complex legal documents.",
     features: [
-      "Smart Contract Integration",
-      "Voter Authentication",
-      "Transparent Vote Counting",
-      "Immutable Records",
+      "Secure Document Handling",
+      "Custom Summary Length",
+      "Key Term Highlighting",
+      "AI-Powered Summarization",
       "Real-time Results",
-      "Security Auditing",
+      "Model Fine-Tuning Interface",
     ],
-    achievements: ["Research Paper Submitted", "University Project", "Innovation Award Nominee"],
+    achievements: ["Advanced NLP", "University Project", " Information extraction"],
     liveUrl: "",
     githubUrl: "https://github.com/example",
     status: "Ongoing",
@@ -136,7 +136,16 @@ export default function Projects() {
         transition={{ delay: 0.9 }}
         className="text-center mb-8 "
       >
-        <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-2 tracking-widest" style={{ fontFamily: "Gamer", }}>MY PROJECTS</h2>
+        <motion.h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-2 tracking-widest cursor-pointer"          
+            whileHover={{ 
+            scale: 1.1,
+            transition: { 
+              type: "tween", 
+              duration: 0.15,
+              ease: "easeOut"
+            }
+          }}
+          style={{ fontFamily: "Gamer", }}>MY PROJECTS</motion.h2>
         <div className="w-24 h-1 bg-gradient-to-r from-[#FF6B6B] to-[#FF9999] mx-auto rounded-full" />
         <p className="text-gray-600 mt-4 text-lg">Click on project cards to explore details</p>
       </motion.div>
@@ -247,7 +256,7 @@ export default function Projects() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="bg-white rounded-3xl p-8 max-w-2xl w-full mx-4 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+              className="bg-white rounded-tl-3xl rounded-bl-3xl p-8 max-w-2xl w-full mx-4 shadow-2xl relative max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -272,22 +281,22 @@ export default function Projects() {
 
               {/* Project Title */}
               <div className="mb-6">
-                <h3 className="text-3xl font-bold text-gray-800 mb-2">{projectsData[selectedProject].title}</h3>
+                <h3 className="text-3xl font-bold text-gray-800 mb-2"style={{ fontFamily: "Gamer", }}>{projectsData[selectedProject].title}</h3>
                 <div className="flex items-center gap-4 mb-4">
                   <span className="text-gray-500 text-sm">{projectsData[selectedProject].duration}</span>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed mb-6">{projectsData[selectedProject].description}</p>
+              <p className="text-gray-600 leading-relaxed mb-6" style={{ fontFamily: "qax", }}>{projectsData[selectedProject].description}</p>
 
               {/* Features */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2 "style={{ fontFamily: "Gamer", }}>
                   <Star className="w-5 h-5 text-yellow-500" />
                   Key Features
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3" style={{ fontFamily: "qax", }}>
                   {projectsData[selectedProject].features.map((feature, i) => (
                     <motion.div
                       key={feature}
@@ -308,11 +317,11 @@ export default function Projects() {
 
               {/* Technologies */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
                   <Code className="w-5 h-5 text-blue-500" />
                   Technologies Used
                 </h4>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2" style={{ fontFamily: "qax", }}>
                   {projectsData[selectedProject].technologies.map((tech) => (
                     <span key={tech} className="px-3 py-2 bg-blue-50 text-blue-700 text-sm rounded-lg font-medium">
                       {tech}
@@ -323,7 +332,7 @@ export default function Projects() {
 
               {/* Achievements */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
+                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
                   <Award className="w-5 h-5 text-green-500" />
                   Achievements
                 </h4>
@@ -335,6 +344,7 @@ export default function Projects() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
                       className="flex items-center gap-3 p-3 bg-green-50 rounded-xl"
+                      style={{ fontFamily: "qax", }}
                     >
                       <Award className="w-4 h-4 text-green-500" />
                       <span className="text-gray-700 text-sm">{achievement}</span>

@@ -42,15 +42,25 @@ export default function Achievements() {
       transition={{ delay: 0.8 }}
       className="p-8 rounded-3xl relative overflow-hidden"
     >
-      <motion.h2
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.9 }}
-        className="text-3xl font-bold mb-8 text-center"
-        style={{ fontFamily: "Gamer", }}
-      >
-       Achievements and Awards
-      </motion.h2>
+      <div className="text-center mb-8">
+        <motion.h2
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.9 }}
+          className="text-3xl md:text-4xl my-10 font-bold text-gray-800 tracking-wide cursor-pointer inline-block"
+          whileHover={{ 
+            scale: 1.1,
+            color: "#FF6B6B"
+          }}
+          whileTap={{ scale: 0.95 }}
+          style={{ 
+            fontFamily: "Gamer",
+            transformOrigin: "center"
+          }}
+        >
+          Achievements and Awards
+        </motion.h2>
+      </div>
 
       <motion.div className="bg-gradient-to-br from-white to-gray-50 p-10 rounded-3xl shadow-sm">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

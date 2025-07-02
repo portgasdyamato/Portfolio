@@ -3,9 +3,9 @@
 import { motion } from "framer-motion"
 
 const socialLinks = [
-  { name: "INSTAGRAM", url: "#" },
-  { name: "TWITTER", url: "#" },
-  { name: "LINKEDIN", url: "#" },
+  { name: "GITHUB", url: "https://github.com/portgasdyamato" },
+  { name: "EMAIL", url: "mailto:sakshiagrahari2004@gmail.com" },
+  { name: "LINKEDIN", url: "https://www.linkedin.com/in/sakshi-902777290/" },
 ]
 
 export default function SocialLinks() {

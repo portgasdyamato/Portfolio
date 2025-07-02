@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 const designElements = [
   { shape: "circle", size: 20, x: 70, y: 20, delay: 0 },
@@ -84,6 +85,23 @@ export default function Hero() {
             transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
           />
         </svg>
+      </motion.div>
+
+      {/* Bottom right GIF */}
+      <motion.div
+        className="absolute top-[190px] right-11 mr-8  w-34 h-64 "
+        initial={{ opacity: 0, scale: 0 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1, duration: 0.5 }}
+      >
+        <Image
+          src="/bk3.gif"
+          alt="Animated decoration"
+          width={250}
+          height={250}
+          className="w-full h-full object-contain rounded-lg -rotate-12 mb-8"
+          unoptimized={true}
+        />
       </motion.div>
 
       <div className="max-w-2xl relative z-10 ">

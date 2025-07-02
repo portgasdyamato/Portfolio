@@ -18,13 +18,15 @@ export default function Header() {
       transition={{ duration: 0.5 }}
       className="py-4 px-6 flex justify-between items-center bg-[#FFE4E4] sticky top-0 z-50 backdrop-blur-sm"
     >
-      <Link
-        href="/"
+      <motion.button
+        onClick={() => scrollToSection("home")}
         style={{ fontFamily: "Bianca", }}
-        className="text-xl"
+        className="text-xl cursor-pointer hover:text-gray-600 transition-colors"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
       >
         Sakshi Agrhari
-      </Link>
+      </motion.button>
       <nav className="space-x-8">
         {[
           { name: "PROJECTS", id: "projects" },
@@ -34,7 +36,7 @@ export default function Header() {
           <motion.button
             key={item.name}
             onClick={() => scrollToSection(item.id)}
-            className="text-sm hover:text-gray-600 transition-colors"
+            className="text-sm hover:text-gray-600 transition-colors" style={{ fontFamily: "qax", }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
