@@ -23,7 +23,7 @@ const projectsData = [
       "Aesthetic Appeal: Game-inspired design with vibrant colors",
     ],
     achievements: ["Deployed", "99.9% Uptime", "High Performance"],
-    liveUrl: "https://example.com",
+    liveUrl: "https://pippoportfolio.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Portfolio",
     status: "Completed",
   },
