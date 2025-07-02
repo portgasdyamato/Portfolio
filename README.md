@@ -99,13 +99,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 3. **Styling**: Customize colors and styles in `tailwind.config.ts`
 4. **Images**: Replace placeholder images in the `public/` directory
 
-## 🤝 Contributing
-
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/yourusername/portfolio/issues).
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 
 
