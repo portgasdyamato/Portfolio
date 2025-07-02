@@ -4,7 +4,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'Pippo Portfolio',
   description: 'This is a portfolio website showcasing my work and skills.',
-  
+  icons: {
+    icon: '/hehe.gif',
+  },
 }
 
 export default function RootLayout({
