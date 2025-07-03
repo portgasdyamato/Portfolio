@@ -193,6 +193,7 @@ export default function Projects() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
               className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
+              
               onClick={() => setSelectedProject(projectsData.findIndex((p) => p.title === project.title))}
             >
               {/* Project Image */}
@@ -216,7 +217,7 @@ export default function Projects() {
 
               {/* Project Info */}
               <div className="p-6 bg-white">
-                <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
+                <h3 className="text-xl font-bold text-gray-800 mb-2" style={{ fontFamily: "Gamer", }}>{project.title}</h3>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2">{project.description}</p>
 
                 {/* Technologies */}

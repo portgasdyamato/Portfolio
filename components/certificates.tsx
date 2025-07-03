@@ -5,7 +5,7 @@ import { FileText, CheckCircle, Calendar, ExternalLink } from "lucide-react"
 
 const certificates = [
 	{
-		title: "Gen AI by Hack2skill & GoogleCloud",
+		title: "Gen AI by GoogleCloud",
 		issuer: "Google Cloud",
 		date: "6 June 2025",
 		status: "Completed",
@@ -125,7 +125,7 @@ export default function Certificates() {
 										<FileText className="w-5 h-5" style={{ color: cert.color }} />
 									</motion.div>
 									<div>
-										<h3 className="font-semibold text-sm group-hover:text-gray-600 transition-colors">
+										<h3 className="font-semibold text-sm group-hover:text-gray-600 transition-colors" style={{ fontFamily: "Gamer", }}>
 											{cert.title}
 										</h3>
 										<p className="text-xs text-gray-500">{cert.type}</p>
