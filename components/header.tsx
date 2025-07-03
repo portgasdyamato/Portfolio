@@ -82,7 +82,11 @@ export default function Header() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
+<<<<<<< HEAD
           Sakshi 
+=======
+          Sakshi Agrahari
+>>>>>>> 61cfe4311836621e338b052715a39788f9812973
         </motion.button>
         
         {/* Desktop Navigation */}
