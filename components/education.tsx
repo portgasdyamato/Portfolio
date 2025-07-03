@@ -255,7 +255,7 @@ export default function Education() {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 1 + index * 0.1 }}
 								whileTap={{ scale: 0.98 }}
-								className="bg-white rounded-xl p-4 shadow-lg border border-gray-100 cursor-pointer"
+								className="bg-white rounded-xl p-4 shadow-lg border border-gray-100 cursor-pointer overflow-y-auto"
 								onClick={() =>
 									setSelectedItem(
 										selectedItem === index ? null : index
