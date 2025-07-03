@@ -220,9 +220,9 @@ export default function Certificates() {
 					className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 text-center"
 				>
 					{[
-						{ number: "6+", label: "Certificates Earned", color: "#10B981" },
-						{ number: "4", label: "Tech Platforms", color: "#3B82F6" },
-						{ number: "150+", label: "Learning Hours", color: "#8B5CF6" },
+						{ number: "9+", label: "Certificates Earned", color: "#10B981" },
+						{ number: "5+", label: "Tech Platforms", color: "#3B82F6" },
+						{ number: "350+", label: "Learning Hours", color: "#8B5CF6" },
 					].map((stat, index) => (
 						<motion.div
 							key={stat.label}

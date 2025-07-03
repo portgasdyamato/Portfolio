@@ -198,7 +198,7 @@ const PixelCharacter = () => {
       y: [0, -20, 0],
       scale: [1, 1.1, 1],
       transition: {
-        duration: 0.6,
+        duration: 0.9,
         ease: "easeOut" as const
       }
     }
@@ -206,7 +206,7 @@ const PixelCharacter = () => {
 
   return (
     <div 
-      className="fixed z-50 pointer-events-none will-change-transform"
+      className="fixed z-[70] pointer-events-none will-change-transform"
       style={{
         left: `${Math.round(characterPosition.x - 32)}px`,
         top: `${Math.round(characterPosition.y - 32)}px`,
@@ -337,11 +337,11 @@ const PixelCharacter = () => {
                 
                 {/* Optional shadow/glow effect with expression-based color */}
                 <div 
-                  className={`absolute inset-0 rounded-2xl -z-10 blur-sm transition-colors duration-300 ${
+                  className={`absolute inset-0 rounded-full -z-10 pointer-events-none transition-colors duration-300 blur-sm ${
                     expression === "happy" ? "bg-gradient-to-br from-yellow-200/30 to-orange-200/30" :
                     expression === "excited" ? "bg-gradient-to-br from-orange-200/40 to-red-200/40" :
                     expression === "winking" ? "bg-gradient-to-br from-pink-200/30 to-purple-200/30" :
-                    !isFollowing ? "bg-gradient-to-br from-blue-200/40 to-purple-200/40" : // Blue glow when stationary
+                    !isFollowing ? "bg-gradient-to-br from-blue-200/40 to-purple-200/40" :
                     "bg-gradient-to-br from-orange-200/20 to-amber-200/20"
                   }`}
                 ></div>
@@ -365,123 +365,120 @@ const PixelCharacter = () => {
               </div>
 
               {/* Floating particles - react to expression */}
-              <motion.div
-                animate={{
-                  y: [-5, -15, -5],
-                  x: [-2, 2, -2],
-                  opacity: [0.7, 1, 0.7],
-                  scale: expression === "excited" ? [1, 1.3, 1] : [1, 1, 1]
-                }}
-                transition={{
-                  duration: expression === "excited" ? 1.5 : 3,
-                  repeat: Infinity,
-                  ease: "easeInOut" as const
-                }}
-                className={`absolute -top-2 -right-2 ${
-                  expression === "excited" ? "text-yellow-400" : "text-orange-400"
-                }`}
-              >
-                <Sparkles className="w-4 h-4" />
-              </motion.div>
-
-              <motion.div
-                animate={{
-                  y: [-3, -8, -3],
-                  x: [2, -2, 2],
-                  opacity: [0.5, 1, 0.5],
-                  scale: expression === "happy" ? [1, 1.2, 1] : [1, 1, 1]
-                }}
-                transition={{
-                  duration: expression === "happy" ? 2 : 2.5,
-                  repeat: Infinity,
-                  ease: "easeInOut" as const,
-                  delay: 1
-                }}
-                className={`absolute -top-1 -left-2 ${
-                  expression === "happy" ? "text-pink-400" : "text-amber-400"
-                }`}
-              >
-                <Heart className="w-3 h-3" />
-              </motion.div>
-
-              {/* Enhanced particles for excited state */}
               {expression === "excited" && (
                 <>
                   <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ 
-                      scale: [0, 1, 0],
-                      opacity: [0, 1, 0],
-                      y: [-5, -20, -35],
-                      x: [0, 5, 10]
-                    }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      ease: "easeOut" as const,
-                      repeatDelay: 0.5
-                    }}
-                    className="absolute -top-1 left-1 text-yellow-300"
-                  >
-                    <Star className="w-3 h-3" />
-                  </motion.div>
-                  
-                  <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ 
-                      scale: [0, 1, 0],
-                      opacity: [0, 1, 0],
-                      y: [-3, -15, -25],
-                      x: [0, -3, -8]
+                    animate={{
+                      y: [-10, -30, -10],
+                      x: [-5, 5, -5],
+                      opacity: [0.8, 1, 0.8],
+                      scale: [1, 1.2, 1]
                     }}
                     transition={{
                       duration: 1.8,
                       repeat: Infinity,
-                      ease: "easeOut" as const,
-                      repeatDelay: 0.8,
-                      delay: 0.3
+                      ease: "easeInOut" as const
                     }}
-                    className="absolute -top-2 right-1 text-orange-300"
+                    className="absolute -top-4 -right-4 text-orange-500"
                   >
-                    <Sparkles className="w-2 h-2" />
+                    <Sparkles className="w-4 h-4" />
+                  </motion.div>
+                  <motion.div
+                    animate={{
+                      y: [-12, -25, -12],
+                      x: [-6, 6, -6],
+                      opacity: [0.7, 1, 0.7],
+                      scale: [1, 1.3, 1]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut" as const
+                    }}
+                    className="absolute -top-6 -left-6 text-red-500"
+                  >
+                    <Star className="w-4 h-4" />
                   </motion.div>
                 </>
               )}
 
-              {/* Cinnamon scent particles */}
-              <motion.div
-                animate={{
-                  y: [-8, -18, -8],
-                  x: [0, 3, 0],
-                  opacity: [0.4, 0.8, 0.4]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut" as const,
-                  delay: 0.5
-                }}
-                className="absolute -top-3 left-1/2 transform -translate-x-1/2"
-              >
-                <div className="w-1 h-1 bg-amber-500 rounded-full"></div>
-              </motion.div>
+              {expression === "happy" && (
+                <>
+                  <motion.div
+                    animate={{
+                      y: [-6, -15, -6],
+                      x: [3, -3, 3],
+                      opacity: [0.7, 1, 0.7],
+                      scale: [1, 1.3, 1]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut" as const,
+                      delay: 0.5
+                    }}
+                    className="absolute -top-2 -left-3 text-blue-500"
+                  >
+                    <Heart className="w-4 h-4" />
+                  </motion.div>
+                  <motion.div
+                    animate={{
+                      y: [-8, -18, -8],
+                      x: [4, -4, 4],
+                      opacity: [0.8, 1, 0.8],
+                      scale: [1, 1.4, 1]
+                    }}
+                    transition={{
+                      duration: 2.2,
+                      repeat: Infinity,
+                      ease: "easeInOut" as const,
+                      delay: 0.3
+                    }}
+                    className="absolute -top-4 -right-4 text-yellow-500"
+                  >
+                    <Sparkles className="w-4 h-4" />
+                  </motion.div>
+                </>
+              )}
 
-              <motion.div
-                animate={{
-                  y: [-6, -14, -6],
-                  x: [-1, 2, -1],
-                  opacity: [0.3, 0.7, 0.3]
-                }}
-                transition={{
-                  duration: 3.5,
-                  repeat: Infinity,
-                  ease: "easeInOut" as const,
-                  delay: 2
-                }}
-                className="absolute -top-2 left-2"
-              >
-                <div className="w-0.5 h-0.5 bg-orange-400 rounded-full"></div>
-              </motion.div>
+              {expression === "winking" && (
+                <>
+                  <motion.div
+                    animate={{
+                      y: [-8, -20, -8],
+                      x: [2, -2, 2],
+                      opacity: [0.9, 1, 0.9],
+                      scale: [1, 1.4, 1]
+                    }}
+                    transition={{
+                      duration: 2.2,
+                      repeat: Infinity,
+                      ease: "easeInOut" as const,
+                      delay: 0.3
+                    }}
+                    className="absolute -top-5 -right-5 text-green-500"
+                  >
+                    <Star className="w-4 h-4" />
+                  </motion.div>
+                  <motion.div
+                    animate={{
+                      y: [-10, -25, -10],
+                      x: [-3, 3, -3],
+                      opacity: [0.8, 1, 0.8],
+                      scale: [1, 1.3, 1]
+                    }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      ease: "easeInOut" as const,
+                      delay: 0.4
+                    }}
+                    className="absolute -top-6 -left-6 text-purple-500"
+                  >
+                    <Heart className="w-4 h-4" />
+                  </motion.div>
+                </>
+              )}
             </motion.div>
 
             {/* Toggle visibility button */}

@@ -22,7 +22,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Double:wght@100..900&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="/super-pixel-font.css" />
       </head>
-      <body>{children}</body>
+      <body style={{ fontFamily: "qax" }}>{children}</body>
     </html>
   )
 }
