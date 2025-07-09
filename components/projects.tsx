@@ -6,6 +6,7 @@ import { ExternalLink, Github, Star, Calendar, Code, X, Award } from "lucide-rea
 const prt = "/prt.png"
 const vyn = "/vyn.png"
 const wel = "/wel.png"
+const voxa = "/voxa.png"
 const projectsData = [
   {
     title: "Portflio Website",
@@ -31,26 +32,27 @@ const projectsData = [
     status: "Completed",
   },
   {
-    title: "AI Chat Assistant",
-    duration: "July 2025 - Mid July 2025",
-    date: "July 2025",
-    image: "/placeholder.svg?height=300&width=400",
-    color: "#4ECDC4",
-    technologies: ["Python", "TensorFlow", "React", "FastAPI", "OpenAI API"],
-    description:
-      "An intelligent chatbot powered by machine learning that can understand context and provide helpful responses.",
-    features: [
-      "Natural Language Processing",
-      "Context-Aware Responses",
-      "Multi-language Support",
-      "Voice Integration",
-      "Learning from Conversations",
-      "Custom Training Data",
+    "title": "VoXa – Voice-Driven Task Manager",
+    "duration": "May 2025 - June 2025",
+    "date": "May 2025",
+    "image": voxa,
+    "color": "#6B5BFF",
+    "technologies": ["React", "TypeScript", "Node.js", "Express", "Tailwind CSS", "PostgreSQL", "Drizzle ORM", "Web Speech API"],
+    "description": "A modern, intelligent task management application that combines voice command technology with a sleek, intuitive interface.",
+    "features": [
+      "🎤 Voice Commands: Add, update, and manage tasks using natural language",
+      "📊 Analytics: Visualize productivity with interactive charts and streak tracking",
+      "📱 Responsive Design: Optimized for mobile, tablet, and desktop",
+      "🎨 Modern UI/UX: Glassmorphism design with dark/light themes",
+      "🔔 Smart Notifications: Stay ahead with reminders and deadlines",
+      "🔐 Secure Authentication: Google OAuth integration for privacy and security",
+      "💬 Demo Mode: Try the app without signing up using a guest account",
+      "⚡ Real-Time Updates: Instant UI changes across all components"
     ],
-    achievements: ["Fast Response", "95% Accuracy Rate", "Accuracy Improvement"],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/example",
-    status: "Ongoing",
+    "achievements": ["✅ Deployed", "🔒 Secure Login Flow", "📈 Optimized for High Performance"],
+    "liveUrl": "https://voxa-cl66cbsp9-portgasdyamatos-projects.vercel.app/",
+    "githubUrl": "https://github.com/portgasdyamato/Voxa",
+    "status": "Completed"
   },
   {
     title: "Vinyl Records",
