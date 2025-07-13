@@ -136,7 +136,7 @@ export default function Education() {
 			>
 				<div className="overflow-hidden">
 					<motion.h2
-						className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 tracking-wide cursor-pointer inline-block"
+			className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-2 tracking-wide cursor-pointer inline-block"
 						whileHover={{
 							scale: 1.05,
 							transition: {
@@ -182,19 +182,19 @@ export default function Education() {
 								>
 									{/* Timeline Card */}
 									<motion.div
-										className={`w-5/12 bg-[#FFD1D1] py-8 px-8 rounded-xl ${
+										className={`w-5/12 bg-[#ffdddd] py-8 px-8 rounded-xl ${
 											isLeft ? "pr-8" : "pl-8"
 										}`}
 									>
-										<div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+										<div className="timeline-glass rounded-2xl p-6 shadow-lg">
 											{/* Header */}
 											<div className={`flex justify-between items-start mb-4 ${isLeft ? "text-left" : "text-right"}`}>
-                        <div className={isLeft ? "" : "order-2 text-left"}>
-                          <h3 className="text-xl font-bold text-gray-800 mb-1">{item.level}</h3>
-                          <p className="text-sm text-gray-500 font-medium">{item.date}</p>
-                          <p className="text-xs text-gray-400">{item.duration}</p>
-                        </div>
-                      </div>
+						<div className={isLeft ? "" : "order-2 text-left"}>
+<h3 className="text-xl font-bold text-black mb-1">{item.level}</h3>
+						  <p className="text-sm text-gray-500 font-medium">{item.date}</p>
+						  <p className="text-xs text-gray-400">{item.duration}</p>
+						</div>
+					  </div>
 
 											{/* Institution */}
 											<p className="text-lg font-semibold text-purple-600 mb-3">
@@ -255,7 +255,7 @@ export default function Education() {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 1 + index * 0.1 }}
 								whileTap={{ scale: 0.98 }}
-								className="bg-white rounded-xl p-4 shadow-lg border border-gray-100 cursor-pointer overflow-y-auto"
+								className="timeline-glass rounded-xl p-4 shadow-lg cursor-pointer overflow-y-auto"
 								onClick={() =>
 									setSelectedItem(
 										selectedItem === index ? null : index
@@ -270,7 +270,7 @@ export default function Education() {
 										<Icon className="w-5 h-5 text-white" />
 									</div>
 									<div className="flex-1">
-										<h3 className="text-lg font-bold text-gray-800" style={{ fontFamily: "qax" }}>
+<h3 className="text-lg font-bold text-black" style={{ fontFamily: "qax" }}>
 											{item.level}
 										</h3>
 										<p className="text-sm text-gray-500">
@@ -340,25 +340,35 @@ export default function Education() {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+		  className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50 p-4 custom-scrollbar-hide"
 						onClick={() => setSelectedItem(null)}
 					>
-						<motion.div
-							initial={{ scale: 0.8, opacity: 0, y: 50 }}
-							animate={{ scale: 1, opacity: 1, y: 0 }}
-							exit={{ scale: 0.8, opacity: 0, y: 50 }}
-							transition={{ type: "spring", stiffness: 300, damping: 30 }}
-							className="bg-white rounded-3xl p-5 max-w-md w-full mx-4 shadow-2xl relative overflow-y-auto max-h-[80vh] md:overflow-visible md:max-h-full"
-							onClick={(e) => e.stopPropagation()}
-						>
+			<motion.div
+			  initial={{ scale: 0.8, opacity: 0, y: 50 }}
+			  animate={{ scale: 1, opacity: 1, y: 0 }}
+			  exit={{ scale: 0.8, opacity: 0, y: 50 }}
+			  transition={{ type: "spring", stiffness: 300, damping: 30 }}
+			  className="gradient-glass rounded-3xl p-5 max-w-md w-full mx-4 relative max-h-[85vh] min-h-[480px] h-[620px] overflow-y-auto custom-scrollbar-hide"
+			  onClick={(e) => e.stopPropagation()}
+			>
+	  {/* Hide scrollbars globally for .custom-scrollbar-hide */}
+	  <style global jsx>{`
+		.custom-scrollbar-hide {
+		  scrollbar-width: none; /* Firefox */
+		  -ms-overflow-style: none; /* IE and Edge */
+		}
+		.custom-scrollbar-hide::-webkit-scrollbar {
+		  display: none; /* Chrome, Safari, Opera */
+		}
+	  `}</style>
 							{/* Close Button */}
 							<motion.button
-								className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+								className="absolute top-4 right-4 p-2 rounded-full bg-white/30 backdrop-blur-sm border border-white/50 hover:bg-white/40 transition-colors"
 								onClick={() => setSelectedItem(null)}
 								whileHover={{ scale: 1.1 }}
 								whileTap={{ scale: 0.9 }}
 							>
-								<X className="w-5 h-5 text-gray-600" />
+								<X className="w-5 h-5 text-gray-800" />
 							</motion.button>
 
 							{/* Icon */}
@@ -378,7 +388,7 @@ export default function Education() {
 
 							{/* Title */}
 							<h3
-								className="text-3xl text-gray-800 text-center mb-2"
+			className="text-3xl text-black text-center mb-2"
 								style={{ fontFamily: "qax" }}
 							>
 								{educationJourney[selectedItem].level}
@@ -388,14 +398,14 @@ export default function Education() {
 							</p>
 
 							{/* Description */}
-							<p className="text-gray-600 text-sm leading-relaxed mb-6 text-center font-serif" style={{ fontFamily: "qax" }}>
+							<p className="text-white/70 text-sm leading-relaxed mb-6 text-center font-serif" style={{ fontFamily: "qax" }}>
 								{educationJourney[selectedItem].description}
 							</p>
 
 							{/* Achievements */}
 							<div className="space-y-3">
 								<h4
-									className="font-semibold text-gray-700 mb-4 flex items-center gap-2"
+			className="font-semibold text-black mb-4 flex items-center gap-2"
 									style={{ fontFamily: "qax" }}
 								>
 									<Award className="w-5 h-5 text-yellow-500" />
@@ -409,8 +419,8 @@ export default function Education() {
 											animate={{ opacity: 1, x: 0 }}
 											transition={{ delay: i * 0.1 }}
 											className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl"
-                      
-                      
+					  
+					  
 										>
 											<div
 												className="w-3 h-3 rounded-full"

@@ -81,17 +81,19 @@ const projectsData = [
     date: "Nov 2024",
     image: wel,
     color: "#FFB347",
-    technologies: ["Figma", "", "Framer Motion", "Tailwind CSS"],
-    description: "A modern, responsive portfolio website with smooth animations and interactive elements.",
+    technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
+    description: "A comprehensive UI/UX design for a wellness tracking mobile application featuring modern design principles, intuitive user flow, and engaging visual elements.",
     features: [
-      "Responsive Design",
-      "Smooth Animations",
-      "Dark/Light Mode",
-      "Contact Form",
-      "Blog Integration",
-      "SEO Optimized",
+      "Clean Dashboard Design with Progress Tracking",
+      "Task Management Interface with Completion Status",
+      "Streak Tracking and Achievement Badges System",
+      "Weekly Calendar View with Activity Indicators", 
+      "Modern Dark Theme with Gradient Accents",
+      "Responsive Design Components and Layout",
+      "Interactive Prototyping with User Flow",
+      "Comprehensive Design System and Style Guide",
     ],
-    achievements: ["Good Reviews", "Perfect Lighthouse Score", "Client Approved"],
+    achievements: ["Complete Design System", "Interactive Prototype", "Client Approved Design"],
     liveUrl: "https://www.figma.com/design/aih9SixouPHrgM06a2RBj3/wellness-app?node-id=0-1&t=SoY8Elae4F7R2zQj-1",
     githubUrl: "https://github.com/portgasdyamato/Wellness-App-Design",
     status: "Completed",
@@ -141,7 +143,7 @@ export default function Projects() {
         transition={{ delay: 0.9 }}
         className="text-center mb-8 "
       >
-        <motion.h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-2 tracking-widest cursor-pointer"          
+        <motion.h2 className="text-3xl md:text-4xl font-light text-black mb-2 tracking-widest cursor-pointer"          
             whileHover={{ 
             scale: 1.1,
             transition: { 
@@ -183,7 +185,7 @@ export default function Projects() {
       </motion.div>
 
       {/* Projects Grid */}
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" layout>
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 " layout>
         <AnimatePresence>
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -194,7 +196,7 @@ export default function Projects() {
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
+              className="project-glass rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
               
               onClick={() => setSelectedProject(projectsData.findIndex((p) => p.title === project.title))}
             >
@@ -218,7 +220,7 @@ export default function Projects() {
               </div>
 
               {/* Project Info */}
-              <div className="p-6 bg-white">
+              <div className="p-6 bg-white/40 backdrop-blur-sm">
                 <h3 className="text-xl font-bold text-gray-800 mb-2" style={{ fontFamily: "Gamer", }}>{project.title}</h3>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2">{project.description}</p>
 
@@ -254,7 +256,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50 p-4"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -262,17 +264,19 @@ export default function Projects() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="bg-white rounded-tl-3xl rounded-bl-3xl p-8 max-w-2xl w-full mx-4 shadow-2xl relative max-h-[90vh] overflow-y-auto"
+              className="gradient-glass rounded-3xl  p-8 max-w-2xl w-full mx-4 relative 
+                max-h-[90vh] overflow-y-auto scrollbar-none
+                [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <motion.button
-                className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10"
+                className="absolute top-4 right-4 p-2 rounded-full bg-white/30 backdrop-blur-sm border border-white/50 hover:bg-white/40 transition-colors z-10"
                 onClick={() => setSelectedProject(null)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <X className="w-5 h-5 text-gray-600" />
+                <X className="w-5 h-5 text-gray-800" />
               </motion.button>
 
               {/* Project Image */}
@@ -287,18 +291,18 @@ export default function Projects() {
 
               {/* Project Title */}
               <div className="mb-6">
-                <h3 className="text-3xl font-bold text-gray-800 mb-2"style={{ fontFamily: "Gamer", }}>{projectsData[selectedProject].title}</h3>
+                <h3 className="text-3xl font-bold text-gray mb-2"style={{ fontFamily: "Gamer", }}>{projectsData[selectedProject].title}</h3>
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="text-gray-500 text-sm">{projectsData[selectedProject].duration}</span>
+                  <span className="text-gray-900 text-sm">{projectsData[selectedProject].duration}</span>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-gray-600 leading-relaxed mb-6" style={{ fontFamily: "qax", }}>{projectsData[selectedProject].description}</p>
+              <p className="text-white/70 leading-relaxed mb-6" style={{ fontFamily: "qax", }}>{projectsData[selectedProject].description}</p>
 
               {/* Features */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2 "style={{ fontFamily: "Gamer", }}>
+                <h4 className="font-semibold text-gray-950 mb-4 flex items-center gap-2 "style={{ fontFamily: "Gamer", }}>
                   <Star className="w-5 h-5 text-yellow-500" />
                   Key Features
                 </h4>
@@ -323,7 +327,7 @@ export default function Projects() {
 
               {/* Technologies */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
+                <h4 className="font-semibold text-gray-950 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
                   <Code className="w-5 h-5 text-blue-500" />
                   Technologies Used
                 </h4>
@@ -338,7 +342,7 @@ export default function Projects() {
 
               {/* Achievements */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
+                <h4 className="font-semibold text-gray-950 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
                   <Award className="w-5 h-5 text-green-500" />
                   Achievements
                 </h4>

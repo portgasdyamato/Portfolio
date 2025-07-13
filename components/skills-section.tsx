@@ -20,7 +20,7 @@ export default function SkillsSection() {
   return (
     <motion.div className="w-full h-full flex flex-col">
       <motion.h3
-        className="text-xl sm:text-2xl md:text-3xl font-semibold mb-1 text-center text-gray-700"
+        className="text-xl sm:text-2xl md:text-3xl font-semibold mb-1 text-center text-black"
         style={{
           fontFamily: "Gamer", 
           imageRendering: "pixelated",
@@ -50,10 +50,7 @@ export default function SkillsSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 + 0.3 }}
-            className="bg-white/90 rounded-lg p-2 sm:p-3 border border-pink-200 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-            style={{
-              boxShadow: "0 4px 12px rgba(0,0,0,0.1), 0 2px 4px rgba(252,165,165,0.2)",
-            }}
+            className="skills-glass rounded-lg p-2 sm:p-3 transition-all duration-300 transform hover:-translate-y-1"
           >
             <div className="flex items-center justify-between mb-1 sm:mb-2">
               <span

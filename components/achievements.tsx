@@ -58,7 +58,7 @@ export default function Achievements() {
 					initial={{ y: 20, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ delay: 0.9 }}
-					className="text-2xl sm:text-3xl md:text-4xl my-6 sm:my-8 md:my-10 font-bold text-gray-800 tracking-wide cursor-pointer inline-block"
+					className="text-2xl sm:text-3xl md:text-4xl my-6 sm:my-8 md:my-10 font-bold gradient-text tracking-wide cursor-pointer inline-block"
 					whileHover={{
 						scale: 1.1,
 						color: "#FF6B6B",
@@ -73,7 +73,7 @@ export default function Achievements() {
 				</motion.h2>
 			</div>
 
-			<motion.div className="bg-gradient-to-br from-white to-gray-50 p-10 rounded-3xl shadow-sm">
+			<motion.div className=" bg-white p-10 rounded-3xl shadow-md">
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
 					{achievements.map((achievement, index) => {
 						const Icon = achievement.icon
@@ -84,7 +84,7 @@ export default function Achievements() {
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: 1 + index * 0.2 }}
 								whileHover={{ scale: 1.05, y: -5 }}
-								className="bg-[#ffe1e1] p-6 rounded-2xl shadow-md hover:shadow-lg transition-shadow cursor-pointer group"
+								className="bg-[#ffe1e1] p-6 rounded-2xl hover:shadow-lg transition-shadow cursor-pointer group achive-glass"
 							>
 								<div className="flex items-start space-x-4">
 									<motion.div

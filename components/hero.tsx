@@ -106,7 +106,7 @@ export default function Hero() {
 
       <div className="max-w-2xl relative z-10">
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight"
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight "
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}

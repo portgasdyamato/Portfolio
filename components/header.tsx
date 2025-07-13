@@ -200,13 +200,19 @@ export default function Header() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="bg-gradient-to-br from-[#FFE4E4] via-[#FFD1D1] to-[#FFB5B5] rounded-2xl p-6 max-w-md w-full max-h-[80vh] overflow-y-auto shadow-2xl scrollbar-hide"
-              style={{
-                scrollbarWidth: 'none', /* Firefox */
-                msOverflowStyle: 'none', /* Internet Explorer 10+ */
-              }}
+              className="gradient-glass rounded-2xl p-6 max-w-md w-full max-h-[80vh] min-h-[420px] h-[520px] overflow-y-auto shadow-2xl border border-white/40 custom-scrollbar-hide"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Hide scrollbars for this modal only */}
+              <style jsx global>{`
+                .custom-scrollbar-hide {
+                  scrollbar-width: none; /* Firefox */
+                  -ms-overflow-style: none; /* IE and Edge */
+                }
+                .custom-scrollbar-hide::-webkit-scrollbar {
+                  display: none; /* Chrome, Safari, Opera */
+                }
+              `}</style>
               <div className="relative mb-6">
                 <motion.h2 
                   className="text-2xl font-bold text-gray-800 text-center mb-2" 
@@ -323,7 +329,7 @@ export default function Header() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 + index * 0.1 }}
-                    className={`bg-gradient-to-br ${section.color} p-4 rounded-xl border ${section.borderColor} hover:shadow-lg transition-all duration-300 group cursor-pointer`}
+                    className={`gradient-glass p-4 rounded-xl border ${section.borderColor} hover:shadow-lg transition-all duration-300 group cursor-pointer`}
                     whileHover={{ scale: 1.03, y: -2 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -359,7 +365,7 @@ export default function Header() {
                           initial={{ opacity: 0, x: -10 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.7 + index * 0.1 + itemIndex * 0.05 }}
-                          className="text-md text-gray-600 flex items-start group/item hover:bg-white/10 p-2 rounded-lg transition-all duration-200 cursor-pointer"
+                          className="text-md text-gray-800 flex items-start group/item hover:bg-white/10 p-2 rounded-lg transition-all duration-200 cursor-pointer"
                           whileHover={{ scale: 1.02, x: 4 }}
                           whileTap={{ scale: 0.98 }}
                           style={{ fontFamily: "Pixel" }}

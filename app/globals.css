@@ -1,3 +1,29 @@
+  /* Glassmorphism for hero section - more prominent, soft gradient */
+  .hero-glass {
+    background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0.68) 0%,
+      rgba(255, 206, 240, 0.22) 30%,
+      rgba(199, 95, 95, 0.13) 60%,
+      rgba(255, 191, 220, 0.18) 100%
+    );
+    backdrop-filter: blur(28px) saturate(180%);
+    /* No border, no box-shadow for clean glass */
+  }
+  /* Extra transparent, unique glass for skills cards */
+  .skills-glass {
+    background: linear-gradient(135deg,
+      rgba(255,255,255,0.55) 0%,
+      rgba(174, 88, 255, 0.055) 30%,
+      rgba(255, 215, 236, 0.08) 30%,
+      rgba(217, 180, 252, 0.082) 30%,
+      rgba(254, 254, 254, 0.504) 100%
+    );
+    backdrop-filter: blur(24px) saturate(180%);
+  
+    border: 1px solid rgba(255, 255, 255, 0.058);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    /* No border, no box-shadow for seamless glass */
+  }
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,6 +43,92 @@ body {
     /* Hide scrollbar for IE, Edge and Firefox */
     -ms-overflow-style: none;
     scrollbar-width: none;
+  }
+
+  /* Gradient text for headings only */
+  .gradient-text {
+    background: linear-gradient(135deg, #a855f7 0%, #d946ef 25%, #f472b6 50%, #fb923c 75%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Dark mode gradient - more vibrant for dark backgrounds */
+  .dark .gradient-text {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 25%, #ec4899 50%, #f59e0b 75%, #eab308 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Gradient glass morphism for modals */
+  .gradient-glass {
+    background: linear-gradient(135deg, 
+      rgba(255, 206, 240, 0.416) 0%, 
+      rgba(168, 85, 247, 0.08) 25%, 
+      rgba(255, 103, 202, 0.156) 50%, 
+      #ff9fd11c 75%, 
+      rgba(255, 199, 199, 0.526) 100%
+    );
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Gradient glass for timeline cards - different gradient */
+  .timeline-glass {
+    background: linear-gradient(135deg, 
+      rgba(255, 255, 255, 0.7) 0%, 
+      rgba(251, 146, 60, 0.12) 25%, 
+      rgba(244, 114, 182, 0.15) 50%, 
+      rgba(171, 108, 231, 0.1) 75%, 
+      rgba(255, 255, 255, 0.6) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+  .achive-glass {
+    background: linear-gradient(135deg, 
+      rgba(223, 217, 217, 0.34) 0%, 
+      rgba(251, 146, 60, 0.12) 25%, 
+      rgba(244, 114, 182, 0.15) 50%, 
+      rgba(182, 108, 251, 0.1) 75%, 
+      rgba(255, 255, 255, 0.6) 100%
+    );
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Enhanced glass for project cards - more glassy effect */
+  .project-glass {
+    background: linear-gradient(135deg, 
+      rgba(255,255,255,0.72) 0%, 
+      rgba(233, 210, 255, 0.134) 30%, 
+      rgba(255, 115, 187, 0.17) 60%, 
+      rgba(251,191,36,0.18) 100%
+    );
+    backdrop-filter: blur(20px) saturate(180%);
+    /* border removed for seamless glass */
+    /* box-shadow removed for seamless glass */
+  }
+
+  /* Text readability on glass backgrounds */
+  .glass-text {
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    color: #374151;
+  }
+
+  .glass-text-light {
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+    color: #6b7280;
+  }
+
+  .glass-heading {
+    text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+    color: #1f2937;
+    font-weight: 700;
   }
 }
 
