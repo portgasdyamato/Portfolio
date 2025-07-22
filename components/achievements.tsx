@@ -73,7 +73,7 @@ export default function Achievements() {
 				</motion.h2>
 			</div>
 
-			<motion.div className=" bg-white p-10 rounded-3xl shadow-md">
+			<motion.div className=" bg-rose-100/80 p-10 rounded-3xl shadow-md">
 				<div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
 					{achievements.map((achievement, index) => {
 						const Icon = achievement.icon
@@ -84,7 +84,7 @@ export default function Achievements() {
 								animate={{ opacity: 1, x: 0 }}
 								transition={{ delay: 1 + index * 0.2 }}
 								whileHover={{ scale: 1.05, y: -5 }}
-								className="bg-[#ffe1e1] p-6 rounded-2xl hover:shadow-lg transition-shadow cursor-pointer group achive-glass"
+								className="bg-[#fcd6d6] p-6 rounded-2xl hover:shadow-lg transition-shadow cursor-pointer group achive-glass"
 							>
 								<div className="flex items-start space-x-4">
 									<motion.div
