@@ -71,7 +71,7 @@ const projectsData = [
       "Lightweight & Responsive — Fast and fluid experience",
     ],
     achievements: ["Deployed", "Good User reviews", "top favorite"],
-    liveUrl: "https://voxa-cl66cbsp9-portgasdyamatos-projects.vercel.app/",
+    liveUrl: "https://vintage-vinyl.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Vintage-Vinyl",
     status: "Completed",
   },
