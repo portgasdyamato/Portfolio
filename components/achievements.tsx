@@ -58,7 +58,7 @@ export default function Achievements() {
 					initial={{ y: 20, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ delay: 0.9 }}
-					className="text-2xl sm:text-3xl md:text-4xl my-6 sm:my-8 md:my-10 font-bold gradient-text tracking-wide cursor-pointer inline-block"
+					className="text-2xl sm:text-3xl md:text-4xl my-6 sm:my-8 md:my-10 font-bold  tracking-wide cursor-pointer inline-block"
 					whileHover={{
 						scale: 1.1,
 						color: "#FF6B6B",

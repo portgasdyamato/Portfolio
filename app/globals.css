@@ -1,3 +1,77 @@
+/* Dark mode for glassmorphism classes */
+/* Improved dark mode glassmorphism with rich purple gradients and readable text */
+.dark .project-glass {
+  background: linear-gradient(135deg,
+    rgba(60, 16, 83, 0.92) 0%,
+    rgba(80, 34, 120, 0.82) 40%,
+    rgba(120, 34, 180, 0.38) 100%
+  );
+  backdrop-filter: blur(20px) saturate(180%);
+}
+.dark .hero-glass {
+  background: linear-gradient(120deg,
+    rgba(60, 16, 83, 0.88) 0%,
+    rgba(80, 34, 120, 0.62) 30%,
+    rgba(120, 34, 180, 0.33) 100%
+  );
+  backdrop-filter: blur(28px) saturate(180%);
+}
+.dark .skills-glass {
+  background: linear-gradient(135deg,
+    rgba(60, 16, 83, 0.75) 0%,
+    rgba(80, 34, 120, 0.32) 30%,
+    rgba(120, 34, 180, 0.18) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(120, 34, 180, 0.12);
+  box-shadow: 0 4px 16px rgba(60, 16, 83, 0.18);
+}
+.dark .gradient-glass {
+  background: linear-gradient(135deg,
+    rgba(60, 16, 83, 0.66) 0%,
+    rgba(80, 34, 120, 0.28) 25%,
+    rgba(120, 34, 180, 0.18) 100%
+  );
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(120, 34, 180, 0.18);
+  box-shadow: 0 8px 32px rgba(60, 16, 83, 0.18);
+}
+.dark .timeline-glass {
+  background: linear-gradient(135deg,
+    rgba(60, 16, 83, 0.7) 0%,
+    rgba(80, 34, 120, 0.22) 25%,
+    rgba(120, 34, 180, 0.15) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(120, 34, 180, 0.18);
+  box-shadow: 0 4px 16px rgba(60, 16, 83, 0.18);
+}
+.dark .achive-glass {
+  background: linear-gradient(135deg,
+    rgba(60, 16, 83, 0.44) 0%,
+    rgba(80, 34, 120, 0.22) 25%,
+    rgba(120, 34, 180, 0.15) 100%
+  );
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(120, 34, 180, 0.18);
+  box-shadow: 0 4px 16px rgba(60, 16, 83, 0.18);
+}
+
+/* Readable text for dark mode */
+.dark body,
+.dark .text-black,
+.dark .text-gray-800,
+.dark .text-gray-900,
+.dark .text-gray-950 {
+  color: #f3e8ff !important;
+}
+.dark .text-gray-600,
+.dark .text-gray-500 {
+  color: #d1b3ff !important;
+}
+.dark .text-gray-700 {
+  color: #e9d5ff !important;
+}
   /* Glassmorphism for hero section - more prominent, soft gradient */
   .hero-glass {
     background: linear-gradient(120deg,

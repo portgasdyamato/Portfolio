@@ -1,22 +1,43 @@
-"use client"
 
-import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
-import { Menu, X, Info } from "lucide-react"
-import Link from "next/link"
+"use client";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { Menu, X, Info } from "lucide-react";
+import Link from "next/link";
+import { useTheme } from 'next-themes';
 
 const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId)
+  const element = document.getElementById(sectionId);
   if (element) {
-    element.scrollIntoView({ behavior: "smooth" })
+    element.scrollIntoView({ behavior: "smooth" });
   }
-}
+};
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isInfoOpen, setIsInfoOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const { theme, setTheme } = useTheme();
+
+  // Dark mode toggle button
+  const ThemeToggle = () => (
+    <button
+      aria-label="Toggle Dark Mode"
+      className="ml-2 p-2 rounded-full bg-white/40 dark:bg-black/40 hover:bg-white/60 dark:hover:bg-black/60 transition-colors"
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+    >
+      {theme === 'dark' ? (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-yellow-400">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1.5m0 15V21m8.485-8.485h-1.5m-15 0H3m15.364-6.364l-1.06 1.06m-12.728 0l-1.06-1.06m16.97 12.728l-1.06-1.06m-12.728 0l-1.06 1.06M16.24 7.76A6 6 0 117.76 16.24 6 6 0 0116.24 7.76z" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-800">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M21.752 15.002A9.718 9.718 0 0112 21.75c-5.385 0-9.75-4.365-9.75-9.75 0-4.136 2.64-7.64 6.248-9.002a.75.75 0 01.977.73v.342c0 3.728 3.044 6.75 6.75 6.75h.342a.75.75 0 01.73.977z" />
+        </svg>
+      )}
+    </button>
+  );
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -73,7 +94,7 @@ export default function Header() {
           y: isVisible ? 0 : -100 
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="py-3 sm:py-4 px-4 sm:px-6 flex justify-between items-center bg-[#FFE4E4]/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm"
+        className="py-3 sm:py-4 px-4 sm:px-6 flex justify-between items-center bg-white/80 dark:bg-black/80 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm transition-colors"
       >
         <motion.button
           onClick={() => scrollToSection("home")}
@@ -82,8 +103,9 @@ export default function Header() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Sakshi 
+          Sakshi
         </motion.button>
+        <ThemeToggle />
         
         {/* Desktop Navigation */}
         <div className="flex items-center space-x-4">

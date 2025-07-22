@@ -74,7 +74,7 @@ export default function Certificates() {
 					initial={{ y: 20, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
 					transition={{ delay: 0.9 }}
-					className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text inline-flex items-center gap-2 mb-8 sm:mb-12 md:mb-16 mt-3 sm:mt-5 cursor-pointer"
+					className="text-xl sm:text-2xl md:text-3xl font-bold inline-flex items-center gap-2 mb-8 sm:mb-12 md:mb-16 mt-3 sm:mt-5 cursor-pointer"
 					whileHover={{ 
 						scale: 1.1,
 						transition: { 

@@ -280,7 +280,7 @@ export default function Contact() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text mb-2"
+            className="text-xl sm:text-2xl md:text-3xl font-bold  mb-2"
             style={{ fontFamily: "Gamer", }}
           >
             Let's Connect and Create Magic Together!
