@@ -7,6 +7,8 @@ const prt = "/prt.png"
 const vyn = "/vyn.png"
 const wel = "/wel.png"
 const voxa = "/voxa.png"
+const muse = "/muse.jpg"
+const wassup = "/wassup.png"
 const projectsData = [
   {
     title: "Portflio Website",
@@ -119,6 +121,57 @@ const projectsData = [
     githubUrl: "https://github.com/example",
     status: "Ongoing",
   },
+  {
+    title: "MuseMood - AI-Powered Mood Journaling App",
+    duration: "Jul 2024 - Aug 2024",
+    date: "Aug 2024",
+    image: muse,
+    color: "#A78BFA",
+    technologies: ["React", "Tailwind CSS", "Framer Motion", "PostgreSQL", "AI Integration", "UI/UX Design"],
+    description: "MuseMood is a cozy vintage diary-inspired journaling app that helps users track moods, reflect with guided AI prompts, and visualize emotional patterns over time.",
+    features: [
+      "Mood-based Journaling with Minimal UI Bubbles",
+      "AI Integration for Smart Reflections & Prompt Suggestions",
+      "Emotion Tracking with Timeline Visualization",
+      "Personalized Insights based on Journaling Trends",
+      "Cozy Vintage-Themed UI with Soft Gradients",
+      "Framer Motion Animations for Smooth Interactions",
+      "Secure Data Storage with Neon PostgreSQL",
+      "Responsive Layout Optimized for Desktop & Mobile"
+    ],
+    achievements: [
+      "Seamless AI-powered writing suggestions",
+      "Created unique cozy-vintage UI theme",
+      "Interactive mood tracking & analytics dashboard"
+    ],
+    githubUrl: "https://github.com/portgasdyamato/MuseMood",
+    status: "In Progress"
+},
+
+{ 
+    title: "AI-Integrated Messaging Platform (Figma Design)",
+    duration: "Aug 2024 - Sep 2024",
+    date: "Sep 2024",
+    image: wassup,
+    color: "#4A90E2",
+    technologies: ["Figma", "UI/UX Design", "Prototyping", "AI Integration", "Design Systems"],
+    description: "A modern collaboration platform design focusing on seamless teamwork, AI-powered task assistance, and a clean, futuristic aesthetic with glassmorphism and dark theme elements.",
+    features: [
+      "AI-powered Smart Suggestions & Predictive Assistance",
+      "Glassmorphism UI with Minimal Dark Theme",
+      "Interactive Chat and Call Interfaces (Accept/Decline Flows)",
+      "Responsive Layout with Scalable Components",
+      "Smooth Prototyping with Clickable Flows",
+      "Design System with Typography & Color Guidelines"
+    ],
+    achievements: [
+      "Created a futuristic yet intuitive UI with AI integration in mind",
+      "Improved accessibility with better information hierarchy",
+      "Delivered interactive prototypes simulating real user scenarios"
+    ],
+    liveUrl: "https://www.figma.com/proto/gpXHXFEe2v9lKdOlo8usDN/Wassup-web?node-id=17-6376&p=f&t=3IeG0MlOCTA6TIbM-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=17%3A6376",
+    status: "Completed"
+}
 ]
 
 export default function Projects() {
