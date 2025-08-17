@@ -180,7 +180,44 @@ export default function Projects() {
 
   const categories = ["All", "Completed", "Ongoing"]
 
-  const filteredProjects = filter === "All" ? projectsData : projectsData.filter((project) => project.status === filter)
+  // Helper function to parse dates for sorting
+  const parseDate = (dateStr: string) => {
+    // For "In Progress" or empty dates, return a future date
+    if (!dateStr || dateStr === "In Progress") return new Date(9999, 11, 31);
+    
+    const months: {[key: string]: number} = {
+      "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3, "May": 4, "Jun": 5, 
+      "June": 5, "Jul": 6, "July": 6, "Aug": 7, "August": 7, "Sep": 8, 
+      "Sept": 8, "Oct": 9, "Nov": 10, "Dec": 11
+    };
+    
+    const parts = dateStr.split(" ");
+    // Handle format like "July 2025"
+    if (parts.length === 2) {
+      const month = months[parts[0]] || 0;
+      const year = parseInt(parts[1]) || 2025;
+      return new Date(year, month, 1);
+    }
+    // Default fallback
+    return new Date(dateStr);
+  };
+
+  // Get projects and sort completed ones by date (newest first)
+  const getFilteredProjects = () => {
+    let projects = filter === "All" ? projectsData : projectsData.filter((project) => project.status === filter);
+    
+    if (filter === "Completed") {
+      projects = [...projects].sort((a, b) => {
+        const dateA = parseDate(a.date);
+        const dateB = parseDate(b.date);
+        return dateB.getTime() - dateA.getTime(); // Newest first
+      });
+    }
+    
+    return projects;
+  };
+
+  const filteredProjects = getFilteredProjects()
 
   return (
     <motion.div
