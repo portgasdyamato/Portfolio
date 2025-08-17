@@ -123,7 +123,7 @@ const projectsData = [
   },
   {
     title: "MuseMood - AI-Powered Mood Journaling App",
-    duration: "Jul 2024 - Aug 2024",
+    duration: "Jul 2025",
     date: "Aug 2024",
     image: muse,
     color: "#A78BFA",
@@ -150,7 +150,7 @@ const projectsData = [
 
 { 
     title: "AI-Integrated Messaging Platform (Figma Design)",
-    duration: "Aug 2024 - Sep 2024",
+    duration: "Aug 2025",
     date: "Sep 2024",
     image: wassup,
     color: "#4A90E2",
