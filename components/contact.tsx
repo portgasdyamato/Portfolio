@@ -4,10 +4,11 @@ import { motion } from "framer-motion"
 import { ArrowUpRight, Mail, Instagram, Linkedin, Github, Code2, MessageCircle } from "lucide-react"
 import Image from "next/image"
 
-const DiscordIcon = ({ className }: { className?: string }) => (
+
+const Behance = ({ className }: { className?: string }) => (
   <Image 
-    src="/dc.svg" 
-    alt="Discord" 
+    src="/behance.svg" 
+    alt="Behance" 
     width={24} 
     height={24} 
     className={className}
@@ -26,14 +27,7 @@ const socialLinks = [
     description: "Drop me a line",
     handle: "sakshiagrahari2004@gmail.com",
   },
-  {
-    name: "Discord",
-    icon: DiscordIcon,
-    url: "https://discord.com/users/934897501054586900",
-    color: "#FF9999",
-    description: "Follow my journey",
-    handle: "@scerilia",
-  },
+
   {
     name: "LinkedIn",
     icon: Linkedin,
@@ -51,12 +45,12 @@ const socialLinks = [
     handle: "@pippo",
   },
   {
-    name: "LeetCode",
-    icon: Code2,
-    url: "https://leetcode.com/u/pippo_peeps/",
+    name: "Behance",
+    icon: Behance,
+    url: "https://www.behance.net/pippooo",
     color: "#FFCCCC",
-    description: "Coding challenges",
-    handle: "pippo",
+    description: "Designs & Case Study",
+    handle: "pippooo",
   },
 ]
 

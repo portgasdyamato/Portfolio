@@ -145,7 +145,7 @@ const projectsData = [
       "Interactive mood tracking & analytics dashboard"
     ],
     githubUrl: "https://github.com/portgasdyamato/MuseMood",
-    status: "In Progress"
+    status: "Completed"
 },
 
 { 
