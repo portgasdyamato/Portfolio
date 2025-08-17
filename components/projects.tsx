@@ -431,17 +431,19 @@ export default function Projects() {
                     Live Demo
                   </motion.a>
                 )}
-                <motion.a
-                  href={projectsData[selectedProject].githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-xl hover:bg-gray-900 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Github className="w-4 h-4" />
-                  View Code
-                </motion.a>
+                {projectsData[selectedProject].githubUrl && (
+                  <motion.a
+                    href={projectsData[selectedProject].githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-xl hover:bg-gray-900 transition-colors"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Github className="w-4 h-4" />
+                    View Code
+                  </motion.a>
+                )}
               </div>
             </motion.div>
           </motion.div>
