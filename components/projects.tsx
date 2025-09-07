@@ -150,8 +150,8 @@ const projectsData = [
 },
 {
   title: "DreamIn - Theme-Based UI Generator",
-  duration: "July 2025",
-  date: "July 2025",
+  duration: "Early Sep 2025",
+  date: "Sep 2025",
   image: dreamin,
   color: "#60A5FA",
   technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "UI/UX Design"],
