@@ -9,6 +9,7 @@ const wel = "/wel.png"
 const voxa = "/voxa.png"
 const muse = "/muse.jpg"
 const wassup = "/wassup.png"
+const dreamin = "/dreamin.png"
 const projectsData = [
   {
     title: "Portflio Website",
@@ -147,7 +148,32 @@ const projectsData = [
     githubUrl: "https://github.com/portgasdyamato/MuseMood",
     status: "Completed"
 },
-
+{
+  title: "DreamIn - Theme-Based UI Generator",
+  duration: "July 2025",
+  date: "July 2025",
+  image: dreamin,
+  color: "#60A5FA",
+  technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "UI/UX Design"],
+  description: "DreamIn is a modern platform which gives inspiration and ideas for designers. It generates and showcases UI themes inspired by user's imagination. Users can input their mood, explore curated theme galleries, and interact with reusable UI components, all in a visually engaging and responsive environment. DreamIn, built for the Figma x Contra Make-a-thon, transforms theme ideas into real UI projects — not just layouts, but editable, project-ready designs that serve as instant design inspiration. From cozy diaries and retro VHS vibes to cyberpunk dashboards and zen apps, DreamIn helps designers explore styles, gain insights, and spark creativity in seconds. This isn't just a demo — it's a creative inspiration tool, showing how prompts can unlock new design possibilities.",
+  features: [
+    "Theme-based Generation and Gallery",
+    "Interactive Mood Input and Suggestions",
+    "Reusable UI Component Library (cards, dialogs, buttons, etc.)",
+    "Figma Integration for Theme Previews",
+    "Responsive Design for Desktop & Mobile",
+    "Easy Customization and Theme Extension",
+    "Modern UI/UX with Tailwind CSS"
+  ],
+  achievements: [
+    "Dynamic mood-to-theme mapping",
+    "Unique UI theme gallery",
+    "Modular component library"
+  ],
+  liveUrl: "https://dreaminbypippo.figma.site/",
+  githubUrl: "https://github.com/portgasdyamato/DreamIn",
+  status: "Completed"
+},
 { 
     title: "AI-Integrated Messaging Platform (Figma Design)",
     duration: "Aug 2025",
