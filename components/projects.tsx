@@ -97,7 +97,7 @@ const projectsData = [
       "Comprehensive Design System and Style Guide",
     ],
     achievements: ["Complete Design System", "Interactive Prototype", "Client Approved Design"],
-    liveUrl: "https://www.figma.com/design/aih9SixouPHrgM06a2RBj3/wellness-app?node-id=0-1&t=SoY8Elae4F7R2zQj-1",
+    liveUrl: "https://www.figma.com/proto/aih9SixouPHrgM06a2RBj3/wellness-app?node-id=6-68&t=oHNB9r9njg4qDP1y-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=6%3A68",
     githubUrl: "https://github.com/portgasdyamato/Wellness-App-Design",
     status: "Completed",
   },
