@@ -155,7 +155,7 @@ const projectsData = [
   image: dreamin,
   color: "#60A5FA",
   technologies: ["React", "TypeScript", "Vite", "Tailwind CSS", "UI/UX Design"],
-  description: "DreamIn is a modern platform which gives inspiration and ideas for designers. It generates and showcases UI themes inspired by user's imagination. Users can input their mood, explore curated theme galleries, and interact with reusable UI components, all in a visually engaging and responsive environment. DreamIn, built for the Figma x Contra Make-a-thon, transforms theme ideas into real UI projects — not just layouts, but editable, project-ready designs that serve as instant design inspiration. From cozy diaries and retro VHS vibes to cyberpunk dashboards and zen apps, DreamIn helps designers explore styles, gain insights, and spark creativity in seconds. This isn't just a demo — it's a creative inspiration tool, showing how prompts can unlock new design possibilities.",
+  description: "DreamIn is a modern platform which gives inspiration and ideas for designers. It generates and showcases UI themes inspired by user's imagination. Users can input their mood, explore curated theme galleries, and interact with reusable UI components, all in a visually engaging and responsive environment.",
   features: [
     "Theme-based Generation and Gallery",
     "Interactive Mood Input and Suggestions",
@@ -231,15 +231,12 @@ export default function Projects() {
   // Get projects and sort completed ones by date (newest first)
   const getFilteredProjects = () => {
     let projects = filter === "All" ? projectsData : projectsData.filter((project) => project.status === filter);
-    
-    if (filter === "Completed") {
-      projects = [...projects].sort((a, b) => {
-        const dateA = parseDate(a.date);
-        const dateB = parseDate(b.date);
-        return dateB.getTime() - dateA.getTime(); // Newest first
-      });
-    }
-    
+    // Always sort by date, newest first
+    projects = [...projects].sort((a, b) => {
+      const dateA = parseDate(a.date);
+      const dateB = parseDate(b.date);
+      return dateB.getTime() - dateA.getTime();
+    });
     return projects;
   };
 
