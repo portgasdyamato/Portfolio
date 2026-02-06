@@ -10,6 +10,7 @@ const voxa = "/voxa.png"
 const muse = "/muse.jpg"
 const wassup = "/wassup.png"
 const dreamin = "/dreamin.png"
+const pocketfund = "/pocketfund.png"
 const projectsData = [
   {
     title: "Portflio Website",
@@ -32,6 +33,33 @@ const projectsData = [
     achievements: ["Deployed", "99.9% Uptime", "High Performance"],
     liveUrl: "https://pippoportfolio.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Portfolio",
+    status: "Completed",
+  },
+  {
+    title: "💰 Pocket Fund: Your Financial Glow-Up Journey",
+    duration: "Jan 2026",
+    date: "Jan 2026",
+    image: "/placeholder.svg?height=300&width=400",
+    color: "#9333EA",
+    technologies: ["React", "Vite", "Node.js", "Express", "Tailwind CSS", "Shadcn UI", "PostgreSQL", "Drizzle ORM", "Google Gemini AI", "Framer Motion"],
+    description: "A gamified, AI-powered personal finance platform that turns budgeting into an addictive 'Glow-Up' experience. Helps users identify wasteful spending (Icks), celebrate saving wins, and master financial literacy through interactive missions.",
+    features: [
+      "🥊 The Fight: Categorize expenses as Needs, Wants, or Icks to identify spending leaks",
+      "📈 The Glow-Up: Virtual savings locker with goal tracking and progress visualization",
+      "🎓 Level Up: Interactive story-based financial literacy quests with gamification",
+      "🤖 AI Financial Coach: Personalized advice powered by Google Gemini Pro",
+      "🏆 Trophy Case: Track saving streaks, fight streaks, and unlock achievement badges",
+      "💎 Financial Health Score: Single metric replacing complex spreadsheets",
+      "🔐 Google OAuth: Seamless authentication with profile syncing",
+      "📱 Responsive Design: Custom 'Vibrant Midnight' theme with smooth animations"
+    ],
+    achievements: [
+      "Built complete gamification layer with XP, streaks, and badges",
+      "Integrated AI for hyper-personalized financial coaching",
+      "Achieved high user engagement through RPG-style mechanics"
+    ],
+    liveUrl: "https://voxa-taupe.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato/Pocket-Fund",
     status: "Completed",
   },
   {
