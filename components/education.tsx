@@ -84,7 +84,7 @@ const educationJourney = [
 		date: "Expected 2026",
 		icon: GraduationCap,
 		color: "#4ECDC4",
-		gpa: "7.232/10 CGPA",
+		gpa: "8.12/10 CGPA",
 		achievements: [
 			"UI UX Solvathon Winner",
 			"Harvard Aspire Leadership Scholar",
