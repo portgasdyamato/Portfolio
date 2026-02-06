@@ -142,7 +142,7 @@ export default function Education() {
 			transition={{ delay: 0.3, duration: 0.8 }}
 			className="px-4 sm:px-6 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 rounded-2xl sm:rounded-3xl relative overflow-hidden"
 		>
-			{/* Header with Scroll Progress */}
+			{/* Header - Simplified without progress bar */}
 			<motion.div
 				initial={{ y: 20, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
@@ -150,7 +150,7 @@ export default function Education() {
 				className="text-center mb-12 sm:mb-16 relative max-w-3xl mx-auto"
 			>
 				<motion.h2
-					className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 tracking-wide"
+					className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 tracking-wide"
 					whileHover={{
 						scale: 1.05,
 					}}
@@ -159,77 +159,9 @@ export default function Education() {
 					My Learning Journey
 				</motion.h2>
 				
-				{/* Animated Progress Bar */}
-				<div className="max-w-xl mx-auto mt-8">
-					<div className="flex items-center justify-between mb-3 text-sm font-medium text-gray-600">
-						<span className="flex items-center gap-2">
-							<BookOpen className="w-4 h-4" />
-							2015
-						</span>
-						<motion.span
-							className="text-purple-600"
-							animate={{
-								opacity: [0.5, 1, 0.5],
-							}}
-							transition={{
-								duration: 2,
-								repeat: Infinity,
-							}}
-						>
-							Scroll to explore →
-						</motion.span>
-						<span className="flex items-center gap-2">
-							Future
-							<Sparkles className="w-4 h-4" />
-						</span>
-					</div>
-					<div className="h-3 bg-gray-200 rounded-full overflow-hidden relative shadow-inner">
-						<motion.div
-							className="h-full bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 rounded-full relative"
-							style={{ 
-								scaleX: smoothProgress,
-								transformOrigin: "left",
-							}}
-						>
-							{/* Shine effect */}
-							<motion.div
-								className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
-								animate={{
-									x: ["-100%", "200%"],
-								}}
-								transition={{
-									duration: 2,
-									repeat: Infinity,
-									ease: "linear",
-								}}
-							/>
-						</motion.div>
-						{/* Moving indicator */}
-						<motion.div
-							className="absolute top-1/2 -translate-y-1/2 w-6 h-6 bg-white border-4 border-purple-500 rounded-full shadow-lg"
-							style={{ 
-								left: useTransform(smoothProgress, [0, 1], ["0%", "calc(100% - 24px)"]),
-							}}
-						>
-							<motion.div
-								className="absolute inset-0 rounded-full bg-purple-400"
-								animate={{
-									scale: [1, 1.5, 1],
-									opacity: [0.5, 0, 0.5],
-								}}
-								transition={{
-									duration: 1.5,
-									repeat: Infinity,
-								}}
-							/>
-						</motion.div>
-					</div>
-					<div className="mt-2 text-xs text-gray-500 text-center">
-						Progress: {Math.round(smoothProgress.get() * 100)}%
-					</div>
-				</div>
+				<div className="w-32 h-1.5 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 mx-auto rounded-full mb-6" />
 
-				<p className="text-gray-600 mt-8 text-base sm:text-lg">
+				<p className="text-gray-600 mt-6 text-base sm:text-lg">
 					Click on cards to explore detailed achievements
 				</p>
 			</motion.div>
@@ -238,53 +170,19 @@ export default function Education() {
 			<div className="relative max-w-7xl mx-auto">
 				{/* Desktop Timeline View */}
 				<div className="hidden lg:block relative pb-12">
-					{/* Animated Vertical Line with Better Visibility */}
-					<div className="absolute left-1/2 transform -translate-x-1/2 w-2 h-full">
-						{/* Background line with gradient */}
+					{/* Clean Animated Vertical Line */}
+					<div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full">
+						{/* Static gradient background */}
 						<div className="absolute w-full h-full bg-gradient-to-b from-gray-300 via-gray-200 to-gray-300 rounded-full" />
 						
-						{/* Animated progress line - MORE VISIBLE */}
+						{/* Scroll-based colored overlay */}
 						<motion.div
-							className="absolute w-full bg-gradient-to-b from-orange-400 via-pink-500 to-purple-600 rounded-full origin-top shadow-lg"
+							className="absolute w-full origin-top rounded-full"
 							style={{ 
 								scaleY: smoothProgress,
+								background: "linear-gradient(to bottom, #FFB347, #FF6B9D, #87CEEB, #4ECDC4, #96CEB4)",
 							}}
 						/>
-						
-						{/* Glowing moving particle - MORE VISIBLE */}
-						<motion.div
-							className="absolute left-1/2 -translate-x-1/2"
-							style={{ 
-								top: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
-							}}
-						>
-							<motion.div
-								className="w-5 h-5 bg-white border-4 border-purple-500 rounded-full shadow-xl"
-								animate={{
-									boxShadow: [
-										"0 0 20px #FF6B9D",
-										"0 0 30px #FFB347",
-										"0 0 20px #FF6B9D",
-									],
-								}}
-								transition={{
-									duration: 2,
-									repeat: Infinity,
-								}}
-							>
-								<motion.div
-									className="absolute inset-0 rounded-full bg-purple-400"
-									animate={{
-										scale: [1, 2, 1],
-										opacity: [0.8, 0, 0.8],
-									}}
-									transition={{
-										duration: 1.5,
-										repeat: Infinity,
-									}}
-								/>
-							</motion.div>
-						</motion.div>
 					</div>
 
 					{/* Timeline Items */}
@@ -442,7 +340,7 @@ function TimelineCard({ item, index, isLeft, Icon, hoveredItem, setHoveredItem, 
 			onMouseEnter={() => setHoveredItem(index)}
 			onMouseLeave={() => setHoveredItem(null)}
 		>
-			{/* Timeline Card - Better spacing from edges */}
+			{/* Timeline Card */}
 			<motion.div
 				className={`w-[45%] ${isLeft ? "pr-16" : "pl-16"}`}
 				whileHover={{ scale: 1.03 }}
@@ -527,19 +425,19 @@ function TimelineCard({ item, index, isLeft, Icon, hoveredItem, setHoveredItem, 
 				</motion.div>
 			</motion.div>
 
-			{/* Timeline Center Icon - Larger and more visible */}
+			{/* Timeline Center Icon */}
 			<motion.div
 				className="absolute left-1/2 transform -translate-x-1/2 z-20"
-				whileHover={{ scale: 1.4 }}
+				whileHover={{ scale: 1.3 }}
 				transition={{ type: "spring", stiffness: 300 }}
 			>
 				<motion.div
-					className="w-20 h-20 rounded-full flex items-center justify-center shadow-2xl cursor-pointer border-4 border-white"
+					className="w-16 h-16 rounded-full flex items-center justify-center shadow-2xl cursor-pointer border-4 border-white"
 					style={{ backgroundColor: item.color }}
 					animate={{
 						boxShadow: isHovered 
-							? `0 0 0 0 ${item.color}00, 0 0 0 30px ${item.color}00`
-							: `0 0 0 0 ${item.color}60, 0 0 0 15px ${item.color}00`,
+							? `0 0 0 0 ${item.color}00, 0 0 0 20px ${item.color}00`
+							: `0 0 0 0 ${item.color}40, 0 0 0 10px ${item.color}00`,
 					}}
 					transition={{
 						duration: 1.5,
@@ -547,7 +445,7 @@ function TimelineCard({ item, index, isLeft, Icon, hoveredItem, setHoveredItem, 
 					}}
 					onClick={() => setSelectedItem(selectedItem === index ? null : index)}
 				>
-					<Icon className="w-10 h-10 text-white relative z-10" />
+					<Icon className="w-8 h-8 text-white relative z-10" />
 				</motion.div>
 			</motion.div>
 
@@ -651,7 +549,7 @@ function MobileTimelineCard({ item, index, Icon, hoveredItem, setHoveredItem, se
 	)
 }
 
-// Achievement Modal Component
+// Achievement Modal Component - With hidden scrollbar
 function AchievementModal({ item, onClose }: any) {
 	const Icon = item.icon
 
@@ -668,9 +566,19 @@ function AchievementModal({ item, onClose }: any) {
 				animate={{ scale: 1, opacity: 1, y: 0 }}
 				exit={{ scale: 0.9, opacity: 0, y: 30 }}
 				transition={{ type: "spring", duration: 0.5 }}
-				className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+				className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl scrollbar-hidden"
 				onClick={(e) => e.stopPropagation()}
+				style={{
+					scrollbarWidth: "none",
+					msOverflowStyle: "none",
+				}}
 			>
+				<style jsx>{`
+					.scrollbar-hidden::-webkit-scrollbar {
+						display: none;
+					}
+				`}</style>
+
 				{/* Header with gradient */}
 				<div 
 					className="relative p-10 text-white"
