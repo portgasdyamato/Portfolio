@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion"
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef } from "react"
 import { Star, Home, Heart, BookOpen, GraduationCap, Award, X, Sparkles, TrendingUp, Calendar, MapPin, Trophy } from "lucide-react"
 
 const educationJourney = [
@@ -140,20 +140,19 @@ export default function Education() {
 			initial={{ opacity: 0, y: 50 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ delay: 0.3, duration: 0.8 }}
-			className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden"
+			className="px-4 sm:px-6 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 rounded-2xl sm:rounded-3xl relative overflow-hidden"
 		>
 			{/* Header with Scroll Progress */}
 			<motion.div
 				initial={{ y: 20, opacity: 0 }}
 				animate={{ y: 0, opacity: 1 }}
 				transition={{ delay: 0.5 }}
-				className="text-center mb-8 sm:mb-12 relative"
+				className="text-center mb-12 sm:mb-16 relative max-w-3xl mx-auto"
 			>
 				<motion.h2
-					className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 tracking-wide inline-block"
+					className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 tracking-wide"
 					whileHover={{
 						scale: 1.05,
-						color: "#FF6B9D",
 					}}
 					style={{ fontFamily: "Gamer" }}
 				>
@@ -161,10 +160,14 @@ export default function Education() {
 				</motion.h2>
 				
 				{/* Animated Progress Bar */}
-				<div className="max-w-md mx-auto mt-6">
-					<div className="flex items-center justify-between mb-2 text-sm text-gray-600">
-						<span>2015</span>
+				<div className="max-w-xl mx-auto mt-8">
+					<div className="flex items-center justify-between mb-3 text-sm font-medium text-gray-600">
+						<span className="flex items-center gap-2">
+							<BookOpen className="w-4 h-4" />
+							2015
+						</span>
 						<motion.span
+							className="text-purple-600"
 							animate={{
 								opacity: [0.5, 1, 0.5],
 							}}
@@ -173,72 +176,119 @@ export default function Education() {
 								repeat: Infinity,
 							}}
 						>
-							Scroll to explore timeline
+							Scroll to explore →
 						</motion.span>
-						<span>Future</span>
+						<span className="flex items-center gap-2">
+							Future
+							<Sparkles className="w-4 h-4" />
+						</span>
 					</div>
-					<div className="h-2 bg-gray-200 rounded-full overflow-hidden relative">
+					<div className="h-3 bg-gray-200 rounded-full overflow-hidden relative shadow-inner">
 						<motion.div
-							className="h-full bg-gradient-to-r from-orange-400 via-pink-400 to-purple-400 rounded-full"
+							className="h-full bg-gradient-to-r from-orange-400 via-pink-400 to-purple-500 rounded-full relative"
 							style={{ 
 								scaleX: smoothProgress,
 								transformOrigin: "left",
 							}}
-						/>
+						>
+							{/* Shine effect */}
+							<motion.div
+								className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+								animate={{
+									x: ["-100%", "200%"],
+								}}
+								transition={{
+									duration: 2,
+									repeat: Infinity,
+									ease: "linear",
+								}}
+							/>
+						</motion.div>
 						{/* Moving indicator */}
 						<motion.div
-							className="absolute top-0 w-1 h-full bg-white shadow-lg"
+							className="absolute top-1/2 -translate-y-1/2 w-6 h-6 bg-white border-4 border-purple-500 rounded-full shadow-lg"
 							style={{ 
-								left: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
+								left: useTransform(smoothProgress, [0, 1], ["0%", "calc(100% - 24px)"]),
 							}}
-						/>
+						>
+							<motion.div
+								className="absolute inset-0 rounded-full bg-purple-400"
+								animate={{
+									scale: [1, 1.5, 1],
+									opacity: [0.5, 0, 0.5],
+								}}
+								transition={{
+									duration: 1.5,
+									repeat: Infinity,
+								}}
+							/>
+						</motion.div>
+					</div>
+					<div className="mt-2 text-xs text-gray-500 text-center">
+						Progress: {Math.round(smoothProgress.get() * 100)}%
 					</div>
 				</div>
 
-				<p className="text-gray-600 mt-6 text-base sm:text-lg">
+				<p className="text-gray-600 mt-8 text-base sm:text-lg">
 					Click on cards to explore detailed achievements
 				</p>
 			</motion.div>
 
 			{/* Main Timeline Section */}
-			<div className="relative">
+			<div className="relative max-w-7xl mx-auto">
 				{/* Desktop Timeline View */}
 				<div className="hidden lg:block relative pb-12">
-					{/* Animated Vertical Line with Progress */}
-					<div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full">
-						{/* Background line */}
-						<div className="absolute w-full h-full bg-gradient-to-b from-gray-200 via-gray-300 to-gray-200 rounded-full" />
+					{/* Animated Vertical Line with Better Visibility */}
+					<div className="absolute left-1/2 transform -translate-x-1/2 w-2 h-full">
+						{/* Background line with gradient */}
+						<div className="absolute w-full h-full bg-gradient-to-b from-gray-300 via-gray-200 to-gray-300 rounded-full" />
 						
-						{/* Animated progress line */}
+						{/* Animated progress line - MORE VISIBLE */}
 						<motion.div
-							className="absolute w-full bg-gradient-to-b from-orange-400 via-pink-400 to-purple-400 rounded-full origin-top"
+							className="absolute w-full bg-gradient-to-b from-orange-400 via-pink-500 to-purple-600 rounded-full origin-top shadow-lg"
 							style={{ 
 								scaleY: smoothProgress,
 							}}
 						/>
 						
-						{/* Flowing particles */}
+						{/* Glowing moving particle - MORE VISIBLE */}
 						<motion.div
-							className="absolute w-3 h-3 bg-white rounded-full shadow-lg left-1/2 -translate-x-1/2"
+							className="absolute left-1/2 -translate-x-1/2"
 							style={{ 
 								top: useTransform(smoothProgress, [0, 1], ["0%", "100%"]),
 							}}
-							animate={{
-								boxShadow: [
-									"0 0 10px #FF6B9D",
-									"0 0 20px #FFB347",
-									"0 0 10px #FF6B9D",
-								],
-							}}
-							transition={{
-								duration: 2,
-								repeat: Infinity,
-							}}
-						/>
+						>
+							<motion.div
+								className="w-5 h-5 bg-white border-4 border-purple-500 rounded-full shadow-xl"
+								animate={{
+									boxShadow: [
+										"0 0 20px #FF6B9D",
+										"0 0 30px #FFB347",
+										"0 0 20px #FF6B9D",
+									],
+								}}
+								transition={{
+									duration: 2,
+									repeat: Infinity,
+								}}
+							>
+								<motion.div
+									className="absolute inset-0 rounded-full bg-purple-400"
+									animate={{
+										scale: [1, 2, 1],
+										opacity: [0.8, 0, 0.8],
+									}}
+									transition={{
+										duration: 1.5,
+										repeat: Infinity,
+									}}
+								/>
+							</motion.div>
+						</motion.div>
 					</div>
 
 					{/* Timeline Items */}
-					<div className="space-y-20">
+					<div className="space-y-24 py-8">
 						{educationJourney.map((item, index) => {
 							const Icon = item.icon
 							const isLeft = index % 2 === 0
@@ -262,7 +312,7 @@ export default function Education() {
 				</div>
 
 				{/* Mobile/Tablet Timeline View */}
-				<div className="lg:hidden space-y-6">
+				<div className="lg:hidden space-y-6 px-4">
 					{educationJourney.map((item, index) => {
 						const Icon = item.icon
 						
@@ -287,7 +337,7 @@ export default function Education() {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.8 }}
-					className="mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6"
+					className="mt-20 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 px-4"
 				>
 					{[
 						{ number: "10+", label: "Years Learning", color: "#FFB347", icon: TrendingUp },
@@ -313,7 +363,7 @@ export default function Education() {
 									y: -8,
 									transition: { duration: 0.3 }
 								}}
-								className="relative p-5 sm:p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow cursor-pointer group overflow-hidden"
+								className="relative p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-shadow cursor-pointer group overflow-hidden"
 							>
 								{/* Animated background gradient */}
 								<motion.div
@@ -329,20 +379,20 @@ export default function Education() {
 									transition={{ duration: 0.6 }}
 								>
 									<div 
-										className="w-12 h-12 rounded-xl flex items-center justify-center"
+										className="w-14 h-14 rounded-xl flex items-center justify-center shadow-md"
 										style={{ backgroundColor: `${stat.color}20` }}
 									>
-										<StatIcon className="w-6 h-6" style={{ color: stat.color }} />
+										<StatIcon className="w-7 h-7" style={{ color: stat.color }} />
 									</div>
 								</motion.div>
 
 								<div
-									className="text-2xl sm:text-3xl font-bold mb-1 text-center"
+									className="text-3xl font-bold mb-1 text-center"
 									style={{ color: stat.color }}
 								>
 									{stat.number}
 								</div>
-								<div className="text-xs sm:text-sm text-gray-600 font-medium text-center">
+								<div className="text-sm text-gray-600 font-medium text-center">
 									{stat.label}
 								</div>
 							</motion.div>
@@ -379,7 +429,7 @@ function TimelineCard({ item, index, isLeft, Icon, hoveredItem, setHoveredItem, 
 	const x = useTransform(
 		scrollProgress,
 		[(index * 0.15), (index * 0.15) + 0.2],
-		[isLeft ? -100 : 100, 0]
+		[isLeft ? -50 : 50, 0]
 	)
 
 	return (
@@ -392,126 +442,117 @@ function TimelineCard({ item, index, isLeft, Icon, hoveredItem, setHoveredItem, 
 			onMouseEnter={() => setHoveredItem(index)}
 			onMouseLeave={() => setHoveredItem(null)}
 		>
-			{/* Timeline Card */}
+			{/* Timeline Card - Better spacing from edges */}
 			<motion.div
-				className={`w-5/12 ${isLeft ? "pr-12" : "pl-12"}`}
-				whileHover={{ scale: 1.02 }}
+				className={`w-[45%] ${isLeft ? "pr-16" : "pl-16"}`}
+				whileHover={{ scale: 1.03 }}
 				transition={{ duration: 0.3 }}
 			>
 				<motion.div
-					className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer overflow-hidden"
+					className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer overflow-hidden border border-gray-100"
 					onClick={() => setSelectedItem(selectedItem === index ? null : index)}
 					whileHover={{
-						boxShadow: `0 20px 60px -15px ${item.color}80`,
+						boxShadow: `0 25px 70px -20px ${item.color}60`,
+						borderColor: item.color,
 					}}
 				>
-					{/* Card Header with Color Accent */}
+					{/* Color Accent Bar */}
 					<div 
-						className="h-2 w-full"
+						className="h-3"
 						style={{ 
-							background: `linear-gradient(90deg, ${item.color}, ${item.color}80)`,
+							background: `linear-gradient(135deg, ${item.color}, ${item.color}cc)`,
 						}}
 					/>
 					
-					<div className="p-6">
+					<div className="p-7">
 						{/* Icon and Title Row */}
-						<div className={`flex items-start gap-4 mb-4 ${isLeft ? "" : "flex-row-reverse text-right"}`}>
+						<div className={`flex items-start gap-5 mb-5 ${isLeft ? "" : "flex-row-reverse text-right"}`}>
 							<motion.div
-								className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
-								style={{ backgroundColor: `${item.color}20` }}
-								whileHover={{ rotate: [0, -10, 10, -10, 0] }}
+								className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+								style={{ backgroundColor: `${item.color}` }}
+								whileHover={{ rotate: [0, -15, 15, 0], scale: 1.1 }}
 								transition={{ duration: 0.5 }}
 							>
-								<Icon className="w-7 h-7" style={{ color: item.color }} />
+								<Icon className="w-8 h-8 text-white" />
 							</motion.div>
 
 							<div className="flex-1">
 								<h3 
-									className="text-xl font-bold mb-1"
+									className="text-2xl font-bold mb-2"
 									style={{ color: item.color }}
 								>
 									{item.level}
 								</h3>
-								<p className="text-sm text-gray-600 font-medium flex items-center gap-1">
-									<Calendar className="w-3 h-3" />
+								<p className="text-sm text-gray-600 font-medium flex items-center gap-2">
+									<Calendar className="w-4 h-4" />
 									{item.date}
 								</p>
+								<p className="text-xs text-gray-400 mt-1">{item.duration}</p>
 							</div>
 						</div>
 
 						{/* Institution */}
 						{item.institution && (
-							<div className="mb-4 flex items-start gap-2">
+							<div className="mb-4 flex items-start gap-2 bg-purple-50 p-3 rounded-xl">
 								<MapPin className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
-								<p className="text-sm font-semibold text-purple-600">
+								<p className="text-sm font-semibold text-purple-700">
 									{item.institution}
 								</p>
 							</div>
 						)}
 
 						{/* Description */}
-						<p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-3">
+						<p className="text-sm text-gray-600 leading-relaxed mb-5">
 							{item.description}
 						</p>
 
-						{/* GPA Badge */}
-						<div className="flex items-center justify-between">
+						{/* Footer with GPA and Achievements */}
+						<div className="flex items-center justify-between pt-4 border-t-2 border-gray-100">
 							<div 
-								className="px-4 py-2 rounded-lg font-bold text-sm"
+								className="px-5 py-2.5 rounded-xl font-bold shadow-md"
 								style={{ 
-									backgroundColor: `${item.color}15`,
-									color: item.color,
+									backgroundColor: `${item.color}`,
+									color: "white",
 								}}
 							>
-								Score: {item.gpa}
+								{item.gpa}
 							</div>
 							
-							<motion.div
-								className="text-xs text-gray-400 italic"
-								animate={{ opacity: [0.5, 1, 0.5] }}
-								transition={{ duration: 2, repeat: Infinity }}
-							>
-								Click to explore →
-							</motion.div>
-						</div>
-
-						{/* Achievement count indicator */}
-						<div className="mt-4 pt-4 border-t border-gray-100">
-							<div className="flex items-center gap-2 text-xs text-gray-500">
-								<Award className="w-4 h-4" style={{ color: item.color }} />
-								<span>{item.achievements.length} Key Achievements</span>
+							<div className="flex items-center gap-2 text-sm text-gray-500">
+								<Award className="w-5 h-5" style={{ color: item.color }} />
+								<span className="font-medium">{item.achievements.length} Achievements</span>
 							</div>
 						</div>
 					</div>
 				</motion.div>
 			</motion.div>
 
-			{/* Timeline Center Icon */}
+			{/* Timeline Center Icon - Larger and more visible */}
 			<motion.div
 				className="absolute left-1/2 transform -translate-x-1/2 z-20"
-				whileHover={{ scale: 1.3 }}
+				whileHover={{ scale: 1.4 }}
 				transition={{ type: "spring", stiffness: 300 }}
 			>
 				<motion.div
-					className="w-16 h-16 rounded-full flex items-center justify-center shadow-xl cursor-pointer relative"
+					className="w-20 h-20 rounded-full flex items-center justify-center shadow-2xl cursor-pointer border-4 border-white"
 					style={{ backgroundColor: item.color }}
 					animate={{
 						boxShadow: isHovered 
-							? `0 0 0 0 ${item.color}00, 0 0 0 20px ${item.color}00`
-							: `0 0 0 0 ${item.color}40, 0 0 0 10px ${item.color}00`,
+							? `0 0 0 0 ${item.color}00, 0 0 0 30px ${item.color}00`
+							: `0 0 0 0 ${item.color}60, 0 0 0 15px ${item.color}00`,
 					}}
 					transition={{
-						duration: 1,
+						duration: 1.5,
 						repeat: Infinity,
 					}}
 					onClick={() => setSelectedItem(selectedItem === index ? null : index)}
 				>
-					<Icon className="w-8 h-8 text-white relative z-10" />
+					<Icon className="w-10 h-10 text-white relative z-10" />
 				</motion.div>
 			</motion.div>
 
 			{/* Empty Space */}
-			<div className="w-5/12" />
+			<div className="w-[45%]" />
 		</motion.div>
 	)
 }
@@ -524,42 +565,42 @@ function MobileTimelineCard({ item, index, Icon, hoveredItem, setHoveredItem, se
 		<motion.div
 			initial={{ opacity: 0, y: 50 }}
 			whileInView={{ opacity: 1, y: 0 }}
-			viewport={{ once: true, margin: "-100px" }}
+			viewport={{ once: true, margin: "-50px" }}
 			transition={{ delay: index * 0.1 }}
 			onMouseEnter={() => setHoveredItem(index)}
 			onMouseLeave={() => setHoveredItem(null)}
 		>
 			<motion.div
-				className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all cursor-pointer overflow-hidden"
+				className="bg-white rounded-2xl shadow-xl hover:shadow-2xl transition-all cursor-pointer overflow-hidden border border-gray-100"
 				onClick={() => setSelectedItem(selectedItem === index ? null : index)}
 				whileHover={{ scale: 1.02 }}
 				whileTap={{ scale: 0.98 }}
 			>
 				{/* Color Accent Bar */}
 				<div 
-					className="h-2 w-full"
+					className="h-3"
 					style={{ 
-						background: `linear-gradient(90deg, ${item.color}, ${item.color}80)`,
+						background: `linear-gradient(135deg, ${item.color}, ${item.color}cc)`,
 					}}
 				/>
 
-				<div className="p-5">
+				<div className="p-6">
 					{/* Header */}
 					<div className="flex items-start gap-4 mb-4">
 						<motion.div
-							className="w-14 h-14 rounded-xl flex items-center justify-center flex-shrink-0 shadow-md"
-							style={{ backgroundColor: `${item.color}20` }}
+							className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+							style={{ backgroundColor: item.color }}
 							animate={{
 								rotate: isHovered ? [0, -5, 5, 0] : 0,
 							}}
 							transition={{ duration: 0.5 }}
 						>
-							<Icon className="w-7 h-7" style={{ color: item.color }} />
+							<Icon className="w-8 h-8 text-white" />
 						</motion.div>
 
 						<div className="flex-1">
 							<h3 
-								className="text-lg font-bold mb-1"
+								className="text-xl font-bold mb-1"
 								style={{ color: item.color }}
 							>
 								{item.level}
@@ -568,48 +609,41 @@ function MobileTimelineCard({ item, index, Icon, hoveredItem, setHoveredItem, se
 								<Calendar className="w-3 h-3" />
 								{item.date}
 							</p>
-						</div>
-
-						<div 
-							className="px-3 py-1 rounded-lg font-bold text-xs"
-							style={{ 
-								backgroundColor: `${item.color}15`,
-								color: item.color,
-							}}
-						>
-							{item.gpa}
+							<p className="text-xs text-gray-400 mt-0.5">{item.duration}</p>
 						</div>
 					</div>
 
 					{/* Institution */}
 					{item.institution && (
-						<div className="mb-3 flex items-start gap-2">
-							<MapPin className="w-3 h-3 text-purple-500 mt-0.5 flex-shrink-0" />
-							<p className="text-xs font-semibold text-purple-600">
+						<div className="mb-4 flex items-start gap-2 bg-purple-50 p-3 rounded-xl">
+							<MapPin className="w-4 h-4 text-purple-500 mt-0.5 flex-shrink-0" />
+							<p className="text-sm font-semibold text-purple-700">
 								{item.institution}
 							</p>
 						</div>
 					)}
 
 					{/* Description */}
-					<p className="text-xs text-gray-600 leading-relaxed mb-3 line-clamp-2">
+					<p className="text-sm text-gray-600 leading-relaxed mb-4">
 						{item.description}
 					</p>
 
 					{/* Footer */}
-					<div className="flex items-center justify-between pt-3 border-t border-gray-100">
-						<div className="flex items-center gap-2 text-xs text-gray-500">
-							<Award className="w-3 h-3" style={{ color: item.color }} />
-							<span>{item.achievements.length} Achievements</span>
+					<div className="flex items-center justify-between pt-4 border-t-2 border-gray-100">
+						<div 
+							className="px-4 py-2 rounded-xl font-bold text-sm shadow-md"
+							style={{ 
+								backgroundColor: item.color,
+								color: "white",
+							}}
+						>
+							{item.gpa}
 						</div>
 						
-						<motion.span
-							className="text-xs text-gray-400"
-							animate={{ x: [0, 3, 0] }}
-							transition={{ duration: 1.5, repeat: Infinity }}
-						>
-							Tap to view →
-						</motion.span>
+						<div className="flex items-center gap-2 text-xs text-gray-500">
+							<Award className="w-4 h-4" style={{ color: item.color }} />
+							<span className="font-medium">{item.achievements.length} Achievements</span>
+						</div>
 					</div>
 				</div>
 			</motion.div>
@@ -626,111 +660,112 @@ function AchievementModal({ item, onClose }: any) {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}
-			className="fixed inset-0 bg-black/60 backdrop-blur-lg flex items-center justify-center z-50 p-4"
+			className="fixed inset-0 bg-black/70 backdrop-blur-lg flex items-center justify-center z-50 p-6"
 			onClick={onClose}
 		>
 			<motion.div
-				initial={{ scale: 0.9, opacity: 0, y: 20 }}
+				initial={{ scale: 0.9, opacity: 0, y: 30 }}
 				animate={{ scale: 1, opacity: 1, y: 0 }}
-				exit={{ scale: 0.9, opacity: 0, y: 20 }}
+				exit={{ scale: 0.9, opacity: 0, y: 30 }}
 				transition={{ type: "spring", duration: 0.5 }}
-				className="bg-white rounded-3xl max-w-lg w-full mx-4 max-h-[90vh] overflow-y-auto shadow-2xl"
+				className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
 				onClick={(e) => e.stopPropagation()}
 			>
 				{/* Header with gradient */}
 				<div 
-					className="relative p-8 text-white"
+					className="relative p-10 text-white"
 					style={{ 
 						background: `linear-gradient(135deg, ${item.color}, ${item.color}dd)`,
 					}}
 				>
 					<motion.button
-						className="absolute top-4 right-4 p-2 rounded-full bg-white/20 backdrop-blur-sm hover:bg-white/30 transition-colors"
+						className="absolute top-6 right-6 p-3 rounded-full bg-white/30 backdrop-blur-sm hover:bg-white/40 transition-colors shadow-lg"
 						onClick={onClose}
 						whileHover={{ scale: 1.1, rotate: 90 }}
 						whileTap={{ scale: 0.9 }}
 					>
-						<X className="w-5 h-5" />
+						<X className="w-6 h-6" />
 					</motion.button>
 
 					{/* Icon */}
 					<motion.div
-						className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-4 shadow-lg"
+						className="w-24 h-24 rounded-3xl bg-white/20 backdrop-blur-sm flex items-center justify-center mx-auto mb-6 shadow-xl"
 						animate={{ 
 							rotate: [0, 5, -5, 0],
+							scale: [1, 1.05, 1],
 						}}
 						transition={{ 
 							duration: 3,
 							repeat: Infinity,
 						}}
 					>
-						<Icon className="w-10 h-10 text-white" />
+						<Icon className="w-12 h-12 text-white" />
 					</motion.div>
 
-					<h3 className="text-2xl sm:text-3xl font-bold text-center mb-2">
+					<h3 className="text-3xl sm:text-4xl font-bold text-center mb-3">
 						{item.level}
 					</h3>
 					{item.institution && (
-						<p className="text-white/90 text-center text-sm">
+						<p className="text-white/95 text-center text-lg font-medium">
 							{item.institution}
 						</p>
 					)}
 				</div>
 
-				<div className="p-6 sm:p-8">
+				<div className="p-8 sm:p-10">
 					{/* Info Grid */}
-					<div className="grid grid-cols-2 gap-4 mb-6">
-						<div className="text-center p-4 bg-gray-50 rounded-xl">
-							<Calendar className="w-5 h-5 mx-auto mb-2 text-gray-600" />
-							<div className="text-xs text-gray-500 mb-1">Duration</div>
-							<div className="text-sm font-bold text-gray-800">{item.duration}</div>
+					<div className="grid grid-cols-2 gap-5 mb-8">
+						<div className="text-center p-5 bg-gray-50 rounded-2xl">
+							<Calendar className="w-6 h-6 mx-auto mb-3 text-gray-600" />
+							<div className="text-xs text-gray-500 mb-2 font-medium">Duration</div>
+							<div className="text-base font-bold text-gray-800">{item.duration}</div>
 						</div>
-						<div className="text-center p-4 bg-gray-50 rounded-xl">
-							<Star className="w-5 h-5 mx-auto mb-2" style={{ color: item.color }} />
-							<div className="text-xs text-gray-500 mb-1">Score</div>
-							<div className="text-sm font-bold" style={{ color: item.color }}>{item.gpa}</div>
+						<div className="text-center p-5 rounded-2xl" style={{ backgroundColor: `${item.color}10` }}>
+							<Star className="w-6 h-6 mx-auto mb-3" style={{ color: item.color }} />
+							<div className="text-xs text-gray-500 mb-2 font-medium">Score</div>
+							<div className="text-base font-bold" style={{ color: item.color }}>{item.gpa}</div>
 						</div>
 					</div>
 
 					{/* Description */}
-					<div className="mb-6">
-						<p className="text-gray-600 text-sm leading-relaxed">
+					<div className="mb-8 p-6 bg-gray-50 rounded-2xl">
+						<p className="text-gray-700 text-base leading-relaxed">
 							{item.description}
 						</p>
-						<p className="text-gray-400 text-xs italic mt-3 text-right">
+						<p className="text-gray-500 text-sm italic mt-4 text-right">
 							"{item.quote}"
 						</p>
 					</div>
 
 					{/* Achievements */}
 					<div>
-						<h4 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
-							<Trophy className="w-5 h-5" style={{ color: item.color }} />
+						<h4 className="font-bold text-gray-800 text-xl mb-5 flex items-center gap-3">
+							<Trophy className="w-6 h-6" style={{ color: item.color }} />
 							Key Achievements
 						</h4>
-						<div className="space-y-3">
+						<div className="space-y-4">
 							{item.achievements.map((achievement: string, i: number) => (
 								<motion.div
 									key={i}
 									initial={{ opacity: 0, x: -20 }}
 									animate={{ opacity: 1, x: 0 }}
 									transition={{ delay: i * 0.1 }}
-									whileHover={{ x: 5, backgroundColor: "#f9fafb" }}
-									className="flex items-start gap-3 p-3 rounded-xl transition-colors"
+									whileHover={{ x: 8, backgroundColor: `${item.color}05` }}
+									className="flex items-start gap-4 p-4 rounded-xl transition-all border-2 border-transparent hover:border-gray-100"
 								>
 									<motion.div
-										className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
+										className="w-3 h-3 rounded-full mt-2 flex-shrink-0 shadow-md"
 										style={{ backgroundColor: item.color }}
 										animate={{
-											scale: [1, 1.2, 1],
+											scale: [1, 1.3, 1],
 										}}
 										transition={{
 											duration: 2,
 											repeat: Infinity,
-											delay: i * 0.2,
+											delay: i * 0.3,
 										}}
 									/>
-									<span className="text-sm text-gray-700 leading-relaxed">
+									<span className="text-base text-gray-700 leading-relaxed">
 										{achievement}
 									</span>
 								</motion.div>
