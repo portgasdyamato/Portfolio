@@ -150,32 +150,7 @@ const projectsData = [
     githubUrl: "https://github.com/example",
     status: "Ongoing",
   },
-  {
-    title: "MuseMood - AI-Powered Mood Journaling App",
-    duration: "24-28 Jul 2025",
-    date: "July 2025",
-    image: muse,
-    color: "#A78BFA",
-    technologies: ["React", "Tailwind CSS", "Framer Motion", "PostgreSQL", "AI Integration", "UI/UX Design"],
-    description: "MuseMood is a cozy vintage diary-inspired journaling app that helps users track moods, reflect with guided AI prompts, and visualize emotional patterns over time.",
-    features: [
-      "Mood-based Journaling with Minimal UI Bubbles",
-      "AI Integration for Smart Reflections & Prompt Suggestions",
-      "Emotion Tracking with Timeline Visualization",
-      "Personalized Insights based on Journaling Trends",
-      "Cozy Vintage-Themed UI with Soft Gradients",
-      "Framer Motion Animations for Smooth Interactions",
-      "Secure Data Storage with Neon PostgreSQL",
-      "Responsive Layout Optimized for Desktop & Mobile"
-    ],
-    achievements: [
-      "Seamless AI-powered writing suggestions",
-      "Created unique cozy-vintage UI theme",
-      "Interactive mood tracking & analytics dashboard"
-    ],
-    githubUrl: "https://github.com/portgasdyamato/MuseMood",
-    status: "Completed"
-},
+
 {
   title: "DreamIn - Theme-Based UI Generator",
   duration: "Early Sep 2025",
