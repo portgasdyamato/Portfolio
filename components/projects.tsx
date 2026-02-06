@@ -325,29 +325,30 @@ export default function Projects() {
         ))}
       </motion.div>
 
-      {/* Projects Grid */}
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 " layout>
-        <AnimatePresence>
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              layout
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -5, scale: 1.02 }}
-              className="project-glass rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
-              
-              onClick={() => setSelectedProject(projectsData.findIndex((p) => p.title === project.title))}
-            >
-              {/* Project Image Area */}
-              <div className="relative aspect-[16/10] overflow-hidden group">
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                />
+      {/* Projects Grid Container */}
+      <motion.div className="max-w-[1400px] mx-auto px-4" layout>
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" layout>
+          <AnimatePresence>
+            {filteredProjects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                layout
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="project-glass rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                
+                onClick={() => setSelectedProject(projectsData.findIndex((p) => p.title === project.title))}
+              >
+                {/* Project Image Area - Wider Aspect Ratio */}
+                <div className="relative aspect-[16/9] overflow-hidden group">
+                  <img
+                    src={project.image || "/placeholder.svg"}
+                    alt={project.title}
+                    className="w-full h-full min-w-full min-h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                  />
                 
                 {/* Modern Gradient Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
@@ -391,6 +392,7 @@ export default function Projects() {
           ))}
         </AnimatePresence>
       </motion.div>
+    </motion.div>
 
       {/* Project Detail Modal */}
       <AnimatePresence>
