@@ -45,44 +45,14 @@ const certificates = [
 		certificateUrl: "https://www.credly.com/badges/9d346f5d-0765-4dfb-acc2-3406c53d6b60/linked_in_profile", // Replace with actual URL
 	},
 	{
-		title: "Accenture UK - Developer and Technology ",
-		issuer: "Accenture",
-		date: "16 May 2025",
-		status: "Completed",
-		type: "Virtual Internship",
-		color: "#FF9900",
-		credentialId: "RaGN8thJYRkFRd7m5",
-		certificateUrl: "https://www.linkedin.com/posts/sakshi-902777290_forage-certificate-activity-7329145928525762561-kepT?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEaXv1IBLEEy9zfZtZus-NHd9uv4A480gxs", // No URL for in-progress certificates
-	},
-	{
-		title: "Agile Methodology and Scrum",
-		issuer: "HP",
+		title: "Azure AI Fundamentals",
+		issuer: "Microsoft",
 		date: "2025",
 		status: "Completed",
 		type: "Professional Certificate",
-		color: "#0096D6",
+		color: "#3178C6",
 		credentialId: "",
-		certificateUrl: "",
-	},
-	{
-		title: "Docker Essentials",
-		issuer: "LinkedIn",
-		date: "2025",
-		status: "Completed",
-		type: "Professional Certificate",
-		color: "#2496ED",
-		credentialId: "",
-		certificateUrl: "",
-	},
-	{
-		title: "Prompt Engineering with OpenAI",
-		issuer: "Columbia University",
-		date: "2025",
-		status: "Completed",
-		type: "Professional Certificate",
-		color: "#B9D9EB",
-		credentialId: "",
-		certificateUrl: "",
+		certificateUrl: "https://learn.microsoft.com/api/achievements/share/en-us/SakshiAgrahari-2382/9YX9KQ2U?sharingId=932EE269EA4F16DA",
 	},
 	{
 		title: "Enterprise Design Thinking",
@@ -94,27 +64,7 @@ const certificates = [
 		credentialId: "",
 		certificateUrl: "",
 	},
-	{
-		title: "InDesign Professional",
-		issuer: "Adobe",
-		date: "2025",
-		status: "Completed",
-		type: "Professional Certificate",
-		color: "#FF3366",
-		credentialId: "",
-		certificateUrl: "",
-	},
-	{
-		title: "Azure AI Fundamentals",
-		issuer: "Microsoft",
-		date: "2025",
-		status: "Completed",
-		type: "Professional Certificate",
-		color: "#3178C6",
-		credentialId: "",
-		certificateUrl: "https://learn.microsoft.com/api/achievements/share/en-us/SakshiAgrahari-2382/9YX9KQ2U?sharingId=932EE269EA4F16DA",
-	},
-]
+];
 
 export default function Certificates() {
 	return (

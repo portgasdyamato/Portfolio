@@ -39,7 +39,7 @@ const achievements = [
 		icon: Trophy,
 		title: "UI UX Solvathon Winner",
 		description: "Won 1st Place among 700+ participants for designing a complete user-centered solution, including research and high-fidelity UI screens.",
-		year: "2024",
+		year: "2025",
 		color: "#FFD700",
 	},
 	{
