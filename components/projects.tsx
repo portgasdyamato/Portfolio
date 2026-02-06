@@ -39,7 +39,7 @@ const projectsData = [
     title: "Pocket Fund: Your Financial Glow-Up Journey",
     duration: "Jan 2026",
     date: "Jan 2026",
-    image: "/placeholder.svg?height=300&width=400",
+    image: pocketfund,
     color: "#9333EA",
     technologies: ["React", "Vite", "Node.js", "Express", "Tailwind CSS", "Shadcn UI", "PostgreSQL", "Drizzle ORM", "Google Gemini AI", "Framer Motion"],
     description: "A gamified, AI-powered personal finance platform that turns budgeting into an addictive 'Glow-Up' experience. Helps users identify wasteful spending (Icks), celebrate saving wins, and master financial literacy through interactive missions.",
@@ -342,13 +342,13 @@ export default function Projects() {
               onClick={() => setSelectedProject(projectsData.findIndex((p) => p.title === project.title))}
             >
               {/* Project Image */}
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative aspect-video overflow-hidden group">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent group-hover:from-black/60 transition-all" />
 
                 {/* Status Badge */}
                 <div
@@ -421,11 +421,11 @@ export default function Projects() {
               </motion.button>
 
               {/* Project Image */}
-              <div className="relative h-64 rounded-2xl overflow-hidden mb-6">
+              <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
                 <img
                   src={projectsData[selectedProject].image || "/placeholder.svg"}
                   alt={projectsData[selectedProject].title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
               </div>
