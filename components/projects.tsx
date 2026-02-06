@@ -341,24 +341,16 @@ export default function Projects() {
               
               onClick={() => setSelectedProject(projectsData.findIndex((p) => p.title === project.title))}
             >
-              {/* Project Image */}
-              <div className="relative aspect-[16/10] overflow-hidden group bg-gray-50/50">
-                {/* Blurred Background to "fill" the card */}
-                <img
-                  src={project.image || "/placeholder.svg"}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover blur-2xl opacity-20 scale-110"
-                />
-                
-                {/* Main Image (Not Cut Off) */}
+              {/* Project Image Area */}
+              <div className="relative aspect-[16/10] overflow-hidden group">
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
-                  className="relative z-10 w-full h-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
                 />
                 
-                {/* Subtle Overlay Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent z-20 pointer-events-none" />
+                {/* Modern Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
 
                 {/* Status Badge */}
                 <div
@@ -430,21 +422,14 @@ export default function Projects() {
                 <X className="w-5 h-5 text-gray-800" />
               </motion.button>
 
-              {/* Project Image */}
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 bg-gray-50/30">
-                {/* Blurred Backdrop for Modal */}
-                <img
-                  src={projectsData[selectedProject].image || "/placeholder.svg"}
-                  alt=""
-                  className="absolute inset-0 w-full h-full object-cover blur-3xl opacity-30"
-                />
-                
-                {/* Main Modal Image */}
+              {/* Project Image Area (Modal) */}
+              <div className="relative aspect-video rounded-2xl overflow-hidden mb-6 shadow-2xl border border-white/20">
                 <img
                   src={projectsData[selectedProject].image || "/placeholder.svg"}
                   alt={projectsData[selectedProject].title}
-                  className="relative z-10 w-full h-full object-contain p-4"
+                  className="w-full h-full object-cover object-top"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               </div>
 
               {/* Project Title */}
