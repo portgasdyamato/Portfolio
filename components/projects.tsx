@@ -36,7 +36,7 @@ const projectsData = [
     status: "Completed",
   },
   {
-    title: "💰 Pocket Fund: Your Financial Glow-Up Journey",
+    title: "Pocket Fund: Your Financial Glow-Up Journey",
     duration: "Jan 2026",
     date: "Jan 2026",
     image: "/placeholder.svg?height=300&width=400",

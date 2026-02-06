@@ -1,8 +1,8 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
-import { Star, Home, Heart, BookOpen, GraduationCap, Award, X } from "lucide-react"
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion"
+import { useState, useRef } from "react"
+import { Star, Home, Heart, BookOpen, GraduationCap, Award, X, Sparkles, TrendingUp } from "lucide-react"
 
 const educationJourney = [
 	{
@@ -119,6 +119,7 @@ const educationJourney = [
 
 export default function Education() {
 	const [selectedItem, setSelectedItem] = useState<number | null>(null)
+	const [hoveredItem, setHoveredItem] = useState<number | null>(null)
 
 	return (
 		<motion.div
@@ -152,7 +153,17 @@ export default function Education() {
 						My Learning Journey
 					</motion.h2>
 				</div>
-				<div className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto rounded-full" />
+				<motion.div 
+					className="w-24 h-1 bg-gradient-to-r from-pink-400 to-purple-400 mx-auto rounded-full"
+					animate={{
+						scaleX: [1, 1.2, 1],
+					}}
+					transition={{
+						duration: 2,
+						repeat: Infinity,
+						ease: "easeInOut"
+					}}
+				/>
 				<p className="text-gray-600 mt-4 text-lg">
 					Click on the icons to explore achievements
 				</p>
@@ -161,71 +172,130 @@ export default function Education() {
 			<motion.div className="p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden">
 				{/* Desktop Timeline View */}
 				<div className="hidden md:block relative">
-					{/* Vertical Line */}
-					<div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-300 via-pink-300 to-purple-300 rounded-full" />
+					{/* Animated Vertical Line */}
+					<motion.div 
+						className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-orange-300 via-pink-300 to-purple-300 rounded-full"
+						initial={{ scaleY: 0 }}
+						animate={{ scaleY: 1 }}
+						transition={{ duration: 1.5, ease: "easeOut" }}
+						style={{ transformOrigin: "top" }}
+					/>
 
 					{/* Timeline Items */}
 					<div className="space-y-12">
 						{educationJourney.map((item, index) => {
 							const Icon = item.icon
 							const isLeft = index % 2 === 0
+							const isHovered = hoveredItem === index
 
 							return (
 								<motion.div
 									key={item.level}
 									initial={{ opacity: 0, x: isLeft ? -100 : 100 }}
 									animate={{ opacity: 1, x: 0 }}
-									transition={{ delay: 1 + index * 0.2, duration: 0.6 }}
+									transition={{ delay: 1 + index * 0.15, duration: 0.6, type: "spring" }}
 									className={`relative flex items-center ${
 										isLeft ? "flex-row" : "flex-row-reverse"
 									}`}
+									onMouseEnter={() => setHoveredItem(index)}
+									onMouseLeave={() => setHoveredItem(null)}
 								>
 									{/* Timeline Card */}
 									<motion.div
 										className={`w-5/12 bg-[#ffdddd] py-8 px-8 rounded-xl ${
 											isLeft ? "pr-8" : "pl-8"
 										}`}
+										whileHover={{ 
+											scale: 1.05,
+											boxShadow: `0 20px 60px -15px ${item.color}40`,
+										}}
+										transition={{ type: "spring", stiffness: 300 }}
 									>
-										<div className="timeline-glass rounded-2xl p-6 shadow-lg">
+										<motion.div 
+											className="timeline-glass rounded-2xl p-6 shadow-lg relative overflow-hidden"
+											animate={{
+												borderColor: isHovered ? item.color : "transparent",
+											}}
+											style={{
+												border: "2px solid transparent",
+											}}
+										>
+											{/* Animated background glow on hover */}
+											<AnimatePresence>
+												{isHovered && (
+													<motion.div
+														className="absolute inset-0 rounded-2xl"
+														initial={{ opacity: 0 }}
+														animate={{ opacity: 0.1 }}
+														exit={{ opacity: 0 }}
+														style={{
+															background: `radial-gradient(circle at center, ${item.color}, transparent)`,
+														}}
+													/>
+												)}
+											</AnimatePresence>
+
 											{/* Header */}
-											<div className={`flex justify-between items-start mb-4 ${isLeft ? "text-left" : "text-right"}`}>
-						<div className={isLeft ? "" : "order-2 text-left"}>
-<h3 className="text-xl font-bold text-black mb-1">{item.level}</h3>
-						  <p className="text-sm text-gray-500 font-medium">{item.date}</p>
-						  <p className="text-xs text-gray-400">{item.duration}</p>
-						</div>
-					  </div>
+											<div className={`flex justify-between items-start mb-4 ${isLeft ? "text-left" : "text-right"} relative z-10`}>
+			<div className={isLeft ? "" : "order-2 text-left"}>
+<motion.h3 
+	className="text-xl font-bold text-black mb-1"
+	animate={{ color: isHovered ? item.color : "#000000" }}
+>
+	{item.level}
+</motion.h3>
+			  <p className="text-sm text-gray-500 font-medium">{item.date}</p>
+			  <p className="text-xs text-gray-400">{item.duration}</p>
+			</div>
+		  </div>
 
 											{/* Institution */}
-											<p className="text-lg font-semibold text-purple-600 mb-3">
+											<p className="text-lg font-semibold text-purple-600 mb-3 relative z-10">
 												{item.institution}
 											</p>
 
-											{/* GPA/Percentage */}
-											<div className="flex justify-between items-center mb-4">
-												<span className="text-sm font-medium text-gray-500">
-													Score:
-												</span>
-												<span className="font-bold text-gray-700">
-													{item.gpa}
-												</span>
+											{/* GPA/Percentage with animated progress bar */}
+											<div className="mb-4 relative z-10">
+												<div className="flex justify-between items-center mb-2">
+													<span className="text-sm font-medium text-gray-500">
+														Score:
+													</span>
+													<span className="font-bold text-gray-700">
+														{item.gpa}
+													</span>
+												</div>
+												<motion.div 
+													className="w-full h-2 bg-gray-200 rounded-full overflow-hidden"
+												>
+													<motion.div
+														className="h-full rounded-full"
+														style={{ backgroundColor: item.color }}
+														initial={{ width: 0 }}
+														animate={{ width: isHovered ? "100%" : "85%" }}
+														transition={{ duration: 0.8, ease: "easeOut" }}
+													/>
+												</motion.div>
 											</div>
 
 											{/* Quote */}
-											<p className="text-xs italic text-gray-500 text-right">
+											<p className="text-xs italic text-gray-500 text-right relative z-10">
 												{item.quote}
 											</p>
-										</div>
+										</motion.div>
 									</motion.div>
 
-									{/* Timeline Icon - Clickable */}
+									{/* Timeline Icon - Enhanced with particles */}
 									<motion.div
-										className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center shadow-lg z-10 cursor-pointer"
+										className="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full flex items-center justify-center shadow-lg z-10 cursor-pointer relative"
 										style={{ backgroundColor: item.color }}
 										initial={{ scale: 0, rotate: -180 }}
 										animate={{ scale: 1, rotate: 0 }}
-										transition={{ delay: 1.2 + index * 0.2, type: "spring" }}
-										whileHover={{ scale: 1.2, rotate: 5 }}
+										transition={{ delay: 1.2 + index * 0.15, type: "spring" }}
+										whileHover={{ 
+											scale: 1.3, 
+											rotate: 360,
+											boxShadow: `0 0 30px ${item.color}`,
+										}}
 										whileTap={{ scale: 0.9 }}
 										onClick={() =>
 											setSelectedItem(
@@ -233,7 +303,23 @@ export default function Education() {
 											)
 										}
 									>
-										<Icon className="w-6 h-6 text-white" />
+										{/* Pulsing ring effect */}
+										<motion.div
+											className="absolute inset-0 rounded-full"
+											style={{ 
+												backgroundColor: item.color,
+												opacity: 0.3,
+											}}
+											animate={{
+												scale: isHovered ? [1, 1.5, 1] : 1,
+												opacity: isHovered ? [0.3, 0, 0.3] : 0.3,
+											}}
+											transition={{
+												duration: 1.5,
+												repeat: isHovered ? Infinity : 0,
+											}}
+										/>
+										<Icon className="w-6 h-6 text-white relative z-10" />
 									</motion.div>
 
 									{/* Empty Space for Opposite Side */}
@@ -248,6 +334,8 @@ export default function Education() {
 				<div className="md:hidden grid gap-4">
 					{educationJourney.map((item, index) => {
 						const Icon = item.icon
+						const isHovered = hoveredItem === index
+						
 						return (
 							<motion.div
 								key={item.level}
@@ -255,42 +343,70 @@ export default function Education() {
 								animate={{ opacity: 1, y: 0 }}
 								transition={{ delay: 1 + index * 0.1 }}
 								whileTap={{ scale: 0.98 }}
-								className="timeline-glass rounded-xl p-4 shadow-lg cursor-pointer overflow-y-auto"
+								whileHover={{ 
+									scale: 1.02,
+									boxShadow: `0 10px 30px -10px ${item.color}40`,
+								}}
+								className="timeline-glass rounded-xl p-4 shadow-lg cursor-pointer overflow-y-auto relative"
 								onClick={() =>
 									setSelectedItem(
 										selectedItem === index ? null : index
 									)
 								}
+								onMouseEnter={() => setHoveredItem(index)}
+								onMouseLeave={() => setHoveredItem(null)}
 							>
-								<div className="flex items-center space-x-3 mb-3">
-									<div
+								{/* Animated glow effect */}
+								<AnimatePresence>
+									{isHovered && (
+										<motion.div
+											className="absolute inset-0 rounded-xl"
+											initial={{ opacity: 0 }}
+											animate={{ opacity: 0.1 }}
+											exit={{ opacity: 0 }}
+											style={{
+												background: `radial-gradient(circle at center, ${item.color}, transparent)`,
+											}}
+										/>
+									)}
+								</AnimatePresence>
+
+								<div className="flex items-center space-x-3 mb-3 relative z-10">
+									<motion.div
 										className="w-10 h-10 rounded-full flex items-center justify-center"
 										style={{ backgroundColor: item.color }}
+										animate={{
+											scale: isHovered ? [1, 1.1, 1] : 1,
+										}}
+										transition={{
+											duration: 0.6,
+											repeat: isHovered ? Infinity : 0,
+										}}
 									>
 										<Icon className="w-5 h-5 text-white" />
-									</div>
+									</motion.div>
 									<div className="flex-1">
 <h3 className="text-lg font-bold text-black" style={{ fontFamily: "qax" }}>
-											{item.level}
-										</h3>
-										<p className="text-sm text-gray-500">
-											{item.date}
-										</p>
-									</div>
-									<div className="text-right">
-										<span className="text-sm font-bold text-gray-700">
-											{item.gpa}
-										</span>
-									</div>
-								</div>
+								{item.level}
+							</h3>
+							<p className="text-sm text-gray-500">
+								{item.date}
+							</p>
+						</div>
+						<div className="text-right">
+							<span className="text-sm font-bold text-gray-700">
+								{item.gpa}
+							</span>
+						</div>
+					</div>
 
-								<p className="text-sm text-purple-600 font-medium mb-2">
+								<p className="text-sm text-purple-600 font-medium mb-2 relative z-10">
 									{item.institution}
 								</p>
-								<p className="text-xs text-gray-600" >
+								<p className="text-xs text-gray-600 relative z-10" >
 									{item.description}
 								</p>
-								<p className="text-xs italic text-gray-500 mt-2">
+								<p className="text-xs italic text-gray-500 mt-2 relative z-10">
 									{item.quote}
 								</p>
 							</motion.div>
@@ -298,7 +414,7 @@ export default function Education() {
 					})}
 				</div>
 
-				{/* Stats Summary */}
+				{/* Enhanced Stats Summary */}
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -306,34 +422,74 @@ export default function Education() {
 					className="mt-8 sm:mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4 text-center"
 				>
 					{[
-						{ number: "10+", label: "Years Learning", color: "#FFB347" },
-						{ number: "4", label: "Schools", color: "#FF6B9D" },
-						{ number: "90%", label: "Avg Score", color: "#4ECDC4" },
-						{ number: "15+", label: "Achievements", color: "#45B7D1" },
-						{ number: "∞", label: "Future Goals", color: "#96CEB4" },
-					].map((stat, index) => (
-						<motion.div
-							key={stat.label}
-							initial={{ scale: 0 }}
-							animate={{ scale: 1 }}
-							transition={{ delay: 2.7 + index * 0.1, type: "spring" }}
-							className="p-3 sm:p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm"
-						>
-							<div
-								className="text-lg sm:text-xl font-bold"
-								style={{ color: stat.color }}
+						{ number: "10+", label: "Years Learning", color: "#FFB347", icon: TrendingUp },
+						{ number: "4", label: "Schools", color: "#FF6B9D", icon: Home },
+						{ number: "90%", label: "Avg Score", color: "#4ECDC4", icon: Star },
+						{ number: "15+", label: "Achievements", color: "#45B7D1", icon: Award },
+						{ number: "∞", label: "Future Goals", color: "#96CEB4", icon: Sparkles },
+					].map((stat, index) => {
+						const StatIcon = stat.icon
+						return (
+							<motion.div
+								key={stat.label}
+								initial={{ scale: 0, opacity: 0 }}
+								animate={{ scale: 1, opacity: 1 }}
+								transition={{ 
+									delay: 2.7 + index * 0.1, 
+									type: "spring",
+									stiffness: 200,
+								}}
+								whileHover={{ 
+									scale: 1.1,
+									y: -5,
+									boxShadow: `0 10px 30px -10px ${stat.color}60`,
+								}}
+								className="p-3 sm:p-4 bg-white/60 backdrop-blur-sm rounded-xl shadow-sm cursor-pointer relative overflow-hidden"
 							>
-								{stat.number}
-							</div>
-							<div className="text-xs text-gray-600 font-medium">
-								{stat.label}
-							</div>
-						</motion.div>
-					))}
+								{/* Animated background */}
+								<motion.div
+									className="absolute inset-0"
+									initial={{ opacity: 0 }}
+									whileHover={{ opacity: 0.1 }}
+									style={{ backgroundColor: stat.color }}
+								/>
+
+								<motion.div
+									className="flex justify-center mb-2"
+									animate={{
+										rotate: [0, 10, -10, 0],
+									}}
+									transition={{
+										duration: 2,
+										repeat: Infinity,
+									}}
+								>
+									<StatIcon className="w-5 h-5" style={{ color: stat.color }} />
+								</motion.div>
+
+								<motion.div
+									className="text-lg sm:text-xl font-bold relative z-10"
+									style={{ color: stat.color }}
+									animate={{
+										scale: [1, 1.05, 1],
+									}}
+									transition={{
+										duration: 2,
+										repeat: Infinity,
+									}}
+								>
+									{stat.number}
+								</motion.div>
+								<div className="text-xs text-gray-600 font-medium relative z-10">
+									{stat.label}
+								</div>
+							</motion.div>
+						)
+					})}
 				</motion.div>
 			</motion.div>
 
-			{/* Popup Modal for Achievements */}
+			{/* Enhanced Popup Modal for Achievements */}
 			<AnimatePresence>
 				{selectedItem !== null && (
 					<motion.div
@@ -344,65 +500,98 @@ export default function Education() {
 						onClick={() => setSelectedItem(null)}
 					>
 			<motion.div
-			  initial={{ scale: 0.8, opacity: 0, y: 50 }}
-			  animate={{ scale: 1, opacity: 1, y: 0 }}
-			  exit={{ scale: 0.8, opacity: 0, y: 50 }}
+			  initial={{ scale: 0.8, opacity: 0, y: 50, rotateX: -15 }}
+			  animate={{ scale: 1, opacity: 1, y: 0, rotateX: 0 }}
+			  exit={{ scale: 0.8, opacity: 0, y: 50, rotateX: 15 }}
 			  transition={{ type: "spring", stiffness: 300, damping: 30 }}
 			  className="gradient-glass rounded-3xl p-5 max-w-md w-full mx-4 relative max-h-[85vh] min-h-[480px] h-[620px] overflow-y-auto custom-scrollbar-hide"
 			  onClick={(e) => e.stopPropagation()}
 			>
-	  {/* Hide scrollbars globally for .custom-scrollbar-hide */}
-	  <style global jsx>{`
-		.custom-scrollbar-hide {
-		  scrollbar-width: none; /* Firefox */
-		  -ms-overflow-style: none; /* IE and Edge */
-		}
-		.custom-scrollbar-hide::-webkit-scrollbar {
-		  display: none; /* Chrome, Safari, Opera */
-		}
-	  `}</style>
+		  {/* Hide scrollbars globally for .custom-scrollbar-hide */}
+		  <style global jsx>{`
+			.custom-scrollbar-hide {
+			  scrollbar-width: none; /* Firefox */
+			  -ms-overflow-style: none; /* IE and Edge */
+			}
+			.custom-scrollbar-hide::-webkit-scrollbar {
+			  display: none; /* Chrome, Safari, Opera */
+			}
+		  `}</style>
 							{/* Close Button */}
 							<motion.button
-								className="absolute top-4 right-4 p-2 rounded-full bg-white/30 backdrop-blur-sm border border-white/50 hover:bg-white/40 transition-colors"
+								className="absolute top-4 right-4 p-2 rounded-full bg-white/30 backdrop-blur-sm border border-white/50 hover:bg-white/40 transition-colors z-20"
 								onClick={() => setSelectedItem(null)}
-								whileHover={{ scale: 1.1 }}
+								whileHover={{ scale: 1.1, rotate: 90 }}
 								whileTap={{ scale: 0.9 }}
 							>
 								<X className="w-5 h-5 text-gray-800" />
 							</motion.button>
 
-							{/* Icon */}
+							{/* Icon with enhanced animation */}
 							<motion.div
-								className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg"
+								className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg relative"
 								style={{
 									backgroundColor: educationJourney[selectedItem].color,
 								}}
-								animate={{ rotate: [0, 10, -10, 0] }}
-								transition={{ duration: 0.5 }}
+								animate={{ 
+									rotate: [0, 10, -10, 0],
+									scale: [1, 1.05, 1],
+								}}
+								transition={{ 
+									duration: 2,
+									repeat: Infinity,
+								}}
 							>
+								{/* Pulsing rings */}
+								<motion.div
+									className="absolute inset-0 rounded-full"
+									style={{ backgroundColor: educationJourney[selectedItem].color }}
+									animate={{
+										scale: [1, 1.5],
+										opacity: [0.5, 0],
+									}}
+									transition={{
+										duration: 1.5,
+										repeat: Infinity,
+									}}
+								/>
 								{(() => {
 									const Icon = educationJourney[selectedItem].icon
-									return <Icon className="w-8 h-8 text-white" />
+									return <Icon className="w-8 h-8 text-white relative z-10" />
 								})()}
 							</motion.div>
 
 							{/* Title */}
-							<h3
+							<motion.h3
 			className="text-3xl text-black text-center mb-2"
 								style={{ fontFamily: "qax" }}
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: 0.2 }}
 							>
 								{educationJourney[selectedItem].level}
-							</h3>
-							<p className="text-purple-600 font-semibold text-center mb-6">
+							</motion.h3>
+							<motion.p 
+								className="text-purple-600 font-semibold text-center mb-6"
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ delay: 0.3 }}
+							>
 								{educationJourney[selectedItem].institution}
-							</p>
+							</motion.p>
 
 							{/* Description */}
-							<p className="text-white/70 text-sm leading-relaxed mb-6 text-center font-serif" style={{ fontFamily: "qax" }}>
+							<motion.p 
+								className="text-white/70 text-sm leading-relaxed mb-6 text-center font-serif" 
+								style={{ fontFamily: "qax" }}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								transition={{ delay: 0.4 }}
+							>
 								{educationJourney[selectedItem].description}
-							</p>
+							</motion.p>
 
-							{/* Achievements */}
+							{/* Achievements with staggered animation */}
 							<div className="space-y-3">
 								<h4
 			className="font-semibold text-black mb-4 flex items-center gap-2"
@@ -417,16 +606,29 @@ export default function Education() {
 											key={achievement}
 											initial={{ opacity: 0, x: -20 }}
 											animate={{ opacity: 1, x: 0 }}
-											transition={{ delay: i * 0.1 }}
-											className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl"
-					  
-					  
+											transition={{ delay: 0.5 + i * 0.1 }}
+											whileHover={{ 
+												scale: 1.02,
+												x: 5,
+												backgroundColor: "rgba(255, 255, 255, 0.8)",
+											}}
+											className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl cursor-pointer"
+			  
+			  
 										>
-											<div
+											<motion.div
 												className="w-3 h-3 rounded-full"
 												style={{
 													backgroundColor:
 														educationJourney[selectedItem].color,
+												}}
+												animate={{
+													scale: [1, 1.2, 1],
+												}}
+												transition={{
+													duration: 1.5,
+													repeat: Infinity,
+													delay: i * 0.2,
 												}}
 											/>
 											<span className="text-gray-700 text-sm font-serif" style={{ fontFamily: "qax" }}>
@@ -437,52 +639,37 @@ export default function Education() {
 								)}
 							</div>
 
-							{/* Score */}
-							<div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl text-center">
-								<p className="text-sm text-gray-600 mb-1">
+							{/* Score with animated progress */}
+							<motion.div 
+								className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl text-center relative overflow-hidden"
+								initial={{ opacity: 0, y: 20 }}
+								animate={{ opacity: 1, y: 0 }}
+								transition={{ delay: 0.8 }}
+							>
+								<motion.div
+									className="absolute inset-0"
+									style={{ 
+										background: `linear-gradient(90deg, ${educationJourney[selectedItem].color}20, transparent)`,
+									}}
+									animate={{
+										x: ["-100%", "100%"],
+									}}
+									transition={{
+										duration: 2,
+										repeat: Infinity,
+									}}
+								/>
+								<p className="text-sm text-gray-600 mb-1 relative z-10">
 									Academic Score
 								</p>
-								<p className="text-2xl font-bold text-gray-800">
+								<p className="text-2xl font-bold text-gray-800 relative z-10">
 									{educationJourney[selectedItem].gpa}
 								</p>
-							</div>
+							</motion.div>
 						</motion.div>
 					</motion.div>
 				)}
 			</AnimatePresence>
 		</motion.div>
-	)
-}
-
-// Fixed TypeScript errors by explicitly typing parameters and ensuring valid index types
-const EducationTimeline = ({
-	achievements,
-}: {
-	achievements: {
-		level: string
-		institution: string
-		duration: string
-		date: string
-		icon: any
-		color: string
-		gpa: string
-		achievements: string[]
-		description: string
-		quote: string
-	}[]
-}) => {
-	return (
-		<div>
-			{achievements.map((achievement, i) => (
-				<motion.div
-					key={i}
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
-				>
-					{/* Render achievement details */}
-				</motion.div>
-			))}
-		</div>
 	)
 }
