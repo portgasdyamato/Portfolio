@@ -10,7 +10,7 @@ const voxa = "/voxa.png"
 const muse = "/muse.jpg"
 const wassup = "/wassup.png"
 const dreamin = "/dreamin.png"
-const pocketfund = "/pocketfund.png"
+const pocketfund = "/pocket-fund.png"
 const projectsData = [
   {
     title: "Portflio Website",
