@@ -36,10 +36,23 @@ const achievements = [
 		color: "#45B7D1",
 	},
 	{
+		icon: Trophy,
+		title: "UI UX Solvathon Winner",
+		description: "Won 1st Place among 700+ participants for designing a complete user-centered solution, including research and high-fidelity UI screens.",
+		year: "2024",
+		color: "#FFD700",
+	},
+	{
+		icon: Star,
+		title: "Harvard Aspire Leadership Scholar",
+		description: "Selected for Cohort V Aspire Leadership Programme and the first Cohort of AI Integrated Leadership Program.",
+		year: "2025",
+		color: "#9333EA",
+	},
+	{
 		icon: Medal,
 		title: "Hackathon Runner up",
-		description:
-			"Here also got 2nd runner up place in the hackathon we worked on the project where we turned design into code through AI.",
+		description: "2nd runner up place in a 24-hour coding challenge building a design-to-code AI solution.",
 		year: "2025",
 		color: "#45B7D1",
 	},

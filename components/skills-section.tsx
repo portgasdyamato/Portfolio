@@ -11,9 +11,10 @@ const skills = [
   { name: "Python", level: 75, icon: "🐍" },
   { name: "Three.js", level: 70, icon: "🎲" },
   { name: "ML/AI", level: 75, icon: "🤖" },
-  { name: "MongoDB", level: 50, icon: "🍃" },
+  { name: "PostgreSQL", level: 85, icon: "🐘" },
   { name: "Figma", level: 94, icon: "🎯" },
-  { name: "Git", level: 85, icon: "📚" }
+  { name: "Git", level: 85, icon: "📚" },
+  { name: "Docker", level: 75, icon: "🐳" }
 ];
 
 export default function SkillsSection() {
