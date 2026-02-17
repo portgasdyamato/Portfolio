@@ -80,7 +80,7 @@ const projectsData = [
       "Built scalable backend supporting 10,000+ concurrent tasks",
       "Added analytics dashboard, increasing productivity by ~25%"
     ],
-    "liveUrl": "https://voxa-cl66cbsp9-portgasdyamatos-projects.vercel.app/",
+    "liveUrl": "https://voxa-taupe.vercel.app/",
     "githubUrl": "https://github.com/portgasdyamato/Voxa",
     "status": "Completed"
   },
