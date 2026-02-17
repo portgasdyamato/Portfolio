@@ -56,7 +56,7 @@ const projectsData = [
       "Integrated AI for hyper-personalized financial coaching",
       "Achieved high user engagement through RPG-style mechanics"
     ],
-    liveUrl: "https://voxa-taupe.vercel.app/",
+    liveUrl: "https://pocket-fund-theta.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Pocket-Fund",
     status: "Completed",
   },
