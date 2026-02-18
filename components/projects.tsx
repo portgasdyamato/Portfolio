@@ -35,6 +35,7 @@ const projectsData = [
       "Enhanced emotional connection for long-distance loved ones"
     ],
     liveUrl: "https://www.figma.com/proto/EDHooQvsZtcbrT9Dt1cIha/YonderWonder?node-id=71-73&starting-point-node-id=1%3A43&t=ZHYD3a2qIf4fFS6O-1",
+    githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
   },
   {
@@ -106,7 +107,63 @@ const projectsData = [
     liveUrl: "https://voxa-taupe.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Voxa",
     status: "Completed"
-  }
+  },
+  {
+    title: "Vinyl Records",
+    duration: "Dec 2024 - Dec 2024",
+    date: "Dec 2024",
+    image: vyn,
+    color: "#87CEEB",
+    technologies: ["React", "Vite", "Tailwind CSS", "YouTube API"],
+    description: "A cross-platform vintage music player with YouTube API integration that allows users to discover and hear melodies in classic records.",
+    features: [
+      "Spinning Record UI",
+      "Ad-Free Playback via YouTube",
+      "Supports Playlists + Single Tracks",
+      "Queue List Management"
+    ],
+    achievements: ["Deployed on Vercel", "Positive User Feedback"],
+    liveUrl: "https://vintage-vinyl.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato/Vintage-Vinyl",
+    status: "Completed",
+  },
+  {
+    title: "Wellness Tracker App Design",
+    duration: "Nov 2024 - Nov 2024",
+    date: "Nov 2024",
+    image: wel,
+    color: "#FFB347",
+    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    description: "A comprehensive UI/UX design for a wellness tracking mobile application featuring modern design principles and intuitive user flow.",
+    features: [
+      "Clean Dashboard with Progress Tracking",
+      "Task Management Interface",
+      "Streak Tracking System",
+      "Modern Dark Theme"
+    ],
+    achievements: ["Complete Design System", "Interactive Prototype"],
+    liveUrl: "https://www.figma.com/design/aih9SixouPHrgM06a2RBj3/wellness-app",
+    githubUrl: "https://github.com/portgasdyamato/Wellness-App-Design",
+    status: "Completed",
+  },
+  {
+    title: "NLP for Legal Documents",
+    duration: "July 2025 - Present",
+    date: "In Progress",
+    image: "/placeholder.svg",
+    color: "#96CEB4",
+    technologies: ["Python", "Transformers", "NLP"],
+    description: "An AI system that can extract and summarize key legal information from complex legal documents using advanced NLP techniques.",
+    features: [
+      "Secure Document Handling",
+      "AI-Powered Summarization",
+      "Key Term Highlighting"
+    ],
+    achievements: ["Advanced NLP Implementation", "Information Extraction"],
+    liveUrl: "",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Ongoing",
+  },
 ]
 
 export default function Projects() {
@@ -130,7 +187,7 @@ export default function Projects() {
           className="flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4">
+            <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 uppercase tracking-tighter">
               Featured <span className="text-gradient">Projects</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl font-inter">
@@ -157,7 +214,7 @@ export default function Projects() {
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -189,13 +246,13 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold text-white font-outfit uppercase">{project.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase">{project.title}</h3>
                   </div>
                   <motion.div 
                     whileHover={{ scale: 1.1, rotate: 45 }}
-                    className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl mb-1"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl mb-1"
                   >
-                    <ArrowUpRight className="text-black w-6 h-6" />
+                    <ArrowUpRight className="text-black w-5 h-5" />
                   </motion.div>
                 </div>
               </div>

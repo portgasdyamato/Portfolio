@@ -8,7 +8,9 @@ import DesignProcess from "@/components/design-process"
 import Achievements from "@/components/achievements"
 import Certificates from "@/components/certificates"
 import Education from "@/components/education"
-import Skills from "@/components/skills"
+import ImageSection from "@/components/image-section"
+import GrowWithMeHeading from "@/components/GrowWithMeHeading"
+import PixelCharacter from "@/components/pixel-character"
 
 export default function Home() {
   return (
@@ -48,20 +50,25 @@ export default function Home() {
           <DesignProcess />
         </section>
 
-        {/* Technical Skills */}
-        <section className="scroll-mt-32">
-          <Skills />
-        </section>
-
-        {/* Contact & Socials */}
-        <section id="contact" className="scroll-mt-32 pb-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <Contact />
-            <div className="flex flex-col gap-12">
-               <SocialLinks />
-            </div>
+        {/* Image and Contact - Original Grid Layout */}
+        <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr] ml-0 lg:ml-8">
+          <div className="order-1">
+            <ImageSection />
           </div>
-        </section>
+
+          <div className="order-3 lg:order-2 hidden md:flex justify-center ml-0 lg:ml-24 mb-4 sm:mb-8 md:mb-12 lg:mb-20">
+            <GrowWithMeHeading />
+          </div>
+          
+          <div id="contact" className="order-2 lg:order-3 w-full lg:w-2/3 ml-0 lg:ml-40 mr-0 lg:mr-8 mb-4 sm:mb-6 lg:mb-8">
+            <Contact />
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div className="pb-10">
+          <SocialLinks />
+        </div>
         
       </main>
 
@@ -71,6 +78,9 @@ export default function Home() {
           ┬⌐ 2026 SAKSHI AGRAHARI <span className="mx-2 opacity-30">ΓÇó</span> BUILT FOR IMPACT
         </p>
       </footer>
+
+      {/* Floating Pixel Character - Visible on all devices */}
+      <PixelCharacter />
     </div>
   )
 }
