@@ -11,7 +11,30 @@ const muse = "/muse.jpg"
 const wassup = "/wassup.png"
 const dreamin = "/dreamin.png"
 const pocketfund = "/pocket-fund.png"
+const yonder = "/yonder.png"
 const projectsData = [
+  {
+    title: "Yonder Wonder",
+    duration: "Feb 2026",
+    date: "Feb 2026",
+    image: yonder,
+    color: "#FFB347",
+    technologies: ["Figma", "AI/ML Concept", "Stable Diffusion", "GANs"],
+    description: "A mobile app where users upload two individual photos, and an AI model generates a single realistic image together, guided by user prompts for context.",
+    features: [
+      "User flow, wireframes, and high-fidelity UI",
+      "Seamless upload-to-generation journey",
+      "Intuitive prompt input and preview experience",
+      "AI-powered merging of images meaningfully"
+    ],
+    achievements: [
+      "Designed a seamless upload-to-generation user journey",
+      "Simplified complex AI interactions for everyday users",
+      "Enhanced emotional connection for long-distance loved ones"
+    ],
+    liveUrl: "https://www.figma.com/proto/EDHooQvsZtcbrT9Dt1cIha/YonderWonder?node-id=71-73&starting-point-node-id=1%3A43&t=ZHYD3a2qIf4fFS6O-1",
+    status: "Completed",
+  },
   {
     title: "Portfolio Website",
     duration: "June 2025 - July 2025",
