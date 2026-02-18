@@ -317,23 +317,15 @@ function TimelineCard({ item, index, isLeft, Icon, hoveredItem, setHoveredItem, 
 	const cardRef = useRef<HTMLDivElement>(null)
 	const isHovered = hoveredItem === index
 	
-	// Individual card scroll animation
-	const opacity = useTransform(
-		scrollProgress,
-		[(index * 0.15), (index * 0.15) + 0.2],
-		[0, 1]
-	)
-	
-	const x = useTransform(
-		scrollProgress,
-		[(index * 0.15), (index * 0.15) + 0.2],
-		[isLeft ? -50 : 50, 0]
-	)
+	// Individual card entrance animation is now handled via whileInView for better responsiveness
 
 	return (
 		<motion.div
 			ref={cardRef}
-			style={{ opacity, x }}
+			initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
+			whileInView={{ opacity: 1, x: 0 }}
+			viewport={{ once: true, margin: "-100px" }}
+			transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.05 }}
 			className={`relative flex items-center ${
 				isLeft ? "flex-row" : "flex-row-reverse"
 			}`}
@@ -461,10 +453,10 @@ function MobileTimelineCard({ item, index, Icon, hoveredItem, setHoveredItem, se
 
 	return (
 		<motion.div
-			initial={{ opacity: 0, y: 50 }}
+			initial={{ opacity: 0, y: 30 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: "-50px" }}
-			transition={{ delay: index * 0.1 }}
+			transition={{ duration: 0.5, delay: index * 0.05 }}
 			onMouseEnter={() => setHoveredItem(index)}
 			onMouseLeave={() => setHoveredItem(null)}
 		>
