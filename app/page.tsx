@@ -15,14 +15,14 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background selection:bg-purple-500/30 overflow-x-hidden" id="home">
       <Header />
-      
-      <main className="container mx-auto px-32 sm:px-6 lg:px-8 max-w-7xl space-y-24 md:space-y-32 pt-36 md:pt-52">
-        
-        {/* Bento Hero Section */}
-        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Hero />
           <Profile />
         </section>
+      <main className="container mx-auto px-26 sm:px-6 lg:px-8 max-w-7xl space-y-24 md:space-y-32 pt-36 md:pt-52">
+        
+        {/* Bento Hero Section */}
+
 
         {/* Featured Projects */}
         <section id="projects" className="scroll-mt-32">
