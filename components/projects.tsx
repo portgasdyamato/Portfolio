@@ -254,7 +254,7 @@ export default function Projects() {
         >
           <div>
             <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 uppercase tracking-tighter">
-              Featured <span className="text-gradient">Projects</span>
+              Featured Projects
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl font-inter">
               A collection of digital experiences combining design thinking with technological innovation.

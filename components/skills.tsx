@@ -41,7 +41,7 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
-            Technical <span className="text-gradient">Arsenal</span>
+            Technical Arsenal
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-inter mt-4">
             A comprehensive set of tools and methodologies leveraged to build world-class products.

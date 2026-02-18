@@ -26,7 +26,7 @@ export default function SkillsSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        🎮 SKILLS 🎮
+        SKILLS 
       </motion.h3>
 
       <div 
@@ -53,7 +53,7 @@ export default function SkillsSection() {
               <span
                 className="text-xs sm:text-sm font-bold text-gray-700"
                 style={{
-                  fontFamily: "qax, sans-serif",
+                 
                   imageRendering: "pixelated",
                 }}
               >
@@ -62,7 +62,7 @@ export default function SkillsSection() {
               <span
                 className="text-xs text-pink-600 font-bold"
                 style={{
-                  fontFamily: "Super Pixel, monospace",
+                  
                   imageRendering: "pixelated",
                 }}
               >

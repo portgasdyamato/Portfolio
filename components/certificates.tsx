@@ -81,7 +81,7 @@ export default function Certificates() {
         >
           <div>
             <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
-              Professional <span className="text-gradient-indigo">Credentials</span>
+              Professional Credentials
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl font-inter mt-4">
               A commitment to excellence and continuous professional development.

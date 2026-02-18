@@ -66,7 +66,7 @@ export default function Achievements() {
           className="mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
-            Achievements <span className="text-gradient"> & Awards</span>
+            Achievements & Awards
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl font-inter mt-4">
             A track record of excellence in design, innovation, and leadership.

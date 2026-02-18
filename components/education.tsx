@@ -54,7 +54,7 @@ export default function Education() {
         >
           <div>
             <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
-              Learning <span className="text-gradient">Trajectory</span>
+              Learning Trajectory
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl font-inter mt-4">
               My academic journey has been a continuous quest for knowledge and excellence.

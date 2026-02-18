@@ -45,7 +45,7 @@ export default function DesignProcess() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 uppercase tracking-tight">
-            Inter-Personal <span className="text-gradient">Capabilities</span>
+            Inter-Personal Capabilities
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-inter">
             Beyond the pixels and code, I focus on the human side of product development.
