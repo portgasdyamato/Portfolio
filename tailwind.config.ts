@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			outfit: ['Yang', 'Outfit', 'sans-serif'],
+  			outfit: ['Cormorant Garamond', 'Outfit', 'Georgia', 'serif'],
   			inter: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
   		},
   		colors: {
