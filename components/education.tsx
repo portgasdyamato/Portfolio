@@ -125,17 +125,17 @@ export default function Education() {
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 30 }}
-              className="w-full max-w-4xl bg-background rounded-[3rem] p-8 md:p-14 relative border border-white/5 shadow-3xl"
+              className="w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-background rounded-[2rem] md:rounded-[3rem] p-6 md:p-14 relative border border-white/5 shadow-3xl scrollbar-hide"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
-                className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors z-[160]"
+                className="absolute top-4 right-4 md:top-10 md:right-10 w-10 h-10 md:w-12 md:h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors z-[160]"
                 onClick={() => setSelected(null)}
               >
                 <X size={20} />
               </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
                 <div>
                   <div className={`w-20 h-20 rounded-3xl mb-10 flex items-center justify-center bg-gradient-to-br ${educationJourney[selected].color}`}>
                     {(() => {

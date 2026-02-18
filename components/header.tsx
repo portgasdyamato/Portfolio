@@ -96,7 +96,7 @@ export default function Header() {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.id)}
-                className="text-md sm:text-md hover:text-gray-600 transition-colors font-semibold tracking-widest"
+                className="text-md sm:text-md hover:text-gray-600 transition-colors tracking-widest"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
