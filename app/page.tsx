@@ -69,7 +69,7 @@ export default function Home() {
 
         
       </main>
-        <div className="pb-20">
+        <div className="pb-6 px-4">
           <SocialLinks />
         </div>
 

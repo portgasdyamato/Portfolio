@@ -282,7 +282,7 @@ const PixelCharacter = () => {
               }}
             >
               {/* Cinnamon Roll Character from GIF */}
-              <div className="w-16 h-16 relative">
+              <div className="w-16 h-16 relative overflow-hidden">
                 <motion.div
                   key={expression} // This will trigger re-render when expression changes
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -294,9 +294,8 @@ const PixelCharacter = () => {
                     alt="Cinnamon Roll Character"
                     width={64}
                     height={64}
-                    className="w-full h-auto object-contain rounded-2xl"
+                    className="w-16 h-16 object-contain"
                     unoptimized={true} // Important for GIFs to maintain animation
-                    style={{ width: "auto", height: "auto" }}
                   />
                 </motion.div>
                 
