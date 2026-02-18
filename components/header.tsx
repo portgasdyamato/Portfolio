@@ -78,7 +78,7 @@ export default function Header() {
         <motion.button
           onClick={() => scrollToSection("home")}
           style={{ fontFamily: "Bianca", }}
-          className="text-lg sm:text-xl cursor-pointer left-20 hover:text-gray-600 transition-colors"
+          className="text-lg sm:text-xl cursor-pointer px-24 hover:text-gray-600 transition-colors"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
