@@ -294,7 +294,7 @@ export default function Projects() {
               onClick={() => setSelectedProject(projectsData.findIndex(p => p.title === project.title))}
               className="group cursor-pointer glass-card rounded-[2rem] overflow-hidden flex flex-col"
             >
-              <div className="relative aspect-[3/4] md:aspect-[16/10] overflow-hidden rounded-[2rem] bg-gray-950">
+              <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-[2rem] bg-gray-950">
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
