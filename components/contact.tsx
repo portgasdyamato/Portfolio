@@ -50,14 +50,7 @@ const socialLinks = [
     description: "Check out my code",
     handle: "@pippo",
   },
-  {
-    name: "LeetCode",
-    icon: Code2,
-    url: "https://leetcode.com/u/pippo_peeps/",
-    color: "#FFCCCC",
-    description: "Coding challenges",
-    handle: "pippo",
-  },
+
 ]
 
 export default function Contact() { 

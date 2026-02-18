@@ -10,7 +10,6 @@ import Certificates from "@/components/certificates"
 import Education from "@/components/education"
 import ImageSection from "@/components/image-section"
 import GrowWithMeHeading from "@/components/GrowWithMeHeading"
-import PixelCharacter from "@/components/pixel-character"
 
 export default function Home() {
   return (
@@ -73,8 +72,6 @@ export default function Home() {
           <SocialLinks />
         </div>
 
-      {/* Floating Pixel Character */}
-      <PixelCharacter />
     </div>
   )
 }
