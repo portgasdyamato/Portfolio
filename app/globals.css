@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force Cormorant Garamond on all font-outfit usages — bypasses Tailwind build cycle */
+.font-outfit {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
 :root {
   --background: 250 50% 98%;
   --foreground: 240 10% 3.9%;
