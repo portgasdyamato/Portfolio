@@ -73,12 +73,12 @@ export default function Header() {
           y: isVisible ? 0 : -100 
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="py-3 sm:py-4 px-4 sm:px-6 flex justify-between items-center bg-[#FFE4E4]/90 backdrop-blur-md fixed top-0 left-20 right-0 z-50 shadow-sm"
+        className="py-3 sm:py-4 px-4 sm:px-6 flex justify-between items-center bg-[#FFE4E4]/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-sm"
       >
         <motion.button
           onClick={() => scrollToSection("home")}
           style={{ fontFamily: "Bianca", }}
-          className="text-lg sm:text-xl cursor-pointer hover:text-gray-600 transition-colors"
+          className="text-lg sm:text-xl cursor-pointer left-20 hover:text-gray-600 transition-colors"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
