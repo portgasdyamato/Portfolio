@@ -294,7 +294,7 @@ export default function Projects() {
               onClick={() => setSelectedProject(projectsData.findIndex(p => p.title === project.title))}
               className="group cursor-pointer glass-card rounded-[2rem] overflow-hidden flex flex-col"
             >
-              <div className="relative aspect-[16/10] overflow-hidden">
+              <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem]">
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
@@ -302,7 +302,7 @@ export default function Projects() {
                   sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-fill transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
                   <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
