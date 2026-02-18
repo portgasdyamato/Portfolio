@@ -1,90 +1,163 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Lightbulb, Palette, Code, Rocket, Users, Target, MessageSquare, Zap } from "lucide-react"
+import { useState } from "react"
+import { Lightbulb, Palette, Code, Rocket } from "lucide-react"
 
-const softSkills = [
-  {
-    icon: Lightbulb,
-    title: "Problem Solving",
-    description: "Brainstorming and concept development with an analytical mindset.",
-    color: "from-amber-500/10 to-transparent",
-    delay: 0,
-  },
-  {
-    icon: Palette,
-    title: "Creativity",
-    description: "Translating complex ideas into intuitive visual interfaces and prototypes.",
-    color: "from-blue-500/10 to-transparent",
-    delay: 0.1,
-  },
-  {
-    icon: MessageSquare,
-    title: "Communication",
-    description: "Bridging the gap between technical teams and business stakeholders.",
-    color: "from-emerald-500/10 to-transparent",
-    delay: 0.2,
-  },
-  {
-    icon: Users,
-    title: "Leadership",
-    description: "Empowering and motivating teams to deliver their best work.",
-    color: "from-rose-500/10 to-transparent",
-    delay: 0.3,
-  },
+const processSteps = [
+	{
+		icon: Lightbulb,
+		title: "Problem Solving",
+		description: "Brainstorming and concept development",
+		color: "#FFF3CD",
+		delay: 0,
+	},
+	{
+		icon: Palette,
+		title: "Creativity",
+		description: "Visual design and prototyping",
+		color: "#D1ECF1",
+		delay: 0.2,
+	},
+	{
+		icon: Code,
+		title: "Conflict Rsolution",
+		description: "Analysing & Solving Conflicts",
+		color: "#D4EDDA",
+		delay: 0.4,
+	},
+	{
+		icon: Rocket,
+		title: "Leadership",
+		description: "Empowering & Motivating ",
+		color: "#ff9191",
+		delay: 0.6,
+	},
 ]
 
 export default function DesignProcess() {
-  return (
-    <div className="py-20 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 uppercase tracking-tight">
-            Inter-Personal <span className="text-gradient">Capabilities</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto font-inter">
-            Beyond the pixels and code, I focus on the human side of product development.
-          </p>
-        </motion.div>
+	const [hoveredStep, setHoveredStep] = useState<number | null>(null)
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {softSkills.map((skill, index) => {
-            const Icon = skill.icon
-            return (
-              <motion.div
-                key={skill.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: skill.delay + 0.5 }}
-                className="group relative p-8 glass-card rounded-[2rem] overflow-hidden"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
-                <div className="relative z-10">
-                  <div className="w-14 h-14 bg-white dark:bg-white/5 rounded-2xl flex items-center justify-center shadow-lg mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                    <Icon className="w-7 h-7 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  
-                  <h3 className="text-xl font-bold font-outfit mb-3 uppercase tracking-wide">{skill.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed font-inter">
-                    {skill.description}
-                  </p>
-                </div>
-                
-                <div className="absolute top-4 right-4 text-[6rem] font-bold text-black/5 dark:text-white/5 pointer-events-none font-outfit select-none leading-none">
-                  0{index + 1}
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
-      </div>
-    </div>
-  )
+	return (
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ delay: 0.9 }}
+			className="col-span-3 mt-20 overflow-hidden"
+		>
+			<div className="text-center mb-24">
+				<motion.h2
+					initial={{ y: 20, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ delay: 1 }}
+					className="text-3xl font-bold cursor-pointer inline-block"
+					whileHover={{ 
+						scale: 1.1,
+						transition: { 
+						  type: "tween", 
+						  duration: 0.15,
+						  ease: "easeOut"
+						}
+					  }}
+					style={{ fontFamily: "Gamer", }}
+				>
+					Inter-Personal / Soft Skills
+				</motion.h2>
+			</div>
+
+			<div className="grid grid-cols-1 md:grid-cols-4 gap-20 ml-8 mr-8 ">
+				{processSteps.map((step, index) => {
+					const Icon = step.icon
+					return (
+						<motion.div
+							key={step.title}
+							initial={{ opacity: 0, y: 50 }}
+							animate={{ opacity: 1, y: 0 }}
+							transition={{ delay: 1.2 + step.delay }}
+							onHoverStart={() => setHoveredStep(index)}
+							onHoverEnd={() => setHoveredStep(null)}
+							className="relative "
+						>
+							<motion.div
+								className="p-6 rounded-2xl cursor-pointer relative overflow-hidden h-48 flex flex-col justify-between"
+								style={{ backgroundColor: step.color }}
+								whileHover={{ scale: 1.05, y: -5 }}
+								transition={{ type: "spring", stiffness: 300 }}
+							>
+								{/* Animated background pattern */}
+								<motion.div
+									className="absolute inset-0 opacity-10"
+									animate={{
+										backgroundPosition:
+											hoveredStep === index
+												? ["0% 0%", "100% 100%"]
+												: "0% 0%",
+									}}
+									transition={{
+										duration: 2,
+										repeat: Number.POSITIVE_INFINITY,
+									}}
+									style={{
+										backgroundImage:
+											"radial-gradient(circle, currentColor 1px, transparent 1px)",
+										backgroundSize: "20px 20px",
+									}}
+								/>
+
+								<div className="relative z-10 flex flex-col items-center text-center flex-1">
+									<motion.div
+										animate={{
+											rotate: hoveredStep === index ? 360 : 0,
+											scale: hoveredStep === index ? 1.2 : 1,
+										}}
+										transition={{ duration: 0.5 }}
+										className="mb-4"
+									>
+										<Icon className="w-8 h-8 mx-auto" />
+									</motion.div>
+
+									<div className="flex-1 flex flex-col justify-center">
+										<h3 className="font-semibold text-lg mb-2">
+											{step.title}
+										</h3>
+										<p className="text-sm text-gray-600">
+											{step.description}
+										</p>
+									</div>
+								</div>
+
+								{/* Connection line to next step */}
+								{index < processSteps.length - 1 && (
+									<motion.div
+										className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gray-300"
+										initial={{ scaleX: 0 }}
+										animate={{ scaleX: 1 }}
+										transition={{
+											delay: 1.5 + step.delay,
+											duration: 0.5,
+										}}
+									/>
+								)}
+							</motion.div>
+
+							{/* Step number */}
+							<motion.div
+								className="absolute -top-2 -left-2 w-6 h-6 bg-gray-800 text-white rounded-full flex items-center justify-center text-xs font-bold"
+								initial={{ scale: 0 }}
+								animate={{ scale: 1 }}
+								transition={{
+									delay: 1.4 + step.delay,
+									type: "spring",
+								}}
+							>
+								{index + 1}
+							</motion.div>
+						</motion.div>
+					)
+				})}
+			</div>
+
+			{/* Animated progress bar */}
+		</motion.div>
+	)
 }

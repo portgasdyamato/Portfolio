@@ -3,37 +3,11 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { ExternalLink, Github, Star, Calendar, Code, X, Award } from "lucide-react"
-
 const prt = "/prt.png"
 const vyn = "/vyn.png"
 const wel = "/wel.png"
 const voxa = "/voxa.png"
-const yonder = "/yonder.png"
-
 const projectsData = [
-  {
-    title: "Yonder Wonder",
-    duration: "Feb 2026",
-    date: "Feb 2026",
-    image: yonder,
-    color: "#FFB347",
-    technologies: ["Figma", "AI/ML Concept", "Stable Diffusion", "GANs"],
-    description: "A mobile app where users upload two individual photos, and an AI model generates a single realistic image together, guided by user prompts for context.",
-    features: [
-      "User flow, wireframes, and high-fidelity UI",
-      "Seamless upload-to-generation journey",
-      "Intuitive prompt input and preview experience",
-      "AI-powered merging of images meaningfully"
-    ],
-    achievements: [
-      "Designed a seamless upload-to-generation user journey",
-      "Simplified complex AI interactions for everyday users",
-      "Enhanced emotional connection for long-distance loved ones"
-    ],
-    liveUrl: "https://www.figma.com/proto/EDHooQvsZtcbrT9Dt1cIha/YonderWonder?node-id=71-73&starting-point-node-id=1%3A43&t=ZHYD3a2qIf4fFS6O-1",
-    githubUrl: "https://github.com/portgasdyamato",
-    status: "Completed",
-  },
   {
     title: "Portflio Website",
     duration: "June 2025 - July 2025",
@@ -58,7 +32,7 @@ const projectsData = [
     status: "Completed",
   },
   {
-    "title": "VoXa – Voice-Driven Task Manager",
+    "title": "VoXa ΓÇô Voice-Driven Task Manager",
     "duration": "May 2025 - June 2025",
     "date": "May 2025",
     "image": voxa,
@@ -66,16 +40,16 @@ const projectsData = [
     "technologies": ["React", "TypeScript", "Node.js", "Express", "Tailwind CSS", "PostgreSQL", "Drizzle ORM", "Web Speech API"],
     "description": "A modern, intelligent task management application that combines voice command technology with a sleek, intuitive interface.",
     "features": [
-      "🎤 Voice Commands: Add, update, and manage tasks using natural language",
-      "📊 Analytics: Visualize productivity with interactive charts and streak tracking",
-      "📱 Responsive Design: Optimized for mobile, tablet, and desktop",
-      "🎨 Modern UI/UX: Glassmorphism design with dark/light themes",
-      "🔔 Smart Notifications: Stay ahead with reminders and deadlines",
-      "🔐 Secure Authentication: Google OAuth integration for privacy and security",
-      "💬 Demo Mode: Try the app without signing up using a guest account",
-      "🔄 Real-Time Updates: Instant UI changes across all components"
+      "≡ƒÄñ Voice Commands: Add, update, and manage tasks using natural language",
+      "≡ƒôè Analytics: Visualize productivity with interactive charts and streak tracking",
+      "≡ƒô▒ Responsive Design: Optimized for mobile, tablet, and desktop",
+      "≡ƒÄ¿ Modern UI/UX: Glassmorphism design with dark/light themes",
+      "≡ƒöö Smart Notifications: Stay ahead with reminders and deadlines",
+      "≡ƒöÉ Secure Authentication: Google OAuth integration for privacy and security",
+      "≡ƒÆ¼ Demo Mode: Try the app without signing up using a guest account",
+      "ΓÜí Real-Time Updates: Instant UI changes across all components"
     ],
-    "achievements": ["✅ Deployed", "🔒 Secure Login Flow", "📈 Optimized for High Performance"],
+    "achievements": ["Γ£à Deployed", "≡ƒöÆ Secure Login Flow", "≡ƒôê Optimized for High Performance"],
     "liveUrl": "https://voxa-cl66cbsp9-portgasdyamatos-projects.vercel.app/",
     "githubUrl": "https://github.com/portgasdyamato/Voxa",
     "status": "Completed"
@@ -89,12 +63,12 @@ const projectsData = [
     technologies: ["React", "Vite", "Tailwind CSS", "YouTube API", "Vercel"],
     description: "A cross-platform vintage music player with youtube api integration that allows users to discover and hear melodies in classic records without ads.",
     features: [
-      "Spinning Record UI — Feel the motion of vintage vinyl",
-      "Ad-Free Playback via YouTube — No interruptions",
-      "Supports Playlists + Single Tracks — Your music, your way",
-      "Queue List — Know what's coming up next or just play",
-      "Minimal Controls — Stay focused on the music",
-      "Lightweight & Responsive — Fast and fluid experience",
+      "Spinning Record UI ΓÇö Feel the motion of vintage vinyl",
+      "Ad-Free Playback via YouTube ΓÇö No interruptions",
+      "Supports Playlists + Single Tracks ΓÇö Your music, your way",
+      "Queue List ΓÇö Know what's coming up next or just play",
+      "Minimal Controls ΓÇö Stay focused on the music",
+      "Lightweight & Responsive ΓÇö Fast and fluid experience",
     ],
     achievements: ["Deployed", "Good User reviews", "top favorite"],
     liveUrl: "https://vintage-vinyl.vercel.app/",
@@ -142,7 +116,7 @@ const projectsData = [
     ],
     achievements: ["Advanced NLP", "University Project", " Information extraction"],
     liveUrl: "",
-    githubUrl: "https://github.com/portgasdyamato",
+    githubUrl: "https://github.com/example",
     status: "Ongoing",
   },
 ]
@@ -291,8 +265,8 @@ export default function Projects() {
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
               className="gradient-glass rounded-3xl  p-8 max-w-2xl w-full mx-4 relative 
-              max-h-[90vh] overflow-y-auto scrollbar-none
-              [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+                max-h-[90vh] overflow-y-auto scrollbar-none
+                [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
@@ -324,7 +298,7 @@ export default function Projects() {
               </div>
 
               {/* Description */}
-              <p className="text-black/70 leading-relaxed mb-6" style={{ fontFamily: "qax", }}>{projectsData[selectedProject].description}</p>
+              <p className="text-white/70 leading-relaxed mb-6" style={{ fontFamily: "qax", }}>{projectsData[selectedProject].description}</p>
 
               {/* Features */}
               <div className="mb-6">

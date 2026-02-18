@@ -125,7 +125,7 @@ export default function Hero() {
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.5 }}
         >
-          Sakshi Agrahari <span className="mx-2">•</span> Interactive Projects bringing ideas to life
+          Interactive Projects bringing ideas to life
         </motion.p>
       </div>
     </motion.div>

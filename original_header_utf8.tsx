@@ -221,7 +221,7 @@ export default function Header() {
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
                 >
-                  🎮 Easter Eggs
+                  ≡ƒÄ« Easter Eggs
                 </motion.h2>
                 <motion.div 
                   className="w-16 h-1 bg-gradient-to-r from-pink-400 to-purple-500 mx-auto rounded-full"
@@ -244,7 +244,7 @@ export default function Header() {
               
               <div className="grid grid-cols-1 gap-4 cursor-pointer">
                 {[{
-                  icon: "🎨",
+                  icon: "≡ƒÄ¿",
                   title: "Animated Character",
                   items: [
                     "A small character follows the cursor around the screen, riding a skateboard while painting.",
@@ -257,7 +257,7 @@ export default function Header() {
                   borderColor: "border-blue-200"
                 },
                 {
-                  icon: "📚",
+                  icon: "≡ƒôÜ",
                   title: "Interactive Education Timeline",
                   items: [
                     "The Education section features a central timeline with cards branching out on both sides.",
@@ -268,7 +268,7 @@ export default function Header() {
                   borderColor: "border-pink-200"
                 },
                 {
-                  icon: "🌐",
+                  icon: "≡ƒîÉ",
                   title: "Live Projects Certifications",
                   items: [
                     "Every project includes a clickable live demo and a Git Repository button to view the code.",
@@ -278,7 +278,7 @@ export default function Header() {
                   borderColor: "border-purple-200"
                 },
                 {
-                  icon: "🔗",
+                  icon: "≡ƒöù",
                   title: "Social Profiles",
                   items: [
                     "All social links are active, redirecting to my live profiles across platforms.",
@@ -288,7 +288,7 @@ export default function Header() {
                   borderColor: "border-green-200"
                 },
                 {
-                  icon: "✨",
+                  icon: "Γ£¿",
                   title: "Creative Design Elements",
                   items: [
                     "Hover effects on all project cards to make them visually engaging.",
@@ -299,7 +299,7 @@ export default function Header() {
                   borderColor: "border-orange-200"
                 },
                 {
-                  icon: "🛠️",
+                  icon: "≡ƒ¢á∩╕Å",
                   title: "Tech Stack",
                   items: [
                     "Next.js 14 with TypeScript for a modern and scalable web application.",
@@ -312,7 +312,7 @@ export default function Header() {
                   borderColor: "border-cyan-200"
                 },
                 {
-                  icon: "📱",
+                  icon: "≡ƒô▒",
                   title: "Responsive Design",
                   items: [
                     "Optimized layouts for mobile, tablet, and desktop devices.",
@@ -375,7 +375,7 @@ export default function Header() {
                             whileHover={{ scale: 1.3, color: "#374151" }}
                             transition={{ duration: 0.2 }}
                           >
-                            •
+                            ΓÇó
                           </motion.span>
                           <motion.span 
                             className="leading-relaxed group-hover/item:text-gray-950 transition-colors"
@@ -389,7 +389,7 @@ export default function Header() {
                             whileHover={{ scale: 1 }}
                             transition={{ duration: 0.2 }}
                           >
-                            <span className="text-xs text-gray-500">✨</span>
+                            <span className="text-xs text-gray-500">Γ£¿</span>
                           </motion.div>
                         </motion.li>
                       ))}
@@ -410,7 +410,7 @@ export default function Header() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4 }}
                   >
-                    🚀 "Great things happen when creative minds connect!"
+                    ≡ƒÜÇ "Great things happen when creative minds connect!"
                   </motion.p>
                   
                 </motion.div>
