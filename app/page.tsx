@@ -66,11 +66,12 @@ export default function Home() {
         </div>
 
         {/* Unified Pink Footer */}
+
+        
+      </main>
         <div className="pb-20">
           <SocialLinks />
         </div>
-        
-      </main>
 
       {/* Floating Pixel Character */}
       <PixelCharacter />

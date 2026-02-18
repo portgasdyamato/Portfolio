@@ -313,7 +313,15 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase">{project.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase mb-2">{project.title}</h3>
+                    <div className="space-y-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 max-w-[80%]">
+                      {project.achievements.slice(0, 2).map((achievement, i) => (
+                        <div key={i} className="flex items-center gap-2 text-[10px] text-white/80 font-inter leading-tight">
+                          <Award className="w-3 h-3 text-purple-400 shrink-0" />
+                          <span className="line-clamp-1">{achievement}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                   <motion.div 
                     whileHover={{ scale: 1.1, rotate: 45 }}
@@ -413,7 +421,7 @@ export default function Projects() {
                     <div>
                       <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4 font-outfit">Key Features</h4>
                       <div className="grid grid-cols-1 gap-3">
-                        {projectsData[selectedProject].features.map(feature => (
+                        {projectsData[selectedProject].features.slice(0, 3).map(feature => (
                           <div key={feature} className="flex items-center gap-3 p-4 glass rounded-2xl">
                             <div className="w-2 h-2 rounded-full bg-purple-500" />
                             <span className="text-sm font-medium">{feature}</span>
