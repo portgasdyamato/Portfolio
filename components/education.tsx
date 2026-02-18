@@ -98,7 +98,7 @@ export default function Education() {
                 </div>
 
                 <div className="flex items-center justify-between border-t border-border/50 pt-8 mt-auto">
-                  <span className="text-xl font-black font-outfit text-rose-600">
+                  <span className="text-xl font-black font-outfit text-purple-600">
                     {item.gpa}
                   </span>
                   <div className="px-4 py-2 glass rounded-xl text-[10px] font-bold uppercase tracking-widest">
@@ -161,7 +161,7 @@ export default function Education() {
                 <div className="flex flex-col">
                   <div className="px-8 py-6 glass rounded-[2rem] border-purple-500/20 mb-10">
                     <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2 block">Performance</span>
-                    <span className="text-4xl font-black font-outfit text-rose-600">
+                    <span className="text-4xl font-black font-outfit text-purple-600">
                       {educationJourney[selected].gpa}
                     </span>
                   </div>

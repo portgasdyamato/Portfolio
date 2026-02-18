@@ -16,7 +16,7 @@ const achievements = [
     title: "Harvard Aspire Scholar",
     description: "Selected as a scholar for the Harvard Aspire Leadership Program, focusing on AI-integrated leadership.",
     year: "2025",
-    color: "from-red-400 to-rose-600",
+    color: "from-purple-400 to-purple-600",
   },
   {
     icon: Trophy,
