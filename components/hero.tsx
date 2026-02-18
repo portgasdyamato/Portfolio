@@ -113,7 +113,7 @@ export default function Hero() {
         >
           Innovator Blending  
           
-          <span> Web Aesthetics</span> with
+          Web Aesthetics with
           
           Machine Intelligence
         </motion.h1>
