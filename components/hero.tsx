@@ -3,131 +3,93 @@
 import { motion } from "framer-motion"
 import Image from "next/image"
 
-const designElements = [
-  { shape: "circle", size: 20, x: 70, y: 20, delay: 0 },
-  { shape: "square", size: 25, x: 80, y: 40, delay: 0.2 },
-  { shape: "triangle", size: 18, x: 75, y: 60, delay: 0.4 },
-  { shape: "line", size: 30, x: 85, y: 30, delay: 0.6 },
-]
-
 export default function Hero() {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      className="col-span-1 md:col-span-2 ml-8 mr-8 bg-[#FFE4E4] p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden mt-2 sm:mt-3 md:mt-5"
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="col-span-1 md:col-span-2 relative overflow-hidden flex flex-col justify-center min-h-[400px] md:min-h-[500px] p-8 md:p-12 glass-card rounded-[2.5rem]"
     >
-      {/* Animated Design Elements */}
-      {designElements.map((element, index) => (
-        <motion.div
-          key={index}
-          className="absolute"
-          style={{
-            left: `${element.x}%`,
-            top: `${element.y}%`,
-            width: element.size,
-            height: element.size,
-          }}
-          initial={{ opacity: 0, scale: 0, rotate: -180 }}
-          animate={{
-            opacity: [0, 1, 0.7],
-            scale: [0, 1.2, 1],
-            rotate: [0, 360, 180],
-            x: [0, -10, 10, 0],
-            y: [0, -15, 5, 0],
-          }}
-          transition={{
-            delay: element.delay,
-            duration: 3,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        >
-          {element.shape === "circle" && <div className="w-full h-full bg-[#FFB5B5] rounded-full opacity-80" />}
-          {element.shape === "square" && <div className="w-full h-full bg-[#FF9999] opacity-80" />}
-          {element.shape === "triangle" && (
-            <div
-              className="w-0 h-0 opacity-80"
-              style={{
-                borderLeft: `${element.size / 2}px solid transparent`,
-                borderRight: `${element.size / 2}px solid transparent`,
-                borderBottom: `${element.size}px solid #FF7F7F`,
-              }}
-            />
-          )}
-          {element.shape === "line" && <div className="w-full h-1 bg-[#FF6B6B] opacity-80 transform rotate-45" />}
-        </motion.div>
-      ))}
+      {/* Dynamic Background Background */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-purple-500/10 via-pink-500/5 to-orange-500/10 opacity-50 dark:opacity-20" />
+      <div className="absolute top-0 right-0 -z-10 w-96 h-96 bg-purple-500/20 blur-[100px] rounded-full animate-pulse" />
+      <div className="absolute bottom-0 left-0 -z-10 w-64 h-64 bg-pink-500/20 blur-[100px] rounded-full animate-pulse" />
 
-      {/* Prototype Creation Animation */}
+      {/* Floating Elements (Subtle) */}
       <motion.div
-        className="absolute top-8 right-8 w-24 h-24 "
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-10 right-10 opacity-20 hidden lg:block"
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <motion.path
-            d="M50,10 L90,50 L50,90 L10,50 Z"
-            fill="none"
-            stroke="#FFB5B5"
-            strokeWidth="2"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-          />
-          <motion.circle
-            cx="50"
-            cy="50"
-            r="5"
-            fill="#FF9999"
-            animate={{ scale: [1, 1.5, 1] }}
-            transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
-          />
+        <svg width="40" height="40" viewBox="0 0 40 40">
+          <circle cx="20" cy="20" r="18" stroke="currentColor" fill="none" strokeWidth="2" />
         </svg>
       </motion.div>
 
-      {/* Bottom right GIF - Hidden on mobile, visible on desktop */}
-      <motion.div
-        className="hidden lg:block absolute top-[190px] right-11 mr-8 w-34 h-64"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <Image
-          src="/bk3.gif"
-          alt="Animated decoration"
-          width={250}
-          height={250}
-          className="w-full h-full object-contain rounded-lg -rotate-12 mb-8"
-          unoptimized={true}
-        />
-      </motion.div>
-
-      <div className="max-w-2xl relative z-10">
-        <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight "
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          style={{ fontFamily: "Gamer", }}
+      <div className="max-w-3xl relative z-10">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 dark:bg-white/5 backdrop-blur-md border border-white/20 text-xs font-semibold mb-6 uppercase tracking-widest text-purple-600 dark:text-purple-400 font-inter"
         >
-          Innovator Blending  
-          
-          <span> Web Aesthetics</span> with
-          
-          Machine Intelligence
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
+          </span>
+          Available for new opportunities
+        </motion.div>
+
+        <motion.h1
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 font-outfit"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          Crafting <span className="text-gradient">Meaningful</span> Digital Experiences.
         </motion.h1>
 
         <motion.p
-          className="text-sm sm:text-base md:text-lg lg:text-lg text-gray-600 mt-2 sm:mt-3 md:mt-4"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
+          className="text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed font-inter"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
         >
-          Interactive Projects bringing ideas to life
+          Innovator blending web aesthetics with machine intelligence to bring bold ideas to life.
         </motion.p>
+
+        <motion.div
+          className="flex flex-wrap gap-4 mt-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+        >
+          <button className="px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-full font-bold transition-all shadow-lg shadow-purple-500/20 active:scale-95">
+            View My Projects
+          </button>
+          <button className="px-8 py-4 bg-white/80 dark:bg-white/5 hover:bg-white dark:hover:bg-white/10 text-foreground border border-white/20 backdrop-blur-md rounded-full font-bold transition-all active:scale-95">
+            Contact Me
+          </button>
+        </motion.div>
       </div>
+
+      {/* Hero Image / GIF Decoration */}
+      <motion.div
+        className="hidden lg:block absolute bottom-12 right-12 w-48 h-48"
+        initial={{ opacity: 0, scale: 0.8, rotate: 12 }}
+        animate={{ opacity: 1, scale: 1, rotate: -5 }}
+        transition={{ delay: 0.6, type: "spring", stiffness: 100 }}
+      >
+        <Image
+          src="/bk3.gif"
+          alt="Creative focus"
+          width={400}
+          height={400}
+          className="w-full h-full object-contain drop-shadow-2xl grayscale hover:grayscale-0 transition-all duration-500"
+          unoptimized
+        />
+      </motion.div>
     </motion.div>
   )
 }
