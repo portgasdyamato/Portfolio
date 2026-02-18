@@ -11,7 +11,7 @@ const educationJourney = [
     duration: "2022-2026",
     date: "Expected 2026",
     icon: GraduationCap,
-    color: "from-purple-500 to-indigo-600",
+    color: "from-purple-600 to-purple-800",
     gpa: "8.7 CGPA",
     description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
     achievements: ["UI UX Solvathon Winner", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"]
@@ -22,7 +22,7 @@ const educationJourney = [
     duration: "2021-2022",
     date: "July 2022",
     icon: Star,
-    color: "from-blue-500 to-cyan-500",
+    color: "from-slate-500 to-purple-600",
     gpa: "82% Marks",
     description: "Specialized in Computer Science, Physics, Chemistry, and Mathematics.",
     achievements: ["94% in Computer Science", "Club Leader", "Project Contributor"]
@@ -33,7 +33,7 @@ const educationJourney = [
     duration: "2018-2020",
     date: "March 2020",
     icon: BookOpen,
-    color: "from-pink-500 to-rose-500",
+    color: "from-purple-400 to-slate-600",
     gpa: "86% Marks",
     description: "Strong academic foundation with focus on science and early programming.",
     achievements: ["Top 10% Entrance", "Science Club Member", "Music Choir"]
