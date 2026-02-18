@@ -32,6 +32,20 @@ const softSkills = [
     color: "from-rose-500/10 to-transparent",
     delay: 0.3,
   },
+  {
+    icon: Target,
+    title: "Critical Thinking",
+    description: "Analyzing information objectively to make reasoned judgments and decisions.",
+    color: "from-cyan-500/10 to-transparent",
+    delay: 0.4,
+  },
+  {
+    icon: Zap,
+    title: "Conflict Management",
+    description: "Resolving disagreements constructively to maintain a harmonious team environment.",
+    color: "from-purple-500/10 to-transparent",
+    delay: 0.5,
+  },
 ]
 
 export default function DesignProcess() {
@@ -52,7 +66,7 @@ export default function DesignProcess() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {softSkills.map((skill, index) => {
             const Icon = skill.icon
             return (

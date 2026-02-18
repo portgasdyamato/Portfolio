@@ -294,7 +294,7 @@ export default function Projects() {
               onClick={() => setSelectedProject(projectsData.findIndex(p => p.title === project.title))}
               className="group cursor-pointer glass-card rounded-[2rem] overflow-hidden flex flex-col"
             >
-              <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] bg-gray-950">
+              <div className="relative aspect-[3/4] md:aspect-[16/10] overflow-hidden rounded-[2rem] bg-gray-950">
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
@@ -304,8 +304,8 @@ export default function Projects() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
                 
-                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                  <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
+                  <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500 flex-1">
                     <div className="flex flex-wrap gap-2 mb-3">
                       {project.technologies.slice(0, 2).map((tech) => (
                         <span key={tech} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider rounded-full">
@@ -313,11 +313,11 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase">{project.title}</h3>
+                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase leading-tight">{project.title}</h3>
                   </div>
                   <motion.div 
                     whileHover={{ scale: 1.1, rotate: 45 }}
-                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl mb-1"
+                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl shrink-0"
                   >
                     <ArrowUpRight className="text-black w-5 h-5" />
                   </motion.div>
