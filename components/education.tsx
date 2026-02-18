@@ -118,7 +118,7 @@ export default function Education() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-2xl z-[110] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 bg-black/80 backdrop-blur-2xl z-[150] flex items-center justify-center p-4 md:p-8"
             onClick={() => setSelected(null)}
           >
             <motion.div
@@ -129,7 +129,7 @@ export default function Education() {
               onClick={(e) => e.stopPropagation()}
             >
               <button 
-                className="absolute top-10 right-10 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors"
+                className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors z-[160]"
                 onClick={() => setSelected(null)}
               >
                 <X size={20} />

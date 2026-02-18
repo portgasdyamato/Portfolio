@@ -13,7 +13,7 @@ const contactOptions = [
   },
   {
     name: "LinkedIn",
-    value: "Sakshi Bhalavi",
+    value: "Sakshi Agrahari",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/sakshi-902777290/",
     color: "from-indigo-500/10 to-transparent"

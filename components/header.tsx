@@ -39,9 +39,9 @@ export default function Header() {
       initial={{ y: -100 }}
       animate={{ y: isVisible ? 0 : -100 }}
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-[90] w-[90%] max-w-5xl"
+      className="fixed top-6 left-0 right-0 z-[90] flex justify-center px-4"
     >
-      <div className="glass px-6 py-4 rounded-3xl flex justify-between items-center shadow-2xl shadow-purple-500/10">
+      <div className="glass px-6 py-4 rounded-3xl flex justify-between items-center shadow-2xl shadow-purple-500/10 w-full max-w-5xl">
         <motion.button
           onClick={() => scrollToSection("home")}
           className="text-xl font-bold font-outfit uppercase tracking-tighter"

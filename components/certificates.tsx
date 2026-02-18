@@ -12,6 +12,13 @@ const certificates = [
     certificateUrl: "https://www.linkedin.com/posts/sakshi-902777290_genaiacademy-certificateofcompletion-googlecloud-activity-7336733236309463040-xgyO",
   },
   {
+    title: "UX Design Professional",
+    issuer: "Google",
+    date: "2025",
+    color: "from-emerald-400 to-teal-600",
+    certificateUrl: "https://www.coursera.org/professional-certificates/google-ux-design",
+  },
+  {
     title: "Solutions Architecture",
     issuer: "AWS",
     date: "May 2025",
@@ -24,6 +31,20 @@ const certificates = [
     date: "May 2025",
     color: "from-indigo-400 to-indigo-600",
     certificateUrl: "https://www.credly.com/badges/35aa2436-4b24-4353-89eb-b206dbb92a09",
+  },
+  {
+    title: "Front-End Developer",
+    issuer: "Meta",
+    date: "2025",
+    color: "from-blue-600 to-blue-800",
+    certificateUrl: "https://www.coursera.org/professional-certificates/meta-front-end-developer",
+  },
+  {
+    title: "Postman API Fundamentals",
+    issuer: "Postman",
+    date: "2025",
+    color: "from-orange-500 to-red-600",
+    certificateUrl: "https://badgr.com/public/assertions/PostmanAPIStudentExpert",
   },
   {
     title: "Data Science",
@@ -60,7 +81,7 @@ export default function Certificates() {
         >
           <div>
             <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
-              Verified <span className="text-gradient-indigo">Credentials</span>
+              Professional <span className="text-gradient-indigo">Credentials</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl font-inter mt-4">
               A commitment to excellence and continuous professional development.

@@ -4,7 +4,7 @@ import CustomCursor from '@/components/custom-cursor'
 import PixelCharacter from '@/components/pixel-character'
 
 export const metadata: Metadata = {
-  title: 'Pippo Portfolio',
+  title: 'Sakshi Agrahari | Portfolio',
   description: 'This is a portfolio website showcasing my work and skills.',
   icons: {
     icon: '/hehe.gif',

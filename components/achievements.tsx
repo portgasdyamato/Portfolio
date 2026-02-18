@@ -1,37 +1,9 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Award, Trophy, Star, Medal, Coins } from "lucide-react"
+import { Award, Trophy, Star, Medal, Coins, Lightbulb, Zap } from "lucide-react"
 
 const achievements = [
-  {
-    icon: Trophy,
-    title: "GSSoc Campus Ambassador & Contributor",
-    description: "Organised the event and contributed in open source project.",
-    year: "2025",
-    color: "from-yellow-400 to-amber-600",
-  },
-  {
-    icon: Award,
-    title: "Gen AI Exchange",
-    description: "Empowering learners to explore and innovate using GoogleCloud's Gen AI tools.",
-    year: "2025",
-    color: "from-blue-400 to-indigo-600",
-  },
-  {
-    icon: Star,
-    title: "TechFest Winner",
-    description: "2nd runner up place in state level TechFest for Culinary website with AI chatbot.",
-    year: "2024",
-    color: "from-emerald-400 to-teal-600",
-  },
-  {
-    icon: Coins,
-    title: "SheFi 14 Scholar",
-    description: "Selected for US-based program empowering women in Web3 and blockchain.",
-    year: "2025",
-    color: "from-purple-400 to-pink-600",
-  },
   {
     icon: Trophy,
     title: "UI UX Solvathon Winner",
@@ -46,6 +18,48 @@ const achievements = [
     year: "2025",
     color: "from-red-400 to-rose-600",
   },
+  {
+    icon: Coins,
+    title: "SheFi 14 Scholar",
+    description: "Selected for US-based program empowering women in Web3 and blockchain.",
+    year: "2025",
+    color: "from-purple-400 to-pink-600",
+  },
+  {
+    icon: Trophy,
+    title: "GSSoc Ambassador & Contributor",
+    description: "Organised events and contributed significantly to open source projects.",
+    year: "2025",
+    color: "from-yellow-400 to-amber-600",
+  },
+  {
+    icon: Award,
+    title: "Gen AI Exchange",
+    description: "Innovating using GoogleCloud's Gen AI tools in a practical program.",
+    year: "2025",
+    color: "from-blue-400 to-indigo-600",
+  },
+  {
+    icon: Star,
+    title: "TechFest Runner-up",
+    description: "2nd runner up in state level TechFest for AI-powered Culinary project.",
+    year: "2024",
+    color: "from-emerald-400 to-teal-600",
+  },
+  {
+    icon: Lightbulb,
+    title: "Dell Code Camp Winner",
+    description: "Recognized for innovative problem-solving and coding excellence.",
+    year: "2018",
+    color: "from-blue-400 to-blue-600",
+  },
+  {
+    icon: Zap,
+    title: "Innovation Project Lead",
+    description: "Led development of multiple high-impact technical initiatives.",
+    year: "2024",
+    color: "from-orange-400 to-red-600",
+  }
 ]
 
 export default function Achievements() {
@@ -59,7 +73,7 @@ export default function Achievements() {
           className="mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
-            Featured <span className="text-gradient-indigo">Recognition</span>
+            Achievements <span className="text-gradient-indigo">& Awards</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl font-inter mt-4">
             A track record of excellence in design, innovation, and leadership.
