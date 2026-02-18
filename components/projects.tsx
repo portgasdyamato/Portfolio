@@ -363,15 +363,15 @@ export default function Projects() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     {projectsData[selectedProject].liveUrl && (
                       <a
                         href={projectsData[selectedProject].liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 px-8 py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-2xl font-bold transition-all flex items-center justify-center gap-2"
+                        className="flex-1 px-5 py-3 md:px-8 md:py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base"
                       >
-                        <ExternalLink size={20} /> Live Demo
+                        <ExternalLink size={18} /> Live Demo
                       </a>
                     )}
                     {projectsData[selectedProject].githubUrl && (
@@ -379,9 +379,9 @@ export default function Projects() {
                         href={projectsData[selectedProject].githubUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 px-8 py-4 glass hover:bg-white/10 rounded-2xl font-bold transition-all flex items-center justify-center gap-2"
+                        className="flex-1 px-5 py-3 md:px-8 md:py-4 glass hover:bg-white/10 rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base"
                       >
-                        <Github size={20} /> Repository
+                        <Github size={18} /> Repository
                       </a>
                     )}
                   </div>
