@@ -44,8 +44,8 @@ export default function Education() {
   const [selected, setSelected] = useState<number | null>(null)
 
   return (
-    <div className="py-20 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto">
+    <div className="py-20">
+      <div className="w-full">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

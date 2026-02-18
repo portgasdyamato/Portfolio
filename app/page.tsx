@@ -50,7 +50,7 @@ export default function Home() {
         </section>
 
         {/* Image and Contact - Original Grid Layout */}
-        <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr] ml-0 lg:ml-8">
+        <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr]">
           <div className="order-1">
             <ImageSection />
           </div>

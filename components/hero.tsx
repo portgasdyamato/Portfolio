@@ -16,7 +16,7 @@ export default function Hero() {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="col-span-1 md:col-span-2 ml-8 mr-8 bg-[#FFE4E4] p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden mt-2 sm:mt-3 md:mt-5"
+      className="col-span-1 md:col-span-2 bg-[#FFE4E4] p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden mt-2 sm:mt-3 md:mt-5"
     >
       {/* Animated Design Elements */}
       {designElements.map((element, index) => (

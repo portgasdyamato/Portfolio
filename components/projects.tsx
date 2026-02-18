@@ -243,7 +243,7 @@ export default function Projects() {
     : projectsData.filter((project) => project.status === filter)
 
   return (
-    <div className="py-12 px-4 md:px-8">
+    <div className="py-12">
       {/* Header */}
       <div className="mb-12">
         <motion.div
