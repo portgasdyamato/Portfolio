@@ -51,7 +51,7 @@ export default function SkillsSection() {
           >
             <div className="flex items-center justify-between mb-1 sm:mb-2">
               <span
-                className="text-xs sm:text-sm font-bold text-gray-700"
+                className="text-xs sm:text-sm  text-gray-700"
                 style={{
                  
                   imageRendering: "pixelated",
@@ -60,7 +60,7 @@ export default function SkillsSection() {
                 {skill.icon} {skill.name}
               </span>
               <span
-                className="text-xs text-pink-600 font-bold"
+                className="text-xs text-pink-600 "
                 style={{
                   
                   imageRendering: "pixelated",
