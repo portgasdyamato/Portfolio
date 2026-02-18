@@ -143,7 +143,7 @@ export default function Education() {
                       return <Icon className="w-10 h-10 text-white" />
                     })()}
                   </div>
-                  <h2 className="text-5xl font-bold font-outfit mb-6 uppercase leading-[1.1]">
+                  <h2 className="text-3xl md:text-5xl font-bold font-outfit mb-6 uppercase leading-[1.1]">
                     {educationJourney[selected].level}
                   </h2>
                   <div className="flex flex-col gap-4">
