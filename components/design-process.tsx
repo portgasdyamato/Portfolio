@@ -91,10 +91,7 @@ export default function DesignProcess() {
                 className="group relative p-8 glass-card rounded-[2rem] overflow-hidden"
               >
                 {/* Background Gradient on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
-                
-                {/* Side Accent Line */}
-                <div className={`absolute left-0 top-0 bottom-0 w-1 ${skill.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-50 transition-opacity duration-500`} />
 
                 <div className="relative z-10">
                   <div className={`w-14 h-14 bg-white dark:bg-white/5 rounded-2xl flex items-center justify-center shadow-lg mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>
