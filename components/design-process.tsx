@@ -53,9 +53,9 @@ const softSkills = [
     icon: Zap,
     title: "Conflict Management",
     description: "Resolving disagreements constructively to maintain a harmonious team environment.",
-    color: "bg-rose-500",
-    gradient: "from-rose-500/20 to-transparent",
-    hoverText: "group-hover:text-rose-600 dark:group-hover:text-rose-400",
+    color: "bg-purple-500",
+    gradient: "from-purple-500/20 to-transparent",
+    hoverText: "group-hover:text-purple-600 dark:group-hover:text-purple-400",
     delay: 0.5,
   },
 ]
@@ -91,7 +91,8 @@ export default function DesignProcess() {
                 className="group relative p-8 glass-card rounded-[2rem] overflow-hidden"
               >
                 {/* Background Gradient on Hover */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-50 transition-opacity duration-500`} />
+                {/* Background Gradient on Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
                 <div className="relative z-10">
                   <div className={`w-14 h-14 bg-white dark:bg-white/5 rounded-2xl flex items-center justify-center shadow-lg mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500`}>

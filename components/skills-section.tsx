@@ -60,7 +60,7 @@ export default function SkillsSection() {
                 {skill.icon} {skill.name}
               </span>
               <span
-                className="text-xs text-rose-600 "
+                className="text-xs text-pink-600 "
                 style={{
                   
                   imageRendering: "pixelated",
@@ -72,7 +72,7 @@ export default function SkillsSection() {
             
             <div className="w-full bg-pink-100 rounded-full h-2 sm:h-3 shadow-inner-md">
               <motion.div
-                className="h-2 sm:h-3 rounded-full shadow-sm bg-gradient-to-br from-rose-500 via-rose-400 to-pink-500"
+                className="h-2 sm:h-3 rounded-full shadow-sm bg-gradient-to-br from-[#ffcece] via-[#ffb3b3] to-[#fccfcf]"
                 style={{
                   boxShadow: "0 1px 3px rgba(0,0,0,0.1), 0 1px 0 rgba(255,255,255,0.6)",
                   width: `${skill.level}%`,

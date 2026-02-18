@@ -268,8 +268,8 @@ export default function Projects() {
                 onClick={() => setFilter(category)}
                 className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all ${
                   filter === category
-                    ? "bg-rose-600 text-white shadow-lg shadow-rose-500/20"
-                    : "hover:bg-rose-500/10 text-muted-foreground"
+                    ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20"
+                    : "hover:bg-purple-500/10 text-muted-foreground"
                 }`}
               >
                 {category}
@@ -369,7 +369,7 @@ export default function Projects() {
                         href={projectsData[selectedProject].liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 px-5 py-3 md:px-8 md:py-4 bg-rose-600 hover:bg-rose-700 text-white rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base"
+                        className="flex-1 px-5 py-3 md:px-8 md:py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base"
                       >
                         <ExternalLink size={18} /> Live Demo
                       </a>
@@ -388,7 +388,7 @@ export default function Projects() {
                 </div>
 
                 <div className="flex flex-col">
-                  <span className="text-rose-600 dark:text-rose-400 font-bold tracking-widest uppercase text-xs mb-4">
+                  <span className="text-purple-600 dark:text-purple-400 font-bold tracking-widest uppercase text-xs mb-4">
                     {projectsData[selectedProject].status} • {projectsData[selectedProject].date}
                   </span>
                   <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6 uppercase">
@@ -415,7 +415,7 @@ export default function Projects() {
                        <div className="grid grid-cols-1 gap-3">
                          {projectsData[selectedProject].features.slice(0, 3).map(feature => (
                            <div key={feature} className="flex items-center gap-3 p-4 glass rounded-2xl">
-                             <div className="w-2 h-2 rounded-full bg-rose-500" />
+                             <div className="w-2 h-2 rounded-full bg-purple-500" />
                              <span className="text-sm font-medium">{feature}</span>
                            </div>
                          ))}
