@@ -3,18 +3,18 @@
 import { motion } from "framer-motion";
 
 const skills = [
-  { name: "React", level: 88, icon: "⚛️" },
-  { name: "Next.js", level: 70, icon: "▲" },
-  { name: "TypeScript", level: 50, icon: "📝" },
-  { name: "Tailwind", level: 91, icon: "🎨" },
-  { name: "Node.js", level: 80, icon: "🟢" },
-  { name: "Python", level: 75, icon: "🐍" },
-  { name: "Three.js", level: 70, icon: "🎲" },
-  { name: "ML/AI", level: 75, icon: "🤖" },
-  { name: "PostgreSQL", level: 85, icon: "🐘" },
-  { name: "Figma", level: 94, icon: "🎯" },
-  { name: "Git", level: 85, icon: "📚" },
-  { name: "Docker", level: 75, icon: "🐳" }
+  { name: "React", level: 88, icon: "ΓÜ¢∩╕Å" },
+  { name: "Next.js", level: 70, icon: "Γû▓" },
+  { name: "TypeScript", level: 50, icon: "≡ƒô¥" },
+  { name: "Tailwind", level: 91, icon: "≡ƒÄ¿" },
+  { name: "Node.js", level: 80, icon: "≡ƒƒó" },
+  { name: "Python", level: 75, icon: "≡ƒÉì" },
+  { name: "Three.js", level: 70, icon: "≡ƒÄ▓" },
+  { name: "ML/AI", level: 75, icon: "≡ƒñû" },
+  { name: "PostgreSQL", level: 85, icon: "≡ƒÉÿ" },
+  { name: "Figma", level: 94, icon: "≡ƒÄ»" },
+  { name: "Git", level: 85, icon: "≡ƒôÜ" },
+  { name: "Docker", level: 75, icon: "≡ƒÉ│" }
 ];
 
 export default function SkillsSection() {
@@ -30,7 +30,7 @@ export default function SkillsSection() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        🎮 Skills 🎮
+        ≡ƒÄ« Skills ≡ƒÄ«
       </motion.h3>
 
       <div 

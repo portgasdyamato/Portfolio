@@ -5,71 +5,72 @@ import Projects from "@/components/projects"
 import Contact from "@/components/contact"
 import SocialLinks from "@/components/social-links"
 import DesignProcess from "@/components/design-process"
-
 import Achievements from "@/components/achievements"
 import Certificates from "@/components/certificates"
 import Education from "@/components/education"
-import ImageSection from "@/components/image-section"
-import GrowWithMeHeading from "@/components/GrowWithMeHeading"
-
-import PixelCharacter from "@/components/pixel-character"
+import Skills from "@/components/skills"
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#FFF1F1]" id="home">
+    <div className="min-h-screen bg-background selection:bg-purple-500/30 overflow-x-hidden" id="home">
       <Header />
-      <main className="container mx-auto px-2 sm:px-4 py-2 sm:py-4 space-y-2 sm:space-y-4 pt-16 sm:pt-20">
-        {/* Hero Section */}
-        <div className="grid gap-2 sm:gap-4 grid-cols-1 md:grid-cols-3">
+      
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 space-y-24 md:space-y-32 pt-28 md:pt-40">
+        
+        {/* Bento Hero Section */}
+        <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Hero />
           <Profile />
-        </div>
+        </section>
 
-        {/* Projects */}
-        <div id="projects">
+        {/* Featured Projects */}
+        <section id="projects" className="scroll-mt-32">
           <Projects />
-        </div>
+        </section>
 
-        {/* Achievements */}
-        <div id="about">
+        {/* Achievements Section */}
+        <section id="about" className="scroll-mt-32">
           <Achievements />
-        </div>
+        </section>
 
-        {/* Education - Full Width */}
-        <Education />
+        {/* Education Journey */}
+        <section className="scroll-mt-32">
+          <Education />
+        </section>
 
-        {/* Certificates */}
-        <Certificates />
+        {/* Certificates & Credentials */}
+        <section className="scroll-mt-32">
+          <Certificates />
+        </section>
 
-        {/* Design Process */}
-        <div className="mt-10 mb-14">
+        {/* Soft Skills & Design Process */}
+        <section className="scroll-mt-32">
           <DesignProcess />
-        </div>
-        
+        </section>
 
-        {/* Skills - Full Width */}
+        {/* Technical Skills */}
+        <section className="scroll-mt-32">
+          <Skills />
+        </section>
 
-        {/* Image and Contact - Responsive Layout */}
-        <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr] ml-0 lg:ml-8">
-          <div className="order-1">
-            <ImageSection />
-          </div>
-
-          <div className="order-3 lg:order-2 hidden md:flex justify-center ml-0 lg:ml-24 mb-4 sm:mb-8 md:mb-12 lg:mb-20">
-            <GrowWithMeHeading />
-          </div>
-          
-          <div id="contact" className="order-2 lg:order-3 w-full lg:w-2/3 ml-0 lg:ml-40 mr-0 lg:mr-8 mb-4 sm:mb-6 lg:mb-8">
+        {/* Contact & Socials */}
+        <section id="contact" className="scroll-mt-32 pb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <Contact />
+            <div className="flex flex-col gap-12">
+               <SocialLinks />
+            </div>
           </div>
-        </div>
-
-        {/* Social Links */}
-        <SocialLinks />
+        </section>
+        
       </main>
-      
-      {/* Floating Pixel Character - Visible on all devices */}
-      <PixelCharacter />
+
+      {/* Footer Decoration */}
+      <footer className="py-12 text-center border-t border-border/50">
+        <p className="text-sm font-bold font-outfit text-muted-foreground uppercase tracking-widest">
+          ┬⌐ 2026 SAKSHI AGRAHARI <span className="mx-2 opacity-30">ΓÇó</span> BUILT FOR IMPACT
+        </p>
+      </footer>
     </div>
   )
 }
