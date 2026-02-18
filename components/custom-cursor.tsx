@@ -8,8 +8,6 @@ export default function CustomCursor() {
   
   const cursorX = useSpring(0, { damping: 20, stiffness: 200 })
   const cursorY = useSpring(0, { damping: 20, stiffness: 200 })
-  const dotX = useSpring(0, { damping: 10, stiffness: 400 })
-  const dotY = useSpring(0, { damping: 10, stiffness: 400 })
   
   const [isHovering, setIsHovering] = useState(false)
 
@@ -19,8 +17,6 @@ export default function CustomCursor() {
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX - 16)
       cursorY.set(e.clientY - 16)
-      dotX.set(e.clientX - 2)
-      dotY.set(e.clientY - 2)
     }
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -43,28 +39,19 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", moveCursor)
       window.removeEventListener("mouseover", handleMouseOver)
     }
-  }, [cursorX, cursorY, dotX, dotY])
+  }, [cursorX, cursorY])
 
   if (!isMounted) return null
 
   return (
-    <>
-      <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-purple-500/50 pointer-events-none z-[9999] hidden md:block"
-        style={{
-          x: cursorX,
-          y: cursorY,
-          scale: isHovering ? 2.5 : 1,
-          backgroundColor: isHovering ? "rgba(168, 85, 247, 0.1)" : "transparent",
-        }}
-      />
-      <motion.div
-        className="fixed top-0 left-0 w-1 h-1 bg-purple-500 rounded-full pointer-events-none z-[9999] hidden md:block"
-        style={{
-          x: dotX,
-          y: dotY,
-        }}
-      />
-    </>
+    <motion.div
+      className="fixed top-0 left-0 w-8 h-8 rounded-full border border-purple-500/50 pointer-events-none z-[9999] hidden md:block"
+      style={{
+        x: cursorX,
+        y: cursorY,
+        scale: isHovering ? 2.5 : 1,
+        backgroundColor: isHovering ? "rgba(168, 85, 247, 0.1)" : "transparent",
+      }}
+    />
   )
 }
