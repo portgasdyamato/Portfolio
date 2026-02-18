@@ -222,7 +222,7 @@ export default function Header() {
                   🎮 Easter Eggs
                 </motion.h2>
                 <motion.div 
-                  className="w-16 h-1 bg-gradient-to-r from-pink-400 to-purple-500 mx-auto rounded-full"
+                  className="w-16 h-1 bg-gradient-to-r from-rose-400 to-rose-500 mx-auto rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: 64 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
@@ -272,8 +272,8 @@ export default function Header() {
                     "Every project includes a clickable live demo and a Git Repository button to view the code.",
                     "Certifications are fully linked to their respective achievement pages."
                   ],
-                  color: "from-purple-100 to-purple-50",
-                  borderColor: "border-purple-200"
+                  color: "from-rose-100 to-rose-50",
+                  borderColor: "border-rose-200"
                 },
                 {
                   icon: "🔗",
@@ -398,7 +398,7 @@ export default function Header() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.2 }}
-                  className="bg-gradient-to-r from-pink-100 via-purple-50 to-pink-100 p-4 rounded-xl border border-pink-200 text-center mt-2"
+                  className="bg-gradient-to-r from-pink-100 via-rose-50 to-pink-100 p-4 rounded-xl border border-pink-200 text-center mt-2"
                   whileHover={{ scale: 1.02 }}
                 >
                   <motion.p 
