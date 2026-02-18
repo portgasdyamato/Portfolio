@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FileText, CheckCircle, ExternalLink, ShieldCheck } from "lucide-react"
+import { ExternalLink, ShieldCheck, CheckCircle } from "lucide-react"
 
 const certificates = [
   {
@@ -12,14 +12,7 @@ const certificates = [
     certificateUrl: "https://www.linkedin.com/posts/sakshi-902777290_genaiacademy-certificateofcompletion-googlecloud-activity-7336733236309463040-xgyO",
   },
   {
-    title: "UX Design Professional",
-    issuer: "Google",
-    date: "2025",
-    color: "from-emerald-400 to-teal-600",
-    certificateUrl: "https://www.coursera.org/professional-certificates/google-ux-design",
-  },
-  {
-    title: "Solutions Architecture",
+    title: "AWS Solutions Architecture",
     issuer: "AWS",
     date: "May 2025",
     color: "from-orange-400 to-orange-600",
@@ -33,39 +26,25 @@ const certificates = [
     certificateUrl: "https://www.credly.com/badges/35aa2436-4b24-4353-89eb-b206dbb92a09",
   },
   {
-    title: "Front-End Developer",
-    issuer: "Meta",
-    date: "2025",
-    color: "from-blue-600 to-blue-800",
-    certificateUrl: "https://www.coursera.org/professional-certificates/meta-front-end-developer",
-  },
-  {
-    title: "Postman API Fundamentals",
-    issuer: "Postman",
-    date: "2025",
-    color: "from-orange-500 to-red-600",
-    certificateUrl: "https://badgr.com/public/assertions/PostmanAPIStudentExpert",
-  },
-  {
-    title: "Data Science",
+    title: "Data Science Intro",
     issuer: "Cisco",
     date: "May 2025",
     color: "from-cyan-400 to-cyan-600",
     certificateUrl: "https://www.credly.com/badges/9d346f5d-0765-4dfb-acc2-3406c53d6b60/linked_in_profile",
   },
   {
-    title: "Azure AI Fundamentals",
-    issuer: "Microsoft",
-    date: "2025",
-    color: "from-sky-400 to-sky-600",
-    certificateUrl: "https://learn.microsoft.com/api/achievements/share/en-us/SakshiAgrahari-2382/9YX9KQ2U",
+    title: "Developer Virtual Internship",
+    issuer: "Accenture",
+    date: "May 2025",
+    color: "from-yellow-400 to-orange-500",
+    certificateUrl: "https://www.linkedin.com/posts/sakshi-902777290_forage-certificate-activity-7329145928525762561-kepT",
   },
   {
-    title: "Enterprise Design Thinking",
-    issuer: "IBM",
-    date: "2025",
-    color: "from-blue-600 to-blue-800",
-    certificateUrl: "",
+    title: "Azure AI Fundamentals",
+    issuer: "Microsoft",
+    date: "May 2025",
+    color: "from-sky-400 to-sky-600",
+    certificateUrl: "https://learn.microsoft.com/api/achievements/share/en-us/SakshiAgrahari-2382/9YX9KQ2U",
   },
 ]
 
