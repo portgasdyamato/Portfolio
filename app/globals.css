@@ -119,13 +119,17 @@
   }
 }
 
-/* Custom Text Gradients */
+/* Custom Text Colors (replacing gradients) */
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-pink-600 to-orange-600 dark:from-purple-400 dark:via-pink-400 dark:to-orange-400;
+  color: #e11d48;
 }
 
 .text-gradient-indigo {
-  @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 dark:from-indigo-400 dark:via-purple-400 dark:to-pink-400;
+  color: #7c3aed;
+}
+
+.gradient-text {
+  color: #e11d48;
 }
 
 /* Premium Animations */
