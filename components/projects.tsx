@@ -11,6 +11,7 @@ const wel = "/wel.png"
 const voxa = "/voxa.png"
 const wassup = "/wassup.png"
 const dreamin = "/dreamin.png"
+const muse = "/muse.jpg"
 const pocketfund = "/pocket-fund.png"
 const yonder = "/yonder.png"
 
@@ -39,28 +40,27 @@ const projectsData = [
     status: "Completed",
   },
   {
-    title: "Portfolio Website",
-    duration: "June 2025 - July 2025",
-    date: "June 2025",
-    image: prt,
-    color: "#FF6B9D",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
-    description: "Pixel-game inspired interactive portfolio with gamified UI, animations, and responsive layouts to create a memorable personal brand experience.",
+    title: "VoXa",
+    duration: "May 2025 - June 2025",
+    date: "May 2025",
+    image: voxa,
+    color: "#6B5BFF",
+    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Web Speech API"],
+    description: "Hands-free productivity app allowing voice-powered task creation, tracking, and analytics.",
     features: [
-      "Pixel Character Interaction",
-      "Interactive Education Timeline",
-      "Responsive Design",
-      "Smooth Animations",
-      "Game-Inspired Aesthetic"
+      "Voice Commands using natural language",
+      "Analytics with interactive charts",
+      "Glassmorphism design",
+      "Real-Time Updates"
     ],
     achievements: [
-      "Designed gamified pixel character interactions",
-      "Built animated timelines with Framer Motion",
-      "Deployed on Vercel with 99.9% uptime"
+      "Developed voice commands using Web Speech API",
+      "Built scalable backend for 10,000+ tasks",
+      "Added analytics dashboard"
     ],
-    liveUrl: "https://pippoportfolio.vercel.app/",
-    githubUrl: "https://github.com/portgasdyamato/Portfolio",
-    status: "Completed",
+    liveUrl: "https://voxa-taupe.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato/Voxa",
+    status: "Completed"
   },
   {
     title: "Pocket Fund",
@@ -86,27 +86,72 @@ const projectsData = [
     status: "Completed",
   },
   {
-    title: "VoXa",
-    duration: "May 2025 - June 2025",
-    date: "May 2025",
-    image: voxa,
-    color: "#6B5BFF",
-    technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Web Speech API"],
-    description: "Hands-free productivity app allowing voice-powered task creation, tracking, and analytics.",
+    title: "MuseMood - AI Mood Tracker",
+    duration: "Jul 2024 - Aug 2024",
+    date: "Aug 2024",
+    image: muse,
+    color: "#A78BFA",
+    technologies: ["React", "Tailwind CSS", "Framer Motion", "PostgreSQL", "AI Integration"],
+    description: "A cozy vintage diary-inspired journaling app that helps users track moods and reflect with guided AI prompts.",
     features: [
-      "Voice Commands using natural language",
-      "Analytics with interactive charts",
-      "Glassmorphism design",
-      "Real-Time Updates"
+      "Mood-based Journaling with Minimal UI Bubbles",
+      "AI Integration for Smart Reflections",
+      "Emotion Tracking with Timeline Visualization",
+      "Cozy Vintage-Themed UI"
     ],
     achievements: [
-      "Developed voice commands using Web Speech API",
-      "Built scalable backend for 10,000+ tasks",
-      "Added analytics dashboard"
+      "Seamless AI-powered writing suggestions",
+      "Unique cozy-vintage UI theme",
+      "Interactive mood tracking dashboard"
     ],
-    liveUrl: "https://voxa-taupe.vercel.app/",
-    githubUrl: "https://github.com/portgasdyamato/Voxa",
+    githubUrl: "https://github.com/portgasdyamato/MuseMood",
     status: "Completed"
+  },
+  {
+    title: "Wassup - AI Messaging Design",
+    duration: "Aug 2024 - Sep 2024",
+    date: "Sep 2024",
+    image: wassup,
+    color: "#4A90E2",
+    technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
+    description: "A futuristic collaboration platform design focusing on AI-powered task assistance and glassmorphism aesthetic.",
+    features: [
+      "AI-powered Smart Suggestions",
+      "Glassmorphism UI Minimal Dark Theme",
+      "Interactive Chat and Call Interfaces",
+      "Scalable Design System"
+    ],
+    achievements: [
+      "Futuristic yet intuitive UI",
+      "Improved information hierarchy",
+      "Delivered high-fidelity prototypes"
+    ],
+    liveUrl: "https://www.figma.com/proto/gpXHXFEe2v9lKdOlo8usDN/Wassup-web",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Completed"
+  },
+  {
+    title: "Portfolio Website",
+    duration: "June 2025 - July 2025",
+    date: "June 2025",
+    image: prt,
+    color: "#FF6B9D",
+    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion"],
+    description: "Pixel-game inspired interactive portfolio with gamified UI, animations, and responsive layouts.",
+    features: [
+      "Pixel Character Interaction",
+      "Interactive Education Timeline",
+      "Responsive Design",
+      "Game-Inspired Aesthetic"
+    ],
+    achievements: [
+      "Designed gamified pixel character interactions",
+      "Built animated timelines with Framer Motion",
+      "Deployed on Vercel"
+    ],
+    liveUrl: "https://pippoportfolio.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato/Portfolio",
+    status: "Completed",
   },
   {
     title: "Vinyl Records",
@@ -115,11 +160,11 @@ const projectsData = [
     image: vyn,
     color: "#87CEEB",
     technologies: ["React", "Vite", "Tailwind CSS", "YouTube API"],
-    description: "A cross-platform vintage music player with YouTube API integration that allows users to discover and hear melodies in classic records.",
+    description: "A vintage music player with YouTube API integration for an ad-free music discovery experience.",
     features: [
       "Spinning Record UI",
       "Ad-Free Playback via YouTube",
-      "Supports Playlists + Single Tracks",
+      "Support for Playlists",
       "Queue List Management"
     ],
     achievements: ["Deployed on Vercel", "Positive User Feedback"],
@@ -128,13 +173,13 @@ const projectsData = [
     status: "Completed",
   },
   {
-    title: "Wellness Tracker App Design",
+    title: "Wellness Tracker Design",
     duration: "Nov 2024 - Nov 2024",
     date: "Nov 2024",
     image: wel,
     color: "#FFB347",
     technologies: ["Figma", "UI/UX Design", "Prototyping"],
-    description: "A comprehensive UI/UX design for a wellness tracking mobile application featuring modern design principles and intuitive user flow.",
+    description: "A comprehensive UI/UX design for a wellness tracking mobile application.",
     features: [
       "Clean Dashboard with Progress Tracking",
       "Task Management Interface",
@@ -153,7 +198,7 @@ const projectsData = [
     image: dreamin,
     color: "#FFD1D1",
     technologies: ["React Native", "AI/ML", "Firebase"],
-    description: "An AI-powered mood journaling app that translates your daily thoughts into visual art and data-driven insights.",
+    description: "An AI-powered mood journaling app that translates thoughts into visual art.",
     features: [
       "AI Art Generation from Journal Entries",
       "Mood Tracking Dashboard",
@@ -208,7 +253,7 @@ const projectsData = [
     image: "/placeholder.svg",
     color: "#96CEB4",
     technologies: ["Python", "Transformers", "NLP"],
-    description: "An AI system that can extract and summarize key legal information from complex legal documents using advanced NLP techniques.",
+    description: "An AI system that extract and summarize key legal information from complex legal documents.",
     features: [
       "Secure Document Handling",
       "AI-Powered Summarization",
@@ -218,6 +263,25 @@ const projectsData = [
     liveUrl: "",
     githubUrl: "https://github.com/portgasdyamato",
     status: "Ongoing",
+  },
+  {
+    title: "Task Management App",
+    duration: "May 2023 - Aug 2023",
+    date: "Aug 2023",
+    image: "/placeholder.svg",
+    color: "#87CEEB",
+    technologies: ["React Native", "Firebase", "Redux"],
+    description: "A cross-platform mobile app for team collaboration and task management with real-time updates.",
+    features: [
+      "Real-time Collaboration",
+      "Task Assignment & Tracking",
+      "Team Chat Integration",
+      "Offline Mode Support"
+    ],
+    achievements: ["5K+ Downloads", "4.8 Star Rating"],
+    liveUrl: "https://github.com/portgasdyamato",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Completed",
   },
 ]
 

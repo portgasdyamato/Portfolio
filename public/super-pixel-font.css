@@ -1,14 +1,10 @@
+/* Existing fonts in /fonts folder: 
+   Alo.ttf, CuteBianca.otf, Gamer.otf, PixelGame.otf, Qax.ttf, SuperPixel.ttf, YangBagus.ttf
+*/
+
 @font-face {
   font-family: 'Super Pixel';
   src: url('/fonts/SuperPixel.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Gome Pixel';
-  src: url('/fonts/GomePixel.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -24,65 +20,40 @@
 
 @font-face {
   font-family: 'Bianca';
-  src: url('/fonts/CuteBianca.otf') format('truetype');
+  src: url('/fonts/CuteBianca.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
-    font-family: 'Forest';
-    src: url('/fonts/CuteForest.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Pixel';
-    src: url('/fonts/PixelGame.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Stay';
-    src: url('/fonts/StayPixel.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'hercules';
-    src: url('/fonts/Hercules.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Gamer';
-    src: url('/fonts/Gamer.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'Rig';
-    src: url('/fonts/Rig.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'alo';
-    src: url('/fonts/Alo.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-  @font-face {
-    font-family: 'qax';
-    src: url('/fonts/Qax.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-/* Add more @font-face blocks here for any additional fonts in your fonts folder */
+  font-family: 'Pixel';
+  src: url('/fonts/PixelGame.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gamer';
+  src: url('/fonts/Gamer.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'alo';
+  src: url('/fonts/Alo.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'qax';
+  src: url('/fonts/Qax.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

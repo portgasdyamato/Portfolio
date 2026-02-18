@@ -65,17 +65,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Social Links (acting as the main Pink Footer) */}
+        {/* Unified Pink Footer */}
         <div className="pb-20">
           <SocialLinks />
-          <p className="text-[10px] font-bold font-outfit text-muted-foreground uppercase tracking-widest text-center mt-8 opacity-50">
-            © 2026 SAKSHI AGRAHARI • BUILT FOR IMPACT
-          </p>
         </div>
         
       </main>
 
-      {/* Floating Pixel Character - Visible on all devices */}
+      {/* Floating Pixel Character */}
       <PixelCharacter />
     </div>
   )
