@@ -19,13 +19,13 @@ export default function GrowWithMeHeading() {
       >
         <h2
           className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl font-extrabold tracking-widest uppercase whitespace-nowrap"
-          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" , fontFamily:"Gamer" }}
+          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
         grow with me   grow with me
         </h2>
         <h2
           className="text-3xl sm:text-4xl md:text-6xl lg:text-8xl mt-4 sm:mt-6 md:mt-8 font-extrabold \ tracking-widest uppercase whitespace-nowrap"
-          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" , fontFamily:"Gamer" }}
+          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
         grow with me   grow with me
         </h2>

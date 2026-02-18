@@ -281,7 +281,6 @@ export default function Contact() {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8 }}
             className="text-xl sm:text-2xl md:text-3xl font-bold gradient-text mb-2"
-            style={{ fontFamily: "Gamer", }}
           >
             Let's Connect and Create Magic Together!
           </motion.h2>
@@ -386,7 +385,7 @@ export default function Contact() {
                     </motion.div>
                   </motion.div>
                   <div className="text-left">
-                    <h3 className="font-bold text-sm sm:text-base md:text-lg text-gray-800" style={{ fontFamily: "Gamer", }}>{social.name}</h3>
+                    <h3 className="font-bold text-sm sm:text-base md:text-lg text-gray-800">{social.name}</h3>
                     <p className="text-xs sm:text-sm text-gray-600 mb-1" style={{ fontFamily: "qax", }}>{social.description}</p>
                     <p className="text-xs text-gray-500 font-mono bg-white/30 px-2 py-1 rounded-full inline-block">
                       {social.handle}

@@ -22,10 +22,6 @@ export default function SkillsSection() {
     <motion.div className="w-full h-full flex flex-col">
       <motion.h3
         className="text-xl sm:text-2xl md:text-3xl font-semibold mb-1 text-center text-black"
-        style={{
-          fontFamily: "Gamer, sans-serif", 
-          imageRendering: "pixelated",
-        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}

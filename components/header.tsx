@@ -96,7 +96,7 @@ export default function Header() {
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.id)}
-                className="text-md sm:text-md hover:text-gray-600 transition-colors" style={{ fontFamily: "Gamer", }}
+                className="text-md sm:text-md hover:text-gray-600 transition-colors font-semibold tracking-widest"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -170,8 +170,7 @@ export default function Header() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 + 0.1 }}
-                      className="block w-full text-left py-3 px-4 text-base font-medium text-gray-800 hover:bg-white/50 rounded-lg transition-colors"
-                      style={{ fontFamily: "Gamer" }}
+                      className="block w-full text-left py-3 px-4 text-base font-semibold tracking-widest text-gray-800 hover:bg-white/50 rounded-lg transition-colors"
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                     >
@@ -215,8 +214,7 @@ export default function Header() {
               `}</style>
               <div className="relative mb-6">
                 <motion.h2 
-                  className="text-2xl font-bold text-gray-800 text-center mb-2" 
-                  style={{ fontFamily: "Gamer" }}
+                  className="text-2xl font-bold text-gray-800 text-center mb-2"
                   initial={{ scale: 0.8 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
@@ -345,10 +343,9 @@ export default function Header() {
                       >
                         {section.icon}
                       </motion.span>
-                      <motion.h3 
+                      <motion.h3
                         className="font-bold text-gray-800 text-sm group-hover:text-gray-900 transition-colors"
                         whileHover={{ scale: 1.05 }}
-                        style={{ fontFamily: "Gamer" }}
                       >
                         {section.title}
                       </motion.h3>
