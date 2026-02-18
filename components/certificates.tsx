@@ -124,7 +124,7 @@ export default function Certificates() {
               
               <div className="flex items-center gap-2 text-muted-foreground text-sm font-inter mb-6">
                 <span className="font-bold text-foreground/80">{cert.issuer}</span>
-                <span className="opacity-30">ΓÇó</span>
+                <span className="opacity-30">●</span>
                 <span>{cert.date}</span>
               </div>
               
