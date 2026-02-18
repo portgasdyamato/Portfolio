@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
-import { ExternalLink, Github, Star, Calendar, Code, X, Award, ArrowUpRight } from "lucide-react"
+import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
 
 // Image Assets
@@ -313,15 +313,7 @@ export default function Projects() {
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase mb-2">{project.title}</h3>
-                    <div className="space-y-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 max-w-[80%]">
-                      {project.achievements.slice(0, 2).map((achievement, i) => (
-                        <div key={i} className="flex items-center gap-2 text-[10px] text-white/80 font-inter leading-tight">
-                          <Award className="w-3 h-3 text-purple-400 shrink-0" />
-                          <span className="line-clamp-1">{achievement}</span>
-                        </div>
-                      ))}
-                    </div>
+                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase">{project.title}</h3>
                   </div>
                   <motion.div 
                     whileHover={{ scale: 1.1, rotate: 45 }}
@@ -419,28 +411,16 @@ export default function Projects() {
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4 font-outfit">Key Features</h4>
-                      <div className="grid grid-cols-1 gap-3">
-                        {projectsData[selectedProject].features.slice(0, 3).map(feature => (
-                          <div key={feature} className="flex items-center gap-3 p-4 glass rounded-2xl">
-                            <div className="w-2 h-2 rounded-full bg-purple-500" />
-                            <span className="text-sm font-medium">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4 font-outfit">Achievements</h4>
-                      <div className="grid grid-cols-1 gap-3">
-                        {projectsData[selectedProject].achievements.map(achievement => (
-                          <div key={achievement} className="flex items-center gap-3 p-4 bg-purple-500/5 rounded-2xl border border-purple-500/10">
-                            <Award className="w-5 h-5 text-purple-500" />
-                            <span className="text-sm font-medium">{achievement}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                       <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-4 font-outfit">Key Features</h4>
+                       <div className="grid grid-cols-1 gap-3">
+                         {projectsData[selectedProject].features.slice(0, 3).map(feature => (
+                           <div key={feature} className="flex items-center gap-3 p-4 glass rounded-2xl">
+                             <div className="w-2 h-2 rounded-full bg-purple-500" />
+                             <span className="text-sm font-medium">{feature}</span>
+                           </div>
+                         ))}
+                       </div>
+                     </div>
                   </div>
                 </div>
               </div>
