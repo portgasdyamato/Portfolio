@@ -16,13 +16,13 @@ export default function Hero() {
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="col-span-1 md:col-span-2 bg-[#FFE4E4] p-4 sm:p-6 md:p-8 lg:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden mt-2 sm:mt-3 md:mt-5"
+      className="col-span-1 md:col-span-2 bg-[#FFE4E4] p-8 sm:p-10 md:p-12 lg:p-16 rounded-3xl relative overflow-hidden mt-2 sm:mt-3 md:mt-5"
     >
       {/* Animated Design Elements */}
       {designElements.map((element, index) => (
         <motion.div
           key={index}
-          className="absolute"
+          className="absolute hidden sm:block"
           style={{
             left: `${element.x}%`,
             top: `${element.y}%`,
@@ -62,7 +62,7 @@ export default function Hero() {
 
       {/* Prototype Creation Animation */}
       <motion.div
-        className="absolute top-8 right-8 w-24 h-24 "
+        className="absolute top-4 right-4 sm:top-8 sm:right-8 w-16 h-16 sm:w-24 sm:h-24 opacity-50 sm:opacity-100"
         animate={{ rotate: 360 }}
         transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
       >
@@ -104,18 +104,14 @@ export default function Hero() {
         />
       </motion.div>
 
-      <div className="max-w-2xl relative z-10">
+      <div className="max-w-2xl relative z-10 pt-4 sm:pt-0">
         <motion.h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold leading-tight tracking-tight"
+          className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-4"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.5 }}
         >
-          Innovator Blending  
-          
-          Web Aesthetics with
-          
-          Machine Intelligence
+          Innovator Blending Web Aesthetics with Machine Intelligence
         </motion.h1>
 
         <motion.p
