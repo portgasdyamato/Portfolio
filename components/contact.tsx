@@ -498,7 +498,7 @@ export default function Contact() {
               })}
             </svg>
           </motion.div>
-          <p className="text-gray-700 italic text-sm sm:text-base">"Great things happen when creative minds connect!" ≡ƒÜÇ</p>
+          <p className="text-gray-700 italic text-sm sm:text-base">"Great things happen when creative minds connect!" 🚀</p>
         </motion.div>
       </div>
     </motion.div>

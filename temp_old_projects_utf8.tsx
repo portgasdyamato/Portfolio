@@ -1,120 +1,113 @@
-"use client"
+﻿"use client"
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { ExternalLink, Github, Star, Calendar, Code, X, Award } from "lucide-react"
 const prt = "/prt.png"
-const vyn = "/vyn.png"
-const wel = "/wel.png"
-const voxa = "/voxa.png"
+
 const projectsData = [
   {
     title: "Portflio Website",
-    duration: "June 2025 - July 2025",
-    date: "June 2025",
+    duration: "June 2025 - july 2025",
+    date: "March 2024",
     image: prt,
     color: "#FF6B9D",
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Lucid React", "Shadcn/ui"],
-    description: "A modern, responsive portfolio website showcasing my works and achievements in a pixel game-inspired design.",
+    technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
+    description: "A complete e-commerce solution with user authentication, payment processing, and admin dashboard.",
     features: [
-      "Pixel Character Interaction: A lively character follows the cursor and reacts to user actions",
-      "Interactive Education Timeline: Clickable timeline points with detailed modals",
-      "Responsive Design: Optimized for mobile, tablet, and desktop",
-      "Smooth Animations: Framer Motion-powered transitions",
-      "Game-Inspired Aesthetic: Vibrant colors and pixel art fonts",
-      "Info Modal: Auto-popup with site details and easter eggs",
-      "Social Links: Active and styled hover effects",
-      "Live Project Links: Clickable demo and GitHub buttons",
+      "User Authentication & Authorization",
+      "Shopping Cart & Wishlist",
+      "Payment Integration with Stripe",
+      "Admin Dashboard",
+      "Order Tracking System",
+      "Responsive Design",
     ],
-    achievements: ["Deployed", "99.9% Uptime", "High Performance"],
-    liveUrl: "https://pippoportfolio.vercel.app/",
-    githubUrl: "https://github.com/portgasdyamato/Portfolio",
+    achievements: ["1000+ Users", "99.9% Uptime", "Featured on ProductHunt"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
     status: "Completed",
   },
   {
-    "title": "VoXa ΓÇô Voice-Driven Task Manager",
-    "duration": "May 2025 - June 2025",
-    "date": "May 2025",
-    "image": voxa,
-    "color": "#6B5BFF",
-    "technologies": ["React", "TypeScript", "Node.js", "Express", "Tailwind CSS", "PostgreSQL", "Drizzle ORM", "Web Speech API"],
-    "description": "A modern, intelligent task management application that combines voice command technology with a sleek, intuitive interface.",
-    "features": [
-      "≡ƒÄñ Voice Commands: Add, update, and manage tasks using natural language",
-      "≡ƒôè Analytics: Visualize productivity with interactive charts and streak tracking",
-      "≡ƒô▒ Responsive Design: Optimized for mobile, tablet, and desktop",
-      "≡ƒÄ¿ Modern UI/UX: Glassmorphism design with dark/light themes",
-      "≡ƒöö Smart Notifications: Stay ahead with reminders and deadlines",
-      "≡ƒöÉ Secure Authentication: Google OAuth integration for privacy and security",
-      "≡ƒÆ¼ Demo Mode: Try the app without signing up using a guest account",
-      "ΓÜí Real-Time Updates: Instant UI changes across all components"
+    title: "AI Chat Assistant",
+    duration: "Sep 2023 - Dec 2023",
+    date: "December 2023",
+    image: "/placeholder.svg?height=300&width=400",
+    color: "#4ECDC4",
+    technologies: ["Python", "TensorFlow", "React", "FastAPI", "OpenAI API"],
+    description:
+      "An intelligent chatbot powered by machine learning that can understand context and provide helpful responses.",
+    features: [
+      "Natural Language Processing",
+      "Context-Aware Responses",
+      "Multi-language Support",
+      "Voice Integration",
+      "Learning from Conversations",
+      "Custom Training Data",
     ],
-    "achievements": ["Γ£à Deployed", "≡ƒöÆ Secure Login Flow", "≡ƒôê Optimized for High Performance"],
-    "liveUrl": "https://voxa-cl66cbsp9-portgasdyamatos-projects.vercel.app/",
-    "githubUrl": "https://github.com/portgasdyamato/Voxa",
-    "status": "Completed"
+    achievements: ["10K+ Conversations", "95% Accuracy Rate", "Award Winner"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
+    status: "Completed",
   },
   {
-    title: "Vinyl Records",
-    duration: "Dec 2024 - Dec 2024",
-    date: "Dec 2024",
-    image: vyn,
+    title: "Task Management App",
+    duration: "May 2023 - Aug 2023",
+    date: "August 2023",
+    image: "/placeholder.svg?height=300&width=400",
     color: "#87CEEB",
-    technologies: ["React", "Vite", "Tailwind CSS", "YouTube API", "Vercel"],
-    description: "A cross-platform vintage music player with youtube api integration that allows users to discover and hear melodies in classic records without ads.",
+    technologies: ["React Native", "Firebase", "Redux", "Expo"],
+    description: "A cross-platform mobile app for team collaboration and task management with real-time updates.",
     features: [
-      "Spinning Record UI ΓÇö Feel the motion of vintage vinyl",
-      "Ad-Free Playback via YouTube ΓÇö No interruptions",
-      "Supports Playlists + Single Tracks ΓÇö Your music, your way",
-      "Queue List ΓÇö Know what's coming up next or just play",
-      "Minimal Controls ΓÇö Stay focused on the music",
-      "Lightweight & Responsive ΓÇö Fast and fluid experience",
+      "Real-time Collaboration",
+      "Task Assignment & Tracking",
+      "Team Chat Integration",
+      "File Sharing",
+      "Progress Analytics",
+      "Offline Mode Support",
     ],
-    achievements: ["Deployed", "Good User reviews", "top favorite"],
-    liveUrl: "https://vintage-vinyl.vercel.app/",
-    githubUrl: "https://github.com/portgasdyamato/Vintage-Vinyl",
+    achievements: ["5K+ Downloads", "4.8 Star Rating", "Team Favorite"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
     status: "Completed",
   },
   {
-    title: "Wellness Tracker App Design",
-    duration: "Nov 2024 - Nov 2024",
-    date: "Nov 2024",
-    image: wel,
+    title: "Portfolio Website",
+    duration: "Mar 2023 - Apr 2023",
+    date: "April 2023",
+    image: "/placeholder.svg?height=300&width=400",
     color: "#FFB347",
-    technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
-    description: "A comprehensive UI/UX design for a wellness tracking mobile application featuring modern design principles, intuitive user flow, and engaging visual elements.",
+    technologies: ["Next.js", "TypeScript", "Framer Motion", "Tailwind CSS"],
+    description: "A modern, responsive portfolio website with smooth animations and interactive elements.",
     features: [
-      "Clean Dashboard Design with Progress Tracking",
-      "Task Management Interface with Completion Status",
-      "Streak Tracking and Achievement Badges System",
-      "Weekly Calendar View with Activity Indicators", 
-      "Modern Dark Theme with Gradient Accents",
-      "Responsive Design Components and Layout",
-      "Interactive Prototyping with User Flow",
-      "Comprehensive Design System and Style Guide",
+      "Responsive Design",
+      "Smooth Animations",
+      "Dark/Light Mode",
+      "Contact Form",
+      "Blog Integration",
+      "SEO Optimized",
     ],
-    achievements: ["Complete Design System", "Interactive Prototype", "Client Approved Design"],
-    liveUrl: "https://www.figma.com/design/aih9SixouPHrgM06a2RBj3/wellness-app?node-id=0-1&t=SoY8Elae4F7R2zQj-1",
-    githubUrl: "https://github.com/portgasdyamato/Wellness-App-Design",
+    achievements: ["100+ Visitors Daily", "Perfect Lighthouse Score", "Client Approved"],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/example",
     status: "Completed",
   },
   {
-    title: "Natural Language Processing for Legal Documents",
-    duration: "July 2025 - Present 2025",
+    title: "Blockchain Voting System",
+    duration: "Oct 2024 - Present",
     date: "In Progress",
     image: "/placeholder.svg?height=300&width=400",
     color: "#96CEB4",
-    technologies: ["Python", "Transformers", "NLTK", "LLM", "NLP"],
-    description: "An AI system that can extract and summarize key legal information from complex legal documents.",
+    technologies: ["Solidity", "Web3.js", "React", "Ethereum", "MetaMask"],
+    description: "A decentralized voting platform ensuring transparency and security using blockchain technology.",
     features: [
-      "Secure Document Handling",
-      "Custom Summary Length",
-      "Key Term Highlighting",
-      "AI-Powered Summarization",
+      "Smart Contract Integration",
+      "Voter Authentication",
+      "Transparent Vote Counting",
+      "Immutable Records",
       "Real-time Results",
-      "Model Fine-Tuning Interface",
+      "Security Auditing",
     ],
-    achievements: ["Advanced NLP", "University Project", " Information extraction"],
+    achievements: ["Research Paper Submitted", "University Project", "Innovation Award Nominee"],
     liveUrl: "",
     githubUrl: "https://github.com/example",
     status: "Ongoing",
@@ -143,16 +136,7 @@ export default function Projects() {
         transition={{ delay: 0.9 }}
         className="text-center mb-8 "
       >
-        <motion.h2 className="text-3xl md:text-4xl font-light text-black mb-2 tracking-widest cursor-pointer"          
-            whileHover={{ 
-            scale: 1.1,
-            transition: { 
-              type: "tween", 
-              duration: 0.15,
-              ease: "easeOut"
-            }
-          }}
-          style={{ fontFamily: "Gamer", }}>MY PROJECTS</motion.h2>
+        <h2 className="text-3xl md:text-4xl font-light text-gray-800 mb-2 tracking-widest" style={{ fontFamily: "Gamer", }}>MY PROJECTS</h2>
         <div className="w-24 h-1 bg-gradient-to-r from-[#FF6B6B] to-[#FF9999] mx-auto rounded-full" />
         <p className="text-gray-600 mt-4 text-lg">Click on project cards to explore details</p>
       </motion.div>
@@ -185,7 +169,7 @@ export default function Projects() {
       </motion.div>
 
       {/* Projects Grid */}
-      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 " layout>
+      <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" layout>
         <AnimatePresence>
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -196,8 +180,7 @@ export default function Projects() {
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -5, scale: 1.02 }}
-              className="project-glass rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
-              
+              className="bg-gray-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all cursor-pointer"
               onClick={() => setSelectedProject(projectsData.findIndex((p) => p.title === project.title))}
             >
               {/* Project Image */}
@@ -220,8 +203,8 @@ export default function Projects() {
               </div>
 
               {/* Project Info */}
-              <div className="p-6 bg-white/40 backdrop-blur-sm">
-                <h3 className="text-xl font-bold text-gray-800 mb-2" style={{ fontFamily: "Gamer", }}>{project.title}</h3>
+              <div className="p-6 bg-white">
+                <h3 className="text-xl font-bold text-gray-800 mb-2">{project.title}</h3>
                 <p className="text-gray-600 text-sm mb-4 line-clamp-2">{project.description}</p>
 
                 {/* Technologies */}
@@ -256,7 +239,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50 p-4"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
@@ -264,19 +247,17 @@ export default function Projects() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="gradient-glass rounded-3xl  p-8 max-w-2xl w-full mx-4 relative 
-                max-h-[90vh] overflow-y-auto scrollbar-none
-                [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+              className="bg-white rounded-3xl p-8 max-w-2xl w-full mx-4 shadow-2xl relative max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Close Button */}
               <motion.button
-                className="absolute top-4 right-4 p-2 rounded-full bg-white/30 backdrop-blur-sm border border-white/50 hover:bg-white/40 transition-colors z-10"
+                className="absolute top-4 right-4 p-2 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors z-10"
                 onClick={() => setSelectedProject(null)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
               >
-                <X className="w-5 h-5 text-gray-800" />
+                <X className="w-5 h-5 text-gray-600" />
               </motion.button>
 
               {/* Project Image */}
@@ -291,22 +272,22 @@ export default function Projects() {
 
               {/* Project Title */}
               <div className="mb-6">
-                <h3 className="text-3xl font-bold text-gray mb-2"style={{ fontFamily: "Gamer", }}>{projectsData[selectedProject].title}</h3>
+                <h3 className="text-3xl font-bold text-gray-800 mb-2">{projectsData[selectedProject].title}</h3>
                 <div className="flex items-center gap-4 mb-4">
-                  <span className="text-gray-900 text-sm">{projectsData[selectedProject].duration}</span>
+                  <span className="text-gray-500 text-sm">{projectsData[selectedProject].duration}</span>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-white/70 leading-relaxed mb-6" style={{ fontFamily: "qax", }}>{projectsData[selectedProject].description}</p>
+              <p className="text-gray-600 leading-relaxed mb-6">{projectsData[selectedProject].description}</p>
 
               {/* Features */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-950 mb-4 flex items-center gap-2 "style={{ fontFamily: "Gamer", }}>
+                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
                   <Star className="w-5 h-5 text-yellow-500" />
                   Key Features
                 </h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3" style={{ fontFamily: "qax", }}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {projectsData[selectedProject].features.map((feature, i) => (
                     <motion.div
                       key={feature}
@@ -327,11 +308,11 @@ export default function Projects() {
 
               {/* Technologies */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-950 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
+                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
                   <Code className="w-5 h-5 text-blue-500" />
                   Technologies Used
                 </h4>
-                <div className="flex flex-wrap gap-2" style={{ fontFamily: "qax", }}>
+                <div className="flex flex-wrap gap-2">
                   {projectsData[selectedProject].technologies.map((tech) => (
                     <span key={tech} className="px-3 py-2 bg-blue-50 text-blue-700 text-sm rounded-lg font-medium">
                       {tech}
@@ -342,7 +323,7 @@ export default function Projects() {
 
               {/* Achievements */}
               <div className="mb-6">
-                <h4 className="font-semibold text-gray-950 mb-4 flex items-center gap-2" style={{ fontFamily: "Gamer", }}>
+                <h4 className="font-semibold text-gray-700 mb-4 flex items-center gap-2">
                   <Award className="w-5 h-5 text-green-500" />
                   Achievements
                 </h4>
@@ -354,7 +335,6 @@ export default function Projects() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.1 }}
                       className="flex items-center gap-3 p-3 bg-green-50 rounded-xl"
-                      style={{ fontFamily: "qax", }}
                     >
                       <Award className="w-4 h-4 text-green-500" />
                       <span className="text-gray-700 text-sm">{achievement}</span>

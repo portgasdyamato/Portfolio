@@ -147,6 +147,61 @@ const projectsData = [
     status: "Completed",
   },
   {
+    title: "DreamIn - AI Mood Journal",
+    duration: "Dec 2024 - Jan 2025",
+    date: "Jan 2025",
+    image: dreamin,
+    color: "#FFD1D1",
+    technologies: ["React Native", "AI/ML", "Firebase"],
+    description: "An AI-powered mood journaling app that translates your daily thoughts into visual art and data-driven insights.",
+    features: [
+      "AI Art Generation from Journal Entries",
+      "Mood Tracking Dashboard",
+      "Guided Sleep Meditations",
+      "Privacy-First Local Storage"
+    ],
+    achievements: ["Personal Growth Award", "Integrated Stable Diffusion"],
+    liveUrl: "https://github.com/portgasdyamato",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Completed",
+  },
+  {
+    title: "AI Chat Assistant",
+    duration: "Sep 2023 - Dec 2023",
+    date: "Dec 2023",
+    image: "/placeholder.svg",
+    color: "#4ECDC4",
+    technologies: ["Python", "TensorFlow", "React", "FastAPI"],
+    description: "Intelligent chatbot powered by ML that can understand context and provide helpful responses.",
+    features: [
+      "Natural Language Processing",
+      "Context-Aware Responses",
+      "Multi-language Support"
+    ],
+    achievements: ["10K+ Conversations", "Award Winner"],
+    liveUrl: "https://github.com/portgasdyamato",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Completed",
+  },
+  {
+    title: "Blockchain Voting System",
+    duration: "Oct 2024 - Present",
+    date: "In Progress",
+    image: "/placeholder.svg",
+    color: "#96CEB4",
+    technologies: ["Solidity", "Web3.js", "React", "Ethereum"],
+    description: "A decentralized voting platform ensuring transparency and security using blockchain technology.",
+    features: [
+      "Smart Contract Integration",
+      "Voter Authentication",
+      "Transparent Vote Counting"
+    ],
+    achievements: ["Innovation Award Nominee", "Scalable Smart Contracts"],
+    liveUrl: "",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Ongoing",
+  },
+  {
     title: "NLP for Legal Documents",
     duration: "July 2025 - Present",
     date: "In Progress",
@@ -213,8 +268,8 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      {/* Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {/* Grid - FIXED to 2 columns on desktop as requested */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-6xl lg:mx-auto">
         <AnimatePresence mode="popLayout">
           {filteredProjects.map((project, index) => (
             <motion.div
@@ -233,6 +288,7 @@ export default function Projects() {
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
@@ -322,7 +378,7 @@ export default function Projects() {
 
                 <div className="flex flex-col">
                   <span className="text-purple-600 dark:text-purple-400 font-bold tracking-widest uppercase text-xs mb-4">
-                    {projectsData[selectedProject].status} ΓÇó {projectsData[selectedProject].date}
+                    {projectsData[selectedProject].status} • {projectsData[selectedProject].date}
                   </span>
                   <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6 uppercase">
                     {projectsData[selectedProject].title}

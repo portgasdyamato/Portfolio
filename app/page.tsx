@@ -65,19 +65,15 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Social Links */}
-        <div className="pb-10">
+        {/* Social Links (acting as the main Pink Footer) */}
+        <div className="pb-20">
           <SocialLinks />
+          <p className="text-[10px] font-bold font-outfit text-muted-foreground uppercase tracking-widest text-center mt-8 opacity-50">
+            © 2026 SAKSHI AGRAHARI • BUILT FOR IMPACT
+          </p>
         </div>
         
       </main>
-
-      {/* Footer Decoration */}
-      <footer className="py-12 text-center border-t border-border/50">
-        <p className="text-sm font-bold font-outfit text-muted-foreground uppercase tracking-widest">
-          ┬⌐ 2026 SAKSHI AGRAHARI <span className="mx-2 opacity-30">ΓÇó</span> BUILT FOR IMPACT
-        </p>
-      </footer>
 
       {/* Floating Pixel Character - Visible on all devices */}
       <PixelCharacter />
