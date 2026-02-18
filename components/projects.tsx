@@ -300,7 +300,7 @@ export default function Projects() {
                   alt={project.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-fill transition-transform duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
                 
@@ -360,7 +360,7 @@ export default function Projects() {
                       src={projectsData[selectedProject].image || "/placeholder.svg"}
                       alt={projectsData[selectedProject].title}
                       fill
-                      className="object-cover"
+                      className="object-fill"
                     />
                   </div>
                   <div className="flex gap-4">
