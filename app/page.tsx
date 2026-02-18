@@ -16,7 +16,7 @@ export default function Home() {
     <div className="min-h-screen bg-background selection:bg-purple-500/30 overflow-x-hidden" id="home">
       <Header />
 
-      <main className="container mx-auto px-8 sm:px-6 lg:px-8 max-w-8xl space-y-24 md:space-y-32 pt-36 md:pt-52">
+      <main className="container mx-auto px-12 sm:px-6 lg:px-8 max-w-8xl space-y-24 md:space-y-32 pt-36 md:pt-52">
         
         {/* Bento Hero Section */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -59,7 +59,7 @@ export default function Home() {
             <GrowWithMeHeading />
           </div>
           
-          <div id="contact" className="order-2 lg:order-3 w-full ml-0 lg:ml-40 mr-0 lg:mr-8 mb-4 sm:mb-6 lg:mb-8">
+          <div id="contact" className="order-2 lg:order-3 w-full lg:w-2/3 ml-0 lg:ml-40 mr-0 lg:mr-8 mb-4 sm:mb-6 lg:mb-8">
             <Contact />
           </div>
         </div>
