@@ -59,7 +59,7 @@ export default function Home() {
             <GrowWithMeHeading />
           </div>
           
-          <div id="contact" className="order-2 lg:order-3 w-full lg:w-2/3 ml-0 lg:ml-40 mr-0 lg:mr-8 mb-4 sm:mb-6 lg:mb-8">
+          <div id="contact" className="order-2 lg:order-3 w-full ml-0 lg:ml-40 mr-0 lg:mr-8 mb-4 sm:mb-6 lg:mb-8">
             <Contact />
           </div>
         </div>
