@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X } from "lucide-react"
+import LearningJourney from "./learning-journey"
 
 const educationJourney = [
   {
@@ -62,53 +63,8 @@ export default function Education() {
           </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {educationJourney.map((item, index) => {
-            const Icon = item.icon
-            return (
-              <motion.div
-                key={item.level}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => setSelected(index)}
-                className="group cursor-pointer glass-card p-10 rounded-[2.5rem] flex flex-col relative overflow-hidden"
-              >
-                <div className={`absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br ${item.color} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity`} />
-                
-                <div className="flex justify-between items-start mb-10">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center bg-gradient-to-br ${item.color} shadow-lg shadow-purple-500/10`}>
-                    <Icon className="w-7 h-7 text-white" />
-                  </div>
-                  <span className="text-sm font-bold font-inter bg-foreground/5 px-4 py-1.5 rounded-full text-muted-foreground uppercase tracking-wider">
-                    {item.date}
-                  </span>
-                </div>
+        <LearningJourney items={educationJourney} onCardClick={setSelected} />
 
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold font-outfit mb-3 leading-tight uppercase">{item.level}</h3>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm font-inter mb-6">
-                    <MapPin size={14} className="text-purple-500" />
-                    {item.institution}
-                  </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-8 font-inter">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="flex items-center justify-between border-t border-border/50 pt-8 mt-auto">
-                  <span className="text-xl font-black font-outfit text-purple-600">
-                    {item.gpa}
-                  </span>
-                  <div className="px-4 py-2 glass rounded-xl text-[10px] font-bold uppercase tracking-widest">
-                    Details
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
       </div>
 
       {/* Modal */}
