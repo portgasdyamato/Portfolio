@@ -59,7 +59,7 @@ export default function CustomCursor() {
           x: ringX,
           y: ringY,
           scale: isHovering ? 2.2 : 1,
-          backgroundColor: isHovering ? "rgba(255, 127, 127, 0.12)" : "transparent",
+          backgroundColor: isHovering ? "rgba(255, 153, 153, 0.12)" : "transparent",
         }}
       />
       {/* Inner dot — faster spring, stays visible on hover and scales with ring */}

@@ -14,7 +14,7 @@
   --card-foreground: 240 10% 3.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 240 10% 3.9%;
-  --primary: 0 100% 75%;
+  --primary: 0 100% 80%;
   --primary-foreground: 0 0% 98%;
   --secondary: 240 4.8% 95.9%;
   --secondary-foreground: 240 5.9% 10%;
@@ -26,7 +26,7 @@
   --destructive-foreground: 0 0% 98%;
   --border: 240 5.9% 90%;
   --input: 240 5.9% 90%;
-  --ring: 0 100% 75%;
+  --ring: 0 100% 80%;
   --radius: 1rem;
 }
 
@@ -37,7 +37,7 @@
   --card-foreground: 0 0% 98%;
   --popover: 240 10% 3.9%;
   --popover-foreground: 0 0% 98%;
-  --primary: 0 100% 75%;
+  --primary: 0 100% 80%;
   --primary-foreground: 0 0% 98%;
   --secondary: 240 3.7% 15.9%;
   --secondary-foreground: 0 0% 98%;
@@ -49,7 +49,7 @@
   --destructive-foreground: 0 0% 98%;
   --border: 240 3.7% 15.9%;
   --input: 240 3.7% 15.9%;
-  --ring: 0 100% 75%;
+  --ring: 0 100% 80%;
 }
 
 @layer base {
@@ -131,15 +131,15 @@
 
 /* Custom Text Colors (replacing gradients) */
 .text-gradient {
-  color: #FF7F7F;
+  color: #FF9999;
 }
 
 .text-gradient-indigo {
-  color: #FF7F7F;
+  color: #FF9999;
 }
 
 .gradient-text {
-  color: #FF7F7F;
+  color: #FF9999;
 }
 
 /* Premium Animations */
@@ -153,7 +153,7 @@
 }
 
 .animate-aurora {
-  --aurora: repeating-linear-gradient(100deg, #3b82f6 10%, #FF7F7F 15%, #ec4899 20%, #f97316 25%, #3b82f6 30%);
+  --aurora: repeating-linear-gradient(100deg, #3b82f6 10%, #FF9999 15%, #ec4899 20%, #f97316 25%, #3b82f6 30%);
   background-image: var(--aurora);
   background-size: 300% 200%;
   animation: aurora 60s linear infinite;

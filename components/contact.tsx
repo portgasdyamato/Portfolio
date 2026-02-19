@@ -46,7 +46,7 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     url: "https://github.com/portgasdyamato",
-    color: "#FF7F7F",
+    color: "#FF9999",
     description: "Check out my code",
     handle: "@pippo",
   },
@@ -212,7 +212,7 @@ export default function Contact() {
                   <path
                     key={j}
                     d={`M10,10 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                    stroke="#FF7F7F"
+                    stroke="#FF9999"
                     strokeWidth="0.5"
                     fill="none"
                   />

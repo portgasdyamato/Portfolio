@@ -164,7 +164,7 @@ const projectsData = [
     duration: "May 2025 - June 2025",
     date: "May 2025",
     image: voxa,
-    color: "#FF7F7F",
+    color: "#FF9999",
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Web Speech API", "Drizzle ORM"],
     description: "Hands-free productivity app allowing voice-powered task creation, tracking, and analytics for better time efficiency.",
     features: [
