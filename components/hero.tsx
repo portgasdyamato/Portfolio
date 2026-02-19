@@ -45,7 +45,7 @@ export default function Hero() {
           }}
         >
           {element.shape === "circle" && <div className="w-full h-full bg-[#FFB5B5] rounded-full opacity-80" />}
-          {element.shape === "square" && <div className="w-full h-full bg-[#FF9999] opacity-80" />}
+          {element.shape === "square" && <div className="w-full h-full bg-[#FFB5B5] opacity-80" />}
           {element.shape === "triangle" && (
             <div
               className="w-0 h-0 opacity-80"
@@ -80,7 +80,7 @@ export default function Hero() {
             cx="50"
             cy="50"
             r="5"
-            fill="#FF9999"
+            fill="#FFB5B5"
             animate={{ scale: [1, 1.5, 1] }}
             transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
           />
