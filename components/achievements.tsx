@@ -51,7 +51,7 @@ const achievements = [
     title: "Hackathon Runner up",
     description: "2nd runner up in a hackathon focusing on turning designs into code using AI technology.",
     year: "2025",
-    color: "from-orange-400 to-red-600",
+    color: "from-orange-400 to-brand-600",
   },
 ]
 
