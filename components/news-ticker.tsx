@@ -2,10 +2,10 @@ import { Star, Minus } from "lucide-react"
 
 export default function NewsTicker() {
   return (
-    <div className="relative w-full h-[400px] bg-white overflow-hidden flex items-center justify-center my-12" aria-label="News Ticker">
+    <div className="relative w-full h-[400px] overflow-hidden flex items-center justify-center my-12" aria-label="News Ticker">
       
       {/* Yellow Ribbon (Left to Right) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] bg-[#FFD700] rotate-6 shadow-[0_10px_30px_rgba(0,0,0,0.2)] z-10 border-y-4 border-black py-3 sm:py-4">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] bg-[#FFD700] rotate-6 shadow-[0_10px_30px_rgba(0,0,0,0.2)] z-10  py-3 sm:py-4">
         <div className="flex animate-scroll-right w-fit">
           {/* Two sets of content for seamless looping */}
           {[...Array(2)].map((_, setIndex) => (
@@ -24,7 +24,7 @@ export default function NewsTicker() {
       </div>
 
       {/* Blue Ribbon (Right to Left) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] bg-[#87CEEB] -rotate-6 shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-20 border-y-4 border-black py-3 sm:py-4 mix-blend-normal">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] bg-[#87CEEB] -rotate-6 shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-20 py-3 sm:py-4 mix-blend-normal">
         <div className="flex animate-scroll-left w-fit">
           {/* Two sets of content for seamless looping */}
           {[...Array(2)].map((_, setIndex) => (
