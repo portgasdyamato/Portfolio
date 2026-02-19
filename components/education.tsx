@@ -7,15 +7,26 @@ import LearningJourney from "./learning-journey"
 
 const educationJourney = [
   {
-    level: "B.Tech in Computer Science",
-    institution: "AKTU, Lucknow",
-    duration: "2022-2026",
-    date: "Expected 2026",
-    icon: GraduationCap,
-    color: "from-purple-600 to-purple-800",
-    gpa: "8.7 CGPA",
-    description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
-    achievements: ["UI UX Solvathon Winner", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"]
+    level: "Primary Education",
+    institution: "St. Mary's School",
+    duration: "2010-2018",
+    date: "March 2018",
+    icon: BookOpen,
+    color: "from-pink-400 to-rose-600",
+    gpa: "A Grade",
+    description: "Early education focusing on fundamental subjects and extracurricular activities.",
+    achievements: ["Class Monitor", "Art Competition Winner", "Spelling Bee Champion"]
+  },
+  {
+    level: "Secondary Education",
+    institution: "School of Excellence",
+    duration: "2018-2020",
+    date: "March 2020",
+    icon: BookOpen,
+    color: "from-purple-400 to-slate-600",
+    gpa: "86% Marks",
+    description: "Strong academic foundation with focus on science and early programming.",
+    achievements: ["Top 10% Entrance", "Science Club Member", "Music Choir"]
   },
   {
     level: "High School Graduation",
@@ -29,15 +40,15 @@ const educationJourney = [
     achievements: ["94% in Computer Science", "Club Leader", "Project Contributor"]
   },
   {
-    level: "Secondary Education",
-    institution: "School of Excellence",
-    duration: "2018-2020",
-    date: "March 2020",
-    icon: BookOpen,
-    color: "from-purple-400 to-slate-600",
-    gpa: "86% Marks",
-    description: "Strong academic foundation with focus on science and early programming.",
-    achievements: ["Top 10% Entrance", "Science Club Member", "Music Choir"]
+    level: "B.Tech in Computer Science",
+    institution: "AKTU, Lucknow",
+    duration: "2022-2026",
+    date: "Expected 2026",
+    icon: GraduationCap,
+    color: "from-purple-600 to-purple-800",
+    gpa: "8.7 CGPA",
+    description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
+    achievements: ["UI UX Solvathon Winner", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"]
   }
 ]
 
