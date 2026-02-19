@@ -12,7 +12,7 @@ const educationJourney = [
     duration: "2015-2018",
     date: "March 2015-18",
     icon: BookOpen,
-    color: "from-brand-600 to-brand-800",
+    color: "from-brand-400 to-brand-600",
     gpa: "87%",
     description: "Built strong fundamentals in science and computers. Participated in various competitions and coding camps where my adventurous journey started to unfold.",
     achievements: ["Top Student", "Science Exhibition Winner", "Dell Code Camp", "Debate Finalist"]
@@ -23,7 +23,7 @@ const educationJourney = [
     duration: "2018-2020",
     date: "March 2018-20",
     icon: BookOpen,
-    color: "from-brand-400 to-slate-600",
+    color: "from-brand-300 to-brand-500",
     gpa: "86%",
     description: "Strong academic foundation with focus on science and early programming.",
     achievements: ["Top 10% Entrance", "Science Club Member", "Music Choir"]
@@ -34,7 +34,7 @@ const educationJourney = [
     duration: "2021-2022",
     date: "2020-22",
     icon: Star,
-    color: "from-slate-500 to-brand-600",
+    color: "from-brand-400 to-indigo-400",
     gpa: "82%",
     description: "Specialized in Computer Science, Physics, Chemistry, and Mathematics.",
     achievements: ["94% in Computer Science", "Club Leader", "Project Contributor"]
@@ -45,7 +45,7 @@ const educationJourney = [
     duration: "2022-2026",
     date: "Expected 2026",
     icon: GraduationCap,
-    color: "from-brand-600 to-brand-800",
+    color: "from-brand-500 to-brand-700",
     gpa: "8.7 CGPA",
     description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
     achievements: ["UI UX Solvathon Winner", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"]
@@ -56,7 +56,7 @@ const educationJourney = [
     duration: "2023 - Present",
     date: "Ongoing",
     icon: Briefcase,
-    color: "from-brand-600 to-brand-800",
+    color: "from-brand-400 to-brand-600",
     gpa: "Pro",
     description: "Expanding horizons through global exposure, internships, open source contributions, leadership fellowships and driving social impact.",
     achievements: [
