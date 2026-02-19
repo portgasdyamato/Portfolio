@@ -39,23 +39,20 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
   return (
     <div ref={containerRef} className="relative w-full py-20 overflow-hidden">
       {/* Central Curved Path - Desktop */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[600px] h-full pointer-events-none">
-        <svg className="w-full h-full" viewBox="0 0 600 1400" preserveAspectRatio="none">
+      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[200px] h-full pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 200 1400" preserveAspectRatio="none">
           <defs>
             <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="#9333ea" stopOpacity="0" />
-              <stop offset="15%" stopColor="#9333ea" stopOpacity="1" />
-              <stop offset="85%" stopColor="#9333ea" stopOpacity="1" />
+              <stop offset="10%" stopColor="#9333ea" stopOpacity="1" />
+              <stop offset="90%" stopColor="#9333ea" stopOpacity="1" />
               <stop offset="100%" stopColor="#9333ea" stopOpacity="0" />
             </linearGradient>
-            <marker id="markerArrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
-               <polygon points="0 0, 10 3.5, 0 7" fill="#9333ea" />
-            </marker>
           </defs>
           
           {/* Background Path (Dashed) */}
           <path
-            d="M 300 0 C 300 0, 50 300, 50 500 C 50 800, 550 900, 550 1100 C 550 1300, 300 1400, 300 1400"
+            d="M 100 0 C 100 0, 60 400, 60 600 C 60 800, 140 1000, 140 1200 C 140 1300, 100 1400, 100 1400"
             fill="none"
             stroke="rgba(124, 58, 237, 0.15)"
             strokeWidth="3"
@@ -64,10 +61,10 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
           
           {/* Animated Progress Path */}
           <motion.path
-            d="M 300 0 C 300 0, 50 300, 50 500 C 50 800, 550 900, 550 1100 C 550 1300, 300 1400, 300 1400"
+            d="M 100 0 C 100 0, 60 400, 60 600 C 60 800, 140 1000, 140 1200 C 140 1300, 100 1400, 100 1400"
             fill="none"
             stroke="url(#pathGradient)"
-            strokeWidth="5"
+            strokeWidth="4"
             strokeLinecap="round"
             style={{ pathLength: pathProgress }}
           />
@@ -133,32 +130,31 @@ function JourneyCard({
     >
       <div className={cn(
         "relative flex w-full md:w-[42%] pl-16 md:pl-0 z-20",
-        isEven ? "md:pr-8" : "md:pl-8 md:flex-row-reverse"
+        isEven ? "md:pr-12" : "md:pl-12 md:flex-row-reverse"
       )}>
         
-        {/* Desktop Node Marker - Significantly Larger & Animated */}
+        {/* Desktop Node Marker - Sleek & Modern */}
         <div className={cn(
-            "absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-16 h-16 rounded-full bg-background border-4 border-purple-600 shadow-[0_0_30px_rgba(147,51,234,0.6)] z-30 transition-transform duration-500 hover:scale-110",
-            isEven ? "-right-[calc(8%+32px)] xl:-right-[calc(18%+32px)]" : "-left-[calc(8%+32px)] xl:-left-[calc(18%+32px)]"
-            // Adjusting position based on curve approximation for 3 items. 
-            // Ideally this would follow the path mathematically, but CSS approximation is performant.
-            // Simplified positioning to center for better alignment with the new wide curve.
+            "absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 z-30",
+             // Position markers closer to center to match the narrower curve
+            isEven ? "-right-[calc(8%+24px)]" : "-left-[calc(8%+24px)]"
           )}
-             style={{ 
-               right: isEven ? (index === 0 ? '-140px' : index === 2 ? '-140px' : 'auto') : 'auto',
-               left: !isEven ? (index === 1 ? '-140px' : 'auto') : 'auto',
-               // Fallback absolute centering if the above manual offsets are tricky
-               // Let's rely on the flex container logic and absolute positioning relative to the container center
-             }}
         >
-             {/* Inner pulsing core */}
-             <div className="w-4 h-4 rounded-full bg-purple-600 animate-pulse relative z-10" />
+             {/* Center Core */}
+             <div className="w-4 h-4 rounded-full bg-purple-600 shadow-[0_0_15px_rgba(147,51,234,0.8)] z-20" />
              
-             {/* Rotating Ring */}
-             <div className="absolute inset-0 border-2 border-purple-400/50 rounded-full border-t-transparent animate-spin duration-3000" />
+             {/* Orbital Ring 1 (Slow) */}
+             <div className="absolute inset-0 rounded-full border border-purple-500/30 animate-[spin_4s_linear_infinite]" 
+                  style={{ borderTopColor: 'transparent', borderBottomColor: 'transparent' }} 
+             />
              
-             {/* Icon in Marker */}
-             <item.icon className="absolute w-6 h-6 text-purple-600/20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+             {/* Orbital Ring 2 (Fast Reverse) */}
+             <div className="absolute inset-2 rounded-full border border-purple-400/50 animate-[spin_2s_linear_infinite_reverse]" 
+                  style={{ borderLeftColor: 'transparent', borderRightColor: 'transparent' }} 
+             />
+             
+             {/* Hover Glow Effect */}
+             <div className="absolute inset-0 rounded-full bg-purple-500/0 hover:bg-purple-500/10 transition-colors duration-300 transform hover:scale-150" />
         </div>
         
         {/* Mobile Marker */}
