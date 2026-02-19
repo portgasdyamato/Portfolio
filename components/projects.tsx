@@ -164,7 +164,7 @@ const projectsData = [
     duration: "May 2025 - June 2025",
     date: "May 2025",
     image: voxa,
-    color: "#6B5BFF",
+    color: "#FF7F7F",
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Web Speech API", "Drizzle ORM"],
     description: "Hands-free productivity app allowing voice-powered task creation, tracking, and analytics for better time efficiency.",
     features: [
@@ -268,8 +268,8 @@ export default function Projects() {
                 onClick={() => setFilter(category)}
                 className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all ${
                   filter === category
-                    ? "bg-purple-600 text-white shadow-lg shadow-purple-500/20"
-                    : "hover:bg-purple-500/10 text-muted-foreground"
+                    ? "bg-brand-600 text-white shadow-lg shadow-brand-500/20"
+                    : "hover:bg-brand-500/10 text-muted-foreground"
                 }`}
               >
                 {category}
@@ -369,7 +369,7 @@ export default function Projects() {
                         href={projectsData[selectedProject].liveUrl}
                         target="_blank"
                         rel="noreferrer"
-                        className="flex-1 px-5 py-3 md:px-8 md:py-4 bg-purple-600 hover:bg-purple-700 text-white rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base"
+                        className="flex-1 px-5 py-3 md:px-8 md:py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl md:rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base"
                       >
                         <ExternalLink size={18} /> Live Demo
                       </a>
@@ -387,8 +387,8 @@ export default function Projects() {
                   </div>
                 </div>
 
-                <div className="flex flex-col">
-                  <span className="text-purple-600 dark:text-purple-400 font-bold tracking-widest uppercase text-xs mb-4">
+                                <div className="flex flex-col">
+                  <span className="text-brand-600 dark:text-brand-400 font-bold tracking-widest uppercase text-xs mb-4">
                     {projectsData[selectedProject].status} • {projectsData[selectedProject].date}
                   </span>
                   <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-6 uppercase">
@@ -415,7 +415,7 @@ export default function Projects() {
                        <div className="grid grid-cols-1 gap-3">
                          {projectsData[selectedProject].features.slice(0, 3).map(feature => (
                            <div key={feature} className="flex items-center gap-3 p-4 glass rounded-2xl">
-                             <div className="w-2 h-2 rounded-full bg-purple-500" />
+                             <div className="w-2 h-2 rounded-full bg-brand-500" />
                              <span className="text-sm font-medium">{feature}</span>
                            </div>
                          ))}

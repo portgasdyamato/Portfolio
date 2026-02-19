@@ -54,17 +54,17 @@ export default function CustomCursor() {
     <>
       {/* Outer ring — gentle lag, expands on hover */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-purple-500/60 pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-brand-500/60 pointer-events-none z-[9999] hidden md:block"
         style={{
           x: ringX,
           y: ringY,
           scale: isHovering ? 2.2 : 1,
-          backgroundColor: isHovering ? "rgba(168, 85, 247, 0.12)" : "transparent",
+          backgroundColor: isHovering ? "rgba(255, 127, 127, 0.12)" : "transparent",
         }}
       />
       {/* Inner dot — faster spring, stays visible on hover and scales with ring */}
       <motion.div
-        className="fixed top-0 left-0 w-1 h-1 bg-purple-500 rounded-full pointer-events-none z-[9999] hidden md:block"
+        className="fixed top-0 left-0 w-1 h-1 bg-brand-500 rounded-full pointer-events-none z-[9999] hidden md:block"
         style={{
           x: dotX,
           y: dotY,

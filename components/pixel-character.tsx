@@ -232,12 +232,12 @@ const PixelCharacter = () => {
                   exit={{ opacity: 0, y: 20, scale: 0.8 }}
                   className="absolute bottom-full right-0 mb-4 max-w-xs"
                 >
-                  <div className="bg-white px-4 py-3 rounded-2xl shadow-lg border-2 border-pink-200 relative">
+                  <div className="bg-white px-4 py-3 rounded-2xl shadow-lg border-2 border-brand-200 relative">
                     <p className="text-sm text-gray-800 font-medium">
                       {messages[currentMessage]}
                     </p>
                     {/* Speech bubble tail */}
-                    <div className="absolute top-full right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-pink-200"></div>
+                    <div className="absolute top-full right-6 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-brand-200"></div>
                     <div className="absolute top-full right-6 w-0 h-0 border-l-7 border-r-7 border-t-7 border-l-transparent border-r-transparent border-t-white transform translate-y-[-2px]"></div>
                   </div>
                 </motion.div>
@@ -328,7 +328,7 @@ const PixelCharacter = () => {
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
-                    className="absolute -top-2 -left-2 text-pink-400"
+                    className="absolute -top-2 -left-2 text-brand-400"
                   >
                     <div className="text-lg"></div>
                   </motion.div>
@@ -339,8 +339,8 @@ const PixelCharacter = () => {
                   className={`absolute inset-0 rounded-full -z-10 pointer-events-none transition-colors duration-300 blur-sm ${
                     expression === "happy" ? "bg-gradient-to-br from-yellow-200/30 to-orange-200/30" :
                     expression === "excited" ? "bg-gradient-to-br from-orange-200/40 to-red-200/40" :
-                    expression === "winking" ? "bg-gradient-to-br from-pink-200/30 to-purple-200/30" :
-                    !isFollowing ? "bg-gradient-to-br from-blue-200/40 to-purple-200/40" :
+                    expression === "winking" ? "bg-gradient-to-br from-brand-200/30 to-brand-300/30" :
+                    !isFollowing ? "bg-gradient-to-br from-blue-200/40 to-brand-400/40" :
                     "bg-gradient-to-br from-orange-200/20 to-amber-200/20"
                   }`}
                 ></div>
@@ -472,7 +472,7 @@ const PixelCharacter = () => {
                       ease: "easeInOut" as const,
                       delay: 0.4
                     }}
-                    className="absolute -top-6 -left-6 text-purple-500"
+                    className="absolute -top-6 -left-6 text-brand-500"
                   >
                     <Heart className="w-4 h-4" />
                   </motion.div>

@@ -16,7 +16,7 @@ const achievements = [
     title: "Harvard Aspire Scholar",
     description: "Selected as a scholar for the Harvard Aspire Leadership Program, focusing on AI-integrated leadership.",
     year: "2025",
-    color: "from-purple-400 to-purple-600",
+    color: "from-brand-400 to-brand-600",
   },
   {
     icon: Trophy,
@@ -44,7 +44,7 @@ const achievements = [
     title: "SheFi 14 Scholar",
     description: "Selected for US-based program empowering women in Web3 and blockchain technology.",
     year: "2025",
-    color: "from-purple-400 to-pink-600",
+    color: "from-brand-400 to-pink-600",
   },
   {
     icon: Medal,
@@ -97,7 +97,7 @@ export default function Achievements() {
                     </span>
                   </div>
                   
-                  <h3 className="text-xl font-bold font-outfit mb-3 leading-tight group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors uppercase">
+                  <h3 className="text-xl font-bold font-outfit mb-3 leading-tight group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors uppercase">
                     {achievement.title}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed font-inter line-clamp-3">

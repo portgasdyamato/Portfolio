@@ -53,9 +53,9 @@ const softSkills = [
     icon: Zap,
     title: "Conflict Management",
     description: "Resolving disagreements constructively to maintain a harmonious team environment.",
-    color: "bg-purple-500",
-    gradient: "from-purple-500/20 to-transparent",
-    hoverText: "group-hover:text-purple-600 dark:group-hover:text-purple-400",
+    color: "bg-brand-500",
+    gradient: "from-brand-500/20 to-transparent",
+    hoverText: "group-hover:text-brand-600 dark:group-hover:text-brand-400",
     delay: 0.5,
   },
 ]

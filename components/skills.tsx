@@ -20,7 +20,7 @@ const skillCategories = [
     title: "Experience",
     icon: Search,
     skills: ["UX Research", "User Testing", "Accessibility", "Information Architecture"],
-    color: "from-purple-500/20 to-pink-500/20"
+    color: "from-brand-500/20 to-pink-500/20"
   },
   {
     title: "Technical",

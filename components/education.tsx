@@ -12,7 +12,7 @@ const educationJourney = [
     duration: "2015-2018",
     date: "March 2015-18",
     icon: BookOpen,
-    color: "from-purple-600 to-purple-800",
+    color: "from-brand-600 to-brand-800",
     gpa: "87%",
     description: "Built strong fundamentals in science and computers. Participated in various competitions and coding camps where my adventurous journey started to unfold.",
     achievements: ["Top Student", "Science Exhibition Winner", "Dell Code Camp", "Debate Finalist"]
@@ -23,7 +23,7 @@ const educationJourney = [
     duration: "2018-2020",
     date: "March 2018-20",
     icon: BookOpen,
-    color: "from-purple-400 to-slate-600",
+    color: "from-brand-400 to-slate-600",
     gpa: "86%",
     description: "Strong academic foundation with focus on science and early programming.",
     achievements: ["Top 10% Entrance", "Science Club Member", "Music Choir"]
@@ -34,7 +34,7 @@ const educationJourney = [
     duration: "2021-2022",
     date: "2020-22",
     icon: Star,
-    color: "from-slate-500 to-purple-600",
+    color: "from-slate-500 to-brand-600",
     gpa: "82%",
     description: "Specialized in Computer Science, Physics, Chemistry, and Mathematics.",
     achievements: ["94% in Computer Science", "Club Leader", "Project Contributor"]
@@ -45,7 +45,7 @@ const educationJourney = [
     duration: "2022-2026",
     date: "Expected 2026",
     icon: GraduationCap,
-    color: "from-purple-600 to-purple-800",
+    color: "from-brand-600 to-brand-800",
     gpa: "8.7 CGPA",
     description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
     achievements: ["UI UX Solvathon Winner", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"]
@@ -56,7 +56,7 @@ const educationJourney = [
     duration: "2023 - Present",
     date: "Ongoing",
     icon: Briefcase,
-    color: "from-purple-600 to-purple-800",
+    color: "from-brand-600 to-brand-800",
     gpa: "Pro",
     description: "Expanding horizons through global exposure, internships, open source contributions, leadership fellowships and driving social impact.",
     achievements: [
@@ -134,20 +134,20 @@ export default function Education() {
                   </h2>
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center gap-3 text-lg font-inter text-muted-foreground">
-                      <MapPin size={20} className="text-purple-500" />
+                      <MapPin size={20} className="text-brand-500" />
                       {educationJourney[selected].institution}
                     </div>
                     <div className="flex items-center gap-3 text-lg font-inter text-muted-foreground">
-                      <Calendar size={20} className="text-purple-500" />
+                      <Calendar size={20} className="text-brand-500" />
                       {educationJourney[selected].duration}
                     </div>
                   </div>
                 </div>
 
                 <div className="flex flex-col">
-                  <div className="px-8 py-6 glass rounded-[2rem] border-purple-500/20 mb-10">
+                  <div className="px-8 py-6 glass rounded-[2rem] border-brand-500/20 mb-10">
                     <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2 block">Performance</span>
-                    <span className="text-4xl font-black font-outfit text-purple-600">
+                    <span className="text-4xl font-black font-outfit text-brand-600">
                       {educationJourney[selected].gpa}
                     </span>
                   </div>
@@ -160,7 +160,7 @@ export default function Education() {
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-4 p-5 glass rounded-2xl hover:bg-purple-500/5 transition-colors border-white/5"
+                        className="flex items-center gap-4 p-5 glass rounded-2xl hover:bg-brand-500/5 transition-colors border-white/5"
                       >
                         <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${educationJourney[selected].color}`} />
                         <span className="text-sm font-semibold font-inter">{ach}</span>

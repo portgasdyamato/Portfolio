@@ -90,14 +90,14 @@ export default function Certificates() {
                     href={cert.certificateUrl} 
                     target="_blank" 
                     rel="noreferrer"
-                    className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-purple-600 hover:text-white transition-all"
+                    className="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-brand-600 hover:text-white transition-all"
                   >
                     <ExternalLink size={16} />
                   </a>
                 )}
               </div>
 
-              <h3 className="text-xl font-bold font-outfit mb-2 leading-tight uppercase group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+              <h3 className="text-xl font-bold font-outfit mb-2 leading-tight uppercase group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
                 {cert.title}
               </h3>
               
