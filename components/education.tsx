@@ -12,7 +12,7 @@ const educationJourney = [
     duration: "2015-2018",
     date: "March 2018",
     icon: BookOpen,
-    color: "from-amber-400 to-orange-600",
+    color: "from-purple-600 to-purple-800",
     gpa: "87%",
     description: "Built strong fundamentals in science and computers. Participated in various competitions and coding camps where my adventurous journey started to unfold.",
     achievements: ["Top Student", "Science Exhibition Winner", "Dell Code Camp", "Debate Finalist"]
@@ -56,17 +56,15 @@ const educationJourney = [
     duration: "2023 - Present",
     date: "Ongoing",
     icon: Briefcase,
-    color: "from-emerald-500 to-teal-700",
+    color: "from-purple-600 to-purple-800",
     gpa: "Pro",
-    description: "Expanding horizons through global internships, open source contributions, and leadership fellowships while driving social impact.",
+    description: "Expanding horizons through global exposure, internships, open source contributions, leadership fellowships and driving social impact.",
     achievements: [
-        "OpenSphere - UI/UX Designer & Dev",
+        "OpenSphere & LegalBridge - UI/UX Designer & Dev",
         "Cubble - FullStack Intern",
         "Harvard Aspire - Leadership Fellow",
         "SheFi - Scholar (Web3)",
         "GSSoC - Campus Ambassador",
-        "LegalBridge - Contributor",
-        "NVIDIA - Developer Program",
         "Pledge A Smile - Volunteer",
         "Freelance - Digital Product Designer"
     ]
