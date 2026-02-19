@@ -72,7 +72,7 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
       </div>
 
       {/* Central Straight Line - Mobile */}
-      <div className="md:hidden absolute left-8 top-0 bottom-0 w-1 bg-purple-500/20">
+      <div className="md:hidden absolute left-6 top-0 bottom-0 w-1 bg-purple-500/20">
         <motion.div 
           className="w-full bg-purple-600 origin-top"
           style={{ scaleY: pathProgress, height: "100%" }}
@@ -129,7 +129,7 @@ function JourneyCard({
       )}
     >
       <div className={cn(
-        "relative flex w-full md:w-[42%] pl-16 md:pl-0 z-20",
+        "relative flex w-full md:w-[42%] pl-10 md:pl-0 z-20",
         isEven ? "md:pr-12" : "md:pl-12 md:flex-row-reverse"
       )}>
         
@@ -158,11 +158,11 @@ function JourneyCard({
         </div>
         
         {/* Mobile Marker */}
-        <div className="absolute left-[26px] top-1/2 -translate-y-1/2 w-4 h-4 bg-purple-600 rounded-full z-20 md:hidden border-2 border-background ring-4 ring-purple-500/20" />
+        <div className="absolute left-[18px] top-1/2 -translate-y-1/2 w-4 h-4 bg-purple-600 rounded-full z-20 md:hidden border-2 border-background ring-4 ring-purple-500/20" />
 
         <div onClick={onClick} className="w-full group cursor-pointer">
            {/* Reusing the glass card design but enhancing it */}
-          <div className="glass-card p-6 md:p-8 rounded-[2rem] relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-purple-500/30">
+          <div className="glass-card p-5 md:p-8 rounded-[2rem] relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-purple-500/30">
              {/* Gradient Blob */}
              <div className={`absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br ${item.color} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity`} />
 
