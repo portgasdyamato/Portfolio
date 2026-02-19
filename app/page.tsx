@@ -10,6 +10,7 @@ import Certificates from "@/components/certificates"
 import Education from "@/components/education"
 import ImageSection from "@/components/image-section"
 import GrowWithMeHeading from "@/components/GrowWithMeHeading"
+import NewsTicker from "@/components/news-ticker"
 
 export default function Home() {
   return (
@@ -23,6 +24,11 @@ export default function Home() {
           <Hero />
           <Profile />
         </section>
+
+        {/* Dynamic News Ticker - Full Width Breakout */}
+        <div className="w-screen relative left-1/2 -translate-x-1/2">
+          <NewsTicker />
+        </div>
 
         {/* Featured Projects */}
         <section id="projects" className="scroll-mt-32">
