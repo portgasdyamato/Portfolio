@@ -56,7 +56,7 @@ export default function Hero() {
               }}
             />
           )}
-          {element.shape === "line" && <div className="w-full h-1 bg-[#FF6B6B] opacity-80 transform rotate-45" />}
+          {element.shape === "line" && <div className="w-full h-1 bg-[#FFB5B5] opacity-80 transform rotate-45" />}
         </motion.div>
       ))}
 

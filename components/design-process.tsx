@@ -35,9 +35,9 @@ const softSkills = [
     icon: Users,
     title: "Leadership",
     description: "Empowering and motivating teams to deliver their best work.",
-    color: "bg-rose-500",
-    gradient: "from-rose-500/20 to-transparent",
-    hoverText: "group-hover:text-rose-600 dark:group-hover:text-rose-400",
+    color: "bg-brand-400",
+    gradient: "from-brand-400/20 to-transparent",
+    hoverText: "group-hover:text-brand-600 dark:group-hover:text-brand-300",
     delay: 0.3,
   },
   {

@@ -22,7 +22,7 @@ const socialLinks = [
     name: "Email",
     icon: Mail,
     url: "mailto:sakshiagrahari2004@gmail.com",
-    color: "#FF6B6B",
+    color: "#FFB5B5",
     description: "Drop me a line",
     handle: "sakshiagrahari2004@gmail.com",
   },
@@ -87,7 +87,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M200,200 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FF6B6B"
+                  stroke="#FFB5B5"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -251,7 +251,7 @@ export default function Contact() {
                     <motion.path
                       key={i}
                       d={`M16,16 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                      stroke="#FF6B6B"
+                      stroke="#FFB5B5"
                       strokeWidth="1.5"
                       fill="none"
                       initial={{ pathLength: 0 }}
@@ -445,7 +445,7 @@ export default function Contact() {
                       <path
                         key={i}
                         d={`M5,5 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                        stroke="#FF6B6B"
+                        stroke="#FFB5B5"
                         strokeWidth="0.5"
                         fill="none"
                       />
@@ -485,7 +485,7 @@ export default function Contact() {
                 const y3 = 4 + 2 * Math.sin(nextAngle)
 
                 return (
-                  <path key={i} d={`M32,4 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`} fill="#FF6B6B" opacity={0.6} />
+                  <path key={i} d={`M32,4 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`} fill="#FFB5B5" opacity={0.6} />
                 )
               })}
             </svg>

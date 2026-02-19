@@ -8,7 +8,7 @@ const skillCategories = [
     title: "Design",
     icon: Palette,
     skills: ["Figma", "UI/UX Design", "Wireframing", "Prototyping", "Design Systems"],
-    color: "from-pink-500/20 to-rose-500/20"
+    color: "from-brand-500/20 to-brand-700/20"
   },
   {
     title: "Development",
@@ -20,7 +20,7 @@ const skillCategories = [
     title: "Experience",
     icon: Search,
     skills: ["UX Research", "User Testing", "Accessibility", "Information Architecture"],
-    color: "from-brand-500/20 to-pink-500/20"
+    color: "from-brand-500/20 to-brand-300/20"
   },
   {
     title: "Technical",

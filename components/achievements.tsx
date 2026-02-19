@@ -44,7 +44,7 @@ const achievements = [
     title: "SheFi 14 Scholar",
     description: "Selected for US-based program empowering women in Web3 and blockchain technology.",
     year: "2025",
-    color: "from-brand-400 to-pink-600",
+    color: "from-brand-400 to-brand-600",
   },
   {
     icon: Medal,

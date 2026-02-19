@@ -140,7 +140,7 @@ const projectsData = [
     duration: "June 2025 - July 2025",
     date: "June 2025",
     image: prt,
-    color: "#FF6B9D",
+    color: "#FFB5B5",
     technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
     description: "Pixel-game inspired interactive portfolio with gamified UI, animations, and responsive layouts to create a memorable personal brand.",
     features: [

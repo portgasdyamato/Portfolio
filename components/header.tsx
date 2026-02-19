@@ -222,7 +222,7 @@ export default function Header() {
                   🎮 Easter Eggs
                 </motion.h2>
                 <motion.div 
-                  className="w-16 h-1 bg-gradient-to-r from-pink-400 to-brand-500 mx-auto rounded-full"
+                  className="w-16 h-1 bg-gradient-to-r from-brand-300 to-brand-500 mx-auto rounded-full"
                   initial={{ width: 0 }}
                   animate={{ width: 64 }}
                   transition={{ delay: 0.4, duration: 0.6 }}
@@ -262,8 +262,8 @@ export default function Header() {
                     "Each timeline point has a unique icon representing the institute or achievement.",
                     "Clicking on an icon opens a modal popup displaying detailed information about the institute, achievements, and experiences."
                   ],
-                  color: "from-pink-100 to-pink-50",
-                  borderColor: "border-pink-200"
+                  color: "from-brand-100 to-brand-50",
+                  borderColor: "border-brand-200"
                 },
                 {
                   icon: "🌐",
@@ -398,11 +398,11 @@ export default function Header() {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 1.2 }}
-                  className="bg-gradient-to-r from-pink-100 via-brand-50 to-pink-100 p-4 rounded-xl border border-pink-200 text-center mt-2"
+                  className="bg-gradient-to-r from-brand-100 via-brand-50 to-brand-100 p-4 rounded-xl border border-brand-200 text-center mt-2"
                   whileHover={{ scale: 1.02 }}
                 >
                   <motion.p 
-                    className="text-sm text-pink-800 font-medium"
+                    className="text-sm text-brand-800 font-medium"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.4 }}

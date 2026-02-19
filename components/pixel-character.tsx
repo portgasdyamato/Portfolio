@@ -338,10 +338,10 @@ const PixelCharacter = () => {
                 <div 
                   className={`absolute inset-0 rounded-full -z-10 pointer-events-none transition-colors duration-300 blur-sm ${
                     expression === "happy" ? "bg-gradient-to-br from-yellow-200/30 to-orange-200/30" :
-                    expression === "excited" ? "bg-gradient-to-br from-orange-200/40 to-red-200/40" :
+                    expression === "excited" ? "bg-gradient-to-br from-brand-200/40 to-brand-400/40" :
                     expression === "winking" ? "bg-gradient-to-br from-brand-200/30 to-brand-300/30" :
                     !isFollowing ? "bg-gradient-to-br from-blue-200/40 to-brand-400/40" :
-                    "bg-gradient-to-br from-orange-200/20 to-amber-200/20"
+                    "bg-gradient-to-br from-brand-200/20 to-brand-300/20"
                   }`}
                 ></div>
                 
@@ -378,7 +378,7 @@ const PixelCharacter = () => {
                       repeat: Infinity,
                       ease: "easeInOut" as const
                     }}
-                    className="absolute -top-4 -right-4 text-orange-500"
+                    className="absolute -top-4 -right-4 text-brand-500"
                   >
                     <Sparkles className="w-4 h-4" />
                   </motion.div>
@@ -394,7 +394,7 @@ const PixelCharacter = () => {
                       repeat: Infinity,
                       ease: "easeInOut" as const
                     }}
-                    className="absolute -top-6 -left-6 text-red-500"
+                    className="absolute -top-6 -left-6 text-brand-600"
                   >
                     <Star className="w-4 h-4" />
                   </motion.div>
@@ -486,7 +486,7 @@ const PixelCharacter = () => {
                 e.stopPropagation()
                 setIsVisible(false)
               }}
-              className="absolute -top-1 -right-1 w-5 h-5 bg-red-400 rounded-full text-white text-xs flex items-center justify-center hover:bg-red-500 transition-colors"
+              className="absolute -top-1 -right-1 w-5 h-5 bg-brand-400 rounded-full text-white text-xs flex items-center justify-center hover:bg-brand-500 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
@@ -503,7 +503,7 @@ const PixelCharacter = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0 }}
               onClick={() => setIsVisible(true)}
-              className="w-12 h-12 bg-amber-400 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-amber-500 transition-colors"
+              className="w-12 h-12 bg-brand-400 rounded-full shadow-lg flex items-center justify-center text-white hover:bg-brand-500 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
