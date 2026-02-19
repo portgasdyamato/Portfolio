@@ -24,7 +24,7 @@ export default function NewsTicker() {
       </div>
 
       {/* Blue Ribbon (Right to Left) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] bg-[#FF9999] -rotate-12 sm:-rotate-6 shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-20 py-3 sm:py-4 mix-blend-normal">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] bg-[#FFE4E4] -rotate-12 sm:-rotate-6 shadow-[0_10px_30px_rgba(0,0,0,0.3)] z-20 py-3 sm:py-4 mix-blend-normal">
         <div className="flex animate-scroll-left w-fit">
           {/* Two sets of content for seamless looping */}
           {[...Array(2)].map((_, setIndex) => (

@@ -2,20 +2,20 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
-import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X } from "lucide-react"
+import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X, Briefcase } from "lucide-react"
 import LearningJourney from "./learning-journey"
 
 const educationJourney = [
   {
-    level: "Primary Education",
-    institution: "St. Mary's School",
-    duration: "2010-2018",
+    level: "Middle School",
+    institution: "Govt Co-ed Sr. Sec. School",
+    duration: "2015-2018",
     date: "March 2018",
     icon: BookOpen,
-    color: "from-pink-400 to-rose-600",
-    gpa: "A Grade",
-    description: "Early education focusing on fundamental subjects and extracurricular activities.",
-    achievements: ["Class Monitor", "Art Competition Winner", "Spelling Bee Champion"]
+    color: "from-amber-400 to-orange-600",
+    gpa: "87%",
+    description: "Built strong fundamentals in science and computers. Participated in various competitions and coding camps where my adventurous journey started to unfold.",
+    achievements: ["Top Student", "Science Exhibition Winner", "Dell Code Camp", "Debate Finalist"]
   },
   {
     level: "Secondary Education",
@@ -24,7 +24,7 @@ const educationJourney = [
     date: "March 2020",
     icon: BookOpen,
     color: "from-purple-400 to-slate-600",
-    gpa: "86% Marks",
+    gpa: "86%",
     description: "Strong academic foundation with focus on science and early programming.",
     achievements: ["Top 10% Entrance", "Science Club Member", "Music Choir"]
   },
@@ -35,7 +35,7 @@ const educationJourney = [
     date: "July 2022",
     icon: Star,
     color: "from-slate-500 to-purple-600",
-    gpa: "82% Marks",
+    gpa: "82%",
     description: "Specialized in Computer Science, Physics, Chemistry, and Mathematics.",
     achievements: ["94% in Computer Science", "Club Leader", "Project Contributor"]
   },
@@ -49,6 +49,27 @@ const educationJourney = [
     gpa: "8.7 CGPA",
     description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
     achievements: ["UI UX Solvathon Winner", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"]
+  },
+  {
+    level: "Continuous Professional Growth",
+    institution: "Global & Remote",
+    duration: "2023 - Present",
+    date: "Ongoing",
+    icon: Briefcase,
+    color: "from-emerald-500 to-teal-700",
+    gpa: "Pro",
+    description: "Expanding horizons through global internships, open source contributions, and leadership fellowships while driving social impact.",
+    achievements: [
+        "OpenSphere - UI/UX Designer & Dev",
+        "Cubble - FullStack Intern",
+        "Harvard Aspire - Leadership Fellow",
+        "SheFi - Scholar (Web3)",
+        "GSSoC - Campus Ambassador",
+        "LegalBridge - Contributor",
+        "NVIDIA - Developer Program",
+        "Pledge A Smile - Volunteer",
+        "Freelance - Digital Product Designer"
+    ]
   }
 ]
 
