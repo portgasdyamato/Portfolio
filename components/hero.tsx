@@ -52,7 +52,7 @@ export default function Hero() {
               style={{
                 borderLeft: `${element.size / 2}px solid transparent`,
                 borderRight: `${element.size / 2}px solid transparent`,
-                borderBottom: `${element.size}px solid #FF9999`,
+                borderBottom: `${element.size}px solid #FFB5B5`,
               }}
             />
           )}

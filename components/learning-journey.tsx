@@ -43,10 +43,10 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
         <svg className="w-full h-full" viewBox="0 0 200 1400" preserveAspectRatio="none">
           <defs>
             <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#FF9999" stopOpacity="0" />
-              <stop offset="10%" stopColor="#FF9999" stopOpacity="1" />
-              <stop offset="90%" stopColor="#FF9999" stopOpacity="1" />
-              <stop offset="100%" stopColor="#FF9999" stopOpacity="0" />
+              <stop offset="0%" stopColor="#FFB5B5" stopOpacity="0" />
+              <stop offset="10%" stopColor="#FFB5B5" stopOpacity="1" />
+              <stop offset="90%" stopColor="#FFB5B5" stopOpacity="1" />
+              <stop offset="100%" stopColor="#FFB5B5" stopOpacity="0" />
             </linearGradient>
           </defs>
           
@@ -54,7 +54,7 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
           <path
             d="M 100 0 C 100 0, 60 400, 60 600 C 60 800, 140 1000, 140 1200 C 140 1300, 100 1400, 100 1400"
             fill="none"
-            stroke="rgba(255, 153, 153, 0.15)"
+            stroke="rgba(255, 181, 181, 0.15)"
             strokeWidth="3"
             strokeDasharray="8 8"
           />
@@ -141,7 +141,7 @@ function JourneyCard({
           )}
         >
              {/* Center Core */}
-             <div className="w-4 h-4 rounded-full bg-brand-600 shadow-[0_0_15px_rgba(255,153,153,0.8)] z-20" />
+             <div className="w-4 h-4 rounded-full bg-brand-600 shadow-[0_0_15px_rgba(255,181,181,0.8)] z-20" />
              
              {/* Orbital Ring 1 (Slow) */}
              <div className="absolute inset-0 rounded-full border border-brand-500/30 animate-[spin_4s_linear_infinite]" 

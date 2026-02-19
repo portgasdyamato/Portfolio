@@ -30,7 +30,7 @@ const socialLinks = [
     name: "Discord",
     icon: DiscordIcon,
     url: "https://discord.com/users/934897501054586900",
-    color: "#FF9999",
+    color: "#FFB5B5",
     description: "Follow my journey",
     handle: "@scerilia",
   },
@@ -122,7 +122,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M120,120 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FF9999"
+                  stroke="#FFB5B5"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
