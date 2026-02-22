@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const fonts = ["Super Pixel", "Bianca", "alo", "qax", "Outfit"]
-const keywords = ["CREATIVE", "DEVELOPER", "DESIGNER", "PIXEL ARTIST", "STORYTELLER"]
+const fonts = ["Bungee", "Silkscreen", "Syne", "Super Pixel", "Gamer", "Pixel", "Bianca", "alo"]
+const keywords = ["CREATIVE", "DEVELOPER", "DESIGNER", "PIXEL ARTIST", "STORYTELLER", "RETRO ENTHUSIAST"]
 
-export default function SplashScreen({ finishLoading }: { finishLoading: () => void }) {
+export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
   const [currentFont, setCurrentFont] = useState(fonts[0])
   const [currentKeyword, setCurrentKeyword] = useState(keywords[0])
   const [progress, setProgress] = useState(0)
@@ -24,7 +24,7 @@ export default function SplashScreen({ finishLoading }: { finishLoading: () => v
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval)
-          setTimeout(finishLoading, 1000)
+          setTimeout(finishLoadingAction, 1000)
           return 100
         }
         return prev + 1
@@ -36,7 +36,7 @@ export default function SplashScreen({ finishLoading }: { finishLoading: () => v
       clearInterval(keywordInterval)
       clearInterval(progressInterval)
     }
-  }, [finishLoading])
+  }, [finishLoadingAction])
 
   return (
     <div className="fixed inset-0 z-[9999] bg-[#FFB5B5] overflow-hidden flex flex-col items-center justify-center">
@@ -64,8 +64,8 @@ export default function SplashScreen({ finishLoading }: { finishLoading: () => v
           >
             <span className="text-white/40 font-mono text-xs md:text-sm tracking-tighter">001_SYSTEM.BOOT</span>
             <h1 
-              style={{ fontFamily: currentFont }}
-              className="text-6xl md:text-9xl text-slate-900 transition-all duration-75 uppercase leading-none"
+              style={{ fontFamily: currentFont, textShadow: "0 0 20px rgba(255,255,255,0.3)" }}
+              className="text-6xl md:text-9xl text-slate-900 transition-all duration-75 uppercase leading-none tracking-tighter md:tracking-[-0.05em]"
             >
               Sakshi
             </h1>
@@ -81,7 +81,7 @@ export default function SplashScreen({ finishLoading }: { finishLoading: () => v
               {currentKeyword}
             </span>
             <h1 
-              style={{ fontFamily: currentFont }}
+              style={{ fontFamily: currentFont, textShadow: "0 0 20px rgba(255,255,255,0.3)" }}
               className="text-6xl md:text-9xl text-slate-900 transition-all duration-75 uppercase leading-none italic"
             >
               Agrahari

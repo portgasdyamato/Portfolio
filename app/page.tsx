@@ -33,7 +33,7 @@ export default function Home() {
     <>
       <AnimatePresence mode="wait">
         {isLoading && (
-          <SplashScreen finishLoading={() => setIsLoading(false)} />
+          <SplashScreen finishLoadingAction={() => setIsLoading(false)} />
         )}
       </AnimatePresence>
 
