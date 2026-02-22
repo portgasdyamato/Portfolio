@@ -1,137 +1,176 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 
-const phrases = [
-  "Awakening Creativity",
-  "Curating Experiences",
-  "Designing Futures",
-  "Bridging Ideas",
-  "SA Portfolio 2026"
-]
+const fonts = ["Super Pixel", "Bianca", "alo", "qax", "Outfit"]
+const keywords = ["CREATIVE", "DEVELOPER", "DESIGNER", "PIXEL ARTIST", "STORYTELLER"]
 
 export default function SplashScreen({ finishLoading }: { finishLoading: () => void }) {
-  const [index, setIndex] = useState(0)
-  const count = useMotionValue(0)
-  const rounded = useTransform(count, (latest) => Math.round(latest))
+  const [currentFont, setCurrentFont] = useState(fonts[0])
+  const [currentKeyword, setCurrentKeyword] = useState(keywords[0])
+  const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    // Phrase cycling
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % phrases.length)
-    }, 1200)
+    const fontInterval = setInterval(() => {
+      setCurrentFont(fonts[Math.floor(Math.random() * fonts.length)])
+    }, 150)
 
-    // Percentage counter
-    const animation = animate(count, 100, {
-      duration: 5,
-      ease: [0.76, 0, 0.24, 1],
-      onComplete: () => {
-        setTimeout(() => {
-          finishLoading()
-        }, 800)
-      }
-    })
+    const keywordInterval = setInterval(() => {
+      setCurrentKeyword(keywords[Math.floor(Math.random() * keywords.length)])
+    }, 200)
+
+    const progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(progressInterval)
+          setTimeout(finishLoading, 1000)
+          return 100
+        }
+        return prev + 1
+      })
+    }, 40)
 
     return () => {
-      clearInterval(interval)
-      animation.stop()
+      clearInterval(fontInterval)
+      clearInterval(keywordInterval)
+      clearInterval(progressInterval)
     }
-  }, [count, finishLoading])
+  }, [finishLoading])
 
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      exit={{ 
-        y: "-100%",
-        transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }
-      }}
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-[#0a0a0a] overflow-hidden"
-    >
-      {/* Dynamic Background Noise */}
-      <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
-      
-      {/* Decorative SVG Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.2, 1],
-            rotate: [0, 5, 0],
-            opacity: [0.1, 0.2, 0.1]
-          }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute -top-1/2 -left-1/2 w-full h-full bg-gradient-to-br from-brand-500/20 to-transparent rounded-full blur-[120px]" 
-        />
-        <motion.div 
-          animate={{ 
-            scale: [1, 1.5, 1],
-            rotate: [0, -10, 0],
-            opacity: [0.1, 0.15, 0.1]
-          }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-1/2 -right-1/2 w-full h-full bg-gradient-to-tl from-brand-500/10 to-transparent rounded-full blur-[100px]" 
-        />
+    <div className="fixed inset-0 z-[9999] bg-[#050505] overflow-hidden flex flex-col items-center justify-center">
+      {/* Background Digital Grid */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <div className="w-full h-full bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center">
-        {/* The Main Display */}
-        <div className="h-32 flex flex-col items-center justify-center overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={phrases[index]}
-              initial={{ y: 40, opacity: 0, scale: 0.95 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: -40, opacity: 0, scale: 1.05 }}
-              transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-              className="text-center"
-            >
-              <span className="text-xs tracking-[0.8em] text-brand-500 font-outfit uppercase mb-4 block opacity-80">
-                In Progress
-              </span>
-              <h1 className="text-4xl md:text-6xl font-light tracking-tight text-white font-outfit">
-                {phrases[index]}
-              </h1>
-            </motion.div>
-          </AnimatePresence>
+      {/* Experimental Typography Section */}
+      <div className="relative z-10 w-full max-w-4xl px-6 flex flex-col items-start md:items-center">
+        {/* Floating Coordinates */}
+        <div className="absolute -top-20 right-0 font-mono text-[10px] text-brand-500/40 tracking-widest hidden md:block">
+          LAT: 28.6139° N <br />
+          LONG: 77.2090° E <br />
+          SYS: ACTIVE_RENEGED
         </div>
 
-        {/* The Counter */}
-        <div className="mt-12 flex flex-col items-center gap-4">
-          <div className="flex items-baseline gap-1">
-            <motion.span className="text-7xl md:text-9xl font-bold text-white/10 font-outfit tabular-nums">
-              {rounded}
-            </motion.span>
-            <span className="text-2xl font-light text-brand-500/30 font-outfit">%</span>
+        <div className="flex flex-col gap-2 overflow-hidden">
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
+            className="flex flex-col md:flex-row items-baseline gap-4 md:gap-8"
+          >
+            <span className="text-zinc-500 font-mono text-xs md:text-sm tracking-tighter">001_SYSTEM.BOOT</span>
+            <h1 
+              style={{ fontFamily: currentFont }}
+              className="text-6xl md:text-9xl text-white transition-all duration-75 uppercase leading-none"
+            >
+              Sakshi
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.1 }}
+            className="flex flex-col md:flex-row-reverse items-baseline gap-4 md:gap-8 self-end"
+          >
+            <span className="text-brand-500 font-mono text-xs md:text-sm tracking-widest uppercase">
+              {currentKeyword}
+            </span>
+            <h1 
+              style={{ fontFamily: currentFont }}
+              className="text-6xl md:text-9xl text-white transition-all duration-75 uppercase leading-none italic"
+            >
+              Agrahari
+            </h1>
+          </motion.div>
+        </div>
+
+        {/* Progress Display - Radical Style */}
+        <div className="mt-16 w-full flex flex-col md:flex-row justify-between items-end md:items-center gap-4">
+          <div className="flex flex-col">
+            <span className="text-[10px] text-zinc-600 font-mono uppercase tracking-[0.3em] mb-1">Initialization</span>
+            <div className="flex gap-1">
+              {[...Array(20)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  animate={{ 
+                    backgroundColor: i < (progress / 5) ? "#FFB5B5" : "#1a1a1a",
+                    height: [2, 8, 2]
+                  }}
+                  transition={{ 
+                    duration: 1.5, 
+                    repeat: Infinity, 
+                    delay: i * 0.05,
+                    backgroundColor: { duration: 0.1 } 
+                  }}
+                  className="w-1 md:w-2 rounded-full"
+                />
+              ))}
+            </div>
           </div>
           
-          {/* Minimalist Loading Bar */}
-          <div className="w-64 h-[2px] bg-white/5 relative overflow-hidden">
-            <motion.div 
-              style={{ scaleX: useTransform(count, [0, 100], [0, 1]) }}
-              className="absolute inset-0 bg-brand-500 origin-left"
-            />
+          <div className="font-mono text-4xl md:text-6xl text-white/5 tracking-tighter">
+            {progress.toString().padStart(3, '0')}%
           </div>
         </div>
       </div>
 
-      {/* Cinematic Reveal Mask (SVG) */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
-        <motion.path
-          initial={{ d: "M 0 0 V 0 Q 50 0 100 0 V 0 Z" }}
-          animate={{ 
-            d: "M 0 0 V 0 Q 50 0 100 0 V 0 Z" 
-          }}
-          exit={{ 
-            d: [
-              "M 0 100 V 100 Q 50 100 100 100 V 100 Z",
-              "M 0 100 V 50 Q 50 0 100 50 V 100 Z",
-              "M 0 100 V 0 Q 50 0 100 0 V 100 Z"
-            ],
-            transition: { duration: 1.2, times: [0, 0.6, 1], ease: [0.76, 0, 0.24, 1] }
-          }}
-          fill="#0a0a0a"
-        />
-      </svg>
-    </motion.div>
+      {/* Decorative Glitch Bars */}
+      <motion.div
+        animate={{ 
+          y: [-100, 1000],
+          opacity: [0, 0.5, 0]
+        }}
+        transition={{ 
+          duration: 2, 
+          repeat: Infinity, 
+          ease: "linear",
+          delay: 0.5 
+        }}
+        className="absolute left-0 w-full h-px bg-brand-500/20 shadow-[0_0_15px_rgba(255,181,181,0.5)] z-20 pointer-events-none"
+      />
+
+      {/* Reveal Slats - Exit Animation */}
+      <AnimatePresence>
+        <div className="fixed inset-0 pointer-events-none flex z-[10000]">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ scaleY: 0 }}
+              exit={{ scaleY: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: i * 0.03, 
+                ease: [0.76, 0, 0.24, 1] 
+              }}
+              className="flex-1 bg-[#050505] origin-bottom shadow-[0_0_2px_rgba(255,181,181,0.1)]"
+            />
+          ))}
+        </div>
+      </AnimatePresence>
+
+      <AnimatePresence>
+        <div className="fixed inset-0 pointer-events-none flex z-[10001]">
+          {[...Array(12)].map((_, i) => (
+            <motion.div
+              key={i}
+              initial={{ scaleY: 0 }}
+              exit={{ scaleY: 1 }}
+              transition={{ 
+                duration: 0.8, 
+                delay: (11 - i) * 0.03, 
+                ease: [0.76, 0, 0.24, 1],
+                delayChildren: 1
+              }}
+              className="flex-1 bg-brand-500 origin-top opacity-10"
+            />
+          ))}
+        </div>
+      </AnimatePresence>
+    </div>
   )
 }
