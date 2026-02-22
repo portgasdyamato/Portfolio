@@ -412,26 +412,6 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.03),transparent_70%)] pointer-events-none" />
 
-      {/* Navigation Arrows - Tactile & Pulsing */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-10 z-50 pointer-events-none">
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => handleStep(-1)}
-          className="w-12 h-12 md:w-14 md:h-14 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto bg-black/40 backdrop-blur-2xl"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="m15 18-6-6 6-6"/></svg>
-        </motion.button>
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          onClick={() => handleStep(1)}
-          className="w-12 h-12 md:w-14 md:h-14 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto bg-black/40 backdrop-blur-2xl"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="m9 18 6-6-6-6"/></svg>
-        </motion.button>
-      </div>
-
       {/* Main Slider Track */}
       <motion.div 
         drag="x"
@@ -457,6 +437,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
                 offset={offset + dragProgress}
                 isActive={offset === 0}
                 onProjectClick={onProjectClick}
+                onMove={() => handleStep(offset)}
                 index={i}
               />
             )
@@ -480,13 +461,24 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   )
 }
 
-function ProjectCard({ project, offset, isActive, onProjectClick, index }: { 
+function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index }: { 
   project: typeof projectsData[0], 
   offset: number, 
   isActive: boolean, 
   onProjectClick: (p: typeof projectsData[0]) => void,
+  onMove: () => void,
   index: number
 }) {
+  const handleClick = () => {
+    // If it's a side project, move it to center
+    // If it's already centered (offset near 0), open details
+    if (Math.abs(offset) > 0.1) {
+      onMove()
+    } else {
+      onProjectClick(project)
+    }
+  }
+
   return (
     <motion.div
       animate={{
@@ -506,8 +498,8 @@ function ProjectCard({ project, offset, isActive, onProjectClick, index }: {
         width: "min(500px, 85vw)",
         aspectRatio: "16/10", // Container fits project image proportions
       }}
-      onClick={() => Math.abs(offset) < 0.2 && onProjectClick(project)}
-      className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 bg-slate-900 group"
+      onClick={handleClick}
+      className={`rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 bg-slate-900 group ${Math.abs(offset) > 0.1 ? 'cursor-pointer' : 'cursor-default'}`}
     >
       <div className="relative w-full h-full">
         <Image
@@ -540,12 +532,12 @@ function ProjectCard({ project, offset, isActive, onProjectClick, index }: {
             </h3>
             
             <div className="px-3 py-1 bg-white/10 rounded-full text-[9px] font-mono text-white/40 tracking-[0.2em] uppercase">
-              VIEW_DETAILS
+              {Math.abs(offset) > 0.1 ? 'SELECT_PROJECT' : 'VIEW_DETAILS'}
             </div>
           </motion.div>
           
           <div className="absolute top-6 right-6">
-            <div className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500">
+            <div className={`w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-2xl transition-transform duration-500 ${Math.abs(offset) < 0.1 ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
               <ArrowUpRight className="w-5 h-5" />
             </div>
           </div>
