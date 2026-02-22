@@ -394,7 +394,6 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   const [dragProgress, setDragProgress] = useState(0)
   const [containerWidth, setContainerWidth] = useState(1200)
 
-  // Proper lifecycle for window tracking
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const handleResize = () => setContainerWidth(window.innerWidth)
@@ -404,41 +403,49 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
     }
   }, [])
 
-  // Spacing calculation: Adjusted for larger cards
-  const spacing = containerWidth < 768 ? containerWidth * 0.8 : Math.min(800, containerWidth * 0.55)
+  const spacing = containerWidth < 768 ? containerWidth * 0.8 : Math.min(1000, containerWidth * 0.6)
 
-  const handleStep = (step: number) => {
-    setIndex((prev) => (prev + step + projects.length) % projects.length)
+  const handleStep = (distance: number) => {
+    setIndex((prev) => {
+      // Robust circular indexing
+      let next = (prev + distance) % projects.length
+      if (next < 0) next += projects.length
+      return next
+    })
     setDragProgress(0)
   }
 
   const handleDragEnd = (_: any, info: any) => {
-    const threshold = 100
     const velocity = info.velocity.x
+    const distanceDragged = info.offset.x
     
-    if (info.offset.x > threshold || velocity > 800) {
-      handleStep(-1)
-    } else if (info.offset.x < -threshold || velocity < -800) {
-      handleStep(1)
+    // Move based on distance (multi-step)
+    let steps = Math.round(-distanceDragged / spacing)
+    
+    // Boost movement with velocity for "flick" feel
+    if (steps === 0 && Math.abs(velocity) > 400) {
+      steps = velocity > 0 ? -1 : 1
+    }
+
+    if (steps !== 0) {
+      handleStep(steps)
     } else {
       setDragProgress(0)
     }
   }
 
   return (
-    <div className="relative w-full h-[600px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[2500px] select-none">
-      {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.015),transparent_70%)] pointer-events-none" />
+    <div className="relative w-full h-[600px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
 
-      {/* Main Draggable Track */}
       <motion.div 
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.1}
+        dragElastic={0.2}
         onDrag={(_, info) => setDragProgress(info.offset.x / spacing)}
         onDragEnd={handleDragEnd}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-20 overflow-visible"
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-20"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           {projects.map((project, i) => {
@@ -446,16 +453,17 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
             if (offset > projects.length / 2) offset -= projects.length
             if (offset < -projects.length / 2) offset += projects.length
 
-            if (Math.abs(offset) > 1.2) return null
-
             const combinedOffset = offset + dragProgress
             
+            // Render slightly more cards for smoother transitions
+            if (Math.abs(combinedOffset) > 2.5) return null
+
             return (
               <ProjectCard
                 key={project.title}
                 project={project}
                 offset={combinedOffset}
-                isActive={Math.abs(combinedOffset) < 0.2}
+                isActive={Math.abs(combinedOffset) < 0.25}
                 onProjectClick={onProjectClick}
                 onMove={() => handleStep(Math.round(offset))}
                 spacing={spacing}
@@ -466,24 +474,26 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         </AnimatePresence>
       </motion.div>
 
-      {/* Modern Tactical Indicator */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-50 pointer-events-none">
-        <div className="flex gap-2">
+      {/* Modern HUD Feedback */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 z-50 pointer-events-none">
+        <div className="flex gap-2.5">
           {projects.map((_, i) => (
             <motion.div 
               key={i}
               initial={false}
               animate={{ 
-                width: index === i ? 32 : 8,
-                backgroundColor: index === i ? "#fff" : "rgba(255,255,255,0.1)"
+                width: index === i ? 40 : 8,
+                backgroundColor: index === i ? "#fff" : "rgba(255,255,255,0.15)"
               }}
-              className="h-1 rounded-full" 
+              className="h-1 rounded-full backdrop-blur-sm" 
             />
           ))}
         </div>
-        <span className="text-[10px] font-mono text-white/30 tracking-[0.6em] uppercase">
-          DATA_STREAM_{index + 1}
-        </span>
+        <div className="flex items-center gap-4 text-[10px] font-mono text-white/40 tracking-[0.4em] uppercase">
+          <span className="w-10 h-[1px] bg-white/10" />
+          MODULE_INDEX_0{index + 1}
+          <span className="w-10 h-[1px] bg-white/10" />
+        </div>
       </div>
     </div>
   )
@@ -501,13 +511,14 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
   return (
     <motion.div
       onTap={(e) => {
-        // If it's the center project, open it. If not, move it to center.
         if (isActive) {
           onProjectClick(project)
         } else {
           onMove()
         }
       }}
+      whileHover={!isActive ? { scale: 1.02, filter: `blur(0px) brightness(1.2)` } : {}}
+      whileTap={{ scale: 0.98 }}
       animate={{
         x: offset * spacing, 
         scale: 1 - Math.abs(offset) * 0.1,
