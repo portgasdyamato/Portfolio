@@ -398,9 +398,11 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
 
   const handleDragEnd = (_: any, info: any) => {
     const threshold = 50
-    if (info.offset.x > threshold) {
+    const velocity = info.velocity.x
+    
+    if (info.offset.x > threshold || velocity > 500) {
       handleStep(-1)
-    } else if (info.offset.x < -threshold) {
+    } else if (info.offset.x < -threshold || velocity < -500) {
       handleStep(1)
     } else {
       setDragProgress(0)
@@ -408,7 +410,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[500px] md:h-[700px] flex items-center justify-center overflow-hidden">
+    <div className="relative w-full h-[500px] md:h-[700px] flex items-center justify-center overflow-hidden perspective-[1200px]">
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.03),transparent_70%)] pointer-events-none" />
 
@@ -416,19 +418,21 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
       <motion.div 
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={0.2}
         onDrag={(_, info) => setDragProgress(info.offset.x / 400)}
         onDragEnd={handleDragEnd}
+        style={{ transformStyle: "preserve-3d" }}
         className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           {projects.map((project, i) => {
-            // Find relative offset
+            // Find relative offset for circular looping
             let offset = i - index
             if (offset > projects.length / 2) offset -= projects.length
             if (offset < -projects.length / 2) offset += projects.length
 
-            // Only show the main 3: Left (-1), Middle (0), Right (1)
-            if (Math.abs(offset) > 1) return null
+            // Show 3 projects for focus, but the circular logic handles the rest
+            if (Math.abs(offset) > 1.5) return null
 
             return (
               <ProjectCard
@@ -437,7 +441,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
                 offset={offset + dragProgress}
                 isActive={offset === 0}
                 onProjectClick={onProjectClick}
-                onMove={() => handleStep(offset)}
+                onMove={() => handleStep(Math.round(offset))}
                 index={i}
               />
             )
@@ -448,7 +452,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
       {/* HUD Progress */}
       <div className="absolute bottom-8 flex items-center gap-4 px-5 py-2.5 glass rounded-full border border-white/10 z-50">
         <span className="text-[10px] font-mono font-bold text-white/40 tracking-wider">
-          {index + 1} / {projects.length}
+          SYSTEM_LOCK: 0{index + 1} // {projects.length}
         </span>
         <div className="w-16 h-[2px] bg-white/10 rounded-full overflow-hidden">
           <motion.div 
@@ -470,8 +474,6 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index 
   index: number
 }) {
   const handleClick = () => {
-    // If it's a side project, move it to center
-    // If it's already centered (offset near 0), open details
     if (Math.abs(offset) > 0.1) {
       onMove()
     } else {
@@ -482,31 +484,35 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index 
   return (
     <motion.div
       animate={{
-        x: offset * 450, // Wider spacing for clarity
-        scale: 1 - Math.abs(offset) * 0.15, // Smooth scaling
-        opacity: 1 - Math.abs(offset) * 0.6,
-        filter: `blur(${Math.abs(offset) * 8}px)`,
-        zIndex: 100 - Math.abs(offset) * 10,
+        x: offset * 480, // Spatial spacing
+        scale: 1 - Math.abs(offset) * 0.12, 
+        opacity: 1 - Math.abs(offset) * 0.3, // Much clearer side visibility
+        rotateY: offset * 35, // Stronger circular arc rotation
+        z: -Math.abs(offset) * 300, // Deeper recession into Z-space
+        filter: `blur(${Math.abs(offset) * 3}px)`, // Subtle, professional blur
       }}
       transition={{
         type: "spring",
-        stiffness: 260,
-        damping: 25
+        stiffness: 200,
+        damping: 24,
+        mass: 0.8
       }}
       style={{
         position: "absolute",
-        width: "min(500px, 85vw)",
-        aspectRatio: "16/10", // Container fits project image proportions
+        width: "min(480px, 80vw)",
+        aspectRatio: "16/10",
+        transformStyle: "preserve-3d",
+        zIndex: 100 - Math.abs(offset) * 10,
       }}
       onClick={handleClick}
-      className={`rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 bg-slate-900 group ${Math.abs(offset) > 0.1 ? 'cursor-pointer' : 'cursor-default'}`}
+      className={`rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/10 bg-slate-900 group ${Math.abs(offset) > 0.1 ? 'cursor-pointer' : 'cursor-default'}`}
     >
       <div className="relative w-full h-full">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
-          className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700"
+          className="object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700"
         />
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
@@ -514,8 +520,8 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index 
         <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-10">
           <motion.div
             animate={{ 
-              opacity: Math.abs(offset) < 0.3 ? 1 : 0,
-              y: Math.abs(offset) < 0.3 ? 0 : 20
+              opacity: Math.abs(offset) < 0.4 ? 1 : 0,
+              y: Math.abs(offset) < 0.4 ? 0 : 20
             }}
             className="flex flex-col items-center text-center w-full"
           >
@@ -532,12 +538,12 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index 
             </h3>
             
             <div className="px-3 py-1 bg-white/10 rounded-full text-[9px] font-mono text-white/40 tracking-[0.2em] uppercase">
-              {Math.abs(offset) > 0.1 ? 'SELECT_PROJECT' : 'VIEW_DETAILS'}
+              {isActive ? 'VIEW_DETAILS' : 'SELECT_ENTRY'}
             </div>
           </motion.div>
           
           <div className="absolute top-6 right-6">
-            <div className={`w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-2xl transition-transform duration-500 ${Math.abs(offset) < 0.1 ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
+            <div className={`w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-2xl transition-transform duration-500 ${isActive ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
               <ArrowUpRight className="w-5 h-5" />
             </div>
           </div>
