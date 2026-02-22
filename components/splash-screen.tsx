@@ -65,7 +65,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
             <span className="text-white/40 font-mono text-xs md:text-sm tracking-tighter">001_SYSTEM.BOOT</span>
             <h1 
               style={{ fontFamily: currentFont, textShadow: "0 0 5px rgba(255,255,255,0.2)" }}
-              className="text-5xl md:text-8xl text-slate-900 transition-all duration-75 uppercase leading-none tracking-normal"
+              className="text-7xl md:text-[11rem] text-slate-900 transition-all duration-75 uppercase leading-none tracking-normal"
             >
               Sakshi
             </h1>
@@ -82,7 +82,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
             </span>
             <h1 
               style={{ fontFamily: currentFont, textShadow: "0 0 5px rgba(255,255,255,0.2)" }}
-              className="text-5xl md:text-8xl text-slate-900 transition-all duration-75 uppercase leading-none italic tracking-normal"
+              className="text-7xl md:text-[11rem] text-slate-900 transition-all duration-75 uppercase leading-none italic tracking-normal"
             >
               Agrahari
             </h1>
