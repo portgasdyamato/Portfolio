@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const fonts = ["Bungee", "Silkscreen", "Syne", "Super Pixel", "Gamer", "Pixel", "Bianca", "alo"]
+const fonts = ["Super Pixel", "Silkscreen", "Gamer", "Pixel", "Bungee", "Bitcount Grid Double"]
 const keywords = ["CREATIVE", "DEVELOPER", "DESIGNER", "PIXEL ARTIST", "STORYTELLER", "RETRO ENTHUSIAST"]
 
 export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
