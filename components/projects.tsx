@@ -279,53 +279,105 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      {/* Grid - 2 columns on desktop */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-full lg:mx-auto">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => setSelectedProject(projectsData.findIndex(p => p.title === project.title))}
-              className="group cursor-pointer glass-card rounded-[2rem] overflow-hidden flex flex-col"
-            >
-              <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-[2rem] bg-gray-950">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-                  <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500 flex-1">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {project.technologies.slice(0, 2).map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider rounded-full">
+      {/* 3D Circular Slider Container */}
+      <div className="relative h-[700px] w-full flex items-center justify-center overflow-hidden perspective-[2500px] py-20">
+        <motion.div
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          style={{ 
+            transformStyle: "preserve-3d",
+            rotateY: 0 
+          }}
+          animate={{ rotateY: [0, -360] }}
+          transition={{ 
+            duration: 50, 
+            repeat: Infinity, 
+            ease: "linear",
+          }}
+          whileDrag={{ transition: { type: "spring", damping: 50, stiffness: 200 } }}
+          className="relative w-[320px] h-[450px] cursor-grab active:cursor-grabbing flex items-center justify-center"
+        >
+          {filteredProjects.map((project, index) => {
+            const angleStep = 360 / filteredProjects.length;
+            // Adaptive radius based on count and screen size
+            const radius = typeof window !== 'undefined' && window.innerWidth < 768 ? 450 : 800;
+            
+            return (
+              <motion.div
+                key={project.title}
+                style={{
+                  position: "absolute",
+                  width: "100%",
+                  height: "100%",
+                  transformStyle: "preserve-3d",
+                  rotateY: index * angleStep,
+                  translateZ: radius,
+                }}
+                className="group"
+              >
+                <div 
+                  onClick={() => setSelectedProject(projectsData.findIndex(p => p.title === project.title))}
+                  className="w-full h-full relative glass-card rounded-[2.5rem] overflow-hidden border border-white/10 shadow-2xl transition-all duration-700 
+                             group-hover:scale-110 group-hover:-translate-y-16 group-hover:border-white/40 group-hover:shadow-[0_40px_100px_rgba(255,181,181,0.2)]"
+                >
+                  <div className="relative w-full h-[65%] overflow-hidden bg-slate-900/50">
+                     <Image
+                      src={project.image || "/placeholder.svg"}
+                      alt={project.title}
+                      fill
+                      className="object-cover object-top transition-transform duration-1000 group-hover:scale-125"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60" />
+                    
+                    {/* Floating Tech Badges */}
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span key={tech} className="px-2 py-1 bg-black/60 backdrop-blur-md border border-white/10 text-white text-[8px] font-bold uppercase tracking-widest rounded-md">
                           {tech}
                         </span>
                       ))}
                     </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase leading-tight">{project.title}</h3>
                   </div>
-                  <motion.div 
-                    whileHover={{ scale: 1.1, rotate: 45 }}
-                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl shrink-0"
-                  >
-                    <ArrowUpRight className="text-black w-5 h-5" />
-                  </motion.div>
+                  
+                  <div className="p-8 flex flex-col justify-between h-[35%] bg-gradient-to-br from-white/10 to-transparent backdrop-blur-3xl relative">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-500/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+                    
+                    <div>
+                      <h3 className="text-2xl font-bold text-white font-outfit uppercase tracking-tight leading-none mb-2">{project.title}</h3>
+                      <p className="text-[10px] text-brand-300 font-mono tracking-[0.3em] uppercase">{project.status}</p>
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex -space-x-2">
+                         {[...Array(3)].map((_, i) => (
+                           <div key={i} className="w-6 h-6 rounded-full border border-white/10 bg-white/5 flex items-center justify-center backdrop-blur-sm">
+                             <div className="w-1.5 h-1.5 rounded-full bg-brand-400 animate-pulse" style={{ animationDelay: `${i * 0.2}s` }} />
+                           </div>
+                         ))}
+                      </div>
+                      <motion.div 
+                        whileHover={{ scale: 1.2, rotate: 45 }}
+                        className="w-10 h-10 bg-brand-500 text-white rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(255,181,181,0.4)]"
+                      >
+                        <ArrowUpRight className="w-5 h-5" />
+                      </motion.div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* Cinematic Atmospheric FX */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] opacity-80" />
+          <div className="absolute top-0 left-0 w-full h-60 bg-gradient-to-b from-background via-background/80 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-60 bg-gradient-to-t from-background via-background/80 to-transparent" />
+          
+          {/* Horizontal Scanlines across the ticker area */}
+          <div className="absolute top-1/2 left-0 w-full h-[1px] bg-white/10 scale-y-[100] blur-sm opacity-20" />
+        </div>
       </div>
 
       {/* Modal */}
