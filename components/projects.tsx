@@ -390,7 +390,6 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   const [rotation, setRotation] = useState(0)
   const angleStep = 360 / projects.length
   
-  // Safe normalization for vertical rotation
   const getActiveIndex = () => {
     const rawIndex = Math.round(-rotation / angleStep)
     return ((rawIndex % projects.length) + projects.length) % projects.length
@@ -398,31 +397,31 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
 
   const activeIndex = getActiveIndex()
 
-  // High-momentum Vertical Drag
   const handleDrag = (_: any, info: any) => {
-    setRotation(prev => prev - info.delta.y * 0.2) // Rotate on Y movement
+    // High sensitivity horizontal drag
+    setRotation(prev => prev + info.delta.x * 0.25)
   }
 
   const handleDragEnd = (_: any, info: any) => {
-    const velocityFactor = -info.velocity.y * 0.08
+    const velocityFactor = info.velocity.x * 0.1
     const finalRotation = rotation + velocityFactor
     const snappedRotation = Math.round(finalRotation / angleStep) * angleStep
     setRotation(snappedRotation)
   }
 
   return (
-    <div className="relative h-[650px] md:h-[850px] w-full flex items-center justify-center overflow-hidden perspective-[3000px]">
-      {/* Background Visual Depth */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.08),transparent_70%)] pointer-events-none" />
+    <div className="relative h-[600px] md:h-[800px] w-full flex items-center justify-center overflow-visible perspective-[2000px]">
+      {/* Cinematic Floor Reflection */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.1),transparent_70%)] pointer-events-none blur-3xl opacity-50 z-0" />
       
       <motion.div
-        drag="y" // Drag vertically for the wheel effect
+        drag="x"
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
-        animate={{ rotateX: rotation, rotateZ: -5 }} // Slight tilt for style
-        transition={{ type: "spring", damping: 30, stiffness: 80 }}
+        animate={{ rotateY: rotation }}
+        transition={{ type: "spring", damping: 35, stiffness: 100 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-[300px] md:w-[500px] h-[400px] md:h-[550px] cursor-grab active:cursor-grabbing"
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
       >
         {projects.map((project, index) => {
           const angle = index * angleStep
@@ -442,21 +441,25 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         })}
       </motion.div>
 
-      {/* Tactile Sidebar Navigation Dot Indicator */}
-      <div className="absolute right-6 md:right-12 flex flex-col items-center gap-4 z-20 p-2 bg-white/5 backdrop-blur-3xl rounded-full border border-white/10">
-        {projects.map((_, i) => (
-          <motion.div
-            key={i}
-            onClick={() => setRotation(-i * angleStep)}
-            animate={{ 
-              height: activeIndex === i ? 24 : 8,
-              width: 8,
-              opacity: activeIndex === i ? 1 : 0.2,
-              backgroundColor: activeIndex === i ? "#fff" : "rgba(255,255,255,0.5)"
-            }}
-            className="rounded-full cursor-pointer transition-all duration-500 ease-out"
-          />
-        ))}
+      {/* Floating Tactical HUD */}
+      <div className="absolute bottom-10 flex items-center gap-6 z-30 px-8 py-4 bg-white/5 backdrop-blur-2xl rounded-full border border-white/10 shadow-2xl">
+        <div className="flex gap-2">
+          {projects.map((_, i) => (
+            <motion.div
+              key={i}
+              onClick={() => setRotation(-i * angleStep)}
+              animate={{ 
+                width: activeIndex === i ? 24 : 8,
+                opacity: activeIndex === i ? 1 : 0.2,
+              }}
+              className="h-2 rounded-full bg-white cursor-pointer transition-all duration-500"
+            />
+          ))}
+        </div>
+        <div className="h-4 w-[1px] bg-white/20" />
+        <span className="text-[10px] font-mono text-white/50 tracking-widest uppercase">
+          CAROUSEL_0{activeIndex + 1}
+        </span>
       </div>
     </div>
   )
@@ -470,94 +473,108 @@ function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRo
   onProjectClick: (p: typeof projectsData[0]) => void,
   parentRotation: number
 }) {
-  const [radius, setRadius] = useState(500)
+  const [radius, setRadius] = useState(800)
   
   useState(() => {
     if (typeof window !== 'undefined') {
-      setRadius(window.innerWidth < 768 ? 350 : 650)
+      setRadius(window.innerWidth < 768 ? 450 : 900)
     }
   })
 
-  // Vertical Perspective Math
+  // Calculate rotation to keep the card "billboarded" (facing user)
+  // Each card is rotated 'angle' initially, container rotates 'rotation'
+  // To stay flat, card must rotate by '(-rotation - angle)'
+  const rotationToFaceFront = -parentRotation - angle
+
+  // Calculate distance from front for visibility/blur
   const normalizedRotation = (parentRotation % 360 + 360) % 360
   const cardCurrentAngle = (angle + normalizedRotation) % 360
   const distanceFromFront = Math.min(cardCurrentAngle, 360 - cardCurrentAngle)
   
-  // Show all projects for a "full wheel" feel
   const depthFactor = Math.abs(distanceFromFront) / 180 
 
   return (
     <motion.div
       style={{
         transformStyle: "preserve-3d",
-        transform: `rotateX(${angle}deg) translateZ(${radius}px)`,
+        transform: `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${rotationToFaceFront}deg)`,
         position: "absolute",
-        inset: 0,
-        pointerEvents: distanceFromFront < 30 ? "auto" : "none",
+        width: "320px",
+        height: "450px",
+        height: "clamp(300px, 60vh, 550px)",
+        width: "clamp(240px, 40vw, 420px)",
+        pointerEvents: distanceFromFront < 40 ? "auto" : "none",
         zIndex: Math.round(100 - distanceFromFront),
       }}
       animate={{ 
         scale: isActive ? 1.05 : 0.85,
-        opacity: Math.max(0.1, 1 - depthFactor * 1.5),
-        filter: `blur(${depthFactor * 8}px) brightness(${1 - depthFactor * 0.5})`,
+        opacity: Math.max(0.05, 1 - depthFactor * 1.8),
+        y: isActive ? -40 : 0,
+        filter: `blur(${depthFactor * 10}px)`,
       }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      onClick={() => distanceFromFront < 30 && onProjectClick(project)}
-      className="rounded-[3rem] overflow-hidden flex flex-col group select-none shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border border-white/10 bg-slate-900"
+      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      whileHover={{ y: isActive ? -50 : -10, rotateZ: isActive ? 1 : 0 }}
+      onClick={() => distanceFromFront < 40 && onProjectClick(project)}
+      className="rounded-[2.5rem] overflow-hidden group select-none shadow-[0_40px_80px_-15px_rgba(0,0,0,0.6)] border border-white/10 bg-black/40 backdrop-blur-md"
     >
-      <div className="relative w-full h-full overflow-hidden">
+      <div className="relative w-full h-full">
+        {/* Dynamic Project Image */}
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
-          className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-700 ease-out"
+          className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 ease-out grayscale group-hover:grayscale-0"
         />
 
-        {/* Dynamic Vertical Light Streak */}
-        <motion.div 
-          animate={{ 
-            y: ["-100%", "100%"]
-          }}
-          transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-x-0 h-40 bg-gradient-to-b from-transparent via-white/10 to-transparent pointer-events-none"
-        />
+        {/* Glossy Refraction Layer */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-50 pointer-events-none" />
         
-        {/* Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        {/* Advanced Soft Shadow Scrim */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background/100 via-background/20 to-transparent" />
 
-        {/* Info Area */}
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-14">
+        {/* Glass Content Overlay */}
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-12">
           <motion.div
             animate={{ 
-              opacity: distanceFromFront < 45 ? 1 : 0,
-              y: distanceFromFront < 45 ? 0 : 40,
+              opacity: distanceFromFront < 40 ? 1 : 0,
+              y: distanceFromFront < 40 ? 0 : 20,
             }}
-            className="flex flex-col items-center text-center max-w-sm"
+            className="flex flex-col items-center text-center w-full"
           >
             <div className="flex gap-2 mb-4">
               {project.technologies.slice(0, 2).map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/10 text-white text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-lg">
+                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] font-bold uppercase tracking-widest rounded-full">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <h3 className="text-3xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none">
+            <h3 className="text-3xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
               {project.title}
             </h3>
             
-            <div className="px-4 py-2 bg-white/5 rounded-full border border-white/5 text-[9px] font-mono text-white/40 tracking-[0.4em] uppercase">
-              INDEX_0{index + 1} // ACTIVE_STATE
+            <div className="flex items-center gap-3">
+               <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
+               <span className="text-[10px] font-mono text-white/40 tracking-[0.4em] uppercase">
+                 INTERFACE_ACTIVE
+               </span>
             </div>
           </motion.div>
           
-          <div className="absolute top-10 right-10">
-            <div className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500">
+          {/* External Action Button */}
+          <div className="absolute top-8 right-8">
+            <motion.div 
+              whileHover={{ scale: 1.1, rotate: 45 }}
+              className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
+            >
               <ArrowUpRight className="w-6 h-6" />
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
+
+      {/* Edge Reflection Highlight */}
+      <div className="absolute inset-0 border border-white/5 rounded-[2.5rem] pointer-events-none shadow-[inset_0_0_100px_rgba(255,255,255,0.03)]" />
     </motion.div>
   )
 }
