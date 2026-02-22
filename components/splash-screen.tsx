@@ -51,7 +51,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="1" result="noise">
             <animate attributeName="baseFrequency" values="0.1;0.2;0.1" dur="0.2s" repeatCount="Indefinite" />
           </feTurbulence>
-          <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
         </filter>
       </svg>
 
@@ -100,21 +100,22 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="fixed top-10 right-10 font-mono text-[9px] text-white/40 tracking-[0.3em] uppercase hidden md:block text-right"
+          className="fixed top-6 right-6 md:top-10 md:right-10 font-mono text-[8px] md:text-[9px] text-white/40 tracking-[0.2em] md:tracking-[0.3em] uppercase text-right leading-loose"
         >
-          SYS_LOG: BOOT_SEQUENCE_01 <br />
-          BUFFER: 1024KB_CLEAR <br />
-          PKT_RECV: {progress}%
+          <span className="hidden md:inline">SYS_LOG: BOOT_SEQUENCE_01 <br /></span>
+          <span className="hidden md:inline">BUFFER: 1024KB_CLEAR <br /></span>
+          PKT_RECV: {progress}% <br />
+          <span className="text-white/60 font-bold">STATUS: {progress < 100 ? "LOADING" : "READY"}</span>
         </motion.div>
 
-        <div className="relative flex flex-col items-center group max-w-[95vw]">
+        <div className="relative flex flex-col items-center group max-w-[100vw] px-4">
           {/* Glitch Overlay Text (Ghost Effect) - Moved to background */}
           <motion.div 
             style={{ fontFamily: currentFont, filter: "url(#glitch)" }}
-            className="absolute inset-0 flex flex-col items-center opacity-20 pointer-events-none scale-105"
+            className="absolute inset-0 flex flex-col items-center opacity-15 pointer-events-none scale-105"
           >
-            <span className="text-7xl md:text-[14rem] text-white leading-[0.75]">SAKSHI</span>
-            <span className="text-7xl md:text-[14rem] text-white mt-2 md:mt-[-3rem] leading-[0.75] italic">AGRAHARI</span>
+            <span className="text-5xl sm:text-7xl md:text-[14rem] text-white leading-[0.75]">SAKSHI</span>
+            <span className="text-5xl sm:text-7xl md:text-[14rem] text-white mt-1 md:mt-[-3rem] leading-[0.75] italic">AGRAHARI</span>
           </motion.div>
 
           {/* Animated Character Groups */}
@@ -122,34 +123,34 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
             {"SAKSHI".split("").map((char, i) => (
               <motion.span
                 key={i}
-                initial={{ y: 200, rotateX: -90, opacity: 0 }}
+                initial={{ y: 150, rotateX: -90, opacity: 0 }}
                 animate={{ y: 0, rotateX: 0, opacity: 1 }}
                 style={{ fontFamily: currentFont }}
                 transition={{ 
                   duration: 1.2, 
-                  delay: i * 0.08, 
+                  delay: i * 0.05, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className="text-7xl md:text-[14rem] text-slate-900 inline-block leading-[0.75] select-none"
+                className="text-5xl sm:text-7xl md:text-[14rem] text-slate-900 inline-block leading-[0.75] select-none"
               >
                 {char}
               </motion.span>
             ))}
           </div>
 
-          <div className="relative z-10 flex flex-wrap justify-center mt-2 md:mt-[-3rem] overflow-hidden">
+          <div className="relative z-10 flex flex-wrap justify-center mt-1 md:mt-[-3rem] overflow-hidden">
             {"AGRAHARI".split("").map((char, i) => (
               <motion.span
                 key={i}
-                initial={{ y: -200, rotateX: 90, opacity: 0 }}
+                initial={{ y: -150, rotateX: 90, opacity: 0 }}
                 animate={{ y: 0, rotateX: 0, opacity: 1 }}
                 style={{ fontFamily: currentFont }}
                 transition={{ 
                   duration: 1.2, 
-                  delay: 0.2 + (7-i) * 0.08, 
+                  delay: 0.2 + (7-i) * 0.05, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className="text-7xl md:text-[14rem] text-slate-900 inline-block leading-[0.75] italic select-none"
+                className="text-5xl sm:text-7xl md:text-[14rem] text-slate-900 inline-block leading-[0.75] italic select-none"
               >
                 {char}
               </motion.span>
@@ -171,8 +172,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       </div>
 
       {/* Spatial Progress: The Expansion Grid - Anchored at bottom */}
-      <div className="relative z-10 w-full px-10 md:px-20 pb-10 flex flex-col gap-6">
-        <div className="grid grid-cols-10 gap-1 md:gap-2 h-1 md:h-2 opacity-30">
+      <div className="relative z-10 w-full px-6 md:px-20 pb-8 md:pb-10 flex flex-col gap-4 md:gap-6">
+        <div className="grid grid-cols-10 gap-1 md:gap-2 h-1 md:h-2 opacity-20 md:opacity-30">
           {[...Array(10)].map((_, i) => (
             <motion.div
               key={i}
@@ -185,14 +186,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           ))}
         </div>
         
-        <div className="flex justify-between items-end border-t border-white/10 pt-6">
+        <div className="flex justify-between items-end border-t border-white/10 pt-4 md:pt-6">
           <div className="flex flex-col">
-            <span className="text-[10px] font-mono text-white tracking-[0.5em] mb-2 font-bold uppercase">Allocating_Resources</span>
-            <div className="flex gap-2 overflow-hidden h-4">
+            <span className="text-[8px] md:text-[10px] font-mono text-white tracking-[0.3em] md:tracking-[0.5em] mb-1 md:mb-2 font-bold uppercase truncate">Allocating_Resources</span>
+            <div className="flex gap-2 overflow-hidden h-3 md:h-4">
               <motion.div 
                 animate={{ y: [0, -20, -40, -60, -80] }}
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-                className="font-mono text-[9px] text-white/60 flex flex-col"
+                className="font-mono text-[8px] md:text-[9px] text-white/60 flex flex-col"
               >
                 <span>MAPPING_DOM...</span>
                 <span>LOADING_ASSETS...</span>
@@ -203,13 +204,13 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           </div>
           
           <div className="flex flex-col items-end">
-            <div className="flex items-baseline gap-2">
-              <span className="text-6xl md:text-[8rem] font-mono text-white/20 leading-none select-none drop-shadow-lg">
+            <div className="flex items-baseline gap-1 md:gap-2">
+              <span className="text-5xl md:text-[8rem] font-mono text-white/20 leading-none select-none drop-shadow-lg">
                 {progress.toString().padStart(3, '0')}
               </span>
-              <span className="text-xl font-mono text-white tracking-tighter opacity-100">%</span>
+              <span className="text-lg md:text-xl font-mono text-white tracking-tighter opacity-100">%</span>
             </div>
-            <span className="text-[9px] font-mono text-white/40 tracking-[0.2em] uppercase mt-2">Core_Exp_Active</span>
+            <span className="text-[8px] md:text-[9px] font-mono text-white/40 tracking-[0.2em] uppercase mt-1 md:mt-2">Core_Exp_Active</span>
           </div>
         </div>
       </div>
