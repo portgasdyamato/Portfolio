@@ -390,8 +390,21 @@ export default function Projects() {
 function CarouselContainer({ projects, onProjectClick }: { projects: typeof projectsData, onProjectClick: (p: typeof projectsData[0]) => void }) {
   const [index, setIndex] = useState(0)
   const [dragProgress, setDragProgress] = useState(0)
+  const [containerWidth, setContainerWidth] = useState(1000)
 
-  // Navigate with circular logic
+  // Track container width for responsive spacing
+  useState(() => {
+    if (typeof window !== 'undefined') {
+      const handleResize = () => setContainerWidth(window.innerWidth)
+      handleResize()
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
+    }
+  })
+
+  // Offset spacing based on screen size: 50% on mobile, 40% on desktop
+  const spacing = containerWidth < 768 ? containerWidth * 0.7 : containerWidth * 0.5
+
   const handleStep = (step: number) => {
     setIndex((prev) => (prev + step + projects.length) % projects.length)
     setDragProgress(0)
@@ -411,38 +424,40 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[550px] md:h-[750px] flex items-center justify-center overflow-hidden perspective-[2000px]">
+    <div className="relative w-full h-[550px] md:h-[750px] flex items-center justify-center overflow-visible perspective-[2500px]">
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.02),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
 
-      {/* Main Slider Track */}
+      {/* Main Draggable Track */}
       <motion.div 
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.15}
-        onDrag={(_, info) => setDragProgress(info.offset.x / 500)}
+        dragElastic={0.1}
+        onDrag={(_, info) => setDragProgress(info.offset.x / spacing)}
         onDragEnd={handleDragEnd}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10 overflow-visible"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           {projects.map((project, i) => {
-            // Find relative offset for circular looping
             let offset = i - index
             if (offset > projects.length / 2) offset -= projects.length
             if (offset < -projects.length / 2) offset += projects.length
 
-            // Show 3 projects for focus, but the circular logic handles the rest
             if (Math.abs(offset) > 1.2) return null
+
+            const combinedOffset = offset + dragProgress
+            const isActive = Math.abs(combinedOffset) < 0.15
 
             return (
               <ProjectCard
                 key={project.title}
                 project={project}
-                offset={offset + dragProgress}
-                isActive={Math.abs(offset + dragProgress) < 0.2}
+                offset={combinedOffset}
+                isActive={isActive}
                 onProjectClick={onProjectClick}
                 onMove={() => handleStep(Math.round(offset))}
+                spacing={spacing}
                 index={i}
               />
             )
@@ -450,64 +465,67 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         </AnimatePresence>
       </motion.div>
 
-      {/* HUD Progress */}
-      <div className="absolute bottom-10 flex items-center gap-6 px-6 py-3 glass rounded-full border border-white/10 z-50">
-        <span className="text-[10px] font-mono font-bold text-white/30 tracking-widest uppercase">
-          INDEX_0{index + 1} // TOTAL_{projects.length}
-        </span>
-        <div className="w-20 h-[1px] bg-white/10 relative">
-          <motion.div 
-             animate={{ left: `${(index / (projects.length - 1)) * 100}%` }}
-             className="absolute top-1/2 -translate-y-1/2 w-4 h-1 bg-white/40 rounded-full"
-          />
+      {/* Modern Tactical Indicator */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-50 pointer-events-none">
+        <div className="flex gap-1.5">
+          {projects.map((_, i) => (
+            <div 
+              key={i} 
+              className={`h-1 rounded-full transition-all duration-500 ${index === i ? 'w-8 bg-brand-500' : 'w-2 bg-white/10'}`} 
+            />
+          ))}
         </div>
+        <span className="text-[9px] font-mono text-white/20 tracking-[0.5em] uppercase">
+          STORAGE_SLOT_{String(index + 1).padStart(2, '0')}
+        </span>
       </div>
     </div>
   )
 }
 
-function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index }: { 
+function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacing, index }: { 
   project: typeof projectsData[0], 
   offset: number, 
   isActive: boolean, 
   onProjectClick: (p: typeof projectsData[0]) => void,
   onMove: () => void,
+  spacing: number,
   index: number
 }) {
   return (
     <motion.div
+      onTap={(e) => {
+        // If it's the center project, open it. If not, move it to center.
+        if (isActive) {
+          onProjectClick(project)
+        } else {
+          onMove()
+        }
+      }}
       animate={{
-        x: offset * 600, // Even more spacing to pull them apart
-        scale: 1 - Math.abs(offset) * 0.08, // Very subtle scaling for presence
-        opacity: 1 - Math.abs(offset) * 0.3, 
-        rotateY: offset * 20, // Even gentler arc for a "flatter" but cleaner loop
-        z: -Math.abs(offset) * 150, // Less depth recede to keep them larger
-        filter: `blur(${Math.abs(offset) * 2}px)`, // Minimal blur for clarity
+        x: offset * spacing, 
+        scale: 1 - Math.abs(offset) * 0.1,
+        opacity: 1 - Math.abs(offset) * 0.4,
+        rotateY: offset * 20,
+        z: -Math.abs(offset) * 150,
+        filter: `blur(${Math.abs(offset) * 2}px)`,
       }}
       transition={{
         type: "spring",
-        stiffness: 180,
-        damping: 26,
+        stiffness: 220,
+        damping: 28,
         mass: 1
       }}
       style={{
         position: "absolute",
-        width: "min(550px, 90vw)",
+        width: "min(550px, 85vw)",
         aspectRatio: "16/10",
         transformStyle: "preserve-3d",
         zIndex: Math.round(100 - Math.abs(offset) * 50),
       }}
-      onClick={(e) => {
-        e.stopPropagation()
-        if (Math.abs(offset) > 0.2) {
-          onMove()
-        } else {
-          onProjectClick(project)
-        }
-      }}
-      className="rounded-[3rem] overflow-hidden shadow-[0_60px_120px_-30px_rgba(0,0,0,0.7)] border border-white/5 bg-slate-900 group cursor-pointer"
+      className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border border-white/5 bg-slate-900 group pointer-events-auto cursor-pointer"
     >
-      <div className="relative w-full h-full">
+      <div className="relative w-full h-full pointer-events-none">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
@@ -515,9 +533,9 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index 
           className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 ease-out"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-12">
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-14">
           <motion.div
             animate={{ 
               opacity: Math.abs(offset) < 0.5 ? 1 : 0,
@@ -533,24 +551,23 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index 
               ))}
             </div>
             
-            <h3 className="text-2xl md:text-4xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none">
+            <h3 className="text-2xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none">
               {project.title}
             </h3>
             
-            <div className="px-4 py-1.5 bg-white/10 rounded-full text-[10px] font-mono text-white/50 tracking-[0.3em] uppercase transition-colors group-hover:bg-white/20">
-              {isActive ? 'INITIALIZE_VIEW' : 'SYNCHRONIZE_ACTIVE'}
+            <div className={`px-4 py-1.5 rounded-full text-[10px] font-mono tracking-[0.3em] uppercase transition-all duration-500 ${isActive ? 'bg-white text-black' : 'bg-white/10 text-white/50 group-hover:bg-white/20'}`}>
+              {isActive ? 'ACCESS_SYSTEM' : 'CENTER_ALIGN'}
             </div>
           </motion.div>
           
           <div className="absolute top-10 right-10">
-            <div className={`w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 ${isActive ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
+            <div className={`w-14 h-14 bg-brand-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 ${isActive ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
               <ArrowUpRight className="w-6 h-6" />
             </div>
           </div>
         </div>
       </div>
-
-      <div className="absolute inset-0 border border-white/5 rounded-[3rem] pointer-events-none" />
+      <div className={`absolute inset-0 border-2 transition-opacity duration-700 rounded-[2.5rem] md:rounded-[3.5rem] pointer-events-none ${isActive ? 'border-white/10 opacity-100' : 'border-transparent opacity-0'}`} />
     </motion.div>
   )
 }
