@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence, motionValue, useTransform } from "framer-motion"
 import { useState } from "react"
 import { ExternalLink, Github, X, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
@@ -279,55 +279,11 @@ export default function Projects() {
         </motion.div>
       </div>
 
-      {/* Grid - 2 columns on desktop */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:max-w-full lg:mx-auto">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              layout
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ delay: index * 0.1 }}
-              onClick={() => setSelectedProject(projectsData.findIndex(p => p.title === project.title))}
-              className="group cursor-pointer glass-card rounded-[2rem] overflow-hidden flex flex-col"
-            >
-              <div className="relative aspect-square sm:aspect-[4/3] md:aspect-[16/10] overflow-hidden rounded-[2rem] bg-gray-950">
-                <Image
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between gap-4">
-                  <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-500 flex-1">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {project.technologies.slice(0, 2).map((tech) => (
-                        <span key={tech} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider rounded-full">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase leading-tight">{project.title}</h3>
-                  </div>
-                  <motion.div 
-                    whileHover={{ scale: 1.1, rotate: 45 }}
-                    className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl shrink-0"
-                  >
-                    <ArrowUpRight className="text-black w-5 h-5" />
-                  </motion.div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </div>
-
+      {/* 3D Starburst Carousel */}
+      <ProjectCarousel 
+        projects={filteredProjects} 
+        onProjectClick={(p) => setSelectedProject(projectsData.findIndex(proj => proj.title === p.title))}
+      />
       {/* Modal */}
       <AnimatePresence>
         {selectedProject !== null && (
@@ -387,7 +343,7 @@ export default function Projects() {
                   </div>
                 </div>
 
-                                <div className="flex flex-col">
+                <div className="flex flex-col">
                   <span className="text-brand-600 dark:text-brand-400 font-bold tracking-widest uppercase text-xs mb-4">
                     {projectsData[selectedProject].status} • {projectsData[selectedProject].date}
                   </span>
@@ -428,6 +384,80 @@ export default function Projects() {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  )
+}
+
+function ProjectCarousel({ projects, onProjectClick }: { projects: any[], onProjectClick: (p: any) => void }) {
+  // Use a motion value for physics-based rotation
+  const x = motionValue(0)
+  const rotateY = useTransform(x, (val) => val / 4) // Sensitivity adjustment
+  
+  // Angle per card for the starburst geometry
+  const angleStep = projects.length > 0 ? 360 / projects.length : 0
+
+  return (
+    <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing select-none perspective-[2000px]">
+      {/* Central Rotating Axis */}
+      <motion.div
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        style={{ x, rotateY, transformStyle: "preserve-3d" }}
+        className="relative w-[300px] sm:w-[350px] md:w-[500px] h-[400px] md:h-[450px] flex items-center justify-center transition-transform duration-100 ease-out"
+        dragTransition={{ power: 0.1, timeConstant: 200 }} // Inertia & momentum
+      >
+        {projects.map((project, index) => {
+          const cardAngle = index * angleStep
+          return (
+            <motion.div
+              key={project.title}
+              style={{
+                rotateY: cardAngle,
+                transformStyle: "preserve-3d",
+                backfaceVisibility: "visible",
+              }}
+              className="absolute inset-0 flex items-center justify-center"
+            >
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                onClick={() => onProjectClick(project)}
+                className="relative w-full h-full glass-card rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl transition-all duration-300 group"
+              >
+                {/* Product Render */}
+                <Image
+                  src={project.image || "/placeholder.svg"}
+                  alt={project.title}
+                  fill
+                  sizes="400px"
+                  className="object-cover object-top"
+                />
+                
+                {/* Overlay Detail */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
+                  <div className="flex gap-2 mb-3">
+                    {project.technologies.slice(0, 2).map((tech: string) => (
+                      <span key={tech} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider rounded-full">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-tighter leading-none">{project.title}</h3>
+                  <div className="mt-4 flex items-center gap-2 text-white/60 text-xs font-mono">
+                    <span>VIEW_DETAILS</span>
+                    <ArrowUpRight size={14} />
+                  </div>
+                </div>
+
+                {/* Foreshortening / Depth Hint */}
+                <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/20 via-transparent to-black/20 opacity-40 group-hover:opacity-0 transition-opacity duration-300" />
+              </motion.div>
+            </motion.div>
+          )
+        })}
+      </motion.div>
+
+      {/* Decorative Floor Reflection / Shadow */}
+      <div className="absolute bottom-10 w-full h-[150px] bg-gradient-to-t from-black/20 to-transparent pointer-events-none blur-3xl opacity-50" />
     </div>
   )
 }
