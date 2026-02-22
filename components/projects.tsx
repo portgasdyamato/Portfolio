@@ -388,67 +388,73 @@ export default function Projects() {
 
 function CarouselContainer({ projects, onProjectClick }: { projects: typeof projectsData, onProjectClick: (p: typeof projectsData[0]) => void }) {
   const [index, setIndex] = useState(0)
-  const [direction, setDirection] = useState(0)
+  const [dragProgress, setDragProgress] = useState(0)
 
-  const handleNext = () => {
-    setDirection(1)
-    setIndex((prev) => (prev + 1) % projects.length)
+  // Navigate with circular logic
+  const handleStep = (step: number) => {
+    setIndex((prev) => (prev + step + projects.length) % projects.length)
+    setDragProgress(0)
   }
 
-  const handlePrev = () => {
-    setDirection(-1)
-    setIndex((prev) => (prev - 1 + projects.length) % projects.length)
+  const handleDragEnd = (_: any, info: any) => {
+    const threshold = 50
+    if (info.offset.x > threshold) {
+      handleStep(-1)
+    } else if (info.offset.x < -threshold) {
+      handleStep(1)
+    } else {
+      setDragProgress(0)
+    }
   }
 
   return (
-    <div className="relative w-full h-[600px] md:h-[800px] flex items-center justify-center overflow-hidden px-4">
+    <div className="relative w-full h-[500px] md:h-[700px] flex items-center justify-center overflow-hidden">
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.04),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.03),transparent_70%)] pointer-events-none" />
 
-      {/* Navigation Arrows */}
-      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-12 z-50 pointer-events-none">
+      {/* Navigation Arrows - Tactile & Pulsing */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-10 z-50 pointer-events-none">
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          animate={direction === -1 ? { scale: [1, 1.2, 1] } : {}}
-          onClick={handlePrev}
-          className="w-12 h-12 md:w-16 md:h-16 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto group bg-black/20 backdrop-blur-xl"
+          onClick={() => handleStep(-1)}
+          className="w-12 h-12 md:w-14 md:h-14 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto bg-black/40 backdrop-blur-2xl"
         >
-          <motion.div className="text-white group-hover:-translate-x-1 transition-transform">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-          </motion.div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="m15 18-6-6 6-6"/></svg>
         </motion.button>
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          animate={direction === 1 ? { scale: [1, 1.2, 1] } : {}}
-          onClick={handleNext}
-          className="w-12 h-12 md:w-16 md:h-16 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto group bg-black/20 backdrop-blur-xl"
+          onClick={() => handleStep(1)}
+          className="w-12 h-12 md:w-14 md:h-14 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto bg-black/40 backdrop-blur-2xl"
         >
-          <motion.div className="text-white group-hover:translate-x-1 transition-transform">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </motion.div>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-white"><path d="m9 18 6-6-6-6"/></svg>
         </motion.button>
       </div>
 
-      {/* Carousel Track */}
-      <div className="relative w-full h-full flex items-center justify-center overflow-visible">
+      {/* Main Slider Track */}
+      <motion.div 
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        onDrag={(_, info) => setDragProgress(info.offset.x / 400)}
+        onDragEnd={handleDragEnd}
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+      >
         <AnimatePresence mode="popLayout" initial={false}>
           {projects.map((project, i) => {
-            // Find relative distance from active index for layout logic
-            // Supporting infinite circular feel
+            // Find relative offset
             let offset = i - index
             if (offset > projects.length / 2) offset -= projects.length
             if (offset < -projects.length / 2) offset += projects.length
 
-            // Only render items near visibility range for performance
-            if (Math.abs(offset) > 2) return null
+            // Only show the main 3: Left (-1), Middle (0), Right (1)
+            if (Math.abs(offset) > 1) return null
 
             return (
               <ProjectCard
                 key={project.title}
                 project={project}
-                offset={offset}
+                offset={offset + dragProgress}
                 isActive={offset === 0}
                 onProjectClick={onProjectClick}
                 index={i}
@@ -456,30 +462,19 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
             )
           })}
         </AnimatePresence>
-      </div>
+      </motion.div>
 
-      {/* Minimal Tactical HUD */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-6 px-6 py-3 glass rounded-full border border-white/10 z-50">
-        <div className="flex gap-1.5">
-          {projects.map((_, i) => (
-            <motion.div
-              key={i}
-              onClick={() => {
-                setDirection(i > index ? 1 : -1)
-                setIndex(i)
-              }}
-              animate={{ 
-                width: index === i ? 20 : 6,
-                opacity: index === i ? 1 : 0.2
-              }}
-              className="h-1.5 rounded-full bg-white cursor-pointer"
-            />
-          ))}
-        </div>
-        <div className="h-4 w-[1px] bg-white/20" />
-        <span className="text-[10px] font-mono text-white/50 tracking-[0.2em] uppercase">
-          PROJECT_{String(index + 1).padStart(2, '0')}
+      {/* HUD Progress */}
+      <div className="absolute bottom-8 flex items-center gap-4 px-5 py-2.5 glass rounded-full border border-white/10 z-50">
+        <span className="text-[10px] font-mono font-bold text-white/40 tracking-wider">
+          {index + 1} / {projects.length}
         </span>
+        <div className="w-16 h-[2px] bg-white/10 rounded-full overflow-hidden">
+          <motion.div 
+             animate={{ width: `${((index + 1) / projects.length) * 100}%` }}
+             className="h-full bg-white/60"
+          />
+        </div>
       </div>
     </div>
   )
@@ -494,82 +489,64 @@ function ProjectCard({ project, offset, isActive, onProjectClick, index }: {
 }) {
   return (
     <motion.div
-      initial={false}
       animate={{
-        x: offset * 350, // Consistent spacing
-        scale: isActive ? 1 : 0.8, // Center 100%, adjacent 80%
-        opacity: Math.max(0, 1 - Math.abs(offset) * 0.4),
-        z: isActive ? 50 : 0, // Depth swapping
-        filter: `blur(${Math.abs(offset) * 8}px)`, // Dynamic Gaussian blur
+        x: offset * 450, // Wider spacing for clarity
+        scale: 1 - Math.abs(offset) * 0.15, // Smooth scaling
+        opacity: 1 - Math.abs(offset) * 0.6,
+        filter: `blur(${Math.abs(offset) * 8}px)`,
+        zIndex: 100 - Math.abs(offset) * 10,
       }}
       transition={{
         type: "spring",
-        stiffness: 150,
-        damping: 25, // Long deceleration tail
-        mass: 1
+        stiffness: 260,
+        damping: 25
       }}
       style={{
         position: "absolute",
-        zIndex: isActive ? 100 : 50 - Math.abs(offset),
-        width: "min(320px, 80vw)",
-        height: "min(480px, 70vh)",
-        transformStyle: "preserve-3d"
+        width: "min(500px, 85vw)",
+        aspectRatio: "16/10", // Container fits project image proportions
       }}
-      onClick={() => isActive && onProjectClick(project)}
-      className={`rounded-[2.5rem] overflow-hidden cursor-pointer shadow-[0_40px_100px_rgba(0,0,0,0.6)] border border-white/10 bg-slate-900 group`}
+      onClick={() => Math.abs(offset) < 0.2 && onProjectClick(project)}
+      className="rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10 bg-slate-900 group"
     >
       <div className="relative w-full h-full">
-        {/* Visual Media */}
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
-          className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale group-hover:grayscale-0"
+          className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700"
         />
 
-        {/* Cinematic Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
 
-        {/* Content Overlay */}
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-10">
-          <AnimatePresence>
-            {isActive && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 10 }}
-                transition={{ 
-                  duration: 0.5, 
-                  delay: 0.2, // Staggered animation after settlement
-                  ease: [0.16, 1, 0.3, 1] 
-                }}
-                className="flex flex-col items-center text-center w-full"
-              >
-                <div className="flex gap-2 mb-4">
-                  {project.technologies.slice(0, 2).map((tech) => (
-                    <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 text-white text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-                
-                <h3 className="text-3xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none [text-wrap:balance]">
-                  {project.title}
-                </h3>
-                
-                <div className="flex items-center gap-2">
-                   <div className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
-                   <span className="text-[10px] font-mono text-white/30 tracking-[0.4em] uppercase">
-                     SYSTEM_ACTIVE
-                   </span>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-10">
+          <motion.div
+            animate={{ 
+              opacity: Math.abs(offset) < 0.3 ? 1 : 0,
+              y: Math.abs(offset) < 0.3 ? 0 : 20
+            }}
+            className="flex flex-col items-center text-center w-full"
+          >
+            <div className="flex gap-2 mb-3">
+              {project.technologies.slice(0, 2).map((tech) => (
+                <span key={tech} className="px-2.5 py-1 bg-white/5 border border-white/10 text-white text-[8px] font-bold uppercase tracking-widest rounded-full">
+                  {tech}
+                </span>
+              ))}
+            </div>
+            
+            <h3 className="text-xl md:text-3xl font-bold text-white font-outfit uppercase tracking-tighter mb-3 leading-none">
+              {project.title}
+            </h3>
+            
+            <div className="px-3 py-1 bg-white/10 rounded-full text-[9px] font-mono text-white/40 tracking-[0.2em] uppercase">
+              VIEW_DETAILS
+            </div>
+          </motion.div>
           
-          <div className="absolute top-8 right-8">
-            <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500">
-              <ArrowUpRight className="w-6 h-6" />
+          <div className="absolute top-6 right-6">
+            <div className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500">
+              <ArrowUpRight className="w-5 h-5" />
             </div>
           </div>
         </div>
