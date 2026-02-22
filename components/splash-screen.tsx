@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const fonts = ["Super Pixel", "Silkscreen", "Gamer", "Pixel", "Bungee", "Bitcount Grid Double"]
+const fonts = ["Share Tech Mono", "VT323", "JetBrains Mono", "Silkscreen", "Bitcount Grid Double", "Pixel"]
 const keywords = ["CREATIVE", "DEVELOPER", "DESIGNER", "PIXEL ARTIST", "STORYTELLER", "RETRO ENTHUSIAST"]
 
 export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
@@ -64,8 +64,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           >
             <span className="text-white/40 font-mono text-xs md:text-sm tracking-tighter">001_SYSTEM.BOOT</span>
             <h1 
-              style={{ fontFamily: currentFont, textShadow: "0 0 20px rgba(255,255,255,0.3)" }}
-              className="text-6xl md:text-9xl text-slate-900 transition-all duration-75 uppercase leading-none tracking-tighter md:tracking-[-0.05em]"
+              style={{ fontFamily: currentFont, textShadow: "0 0 10px rgba(255,255,255,0.4)" }}
+              className="text-6xl md:text-9xl text-slate-900 transition-all duration-75 uppercase leading-none tracking-tight md:tracking-[-0.02em]"
             >
               Sakshi
             </h1>
@@ -81,8 +81,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
               {currentKeyword}
             </span>
             <h1 
-              style={{ fontFamily: currentFont, textShadow: "0 0 20px rgba(255,255,255,0.3)" }}
-              className="text-6xl md:text-9xl text-slate-900 transition-all duration-75 uppercase leading-none italic"
+              style={{ fontFamily: currentFont, textShadow: "0 0 10px rgba(255,255,255,0.4)" }}
+              className="text-6xl md:text-9xl text-slate-900 transition-all duration-75 uppercase leading-none italic tracking-tight md:tracking-[-0.02em]"
             >
               Agrahari
             </h1>
