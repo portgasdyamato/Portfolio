@@ -397,31 +397,31 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
 
   const activeIndex = getActiveIndex()
 
+  // Control drag speed and momentum
   const handleDrag = (_: any, info: any) => {
-    // High sensitivity horizontal drag
-    setRotation(prev => prev + info.delta.x * 0.25)
+    setRotation(prev => prev + info.delta.x * 0.15)
   }
 
   const handleDragEnd = (_: any, info: any) => {
-    const velocityFactor = info.velocity.x * 0.1
+    const velocityFactor = info.velocity.x * 0.05
     const finalRotation = rotation + velocityFactor
     const snappedRotation = Math.round(finalRotation / angleStep) * angleStep
     setRotation(snappedRotation)
   }
 
   return (
-    <div className="relative h-[600px] md:h-[800px] w-full flex items-center justify-center overflow-visible perspective-[2000px]">
-      {/* Cinematic Floor Reflection */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.1),transparent_70%)] pointer-events-none blur-3xl opacity-50 z-0" />
+    <div className="relative h-[500px] md:h-[750px] w-full flex items-center justify-center perspective-[1500px]">
+      {/* Dramatic Ground Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.06),transparent_70%)] pointer-events-none blur-[120px] z-0" />
       
       <motion.div
         drag="x"
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
         animate={{ rotateY: rotation }}
-        transition={{ type: "spring", damping: 35, stiffness: 100 }}
+        transition={{ type: "spring", damping: 30, stiffness: 80 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
       >
         {projects.map((project, index) => {
           const angle = index * angleStep
@@ -441,25 +441,27 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         })}
       </motion.div>
 
-      {/* Floating Tactical HUD */}
-      <div className="absolute bottom-10 flex items-center gap-6 z-30 px-8 py-4 bg-white/5 backdrop-blur-2xl rounded-full border border-white/10 shadow-2xl">
-        <div className="flex gap-2">
-          {projects.map((_, i) => (
-            <motion.div
-              key={i}
-              onClick={() => setRotation(-i * angleStep)}
-              animate={{ 
-                width: activeIndex === i ? 24 : 8,
-                opacity: activeIndex === i ? 1 : 0.2,
-              }}
-              className="h-2 rounded-full bg-white cursor-pointer transition-all duration-500"
-            />
-          ))}
+      {/* Elegant Modern Progress Bar & Info */}
+      <div className="absolute bottom-4 md:bottom-20 flex flex-col items-center gap-6 z-30">
+        <div className="px-6 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 flex items-center gap-4">
+          <div className="flex gap-1.5">
+            {projects.map((_, i) => (
+              <motion.div
+                key={i}
+                onClick={() => setRotation(-i * angleStep)}
+                animate={{ 
+                  width: activeIndex === i ? 24 : 6,
+                  backgroundColor: activeIndex === i ? "#fff" : "rgba(255,255,255,0.2)"
+                }}
+                className="h-1.5 rounded-full cursor-pointer transition-all duration-700"
+              />
+            ))}
+          </div>
+          <div className="h-3 w-[1px] bg-white/10" />
+          <span className="text-[10px] font-mono font-bold text-white/40 tracking-[0.3em] uppercase">
+            LAYER_{String(activeIndex + 1).padStart(2, '0')}
+          </span>
         </div>
-        <div className="h-4 w-[1px] bg-white/20" />
-        <span className="text-[10px] font-mono text-white/50 tracking-widest uppercase">
-          CAROUSEL_0{activeIndex + 1}
-        </span>
       </div>
     </div>
   )
@@ -473,25 +475,32 @@ function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRo
   onProjectClick: (p: typeof projectsData[0]) => void,
   parentRotation: number
 }) {
-  const [radius, setRadius] = useState(800)
+  // Constrain radius to keep cards on screen regardless of window width
+  const [radius, setRadius] = useState(400)
   
   useState(() => {
-    if (typeof window !== 'undefined') {
-      setRadius(window.innerWidth < 768 ? 450 : 900)
+    const handleResize = () => {
+      const width = window.innerWidth
+      // Dynamic scaling: Radius is roughly 40% of viewport width but constrained
+      const calculatedRadius = Math.min(width * 0.45, width < 768 ? 300 : 700)
+      setRadius(calculatedRadius)
     }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   })
 
-  // Calculate rotation to keep the card "billboarded" (facing user)
-  // Each card is rotated 'angle' initially, container rotates 'rotation'
-  // To stay flat, card must rotate by '(-rotation - angle)'
+  // Smooth Billboard logic
   const rotationToFaceFront = -parentRotation - angle
 
-  // Calculate distance from front for visibility/blur
+  // Depth & Opacity Logic
   const normalizedRotation = (parentRotation % 360 + 360) % 360
   const cardCurrentAngle = (angle + normalizedRotation) % 360
   const distanceFromFront = Math.min(cardCurrentAngle, 360 - cardCurrentAngle)
+  const isFront = distanceFromFront < 90
   
-  const depthFactor = Math.abs(distanceFromFront) / 180 
+  // Normalized 0 to 1 based on how "far back" it is
+  const depthFactor = distanceFromFront / 180
 
   return (
     <motion.div
@@ -499,82 +508,70 @@ function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRo
         transformStyle: "preserve-3d",
         transform: `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${rotationToFaceFront}deg)`,
         position: "absolute",
-        width: "320px",
-        height: "450px",
-        height: "clamp(300px, 60vh, 550px)",
-        width: "clamp(240px, 40vw, 420px)",
-        pointerEvents: distanceFromFront < 40 ? "auto" : "none",
+        width: "min(300px, 80vw)",
+        height: "min(450px, 70vh)",
+        pointerEvents: distanceFromFront < 30 ? "auto" : "none",
         zIndex: Math.round(100 - distanceFromFront),
       }}
       animate={{ 
-        scale: isActive ? 1.05 : 0.85,
-        opacity: Math.max(0.05, 1 - depthFactor * 1.8),
-        y: isActive ? -40 : 0,
-        filter: `blur(${depthFactor * 10}px)`,
+        scale: isActive ? 1.1 : 0.85,
+        opacity: isFront ? 1 : 0.15, // Keep semi-visible at the back for depth
+        y: isActive ? -20 : 0,
+        filter: `blur(${distanceFromFront / 15}px)`,
       }}
-      transition={{ type: "spring", stiffness: 200, damping: 25 }}
-      whileHover={{ y: isActive ? -50 : -10, rotateZ: isActive ? 1 : 0 }}
-      onClick={() => distanceFromFront < 40 && onProjectClick(project)}
-      className="rounded-[2.5rem] overflow-hidden group select-none shadow-[0_40px_80px_-15px_rgba(0,0,0,0.6)] border border-white/10 bg-black/40 backdrop-blur-md"
+      transition={{ type: "spring", stiffness: 300, damping: 35 }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => distanceFromFront < 30 && onProjectClick(project)}
+      className="rounded-[2.5rem] overflow-hidden group select-none shadow-[0_40px_100px_rgba(0,0,0,0.6)] border border-white/10 bg-slate-900 ring-1 ring-white/5"
     >
       <div className="relative w-full h-full">
-        {/* Dynamic Project Image */}
+        {/* Project Visual */}
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
-          className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 ease-out grayscale group-hover:grayscale-0"
+          className="object-cover opacity-50 group-hover:opacity-80 transition-all duration-1000 group-hover:scale-110"
         />
 
-        {/* Glossy Refraction Layer */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-50 pointer-events-none" />
-        
-        {/* Advanced Soft Shadow Scrim */}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/100 via-background/20 to-transparent" />
+        {/* Cinematic Scrim */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-        {/* Glass Content Overlay */}
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-12">
+        {/* Content Overlay */}
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-10">
           <motion.div
             animate={{ 
-              opacity: distanceFromFront < 40 ? 1 : 0,
-              y: distanceFromFront < 40 ? 0 : 20,
+              opacity: distanceFromFront < 45 ? 1 : 0,
+              y: distanceFromFront < 45 ? 0 : 30,
             }}
             className="flex flex-col items-center text-center w-full"
           >
             <div className="flex gap-2 mb-4">
               {project.technologies.slice(0, 2).map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] font-bold uppercase tracking-widest rounded-full">
+                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <h3 className="text-3xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60">
+            <h3 className="text-3xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none [text-wrap:balance]">
               {project.title}
             </h3>
             
-            <div className="flex items-center gap-3">
-               <span className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
-               <span className="text-[10px] font-mono text-white/40 tracking-[0.4em] uppercase">
-                 INTERFACE_ACTIVE
+            <div className="flex items-center gap-2">
+               <div className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
+               <span className="text-[10px] font-mono text-white/30 tracking-[0.4em] uppercase">
+                 CORE_SYSTEM
                </span>
             </div>
           </motion.div>
           
-          {/* External Action Button */}
           <div className="absolute top-8 right-8">
-            <motion.div 
-              whileHover={{ scale: 1.1, rotate: 45 }}
-              className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-500"
-            >
+            <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500">
               <ArrowUpRight className="w-6 h-6" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Edge Reflection Highlight */}
-      <div className="absolute inset-0 border border-white/5 rounded-[2.5rem] pointer-events-none shadow-[inset_0_0_100px_rgba(255,255,255,0.03)]" />
     </motion.div>
   )
 }
