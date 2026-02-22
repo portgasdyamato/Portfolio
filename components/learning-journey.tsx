@@ -135,9 +135,9 @@ function JourneyCard({
         
         {/* Desktop Node Marker - Sleek & Modern */}
         <div className={cn(
-            "absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 z-10",
-             // Markers now follow the wide undulating curve
-            isEven ? "right-[70%]" : "left-[70%]"
+            "absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 z-30",
+             // Restoring cards to their original exterior positions as per user request
+            isEven ? "-right-[calc(8%+24px)]" : "-left-[calc(8%+24px)]"
           )}
         >
              {/* Center Core */}
