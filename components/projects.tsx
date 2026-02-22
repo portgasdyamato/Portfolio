@@ -389,75 +389,119 @@ export default function Projects() {
 }
 
 function ProjectCarousel({ projects, onProjectClick }: { projects: any[], onProjectClick: (p: any) => void }) {
-  // Use a motion value for physics-based rotation
   const x = motionValue(0)
-  const rotateY = useTransform(x, (val) => val / 4) // Sensitivity adjustment
+  const springX = useSpring(x, { stiffness: 100, damping: 30, mass: 1 })
+  const rotateY = useTransform(springX, (val) => val / 2) // Enhanced sensitivity
   
-  // Angle per card for the starburst geometry
+  // Track continuous rotation for Z-sorting
+  const [currentRot, setCurrentRot] = useState(0)
+  
+  useEffect(() => {
+    return rotateY.onChange(v => setCurrentRot(v))
+  }, [rotateY])
+
   const angleStep = projects.length > 0 ? 360 / projects.length : 0
 
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing select-none perspective-[2000px]">
-      {/* Central Rotating Axis */}
+    <div className="relative w-full h-[700px] flex items-center justify-center overflow-hidden cursor-grab active:cursor-grabbing select-none perspective-[2500px]">
+      {/* Central Axis Glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div className="w-[1px] h-[500px] bg-white/20 blur-sm" />
+        <div className="absolute w-[200px] h-[200px] bg-white/5 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Main Rotating Assembly */}
       <motion.div
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
         style={{ x, rotateY, transformStyle: "preserve-3d" }}
-        className="relative w-[300px] sm:w-[350px] md:w-[500px] h-[400px] md:h-[450px] flex items-center justify-center transition-transform duration-100 ease-out"
-        dragTransition={{ power: 0.1, timeConstant: 200 }} // Inertia & momentum
+        dragTransition={{ power: 0.2, timeConstant: 300 }} // Heavy physics feel
+        className="relative w-[300px] sm:w-[450px] md:w-[600px] h-[400px] md:h-[500px] flex items-center justify-center"
       >
         {projects.map((project, index) => {
-          const cardAngle = index * angleStep
+          const cardBaseAngle = index * angleStep
+          
+          // Calculate if this card is facing forward
+          const totalAngle = (cardBaseAngle + currentRot) % 360
+          // Normalize angle to -180 to 180
+          const normalizedAngle = ((totalAngle + 180) % 360) - 180
+          const isFront = Math.abs(normalizedAngle) < 45
+          const zIndex = Math.round(Math.cos(normalizedAngle * (Math.PI / 180)) * 1000)
+
           return (
             <motion.div
               key={project.title}
               style={{
-                rotateY: cardAngle,
+                rotateY: cardBaseAngle,
+                zIndex: zIndex,
                 transformStyle: "preserve-3d",
-                backfaceVisibility: "visible",
               }}
               className="absolute inset-0 flex items-center justify-center"
             >
               <motion.div
-                whileHover={{ scale: 1.05 }}
+                animate={{
+                  scale: isFront ? 1.05 : 0.9,
+                  opacity: Math.abs(normalizedAngle) > 90 ? 0.3 : 1, // Dim back cards
+                  filter: `brightness(${isFront ? 1.1 : 0.7}) blur(${isFront ? 0 : 2}px)`
+                }}
+                transition={{ duration: 0.4 }}
                 onClick={() => onProjectClick(project)}
-                className="relative w-full h-full glass-card rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl transition-all duration-300 group"
+                className="relative w-full h-full glass-card rounded-[2.5rem] overflow-hidden border-2 border-white/20 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] group transition-all duration-500"
               >
-                {/* Product Render */}
+                {/* Image Component */}
                 <Image
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
                   fill
-                  sizes="400px"
-                  className="object-cover object-top"
+                  sizes="600px"
+                  className="object-cover object-top transition-all duration-700"
                 />
+
+                {/* Depth Mask Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-50 pointer-events-none" />
                 
-                {/* Overlay Detail */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                  <div className="flex gap-2 mb-3">
-                    {project.technologies.slice(0, 2).map((tech: string) => (
-                      <span key={tech} className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] font-bold uppercase tracking-wider rounded-full">
+                {/* Content Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-10">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.slice(0, 3).map((tech: string) => (
+                      <span key={tech} className="px-4 py-1.5 bg-white/10 backdrop-blur-xl border border-white/20 text-white text-[11px] font-bold uppercase tracking-[0.2em] rounded-full">
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-bold text-white font-outfit uppercase tracking-tighter leading-none">{project.title}</h3>
-                  <div className="mt-4 flex items-center gap-2 text-white/60 text-xs font-mono">
-                    <span>VIEW_DETAILS</span>
-                    <ArrowUpRight size={14} />
+                  <h3 className="text-3xl md:text-4xl font-bold text-white font-outfit uppercase tracking-tighter leading-none mb-4">{project.title}</h3>
+                  <div className="flex items-center gap-3 text-white/40 text-[10px] font-mono tracking-widest uppercase bg-white/5 self-start px-4 py-2 rounded-full border border-white/10 transition-colors hover:bg-white/20">
+                    <span>Explore_Project</span>
+                    <ArrowUpRight size={16} />
                   </div>
                 </div>
 
-                {/* Foreshortening / Depth Hint */}
-                <div className="absolute inset-0 pointer-events-none bg-gradient-to-r from-black/20 via-transparent to-black/20 opacity-40 group-hover:opacity-0 transition-opacity duration-300" />
+                {/* Foreshortening Edge Highlight */}
+                <div className="absolute top-0 right-0 w-[1px] h-full bg-white/30 backdrop-blur-none" />
+                <div className="absolute top-0 left-0 w-[1px] h-full bg-white/30 backdrop-blur-none" />
               </motion.div>
             </motion.div>
           )
         })}
       </motion.div>
 
-      {/* Decorative Floor Reflection / Shadow */}
-      <div className="absolute bottom-10 w-full h-[150px] bg-gradient-to-t from-black/20 to-transparent pointer-events-none blur-3xl opacity-50" />
+      {/* Decorative Navigation Hints */}
+      <div className="absolute bottom-10 flex flex-col items-center gap-4 opacity-40">
+        <div className="flex gap-2">
+           {[...Array(projects.length)].map((_, i) => (
+             <div 
+               key={i} 
+               className={`w-1 h-1 rounded-full bg-white transition-all duration-500 ${
+                 Math.abs(((i * angleStep + currentRot) % 360 + 360) % 360) < angleStep / 2 ? "scale-[3] opacity-100" : "opacity-30"
+               }`} 
+             />
+           ))}
+        </div>
+        <span className="text-[10px] font-mono tracking-[0.4em] uppercase text-white animate-pulse">Drag to Rotate</span>
+      </div>
+
+      {/* Shadow Reflection */}
+      <div className="absolute -bottom-20 w-[80%] h-[100px] bg-black/40 blur-[100px] rounded-full" />
     </div>
   )
 }
