@@ -398,28 +398,31 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
 
   const activeIndex = getActiveIndex()
 
-  // Interaction Logic
+  // Interaction Logic: High-sensitivity drag with momentum
   const handleDrag = (_: any, info: any) => {
-    setRotation(prev => prev + info.delta.x * 0.15)
+    setRotation(prev => prev + info.delta.x * 0.2)
   }
 
   const handleDragEnd = (_: any, info: any) => {
-    const velocityFactor = info.velocity.x * 0.05
+    const velocityFactor = info.velocity.x * 0.08
     const finalRotation = rotation + velocityFactor
     const snappedRotation = Math.round(finalRotation / angleStep) * angleStep
     setRotation(snappedRotation)
   }
 
   return (
-    <div className="relative h-[500px] md:h-[700px] w-full flex items-center justify-center overflow-hidden perspective-[2000px]">
+    <div className="relative h-[600px] md:h-[800px] w-full flex items-center justify-center overflow-hidden perspective-[2500px]">
+      {/* Dynamic Background Glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.1),transparent_70%)] pointer-events-none" />
+      
       <motion.div
         drag="x"
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
         animate={{ rotateY: rotation }}
-        transition={{ type: "spring", damping: 25, stiffness: 120 }}
+        transition={{ type: "spring", damping: 28, stiffness: 100 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-[280px] md:w-[450px] h-[380px] md:h-[550px] cursor-grab active:cursor-grabbing"
+        className="relative w-[300px] md:w-[600px] h-[400px] md:h-[650px] cursor-grab active:cursor-grabbing"
       >
         {projects.map((project, index) => {
           const angle = index * angleStep
@@ -439,18 +442,19 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         })}
       </motion.div>
 
-      {/* Decorative Navigation Indicator */}
-      <div className="absolute bottom-4 md:bottom-10 flex gap-3 z-20">
+      {/* Modern Tactical Navigation Dot Indicator */}
+      <div className="absolute bottom-6 md:bottom-12 flex items-center gap-4 z-20 px-6 py-3 bg-white/5 backdrop-blur-xl rounded-full border border-white/10">
         {projects.map((_, i) => (
           <motion.div
             key={i}
+            onClick={() => setRotation(-i * angleStep)}
             animate={{ 
-              scale: activeIndex === i ? 1.4 : 1,
-              opacity: activeIndex === i ? 1 : 0.2,
+              width: activeIndex === i ? 24 : 8,
+              height: 8,
+              opacity: activeIndex === i ? 1 : 0.3,
               backgroundColor: activeIndex === i ? "#fff" : "rgba(255,255,255,0.5)"
             }}
-            className="w-2 h-2 rounded-full cursor-pointer transition-colors"
-            onClick={() => setRotation(-i * angleStep)}
+            className="rounded-full cursor-pointer transition-all duration-500 ease-out"
           />
         ))}
       </div>
@@ -466,24 +470,21 @@ function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRo
   onProjectClick: (p: typeof projectsData[0]) => void,
   parentRotation: number
 }) {
-  // Responsive Radius: Smaller on mobile to keep items in view
-  const [radius, setRadius] = useState(500)
+  const [radius, setRadius] = useState(600)
   
-  // Use effect to handle client-side radius calculation
   useState(() => {
     if (typeof window !== 'undefined') {
-      setRadius(window.innerWidth < 768 ? 350 : 600)
+      setRadius(window.innerWidth < 768 ? 400 : 800)
     }
   })
 
-  // Visibility Logic: Based on rotation
+  // Spatial Math
   const normalizedRotation = (parentRotation % 360 + 360) % 360
   const cardCurrentAngle = (angle + normalizedRotation) % 360
   const distanceFromFront = Math.min(cardCurrentAngle, 360 - cardCurrentAngle)
   
-  // High visibility range: 110 degrees for better overlap and depth
-  const isVisible = distanceFromFront < 110
-  const blurValue = Math.max(0, (distanceFromFront - 15) / 10)
+  const isVisible = distanceFromFront < 100
+  const depthFactor = Math.abs(distanceFromFront) / 100 // 0 at front, 1 at edge
 
   return (
     <motion.div
@@ -493,60 +494,98 @@ function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRo
         position: "absolute",
         inset: 0,
         opacity: isVisible ? 1 : 0,
-        filter: `blur(${blurValue}px)`,
-        pointerEvents: isVisible ? "auto" : "none",
-        zIndex: isActive ? 50 : Math.round(100 - distanceFromFront)
+        pointerEvents: isVisible && distanceFromFront < 20 ? "auto" : "none",
+        zIndex: Math.round(100 - distanceFromFront),
       }}
       animate={{ 
-        scale: isActive ? 1.1 : 1,
-        y: isActive ? -20 : 0
+        scale: isActive ? 1 : 0.85,
+        filter: isVisible 
+          ? `blur(${depthFactor * 5}px) grayscale(${depthFactor * 0.5}) brightness(${1 - depthFactor * 0.4})` 
+          : "blur(20px)",
       }}
-      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+      transition={{ type: "spring", stiffness: 300, damping: 30 }}
       onClick={() => isVisible && onProjectClick(project)}
-      className="glass-card rounded-[2rem] overflow-hidden flex flex-col group select-none shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/5"
+      className="rounded-[2.5rem] overflow-hidden flex flex-col group select-none shadow-[0_30px_60px_-12px_rgba(0,0,0,0.5)] border border-white/10 bg-slate-900"
     >
-      <div className="relative w-full h-full overflow-hidden rounded-[2rem] bg-slate-950">
-        <Image
-          src={project.image || "/placeholder.svg"}
-          alt={project.title}
-          fill
-          className="object-cover opacity-50 group-hover:opacity-70 transition-all duration-700"
+      <div className="relative w-full h-full overflow-hidden">
+        {/* Dynamic Image with subtle parallax */}
+        <motion.div
+          animate={{ x: -distanceFromFront * 0.5 }}
+          className="absolute inset-0 w-[120%] h-full left-[-10%]"
+        >
+          <Image
+            src={project.image || "/placeholder.svg"}
+            alt={project.title}
+            fill
+            className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 ease-out scale-105 group-hover:scale-100"
+          />
+        </motion.div>
+
+        {/* Specular Highlight Overlay */}
+        <motion.div 
+          animate={{ 
+            opacity: [0.1, 0.3, 0.1],
+            x: ["-100%", "100%"]
+          }}
+          transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 pointer-events-none"
         />
         
-        {/* Spatial Typography Layer */}
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-10 bg-gradient-to-t from-black/100 via-black/40 to-transparent">
+        {/* Premium Scrim Layer */}
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+
+        {/* Information Layer */}
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-16">
           <motion.div
             animate={{ 
               opacity: isActive ? 1 : 0,
-              y: isActive ? 0 : 30,
+              y: isActive ? 0 : 40,
             }}
-            transition={{ duration: 0.5, delay: isActive ? 0.2 : 0 }}
-            className="flex flex-col items-center text-center w-full"
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center text-center max-w-md"
           >
-            <div className="flex gap-2 mb-3 md:mb-5">
-              {project.technologies.slice(0, 2).map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[8px] md:text-[10px] font-bold uppercase tracking-widest rounded-full backdrop-blur-sm">
+            <div className="flex gap-2 mb-6">
+              {project.technologies.slice(0, 3).map((tech) => (
+                <span key={tech} className="px-4 py-1.5 bg-white/5 border border-white/10 text-white text-[9px] font-bold uppercase tracking-[0.2em] rounded-full backdrop-blur-md">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <h3 className="text-2xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-2 leading-none drop-shadow-2xl px-4">
+            <h3 className="text-3xl md:text-6xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none [text-wrap:balance]">
               {project.title}
             </h3>
             
-            <div className="text-[8px] md:text-[11px] text-white/40 font-mono tracking-[0.4em] uppercase mt-2">
-              PROJECT_{index.toString().padStart(2, '0')} // INTERFACE_LAYER
+            <div className="flex items-center gap-4 text-[9px] font-mono text-white/30 tracking-[0.5em] uppercase">
+              <span className="w-8 h-[1px] bg-white/20" />
+              BUILD_0{index + 1}
+              <span className="w-8 h-[1px] bg-white/20" />
             </div>
           </motion.div>
           
-          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl">
-              <ArrowUpRight className="text-black w-5 h-5" />
-            </div>
+          <div className="absolute top-10 right-10">
+            <motion.div 
+              whileHover={{ scale: 1.1, rotate: 45 }}
+              whileTap={{ scale: 0.9 }}
+              className="w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-2xl opacity-0 group-hover:opacity-100 transition-all duration-300"
+            >
+              <ArrowUpRight className="w-6 h-6" />
+            </motion.div>
           </div>
         </div>
       </div>
+
+      {/* Active State Border Glow */}
+      <AnimatePresence>
+        {isActive && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="absolute inset-0 border-2 border-white/20 rounded-[2.5rem] pointer-events-none shadow-[inset_0_0_80px_rgba(255,255,255,0.05)]"
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }
