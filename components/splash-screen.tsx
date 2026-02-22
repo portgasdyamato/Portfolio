@@ -98,8 +98,17 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         </motion.div>
 
         <div className="relative flex flex-col items-center md:items-start group">
+          {/* Glitch Overlay Text (Ghost Effect) - Moved to background */}
+          <motion.div 
+            style={{ fontFamily: currentFont, filter: "url(#glitch)" }}
+            className="absolute inset-0 flex flex-col items-center md:items-start opacity-20 pointer-events-none scale-105"
+          >
+            <span className="text-8xl md:text-[14rem] text-white leading-[0.75]">SAKSHI</span>
+            <span className="text-8xl md:text-[14rem] text-white self-end mt-[-1rem] md:mt-[-3rem] leading-[0.75] italic">AGRAHARI</span>
+          </motion.div>
+
           {/* Animated Character Groups */}
-          <div className="flex overflow-hidden">
+          <div className="relative z-10 flex overflow-hidden">
             {"SAKSHI".split("").map((char, i) => (
               <motion.span
                 key={i}
@@ -111,14 +120,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                   delay: i * 0.08, 
                   ease: [0.16, 1, 0.3, 1] 
                 }}
-                className="text-8xl md:text-[14rem] text-slate-900 inline-block leading-[0.75] select-none hover:filter-none"
+                className="text-8xl md:text-[14rem] text-slate-900 inline-block leading-[0.75] select-none"
               >
                 {char}
               </motion.span>
             ))}
           </div>
 
-          <div className="flex self-end mt-[-1rem] md:mt-[-3rem] overflow-hidden">
+          <div className="relative z-10 flex self-end mt-[-1rem] md:mt-[-3rem] overflow-hidden">
             {"AGRAHARI".split("").map((char, i) => (
               <motion.span
                 key={i}
@@ -136,15 +145,6 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
               </motion.span>
             ))}
           </div>
-
-          {/* Glitch Overlay Text (Ghost Effect) */}
-          <motion.div 
-            style={{ fontFamily: currentFont, filter: "url(#glitch)" }}
-            className="absolute inset-0 flex flex-col items-center md:items-start opacity-20 pointer-events-none scale-105"
-          >
-            <span className="text-8xl md:text-[14rem] text-white leading-[0.75]">SAKSHI</span>
-            <span className="text-8xl md:text-[14rem] text-white self-end mt-[-1rem] md:mt-[-3rem] leading-[0.75] italic">AGRAHARI</span>
-          </motion.div>
         </div>
 
         {/* Dynamic Role & Meta Detail */}
