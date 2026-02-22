@@ -390,60 +390,67 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   const [rotation, setRotation] = useState(0)
   const angleStep = 360 / projects.length
   
+  // Safe normalization for indices
+  const getActiveIndex = () => {
+    const rawIndex = Math.round(-rotation / angleStep)
+    return ((rawIndex % projects.length) + projects.length) % projects.length
+  }
+
+  const activeIndex = getActiveIndex()
+
   // Interaction Logic
   const handleDrag = (_: any, info: any) => {
-    setRotation(prev => prev + info.delta.x * 0.1)
+    setRotation(prev => prev + info.delta.x * 0.15)
   }
 
   const handleDragEnd = (_: any, info: any) => {
-    const velocityFactor = info.velocity.x * 0.1
+    const velocityFactor = info.velocity.x * 0.05
     const finalRotation = rotation + velocityFactor
     const snappedRotation = Math.round(finalRotation / angleStep) * angleStep
     setRotation(snappedRotation)
   }
 
   return (
-    <div className="relative h-[600px] w-full flex items-center justify-center overflow-hidden perspective-[1500px]">
+    <div className="relative h-[500px] md:h-[700px] w-full flex items-center justify-center overflow-hidden perspective-[2000px]">
       <motion.div
         drag="x"
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
         animate={{ rotateY: rotation }}
-        transition={{ type: "spring", damping: 30, stiffness: 100 }}
+        transition={{ type: "spring", damping: 25, stiffness: 120 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-[300px] h-[400px] cursor-grab active:cursor-grabbing"
+        className="relative w-[280px] md:w-[450px] h-[380px] md:h-[550px] cursor-grab active:cursor-grabbing"
       >
-        <AnimatePresence>
-          {projects.map((project, index) => {
-            const angle = index * angleStep
-            const isActive = Math.round(-rotation / angleStep) % projects.length === index
-            
-            return (
-              <ProjectCard 
-                key={project.title}
-                project={project}
-                index={index}
-                angle={angle}
-                isActive={isActive}
-                onProjectClick={onProjectClick}
-                totalProjects={projects.length}
-                parentRotation={rotation}
-              />
-            )
-          })}
-        </AnimatePresence>
+        {projects.map((project, index) => {
+          const angle = index * angleStep
+          const isActive = activeIndex === index
+          
+          return (
+            <ProjectCard 
+              key={project.title}
+              project={project}
+              index={index}
+              angle={angle}
+              isActive={isActive}
+              onProjectClick={onProjectClick}
+              parentRotation={rotation}
+            />
+          )
+        })}
       </motion.div>
 
       {/* Decorative Navigation Indicator */}
-      <div className="absolute bottom-10 flex gap-2">
+      <div className="absolute bottom-4 md:bottom-10 flex gap-3 z-20">
         {projects.map((_, i) => (
           <motion.div
             key={i}
             animate={{ 
-              scale: (Math.round(-rotation / angleStep) % projects.length + projects.length) % projects.length === i ? 1.5 : 1,
-              opacity: (Math.round(-rotation / angleStep) % projects.length + projects.length) % projects.length === i ? 1 : 0.3
+              scale: activeIndex === i ? 1.4 : 1,
+              opacity: activeIndex === i ? 1 : 0.2,
+              backgroundColor: activeIndex === i ? "#fff" : "rgba(255,255,255,0.5)"
             }}
-            className="w-1.5 h-1.5 bg-white rounded-full"
+            className="w-2 h-2 rounded-full cursor-pointer transition-colors"
+            onClick={() => setRotation(-i * angleStep)}
           />
         ))}
       </div>
@@ -451,91 +458,92 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   )
 }
 
-function ProjectCard({ project, index, angle, isActive, onProjectClick, totalProjects, parentRotation }: { 
+function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRotation }: { 
   project: typeof projectsData[0], 
   index: number, 
   angle: number, 
   isActive: boolean, 
   onProjectClick: (p: typeof projectsData[0]) => void,
-  totalProjects: number,
   parentRotation: number
 }) {
-  const radius = 500 // Adjust carousel radius
+  // Responsive Radius: Smaller on mobile to keep items in view
+  const [radius, setRadius] = useState(500)
   
-  // Calculate visibility based on how close it is to the "front"
-  // Normalize parentRotation to 0-360 range
+  // Use effect to handle client-side radius calculation
+  useState(() => {
+    if (typeof window !== 'undefined') {
+      setRadius(window.innerWidth < 768 ? 350 : 600)
+    }
+  })
+
+  // Visibility Logic: Based on rotation
   const normalizedRotation = (parentRotation % 360 + 360) % 360
   const cardCurrentAngle = (angle + normalizedRotation) % 360
   const distanceFromFront = Math.min(cardCurrentAngle, 360 - cardCurrentAngle)
   
-  const isVisible = distanceFromFront < 90 // Only show cards in front 180 degrees
-  const blurValue = Math.max(0, (distanceFromFront - 10) / 10)
+  // High visibility range: 110 degrees for better overlap and depth
+  const isVisible = distanceFromFront < 110
+  const blurValue = Math.max(0, (distanceFromFront - 15) / 10)
 
   return (
     <motion.div
       style={{
         transformStyle: "preserve-3d",
         transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
-        backfaceVisibility: "hidden",
         position: "absolute",
         inset: 0,
         opacity: isVisible ? 1 : 0,
         filter: `blur(${blurValue}px)`,
+        pointerEvents: isVisible ? "auto" : "none",
+        zIndex: isActive ? 50 : Math.round(100 - distanceFromFront)
       }}
       animate={{ 
-        scale: isActive ? 1.15 : 1,
-        z: isActive ? radius + 50 : radius
+        scale: isActive ? 1.1 : 1,
+        y: isActive ? -20 : 0
       }}
-      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
       onClick={() => isVisible && onProjectClick(project)}
-      className="glass-card rounded-[2rem] overflow-hidden flex flex-col group select-none shadow-2xl"
+      className="glass-card rounded-[2rem] overflow-hidden flex flex-col group select-none shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/5"
     >
-      <div className="relative w-full h-full overflow-hidden rounded-[2rem] bg-gray-900 border border-white/10">
+      <div className="relative w-full h-full overflow-hidden rounded-[2rem] bg-slate-950">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
-          className="object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-500"
+          className="object-cover opacity-50 group-hover:opacity-70 transition-all duration-700"
         />
         
         {/* Spatial Typography Layer */}
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 bg-gradient-to-t from-black/95 via-black/40 to-transparent">
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-10 bg-gradient-to-t from-black/100 via-black/40 to-transparent">
           <motion.div
             animate={{ 
               opacity: isActive ? 1 : 0,
-              y: isActive ? 0 : 20,
-              scale: isActive ? 1 : 0.9
+              y: isActive ? 0 : 30,
             }}
-            transition={{ duration: 0.4, delay: isActive ? 0.2 : 0 }}
+            transition={{ duration: 0.5, delay: isActive ? 0.2 : 0 }}
             className="flex flex-col items-center text-center w-full"
           >
-            <div className="flex gap-2 mb-4">
+            <div className="flex gap-2 mb-3 md:mb-5">
               {project.technologies.slice(0, 2).map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] font-bold uppercase tracking-wider rounded-full">
+                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[8px] md:text-[10px] font-bold uppercase tracking-widest rounded-full backdrop-blur-sm">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <h3 className="text-3xl md:text-4xl font-bold text-white font-outfit uppercase tracking-tighter mb-2 leading-none drop-shadow-2xl">
+            <h3 className="text-2xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-2 leading-none drop-shadow-2xl px-4">
               {project.title}
             </h3>
             
-            <motion.div
-              animate={{ opacity: isActive ? 0.6 : 0 }}
-              className="text-[10px] text-white/70 font-mono tracking-[0.3em] uppercase mt-2"
-            >
-              SNAPSHOT_{index.toString().padStart(2, '0')} // FOCUS_ACTIVE
-            </motion.div>
+            <div className="text-[8px] md:text-[11px] text-white/40 font-mono tracking-[0.4em] uppercase mt-2">
+              PROJECT_{index.toString().padStart(2, '0')} // INTERFACE_LAYER
+            </div>
           </motion.div>
           
-          <div className="absolute top-6 right-6">
-            <motion.div 
-              whileHover={{ scale: 1.1, rotate: 45 }}
-              className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl animate-pulse"
-            >
+          <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-xl">
               <ArrowUpRight className="text-black w-5 h-5" />
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
