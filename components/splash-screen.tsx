@@ -68,18 +68,18 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       <div className="relative z-10 w-full max-w-7xl px-6 flex flex-col items-start md:items-center">
         {/* Floating Coordinates - Animated */}
         <motion.div 
-          animate={{ opacity: [0.4, 0.8, 0.4] }}
+          animate={{ opacity: [0.6, 1, 0.6] }}
           transition={{ duration: 0.2, repeat: Infinity, repeatType: "mirror" }}
-          className="absolute -top-32 md:-top-40 right-10 font-mono text-[10px] md:text-xs text-white/70 tracking-[0.3em] uppercase hidden md:block text-right leading-relaxed"
+          className="absolute -top-32 md:-top-40 right-10 font-mono text-[10px] md:text-xs text-white tracking-[0.3em] uppercase hidden md:block text-right leading-relaxed"
         >
           <div className="flex flex-col gap-1">
-            <span>Buffer_Init: 0xFF02A</span>
-            <span>Kernel_Load: OK</span>
-            <span>Sakshi_Core: Stable</span>
+            <span className="text-white">Buffer_Init: 0xFF02A</span>
+            <span className="text-white">Kernel_Load: OK</span>
+            <span className="text-white">Sakshi_Core: Stable</span>
             <div className="flex gap-2 justify-end mt-2">
-              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-              <span className="w-2 h-2 bg-white/40 rounded-full" />
-              <span className="w-2 h-2 bg-white/40 rounded-full" />
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse shadow-[0_0_8px_white]" />
+              <span className="w-2 h-2 bg-white/60 rounded-full" />
+              <span className="w-2 h-2 bg-white/60 rounded-full" />
             </div>
           </div>
         </motion.div>
@@ -92,8 +92,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
             className="flex flex-col items-start gap-2"
           >
             <div className="flex items-center gap-3 mb-2">
-              <span className="px-2 py-0.5 bg-white/20 text-[10px] text-white font-mono rounded select-none">V 2.6.0</span>
-              <span className="text-white/40 font-mono text-xs tracking-tighter uppercase">Initializing_System</span>
+              <span className="px-2 py-0.5 bg-slate-900 text-[10px] text-white font-mono rounded select-none font-bold">V 2.6.0</span>
+              <span className="text-white font-mono text-xs tracking-tighter uppercase font-bold drop-shadow-sm">Initializing_System</span>
             </div>
             <h1 
               style={{ fontFamily: currentFont, textShadow: "0 0 10px rgba(255,255,255,0.3)" }}
@@ -117,26 +117,26 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
             </h1>
             <div className="flex items-center gap-4 mt-2">
               <motion.span 
-                animate={{ opacity: [1, 0.4, 1] }}
+                animate={{ opacity: [1, 0.8, 1] }}
                 transition={{ duration: 0.5, repeat: Infinity }}
-                className="text-white font-mono text-xs md:text-sm tracking-[0.4em] uppercase font-bold bg-slate-900 px-3 py-1"
+                className="text-white font-mono text-xs md:text-sm tracking-[0.4em] uppercase font-bold bg-slate-900 px-3 py-1 shadow-lg"
               >
                 {currentKeyword}
               </motion.span>
-              <span className="text-white/40 font-mono text-xs hidden md:block">ROLE_ID: CREATIVE_DEV</span>
+              <span className="text-white font-mono text-xs hidden md:block font-bold">ROLE_ID: CREATIVE_DEV</span>
             </div>
           </motion.div>
         </div>
 
         {/* Progress Display - Radical Style */}
-        <div className="mt-10 w-full flex flex-col md:flex-row justify-between items-end md:items-center gap-8 border-t border-white/10 pt-8">
+        <div className="mt-10 w-full flex flex-col md:flex-row justify-between items-end md:items-center gap-8 border-t border-white/20 pt-8">
           <div className="flex flex-col gap-4">
             <div className="flex gap-1.5 h-12 items-end">
               {[...Array(40)].map((_, i) => (
                 <motion.div
                   key={i}
                   animate={{ 
-                    backgroundColor: i < Math.floor(progress * 0.4) ? "#ffffff" : "rgba(255,255,255,0.1)",
+                    backgroundColor: i < Math.floor(progress * 0.4) ? "#ffffff" : "rgba(255,255,255,0.3)",
                     height: i < Math.floor(progress * 0.4) ? [4, 24, 4] : 4
                   }}
                   transition={{ 
@@ -149,17 +149,17 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                 />
               ))}
             </div>
-            <div className="flex justify-between font-mono text-[9px] text-white/40 uppercase tracking-widest">
+            <div className="flex justify-between font-mono text-[9px] text-white uppercase tracking-widest font-bold">
               <span>Sector_Scan: Complete</span>
               <span>Load: Active</span>
             </div>
           </div>
           
           <div className="flex flex-col items-end">
-            <div className="font-mono text-6xl md:text-9xl text-white/10 tracking-tighter mb-[-1rem] leading-none">
+            <div className="font-mono text-6xl md:text-9xl text-white/40 tracking-tighter mb-[-1rem] leading-none drop-shadow-md">
               {progress.toString().padStart(3, '0')}%
             </div>
-            <span className="text-[10px] text-white/30 font-mono uppercase tracking-[0.5em]">System_Integrity_Load</span>
+            <span className="text-[10px] text-white font-mono uppercase tracking-[0.5em] font-bold">System_Integrity_Load</span>
           </div>
         </div>
       </div>
