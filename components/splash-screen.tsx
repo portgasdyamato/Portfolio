@@ -40,8 +40,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
 
   return (
     <motion.div 
-      initial={{ backgroundColor: "#e09494" }}
-      animate={{ backgroundColor: ["#e09494", "#d48686", "#e09494"] }}
+      initial={{ backgroundColor: "#f57e7eff" }}
+      animate={{ backgroundColor: ["#f57e7eff", "#f58787ff", "#f57e7eff"] }}
       transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
       className="fixed inset-0 z-[9999] overflow-hidden flex flex-col items-center justify-center perspective-[1000px]"
     >
