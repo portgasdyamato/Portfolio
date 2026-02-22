@@ -15,6 +15,7 @@ const dreamin = "/dreamin.png"
 const muse = "/muse.jpg"
 const pocketfund = "/pocket-fund.png"
 const yonder = "/yonder.png"
+const vid = "/vid.png"
 
 const projectsData = [
   {
@@ -116,7 +117,7 @@ const projectsData = [
     title: "Vidya – AI Study Platform",
     duration: "Aug 2025 - Present",
     date: "Aug 2025",
-    image: "/placeholder.svg?height=300&width=400",
+    image: vid,
     color: "#F59E0B",
     technologies: ["React", "Next.js", "OpenAI APIs", "Gemini API", "Tailwind CSS"],
     description: "An AI-powered, multimodal platform that transforms documents and videos into summaries and interactive learning formats for students with disabilities.",
@@ -397,12 +398,12 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   const handleDragEnd = (_: any, info: any) => {
-    const threshold = 50
+    const threshold = 100
     const velocity = info.velocity.x
     
-    if (info.offset.x > threshold || velocity > 500) {
+    if (info.offset.x > threshold || velocity > 800) {
       handleStep(-1)
-    } else if (info.offset.x < -threshold || velocity < -500) {
+    } else if (info.offset.x < -threshold || velocity < -800) {
       handleStep(1)
     } else {
       setDragProgress(0)
@@ -410,19 +411,19 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[500px] md:h-[700px] flex items-center justify-center overflow-hidden perspective-[1200px]">
+    <div className="relative w-full h-[550px] md:h-[750px] flex items-center justify-center overflow-hidden perspective-[2000px]">
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.03),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.02),transparent_70%)] pointer-events-none" />
 
       {/* Main Slider Track */}
       <motion.div 
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.2}
-        onDrag={(_, info) => setDragProgress(info.offset.x / 400)}
+        dragElastic={0.15}
+        onDrag={(_, info) => setDragProgress(info.offset.x / 500)}
         onDragEnd={handleDragEnd}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing"
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           {projects.map((project, i) => {
@@ -432,14 +433,14 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
             if (offset < -projects.length / 2) offset += projects.length
 
             // Show 3 projects for focus, but the circular logic handles the rest
-            if (Math.abs(offset) > 1.5) return null
+            if (Math.abs(offset) > 1.2) return null
 
             return (
               <ProjectCard
                 key={project.title}
                 project={project}
                 offset={offset + dragProgress}
-                isActive={offset === 0}
+                isActive={Math.abs(offset + dragProgress) < 0.2}
                 onProjectClick={onProjectClick}
                 onMove={() => handleStep(Math.round(offset))}
                 index={i}
@@ -450,14 +451,14 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
       </motion.div>
 
       {/* HUD Progress */}
-      <div className="absolute bottom-8 flex items-center gap-4 px-5 py-2.5 glass rounded-full border border-white/10 z-50">
-        <span className="text-[10px] font-mono font-bold text-white/40 tracking-wider">
-          SYSTEM_LOCK: 0{index + 1} // {projects.length}
+      <div className="absolute bottom-10 flex items-center gap-6 px-6 py-3 glass rounded-full border border-white/10 z-50">
+        <span className="text-[10px] font-mono font-bold text-white/30 tracking-widest uppercase">
+          INDEX_0{index + 1} // TOTAL_{projects.length}
         </span>
-        <div className="w-16 h-[2px] bg-white/10 rounded-full overflow-hidden">
+        <div className="w-20 h-[1px] bg-white/10 relative">
           <motion.div 
-             animate={{ width: `${((index + 1) / projects.length) * 100}%` }}
-             className="h-full bg-white/60"
+             animate={{ left: `${(index / (projects.length - 1)) * 100}%` }}
+             className="absolute top-1/2 -translate-y-1/2 w-4 h-1 bg-white/40 rounded-full"
           />
         </div>
       </div>
@@ -473,82 +474,83 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, index 
   onMove: () => void,
   index: number
 }) {
-  const handleClick = () => {
-    if (Math.abs(offset) > 0.1) {
-      onMove()
-    } else {
-      onProjectClick(project)
-    }
-  }
-
   return (
     <motion.div
       animate={{
-        x: offset * 480, // Spatial spacing
-        scale: 1 - Math.abs(offset) * 0.12, 
-        opacity: 1 - Math.abs(offset) * 0.3, // Much clearer side visibility
-        rotateY: offset * 35, // Stronger circular arc rotation
-        z: -Math.abs(offset) * 300, // Deeper recession into Z-space
-        filter: `blur(${Math.abs(offset) * 3}px)`, // Subtle, professional blur
+        x: offset * 600, // Even more spacing to pull them apart
+        scale: 1 - Math.abs(offset) * 0.08, // Very subtle scaling for presence
+        opacity: 1 - Math.abs(offset) * 0.3, 
+        rotateY: offset * 20, // Even gentler arc for a "flatter" but cleaner loop
+        z: -Math.abs(offset) * 150, // Less depth recede to keep them larger
+        filter: `blur(${Math.abs(offset) * 2}px)`, // Minimal blur for clarity
       }}
       transition={{
         type: "spring",
-        stiffness: 200,
-        damping: 24,
-        mass: 0.8
+        stiffness: 180,
+        damping: 26,
+        mass: 1
       }}
       style={{
         position: "absolute",
-        width: "min(480px, 80vw)",
+        width: "min(550px, 90vw)",
         aspectRatio: "16/10",
         transformStyle: "preserve-3d",
-        zIndex: 100 - Math.abs(offset) * 10,
+        zIndex: Math.round(100 - Math.abs(offset) * 50),
       }}
-      onClick={handleClick}
-      className={`rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/10 bg-slate-900 group ${Math.abs(offset) > 0.1 ? 'cursor-pointer' : 'cursor-default'}`}
+      onClick={(e) => {
+        e.stopPropagation()
+        if (Math.abs(offset) > 0.2) {
+          onMove()
+        } else {
+          onProjectClick(project)
+        }
+      }}
+      className="rounded-[3rem] overflow-hidden shadow-[0_60px_120px_-30px_rgba(0,0,0,0.7)] border border-white/5 bg-slate-900 group cursor-pointer"
     >
       <div className="relative w-full h-full">
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
-          className="object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-700"
+          className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 ease-out"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-10">
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-12">
           <motion.div
             animate={{ 
-              opacity: Math.abs(offset) < 0.4 ? 1 : 0,
-              y: Math.abs(offset) < 0.4 ? 0 : 20
+              opacity: Math.abs(offset) < 0.5 ? 1 : 0,
+              y: Math.abs(offset) < 0.5 ? 0 : 20
             }}
             className="flex flex-col items-center text-center w-full"
           >
-            <div className="flex gap-2 mb-3">
+            <div className="flex gap-2 mb-4">
               {project.technologies.slice(0, 2).map((tech) => (
-                <span key={tech} className="px-2.5 py-1 bg-white/5 border border-white/10 text-white text-[8px] font-bold uppercase tracking-widest rounded-full">
+                <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 text-white text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <h3 className="text-xl md:text-3xl font-bold text-white font-outfit uppercase tracking-tighter mb-3 leading-none">
+            <h3 className="text-2xl md:text-4xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none">
               {project.title}
             </h3>
             
-            <div className="px-3 py-1 bg-white/10 rounded-full text-[9px] font-mono text-white/40 tracking-[0.2em] uppercase">
-              {isActive ? 'VIEW_DETAILS' : 'SELECT_ENTRY'}
+            <div className="px-4 py-1.5 bg-white/10 rounded-full text-[10px] font-mono text-white/50 tracking-[0.3em] uppercase transition-colors group-hover:bg-white/20">
+              {isActive ? 'INITIALIZE_VIEW' : 'SYNCHRONIZE_ACTIVE'}
             </div>
           </motion.div>
           
-          <div className="absolute top-6 right-6">
-            <div className={`w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-2xl transition-transform duration-500 ${isActive ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
-              <ArrowUpRight className="w-5 h-5" />
+          <div className="absolute top-10 right-10">
+            <div className={`w-14 h-14 bg-white text-black rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 ${isActive ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
+              <ArrowUpRight className="w-6 h-6" />
             </div>
           </div>
         </div>
       </div>
+
+      <div className="absolute inset-0 border border-white/5 rounded-[3rem] pointer-events-none" />
     </motion.div>
   )
 }
