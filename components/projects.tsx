@@ -523,7 +523,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         transformStyle: "preserve-3d",
         zIndex: Math.round(100 - Math.abs(offset) * 50),
       }}
-      className="rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border border-white/5 bg-slate-900 group pointer-events-auto cursor-pointer"
+      className="rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border border-white/5 bg-slate-900 group pointer-events-auto cursor-pointer"
     >
       <div className="relative w-full h-full pointer-events-none">
         <Image
@@ -533,9 +533,9 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
           className="object-cover opacity-60 group-hover:opacity-100 transition-all duration-1000 ease-out"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-14">
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-14">
           <motion.div
             animate={{ 
               opacity: Math.abs(offset) < 0.5 ? 1 : 0,
@@ -543,31 +543,31 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
             }}
             className="flex flex-col items-center text-center w-full"
           >
-            <div className="flex gap-2 mb-4">
+            <div className="flex gap-2 mb-3 md:mb-4">
               {project.technologies.slice(0, 2).map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 text-white text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
+                <span key={tech} className="px-2.5 py-1 bg-white/10 border border-white/20 text-white text-[8px] md:text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <h3 className="text-2xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none">
+            <h3 className="text-xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-3 md:mb-4 leading-none">
               {project.title}
             </h3>
             
-            <div className={`px-4 py-1.5 rounded-full text-[10px] font-mono tracking-[0.3em] uppercase transition-all duration-500 ${isActive ? 'bg-white text-black' : 'bg-white/10 text-white/50 group-hover:bg-white/20'}`}>
+            <div className={`px-4 py-1.5 rounded-full text-[9px] md:text-[10px] font-mono tracking-[0.3em] uppercase transition-all duration-500 ${isActive ? 'bg-white text-black' : 'bg-white/10 text-white/50 group-hover:bg-white/20'}`}>
               {isActive ? 'ACCESS_SYSTEM' : 'CENTER_ALIGN'}
             </div>
           </motion.div>
           
-          <div className="absolute top-10 right-10">
-            <div className={`w-14 h-14 bg-brand-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 ${isActive ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
-              <ArrowUpRight className="w-6 h-6" />
+          <div className="absolute top-6 right-6 md:top-10 md:right-10">
+            <div className={`w-10 h-10 md:w-14 md:h-14 bg-brand-500 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 ${isActive ? 'scale-0 group-hover:scale-100' : 'scale-0'}`}>
+              <ArrowUpRight className="w-5 h-5 md:w-6 md:h-6" />
             </div>
           </div>
         </div>
       </div>
-      <div className={`absolute inset-0 border-2 transition-opacity duration-700 rounded-[2.5rem] md:rounded-[3.5rem] pointer-events-none ${isActive ? 'border-white/10 opacity-100' : 'border-transparent opacity-0'}`} />
+      <div className={`absolute inset-0 border-2 transition-opacity duration-700 rounded-[1.5rem] md:rounded-[3.5rem] pointer-events-none ${isActive ? 'border-white/10 opacity-100' : 'border-transparent opacity-0'}`} />
     </motion.div>
   )
 }
