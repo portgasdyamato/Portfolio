@@ -540,8 +540,19 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         transformStyle: "preserve-3d",
         zIndex: Math.round(100 - Math.abs(offset) * 50),
       }}
-      className="rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.8)] border border-white/5 bg-slate-900 group pointer-events-auto cursor-pointer"
+      className="rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] bg-slate-900 group pointer-events-auto cursor-pointer relative"
     >
+      {/* Status Ribbon */}
+      <div className="absolute top-0 left-0 w-32 h-32 overflow-hidden pointer-events-none z-30">
+        <div className={`absolute top-6 -left-8 w-[150%] py-1.5 -rotate-45 text-center text-[9px] font-bold uppercase tracking-[0.2em] shadow-lg ${
+          project.status === 'Completed' 
+            ? 'bg-emerald-500 text-white' 
+            : 'bg-amber-500 text-white'
+        }`}>
+          {project.status}
+        </div>
+      </div>
+
       <div className="relative w-full h-full pointer-events-none">
         <Image
           src={project.image || "/placeholder.svg"}
@@ -584,7 +595,6 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
           </div>
         </div>
       </div>
-      <div className={`absolute inset-0 border-2 transition-opacity duration-700 rounded-[1.5rem] md:rounded-[3.5rem] pointer-events-none ${isActive ? 'border-white/10 opacity-100' : 'border-transparent opacity-0'}`} />
     </motion.div>
   )
 }
