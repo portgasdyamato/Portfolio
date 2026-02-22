@@ -404,8 +404,8 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
     }
   }, [])
 
-  // Spacing calculation
-  const spacing = containerWidth < 768 ? containerWidth * 0.7 : Math.min(650, containerWidth * 0.45)
+  // Spacing calculation: Adjusted for larger cards
+  const spacing = containerWidth < 768 ? containerWidth * 0.8 : Math.min(800, containerWidth * 0.55)
 
   const handleStep = (step: number) => {
     setIndex((prev) => (prev + step + projects.length) % projects.length)
@@ -426,7 +426,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[550px] md:h-[750px] flex items-center justify-center overflow-visible perspective-[2500px] select-none">
+    <div className="relative w-full h-[600px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[2500px] select-none">
       {/* Background Ambience */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.015),transparent_70%)] pointer-events-none" />
 
@@ -524,7 +524,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
       }}
       style={{
         position: "absolute",
-        width: "min(550px, 85vw)",
+        width: "min(750px, 90vw)",
         aspectRatio: "16/10",
         transformStyle: "preserve-3d",
         zIndex: Math.round(100 - Math.abs(offset) * 50),
