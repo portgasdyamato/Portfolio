@@ -387,23 +387,25 @@ export default function Projects() {
   )
 }
 
+import { useEffect } from "react"
+
 function CarouselContainer({ projects, onProjectClick }: { projects: typeof projectsData, onProjectClick: (p: typeof projectsData[0]) => void }) {
   const [index, setIndex] = useState(0)
   const [dragProgress, setDragProgress] = useState(0)
-  const [containerWidth, setContainerWidth] = useState(1000)
+  const [containerWidth, setContainerWidth] = useState(1200)
 
-  // Track container width for responsive spacing
-  useState(() => {
+  // Proper lifecycle for window tracking
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       const handleResize = () => setContainerWidth(window.innerWidth)
       handleResize()
       window.addEventListener('resize', handleResize)
       return () => window.removeEventListener('resize', handleResize)
     }
-  })
+  }, [])
 
-  // Offset spacing based on screen size: 50% on mobile, 40% on desktop
-  const spacing = containerWidth < 768 ? containerWidth * 0.7 : containerWidth * 0.5
+  // Spacing calculation
+  const spacing = containerWidth < 768 ? containerWidth * 0.7 : Math.min(650, containerWidth * 0.45)
 
   const handleStep = (step: number) => {
     setIndex((prev) => (prev + step + projects.length) % projects.length)
@@ -424,9 +426,9 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[550px] md:h-[750px] flex items-center justify-center overflow-visible perspective-[2500px]">
+    <div className="relative w-full h-[550px] md:h-[750px] flex items-center justify-center overflow-visible perspective-[2500px] select-none">
       {/* Background Ambience */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.015),transparent_70%)] pointer-events-none" />
 
       {/* Main Draggable Track */}
       <motion.div 
@@ -436,7 +438,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         onDrag={(_, info) => setDragProgress(info.offset.x / spacing)}
         onDragEnd={handleDragEnd}
         style={{ transformStyle: "preserve-3d" }}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10 overflow-visible"
+        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-20 overflow-visible"
       >
         <AnimatePresence mode="popLayout" initial={false}>
           {projects.map((project, i) => {
@@ -447,14 +449,13 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
             if (Math.abs(offset) > 1.2) return null
 
             const combinedOffset = offset + dragProgress
-            const isActive = Math.abs(combinedOffset) < 0.15
-
+            
             return (
               <ProjectCard
                 key={project.title}
                 project={project}
                 offset={combinedOffset}
-                isActive={isActive}
+                isActive={Math.abs(combinedOffset) < 0.2}
                 onProjectClick={onProjectClick}
                 onMove={() => handleStep(Math.round(offset))}
                 spacing={spacing}
@@ -467,16 +468,21 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
 
       {/* Modern Tactical Indicator */}
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 z-50 pointer-events-none">
-        <div className="flex gap-1.5">
+        <div className="flex gap-2">
           {projects.map((_, i) => (
-            <div 
-              key={i} 
-              className={`h-1 rounded-full transition-all duration-500 ${index === i ? 'w-8 bg-brand-500' : 'w-2 bg-white/10'}`} 
+            <motion.div 
+              key={i}
+              initial={false}
+              animate={{ 
+                width: index === i ? 32 : 8,
+                backgroundColor: index === i ? "#fff" : "rgba(255,255,255,0.1)"
+              }}
+              className="h-1 rounded-full" 
             />
           ))}
         </div>
-        <span className="text-[9px] font-mono text-white/20 tracking-[0.5em] uppercase">
-          STORAGE_SLOT_{String(index + 1).padStart(2, '0')}
+        <span className="text-[10px] font-mono text-white/30 tracking-[0.6em] uppercase">
+          DATA_STREAM_{index + 1}
         </span>
       </div>
     </div>
