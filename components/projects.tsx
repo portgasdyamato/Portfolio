@@ -387,150 +387,144 @@ export default function Projects() {
 }
 
 function CarouselContainer({ projects, onProjectClick }: { projects: typeof projectsData, onProjectClick: (p: typeof projectsData[0]) => void }) {
-  const [rotation, setRotation] = useState(0)
-  const angleStep = 360 / projects.length
-  
-  const getActiveIndex = () => {
-    const rawIndex = Math.round(-rotation / angleStep)
-    return ((rawIndex % projects.length) + projects.length) % projects.length
+  const [index, setIndex] = useState(0)
+  const [direction, setDirection] = useState(0)
+
+  const handleNext = () => {
+    setDirection(1)
+    setIndex((prev) => (prev + 1) % projects.length)
   }
 
-  const activeIndex = getActiveIndex()
-
-  // Control drag speed and momentum
-  const handleDrag = (_: any, info: any) => {
-    setRotation(prev => prev + info.delta.x * 0.15)
-  }
-
-  const handleDragEnd = (_: any, info: any) => {
-    const velocityFactor = info.velocity.x * 0.05
-    const finalRotation = rotation + velocityFactor
-    const snappedRotation = Math.round(finalRotation / angleStep) * angleStep
-    setRotation(snappedRotation)
+  const handlePrev = () => {
+    setDirection(-1)
+    setIndex((prev) => (prev - 1 + projects.length) % projects.length)
   }
 
   return (
-    <div className="relative h-[500px] md:h-[750px] w-full flex items-center justify-center perspective-[1500px]">
-      {/* Dramatic Ground Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.06),transparent_70%)] pointer-events-none blur-[120px] z-0" />
-      
-      <motion.div
-        drag="x"
-        onDrag={handleDrag}
-        onDragEnd={handleDragEnd}
-        animate={{ rotateY: rotation }}
-        transition={{ type: "spring", damping: 30, stiffness: 80 }}
-        style={{ transformStyle: "preserve-3d" }}
-        className="relative w-full h-full flex items-center justify-center cursor-grab active:cursor-grabbing z-10"
-      >
-        {projects.map((project, index) => {
-          const angle = index * angleStep
-          const isActive = activeIndex === index
-          
-          return (
-            <ProjectCard 
-              key={project.title}
-              project={project}
-              index={index}
-              angle={angle}
-              isActive={isActive}
-              onProjectClick={onProjectClick}
-              parentRotation={rotation}
-            />
-          )
-        })}
-      </motion.div>
+    <div className="relative w-full h-[600px] md:h-[800px] flex items-center justify-center overflow-hidden px-4">
+      {/* Background Ambience */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.04),transparent_70%)] pointer-events-none" />
 
-      {/* Elegant Modern Progress Bar & Info */}
-      <div className="absolute bottom-4 md:bottom-20 flex flex-col items-center gap-6 z-30">
-        <div className="px-6 py-2 bg-white/5 backdrop-blur-xl rounded-full border border-white/10 flex items-center gap-4">
-          <div className="flex gap-1.5">
-            {projects.map((_, i) => (
-              <motion.div
-                key={i}
-                onClick={() => setRotation(-i * angleStep)}
-                animate={{ 
-                  width: activeIndex === i ? 24 : 6,
-                  backgroundColor: activeIndex === i ? "#fff" : "rgba(255,255,255,0.2)"
-                }}
-                className="h-1.5 rounded-full cursor-pointer transition-all duration-700"
+      {/* Navigation Arrows */}
+      <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-12 z-50 pointer-events-none">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          animate={direction === -1 ? { scale: [1, 1.2, 1] } : {}}
+          onClick={handlePrev}
+          className="w-12 h-12 md:w-16 md:h-16 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto group bg-black/20 backdrop-blur-xl"
+        >
+          <motion.div className="text-white group-hover:-translate-x-1 transition-transform">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </motion.div>
+        </motion.button>
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          animate={direction === 1 ? { scale: [1, 1.2, 1] } : {}}
+          onClick={handleNext}
+          className="w-12 h-12 md:w-16 md:h-16 rounded-full glass border border-white/10 flex items-center justify-center pointer-events-auto group bg-black/20 backdrop-blur-xl"
+        >
+          <motion.div className="text-white group-hover:translate-x-1 transition-transform">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </motion.div>
+        </motion.button>
+      </div>
+
+      {/* Carousel Track */}
+      <div className="relative w-full h-full flex items-center justify-center overflow-visible">
+        <AnimatePresence mode="popLayout" initial={false}>
+          {projects.map((project, i) => {
+            // Find relative distance from active index for layout logic
+            // Supporting infinite circular feel
+            let offset = i - index
+            if (offset > projects.length / 2) offset -= projects.length
+            if (offset < -projects.length / 2) offset += projects.length
+
+            // Only render items near visibility range for performance
+            if (Math.abs(offset) > 2) return null
+
+            return (
+              <ProjectCard
+                key={project.title}
+                project={project}
+                offset={offset}
+                isActive={offset === 0}
+                onProjectClick={onProjectClick}
+                index={i}
               />
-            ))}
-          </div>
-          <div className="h-3 w-[1px] bg-white/10" />
-          <span className="text-[10px] font-mono font-bold text-white/40 tracking-[0.3em] uppercase">
-            LAYER_{String(activeIndex + 1).padStart(2, '0')}
-          </span>
+            )
+          })}
+        </AnimatePresence>
+      </div>
+
+      {/* Minimal Tactical HUD */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-6 px-6 py-3 glass rounded-full border border-white/10 z-50">
+        <div className="flex gap-1.5">
+          {projects.map((_, i) => (
+            <motion.div
+              key={i}
+              onClick={() => {
+                setDirection(i > index ? 1 : -1)
+                setIndex(i)
+              }}
+              animate={{ 
+                width: index === i ? 20 : 6,
+                opacity: index === i ? 1 : 0.2
+              }}
+              className="h-1.5 rounded-full bg-white cursor-pointer"
+            />
+          ))}
         </div>
+        <div className="h-4 w-[1px] bg-white/20" />
+        <span className="text-[10px] font-mono text-white/50 tracking-[0.2em] uppercase">
+          PROJECT_{String(index + 1).padStart(2, '0')}
+        </span>
       </div>
     </div>
   )
 }
 
-function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRotation }: { 
+function ProjectCard({ project, offset, isActive, onProjectClick, index }: { 
   project: typeof projectsData[0], 
-  index: number, 
-  angle: number, 
+  offset: number, 
   isActive: boolean, 
   onProjectClick: (p: typeof projectsData[0]) => void,
-  parentRotation: number
+  index: number
 }) {
-  // Constrain radius to keep cards on screen regardless of window width
-  const [radius, setRadius] = useState(400)
-  
-  useState(() => {
-    const handleResize = () => {
-      const width = window.innerWidth
-      // Dynamic scaling: Radius is roughly 40% of viewport width but constrained
-      const calculatedRadius = Math.min(width * 0.45, width < 768 ? 300 : 700)
-      setRadius(calculatedRadius)
-    }
-    handleResize()
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  })
-
-  // Smooth Billboard logic
-  const rotationToFaceFront = -parentRotation - angle
-
-  // Depth & Opacity Logic
-  const normalizedRotation = (parentRotation % 360 + 360) % 360
-  const cardCurrentAngle = (angle + normalizedRotation) % 360
-  const distanceFromFront = Math.min(cardCurrentAngle, 360 - cardCurrentAngle)
-  const isFront = distanceFromFront < 90
-  
-  // Normalized 0 to 1 based on how "far back" it is
-  const depthFactor = distanceFromFront / 180
-
   return (
     <motion.div
+      initial={false}
+      animate={{
+        x: offset * 350, // Consistent spacing
+        scale: isActive ? 1 : 0.8, // Center 100%, adjacent 80%
+        opacity: Math.max(0, 1 - Math.abs(offset) * 0.4),
+        z: isActive ? 50 : 0, // Depth swapping
+        filter: `blur(${Math.abs(offset) * 8}px)`, // Dynamic Gaussian blur
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 150,
+        damping: 25, // Long deceleration tail
+        mass: 1
+      }}
       style={{
-        transformStyle: "preserve-3d",
-        transform: `rotateY(${angle}deg) translateZ(${radius}px) rotateY(${rotationToFaceFront}deg)`,
         position: "absolute",
-        width: "min(300px, 80vw)",
-        height: "min(450px, 70vh)",
-        pointerEvents: distanceFromFront < 30 ? "auto" : "none",
-        zIndex: Math.round(100 - distanceFromFront),
+        zIndex: isActive ? 100 : 50 - Math.abs(offset),
+        width: "min(320px, 80vw)",
+        height: "min(480px, 70vh)",
+        transformStyle: "preserve-3d"
       }}
-      animate={{ 
-        scale: isActive ? 1.1 : 0.85,
-        opacity: isFront ? 1 : 0.15, // Keep semi-visible at the back for depth
-        y: isActive ? -20 : 0,
-        filter: `blur(${distanceFromFront / 15}px)`,
-      }}
-      transition={{ type: "spring", stiffness: 300, damping: 35 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => distanceFromFront < 30 && onProjectClick(project)}
-      className="rounded-[2.5rem] overflow-hidden group select-none shadow-[0_40px_100px_rgba(0,0,0,0.6)] border border-white/10 bg-slate-900 ring-1 ring-white/5"
+      onClick={() => isActive && onProjectClick(project)}
+      className={`rounded-[2.5rem] overflow-hidden cursor-pointer shadow-[0_40px_100px_rgba(0,0,0,0.6)] border border-white/10 bg-slate-900 group`}
     >
       <div className="relative w-full h-full">
-        {/* Project Visual */}
+        {/* Visual Media */}
         <Image
           src={project.image || "/placeholder.svg"}
           alt={project.title}
           fill
-          className="object-cover opacity-50 group-hover:opacity-80 transition-all duration-1000 group-hover:scale-110"
+          className="object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-700 grayscale group-hover:grayscale-0"
         />
 
         {/* Cinematic Scrim */}
@@ -538,32 +532,40 @@ function ProjectCard({ project, index, angle, isActive, onProjectClick, parentRo
 
         {/* Content Overlay */}
         <div className="absolute inset-0 flex flex-col items-center justify-end p-8 md:p-10">
-          <motion.div
-            animate={{ 
-              opacity: distanceFromFront < 45 ? 1 : 0,
-              y: distanceFromFront < 45 ? 0 : 30,
-            }}
-            className="flex flex-col items-center text-center w-full"
-          >
-            <div className="flex gap-2 mb-4">
-              {project.technologies.slice(0, 2).map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
-                  {tech}
-                </span>
-              ))}
-            </div>
-            
-            <h3 className="text-3xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none [text-wrap:balance]">
-              {project.title}
-            </h3>
-            
-            <div className="flex items-center gap-2">
-               <div className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
-               <span className="text-[10px] font-mono text-white/30 tracking-[0.4em] uppercase">
-                 CORE_SYSTEM
-               </span>
-            </div>
-          </motion.div>
+          <AnimatePresence>
+            {isActive && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: 0.2, // Staggered animation after settlement
+                  ease: [0.16, 1, 0.3, 1] 
+                }}
+                className="flex flex-col items-center text-center w-full"
+              >
+                <div className="flex gap-2 mb-4">
+                  {project.technologies.slice(0, 2).map((tech) => (
+                    <span key={tech} className="px-3 py-1 bg-white/5 border border-white/10 text-white text-[9px] font-bold uppercase tracking-widest rounded-full backdrop-blur-md">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+                
+                <h3 className="text-3xl md:text-5xl font-bold text-white font-outfit uppercase tracking-tighter mb-4 leading-none [text-wrap:balance]">
+                  {project.title}
+                </h3>
+                
+                <div className="flex items-center gap-2">
+                   <div className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse" />
+                   <span className="text-[10px] font-mono text-white/30 tracking-[0.4em] uppercase">
+                     SYSTEM_ACTIVE
+                   </span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
           
           <div className="absolute top-8 right-8">
             <div className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center shadow-2xl scale-0 group-hover:scale-100 transition-transform duration-500">
