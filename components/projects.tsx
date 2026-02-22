@@ -542,12 +542,12 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
       }}
       className="rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] bg-slate-900 group pointer-events-auto cursor-pointer relative"
     >
-      {/* Status Ribbon */}
-      <div className="absolute top-0 left-0 w-32 h-32 overflow-hidden pointer-events-none z-30">
-        <div className={`absolute top-6 -left-8 w-[150%] py-1.5 -rotate-45 text-center text-[9px] font-bold uppercase tracking-[0.2em] shadow-lg ${
+      {/* Premium Corner Status Ribbon */}
+      <div className="absolute top-0 left-0 w-32 h-32 overflow-hidden pointer-events-none z-30 rounded-tl-[1.5rem] md:rounded-tl-[3.5rem]">
+        <div className={`absolute top-7 -left-12 w-[160%] py-2 -rotate-45 text-center text-[9px] font-bold uppercase tracking-[0.25em] shadow-[0_10px_20px_rgba(0,0,0,0.4)] ${
           project.status === 'Completed' 
-            ? 'bg-emerald-500 text-white' 
-            : 'bg-amber-500 text-white'
+            ? 'bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-600 text-white' 
+            : 'bg-gradient-to-r from-amber-600 via-amber-500 to-amber-600 text-white'
         }`}>
           {project.status}
         </div>
