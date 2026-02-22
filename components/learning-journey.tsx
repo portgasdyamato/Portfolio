@@ -52,7 +52,7 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
           
           {/* Background Path (Dashed) */}
           <path
-            d="M 100 0 C 100 0, 60 400, 60 600 C 60 800, 140 1000, 140 1200 C 140 1300, 100 1400, 100 1400"
+            d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
             fill="none"
             stroke="rgba(255, 181, 181, 0.15)"
             strokeWidth="3"
@@ -61,7 +61,7 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
           
           {/* Animated Progress Path */}
           <motion.path
-            d="M 100 0 C 100 0, 60 400, 60 600 C 60 800, 140 1000, 140 1200 C 140 1300, 100 1400, 100 1400"
+            d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
             fill="none"
             stroke="url(#pathGradient)"
             strokeWidth="4"
@@ -135,9 +135,9 @@ function JourneyCard({
         
         {/* Desktop Node Marker - Sleek & Modern */}
         <div className={cn(
-            "absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 z-30",
-             // Position markers closer to center to match the narrower curve
-            isEven ? "-right-[calc(8%+24px)]" : "-left-[calc(8%+24px)]"
+            "absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 z-10",
+             // Markers now follow the wide undulating curve
+            isEven ? "right-[70%]" : "left-[70%]"
           )}
         >
              {/* Center Core */}
