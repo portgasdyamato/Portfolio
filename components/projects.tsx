@@ -455,8 +455,8 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
 
             const combinedOffset = offset + dragProgress
             
-            // Render slightly more cards for smoother transitions
-            if (Math.abs(combinedOffset) > 2.5) return null
+            // Render slightly more cards for smoother transitions and wider click zones
+            if (Math.abs(combinedOffset) > 3) return null
 
             return (
               <ProjectCard
@@ -538,9 +538,10 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         width: "min(750px, 90vw)",
         aspectRatio: "16/10",
         transformStyle: "preserve-3d",
-        zIndex: Math.round(100 - Math.abs(offset) * 50),
+        zIndex: Math.round(100 - Math.abs(offset) * 40),
+        pointerEvents: "auto",
       }}
-      className="rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] bg-slate-900 group pointer-events-auto cursor-pointer relative"
+      className="rounded-[1.5rem] md:rounded-[3.5rem] overflow-hidden shadow-[0_40px_80px_-15px_rgba(0,0,0,0.9)] bg-slate-900 group cursor-pointer relative"
     >
       {/* Premium Corner Status Ribbon */}
       <div className="absolute top-0 left-0 w-32 h-32 overflow-hidden pointer-events-none z-30 rounded-tl-[1.5rem] md:rounded-tl-[3.5rem]">
