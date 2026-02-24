@@ -95,37 +95,41 @@ export default function Projects() {
                       className="object-cover"
                     />
                   </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    {projectsData[selectedProject].liveUrl && (
-                      <a
-                        href={projectsData[selectedProject].liveUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-5 py-4 bg-white text-black hover:bg-zinc-200 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base uppercase tracking-widest"
-                      >
-                        <ExternalLink size={18} /> Live Demo
-                      </a>
-                    )}
-                    {projectsData[selectedProject].githubUrl && (
-                      <a
-                        href={projectsData[selectedProject].githubUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="px-5 py-4 glass hover:bg-white/10 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-sm md:text-base uppercase tracking-widest text-foreground"
-                      >
-                        <Github size={18} /> Source
-                      </a>
-                    )}
+                  <div className="flex flex-col gap-4">
+                    <div className="grid grid-cols-2 gap-4">
+                      {projectsData[selectedProject].liveUrl && (
+                        <a
+                          href={projectsData[selectedProject].liveUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="h-14 md:h-16 px-4 bg-foreground text-background hover:bg-foreground/90 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest shadow-xl shadow-black/5"
+                        >
+                          <ExternalLink size={18} /> Live Demo
+                        </a>
+                      )}
+                      {projectsData[selectedProject].githubUrl && (
+                        <a
+                          href={projectsData[selectedProject].githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="h-14 md:h-16 px-4 bg-white/5 border border-white/10 hover:bg-white/10 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest text-foreground backdrop-blur-sm"
+                        >
+                          <Github size={18} /> Source
+                        </a>
+                      )}
+                    </div>
+                    
+                    <Link
+                      href={`/projects/${projectsData[selectedProject].slug}`}
+                      className="w-full h-16 md:h-20 bg-brand-600 hover:bg-brand-700 text-white rounded-2xl md:rounded-3xl font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.2em] shadow-xl shadow-brand-500/20 group relative overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+                      <span className="relative z-10 flex items-center gap-2">
+                        View Case Study
+                        <ArrowUpRight size={18} className="md:w-6 md:h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </span>
+                    </Link>
                   </div>
-                  
-                  {/* Detailed Page CTA */}
-                  <Link
-                    href={`/projects/${projectsData[selectedProject].slug}`}
-                    className="w-full py-6 bg-brand-600 hover:bg-brand-700 text-white rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-lg uppercase tracking-[0.2em] shadow-2xl shadow-brand-500/20 group"
-                  >
-                    View Case Study
-                    <ArrowUpRight className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </Link>
                 </div>
 
                 <div className="flex flex-col">
@@ -140,19 +144,19 @@ export default function Projects() {
                     {projectsData[selectedProject].description}
                   </p>
 
-                  <div className="space-y-10">
+                  <div className="space-y-8 md:space-y-10">
                     <div>
-                      <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-white/10 pb-2 inline-block">Stack Overview</h4>
+                      <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-4 md:mb-6 font-outfit border-b border-white/10 pb-2 inline-block">Stack Overview</h4>
                       <div className="flex flex-wrap gap-2">
                         {projectsData[selectedProject].technologies.map(tech => (
-                          <span key={tech} className="px-5 py-2.5 bg-white/5 border border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground">
+                          <span key={tech} className="px-3 py-1.5 md:px-5 md:py-2.5 bg-white/5 border border-white/10 rounded-lg md:rounded-xl text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-foreground">
                             {tech}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    <div>
+                    <div className="hidden md:block">
                        <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-white/10 pb-2 inline-block">Core Impact</h4>
                        <div className="grid grid-cols-1 gap-4 text-foreground">
                          {projectsData[selectedProject].achievements.slice(0, 3).map((achievement, i) => (
@@ -347,55 +351,55 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
             }}
             className="flex flex-col items-center text-center w-full"
           >
-            <div className="flex gap-2 mb-3 md:mb-5">
-              {project.technologies.slice(0, 3).map((tech) => (
-                <span key={tech} className="px-3 py-1 bg-white/10 border border-white/20 text-white text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] rounded-full backdrop-blur-xl">
+            <div className="flex gap-1.5 md:gap-2 mb-2 md:mb-5">
+              {project.technologies.slice(0, 2).map((tech) => (
+                <span key={tech} className="px-2 py-1 bg-white/10 border border-white/20 text-white text-[7px] md:text-[10px] font-black uppercase tracking-[0.1em] md:tracking-[0.2em] rounded-full backdrop-blur-xl">
                   {tech}
                 </span>
               ))}
             </div>
             
-            <h3 className="text-2xl md:text-6xl font-black text-white font-outfit uppercase tracking-tighter mb-4 md:mb-6 leading-none">
+            <h3 className="text-xl md:text-6xl font-black text-white font-outfit uppercase tracking-tighter mb-2 md:mb-6 leading-none">
               {project.title}
             </h3>
             
-            <div className="flex flex-col items-center gap-4">
-              <div className={`px-5 py-2 rounded-full text-[10px] md:text-[12px] font-mono tracking-[0.4em] uppercase transition-all duration-700 ${isActive ? 'bg-white text-black shadow-2xl shadow-white/20' : 'bg-white/5 text-white/30 border border-white/10'}`}>
+            <div className="flex flex-col items-center gap-2 md:gap-4">
+              <div className={`hidden md:block px-5 py-2 rounded-full text-[12px] font-mono tracking-[0.4em] uppercase transition-all duration-700 ${isActive ? 'bg-white text-black shadow-2xl shadow-white/20' : 'bg-white/5 text-white/30 border border-white/10'}`}>
                 {isActive ? 'SYSTEM_ACTIVE' : 'IDLE_STATE'}
               </div>
 
               {isActive && (
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="flex gap-4 pointer-events-auto mt-4"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="flex gap-2 md:gap-4 pointer-events-auto mt-1 md:mt-4"
                 >
                   <button 
                     onClick={(e) => {
                       e.stopPropagation()
                       onProjectClick(project)
                     }}
-                    className="px-6 py-3 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-white/20 transition-all"
+                    className="h-10 md:h-12 px-4 md:px-6 bg-white/10 backdrop-blur-md border border-white/20 text-white rounded-xl md:rounded-2xl text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:bg-white/20 transition-all flex items-center justify-center"
                   >
                     Quick View
                   </button>
                   <Link 
                     href={`/projects/${project.slug}`}
                     onClick={(e) => e.stopPropagation()}
-                    className="px-6 py-3 bg-brand-600 text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:bg-brand-700 transition-all shadow-xl shadow-brand-500/20 flex items-center gap-2"
+                    className="h-10 md:h-12 px-4 md:px-6 bg-brand-600 text-white rounded-xl md:rounded-2xl text-[8px] md:text-[10px] font-black uppercase tracking-widest hover:bg-brand-700 transition-all shadow-xl shadow-brand-500/20 flex items-center justify-center gap-1.5 md:gap-2"
                   >
-                    Case Study <ArrowUpRight size={14} />
+                    Case Study <ArrowUpRight size={12} className="md:w-[14px] md:h-[14px]" />
                   </Link>
                 </motion.div>
               )}
             </div>
           </motion.div>
           
-          <div className="absolute top-6 right-6 md:top-12 md:right-12">
-             <div className="flex flex-col items-end gap-2">
-                <span className="text-[10px] font-mono text-white/40 tracking-[0.3em] uppercase">Ref. 00{index + 1}</span>
-                <div className={`w-12 h-12 md:w-16 md:h-16 bg-brand-500 text-white rounded-full flex items-center justify-center shadow-2xl shadow-brand-500/40 transition-all duration-700 ${isActive ? 'scale-100 rotate-0' : 'scale-0 rotate-90 opacity-0'}`}>
-                  <ArrowUpRight className="w-6 h-6 md:w-8 md:h-8" />
+          <div className="absolute top-4 right-4 md:top-12 md:right-12 pointer-events-none">
+             <div className="flex flex-col items-end gap-1 md:gap-2">
+                <span className="text-[7px] md:text-[10px] font-mono text-white/30 tracking-[0.3em] uppercase">Ref. 0{index + 1}</span>
+                <div className={`w-8 h-8 md:w-16 md:h-16 bg-brand-500 text-white rounded-full flex items-center justify-center shadow-xl md:shadow-2xl shadow-brand-500/40 transition-all duration-700 ${isActive ? 'scale-100 rotate-0' : 'scale-0 rotate-90 opacity-0'}`}>
+                  <ArrowUpRight className="w-4 h-4 md:w-8 md:h-8" />
                 </div>
              </div>
           </div>
