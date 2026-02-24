@@ -229,8 +229,8 @@ export const projectsData = [
     }
   },
   {
-    title: "Vinyl Records",
-    slug: "vinyl-records",
+    title: "Pippofy",
+    slug: "pippofy",
     duration: "Dec 2024",
     date: "Dec 2024",
     image: "/vyn.png",
@@ -248,8 +248,8 @@ export const projectsData = [
       "Integrated YouTube API for ad-free experience",
       "Reduced user drop-off by 35% via unique UX"
     ],
-    liveUrl: "https://vintage-vinyl.vercel.app/",
-    githubUrl: "https://github.com/portgasdyamato/Vintage-Vinyl",
+    liveUrl: "https://pippofy.vercel.app",
+    githubUrl: "https://github.com/portgasdyamato/pippofy",
     status: "Completed",
     detailedContent: {
       problemStatement: "Music streaming services are often cluttered with social features, ads, and algorithms, losing the tactile joy of playing a physical record.",
