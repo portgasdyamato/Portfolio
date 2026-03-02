@@ -364,15 +364,11 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
             </h3>
             
             <div className="flex flex-col items-center gap-2 md:gap-4">
-              <div className={`hidden md:block px-5 py-2 rounded-full text-[12px] font-mono tracking-[0.4em] uppercase transition-all duration-700 ${isActive ? 'bg-white text-black shadow-2xl shadow-white/20' : 'bg-white/5 text-white/30 border border-white/10'}`}>
-                {isActive ? 'SYSTEM_ACTIVE' : 'IDLE_STATE'}
-              </div>
-
               {isActive && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="flex gap-2 md:gap-4 pointer-events-auto mt-1 md:mt-4"
+                  className="flex gap-2 md:gap-4 pointer-events-auto mt-2 md:mt-4"
                 >
                   <button 
                     onClick={(e) => {
