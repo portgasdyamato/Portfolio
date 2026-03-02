@@ -137,7 +137,7 @@ export default function Projects() {
                     <span className="w-8 h-[1px] bg-brand-600" />
                     {projectsData[selectedProject].status} • {projectsData[selectedProject].duration}
                   </span>
-                  <h2 className="text-4xl md:text-6xl font-black font-outfit mb-8 uppercase tracking-tighter leading-none text-foreground">
+                  <h2 className="text-3xl md:text-5xl font-black font-outfit mb-8 uppercase tracking-tighter leading-tight text-foreground">
                     {projectsData[selectedProject].title}
                   </h2>
                   <p className="text-xl text-muted-foreground leading-relaxed mb-10 font-inter font-medium text-foreground">
@@ -343,7 +343,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
 
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
 
-        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-14">
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 md:p-10">
           <motion.div
             animate={{ 
               opacity: Math.abs(offset) < 0.5 ? 1 : 0,
@@ -359,7 +359,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
               ))}
             </div>
             
-            <h3 className="text-xl md:text-6xl font-black text-white font-outfit uppercase tracking-tighter mb-2 md:mb-6 leading-none">
+            <h3 className="text-lg md:text-4xl lg:text-5xl font-black text-white font-outfit uppercase tracking-tighter mb-2 md:mb-6 leading-tight">
               {project.title}
             </h3>
             
