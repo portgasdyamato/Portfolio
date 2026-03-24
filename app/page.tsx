@@ -39,19 +39,18 @@ export default function Home() {
         )}
       </AnimatePresence>
 
-      {!isLoading && (
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, ease: [0.76, 0, 0.24, 1] }}
-          className="min-h-screen bg-background selection:bg-primary/20 overflow-x-hidden" 
-          id="home"
-        >
-          <CustomCursor />
-          <Header />
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+        className="min-h-screen bg-background overflow-x-hidden" 
+        id="home"
+      >
+        <CustomCursor />
+        <Header />
 
-          <main className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-24 md:space-y-32 pt-24 md:pt-32">
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <main className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-24 md:space-y-32 pt-24 md:pt-32">
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <Hero />
               <Profile />
             </section>
@@ -99,7 +98,6 @@ export default function Home() {
 
           <PixelCharacter />
         </motion.div>
-      )}
     </>
   )
 }

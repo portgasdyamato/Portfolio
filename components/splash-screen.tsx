@@ -1,116 +1,209 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
-const keywords = ["CREATIVE", "DEVELOPER", "STRATEGIST", "DESIGNER", "STORYTELLER", "PIXEL ARTIST"]
+const roles = ["UI/UX Designer", "Interaction Designer", "Motion Designer", "Creative Director", "Visual Storyteller"]
 
 export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
-  const [mounted, setMounted] = useState(false)
-  const [progress, setProgress] = useState(progressFunc)
-  const [keyword, setKeyword] = useState(keywords[0])
+  const [progress, setProgress] = useState(0)
+  const [roleIndex, setRoleIndex] = useState(0)
+  const [done, setDone] = useState(false)
+  const finishCalled = useRef(false)
 
-  function progressFunc(v: number) {
-     return Math.min(100, v + 2)
-  }
-
+  // Progress ticker — guaranteed to reach 100
   useEffect(() => {
-    setMounted(true)
-    const interval = setInterval(() => {
-      setProgress((v) => {
-        if (v >= 100) {
-          clearInterval(interval)
-          setTimeout(() => {
-            finishLoadingAction()
-          }, 800)
-          return 100
+    let current = 0
+    const timer = setInterval(() => {
+      current += 1
+      setProgress(current)
+      if (current >= 100) {
+        clearInterval(timer)
+        if (!finishCalled.current) {
+          finishCalled.current = true
+          setDone(true)
+          setTimeout(() => finishLoadingAction(), 900)
         }
-        return v + 2
-      })
-      setKeyword(keywords[Math.floor(Math.random() * keywords.length)])
-    }, 50)
-
-    return () => clearInterval(interval)
+      }
+    }, 28) // ~2.8s total
+    return () => clearInterval(timer)
   }, [finishLoadingAction])
 
-  if (!mounted) return null
+  // Role cycling
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRoleIndex((i) => (i + 1) % roles.length)
+    }, 540)
+    return () => clearInterval(timer)
+  }, [])
 
   return (
-    <motion.div 
+    <motion.div
+      key="splash"
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, scale: 1.05, filter: "blur(20px)", transition: { duration: 0.8, ease: "easeInOut" } }}
-      className="fixed inset-0 z-[9999] bg-[#030303] overflow-hidden flex items-center justify-center font-outfit select-none"
+      exit={{ opacity: 0, y: -30, transition: { duration: 0.9, ease: [0.76, 0, 0.24, 1] } }}
+      className="fixed inset-0 z-[9999] bg-[#FDF8F5] overflow-hidden flex flex-col items-center justify-center select-none"
     >
-      <div className="grain" />
-      
-      {/* HUD Frame */}
-      <div className="absolute inset-0 px-20 py-20 flex flex-col justify-between items-start pointer-events-none opacity-10">
-        <div className="flex flex-col gap-1">
-          <span className="text-[10px] tracking-[1em] text-white">SYSTEM_ID // S-01</span>
-          <span className="text-[10px] tracking-[0.5em] text-white">READY_STATE // {progress}%</span>
-        </div>
-        <div className="w-[1px] h-32 bg-gradient-to-t from-white to-transparent" />
-      </div>
-
-      <div className="absolute right-20 bottom-20 flex flex-col items-end opacity-10 text-right">
-        <span className="text-[10px] tracking-[1em] text-white uppercase mb-2">Portfolio v3.0</span>
-        <div className="flex gap-2">
-           {[...Array(5)].map((_, i) => (
-             <motion.div 
-               key={i}
-               animate={{ opacity: [0.2, 1, 0.2] }}
-               transition={{ duration: 1, repeat: Infinity, delay: i * 0.1 }}
-               className="w-1.5 h-1.5 bg-primary/40 rounded-full"
-             />
-           ))}
-        </div>
-      </div>
-
-      {/* Main Kinetic Content */}
-      <div className="relative z-10 flex flex-col items-center gap-4 text-center">
+      {/* Soft pink ambient blobs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 0.8, repeat: Infinity }}
-          className="text-primary font-bold tracking-[0.6em] text-[10px] uppercase mb-12"
+          animate={{ scale: [1, 1.15, 1], x: [0, 30, 0], y: [0, -20, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-[#FFB5B5]/20 rounded-full blur-[100px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.1, 1], x: [0, -20, 0], y: [0, 30, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute -bottom-32 -right-32 w-[600px] h-[600px] bg-[#FFB5B5]/15 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], x: [0, 15, 0] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+          className="absolute top-1/3 right-1/4 w-[300px] h-[300px] bg-[#FFE0E0]/25 rounded-full blur-[80px]"
+        />
+      </div>
+
+      {/* Fine dot-grid texture */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #c0506a 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
+
+      {/* Corner labels */}
+      <div className="absolute top-8 left-8 text-[10px] tracking-[0.3em] text-[#FFB5B5] font-semibold uppercase opacity-60">
+        Portfolio 2025
+      </div>
+      <div className="absolute top-8 right-8 text-[10px] tracking-[0.3em] text-[#c0756e] font-mono opacity-60">
+        {String(progress).padStart(3, "0")} / 100
+      </div>
+      <div className="absolute bottom-8 left-8 text-[10px] tracking-[0.15em] text-[#c0756e]/60 font-mono uppercase">
+        Sakshi Agrahari — Loading Experience
+      </div>
+
+      {/* === Main Content === */}
+      <div className="relative z-10 flex flex-col items-center gap-10 px-6 text-center">
+
+        {/* Animated role tag */}
+        <div className="h-6 overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.p
+              key={roleIndex}
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="text-[11px] tracking-[0.5em] uppercase font-bold text-[#FFB5B5]"
+            >
+              {roles[roleIndex]}
+            </motion.p>
+          </AnimatePresence>
+        </div>
+
+        {/* Main name with letter reveal */}
+        <div className="relative">
+          <h1 className="text-[72px] sm:text-[110px] md:text-[140px] font-black tracking-tighter text-[#1a0a0a] leading-none">
+            {"Sakshi.".split("").map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0, y: 60, rotateX: -90 }}
+                animate={{ opacity: 1, y: 0, rotateX: 0 }}
+                transition={{
+                  duration: 0.7,
+                  delay: i * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="inline-block"
+                style={{ color: char === "." ? "#FFB5B5" : "#1a0a0a" }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </h1>
+
+          {/* Decorative underline with stroke */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute -bottom-2 left-0 right-0 h-[2px] bg-[#FFB5B5]/40 origin-left"
+          />
+        </div>
+
+        {/* Tagline */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="text-sm text-[#9e6a65] tracking-[0.15em] uppercase font-medium"
         >
-          {keyword}
+          Crafting visionary digital experiences
+        </motion.p>
+
+        {/* Progress bar */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+          className="w-64 sm:w-80 flex flex-col items-center gap-3"
+        >
+          {/* Track */}
+          <div className="w-full h-[2px] bg-[#FFB5B5]/20 rounded-full overflow-hidden">
+            <motion.div
+              animate={{ width: `${progress}%` }}
+              transition={{ ease: "easeOut" }}
+              className="h-full bg-gradient-to-r from-[#FFB5B5] to-[#c0756e] rounded-full relative"
+            >
+              {/* Glowing tip */}
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-[#c0756e] rounded-full shadow-[0_0_8px_#FFB5B5]" />
+            </motion.div>
+          </div>
+
+          {/* Segmented dots beneath bar */}
+          <div className="flex gap-1.5">
+            {[...Array(10)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{ 
+                  backgroundColor: progress >= (i + 1) * 10 ? "#FFB5B5" : "#FFB5B5",
+                  opacity: progress >= (i + 1) * 10 ? 1 : 0.2,
+                  scale: progress >= (i + 1) * 10 ? 1 : 0.7
+                }}
+                className="w-1 h-1 rounded-full bg-[#FFB5B5]"
+              />
+            ))}
+          </div>
         </motion.div>
 
-        <div className="relative flex flex-col items-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-[120px] font-black text-white italic tracking-tighter leading-none"
-          >
-            SAKSHI.
-          </motion.h1>
-          
-          <div className="w-48 h-[1px] bg-white/10 mt-16 relative overflow-hidden rounded-full">
-             <motion.div 
-               animate={{ x: `${progress - 100}%` }}
-               className="absolute inset-0 bg-primary"
-             />
-          </div>
-        </div>
+        {/* Exit animation: progress text */}
+        <AnimatePresence>
+          {done && (
+            <motion.p
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="text-[10px] tracking-[0.5em] text-[#FFB5B5] uppercase font-bold"
+            >
+              Welcome ✦
+            </motion.p>
+          )}
+        </AnimatePresence>
       </div>
 
-      {/* Floating Ambient Particles (Subtle) */}
-      {[...Array(6)].map((_, i) => (
+      {/* Floating decorative shapes */}
+      {[
+        { size: 80, x: "10vw", y: "20vh", delay: 0 },
+        { size: 50, x: "85vw", y: "15vh", delay: 1 },
+        { size: 120, x: "75vw", y: "70vh", delay: 0.5 },
+        { size: 40, x: "15vw", y: "75vh", delay: 1.5 },
+      ].map((s, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0 }}
-          animate={{ 
-            y: ["-20vh", "120vh"],
-            opacity: [0, 0.2, 0],
-            x: (i * 15) + "vw"
-          }}
-          transition={{ 
-            duration: 10 + i,
-            repeat: Infinity,
-            delay: i * 2,
-            ease: "linear"
-          }}
-          className="absolute w-[1px] h-20 bg-gradient-to-b from-white to-transparent pointer-events-none"
+          style={{ left: s.x, top: s.y, width: s.size, height: s.size }}
+          animate={{ y: [0, -12, 0], rotate: [0, 15, 0] }}
+          transition={{ duration: 6 + i, repeat: Infinity, ease: "easeInOut", delay: s.delay }}
+          className="absolute rounded-full border border-[#FFB5B5]/20 pointer-events-none"
         />
       ))}
     </motion.div>
