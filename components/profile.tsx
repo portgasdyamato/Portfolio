@@ -11,16 +11,15 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   const sp = scrollProgress || mockScroll
 
   // Morph values
-  const scaleImage = useTransform(sp, [0, 0.6], [1, 0.75])
   const opacitySubtitle = useTransform(sp, [0.4, 0.6], [0, 1])
-  const yImage = useTransform(sp, [0, 0.6], [0, 30])
+  const yImage = useTransform(sp, [0, 0.6], [0, 20])
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.5 }}
-      style={{ scale: scaleImage, y: yImage, transformOrigin: "top right" }}
+      style={{ y: yImage, transformOrigin: "top right" }}
       className="flex flex-col items-center justify-center mt-5"
     >
       <motion.div
