@@ -191,62 +191,74 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         {/* ── RIGHT COLUMN: Creative Designer Card Panel ── */}
         <div className="hidden lg:flex flex-col items-center justify-between h-full py-6 pl-6 border-l border-[#1a0a0a]/[0.06] relative">
 
-          {/* Top: discipline label */}
+          {/* ── RIGHT artwork panel (abstract visual art) ── */}
           <motion.div
-            initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5, duration: 0.7 }}
-            className="flex flex-col items-center gap-1 text-center"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex-1 relative w-full h-full"
           >
-            <span className="text-[7px] tracking-[0.5em] text-[#b33951]/50 uppercase font-bold">Since</span>
-            <span className="text-[22px] font-black text-[#1a0a0a]/8 italic" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>2022</span>
-          </motion.div>
+            <svg
+              viewBox="0 0 200 500"
+              className="w-full h-full"
+              preserveAspectRatio="xMidYMid meet"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              {/* Large primary ring */}
+              <circle cx="100" cy="200" r="90" fill="none" stroke="#b33951" strokeWidth="0.6" strokeOpacity="0.18" />
+              {/* Inner filled circle — softly present */}
+              <circle cx="100" cy="200" r="72" fill="#b33951" fillOpacity="0.045" />
+              {/* Second offset ring top-right */}
+              <circle cx="155" cy="120" r="55" fill="none" stroke="#1a0a0a" strokeWidth="0.5" strokeOpacity="0.08" />
+              {/* Third offset ring bottom-left */}
+              <circle cx="48" cy="320" r="65" fill="none" stroke="#b33951" strokeWidth="0.5" strokeOpacity="0.12" />
+              {/* Small filled accent circle */}
+              <circle cx="155" cy="120" r="10" fill="#b33951" fillOpacity="0.12" />
+              {/* Tiny dot accents */}
+              <circle cx="60" cy="88" r="3" fill="#b33951" fillOpacity="0.3" />
+              <circle cx="148" cy="290" r="2" fill="#1a0a0a" fillOpacity="0.15" />
+              <circle cx="40" cy="400" r="2.5" fill="#b33951" fillOpacity="0.2" />
+              <circle cx="170" cy="400" r="1.5" fill="#1a0a0a" fillOpacity="0.1" />
 
-          {/* Center: stacked large ghost discipline words */}
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 1 }}
-            className="flex flex-col items-center gap-3 flex-1 justify-center"
-          >
-            {[
-              { label: "Design", size: "text-[13px]", color: "text-[#1a0a0a]/20" },
-              { label: "—", size: "text-[10px]", color: "text-[#b33951]/30" },
-              { label: "Code", size: "text-[13px]", color: "text-[#1a0a0a]/20" },
-              { label: "—", size: "text-[10px]", color: "text-[#b33951]/30" },
-              { label: "Create", size: "text-[13px]", color: "text-[#1a0a0a]/20" },
-              { label: "—", size: "text-[10px]", color: "text-[#b33951]/30" },
-              { label: "Ship", size: "text-[13px]", color: "text-[#1a0a0a]/20" },
-            ].map(({ label, size, color }, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0, x: 8 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.7 + i * 0.08, duration: 0.5 }}
-                className={`${size} ${color} tracking-[0.22em] uppercase font-black`}
-              >
-                {label}
-              </motion.span>
-            ))}
-          </motion.div>
+              {/* Curved arc — flowing Bézier */}
+              <path
+                d="M 20 80 C 80 40, 140 160, 180 100"
+                fill="none"
+                stroke="#b33951"
+                strokeWidth="0.7"
+                strokeOpacity="0.22"
+                strokeDasharray="4 3"
+              />
+              {/* Second flowing arc bottom */}
+              <path
+                d="M 180 380 C 120 440, 60 360, 20 420"
+                fill="none"
+                stroke="#1a0a0a"
+                strokeWidth="0.5"
+                strokeOpacity="0.1"
+                strokeDasharray="3 4"
+              />
 
-          {/* Color swatches — brand palette indicator */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.2, duration: 0.6 }}
-            className="flex flex-col items-center gap-2"
-          >
-            <span className="text-[7px] tracking-[0.45em] text-[#1a0a0a]/25 uppercase font-bold mb-1">Palette</span>
-            <div className="flex flex-col gap-1.5">
-              {["#FDE2E2", "#b33951", "#1a0a0a", "#c0756e"].map((hex, i) => (
-                <div
-                  key={hex}
-                  className="w-6 h-6 rounded-sm shadow-sm border border-[#1a0a0a]/10"
-                  style={{ backgroundColor: hex }}
-                />
+              {/* Fine horizontal grid marks */}
+              {[140, 180, 220, 260, 300].map((y, i) => (
+                <line key={y} x1="30" y1={y} x2="170" y2={y}
+                  stroke="#1a0a0a" strokeWidth="0.3" strokeOpacity={0.06 - i * 0.005} />
               ))}
-            </div>
-            {/* Pulsing availability dot */}
-            <div className="flex items-center gap-1.5 mt-3">
-              <span className="w-2 h-2 rounded-full bg-[#b33951] animate-pulse" />
-              <span className="text-[7px] tracking-[0.35em] text-[#b33951]/60 uppercase font-bold">Open</span>
-            </div>
+              {/* Cross-mark accents */}
+              <line x1="96" y1="196" x2="104" y2="196" stroke="#b33951" strokeWidth="0.8" strokeOpacity="0.35" />
+              <line x1="100" y1="192" x2="100" y2="204" stroke="#b33951" strokeWidth="0.8" strokeOpacity="0.35" />
+
+              {/* Tiny ring decorations */}
+              <circle cx="30" cy="180" r="4" fill="none" stroke="#b33951" strokeWidth="0.6" strokeOpacity="0.25" />
+              <circle cx="172" cy="280" r="5" fill="none" stroke="#b33951" strokeWidth="0.6" strokeOpacity="0.2" />
+
+              {/* Diagonal fine line */}
+              <line x1="20" y1="460" x2="180" y2="460"
+                stroke="#1a0a0a" strokeWidth="0.4" strokeOpacity="0.08" />
+            </svg>
           </motion.div>
+
+
         </div>
 
       </div>
