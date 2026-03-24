@@ -60,9 +60,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
     >
       {/* Interactive cursor glow — follows mouse */}
       <motion.div
-        style={{ x: glowX, y: glowY, translateX: "-50%", translateY: "-50%" }}
         className="pointer-events-none fixed w-[600px] h-[600px] rounded-full"
-        animate={{}}
         style={{
           x: glowX,
           y: glowY,
