@@ -44,14 +44,6 @@ export default function MorphingHero() {
       duration: 0.6
     }, 0)
 
-    // Keep circular badge visually the SAME size constantly by applying inverse scale 
-    // against the parent card's 0.85 scaling mechanism
-    tl.to(".badge-scaler", {
-      scale: 1 / 0.85,
-      ease: "power2.inOut",
-      duration: 0.6
-    }, 0)
-
     // Outer Stage Background Fade (makes the card pop out visually from the edges)
     tl.to(containerRef.current, {
       backgroundColor: "#F5D5D5",
@@ -74,7 +66,7 @@ export default function MorphingHero() {
     // We use z-10 so it correctly pins above the following content until exit
     <div 
       ref={containerRef} 
-      className="w-full h-screen overflow-hidden flex items-center justify-center p-0 m-0 transition-colors bg-[#FDE2E2] z-10 relative"
+      className="w-full h-screen flex items-center justify-center p-0 m-0 transition-colors bg-[#FDE2E2] z-10 relative"
     >
       {/* ── THE MORPHING CARD ── */}
       <div
@@ -88,32 +80,6 @@ export default function MorphingHero() {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
 
-          {/* ── BOTTOM MIDDLE CIRCULAR TEXT BADGE (Half-Cut Off) ── */}
-          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-10 hidden lg:block pointer-events-none">
-            <div className="badge-scaler w-[220px] sm:w-[260px] lg:w-[300px] aspect-square opacity-[0.45] mix-blend-multiply origin-center">
-              <motion.div 
-                animate={{ rotate: 360 }} 
-                transition={{ duration: 45, repeat: Infinity, ease: "linear" }} 
-                className="w-full h-full relative"
-              >
-                 <svg viewBox="0 0 200 200" className="w-full h-full">
-                   <defs>
-                     <path id="center-curve" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
-                   </defs>
-                   <text fill="#b33951" fontSize="12.5" fontWeight="900" letterSpacing="4.5" style={{ fontFamily: "'Inter', sans-serif" }}>
-                     <textPath href="#center-curve" startOffset="0%">
-                       UI/UX DESIGN ✦ AI PRODUCT DESIGN ✦ WEB DEV ✦ 
-                     </textPath>
-                   </text>
-                 </svg>
-                 {/* Center dot for perfect balance */}
-                 <div className="absolute inset-0 flex items-center justify-center">
-                   <div className="w-1.5 h-1.5 rounded-full bg-[#b33951]/60" />
-                 </div>
-              </motion.div>
-            </div>
-          </div>
-
           {/* ── SUBTLE PRINT GRID BORDER ── */}
           <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[65%] w-[1px] bg-[#1a0a0a]/[0.15] pointer-events-none z-0" />
 
@@ -121,6 +87,32 @@ export default function MorphingHero() {
             <Hero scrollProgress={sp} />
             <Profile scrollProgress={sp} />
           </section>
+        </div>
+      </div>
+
+      {/* ── FIXED CIRCULAR TEXT BADGE (Straddles Section Boundary) ── */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 hidden lg:block pointer-events-none">
+        <div className="w-[220px] sm:w-[260px] lg:w-[300px] aspect-square opacity-[0.45] mix-blend-multiply origin-center">
+          <motion.div 
+            animate={{ rotate: 360 }} 
+            transition={{ duration: 45, repeat: Infinity, ease: "linear" }} 
+            className="w-full h-full relative"
+          >
+             <svg viewBox="0 0 200 200" className="w-full h-full">
+               <defs>
+                 <path id="center-curve" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
+               </defs>
+               <text fill="#b33951" fontSize="12.5" fontWeight="900" letterSpacing="4.5" style={{ fontFamily: "'Inter', sans-serif" }}>
+                 <textPath href="#center-curve" startOffset="0%">
+                   UI/UX DESIGN ✦ AI PRODUCT DESIGN ✦ WEB DEV ✦ 
+                 </textPath>
+               </text>
+             </svg>
+             {/* Center dot for perfect balance */}
+             <div className="absolute inset-0 flex items-center justify-center">
+               <div className="w-1.5 h-1.5 rounded-full bg-[#b33951]/60" />
+             </div>
+          </motion.div>
         </div>
       </div>
     </div>
