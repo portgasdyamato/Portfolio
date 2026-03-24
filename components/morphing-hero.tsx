@@ -4,7 +4,7 @@ import { useRef } from "react"
 import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { useMotionValue } from "framer-motion"
+import { useMotionValue, motion } from "framer-motion"
 
 import Hero from "@/components/hero"
 import Profile from "@/components/profile"
@@ -79,11 +79,31 @@ export default function MorphingHero() {
         className="w-full h-full overflow-hidden flex flex-col justify-center"
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
-          
-          {/* ── SUBTLE PRINT GRID BORDER ── */}
-          <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[65%] w-[1px] bg-[#1a0a0a]/[0.05] pointer-events-none" />
 
-          <section className="grid grid-cols-1 lg:grid-cols-[13fr_7fr] flex-1 gap-0 lg:gap-8 w-full h-full items-center py-12 pointer-events-auto">
+          {/* ── GIANT BACKGROUND CIRCULAR TEXT (Top Middle of Card) ── */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[500px] sm:w-[550px] md:w-[650px] aspect-square pointer-events-none z-0 opacity-10 mix-blend-multiply">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+              className="w-full h-full"
+            >
+              <svg viewBox="0 0 500 500" className="w-full h-full">
+                <defs>
+                  <path id="hero-curve" d="M 250, 250 m -210, 0 a 210,210 0 1,1 420,0 a 210,210 0 1,1 -420,0" />
+                </defs>
+                <text fill="#1a0a0a" fontSize="23.5" fontWeight="900" letterSpacing="12" style={{ fontFamily: "'Inter', sans-serif" }}>
+                  <textPath href="#hero-curve" startOffset="0%">
+                    UI/UX SPECIALIST • AI PRODUCT DESIGNER • SAKSHI AGRAHARI • PORTFOLIO 2024 • 
+                  </textPath>
+                </text>
+              </svg>
+            </motion.div>
+          </div>
+
+          {/* ── SUBTLE PRINT GRID BORDER ── */}
+          <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[65%] w-[1px] bg-[#1a0a0a]/[0.15] pointer-events-none z-0" />
+
+          <section className="grid grid-cols-1 lg:grid-cols-[13fr_7fr] flex-1 gap-0 lg:gap-8 w-full h-full items-center py-12 pointer-events-auto relative z-10">
             <Hero scrollProgress={sp} />
             <Profile scrollProgress={sp} />
           </section>

@@ -25,30 +25,6 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
       {/* ─── FLOATING GEOMETRY OVERLAY (decorative, static, brand-aesthetic) ─── */}
       {mounted && (
         <>
-          {/* Large slow-rotating orbital ring */}
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-            className="absolute pointer-events-none z-0"
-            style={{ top: "8%", left: "-12%", width: "130%", aspectRatio: "1" }}
-          >
-            <svg viewBox="0 0 300 300" className="w-full h-full opacity-20">
-              <circle cx="150" cy="150" r="140" fill="none" stroke="#b33951" strokeWidth="1.2" strokeDasharray="8 6" />
-            </svg>
-          </motion.div>
-
-          {/* Medium counter-rotating dashed ring */}
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
-            className="absolute pointer-events-none z-0"
-            style={{ top: "25%", left: "5%", width: "90%", aspectRatio: "1" }}
-          >
-            <svg viewBox="0 0 200 200" className="w-full h-full opacity-25">
-              <circle cx="100" cy="100" r="92" fill="none" stroke="#1a0a0a" strokeWidth="0.8" strokeDasharray="5 8" />
-            </svg>
-          </motion.div>
-
           {/* Sparkle marks ✦ scattered */}
           {[
             { top: "14%", left: "8%", size: "text-[18px]", delay: 0 },
