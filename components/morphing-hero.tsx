@@ -76,7 +76,7 @@ export default function MorphingHero() {
           transformOrigin: "center center",
           backgroundColor: "#FDE2E2" 
         }}
-        className="w-full h-full overflow-hidden flex flex-col justify-center"
+        className="w-full h-full flex flex-col justify-center relative"
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
 
