@@ -4,24 +4,31 @@ import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion"
 
 const roles = ["UI/UX Designer", "Interaction Designer", "Motion Designer", "Creative Director", "Visual Storyteller"]
-
-// We split the name into chars for the staggered reveal
 const nameChars = "Sakshi.".split("")
 
 export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
   const [progress, setProgress] = useState(0)
   const [roleIndex, setRoleIndex] = useState(0)
   const [phase, setPhase] = useState<"loading" | "done">("loading")
+  const [mounted, setMounted] = useState(false)
   const finishCalled = useRef(false)
 
-  // Cursor glow
-  const cursorX = useMotionValue(typeof window !== "undefined" ? window.innerWidth / 2 : 400)
-  const cursorY = useMotionValue(typeof window !== "undefined" ? window.innerHeight / 2 : 300)
+  // Motion values — always called at top level, initialized to safe defaults
+  const cursorX = useMotionValue(0)
+  const cursorY = useMotionValue(0)
   const glowX = useSpring(cursorX, { stiffness: 80, damping: 30 })
   const glowY = useSpring(cursorY, { stiffness: 80, damping: 30 })
 
   useEffect(() => {
-    const onMove = (e: MouseEvent) => { cursorX.set(e.clientX); cursorY.set(e.clientY) }
+    setMounted(true)
+    // Set initial position after mount (client-only)
+    cursorX.set(window.innerWidth / 2)
+    cursorY.set(window.innerHeight / 2)
+
+    const onMove = (e: MouseEvent) => {
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
+    }
     window.addEventListener("mousemove", onMove)
     return () => window.removeEventListener("mousemove", onMove)
   }, [cursorX, cursorY])
@@ -37,7 +44,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         if (!finishCalled.current) {
           finishCalled.current = true
           setPhase("done")
-          setTimeout(() => finishLoadingAction(), 1000)
+          setTimeout(() => finishLoadingAction(), 900)
         }
       }
     }, 28)
@@ -58,33 +65,36 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       className="fixed inset-0 z-[9999] overflow-hidden flex flex-col items-center justify-center select-none"
       style={{ background: "linear-gradient(135deg, #FFF5F5 0%, #FFEAEA 40%, #FFF8F2 100%)" }}
     >
-      {/* Interactive cursor glow — follows mouse */}
-      <motion.div
-        className="pointer-events-none fixed w-[600px] h-[600px] rounded-full"
-        style={{
-          x: glowX,
-          y: glowY,
-          translateX: "-50%",
-          translateY: "-50%",
-          background: "radial-gradient(circle, rgba(255,181,181,0.35) 0%, transparent 70%)",
-        }}
-      />
+      {/* Interactive cursor glow — only renders after mount to avoid SSR mismatch */}
+      {mounted && (
+        <motion.div
+          className="pointer-events-none fixed rounded-full"
+          style={{
+            x: glowX,
+            y: glowY,
+            translateX: "-50%",
+            translateY: "-50%",
+            width: 600,
+            height: 600,
+            background: "radial-gradient(circle, rgba(255,181,181,0.35) 0%, transparent 70%)",
+          }}
+        />
+      )}
 
       {/* Floating circles — artful decoration */}
       {[
-        { size: 300, x: "-8vw", top: "-80px", opacity: 0.15, duration: 12 },
-        { size: 200, x: "80vw", top: "60vh", opacity: 0.12, duration: 9 },
-        { size: 140, x: "65vw", top: "8vh", opacity: 0.18, duration: 7 },
-        { size: 90,  x: "10vw", top: "70vh", opacity: 0.2, duration: 10 },
-        { size: 50,  x: "50vw", top: "85vh", opacity: 0.25, duration: 6 },
+        { size: 300, left: "-8vw", top: "-80px", opacity: 0.15, duration: 12 },
+        { size: 200, left: "80vw", top: "60vh", opacity: 0.12, duration: 9 },
+        { size: 140, left: "65vw", top: "8vh", opacity: 0.18, duration: 7 },
+        { size: 90,  left: "10vw", top: "70vh", opacity: 0.2, duration: 10 },
+        { size: 50,  left: "50vw", top: "85vh", opacity: 0.25, duration: 6 },
       ].map((c, i) => (
         <motion.div
           key={i}
-          style={{ width: c.size, height: c.size, left: c.x, top: c.top }}
+          style={{ width: c.size, height: c.size, left: c.left, top: c.top, opacity: c.opacity, position: "absolute" }}
           animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
           transition={{ duration: c.duration, repeat: Infinity, ease: "easeInOut", delay: i * 0.6 }}
-          className="absolute rounded-full border-2 border-[#FFB5B5] pointer-events-none"
-          initial={{ opacity: c.opacity }}
+          className="rounded-full border-2 border-[#FFB5B5] pointer-events-none"
         />
       ))}
 
@@ -98,15 +108,11 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         }}
       />
 
-      {/* Corner label: top-left */}
-      <div className="absolute top-6 left-8 text-[9px] tracking-[0.4em] text-[#FFB5B5] font-bold uppercase">
-        Portfolio 2025
-      </div>
-      {/* Corner label: top-right — live counter */}
+      {/* Corner labels */}
+      <div className="absolute top-6 left-8 text-[9px] tracking-[0.4em] text-[#FFB5B5] font-bold uppercase">Portfolio 2025</div>
       <div className="absolute top-6 right-8 font-mono text-[11px] text-[#d4796f] tracking-widest">
         {String(progress).padStart(3, "0")}<span className="text-[#FFB5B5]"> / 100</span>
       </div>
-      {/* Corner label: bottom-left */}
       <div className="absolute bottom-6 left-8 text-[9px] tracking-[0.25em] text-[#c99e9a]/80 uppercase font-medium">
         Sakshi Agrahari — Loading Experience
       </div>
@@ -130,24 +136,20 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           </AnimatePresence>
         </div>
 
-        {/* Name — per-character stagger reveal */}
-        <div className="relative flex items-end gap-0">
+        {/* Name — per-character stagger */}
+        <div className="flex items-end">
           {nameChars.map((char, i) => (
             <motion.span
               key={i}
-              initial={{ opacity: 0, y: 80, rotateZ: -15, scale: 0.5 }}
-              animate={{ opacity: 1, y: 0, rotateZ: 0, scale: 1 }}
-              transition={{
-                duration: 0.7,
-                delay: 0.1 + i * 0.07,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+              initial={{ opacity: 0, y: 80, rotate: -15, scale: 0.5 }}
+              animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
+              transition={{ duration: 0.7, delay: 0.1 + i * 0.07, ease: [0.16, 1, 0.3, 1] }}
               className="font-black tracking-tight leading-none"
               style={{
                 fontSize: "clamp(72px, 14vw, 140px)",
                 color: char === "." ? "#FFB5B5" : "#1a0a0a",
-                display: "inline-block",
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
+                display: "inline-block",
               }}
             >
               {char}
@@ -155,7 +157,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           ))}
         </div>
 
-        {/* Tagline with mask-in underline */}
+        {/* Tagline */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -173,48 +175,50 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           />
         </motion.div>
 
-        {/* ─── PROGRESS SECTION ─── */}
+        {/* ─── PROGRESS ─── */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6 }}
           className="flex flex-col items-center gap-4 w-72 sm:w-96 mt-4"
         >
-          {/* Segmented petal dots */}
-          <div className="flex gap-2">
+          {/* Segmented tick visualizer */}
+          <div className="flex gap-1.5">
             {[...Array(20)].map((_, i) => (
               <motion.div
                 key={i}
                 animate={{
-                  scaleY: progress >= (i + 1) * 5 ? 1 : 0.4,
+                  scaleY: progress >= (i + 1) * 5 ? 1 : 0.35,
                   opacity: progress >= (i + 1) * 5 ? 1 : 0.2,
-                  backgroundColor: progress >= (i + 1) * 5 ? "#FFB5B5" : "#FFB5B5",
                 }}
-                className="w-[3px] h-4 rounded-full bg-[#FFB5B5]"
+                className="w-[3px] h-4 rounded-full bg-[#FFB5B5] origin-bottom"
               />
             ))}
           </div>
 
-          {/* Smooth gradient bar */}
+          {/* Smooth gradient bar with shimmer */}
           <div className="w-full h-[2px] rounded-full bg-[#FFB5B5]/15 relative overflow-hidden">
             <motion.div
               animate={{ width: `${progress}%` }}
               transition={{ ease: "linear", duration: 0.05 }}
-              className="h-full rounded-full relative"
+              className="h-full rounded-full relative overflow-hidden"
               style={{ background: "linear-gradient(90deg, #FFD6D6, #FFB5B5, #d4796f)" }}
             >
-              {/* Shimmer */}
               <motion.div
                 animate={{ x: ["-100%", "200%"] }}
                 transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
                 className="absolute inset-0 bg-gradient-to-r from-transparent via-white/60 to-transparent"
               />
-              {/* Glowing head */}
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-[#FFB5B5] rounded-full shadow-[0_0_12px_4px_rgba(255,181,181,0.6)]" />
             </motion.div>
+            {/* Glowing tip */}
+            <motion.div
+              animate={{ left: `${progress}%` }}
+              transition={{ ease: "linear", duration: 0.05 }}
+              className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-3 h-3 bg-[#FFB5B5] rounded-full shadow-[0_0_12px_4px_rgba(255,181,181,0.6)]"
+            />
           </div>
 
-          {/* Text phase state */}
+          {/* Status text */}
           <AnimatePresence mode="wait">
             {phase === "done" ? (
               <motion.p
@@ -239,34 +243,17 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         </motion.div>
       </div>
 
-      {/* Floating petal shapes — organic, not mechanical */}
-      {[...Array(12)].map((_, i) => {
-        const size = 6 + Math.floor(i * 3.5)
-        return (
-          <motion.div
-            key={`petal-${i}`}
-            initial={{
-              x: `${10 + (i * 7) % 80}vw`,
-              y: "110vh",
-              opacity: 0,
-              rotate: Math.random() * 360,
-            }}
-            animate={{
-              y: "-20vh",
-              opacity: [0, 0.4, 0],
-              rotate: [0, 180 + i * 30],
-            }}
-            transition={{
-              duration: 7 + (i % 5),
-              repeat: Infinity,
-              delay: i * 0.8,
-              ease: "easeInOut",
-            }}
-            className="absolute rounded-full bg-[#FFB5B5] pointer-events-none"
-            style={{ width: size, height: size, filter: "blur(1px)" }}
-          />
-        )
-      })}
+      {/* Rising petal particles */}
+      {[...Array(12)].map((_, i) => (
+        <motion.div
+          key={`petal-${i}`}
+          initial={{ x: `${10 + (i * 7) % 80}vw`, y: "110vh", opacity: 0 }}
+          animate={{ y: "-20vh", opacity: [0, 0.4, 0] }}
+          transition={{ duration: 7 + (i % 5), repeat: Infinity, delay: i * 0.8, ease: "easeInOut" }}
+          className="absolute rounded-full bg-[#FFB5B5] pointer-events-none"
+          style={{ width: 6 + i * 3, height: 6 + i * 3, filter: "blur(1px)" }}
+        />
+      ))}
     </motion.div>
   )
 }
