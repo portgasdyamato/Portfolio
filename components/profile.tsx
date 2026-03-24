@@ -55,9 +55,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           <span className="text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Freelance Specialist</span>
         </div>
       </motion.div>
-      {/* ─── STATIC ROTATING BADGE (Fixed Internal Placement) ─── */}
+      {/* ─── STATIC ROTATING BADGE (De-spaced & Framed) ─── */}
       {mounted && (
-        <div className="absolute top-8 right-8 md:top-10 md:right-10 lg:top-12 lg:right-12 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
+        <div className="absolute top-20 right-4 md:top-24 md:right-6 lg:top-28 lg:right-8 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
