@@ -80,48 +80,29 @@ export default function MorphingHero() {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
 
-          {/* ── FLOATING ABSTRACT GEOMETRY EMBLEM (Center Overlap) ── */}
-          <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            transition={{ duration: 1.2, delay: 0.5 }}
-            className="absolute top-[18%] left-[62%] -translate-x-1/2 w-[240px] aspect-square pointer-events-none z-0"
-          >
-            {/* Main spinning emblem */}
+          {/* ── CENTER CIRCULAR TEXT BADGE (Decorative Space Filler) ── */}
+          <div className="absolute top-[35%] left-[65%] -translate-x-1/2 -translate-y-1/2 w-[180px] aspect-square pointer-events-none z-10 hidden lg:block opacity-[0.65]">
             <motion.div 
               animate={{ rotate: 360 }} 
-              transition={{ duration: 60, repeat: Infinity, ease: "linear" }} 
-              className="absolute inset-0"
+              transition={{ duration: 24, repeat: Infinity, ease: "linear" }} 
+              className="w-full h-full relative"
             >
-               <svg viewBox="0 0 200 200" className="w-full h-full opacity-[0.22] mix-blend-multiply">
-                 {/* Outer dashed ring */}
-                 <circle cx="100" cy="100" r="94" fill="none" stroke="#b33951" strokeWidth="1" strokeDasharray="4 6" />
-                 {/* Inner solid ring */}
-                 <circle cx="100" cy="100" r="82" fill="none" stroke="#1a0a0a" strokeWidth="0.6" />
-                 {/* Premium 4-point star */}
-                 <polygon points="100,25 112,88 175,100 112,112 100,175 88,112 25,100 88,88" fill="none" stroke="#b33951" strokeWidth="1.2" />
-                 {/* Center registration dot */}
-                 <circle cx="100" cy="100" r="3" fill="#1a0a0a" />
+               <svg viewBox="0 0 200 200" className="w-full h-full">
+                 <defs>
+                   <path id="center-curve" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                 </defs>
+                 <text fill="#b33951" fontSize="13" fontWeight="bold" letterSpacing="4.5" style={{ fontFamily: "'Inter', sans-serif" }}>
+                   <textPath href="#center-curve" startOffset="0%">
+                     CREATIVE UI / UX DESIGNER ✦ AI PRODUCT ENGINEER ✦ 
+                   </textPath>
+                 </text>
                </svg>
+               {/* Center dot for perfect balance */}
+               <div className="absolute inset-0 flex items-center justify-center">
+                 <div className="w-1.5 h-1.5 rounded-full bg-[#b33951]/60" />
+               </div>
             </motion.div>
-            
-            {/* Floating detached elements */}
-            <motion.div 
-              animate={{ y: [0, -15, 0], rotate: [0, 45, 0] }} 
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} 
-              className="absolute -top-8 -right-8 opacity-40 mix-blend-multiply"
-            >
-               <div className="w-16 h-16 border-[1.5px] border-[#b33951] rounded-full" />
-            </motion.div>
-            
-            <motion.div 
-              animate={{ y: [0, 20, 0], rotate: [12, -12, 12] }} 
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }} 
-              className="absolute bottom-6 -left-10 opacity-60 mix-blend-multiply"
-            >
-               <div className="w-10 h-10 border border-[#1a0a0a] rounded-sm transform rotate-12" />
-            </motion.div>
-          </motion.div>
+          </div>
 
           {/* ── SUBTLE PRINT GRID BORDER ── */}
           <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[65%] w-[1px] bg-[#1a0a0a]/[0.15] pointer-events-none z-0" />
