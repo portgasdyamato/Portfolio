@@ -74,14 +74,14 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         }}
       />
 
-      {/* ─── MAIN CONTENT: internal 2-column layout ─── */}
+      {/* ─── MAIN CONTENT: single col, giant type fills space ─── */}
       <div
-        className="relative z-10 h-full pt-28 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-16 grid grid-cols-1 lg:grid-cols-[1fr_200px] gap-0"
+        className="relative z-10 h-full flex flex-col justify-start pt-28 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-16"
         style={{ minHeight: "inherit" }}
       >
 
-        {/* ── LEFT COLUMN: headline, bio, buttons, footer ── */}
-        <div className="flex flex-col min-w-0 pr-4">
+        {/* ── ALL CONTENT ── */}
+        <div className="flex flex-col min-w-0">
 
           {/* Rotating tagline */}
           <div className="h-6 overflow-hidden mt-2">
@@ -101,19 +101,19 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
 
           {/* Headline */}
           <div className="flex flex-col justify-center py-[4vh] gap-8">
-            <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[54px] sm:text-[70px] lg:text-[100px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[72px] sm:text-[90px] lg:text-[120px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Crafting
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[54px] sm:text-[70px] lg:text-[100px] font-black tracking-tight leading-[0.9] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[72px] sm:text-[90px] lg:text-[120px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Smart Digital
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[54px] sm:text-[70px] lg:text-[100px] font-light italic tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[72px] sm:text-[90px] lg:text-[120px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Experiences.
                 </span>
               </motion.div>
@@ -187,80 +187,6 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
             </div>
           </div>
         </div>
-
-        {/* ── RIGHT COLUMN: Creative Designer Card Panel ── */}
-        <div className="hidden lg:flex flex-col items-center justify-between h-full py-6 pl-6 border-l border-[#1a0a0a]/[0.06] relative">
-
-          {/* ── RIGHT artwork panel (abstract visual art) ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex-1 relative w-full h-full"
-          >
-            <svg
-              viewBox="0 0 200 500"
-              className="w-full h-full"
-              preserveAspectRatio="xMidYMid meet"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              {/* Large primary ring */}
-              <circle cx="100" cy="200" r="90" fill="none" stroke="#b33951" strokeWidth="0.6" strokeOpacity="0.18" />
-              {/* Inner filled circle — softly present */}
-              <circle cx="100" cy="200" r="72" fill="#b33951" fillOpacity="0.045" />
-              {/* Second offset ring top-right */}
-              <circle cx="155" cy="120" r="55" fill="none" stroke="#1a0a0a" strokeWidth="0.5" strokeOpacity="0.08" />
-              {/* Third offset ring bottom-left */}
-              <circle cx="48" cy="320" r="65" fill="none" stroke="#b33951" strokeWidth="0.5" strokeOpacity="0.12" />
-              {/* Small filled accent circle */}
-              <circle cx="155" cy="120" r="10" fill="#b33951" fillOpacity="0.12" />
-              {/* Tiny dot accents */}
-              <circle cx="60" cy="88" r="3" fill="#b33951" fillOpacity="0.3" />
-              <circle cx="148" cy="290" r="2" fill="#1a0a0a" fillOpacity="0.15" />
-              <circle cx="40" cy="400" r="2.5" fill="#b33951" fillOpacity="0.2" />
-              <circle cx="170" cy="400" r="1.5" fill="#1a0a0a" fillOpacity="0.1" />
-
-              {/* Curved arc — flowing Bézier */}
-              <path
-                d="M 20 80 C 80 40, 140 160, 180 100"
-                fill="none"
-                stroke="#b33951"
-                strokeWidth="0.7"
-                strokeOpacity="0.22"
-                strokeDasharray="4 3"
-              />
-              {/* Second flowing arc bottom */}
-              <path
-                d="M 180 380 C 120 440, 60 360, 20 420"
-                fill="none"
-                stroke="#1a0a0a"
-                strokeWidth="0.5"
-                strokeOpacity="0.1"
-                strokeDasharray="3 4"
-              />
-
-              {/* Fine horizontal grid marks */}
-              {[140, 180, 220, 260, 300].map((y, i) => (
-                <line key={y} x1="30" y1={y} x2="170" y2={y}
-                  stroke="#1a0a0a" strokeWidth="0.3" strokeOpacity={0.06 - i * 0.005} />
-              ))}
-              {/* Cross-mark accents */}
-              <line x1="96" y1="196" x2="104" y2="196" stroke="#b33951" strokeWidth="0.8" strokeOpacity="0.35" />
-              <line x1="100" y1="192" x2="100" y2="204" stroke="#b33951" strokeWidth="0.8" strokeOpacity="0.35" />
-
-              {/* Tiny ring decorations */}
-              <circle cx="30" cy="180" r="4" fill="none" stroke="#b33951" strokeWidth="0.6" strokeOpacity="0.25" />
-              <circle cx="172" cy="280" r="5" fill="none" stroke="#b33951" strokeWidth="0.6" strokeOpacity="0.2" />
-
-              {/* Diagonal fine line */}
-              <line x1="20" y1="460" x2="180" y2="460"
-                stroke="#1a0a0a" strokeWidth="0.4" strokeOpacity="0.08" />
-            </svg>
-          </motion.div>
-
-
-        </div>
-
       </div>
     </div>
   )
