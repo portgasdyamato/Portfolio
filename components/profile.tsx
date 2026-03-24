@@ -15,9 +15,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   useEffect(() => setMounted(true), [])
 
   // Morph values
-  const yImage = useTransform(sp, [0, 0.6], [0, -60])
-  const nameOpacity = useTransform(sp, [0.1, 0.4], [0, 1])
-  const nameY = useTransform(sp, [0.1, 0.4], [15, 0])
+  const yImage = useTransform(sp, [0, 0.6], [0, -140])
+  const nameOpacity = useTransform(sp, [0.05, 0.35], [0, 1])
+  const nameY = useTransform(sp, [0.05, 0.35], [15, 0])
 
   return (
     <motion.div
@@ -25,7 +25,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.5 }}
       style={{ y: yImage, transformOrigin: "top right" }}
-      className="flex flex-col items-center justify-start h-full pt-24 md:pt-36 lg:pt-44 relative w-full"
+      className="flex flex-col items-center justify-start h-full pt-10 md:pt-16 lg:pt-20 relative w-full"
     >
       <motion.div
         whileHover={{ scale: 1.03 }}
@@ -55,9 +55,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           <span className="text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Freelance Specialist</span>
         </div>
       </motion.div>
-      {/* ─── STATIC ROTATING BADGE (Top Right Pinhole) ─── */}
+      {/* ─── STATIC ROTATING BADGE (Safe Top Right) ─── */}
       {mounted && (
-        <div className="absolute -top-4 md:-top-6 lg:-top-8 -right-4 md:right-0 lg:right-4 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
+        <div className="absolute top-10 right-4 md:right-8 lg:right-12 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
