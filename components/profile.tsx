@@ -32,7 +32,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
             className="absolute pointer-events-none z-0"
             style={{ top: "8%", left: "-12%", width: "130%", aspectRatio: "1" }}
           >
-            <svg viewBox="0 0 300 300" className="w-full h-full opacity-[0.10]">
+            <svg viewBox="0 0 300 300" className="w-full h-full opacity-20">
               <circle cx="150" cy="150" r="140" fill="none" stroke="#b33951" strokeWidth="1.2" strokeDasharray="8 6" />
             </svg>
           </motion.div>
@@ -42,9 +42,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
             animate={{ rotate: -360 }}
             transition={{ duration: 26, repeat: Infinity, ease: "linear" }}
             className="absolute pointer-events-none z-0"
-            style={{ top: "30%", left: "10%", width: "80%", aspectRatio: "1" }}
+            style={{ top: "25%", left: "5%", width: "90%", aspectRatio: "1" }}
           >
-            <svg viewBox="0 0 200 200" className="w-full h-full opacity-[0.13]">
+            <svg viewBox="0 0 200 200" className="w-full h-full opacity-25">
               <circle cx="100" cy="100" r="92" fill="none" stroke="#1a0a0a" strokeWidth="0.8" strokeDasharray="5 8" />
             </svg>
           </motion.div>
