@@ -20,42 +20,45 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   const nameY = useTransform(sp, [0.1, 0.4], [15, 0])
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.3, duration: 0.5 }}
-      style={{ y: yImage, transformOrigin: "top right" }}
-      className="flex flex-col items-center justify-between h-full pt-28 md:pt-36 lg:pt-44 pb-12 relative w-full"
-    >
+    <div className="relative h-full w-full">
+      {/* ─── SCROLL-LIFTED CONTENT (Avatar & Identity) ─── */}
       <motion.div
-        whileHover={{ scale: 1.03 }}
-        transition={{ duration: 0.3 }}
-        className="rounded-3xl overflow-hidden w-full max-w-[500px]"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.5 }}
+        style={{ y: yImage, transformOrigin: "top right" }}
+        className="flex flex-col items-center justify-between h-full pt-28 md:pt-36 lg:pt-44 pb-12 relative w-full"
       >
-        <Image
-          src={pfp}
-          alt="Sakshi Agrahari"
-          width={600}
-          height={800}
-          className="w-full h-auto object-cover"
-          unoptimized
-        />
+        <motion.div
+          whileHover={{ scale: 1.03 }}
+          transition={{ duration: 0.3 }}
+          className="rounded-3xl overflow-hidden w-full max-w-[500px]"
+        >
+          <Image
+            src={pfp}
+            alt="Sakshi Agrahari"
+            width={600}
+            height={800}
+            className="w-full h-auto object-cover"
+            unoptimized
+          />
+        </motion.div>
+
+        <motion.div 
+          style={{ opacity: nameOpacity, y: nameY }}
+          className="flex flex-col items-center mt-6 text-center"
+        >
+          <span className="text-[32px] sm:text-[40px] font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+            Sakshi Agrahari.
+          </span>
+          <div className="flex flex-col gap-1">
+            <span className="text-[10px] tracking-[0.35em] text-[#b33951] uppercase font-bold">UI/UX & AI Product Designer</span>
+            <span className="text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Freelance Specialist</span>
+          </div>
+        </motion.div>
       </motion.div>
 
-
-      <motion.div 
-        style={{ opacity: nameOpacity, y: nameY }}
-        className="flex flex-col items-center mt-6 text-center"
-      >
-        <span className="text-[32px] sm:text-[40px] font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-          Sakshi Agrahari.
-        </span>
-        <div className="flex flex-col gap-1">
-          <span className="text-[10px] tracking-[0.35em] text-[#b33951] uppercase font-bold">UI/UX & AI Product Designer</span>
-          <span className="text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Freelance Specialist</span>
-        </div>
-      </motion.div>
-      {/* ─── STATIC ROTATING BADGE (De-spaced & Framed) ─── */}
+      {/* ─── STATIC ROTATING BADGE (Decoupled from Scroll Lift) ─── */}
       {mounted && (
         <div className="absolute top-20 right-4 md:top-24 md:right-6 lg:top-28 lg:right-8 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
           <motion.div
@@ -68,7 +71,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
                 <path id="badgePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
               </defs>
               <text className="fill-[#c0756e]" style={{ fontSize: "8.5px", fontWeight: "bold", letterSpacing: "0.18em" }}>
-                <textPath href="#badgePath">OPEN TO COLLABORATE · OPEN TO COLLABORATE ·</textPath>
+                <textPath href="#badgePath">OPEN TO COLLABORATE • OPEN TO COLLABORATE •</textPath>
               </text>
             </svg>
           </motion.div>
@@ -78,9 +81,6 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           </div>
         </div>
       )}
-
-
-
-    </motion.div>
+    </div>
   )
 }
