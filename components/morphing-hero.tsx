@@ -48,7 +48,7 @@ export default function MorphingHero() {
     // PHASE 2 (0.4 to 0.7): Rotate Vertical for the Pocket
     tl.to(cardRef.current, {
       rotateZ: 90, // Turn it vertical to fit a "sleeve" or "pocket"
-      scale: 0.75, // Get slightly smaller to emphasize the turn
+      scale: 0.55, // Shrink significantly more so it fits the screen even while turned portrait
       ease: "power2.inOut",
       duration: 0.3
     }, 0.4)
