@@ -91,6 +91,14 @@
     @apply border-white/40 dark:border-white/20 shadow-2xl -translate-y-1;
   }
 
+  .glass-accent {
+    @apply bg-primary/10 backdrop-blur-sm border border-primary/20 shadow-2xl;
+  }
+
+  .gradient-glass-dark {
+    @apply bg-black/60 backdrop-blur-3xl border border-white/10 shadow-2xl;
+  }
+
   /* Specific glass styles from original for compatibility but improved */
   .hero-glass {
     background: linear-gradient(120deg,
@@ -126,6 +134,30 @@
 
   .gradient-glass {
     @apply glass;
+  }
+
+  .glass-accent {
+    @apply bg-primary/10 backdrop-blur-sm border border-primary/20 shadow-2xl;
+  }
+
+  .grain-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    z-index: 1;
+  }
+
+  .grid-overlay {
+    background-image: 
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .gradient-glass-dark {
+    @apply bg-black/60 backdrop-blur-3xl border border-white/10 shadow-2xl;
   }
 }
 

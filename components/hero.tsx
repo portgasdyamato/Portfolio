@@ -19,6 +19,8 @@ export default function Hero() {
   // Floating elements parallax (stable ranges)
   const dx = useTransform(springX, [0, 1920], [-30, 30])
   const dy = useTransform(springY, [0, 1080], [-30, 30])
+  const reverseDx = useTransform(dx, (v: number) => -v)
+  const reverseDy = useTransform(dy, (v: number) => -v)
 
   useEffect(() => {
     setMounted(true)
@@ -62,7 +64,7 @@ export default function Hero() {
 
       {/* Interactive Floating Element 2 - Bottom Left */}
       <motion.div 
-        style={{ x: useTransform(dx, (v) => -v), y: useTransform(dy, (v) => -v) }}
+        style={{ x: reverseDx, y: reverseDy }}
         className="absolute bottom-12 left-12 z-10 hidden lg:block"
       >
         <div className="glass-accent p-4 -rotate-12 group-hover:rotate-0 transition-transform duration-700 rounded-2xl shadow-2xl">
