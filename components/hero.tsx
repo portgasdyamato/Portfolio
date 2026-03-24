@@ -159,18 +159,18 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
             >
               <div className="flex flex-col">
                 <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Contact</span>
-                <span className="text-[11px] font-bold text-[#1a0a0a]">hello@sakshi.design</span>
+                <span className="text-[11px] font-bold text-[#1a0a0a]">sakshiagrahari2004@gmail.com</span>
               </div>
               <div className="flex flex-col text-right">
                 <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Location</span>
-                <span className="text-[11px] font-bold text-[#1a0a0a]">Gurugram, India</span>
+                <span className="text-[11px] font-bold text-[#1a0a0a]">Planet Earth</span>
               </div>
               <div className="flex flex-col col-span-2 mt-2">
-                <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Digital Presence</span>
+                <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Status</span>
                 <div className="flex items-center gap-4 text-[11px] font-bold text-[#1a0a0a]">
-                  <span>sakshiagrahari.com</span>
+                  <span>Available for Freelance</span>
                   <span className="w-1 h-1 rounded-full bg-[#1a0a0a]/20" />
-                  <span>@sakshi_agrahari</span>
+                  <span>sakshiagrahari.com</span>
                 </div>
               </div>
             </motion.div>
@@ -184,13 +184,13 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
              <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2 Yrs.</span>
           </div>
           <div className="flex flex-col gap-1.5">
-             <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Clients</span>
-             <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>40+ Global.</span>
+             <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Rating</span>
+             <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>98% Success.</span>
           </div>
-          <div className="flex flex-col gap-1.5 hidden sm:flex ml-auto border-l border-[#1a0a0a]/10 pl-8">
+          <div className="flex flex-col gap-1.5 hidden sm:flex ml-auto border-l border-[#1a0a0a]/10 pl-8 text-right">
              <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Inquiry</span>
-             <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-               <span className="w-1.5 h-1.5 rounded-full bg-[#b33951] animate-pulse" /> Available.
+             <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none flex items-center justify-end gap-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+               <span className="w-1.5 h-1.5 rounded-full bg-[#b33951] animate-pulse" /> Freelance.
              </span>
           </div>
         </div>
