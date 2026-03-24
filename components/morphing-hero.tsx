@@ -51,12 +51,12 @@ export default function MorphingHero() {
       duration: 0.6
     }, 0)
 
-    // PHASE 2 (60% to 100%): 3D Tilt Away & Exit
+    // PHASE 2 (60% to 100%): Seamless Recede & Exit
     tl.to(cardRef.current, {
-      rotateX: -45, // Tilt backwards into perspective
-      y: 400, // Slide down
-      opacity: 0, // Fade out
-      ease: "power3.in",
+      scale: 0.75, // Gently shrink backward into the distance
+      y: -50, // Drift slightly upward (avoids clipping into the bottom boundary pocket entirely)
+      opacity: 0, // Seamless, premium dissolve
+      ease: "power2.inOut",
       duration: 0.4
     }, 0.6)
     
@@ -72,7 +72,6 @@ export default function MorphingHero() {
       <div
         ref={cardRef}
         style={{ 
-          perspective: 1200, 
           transformOrigin: "center center",
           backgroundColor: "#FDE2E2" 
         }}
