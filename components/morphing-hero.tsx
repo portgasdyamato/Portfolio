@@ -35,29 +35,37 @@ export default function MorphingHero() {
       }
     })
 
-    // PHASE 1 (0% to 60%): Shrink to Business Card
+    // PHASE 1 (0% to 0.4): Morph into Business Card
     tl.to(cardRef.current, {
-      scale: 0.85,
+      scale: 0.8,
       borderRadius: "24px",
-      boxShadow: "0 60px 120px -20px rgba(179,57,81,0.15)",
+      boxShadow: "0 60px 120px -20px rgba(179,57,81,0.2)",
+      backgroundColor: "#FDE2E2",
       ease: "power2.inOut",
-      duration: 0.6
+      duration: 0.4
     }, 0)
 
-    // Outer Stage Background Fade (makes the card pop out visually from the edges)
+    // PHASE 2 (0.4 to 0.7): Rotate Vertical for the Pocket
+    tl.to(cardRef.current, {
+      rotateZ: 90, // Turn it vertical to fit a "sleeve" or "pocket"
+      scale: 0.75, // Get slightly smaller to emphasize the turn
+      ease: "power2.inOut",
+      duration: 0.3
+    }, 0.4)
+
+    // PHASE 3 (0.7 to 1.0): Slide into the Pocket
+    tl.to(cardRef.current, {
+      y: "110vh", // Slide completely out of view into lower boundary
+      ease: "power2.in", // Accelerate like it's being pulled/dropped
+      duration: 0.3
+    }, 0.7)
+
+    // Sync Background Fade
     tl.to(containerRef.current, {
       backgroundColor: "#F5D5D5",
       ease: "none",
-      duration: 0.6
-    }, 0)
-
-    // PHASE 2 (60% to 100%): Drop into the pocket completely
-    tl.to(cardRef.current, {
-      y: "100vh", // Drop completely out of view, sliding fully inside the pocket
-      scale: 0.7, // Shrink a bit more while falling to sell the depth/pocket illusion
-      ease: "power2.inOut", // Smooth rest into the pocket
       duration: 0.4
-    }, 0.6)
+    }, 0)
     
   }, { scope: containerRef })
 
