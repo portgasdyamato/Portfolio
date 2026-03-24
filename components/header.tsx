@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Menu, X, Info, Heart, Code2, Sparkles, User, Mail, Briefcase } from "lucide-react"
+import { Menu, X, Info, Heart, Coffee, Code2, Sparkles, User, Mail, FolderHeart } from "lucide-react"
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId)
@@ -17,154 +17,203 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
-  const closeMenu = () => setIsMenuOpen(false)
-  const toggleInfo = () => setIsInfoOpen(!isInfoOpen)
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen)
+  }
+
+  const closeMenu = () => {
+    setIsMenuOpen(false)
+  }
+
+  const toggleInfo = () => {
+    setIsInfoOpen(!isInfoOpen)
+  }
+
+  const controlNavbar = () => {
+    if (typeof window !== 'undefined') {
+      if (window.scrollY > lastScrollY && window.scrollY > 100) {
+        setIsVisible(false)
+      } else {
+        setIsVisible(true)
+      }
+      setLastScrollY(window.scrollY)
+    }
+  }
 
   useEffect(() => {
-    const controlNavbar = () => {
-      if (typeof window !== 'undefined') {
-        if (window.scrollY > lastScrollY && window.scrollY > 100) {
-          setIsVisible(false)
-        } else {
-          setIsVisible(true)
-        }
-        setLastScrollY(window.scrollY)
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar)
+      return () => {
+        window.removeEventListener('scroll', controlNavbar)
       }
     }
-    window.addEventListener('scroll', controlNavbar)
-    return () => window.removeEventListener('scroll', controlNavbar)
   }, [lastScrollY])
 
+  useEffect(() => {
+    const hasVisited = localStorage.getItem("hasVisited");
+    if (!hasVisited) {
+      setIsInfoOpen(true);
+      localStorage.setItem("hasVisited", "true");
+    }
+  }, []);
+
   return (
-    <div className="fixed top-8 left-0 right-0 z-50 px-6 sm:px-12 pointer-events-none flex justify-center font-outfit">
+    <div className="relative">
       <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: isVisible ? 0 : -150, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="glass-pill py-2 px-2 shadow-2xl flex items-center gap-2 pointer-events-auto max-w-fit pr-10 pl-6"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ 
+          opacity: 1, 
+          y: isVisible ? 0 : -100 
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="py-6 px-4 md:px-14 flex justify-between items-center bg-black/60 backdrop-blur-2xl fixed top-0 left-0 right-0 z-50 border-b border-white/5"
       >
-        <button
+        <motion.button
           onClick={() => scrollToSection("home")}
-          className="text-white font-black italic tracking-tighter text-2xl hover:text-primary transition-colors pr-6 border-r border-white/10"
+          className="text-xl md:text-2xl font-light tracking-[0.2em] cursor-pointer text-white hover:text-primary transition-colors duration-300 uppercase"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
-          S.
-        </button>
+          Sakshi Agrahari
+        </motion.button>
         
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-2">
-          {[
-            { name: "Projects", id: "projects", icon: Briefcase },
-            { name: "About", id: "about", icon: User },
-            { name: "Contact", id: "contact", icon: Mail },
-          ].map((item) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.id)}
-              className="text-[9px] font-bold tracking-[0.4em] text-white/40 hover:text-white transition-all py-3 px-6 rounded-full hover:bg-white/5 uppercase"
-            >
-              {item.name}
-            </button>
-          ))}
-        </nav>
-
-        <div className="h-6 w-[1px] bg-white/10 mx-2 hidden md:block" />
-
-        <div className="flex items-center gap-3">
-          <motion.button
-            onClick={toggleInfo}
-            className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary group hover:bg-primary hover:text-black transition-all"
-            whileHover={{ scale: 1.1, rotate: 10 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <Info size={14} />
-          </motion.button>
+        <div className="flex items-center space-x-12">
+          <nav className="hidden md:flex space-x-12">
+            {[
+              { name: "PROJECTS", id: "projects", icon: FolderHeart },
+              { name: "ABOUT", id: "about", icon: User },
+              { name: "CONTACT", id: "contact", icon: Mail },
+            ].map((item) => (
+              <motion.button
+                key={item.name}
+                onClick={() => scrollToSection(item.id)}
+                className="text-[10px] font-bold tracking-[0.4em] text-white/40 hover:text-primary transition-all duration-300 flex items-center gap-2 group"
+                whileHover={{ y: -2 }}
+              >
+                <item.icon size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
+                {item.name}
+              </motion.button>
+            ))}
+          </nav>
           
-          <button
-            onClick={toggleMenu}
-            className="md:hidden w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-white"
-          >
-            {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
+          <div className="flex items-center space-x-4">
+            <motion.button
+              onClick={toggleInfo}
+              className="p-3 bg-white/5 rounded-full text-white/60 hover:text-primary transition-colors border border-white/10"
+              whileHover={{ scale: 1.1, rotate: 10 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Info size={18} />
+            </motion.button>
+            
+            {/* Mobile Menu Toggle */}
+            <motion.button
+              onClick={toggleMenu}
+              className="md:hidden p-3 bg-white/5 rounded-full text-white/60 hover:text-primary transition-colors border border-white/10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            </motion.button>
+          </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu Dropdown */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              className="absolute top-20 left-0 right-0 bg-[#080808] border border-white/5 rounded-[2rem] p-6 shadow-2xl md:hidden"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-0 right-0 bg-black/90 backdrop-blur-2xl shadow-2xl border-t border-white/5 md:hidden"
             >
-              <nav className="flex flex-col gap-4">
-                {[
-                  { name: "Projects", id: "projects" },
-                  { name: "About", id: "about" },
-                  { name: "Contact", id: "contact" },
-                ].map((item) => (
-                  <button
-                    key={item.name}
-                    onClick={() => {
-                      scrollToSection(item.id)
-                      closeMenu()
-                    }}
-                    className="text-left py-4 px-6 text-2xl font-black text-white italic tracking-tighter uppercase leading-none hover:text-primary"
-                  >
-                    {item.name}
-                  </button>
-                ))}
+              <nav className="p-8">
+                <div className="space-y-6">
+                  {[
+                    { name: "PROJECTS", id: "projects" },
+                    { name: "ABOUT", id: "about" },
+                    { name: "CONTACT", id: "contact" },
+                  ].map((item, index) => (
+                    <motion.button
+                      key={item.name}
+                      onClick={() => {
+                        scrollToSection(item.id)
+                        closeMenu()
+                      }}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.1 + 0.1 }}
+                      className="block w-full text-left py-2 text-xl font-light tracking-[0.2em] text-white/60 hover:text-primary transition-colors"
+                    >
+                      {item.name}
+                    </motion.button>
+                  ))}
+                </div>
               </nav>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.header>
 
-      {/* Experimental Portfolio Info Modal */}
+      {/* Info Modal / Overlay */}
       <AnimatePresence>
         {isInfoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-[#030303]/90 backdrop-blur-3xl flex items-center justify-center p-8 pointer-events-auto"
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl flex items-center justify-center p-6"
             onClick={() => setIsInfoOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.8, y: 100, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.8, y: 100, opacity: 0 }}
-              className="bg-[#080808] border border-white/10 rounded-[3rem] p-12 max-w-lg w-full shadow-[0_50px_100px_rgba(0,0,0,0.5)] relative overflow-hidden"
+              initial={{ scale: 0.8, opacity: 0, y: 50 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.8, opacity: 0, y: 50 }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="gradient-glass-dark rounded-[2.5rem] p-10 max-w-md w-full shadow-2xl border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="grain" />
-              <div className="relative z-10 flex flex-col gap-8">
-                <div className="flex flex-col gap-2">
-                  <span className="text-primary font-bold tracking-[0.6em] text-[10px] uppercase">Aesthetic Intelligence</span>
-                  <h3 className="text-5xl font-black text-white italic tracking-tighter leading-[0.85] uppercase">
-                    Curatory<br />Statement.
-                  </h3>
-                </div>
-                <p className="text-white/40 text-sm leading-relaxed max-w-md">
-                  This portfolio explores the intersection of cinematic motion and functional precision. Every pixel is intentional, every interaction is sculpted. Designed for the future of digital product experiences.
+              <div className="relative mb-8 text-center">
+                <motion.h2 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">
+                  Welcome to <br /> <span className="text-primary italic font-light">My Space.</span>
+                </motion.h2>
+                <p className="text-white/40 text-sm font-light leading-relaxed">
+                  Crafting high-end digital experiences with cinematic motion.
                 </p>
-                <div className="flex flex-col gap-4 mt-4">
-                  <div className="flex items-center gap-4 bg-white/5 p-4 rounded-3xl border border-white/5">
-                    <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary"><Sparkles size={16} /></div>
-                    <span className="text-[10px] tracking-[0.2em] font-bold text-white uppercase italic">Cinematic Direction</span>
+              </div>
+
+              <div className="space-y-6 mb-10">
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                    <Code2 size={18} />
                   </div>
-                  <div className="flex items-center gap-4 bg-white/5 p-4 rounded-3xl border border-white/5">
-                    <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center text-primary"><Code2 size={16} /></div>
-                    <span className="text-[10px] tracking-[0.2em] font-bold text-white uppercase italic">Technical Precision</span>
+                  <div>
+                    <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">Clean Build</h4>
+                    <p className="text-white/30 text-xs">Optimized for speed and accessibility.</p>
                   </div>
                 </div>
-                <button 
-                  onClick={() => setIsInfoOpen(false)}
-                  className="mt-4 h-16 w-full bg-white text-black font-black uppercase text-xs tracking-[0.4em] rounded-full hover:bg-primary transition-all duration-300"
-                >
-                  Enter Reality
-                </button>
+
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                    <Sparkles size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">Premium UX</h4>
+                    <p className="text-white/30 text-xs">Aesthetic focus with smooth interactions.</p>
+                  </div>
+                </div>
               </div>
+
+              <motion.button
+                onClick={() => setIsInfoOpen(false)}
+                className="w-full h-14 bg-white text-black font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-primary transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Explore More
+              </motion.button>
             </motion.div>
           </motion.div>
         )}

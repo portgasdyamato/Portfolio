@@ -2,62 +2,242 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force Cormorant Garamond on all font-outfit usages — bypasses Tailwind build cycle */
+.font-outfit {
+  font-family: 'Cormorant Garamond', Georgia, serif !important;
+}
+
 :root {
-  --background: 0 0% 1%; /* #030303 */
-  --foreground: 0 0% 100%;
-  --primary: 0 100% 86%; /* #FFB5B5 */
-  --card: 0 0% 3%;
-  --border: 0 0% 10%;
-  --radius: 2rem;
+  --background: 250 50% 98%;
+  --foreground: 240 10% 3.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 10% 3.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 10% 3.9%;
+  --primary: 0 100% 86%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 4.8% 95.9%;
+  --secondary-foreground: 240 5.9% 10%;
+  --muted: 240 4.8% 95.9%;
+  --muted-foreground: 240 3.8% 46.1%;
+  --accent: 240 4.8% 95.9%;
+  --accent-foreground: 240 5.9% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 5.9% 90%;
+  --input: 240 5.9% 90%;
+  --ring: 0 100% 86%;
+  --radius: 1rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 100% 86%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 0 100% 86%;
 }
 
 @layer base {
+  * {
+    @apply border-border;
+  }
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/30;
-    overflow-x: hidden;
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  @media (min-width: 768px) {
+    * {
+      cursor: none !important;
+    }
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', 'Outfit', Georgia, serif;
+    @apply font-bold tracking-tight;
+    line-height: 1.15;
+  }
+  p, span, a, li, label, input, textarea, button {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
 
+/* Premium Glassmorphism */
 @layer components {
-  .hero-blur {
-    @apply absolute w-[500px] h-[500px] rounded-full blur-[120px] opacity-20 mix-blend-screen pointer-events-none;
+  .glass {
+    @apply bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/20 dark:border-white/10 shadow-2xl;
   }
   
-  .glass-pill {
-    @apply bg-black/40 backdrop-blur-3xl border border-white/10 rounded-full py-2 px-6 shadow-2xl;
+  .glass-card {
+    @apply bg-white/60 dark:bg-white/[0.03] backdrop-blur-md border border-white/20 dark:border-white/10 shadow-xl transition-all duration-300;
   }
   
-  .text-outline {
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
-    color: transparent;
+  .glass-card:hover {
+    @apply border-white/40 dark:border-white/20 shadow-2xl -translate-y-1;
   }
-  
-  .grain {
-    position: fixed;
-    inset: -100%;
-    z-index: 9999;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    opacity: 0.02;
-    animation: grain 8s steps(10) infinite;
+
+  /* Specific glass styles from original for compatibility but improved */
+  .hero-glass {
+    background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0.4) 0%,
+      rgba(255, 255, 255, 0.1) 100%
+    );
+    @apply backdrop-blur-2xl border border-white/30;
+  }
+
+  .dark .hero-glass {
+    background: linear-gradient(120deg,
+      rgba(255, 255, 255, 0.05) 0%,
+      rgba(255, 255, 255, 0.01) 100%
+    );
+    @apply border-white/10;
+  }
+
+  .project-glass {
+    @apply glass-card;
+  }
+
+  .skills-glass {
+    @apply glass-card;
+  }
+
+  .timeline-glass {
+    @apply glass-card;
+  }
+
+  .achive-glass {
+    @apply glass-card;
+  }
+
+  .gradient-glass {
+    @apply glass;
   }
 }
 
-@keyframes grain {
-  0%, 100% { transform: translate(0, 0); }
-  10% { transform: translate(-5%, -10%); }
-  20% { transform: translate(-15%, 5%); }
-  30% { transform: translate(7%, -25%); }
-  40% { transform: translate(-5%, 25%); }
-  50% { transform: translate(-15%, 10%); }
-  60% { transform: translate(15%, 0%); }
-  70% { transform: translate(0%, 15%); }
-  80% { transform: translate(3%, 35%); }
-  90% { transform: translate(-10%, 10%); }
+/* Custom Text Colors (replacing gradients) */
+.text-gradient {
+  color: #FFB5B5;
 }
 
-/* Kinetic Typography Mask */
-.mask-text {
-  mask-image: linear-gradient(to right, black 0%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+.text-gradient-indigo {
+  color: #FFB5B5;
+}
+
+.gradient-text {
+  color: #FFB5B5;
+}
+
+/* Premium Animations */
+@keyframes aurora {
+  from {
+    background-position: 50% 50%, 50% 50%;
+  }
+  to {
+    background-position: 350% 50%, 350% 50%;
+  }
+}
+
+.animate-aurora {
+  --aurora: repeating-linear-gradient(100deg, #3b82f6 10%, #FFB5B5 15%, #ffdbdb 20%, #f59e9e 25%, #3b82f6 30%);
+  background-image: var(--aurora);
+  background-size: 300% 200%;
+  animation: aurora 60s linear infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 hover:bg-primary/40 rounded-full transition-all;
+}
+
+/* Hide scrollbar classes */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Bento Grid Utilities */
+.bento-grid {
+  @apply grid grid-cols-1 md:grid-cols-12 gap-4;
+}
+
+.bento-item {
+  @apply col-span-1 md:col-span-4 rounded-3xl p-6 glass-card;
+}
+
+/* Magnetic effect helper */
+.magnetic {
+  display: inline-block;
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Texture Overlays */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.grid-overlay {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Hero Title Mask */
+.title-mask {
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+}
+
+/* Pixel Art Overrides for specific cases */
+.pixel-font {
+  font-family: 'Bitcount Grid Double', sans-serif;
+}
+
+
+/* Marquee Animations */
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right 80s linear infinite;
 }
