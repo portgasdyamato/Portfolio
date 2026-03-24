@@ -15,29 +15,32 @@ export default function MorphingHero() {
   })
 
   // 1) 0.0 -> 0.4: Morph phase (shrink into business card)
-  // 2) 0.4 -> 0.7: Card stays sticky and fully visible
-  // 3) 0.7 -> 1.0: Card elegantly tilts and slides up off-screen
+  // 2) 0.4 -> 0.6: Card stays sticky and fully visible
+  // 3) 0.6 -> 0.9: Card tilts backwards (3D tilt away) and slides downwards
   
-  const scale = useTransform(scrollYProgress, [0, 0.4, 0.5], [1, 0.8, 0.8])
-  const opacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.7, 1], ["0vh", "0vh", "-50vh"])
-  const rotateX = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [0, 0, 0, 15])
-  const rotateZ = useTransform(scrollYProgress, [0, 0.4, 0.7, 1], [0, 0, 0, -5])
+  const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.9], [1, 0.85, 0.85, 0.7])
+  const opacity = useTransform(scrollYProgress, [0, 0.6, 0.9], [1, 1, 0])
+  const y = useTransform(scrollYProgress, [0, 0.6, 0.9], ["0vh", "0vh", "40vh"])
+  const rotateX = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.9], [0, 0, 0, -25]) // Tilt away negatively
+  const rotateZ = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.9], [0, 0, 0, -3])
   
+  // Outer background gradually fades from baby pink to off-white to provide contrast
+  const wrapperBg = useTransform(scrollYProgress, [0, 0.4], ["#FFEAEA", "#F8F8F8"])
+
   // Adjust boundary rounding during morph
-  const borderRadius = useTransform(scrollYProgress, [0, 0.4], ["0rem", "3rem"])
+  const borderRadius = useTransform(scrollYProgress, [0, 0.4], ["0rem", "2rem"])
   
   // Create a profound, physical drop-shadow dynamically during shrink
   const boxShadow = useTransform(
     scrollYProgress, 
     [0.1, 0.4], 
-    ["0 0px 0px rgba(0,0,0,0)", "0 60px 120px -20px rgba(179,57,81,0.25)"]
+    ["0 0px 0px rgba(0,0,0,0)", "0 60px 120px -20px rgba(179,57,81,0.15)"]
   )
 
   return (
-    <div ref={containerRef} className="relative w-full h-[200vh]">
+    <div ref={containerRef} className="relative w-full h-[220vh] z-0">
       {/* ── STICKY VIEWPORT ── */}
-      <div className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center p-0 md:p-8">
+      <motion.div style={{ backgroundColor: wrapperBg }} className="sticky top-0 w-full h-screen overflow-hidden flex items-center justify-center p-0">
         
         {/* ── THE MORPHING CARD ── */}
         <motion.div
@@ -63,7 +66,7 @@ export default function MorphingHero() {
           </div>
         </motion.div>
 
-      </div>
+      </motion.div>
     </div>
   )
 }
