@@ -86,7 +86,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       />
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 flex flex-col justify-between h-full p-12 md:p-16 lg:p-20" style={{ minHeight: "inherit" }}>
+      <div className="relative z-10 flex flex-col justify-between h-full pt-24 pb-12 px-12 md:pt-32 md:pb-16 md:px-16 lg:pt-40 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
         
         {/* Top Tagline */}
         <div className="h-6 overflow-hidden">
@@ -178,7 +178,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         </div>
 
         {/* ── CARD FOOTER SPECS (Elegant Aesthetic) ── */}
-        <div className="flex flex-wrap items-end gap-12 sm:gap-20 mt-auto pt-10 w-full mb-2">
+        <div className="flex flex-wrap items-end gap-12 sm:gap-20 mt-auto pt-10 w-full mb-0">
           <div className="flex flex-col gap-1.5">
              <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Experience</span>
              <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2 Yrs.</span>
