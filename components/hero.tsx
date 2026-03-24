@@ -147,22 +147,28 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               {/* Morph-reveal contact info */}
               <motion.div
                 style={{ opacity: contactOpacity, y: contactY }}
-                className="grid grid-cols-2 gap-x-12 gap-y-4 pt-10 border-t border-[#1a0a0a]/[0.05]"
+                className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-8 sm:gap-14 pt-8 border-t border-[#1a0a0a]/[0.08]"
               >
-                <div className="flex flex-col">
-                  <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Contact</span>
-                  <span className="text-[11px] font-bold text-[#1a0a0a]">sakshiagrahari2004@gmail.com</span>
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Contact</span>
+                  <a href="mailto:sakshiagrahari2004@gmail.com" className="text-[13.5px] font-bold text-[#1a0a0a] hover:text-[#b33951] transition-colors">
+                    sakshiagrahari2004@gmail.com
+                  </a>
                 </div>
-                <div className="flex flex-col text-right">
-                  <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Location</span>
-                  <span className="text-[11px] font-bold text-[#1a0a0a]">Planet Earth</span>
+                
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Location</span>
+                  <span className="text-[13.5px] font-bold text-[#1a0a0a]">Planet Earth</span>
                 </div>
-                <div className="flex flex-col col-span-2 mt-2">
-                  <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Status</span>
-                  <div className="flex items-center gap-4 text-[11px] font-bold text-[#1a0a0a]">
+
+                <div className="flex flex-col gap-1.5 sm:ml-auto">
+                  <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Status</span>
+                  <div className="flex items-center gap-3 text-[13.5px] font-bold text-[#1a0a0a]">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b33951] opacity-40"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#b33951]"></span>
+                    </span>
                     <span>Available for Freelance</span>
-                    <span className="w-1 h-1 rounded-full bg-[#1a0a0a]/20" />
-                    <span>sakshiagrahari.com</span>
                   </div>
                 </div>
               </motion.div>

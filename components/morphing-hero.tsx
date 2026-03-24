@@ -93,7 +93,7 @@ export default function MorphingHero() {
                  </defs>
                  <text fill="#b33951" fontSize="12.5" fontWeight="900" letterSpacing="4.5" style={{ fontFamily: "'Inter', sans-serif" }}>
                    <textPath href="#center-curve" startOffset="0%">
-                     UI/UX SPECIALIST ✦ AI PRODUCT DESIGNER ✦ WEBSITE DEVELOPER ✦ 
+                     UI/UX DESIGN ✦ AI PRODUCT DESIGN ✦ WEB DEV ✦ 
                    </textPath>
                  </text>
                </svg>
