@@ -81,32 +81,6 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         }}
       />
 
-
-
-      {/* ─── STATIC ROTATING BADGE (Top Right) ─── */}
-      {mounted && (
-        <div className="absolute top-10 right-10 lg:top-14 lg:right-14 w-28 h-28 pointer-events-none z-20">
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
-            className="w-full h-full"
-          >
-            <svg viewBox="0 0 100 100" className="w-full h-full opacity-80">
-              <defs>
-                <path id="badgePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
-              </defs>
-              <text className="fill-[#c0756e]" style={{ fontSize: "10.5px", fontWeight: "bold", letterSpacing: "0.22em" }}>
-                <textPath href="#badgePath">OPEN TO HIRE · OPEN TO HIRE ·</textPath>
-              </text>
-            </svg>
-          </motion.div>
-          {/* Center Dot */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-2.5 h-2.5 rounded-full bg-brand-600 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
-          </div>
-        </div>
-      )}
-
       {/* ─── MAIN CONTENT ─── */}
       <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-12 lg:p-14" style={{ minHeight: "inherit" }}>
         
