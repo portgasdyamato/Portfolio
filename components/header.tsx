@@ -35,17 +35,17 @@ export default function Header() {
           className="pointer-events-auto w-full max-w-3xl"
         >
           <div
-            className="flex items-center justify-between gap-4 px-8 py-4 rounded-full"
+            className="flex items-center justify-between gap-4 px-8 py-4 rounded-full transition-all duration-300"
             style={{
               background: scrolled
-                ? "linear-gradient(135deg, rgba(255, 225, 225, 0.7), rgba(255, 185, 185, 0.45))"
-                : "linear-gradient(135deg, rgba(255, 235, 235, 0.5), rgba(255, 200, 200, 0.25))",
-              backdropFilter: "blur(32px) saturate(200%)",
-              WebkitBackdropFilter: "blur(32px) saturate(200%)",
-              border: "1px solid rgba(255, 181, 181, 0.4)",
+                ? "rgba(255, 181, 181, 0.85)"
+                : "rgba(255, 181, 181, 0.4)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              border: "1px solid rgba(255, 255, 255, 0.4)",
               boxShadow: scrolled
-                ? "0 8px 40px rgba(255, 181, 181, 0.25), 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.6)"
-                : "0 4px 24px rgba(255, 181, 181, 0.15), inset 0 1px 0 rgba(255,255,255,0.5)",
+                ? "0 10px 40px rgba(255, 181, 181, 0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
+                : "0 4px 20px rgba(255, 181, 181, 0.2), inset 0 1px 0 rgba(255,255,255,0.4)",
             }}
           >
             {/* Logo — Large elegant text */}

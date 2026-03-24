@@ -64,12 +64,12 @@ export default function Hero() {
   return (
     <div
       className="col-span-1 md:col-span-2 relative overflow-hidden"
-      style={{ minHeight: "min(88vh, 760px)", borderRadius: "2.5rem", background: "#FDF8F5" }}
+      style={{ minHeight: "min(88vh, 760px)", borderRadius: "2.5rem", background: "#FFEAEA" }}
     >
-      {/* ─── CLEAN MINIMAL BACKGROUND ─── */}
+      {/* ─── CLEAN BABYPINK BACKGROUND ─── */}
       <div
         className="absolute inset-0"
-        style={{ background: "#FDF8F5" }}
+        style={{ background: "#FFEAEA" }}
       />
 
       {/* Subtle Dot Grid */}
@@ -206,15 +206,15 @@ export default function Hero() {
           <div className="md:col-span-4 flex items-center gap-4 flex-wrap">
             <Magnetic
               onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-              className="group flex items-center gap-2.5 bg-[#FFB5B5]/20 backdrop-blur-md border border-[#FFB5B5]/50 text-[#c0756e] text-[10px] tracking-[0.3em] font-bold uppercase px-8 py-4.5 rounded-full hover:bg-[#FFB5B5]/40 transition-all duration-300"
+              className="group flex items-center gap-2.5 bg-white text-[#1a0a0a] shadow-[0_4px_20px_rgba(255,181,181,0.5)] text-[11px] tracking-[0.3em] font-black uppercase px-9 py-4.5 rounded-full hover:bg-black hover:text-white transition-all duration-400"
             >
               View Work
-              <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
             </Magnetic>
 
             <Magnetic
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="flex items-center gap-2 text-[#1a0a0a] text-[10px] tracking-[0.3em] font-bold uppercase px-8 py-4 rounded-full border border-transparent hover:border-[#1a0a0a]/10 hover:bg-black/5 transition-all duration-300"
+              className="flex items-center gap-2 border-2 border-[#1a0a0a]/15 text-[#1a0a0a] text-[11px] tracking-[0.3em] font-black uppercase px-8 py-4 rounded-full hover:border-[#1a0a0a]/40 hover:bg-black/5 transition-all duration-300"
             >
               Let's Talk
             </Magnetic>
