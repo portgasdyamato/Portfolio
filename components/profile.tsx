@@ -15,7 +15,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   useEffect(() => setMounted(true), [])
 
   // Morph values
-  const yImage = useTransform(sp, [0, 0.6], [0, 20])
+  const yImage = useTransform(sp, [0, 0.6], [0, -60])
   const nameOpacity = useTransform(sp, [0.1, 0.4], [0, 1])
   const nameY = useTransform(sp, [0.1, 0.4], [15, 0])
 
@@ -25,7 +25,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.5 }}
       style={{ y: yImage, transformOrigin: "top right" }}
-      className="flex flex-col items-center justify-start h-full pt-16 md:pt-36 lg:pt-44 relative w-full"
+      className="flex flex-col items-center justify-start h-full pt-24 md:pt-36 lg:pt-44 relative w-full"
     >
       <motion.div
         whileHover={{ scale: 1.03 }}
