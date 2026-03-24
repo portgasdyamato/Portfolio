@@ -64,7 +64,7 @@ export default function Hero() {
   return (
     <div
       className="col-span-1 md:col-span-2 relative overflow-hidden"
-      style={{ minHeight: "min(88vh, 760px)", borderRadius: "2.5rem" }}
+      style={{ minHeight: "min(88vh, 760px)", borderRadius: "2.5rem", background: "#FDF8F5" }}
     >
       {/* ─── CLEAN MINIMAL BACKGROUND ─── */}
       <div
@@ -165,11 +165,9 @@ export default function Hero() {
             className="flex items-center gap-4"
           >
             <span
-              className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9]"
+              className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#c0756e]"
               style={{
                 fontFamily: "'Cormorant Garamond', Georgia, serif",
-                color: "transparent",
-                WebkitTextStroke: "1.5px #1a0a0a",
               }}
             >
               Visionary
@@ -182,7 +180,7 @@ export default function Hero() {
             transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
           >
             <span
-              className="block text-[64px] sm:text-[80px] lg:text-[110px] font-light italic tracking-tight leading-[0.9] text-[#FFB5B5]"
+              className="block text-[64px] sm:text-[80px] lg:text-[110px] font-light italic tracking-tight leading-[0.9] text-[#1a0a0a]"
               style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
             >
               Experiences.
@@ -208,7 +206,7 @@ export default function Hero() {
           <div className="md:col-span-4 flex items-center gap-4 flex-wrap">
             <Magnetic
               onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-              className="group flex items-center gap-2.5 bg-[#1a0a0a] text-white text-[11px] tracking-[0.3em] font-black uppercase px-8 py-4.5 rounded-full shadow-lg shadow-[#FFB5B5]/20 hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-300"
+              className="group flex items-center gap-2.5 bg-[#FFB5B5]/20 backdrop-blur-md border border-[#FFB5B5]/50 text-[#c0756e] text-[10px] tracking-[0.3em] font-bold uppercase px-8 py-4.5 rounded-full hover:bg-[#FFB5B5]/40 transition-all duration-300"
             >
               View Work
               <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -216,7 +214,7 @@ export default function Hero() {
 
             <Magnetic
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="flex items-center gap-2 border-2 border-[#FFB5B5] text-[#1a0a0a] text-[11px] tracking-[0.3em] font-black uppercase px-8 py-4 rounded-full hover:bg-[#FFB5B5]/15 transition-all duration-300"
+              className="flex items-center gap-2 text-[#1a0a0a] text-[10px] tracking-[0.3em] font-bold uppercase px-8 py-4 rounded-full border border-transparent hover:border-[#1a0a0a]/10 hover:bg-black/5 transition-all duration-300"
             >
               Let's Talk
             </Magnetic>
@@ -225,7 +223,7 @@ export default function Hero() {
           {/* Clean Stats Group */}
           <div className="md:col-span-3 lg:col-span-4 flex gap-10 justify-start md:justify-end">
              <div className="flex flex-col gap-1">
-                <span className="text-[32px] sm:text-[40px] font-black leading-none tracking-tighter text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>4+</span>
+                <span className="text-[32px] sm:text-[40px] font-black leading-none tracking-tighter text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2</span>
                 <span className="text-[9px] tracking-[0.3em] text-[#c0756e]/80 uppercase font-bold">Years</span>
              </div>
              <div className="flex flex-col gap-1">
