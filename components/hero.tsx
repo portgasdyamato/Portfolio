@@ -85,36 +85,60 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         }}
       />
 
-      {/* ─── FLOATING MIDDLE SKILLS COLUMN (fills dead center space) ─── */}
-      <div className="hidden lg:flex absolute right-4 top-0 h-full flex-col items-center justify-center gap-3 pointer-events-none z-10" style={{ right: "2%", width: "80px" }}>
-        {/* Vertical label */}
-        <span
-          className="text-[8px] tracking-[0.45em] text-[#b33951]/60 uppercase font-bold mb-2"
+      {/* ─── EDITORIAL CENTER SPINE (creative designer card detail) ─── */}
+      <div className="hidden lg:flex absolute top-0 h-full flex-col items-center justify-center gap-0 pointer-events-none z-10" style={{ right: "6%", width: "48px" }}>
+
+        {/* Top label */}
+        <motion.span
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.8 }}
+          className="text-[7.5px] tracking-[0.5em] text-[#1a0a0a]/30 uppercase font-bold"
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
-          Stack
-        </span>
+          Portfolio
+        </motion.span>
 
-        {/* Tool pills */}
-        {["Figma", "React", "GSAP", "Next.js", "Framer", "Tailwind", "AI/ML"].map((tool, i) => (
-          <motion.div
-            key={tool}
-            initial={{ opacity: 0, x: 10 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 + i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="px-2 py-1 rounded-full border border-[#1a0a0a]/10 bg-[#1a0a0a]/[0.03] backdrop-blur-sm"
-          >
-            <span className="text-[8px] tracking-[0.15em] text-[#1a0a0a]/50 font-semibold uppercase whitespace-nowrap">{tool}</span>
-          </motion.div>
-        ))}
+        {/* Top hairline */}
+        <motion.div
+          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
+          className="w-[1px] bg-[#1a0a0a]/10 flex-1 max-h-[60px]"
+          style={{ transformOrigin: "top" }}
+        />
 
-        {/* Bottom vertical label */}
-        <span
-          className="text-[8px] tracking-[0.45em] text-[#b33951]/40 uppercase font-bold mt-2"
+        {/* Center diamond cluster */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9, duration: 0.5 }}
+          className="flex flex-col items-center gap-2 py-4"
+        >
+          <div className="w-1 h-1 rounded-full bg-[#b33951]/60" />
+          <div className="w-1.5 h-1.5 rotate-45 bg-[#b33951]/40" />
+          <div className="w-1 h-1 rounded-full bg-[#b33951]/60" />
+        </motion.div>
+
+        {/* Middle section with vertical disciplines */}
+        <motion.div
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0, duration: 0.6 }}
+          className="flex flex-col items-center gap-4 py-2"
+        >
+          {["UI", "UX", "AI", "CODE"].map((word, i) => (
+            <span key={word} className="text-[8px] tracking-[0.3em] text-[#1a0a0a]/25 uppercase font-black">{word}</span>
+          ))}
+        </motion.div>
+
+        {/* Bottom hairline */}
+        <motion.div
+          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
+          className="w-[1px] bg-[#1a0a0a]/10 flex-1 max-h-[60px]"
+          style={{ transformOrigin: "bottom" }}
+        />
+
+        {/* Bottom label — year */}
+        <motion.span
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.8 }}
+          className="text-[7.5px] tracking-[0.5em] text-[#b33951]/40 uppercase font-bold"
           style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
         >
-          2024
-        </span>
+          2024–25
+        </motion.span>
       </div>
 
       {/* ─── MAIN CONTENT ─── */}
