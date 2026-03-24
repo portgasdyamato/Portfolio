@@ -60,7 +60,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
 
       {/* ─── STATIC ROTATING BADGE (Safe High-Altitude) ─── */}
       {mounted && (
-        <div className="absolute top-1 right-2 md:top-3 md:right-4 lg:top-5 lg:right-6 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
+        <div className="absolute -top-2 right-2 md:-top-1 md:right-4 lg:top-0 lg:right-6 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
