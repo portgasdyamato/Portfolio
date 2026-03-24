@@ -58,9 +58,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         </motion.div>
       </motion.div>
 
-      {/* ─── STATIC ROTATING BADGE (Decoupled from Scroll Lift) ─── */}
+      {/* ─── STATIC ROTATING BADGE (Safe High-Altitude) ─── */}
       {mounted && (
-        <div className="absolute top-20 right-4 md:top-24 md:right-6 lg:top-28 lg:right-8 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
+        <div className="absolute top-6 right-2 md:top-8 md:right-4 lg:top-10 lg:right-6 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
