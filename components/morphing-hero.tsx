@@ -80,16 +80,12 @@ export default function MorphingHero() {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
           
-          {/* ── SUBTLE PRINT GRID BORDER (Shifted to 60%) ── */}
-          <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[60%] w-[1px] bg-[#1a0a0a]/[0.1] pointer-events-none" />
+          {/* ── SUBTLE PRINT GRID BORDER ── */}
+          <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[66.666%] w-[1px] bg-[#1a0a0a]/[0.05] pointer-events-none" />
 
-          <section className="grid grid-cols-1 lg:grid-cols-5 gap-0 w-full h-full items-center py-12 pointer-events-auto">
-            <div className="lg:col-span-3 h-full">
-              <Hero scrollProgress={sp} />
-            </div>
-            <div className="lg:col-span-2 h-full">
-              <Profile scrollProgress={sp} />
-            </div>
+          <section className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full h-full items-center py-12 pointer-events-auto">
+            <Hero scrollProgress={sp} />
+            <Profile scrollProgress={sp} />
           </section>
         </div>
       </div>
