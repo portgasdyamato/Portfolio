@@ -174,8 +174,6 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               </motion.div>
             </motion.div>
           </div>
-
-          </div>
         </div>
       </div>
     </div>
