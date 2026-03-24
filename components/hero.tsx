@@ -160,7 +160,7 @@ export default function Hero() {
 
       {/* Displacement Mouse Shadow Mask (Interaction Designer feel) */}
       <motion.div 
-        style={{ left: useMotionValue(0), top: useMotionValue(0) }}
+        style={{ x: springX, y: springY, left: -400, top: -400 }}
         className="pointer-events-none absolute w-[800px] h-[800px] bg-primary/2 rounded-full blur-[150px] hidden lg:block"
       />
     </motion.div>

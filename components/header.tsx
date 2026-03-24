@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Menu, X, Info, Heart, Code2, Sparkles, User, Mail, FolderHeart } from "lucide-react"
+import { Menu, X, Info, Heart, Code2, Sparkles, User, Mail, Briefcase } from "lucide-react"
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId)
@@ -54,7 +54,7 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-2">
           {[
-            { name: "Projects", id: "projects", icon: FolderHeart },
+            { name: "Projects", id: "projects", icon: Briefcase },
             { name: "About", id: "about", icon: User },
             { name: "Contact", id: "contact", icon: Mail },
           ].map((item) => (
