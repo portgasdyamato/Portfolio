@@ -176,23 +176,20 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </motion.div>
         </div>
 
-        {/* ── CARD FOOTER SPECS (Print Aesthetic) ── */}
-        <div className="flex flex-wrap gap-10 sm:gap-16 mt-auto pt-8 w-full relative">
-          {/* Decorative Card "Print" Dash */}
-          <div className="absolute top-0 left-0 w-8 h-[3px] bg-[#1a0a0a]" />
-
-          <div className="flex flex-col gap-1.5 relative">
-             <span className="text-[8px] tracking-[0.4em] text-[#b33951] uppercase font-black">Experience</span>
-             <span className="text-[11px] font-black text-[#1a0a0a] tracking-wider uppercase">2+ Years</span>
+        {/* ── CARD FOOTER SPECS (Elegant Aesthetic) ── */}
+        <div className="flex flex-wrap gap-12 sm:gap-20 mt-auto pt-8 border-t border-[#1a0a0a]/[0.05] w-full">
+          <div className="flex flex-col gap-1.5">
+             <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Experience</span>
+             <span className="text-[22px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2 Years.</span>
           </div>
-          <div className="flex flex-col gap-1.5 relative">
-             <span className="text-[8px] tracking-[0.4em] text-[#b33951] uppercase font-black">Clients</span>
-             <span className="text-[11px] font-black text-[#1a0a0a] tracking-wider uppercase">40+ Global</span>
+          <div className="flex flex-col gap-1.5">
+             <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Clients</span>
+             <span className="text-[22px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>40+ Global.</span>
           </div>
-          <div className="flex flex-col gap-1.5 hidden sm:flex relative">
-             <span className="text-[8px] tracking-[0.4em] text-[#b33951] uppercase font-black">Status</span>
-             <span className="text-[11px] font-black text-[#1a0a0a] tracking-wider uppercase flex items-center gap-1.5">
-               <span className="w-1.5 h-1.5 rounded-full bg-[#b33951] animate-pulse shadow-[0_0_8px_#b33951]" /> Available
+          <div className="flex flex-col gap-1.5 hidden sm:flex">
+             <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Status</span>
+             <span className="text-[22px] font-medium italic text-[#1a0a0a] leading-none flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+               <span className="w-1.5 h-1.5 rounded-full bg-[#b33951] animate-pulse" /> Available.
              </span>
           </div>
         </div>
