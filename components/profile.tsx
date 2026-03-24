@@ -16,6 +16,8 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
 
   // Morph values
   const yImage = useTransform(sp, [0, 0.6], [0, 20])
+  const nameOpacity = useTransform(sp, [0.3, 0.6], [0, 1])
+  const nameY = useTransform(sp, [0.3, 0.6], [15, 0])
 
   return (
     <motion.div
@@ -38,6 +40,20 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           className="w-full h-auto object-cover"
           unoptimized
         />
+      </motion.div>
+
+      {/* ── CARD-SPECIFIC NAME & ROLE (Reveals on Morph) ── */}
+      <motion.div 
+        style={{ opacity: nameOpacity, y: nameY }}
+        className="flex flex-col items-center mt-8 text-center"
+      >
+        <span className="text-[32px] sm:text-[42px] font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+          Sakshi Agrahari.
+        </span>
+        <div className="flex flex-col gap-1">
+          <span className="text-[10px] tracking-[0.35em] text-[#b33951] uppercase font-bold">UI/UX & AI Product Designer</span>
+          <span className="text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Frontend Engineer</span>
+        </div>
       </motion.div>
 
       {/* ─── STATIC ROTATING BADGE (Top Right Pinhole) ─── */}
@@ -64,18 +80,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         </div>
       )}
 
-      {/* ── LUXURY SIGNATURE LOCKUP (Always Visible Print Branding) ── */}
-      <motion.div 
-        style={{ marginTop: "36px" }}
-        className="flex flex-col items-center w-full max-w-[280px] relative px-4"
-      >
-        <span className="text-[#1a0a0a] font-light italic text-[28px] sm:text-[32px] tracking-tight leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-          Sakshi Agrahari.
-        </span>
-        <span className="text-[#b33951] font-bold text-[9px] sm:text-[9.5px] tracking-[0.35em] uppercase mt-3 opacity-90">
-          UI/UX & Creative Designer
-        </span>
-      </motion.div>
+
 
     </motion.div>
   )

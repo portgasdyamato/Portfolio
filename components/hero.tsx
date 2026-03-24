@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion, useMotionValue, useSpring, AnimatePresence, MotionValue, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
-const TAGS = ["UI/UX Design", "Motion Design", "Interaction Design", "Creative Direction"]
+const TAGS = ["UI/UX Design", "AI Product Design", "Website Development", "Frontend Engineering"]
 
 // ── helper: Magnetic button ──
 function Magnetic({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) {
@@ -108,19 +108,19 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         <div className="flex flex-col justify-center py-[4vh] gap-8">
           <div className="flex flex-col gap-2">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+              <span className="block text-[54px] sm:text-[70px] lg:text-[100px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                 Crafting
               </span>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                Visionary
+              <span className="block text-[54px] sm:text-[70px] lg:text-[100px] font-black tracking-tight leading-[0.9] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Smart Digital
               </span>
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-light italic tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+              <span className="block text-[54px] sm:text-[70px] lg:text-[100px] font-light italic tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                 Experiences.
               </span>
             </motion.div>
@@ -131,7 +131,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
             className="flex flex-col gap-8 max-w-xl"
           >
             <p className="text-[#1a0a0a]/80 font-medium text-base leading-relaxed tracking-wide">
-              UI/UX designer sculpting human-centric interfaces where motion meets emotion and pixel-perfect precision.
+              I code high-performance websites and design intelligent products. I am an AI Product Designer, UI/UX Specialist, and Website Developer.
             </p>
 
             {/* ── PREMIUM BUTTONS ── */}
