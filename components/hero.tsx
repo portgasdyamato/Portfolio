@@ -14,8 +14,14 @@ export default function Hero() {
   const springX = useSpring(x, springConfig)
   const springY = useSpring(y, springConfig)
 
+  // Declare all transforms at top level
   const dx = useTransform(springX, (v) => -v * 0.02)
   const dy = useTransform(springY, (v) => -v * 0.02)
+  
+  const blurX1 = useTransform(dx, (v) => v * 2)
+  const blurY1 = useTransform(dy, (v) => v * 2)
+  const blurX2 = useTransform(dx, (v) => -v * 3)
+  const blurY2 = useTransform(dy, (v) => -v * 3)
 
   useEffect(() => {
     setMounted(true)
@@ -38,23 +44,20 @@ export default function Hero() {
       transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
       className="col-span-1 md:col-span-2 min-h-[600px] lg:min-h-[750px] bg-[#030303] rounded-[3rem] relative overflow-hidden group border border-white/5 font-outfit"
     >
-      {/* Cinematic Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="grain" />
         <motion.div 
-          style={{ x: useTransform(dx, (v) => v * 2), y: useTransform(dy, (v) => v * 2) }}
+          style={{ x: blurX1, y: blurY1 }}
           className="hero-blur bg-primary/20 top-[-10%] left-[-10%]" 
         />
         <motion.div 
-          style={{ x: useTransform(dx, (v) => -v * 3), y: useTransform(dy, (v) => -v * 3) }}
+          style={{ x: blurX2, y: blurY2 }}
           className="hero-blur bg-red-400/10 bottom-[-10%] right-[-10%]" 
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(255,181,181,0.05)_0%,transparent_60%)]" />
       </div>
 
       <div className="absolute inset-0 z-10 p-10 md:p-14 lg:p-20 flex flex-col justify-between">
-        
-        {/* Top Minimal Tokens (Bento but premium) */}
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
           <div className="flex gap-4">
              <div className="glass-pill flex items-center gap-3 group/pill cursor-pointer hover:bg-white/10 transition-all border-white/5 backdrop-blur-3xl px-5">
@@ -66,7 +69,6 @@ export default function Hero() {
                 <span className="text-[10px] tracking-[0.3em] font-normal text-white/40 uppercase whitespace-nowrap">Based in India</span>
              </div>
           </div>
-          
           <div className="hidden lg:flex items-center gap-8">
              <div className="flex flex-col items-end">
                 <span className="text-[9px] tracking-[0.5em] text-white/40 uppercase">System Status</span>
@@ -75,7 +77,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Main Kinetic Typography */}
         <div className="relative pointer-events-none select-none my-10 lg:my-0">
           <motion.div 
              style={{ x: dx, y: dy }}
@@ -106,7 +107,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Action & Secondary Meta */}
         <div className="flex flex-col lg:flex-row gap-12 lg:items-end justify-between border-t border-white/5 pt-12">
           <div className="flex flex-wrap gap-4">
              <button className="h-20 px-12 bg-white text-black font-black uppercase text-xs tracking-[0.4em] rounded-full hover:scale-105 transition-all duration-500 hover:bg-primary shadow-2xl flex items-center gap-4 group">
@@ -129,7 +129,7 @@ export default function Hero() {
              </div>
              <div className="flex flex-col gap-2 group cursor-default">
                 <div className="flex items-center gap-2">
-                   <FolderHeart size={12} className="text-primary" />
+                   <FolderHeartIcon size={12} className="text-primary" />
                    <span className="text-[50px] font-black text-white italic tracking-tighter leading-none group-hover:scale-110 transition-transform">42+</span>
                 </div>
                 <span className="text-[9px] tracking-[0.5em] text-white/30 uppercase pl-1">Project Completions</span>
@@ -138,7 +138,6 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Extreme Floating Background Decoration */}
       <div className="absolute top-0 right-0 w-[50%] h-full opacity-10 pointer-events-none hidden lg:block overflow-hidden">
         <motion.div 
            animate={{ 
@@ -154,11 +153,11 @@ export default function Hero() {
             alt="" 
             fill 
             className="object-contain object-right"
+            priority
           />
         </motion.div>
       </div>
 
-      {/* Displacement Mouse Shadow Mask (Interaction Designer feel) */}
       <motion.div 
         style={{ x: springX, y: springY, left: -400, top: -400 }}
         className="pointer-events-none absolute w-[800px] h-[800px] bg-primary/2 rounded-full blur-[150px] hidden lg:block"
@@ -167,6 +166,6 @@ export default function Hero() {
   )
 }
 
-function FolderHeart({ size, className }: { size: number, className: string }) {
+function FolderHeartIcon({ size, className }: { size: number, className: string }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M11 20H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H20a2 2 0 0 1 2 2v1.5"/><path d="M13.9 17.45c-1.2-1.2-1.14-2.8.2-4.1 1.3-1.3 3.3-1.25 4.5-.05 1.2-1.2 3.2-1.25 4.5.05 1.34 1.3 1.4 2.9.2 4.1L19.1 21.65l-5.2-4.2Z"/></svg>
 }
