@@ -11,7 +11,6 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   const sp = scrollProgress || mockScroll
 
   // Morph values
-  const opacitySubtitle = useTransform(sp, [0.4, 0.6], [0, 1])
   const yImage = useTransform(sp, [0, 0.6], [0, 20])
 
   return (
@@ -37,9 +36,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         />
       </motion.div>
 
-      {/* ── LUXURY SIGNATURE LOCKUP (Fades in during morph) ── */}
+      {/* ── LUXURY SIGNATURE LOCKUP (Always Visible Print Branding) ── */}
       <motion.div 
-        style={{ opacity: opacitySubtitle, marginTop: "20px" }}
+        style={{ marginTop: "24px" }}
         className="flex flex-col items-center w-full max-w-[260px] relative px-4"
       >
         <div className="w-[8px] h-[3px] bg-[#1a0a0a] rounded-sm absolute left-6 top-1/2 -mt-1 md:block hidden" />
