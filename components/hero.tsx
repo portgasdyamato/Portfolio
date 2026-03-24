@@ -85,6 +85,38 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         }}
       />
 
+      {/* ─── FLOATING MIDDLE SKILLS COLUMN (fills dead center space) ─── */}
+      <div className="hidden lg:flex absolute right-4 top-0 h-full flex-col items-center justify-center gap-3 pointer-events-none z-10" style={{ right: "2%", width: "80px" }}>
+        {/* Vertical label */}
+        <span
+          className="text-[8px] tracking-[0.45em] text-[#b33951]/60 uppercase font-bold mb-2"
+          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+        >
+          Stack
+        </span>
+
+        {/* Tool pills */}
+        {["Figma", "React", "GSAP", "Next.js", "Framer", "Tailwind", "AI/ML"].map((tool, i) => (
+          <motion.div
+            key={tool}
+            initial={{ opacity: 0, x: 10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.5 + i * 0.1, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="px-2 py-1 rounded-full border border-[#1a0a0a]/10 bg-[#1a0a0a]/[0.03] backdrop-blur-sm"
+          >
+            <span className="text-[8px] tracking-[0.15em] text-[#1a0a0a]/50 font-semibold uppercase whitespace-nowrap">{tool}</span>
+          </motion.div>
+        ))}
+
+        {/* Bottom vertical label */}
+        <span
+          className="text-[8px] tracking-[0.45em] text-[#b33951]/40 uppercase font-bold mt-2"
+          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+        >
+          2024
+        </span>
+      </div>
+
       {/* ─── MAIN CONTENT ─── */}
       <div className="relative z-10 flex flex-col justify-start h-full pt-42 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
         
