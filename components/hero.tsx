@@ -130,7 +130,7 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="block text-[11px] tracking-[0.4em] font-bold text-white uppercase"
+              className="block text-[11px] tracking-[0.4em] font-bold text-[#b33951] uppercase"
             >
               ✦ {TAGS[tagIdx]}
             </motion.span>
@@ -147,7 +147,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-white" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#b33951]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                 Visionary
               </span>
             </motion.div>
@@ -179,7 +179,7 @@ export default function Hero() {
 
               <Magnetic
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="flex items-center justify-center gap-2 bg-white text-[#1a0a0a] text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(255,255,255,0.4)] hover:scale-[1.03] transition-transform duration-300 border border-white/40 min-w-[180px]"
+                className="flex items-center justify-center gap-2 bg-transparent text-[#b33951] text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full border border-[#b33951]/40 hover:bg-[#b33951] hover:text-white hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(179,57,81,0.3)] transition-all duration-300 min-w-[180px]"
               >
                 Let's Talk
               </Magnetic>
