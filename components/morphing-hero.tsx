@@ -53,9 +53,9 @@ export default function MorphingHero() {
 
     // PHASE 2 (60% to 100%): Drop into the pocket
     tl.to(cardRef.current, {
-      y: 800, // Slide straight down into the bottom edge pocket
-      scale: 0.75, // Shrink a bit more while falling to sell the depth/pocket illusion
-      ease: "power2.in", // Accelerate like gravity
+      y: "40vh", // Drop precisely 40% down so the top half of the card stays permanently visible sticking OUT of the pocket line
+      scale: 0.7, // Shrink a bit more while falling to sell the depth/pocket illusion
+      ease: "power2.inOut", // Smooth rest into the pocket
       duration: 0.4
     }, 0.6)
     

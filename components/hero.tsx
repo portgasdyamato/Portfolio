@@ -175,24 +175,6 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
             </motion.div>
           </div>
 
-          {/* Footer metrics */}
-          <div className="flex flex-wrap items-end gap-12 sm:gap-20 mt-auto pt-8 w-full">
-            <div className="flex flex-col gap-1.5">
-              <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Experience</span>
-              <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                Approx 2 Years.
-              </span>
-            </div>
-            <div className="flex flex-col gap-1.5">
-              <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Rating</span>
-              <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>98% Success.</span>
-            </div>
-            <div className="flex flex-col gap-1.5 hidden sm:flex ml-auto border-l border-[#1a0a0a]/10 pl-8 text-right">
-              <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Inquiry</span>
-              <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none flex items-center justify-end gap-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                <span className="w-1.5 h-1.5 rounded-full bg-[#b33951] animate-pulse" /> Freelance.
-              </span>
-            </div>
           </div>
         </div>
       </div>
