@@ -127,7 +127,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         </div>
 
         {/* ── SPACIOUS HEADLINE & DESCRIPTION ── */}
-        <div className="flex-1 flex flex-col justify-center mt-[2vh] mb-auto gap-8">
+        <div className="flex-1 flex flex-col justify-center py-[4vh] gap-8">
           <div className="flex flex-col gap-2">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
               <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
@@ -177,12 +177,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         </div>
 
         {/* ── CARD FOOTER SPECS ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="absolute bottom-8 left-8 md:bottom-12 md:left-12 lg:bottom-14 lg:left-14 flex gap-8 sm:gap-14"
-        >
+        <div className="flex gap-8 sm:gap-14 mt-auto pt-6">
           <div className="flex flex-col gap-1.5">
              <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/50 uppercase font-black">Experience</span>
              <span className="text-[12px] font-bold text-[#1a0a0a]">2+ Years</span>
@@ -193,11 +188,11 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </div>
           <div className="flex flex-col gap-1.5 hidden sm:flex">
              <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/50 uppercase font-black">Availability</span>
-             <span className="text-[12px] font-bold text-[#1a0a0a] flex items-center gap-1.5">
+              <span className="text-[12px] font-bold text-[#1a0a0a] flex items-center gap-1.5">
                <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Open for work
              </span>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </div>
