@@ -80,20 +80,20 @@ export default function MorphingHero() {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
 
-          {/* ── BOTTOM MIDDLE CIRCULAR TEXT BADGE ── */}
-          <div className="absolute bottom-[8vh] lg:bottom-[10vh] left-1/2 -translate-x-1/2 translate-y-1/2 w-[200px] sm:w-[240px] lg:w-[280px] aspect-square pointer-events-none z-10 hidden lg:block opacity-[0.55] mix-blend-multiply">
+          {/* ── BOTTOM MIDDLE CIRCULAR TEXT BADGE (Half-Cut Off) ── */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[220px] sm:w-[260px] lg:w-[300px] aspect-square pointer-events-none z-10 hidden lg:block opacity-[0.45] mix-blend-multiply">
             <motion.div 
               animate={{ rotate: 360 }} 
-              transition={{ duration: 32, repeat: Infinity, ease: "linear" }} 
+              transition={{ duration: 45, repeat: Infinity, ease: "linear" }} 
               className="w-full h-full relative"
             >
                <svg viewBox="0 0 200 200" className="w-full h-full">
                  <defs>
-                   <path id="center-curve" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                   <path id="center-curve" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" />
                  </defs>
-                 <text fill="#b33951" fontSize="13" fontWeight="bold" letterSpacing="4.5" style={{ fontFamily: "'Inter', sans-serif" }}>
+                 <text fill="#b33951" fontSize="12.5" fontWeight="900" letterSpacing="4.5" style={{ fontFamily: "'Inter', sans-serif" }}>
                    <textPath href="#center-curve" startOffset="0%">
-                     CREATIVE UI / UX DESIGNER ✦ AI PRODUCT ENGINEER ✦ 
+                     UI/UX SPECIALIST ✦ AI PRODUCT DESIGNER ✦ WEBSITE DEVELOPER ✦ 
                    </textPath>
                  </text>
                </svg>
