@@ -49,12 +49,18 @@ export default function Home() {
         <CustomCursor />
         <Header />
 
-        <main className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-24 md:space-y-32 pt-24 md:pt-32">
-          <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 bg-[#FFEAEA]">
+        {/* ─── FULL BLEED BABY PINK HERO WRAPPER ─── */}
+        <div className="w-full bg-[#FFEAEA] pt-24 md:pt-32 pb-16 lg:pb-24 rounded-b-[2.5rem] md:rounded-b-[4rem] shadow-sm mb-24 md:mb-32">
+          <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl">
+            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <Hero />
               <Profile />
             </section>
+          </div>
+        </div>
 
+        {/* ─── REST OF PAGE ─── */}
+        <main className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-24 md:space-y-32">
             <div className="w-screen relative left-1/2 -translate-x-1/2">
               <NewsTicker />
             </div>

@@ -64,12 +64,12 @@ export default function Hero() {
   return (
     <div
       className="col-span-1 md:col-span-2 relative overflow-hidden"
-      style={{ minHeight: "min(88vh, 760px)", borderRadius: "2.5rem", background: "#FFEAEA" }}
+      style={{ minHeight: "min(88vh, 760px)", borderRadius: "2.5rem", background: "transparent" }}
     >
-      {/* ─── CLEAN BABYPINK BACKGROUND ─── */}
+      {/* ─── INHERIT PAGE BACKGROUND ─── */}
       <div
         className="absolute inset-0"
-        style={{ background: "#FFEAEA" }}
+        style={{ background: "transparent" }}
       />
 
       {/* Subtle Dot Grid */}
