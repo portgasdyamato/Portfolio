@@ -1,158 +1,215 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
-import Image from "next/image"
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+
+const ROLES = ["Interaction Designer", "Motion Curator", "UI/UX Strategist", "Creative Director"]
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
-  
-  // Mouse tracking for parallax effects
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
+  const [roleIdx, setRoleIdx] = useState(0)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-  const springConfig = { damping: 25, stiffness: 150 }
-  const springX = useSpring(mouseX, springConfig)
-  const springY = useSpring(mouseY, springConfig)
-
-  // Floating elements parallax (stable ranges)
-  const dx = useTransform(springX, [0, 1920], [-30, 30])
-  const dy = useTransform(springY, [0, 1080], [-30, 30])
-  // Reverse parallax for second element — must be top-level
-  const rdx = useTransform(dx, (v) => -v)
-  const rdy = useTransform(dy, (v) => -v)
+  // Mouse parallax – safe defaults for SSR
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const sx = useSpring(mx, { stiffness: 60, damping: 20 })
+  const sy = useSpring(my, { stiffness: 60, damping: 20 })
+  // All transforms declared unconditionally at top level
+  const blobX = useTransform(sx, (v) => v * 0.04)
+  const blobY = useTransform(sy, (v) => v * 0.04)
+  const card1X = useTransform(sx, (v) => v * -0.015)
+  const card1Y = useTransform(sy, (v) => v * -0.015)
+  const card2X = useTransform(sx, (v) => v * 0.025)
+  const card2Y = useTransform(sy, (v) => v * 0.025)
 
   useEffect(() => {
     setMounted(true)
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX)
-      mouseY.set(e.clientY)
+    const el = containerRef.current
+    if (!el) return
+    const onMove = (e: MouseEvent) => {
+      const rect = el.getBoundingClientRect()
+      mx.set(e.clientX - rect.left - rect.width / 2)
+      my.set(e.clientY - rect.top - rect.height / 2)
     }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [mouseX, mouseY])
+    el.addEventListener("mousemove", onMove)
+    return () => el.removeEventListener("mousemove", onMove)
+  }, [mx, my])
 
-  if (!mounted) return null
+  useEffect(() => {
+    const id = setInterval(() => setRoleIdx(i => (i + 1) % ROLES.length), 2200)
+    return () => clearInterval(id)
+  }, [])
+
+  if (!mounted) return <div className="col-span-1 md:col-span-2 min-h-[580px]" />
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="col-span-1 md:col-span-2 min-h-[500px] lg:min-h-[640px] bg-[#080808] rounded-[2.5rem] relative overflow-hidden group border border-white/5"
+    <div
+      ref={containerRef}
+      className="col-span-1 md:col-span-2 min-h-[580px] lg:min-h-[680px] relative overflow-hidden rounded-[2.5rem] bg-[#FDF8F5] border border-[#FFB5B5]/20 shadow-sm"
     >
-      {/* Dynamic Background: Mesh & Glow */}
-      <div className="absolute inset-0 z-0 opacity-40">
-        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#FFB5B5]/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[100px]" />
-        <div className="grid-overlay opacity-[0.05]" />
-      </div>
+      {/* Organic pink blobs */}
+      <motion.div
+        style={{ x: blobX, y: blobY }}
+        className="pointer-events-none absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full blur-[90px]"
+        animate={{ scale: [1, 1.08, 1] }}
+        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
+        style={{ x: blobX, y: blobY, background: "radial-gradient(circle, rgba(255,181,181,0.28) 0%, transparent 70%)" }}
+      />
+      <motion.div
+        className="pointer-events-none absolute -bottom-16 right-0 w-[360px] h-[360px] rounded-full blur-[80px]"
+        animate={{ scale: [1, 1.12, 1] }}
+        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        style={{ background: "radial-gradient(circle, rgba(255,181,181,0.18) 0%, transparent 70%)" }}
+      />
 
-      {/* Interactive Floating Element 1 - Top Right */}
-      <motion.div 
-        style={{ x: dx, y: dy }}
-        className="absolute top-12 right-12 z-10 hidden lg:block"
-      >
-        <div className="glass-card p-6 rotate-6 group-hover:rotate-0 transition-transform duration-700 rounded-3xl">
-          <div className="flex flex-col gap-3">
-            <div className="w-12 h-12 rounded-full bg-primary/20 animate-pulse" />
-            <div className="h-2 w-24 bg-white/20 rounded-full" />
-            <div className="h-2 w-16 bg-white/10 rounded-full" />
+      {/* Fine dot texture */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(circle, rgba(255,181,181,0.4) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+          opacity: 0.35,
+        }}
+      />
+
+      {/* ── LAYOUT ── */}
+      <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+
+        {/* Top row: status pill + role tag */}
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-[#FFB5B5]/30 px-4 py-2 rounded-full shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-[#FFB5B5] animate-pulse" />
+            <span className="text-[10px] tracking-[0.35em] font-bold text-[#c0756e] uppercase">Open to work</span>
+          </div>
+
+          <div className="h-8 overflow-hidden flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={roleIdx}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="text-[11px] tracking-[0.5em] text-[#FFB5B5] font-bold uppercase"
+              >
+                {ROLES[roleIdx]}
+              </motion.span>
+            </AnimatePresence>
           </div>
         </div>
-      </motion.div>
 
-      {/* Interactive Floating Element 2 - Bottom Left */}
-      <motion.div 
-        style={{ x: rdx, y: rdy }}
-        className="absolute bottom-12 left-12 z-10 hidden lg:block"
-      >
-        <div className="glass-accent p-4 -rotate-12 group-hover:rotate-0 transition-transform duration-700 rounded-2xl shadow-2xl">
-          <ArrowUpRight className="w-8 h-8 text-primary/60" />
-        </div>
-      </motion.div>
+        {/* ── HERO HEADLINE ── */}
+        <div className="my-8 lg:my-0">
+          {/* Giant editorial number — art direction element */}
+          <div
+            className="absolute right-10 top-16 text-[260px] font-black leading-none select-none pointer-events-none hidden xl:block"
+            style={{ color: "rgba(255,181,181,0.07)", fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+          >
+            S.
+          </div>
 
-      {/* Main Content Layout */}
-      <div className="relative z-20 h-full flex flex-col justify-between p-10 md:p-14 lg:p-20">
-        {/* Header Badges */}
-        <div className="flex gap-3">
-          <span className="px-4 py-1.5 bg-white/5 border border-white/10 text-white/40 text-[10px] uppercase tracking-widest rounded-full backdrop-blur-md">
-            Creative Design
-          </span>
-          <span className="px-4 py-1.5 bg-primary/10 border border-primary/20 text-primary text-[10px] uppercase tracking-widest rounded-full font-bold backdrop-blur-md">
-            Development
-          </span>
-        </div>
-
-        {/* Hero Central Text */}
-        <div className="max-w-3xl">
-          <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-black font-outfit text-white uppercase tracking-tighter leading-[0.9] mb-8"
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
+            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
           >
-            Digital <br /> Experience <br /> <span className="text-primary italic font-light">Designer.</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="text-white/40 text-lg md:text-xl font-light font-inter max-w-lg leading-relaxed mb-10"
-          >
-            Sculpting human-centric interfaces with cinematic motion, technical precision, and a bit of pixel magic.
-          </motion.p>
-          
-          <div className="flex flex-wrap gap-4">
-            <button className="h-16 px-10 bg-white text-[#080808] font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-primary transition-all duration-500 shadow-2xl shadow-black/40">
-              Selected Projects
-            </button>
-            <button className="h-16 px-10 glass-card text-white font-bold uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-white/5 transition-all duration-300">
-              Let's Connect
-            </button>
-          </div>
+            {/* Line 1 */}
+            <span
+              className="block text-[56px] sm:text-[76px] lg:text-[96px] font-black leading-[0.88] tracking-tight text-[#1a0a0a]"
+            >
+              Crafting
+            </span>
+            {/* Line 2 — outlined / ghost text */}
+            <span
+              className="block text-[56px] sm:text-[76px] lg:text-[96px] font-black leading-[0.88] tracking-tight"
+              style={{ WebkitTextStroke: "2px #1a0a0a", color: "transparent" }}
+            >
+              visionary
+            </span>
+            {/* Line 3 — pink italic accent */}
+            <span
+              className="block text-[56px] sm:text-[76px] lg:text-[96px] font-light italic leading-[0.88] tracking-tight text-[#FFB5B5]"
+            >
+              experiences.
+            </span>
+          </motion.h1>
         </div>
 
-        {/* Bottom Stats / Details */}
-        <div className="flex justify-between items-end border-t border-white/5 pt-10 mt-20">
-          <div className="flex gap-10">
-            <div className="flex flex-col">
-              <span className="text-primary font-black text-2xl font-outfit">99+</span>
-              <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Client Satisfaction</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-primary font-black text-2xl font-outfit">03+</span>
-              <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Industry Awards</span>
+        {/* Bottom row: copy + CTA + stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col lg:flex-row gap-8 items-start lg:items-end justify-between border-t border-[#FFB5B5]/20 pt-8"
+        >
+          <div className="max-w-xs">
+            <p className="text-[#9e6a65] text-sm leading-relaxed">
+              UI/UX designer who sculpts interfaces at the intersection of motion, emotion, and pixel-level precision.
+            </p>
+            <div className="flex gap-3 mt-5">
+              <button
+                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                className="flex items-center gap-2 bg-[#1a0a0a] text-white text-[11px] tracking-[0.3em] font-bold uppercase px-7 py-4 rounded-full hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-400 group"
+              >
+                View Work
+                <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </button>
+              <button
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="flex items-center gap-2 border border-[#FFB5B5]/40 text-[#c0756e] text-[11px] tracking-[0.3em] font-bold uppercase px-7 py-4 rounded-full hover:bg-[#FFB5B5]/10 transition-all duration-300"
+              >
+                Let's Talk
+              </button>
             </div>
           </div>
-          <div className="hidden sm:block">
-            <div className="flex flex-col items-end">
-              <span className="text-[8px] font-mono text-white/40 uppercase tracking-[0.4em]">Based in India</span>
-              <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.4em]">Available for projects</span>
-            </div>
+
+          {/* Stats */}
+          <div className="flex gap-10 lg:gap-16">
+            {[
+              { n: "4+", label: "Years Exp." },
+              { n: "42+", label: "Projects" },
+              { n: "99%", label: "Satisfaction" },
+            ].map(s => (
+              <div key={s.label} className="flex flex-col gap-0.5">
+                <span
+                  className="text-[40px] font-black leading-none text-[#1a0a0a] tabular-nums"
+                  style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                >
+                  {s.n}
+                </span>
+                <span className="text-[8px] tracking-[0.5em] text-[#c0756e]/60 uppercase font-semibold">{s.label}</span>
+              </div>
+            ))}
           </div>
-        </div>
+        </motion.div>
       </div>
-      
-      {/* Background Graphic Interaction */}
-      <div className="absolute bottom-0 right-0 w-[40%] h-[100%] z-0 pointer-events-none overflow-hidden hidden lg:block">
-         <motion.div 
-           animate={{ 
-             y: [0, -20, 0],
-             rotate: [0, 5, 0]
-           }}
-           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-           className="relative w-full h-full opacity-30 grayscale saturate-0 contrast-125"
-         >
-           <Image 
-             src="/bk3.gif" 
-             alt="" 
-             fill 
-             className="object-contain object-bottom"
-           />
-         </motion.div>
-      </div>
-    </motion.div>
+
+      {/* Floating glass pills — interactive parallax */}
+      <motion.div
+        style={{ x: card1X, y: card1Y }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.7, duration: 0.6 }}
+        className="absolute top-8 right-[30%] bg-white/70 backdrop-blur-md border border-[#FFB5B5]/30 shadow-lg rounded-2xl px-5 py-3 hidden lg:flex items-center gap-3 pointer-events-none"
+      >
+        <div className="w-3 h-3 rounded-full bg-[#FFB5B5]" />
+        <span className="text-[10px] tracking-[0.3em] text-[#c0756e] font-bold uppercase">UI/UX</span>
+      </motion.div>
+
+      <motion.div
+        style={{ x: card2X, y: card2Y }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.9, duration: 0.6 }}
+        className="absolute bottom-24 right-12 bg-white/70 backdrop-blur-md border border-[#FFB5B5]/30 shadow-lg rounded-2xl px-5 py-3 hidden lg:flex items-center gap-3 pointer-events-none"
+      >
+        <div className="w-3 h-3 rounded-full bg-[#1a0a0a]" />
+        <span className="text-[10px] tracking-[0.3em] text-[#1a0a0a] font-bold uppercase">Motion</span>
+      </motion.div>
+    </div>
   )
 }

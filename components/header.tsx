@@ -1,223 +1,190 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Menu, X, Info, Heart, Coffee, Code2, Sparkles, User, Mail, FolderHeart } from "lucide-react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Menu, X, Info, Sparkles, Code2 } from "lucide-react"
 
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId)
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" })
-  }
-}
+const scrollTo = (id: string) =>
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+
+const NAV = [
+  { label: "Projects", id: "projects" },
+  { label: "About", id: "about" },
+  { label: "Contact", id: "contact" },
+]
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isInfoOpen, setIsInfoOpen] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
-  const [lastScrollY, setLastScrollY] = useState(0)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
-
-  const closeMenu = () => {
-    setIsMenuOpen(false)
-  }
-
-  const toggleInfo = () => {
-    setIsInfoOpen(!isInfoOpen)
-  }
-
-  const controlNavbar = () => {
-    if (typeof window !== 'undefined') {
-      if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        setIsVisible(false)
-      } else {
-        setIsVisible(true)
-      }
-      setLastScrollY(window.scrollY)
-    }
-  }
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [infoOpen, setInfoOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', controlNavbar)
-      return () => {
-        window.removeEventListener('scroll', controlNavbar)
-      }
-    }
-  }, [lastScrollY])
-
-  useEffect(() => {
-    const hasVisited = localStorage.getItem("hasVisited");
-    if (!hasVisited) {
-      setIsInfoOpen(true);
-      localStorage.setItem("hasVisited", "true");
-    }
-  }, []);
+    const onScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
-    <div className="relative">
+    <>
+      {/* ── HEADER BAR ── */}
       <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ 
-          opacity: 1, 
-          y: isVisible ? 0 : -100 
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="py-6 px-4 md:px-14 flex justify-between items-center bg-black/60 backdrop-blur-2xl fixed top-0 left-0 right-0 z-50 border-b border-white/5"
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-2xl shadow-[0_1px_30px_rgba(255,181,181,0.15)] border-b border-[#FFB5B5]/20"
+            : "bg-transparent"
+        }`}
       >
-        <motion.button
-          onClick={() => scrollToSection("home")}
-          className="text-xl md:text-2xl font-light tracking-[0.2em] cursor-pointer text-white hover:text-primary transition-colors duration-300 uppercase"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-        >
-          Sakshi Agrahari
-        </motion.button>
-        
-        {/* Desktop Navigation */}
-        <div className="flex items-center space-x-12">
-          <nav className="hidden md:flex space-x-12">
-            {[
-              { name: "PROJECTS", id: "projects", icon: FolderHeart },
-              { name: "ABOUT", id: "about", icon: User },
-              { name: "CONTACT", id: "contact", icon: Mail },
-            ].map((item) => (
-              <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.id)}
-                className="text-[10px] font-bold tracking-[0.4em] text-white/40 hover:text-primary transition-all duration-300 flex items-center gap-2 group"
-                whileHover={{ y: -2 }}
+        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
+          {/* Logo */}
+          <button
+            onClick={() => scrollTo("home")}
+            className="flex items-center gap-3 group"
+          >
+            <div className="w-8 h-8 rounded-full bg-[#FFB5B5] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <span
+                className="text-white font-black text-sm"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
-                <item.icon size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
-                {item.name}
-              </motion.button>
+                S
+              </span>
+            </div>
+            <span
+              className="text-[#1a0a0a] font-bold tracking-[0.12em] text-sm uppercase group-hover:text-[#FFB5B5] transition-colors"
+              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", letterSpacing: "0.18em" }}
+            >
+              Sakshi Agrahari
+            </span>
+          </button>
+
+          {/* Desktop nav */}
+          <nav className="hidden md:flex items-center gap-1">
+            {NAV.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => scrollTo(item.id)}
+                className="relative px-5 py-2.5 text-[10px] tracking-[0.4em] uppercase font-bold text-[#9e6a65] hover:text-[#1a0a0a] transition-colors group"
+              >
+                {item.label}
+                <span className="absolute bottom-1.5 left-5 right-5 h-[1.5px] bg-[#FFB5B5] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
+              </button>
             ))}
           </nav>
-          
-          <div className="flex items-center space-x-4">
+
+          {/* Right actions */}
+          <div className="flex items-center gap-2">
             <motion.button
-              onClick={toggleInfo}
-              className="p-3 bg-white/5 rounded-full text-white/60 hover:text-primary transition-colors border border-white/10"
-              whileHover={{ scale: 1.1, rotate: 10 }}
-              whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.08, rotate: 5 }}
+              whileTap={{ scale: 0.93 }}
+              onClick={() => setInfoOpen(true)}
+              className="w-9 h-9 rounded-full bg-[#FFB5B5]/15 border border-[#FFB5B5]/30 flex items-center justify-center text-[#c0756e] hover:bg-[#FFB5B5]/30 transition-all"
             >
-              <Info size={18} />
+              <Info size={14} />
             </motion.button>
-            
-            {/* Mobile Menu Toggle */}
-            <motion.button
-              onClick={toggleMenu}
-              className="md:hidden p-3 bg-white/5 rounded-full text-white/60 hover:text-primary transition-colors border border-white/10"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
+
+            <button
+              className="md:hidden w-9 h-9 rounded-full bg-[#FFB5B5]/15 border border-[#FFB5B5]/30 flex items-center justify-center text-[#c0756e]"
+              onClick={() => setMenuOpen(!menuOpen)}
             >
-              {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
-            </motion.button>
+              {menuOpen ? <X size={16} /> : <Menu size={16} />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Menu Dropdown */}
+        {/* Mobile menu */}
         <AnimatePresence>
-          {isMenuOpen && (
+          {menuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -10, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10, scale: 0.95 }}
-              transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 bg-black/90 backdrop-blur-2xl shadow-2xl border-t border-white/5 md:hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="overflow-hidden border-t border-[#FFB5B5]/20 bg-white/95 backdrop-blur-2xl md:hidden"
             >
-              <nav className="p-8">
-                <div className="space-y-6">
-                  {[
-                    { name: "PROJECTS", id: "projects" },
-                    { name: "ABOUT", id: "about" },
-                    { name: "CONTACT", id: "contact" },
-                  ].map((item, index) => (
-                    <motion.button
-                      key={item.name}
-                      onClick={() => {
-                        scrollToSection(item.id)
-                        closeMenu()
-                      }}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 + 0.1 }}
-                      className="block w-full text-left py-2 text-xl font-light tracking-[0.2em] text-white/60 hover:text-primary transition-colors"
-                    >
-                      {item.name}
-                    </motion.button>
-                  ))}
-                </div>
+              <nav className="flex flex-col py-4 px-6">
+                {NAV.map((item, i) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ x: -20, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    transition={{ delay: i * 0.07 }}
+                    onClick={() => { scrollTo(item.id); setMenuOpen(false) }}
+                    className="py-4 text-left text-xl font-black text-[#1a0a0a] hover:text-[#FFB5B5] transition-colors tracking-tight border-b border-[#FFB5B5]/10 last:border-0"
+                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
               </nav>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.header>
 
-      {/* Info Modal / Overlay */}
+      {/* ── INFO / ABOUT MODAL ── */}
       <AnimatePresence>
-        {isInfoOpen && (
+        {infoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl flex items-center justify-center p-6"
-            onClick={() => setIsInfoOpen(false)}
+            className="fixed inset-0 z-[200] bg-[#1a0a0a]/40 backdrop-blur-sm flex items-center justify-center p-6"
+            onClick={() => setInfoOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 50 }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="gradient-glass-dark rounded-[2.5rem] p-10 max-w-md w-full shadow-2xl border border-white/10"
+              initial={{ scale: 0.85, y: 40, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.85, y: 40, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
               onClick={(e) => e.stopPropagation()}
+              className="bg-[#FDF8F5] border border-[#FFB5B5]/30 rounded-[2.5rem] p-10 max-w-md w-full shadow-[0_40px_80px_rgba(0,0,0,0.12)]"
             >
-              <div className="relative mb-8 text-center">
-                <motion.h2 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">
-                  Welcome to <br /> <span className="text-primary italic font-light">My Space.</span>
-                </motion.h2>
-                <p className="text-white/40 text-sm font-light leading-relaxed">
-                  Crafting high-end digital experiences with cinematic motion.
-                </p>
+              {/* Decorative blob */}
+              <div className="w-16 h-16 rounded-full bg-[#FFB5B5]/20 flex items-center justify-center mb-6">
+                <Sparkles className="text-[#FFB5B5]" size={24} />
               </div>
 
-              <div className="space-y-6 mb-10">
-                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                    <Code2 size={18} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">Clean Build</h4>
-                    <p className="text-white/30 text-xs">Optimized for speed and accessibility.</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                    <Sparkles size={18} />
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">Premium UX</h4>
-                    <p className="text-white/30 text-xs">Aesthetic focus with smooth interactions.</p>
-                  </div>
-                </div>
-              </div>
-
-              <motion.button
-                onClick={() => setIsInfoOpen(false)}
-                className="w-full h-14 bg-white text-black font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-primary transition-all duration-300"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+              <p className="text-[10px] tracking-[0.5em] font-bold text-[#FFB5B5] uppercase mb-2">About this site</p>
+              <h3
+                className="text-4xl font-black text-[#1a0a0a] leading-tight mb-4"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
-                Explore More
-              </motion.button>
+                Designed with intention.
+              </h3>
+              <p className="text-[#9e6a65] text-sm leading-relaxed mb-8">
+                Every interaction on this portfolio was thoughtfully sculpted — from the cinematic splash screen to the
+                smallest hover state. This is a living canvas of Sakshi's design philosophy: precision meets playfulness.
+              </p>
+
+              <div className="flex flex-col gap-3 mb-8">
+                {[
+                  { icon: Sparkles, label: "Cinematic Motion Design" },
+                  { icon: Code2, label: "Pixel-Perfect Engineering" },
+                ].map(({ icon: Icon, label }) => (
+                  <div
+                    key={label}
+                    className="flex items-center gap-4 bg-white border border-[#FFB5B5]/20 rounded-2xl p-4"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-[#FFB5B5]/15 flex items-center justify-center text-[#c0756e]">
+                      <Icon size={15} />
+                    </div>
+                    <span className="text-[11px] tracking-[0.2em] font-bold text-[#1a0a0a] uppercase">{label}</span>
+                  </div>
+                ))}
+              </div>
+
+              <button
+                onClick={() => setInfoOpen(false)}
+                className="w-full h-14 bg-[#1a0a0a] text-white font-black uppercase text-[10px] tracking-[0.4em] rounded-full hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-400"
+              >
+                Enter Portfolio
+              </button>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </>
   )
 }
