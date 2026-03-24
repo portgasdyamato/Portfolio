@@ -86,7 +86,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       />
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 flex flex-col justify-start h-full pt-16 pb-12 px-12 md:pt-24 md:pb-16 md:px-16 lg:pt-32 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
+      <div className="relative z-10 flex flex-col justify-start h-full pt-28 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
         
         {/* Top Tagline */}
         <div className="h-6 overflow-hidden mt-2">

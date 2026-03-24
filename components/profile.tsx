@@ -23,7 +23,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.5 }}
       style={{ y: yImage, transformOrigin: "top right" }}
-      className="flex flex-col items-center justify-start h-full pt-16 md:pt-24 lg:pt-32 relative w-full"
+      className="flex flex-col items-center justify-start h-full pt-28 md:pt-36 lg:pt-44 relative w-full"
     >
       <motion.div
         whileHover={{ scale: 1.03 }}
@@ -42,7 +42,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
 
       {/* ─── STATIC ROTATING BADGE (Top Right Pinhole) ─── */}
       {mounted && (
-        <div className="absolute -top-12 md:-top-16 lg:-top-20 -right-4 md:right-0 lg:right-4 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
+        <div className="absolute -top-4 md:-top-6 lg:-top-8 -right-4 md:right-0 lg:right-4 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
