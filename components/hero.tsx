@@ -74,9 +74,9 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         }}
       />
 
-      {/* ─── MAIN CONTENT: single col, giant type fills space ─── */}
+      {/* ─── MAIN CONTENT: single col, type fills space ─── */}
       <div
-        className="relative z-10 h-full flex flex-col justify-start pt-28 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-16"
+        className="relative z-10 h-full flex flex-col justify-between pt-20 pb-10 px-10 md:pt-24 md:pb-12 md:px-14 lg:pt-32 lg:pb-16 lg:px-16"
         style={{ minHeight: "inherit" }}
       >
 
@@ -100,20 +100,20 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </div>
 
           {/* Headline */}
-          <div className="flex flex-col justify-center py-[4vh] gap-8">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col justify-center py-4 gap-6">
+          <div className="flex flex-col gap-1 md:gap-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[72px] sm:text-[90px] lg:text-[120px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[70px] sm:text-[90px] lg:text-[105px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Crafting
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[72px] sm:text-[90px] lg:text-[120px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[70px] sm:text-[90px] lg:text-[105px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Smart Digital
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[72px] sm:text-[90px] lg:text-[120px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[70px] sm:text-[90px] lg:text-[105px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Experiences.
                 </span>
               </motion.div>
@@ -170,10 +170,12 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </div>
 
           {/* Footer metrics */}
-          <div className="flex flex-wrap items-end gap-12 sm:gap-20 mt-auto pt-10 w-full">
+          <div className="flex flex-wrap items-end gap-12 sm:gap-20 mt-auto pt-8 w-full">
             <div className="flex flex-col gap-1.5">
               <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Experience</span>
-              <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2 Yrs.</span>
+              <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Approx 2 Years.
+              </span>
             </div>
             <div className="flex flex-col gap-1.5">
               <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Rating</span>

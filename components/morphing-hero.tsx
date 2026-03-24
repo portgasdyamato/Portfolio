@@ -80,11 +80,11 @@ export default function MorphingHero() {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
 
-          {/* ── BOTTOM CIRCULAR TEXT BADGE (Decorative Space Filler) ── */}
-          <div className="absolute bottom-[10vh] left-[65%] -translate-x-1/2 translate-y-1/2 w-[160px] aspect-square pointer-events-none z-10 hidden lg:block opacity-[0.75]">
+          {/* ── BOTTOM MIDDLE CIRCULAR TEXT BADGE ── */}
+          <div className="absolute bottom-[8vh] lg:bottom-[10vh] left-1/2 -translate-x-1/2 translate-y-1/2 w-[200px] sm:w-[240px] lg:w-[280px] aspect-square pointer-events-none z-10 hidden lg:block opacity-[0.55] mix-blend-multiply">
             <motion.div 
               animate={{ rotate: 360 }} 
-              transition={{ duration: 24, repeat: Infinity, ease: "linear" }} 
+              transition={{ duration: 32, repeat: Infinity, ease: "linear" }} 
               className="w-full h-full relative"
             >
                <svg viewBox="0 0 200 200" className="w-full h-full">
