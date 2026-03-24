@@ -1,127 +1,154 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { useState, useEffect } from "react"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import Image from "next/image"
-
-const designElements = [
-  { shape: "circle", size: 20, x: 70, y: 20, delay: 0 },
-  { shape: "square", size: 25, x: 80, y: 40, delay: 0.2 },
-  { shape: "triangle", size: 18, x: 75, y: 60, delay: 0.4 },
-  { shape: "line", size: 30, x: 85, y: 30, delay: 0.6 },
-]
+import { ArrowUpRight } from "lucide-react"
 
 export default function Hero() {
+  const [mounted, setMounted] = useState(false)
+  
+  // Mouse tracking for parallax effects
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  const springConfig = { damping: 25, stiffness: 150 }
+  const springX = useSpring(mouseX, springConfig)
+  const springY = useSpring(mouseY, springConfig)
+
+  // Floating elements parallax (stable ranges)
+  const dx = useTransform(springX, [0, 1920], [-30, 30])
+  const dy = useTransform(springY, [0, 1080], [-30, 30])
+
+  useEffect(() => {
+    setMounted(true)
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX)
+      mouseY.set(e.clientY)
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [mouseX, mouseY])
+
+  if (!mounted) return null
+
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.5 }}
-      className="col-span-1 md:col-span-2 bg-[#FFE4E4] p-8 sm:p-10 md:p-12 lg:p-16 rounded-3xl relative overflow-hidden mt-2 sm:mt-3 md:mt-5"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="col-span-1 md:col-span-2 min-h-[500px] lg:min-h-[640px] bg-[#080808] rounded-[2.5rem] relative overflow-hidden group border border-white/5"
     >
-      {/* Animated Design Elements */}
-      {designElements.map((element, index) => (
-        <motion.div
-          key={index}
-          className="absolute hidden sm:block"
-          style={{
-            left: `${element.x}%`,
-            top: `${element.y}%`,
-            width: element.size,
-            height: element.size,
-          }}
-          initial={{ opacity: 0, scale: 0, rotate: -180 }}
-          animate={{
-            opacity: [0, 1, 0.7],
-            scale: [0, 1.2, 1],
-            rotate: [0, 360, 180],
-            x: [0, -10, 10, 0],
-            y: [0, -15, 5, 0],
-          }}
-          transition={{
-            delay: element.delay,
-            duration: 3,
-            repeat: Number.POSITIVE_INFINITY,
-            repeatType: "reverse",
-          }}
-        >
-          {element.shape === "circle" && <div className="w-full h-full bg-[#FFB5B5] rounded-full opacity-80" />}
-          {element.shape === "square" && <div className="w-full h-full bg-[#FFB5B5] opacity-80" />}
-          {element.shape === "triangle" && (
-            <div
-              className="w-0 h-0 opacity-80"
-              style={{
-                borderLeft: `${element.size / 2}px solid transparent`,
-                borderRight: `${element.size / 2}px solid transparent`,
-                borderBottom: `${element.size}px solid #FFB5B5`,
-              }}
-            />
-          )}
-          {element.shape === "line" && <div className="w-full h-1 bg-[#FFB5B5] opacity-80 transform rotate-45" />}
-        </motion.div>
-      ))}
+      {/* Dynamic Background: Mesh & Glow */}
+      <div className="absolute inset-0 z-0 opacity-40">
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-[#FFB5B5]/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[100px]" />
+        <div className="grid-overlay opacity-[0.05]" />
+      </div>
 
-      {/* Prototype Creation Animation */}
-      <motion.div
-        className="absolute top-4 right-4 sm:top-8 sm:right-8 w-16 h-16 sm:w-24 sm:h-24 opacity-50 sm:opacity-100"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+      {/* Interactive Floating Element 1 - Top Right */}
+      <motion.div 
+        style={{ x: dx, y: dy }}
+        className="absolute top-12 right-12 z-10 hidden lg:block"
       >
-        <svg viewBox="0 0 100 100" className="w-full h-full">
-          <motion.path
-            d="M50,10 L90,50 L50,90 L10,50 Z"
-            fill="none"
-            stroke="#FFB5B5"
-            strokeWidth="2"
-            initial={{ pathLength: 0 }}
-            animate={{ pathLength: 1 }}
-            transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
-          />
-          <motion.circle
-            cx="50"
-            cy="50"
-            r="5"
-            fill="#FFB5B5"
-            animate={{ scale: [1, 1.5, 1] }}
-            transition={{ duration: 1, repeat: Number.POSITIVE_INFINITY }}
-          />
-        </svg>
+        <div className="glass-card p-6 rotate-6 group-hover:rotate-0 transition-transform duration-700 rounded-3xl">
+          <div className="flex flex-col gap-3">
+            <div className="w-12 h-12 rounded-full bg-primary/20 animate-pulse" />
+            <div className="h-2 w-24 bg-white/20 rounded-full" />
+            <div className="h-2 w-16 bg-white/10 rounded-full" />
+          </div>
+        </div>
       </motion.div>
 
-      {/* Bottom right GIF - Hidden on mobile, visible on desktop */}
-      <motion.div
-        className="hidden lg:block absolute top-[190px] right-11 mr-8 w-34 h-64"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
+      {/* Interactive Floating Element 2 - Bottom Left */}
+      <motion.div 
+        style={{ x: useTransform(dx, (v) => -v), y: useTransform(dy, (v) => -v) }}
+        className="absolute bottom-12 left-12 z-10 hidden lg:block"
       >
-        <Image
-          src="/bk3.gif"
-          alt="Animated decoration"
-          width={250}
-          height={250}
-          className="w-full h-full object-contain rounded-lg -rotate-12 mb-8"
-          unoptimized={true}
-        />
+        <div className="glass-accent p-4 -rotate-12 group-hover:rotate-0 transition-transform duration-700 rounded-2xl shadow-2xl">
+          <ArrowUpRight className="w-8 h-8 text-primary/60" />
+        </div>
       </motion.div>
 
-      <div className="max-w-2xl relative z-10 pt-4 sm:pt-0">
-        <motion.h1
-          className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight mb-4"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          Innovator Blending Web Aesthetics with Machine Intelligence
-        </motion.h1>
+      {/* Main Content Layout */}
+      <div className="relative z-20 h-full flex flex-col justify-between p-10 md:p-14 lg:p-20">
+        {/* Header Badges */}
+        <div className="flex gap-3">
+          <span className="px-4 py-1.5 bg-white/5 border border-white/10 text-white/40 text-[10px] uppercase tracking-widest rounded-full backdrop-blur-md">
+            Creative Design
+          </span>
+          <span className="px-4 py-1.5 bg-primary/10 border border-primary/20 text-primary text-[10px] uppercase tracking-widest rounded-full font-bold backdrop-blur-md">
+            Development
+          </span>
+        </div>
 
-        <motion.p
-          className="text-sm sm:text-base md:text-lg lg:text-lg text-gray-600 mt-2 sm:mt-3 md:mt-4"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-        >
-          Sakshi Agrahari <span className="mx-2">●</span> Interactive Projects bringing ideas to life
-        </motion.p>
+        {/* Hero Central Text */}
+        <div className="max-w-3xl">
+          <motion.h2 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-5xl md:text-7xl lg:text-8xl font-black font-outfit text-white uppercase tracking-tighter leading-[0.9] mb-8"
+          >
+            Digital <br /> Experience <br /> <span className="text-primary italic font-light">Designer.</span>
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            className="text-white/40 text-lg md:text-xl font-light font-inter max-w-lg leading-relaxed mb-10"
+          >
+            Sculpting human-centric interfaces with cinematic motion, technical precision, and a bit of pixel magic.
+          </motion.p>
+          
+          <div className="flex flex-wrap gap-4">
+            <button className="h-16 px-10 bg-white text-[#080808] font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-primary transition-all duration-500 shadow-2xl shadow-black/40">
+              Selected Projects
+            </button>
+            <button className="h-16 px-10 glass-card text-white font-bold uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-white/5 transition-all duration-300">
+              Let's Connect
+            </button>
+          </div>
+        </div>
+
+        {/* Bottom Stats / Details */}
+        <div className="flex justify-between items-end border-t border-white/5 pt-10 mt-20">
+          <div className="flex gap-10">
+            <div className="flex flex-col">
+              <span className="text-primary font-black text-2xl font-outfit">99+</span>
+              <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Client Satisfaction</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-primary font-black text-2xl font-outfit">03+</span>
+              <span className="text-[8px] font-mono text-white/20 uppercase tracking-widest">Industry Awards</span>
+            </div>
+          </div>
+          <div className="hidden sm:block">
+            <div className="flex flex-col items-end">
+              <span className="text-[8px] font-mono text-white/40 uppercase tracking-[0.4em]">Based in India</span>
+              <span className="text-[8px] font-mono text-white/20 uppercase tracking-[0.4em]">Available for projects</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Background Graphic Interaction */}
+      <div className="absolute bottom-0 right-0 w-[40%] h-[100%] z-0 pointer-events-none overflow-hidden hidden lg:block">
+         <motion.div 
+           animate={{ 
+             y: [0, -20, 0],
+             rotate: [0, 5, 0]
+           }}
+           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+           className="relative w-full h-full opacity-30 grayscale saturate-0 contrast-125"
+         >
+           <Image 
+             src="/bk3.gif" 
+             alt="" 
+             fill 
+             className="object-contain object-bottom"
+           />
+         </motion.div>
       </div>
     </motion.div>
   )

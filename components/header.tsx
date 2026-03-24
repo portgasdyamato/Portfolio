@@ -2,8 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
-import { Menu, X, Info } from "lucide-react"
-import Link from "next/link"
+import { Menu, X, Info, Heart, Coffee, Code2, Sparkles, User, Mail, FolderHeart } from "lucide-react"
 
 const scrollToSection = (sectionId: string) => {
   const element = document.getElementById(sectionId)
@@ -30,17 +29,11 @@ export default function Header() {
     setIsInfoOpen(!isInfoOpen)
   }
 
-  const closeInfo = () => {
-    setIsInfoOpen(false)
-  }
-
   const controlNavbar = () => {
     if (typeof window !== 'undefined') {
       if (window.scrollY > lastScrollY && window.scrollY > 100) {
-        // Scrolling down & past 100px
         setIsVisible(false)
       } else {
-        // Scrolling up
         setIsVisible(true)
       }
       setLastScrollY(window.scrollY)
@@ -73,77 +66,59 @@ export default function Header() {
           y: isVisible ? 0 : -100 
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="py-3 sm:py-4 px-4 sm:px-6 flex justify-between items-center bg-[#FFE4E4]/90 backdrop-blur-md fixed top-0 left-0 right-0 pl-4 md:pl-20 z-50 shadow-sm"
+        className="py-6 px-4 md:px-14 flex justify-between items-center bg-black/60 backdrop-blur-2xl fixed top-0 left-0 right-0 z-50 border-b border-white/5"
       >
         <motion.button
           onClick={() => scrollToSection("home")}
-          style={{ fontFamily: "Bianca", }}
-          className="text-lg sm:text-xl cursor-pointer hover:text-gray-600 transition-colors"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          className="text-xl md:text-2xl font-light tracking-[0.2em] cursor-pointer text-white hover:text-primary transition-colors duration-300 uppercase"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
           Sakshi Agrahari
         </motion.button>
         
         {/* Desktop Navigation */}
-        <div className="flex items-center space-x-4">
-          <nav className="hidden md:flex space-x-4 sm:space-x-6 md:space-x-8">
+        <div className="flex items-center space-x-12">
+          <nav className="hidden md:flex space-x-12">
             {[
-              { name: "PROJECTS", id: "projects" },
-              { name: "ABOUT", id: "about" },
-              { name: "CONTACT", id: "contact" },
+              { name: "PROJECTS", id: "projects", icon: FolderHeart },
+              { name: "ABOUT", id: "about", icon: User },
+              { name: "CONTACT", id: "contact", icon: Mail },
             ].map((item) => (
               <motion.button
                 key={item.name}
                 onClick={() => scrollToSection(item.id)}
-                className="text-md sm:text-md hover:text-gray-600 transition-colors tracking-widest"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="text-[10px] font-bold tracking-[0.4em] text-white/40 hover:text-primary transition-all duration-300 flex items-center gap-2 group"
+                whileHover={{ y: -2 }}
               >
+                <item.icon size={12} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                 {item.name}
               </motion.button>
             ))}
           </nav>
-
-          {/* Info Button - Desktop */}
-          <motion.button
-            onClick={toggleInfo}
-            className="hidden md:block p-2 rounded-lg transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            title="Site Info & Easter Eggs"
-          >
-            <Info className="w-4 h-4 text-black hover:text-gray-600 transition-colors duration-200" />
-          </motion.button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-2">
-          {/* Info Button - Mobile */}
-          <motion.button
-            onClick={toggleInfo}
-            className="p-2 rounded-lg transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            title="Site Info"
-          >
-            <Info className="w-4 h-4 text-black hover:text-gray-600 transition-colors duration-200" />
-          </motion.button>
           
-          <motion.button
-            onClick={toggleMenu}
-            className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {isMenuOpen ? (
-              <X className="w-5 h-5 text-gray-700" />
-            ) : (
-              <Menu className="w-5 h-5 text-gray-700" />
-            )}
-          </motion.button>
+          <div className="flex items-center space-x-4">
+            <motion.button
+              onClick={toggleInfo}
+              className="p-3 bg-white/5 rounded-full text-white/60 hover:text-primary transition-colors border border-white/10"
+              whileHover={{ scale: 1.1, rotate: 10 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Info size={18} />
+            </motion.button>
+            
+            {/* Mobile Menu Toggle */}
+            <motion.button
+              onClick={toggleMenu}
+              className="md:hidden p-3 bg-white/5 rounded-full text-white/60 hover:text-primary transition-colors border border-white/10"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
+            </motion.button>
+          </div>
         </div>
-        
+
         {/* Mobile Menu Dropdown */}
         <AnimatePresence>
           {isMenuOpen && (
@@ -152,10 +127,10 @@ export default function Header() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 bg-[#FFE4E4] shadow-lg border-t border-gray-200 md:hidden"
+              className="absolute top-full left-0 right-0 bg-black/90 backdrop-blur-2xl shadow-2xl border-t border-white/5 md:hidden"
             >
-              <nav className="p-4">
-                <div className="space-y-3">
+              <nav className="p-8">
+                <div className="space-y-6">
                   {[
                     { name: "PROJECTS", id: "projects" },
                     { name: "ABOUT", id: "about" },
@@ -170,9 +145,7 @@ export default function Header() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: index * 0.1 + 0.1 }}
-                      className="block w-full text-left py-3 px-4 text-base font-semibold tracking-widest text-gray-800 hover:bg-white/50 rounded-lg transition-colors"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      className="block w-full text-left py-2 text-xl font-light tracking-[0.2em] text-white/60 hover:text-primary transition-colors"
                     >
                       {item.name}
                     </motion.button>
@@ -184,234 +157,63 @@ export default function Header() {
         </AnimatePresence>
       </motion.header>
 
-      {/* Info Modal */}
+      {/* Info Modal / Overlay */}
       <AnimatePresence>
         {isInfoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[60] p-4"
-            onClick={closeInfo}
+            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl flex items-center justify-center p-6"
+            onClick={() => setIsInfoOpen(false)}
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, y: 50 }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="gradient-glass rounded-2xl p-6 max-w-md w-full max-h-[80vh] min-h-[420px] h-[520px] overflow-y-auto shadow-2xl border border-white/40 custom-scrollbar-hide"
+              className="gradient-glass-dark rounded-[2.5rem] p-10 max-w-md w-full shadow-2xl border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Hide scrollbars for this modal only */}
-              <style jsx global>{`
-                .custom-scrollbar-hide {
-                  scrollbar-width: none; /* Firefox */
-                  -ms-overflow-style: none; /* IE and Edge */
-                }
-                .custom-scrollbar-hide::-webkit-scrollbar {
-                  display: none; /* Chrome, Safari, Opera */
-                }
-              `}</style>
-              <div className="relative mb-6">
-                <motion.h2 
-                  className="text-2xl font-bold text-gray-800 text-center mb-2"
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring", stiffness: 300 }}
-                >
-                  🎮 Easter Eggs
+              <div className="relative mb-8 text-center">
+                <motion.h2 className="text-3xl font-black text-white uppercase tracking-tighter mb-2">
+                  Welcome to <br /> <span className="text-primary italic font-light">My Space.</span>
                 </motion.h2>
-                <motion.div 
-                  className="w-16 h-1 bg-gradient-to-r from-brand-300 to-brand-500 mx-auto rounded-full"
-                  initial={{ width: 0 }}
-                  animate={{ width: 64 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                />
-                <motion.button
-                  onClick={closeInfo}
-                  className="absolute top-0 right-0 p-2 bg-gray-200/30 hover:bg-white/30 rounded-full transition-all duration-200 hover:rotate-90"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, rotate: -90 }}
-                  animate={{ opacity: 1, rotate: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <X className="w-5 h-5 text-gray-700" />
-                </motion.button>
+                <p className="text-white/40 text-sm font-light leading-relaxed">
+                  Crafting high-end digital experiences with cinematic motion.
+                </p>
               </div>
-              
-              <div className="grid grid-cols-1 gap-4 cursor-pointer">
-                {[{
-                  icon: "🎨",
-                  title: "Animated Character",
-                  items: [
-                    "A small character follows the cursor around the screen, riding a skateboard while painting.",
-                    "The character can also jump, making the interaction feel lively and playful.",
-                    "On double-click, the character stops and rests in its place.",
-                    "Once stopped, you can hover over the character to see a happy expression, adding a touch of personality.",
-                    "If the cursor stays still for a while, the character switches to a resting animation (like sitting and sipping coffee)."
-                  ],
-                  color: "from-blue-100 to-blue-50",
-                  borderColor: "border-blue-200"
-                },
-                {
-                  icon: "📚",
-                  title: "Interactive Education Timeline",
-                  items: [
-                    "The Education section features a central timeline with cards branching out on both sides.",
-                    "Each timeline point has a unique icon representing the institute or achievement.",
-                    "Clicking on an icon opens a modal popup displaying detailed information about the institute, achievements, and experiences."
-                  ],
-                  color: "from-brand-100 to-brand-50",
-                  borderColor: "border-brand-200"
-                },
-                {
-                  icon: "🌐",
-                  title: "Live Projects Certifications",
-                  items: [
-                    "Every project includes a clickable live demo and a Git Repository button to view the code.",
-                    "Certifications are fully linked to their respective achievement pages."
-                  ],
-                  color: "from-brand-100 to-brand-50",
-                  borderColor: "border-brand-200"
-                },
-                {
-                  icon: "🔗",
-                  title: "Social Profiles",
-                  items: [
-                    "All social links are active, redirecting to my live profiles across platforms.",
-                    "Each profile is styled with hover effects for better interactivity."
-                  ],
-                  color: "from-green-100 to-green-50",
-                  borderColor: "border-green-200"
-                },
-                {
-                  icon: "✨",
-                  title: "Creative Design Elements",
-                  items: [
-                    "Hover effects on all project cards to make them visually engaging.",
-                    "Smooth scroll animations between sections for seamless navigation.",
-                    "Backdrop blur effects throughout the site for a modern aesthetic."
-                  ],
-                  color: "from-orange-100 to-orange-50",
-                  borderColor: "border-orange-200"
-                },
-                {
-                  icon: "🛠️",
-                  title: "Tech Stack",
-                  items: [
-                    "Next.js 14 with TypeScript for a modern and scalable web application.",
-                    "Framer Motion for smooth and engaging animations.",
-                    "Tailwind CSS for responsive and customizable design.",
-                    "Lucide React for lightweight and versatile icons.",
-                    "Custom pixel art fonts to enhance the visual appeal."
-                  ],
-                  color: "from-cyan-100 to-cyan-50",
-                  borderColor: "border-cyan-200"
-                },
-                {
-                  icon: "📱",
-                  title: "Responsive Design",
-                  items: [
-                    "Optimized layouts for mobile, tablet, and desktop devices.",
-                    "Mobile dropdown menu with smooth animations.",
-                    "Hidden decorative elements on mobile for better user experience.",
-                    "Education timeline adapts to cards on smaller screens.",
-                    "Pixel character interaction works seamlessly across all devices."
-                  ],
-                  color: "from-orange-100 to-orange-50",
-                  borderColor: "border-orange-200"
-                }].map((section, index) => (
-                  <motion.div
-                    key={section.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 + index * 0.1 }}
-                    className={`gradient-glass p-4 rounded-xl border ${section.borderColor} hover:shadow-lg transition-all duration-300 group cursor-pointer`}
-                    whileHover={{ scale: 1.03, y: -2 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <motion.div 
-                      className="flex items-center mb-3 pb-2 border-b border-gray-300/50"
-                      whileHover={{ x: 2 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <motion.span 
-                        className="text-xl mr-3 p-2 rounded-full bg-white/30"
-                        whileHover={{ scale: 1.3, rotate: 360 }}
-                        transition={{ duration: 0.4 }}
-                      >
-                        {section.icon}
-                      </motion.span>
-                      <motion.h3
-                        className="font-bold text-gray-800 text-sm group-hover:text-gray-900 transition-colors"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        {section.title}
-                      </motion.h3>
-                      <motion.div
-                        className="ml-auto w-2 h-2 rounded-full bg-gray-700 opacity-0 group-hover:opacity-100"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 2, repeat: Infinity }}
-                      />
-                    </motion.div>
-                    <ul className="space-y-2">
-                      {section.items.map((item, itemIndex) => (
-                        <motion.li
-                          key={itemIndex}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.7 + index * 0.1 + itemIndex * 0.05 }}
-                          className="text-md text-gray-800 flex items-start group/item hover:bg-white/10 p-2 rounded-lg transition-all duration-200 cursor-pointer"
-                          whileHover={{ scale: 1.02, x: 4 }}
-                          whileTap={{ scale: 0.98 }}
-                          style={{ fontFamily: "Pixel" }}
-                        >
-                          <motion.span 
-                            className="text-gray-500 mr-2 mt-0.5 font-bold"
-                            whileHover={{ scale: 1.3, color: "#374151" }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            •
-                          </motion.span>
-                          <motion.span 
-                            className="leading-relaxed group-hover/item:text-gray-950 transition-colors"
-                            whileHover={{ fontWeight: 500 }}
-                          >
-                            {item}
-                          </motion.span>
-                          <motion.div
-                            className="ml-auto opacity-0 group-hover/item:opacity-100"
-                            initial={{ scale: 0 }}
-                            whileHover={{ scale: 1 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <span className="text-xs text-gray-500">✨</span>
-                          </motion.div>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </motion.div>
-                ))}
-                
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.2 }}
-                  className="bg-gradient-to-r from-brand-100 via-brand-50 to-brand-100 p-4 rounded-xl border border-brand-200 text-center mt-2"
-                  whileHover={{ scale: 1.02 }}
-                >
-                  <motion.p 
-                    className="text-sm text-brand-800 font-medium"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.4 }}
-                  >
-                    🚀 "Great things happen when creative minds connect!"
-                  </motion.p>
-                  
-                </motion.div>
+
+              <div className="space-y-6 mb-10">
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                    <Code2 size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">Clean Build</h4>
+                    <p className="text-white/30 text-xs">Optimized for speed and accessibility.</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 p-4 bg-white/5 rounded-2xl border border-white/5">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+                    <Sparkles size={18} />
+                  </div>
+                  <div>
+                    <h4 className="text-white font-bold text-sm uppercase tracking-widest mb-1">Premium UX</h4>
+                    <p className="text-white/30 text-xs">Aesthetic focus with smooth interactions.</p>
+                  </div>
+                </div>
               </div>
+
+              <motion.button
+                onClick={() => setIsInfoOpen(false)}
+                className="w-full h-14 bg-white text-black font-black uppercase text-xs tracking-[0.2em] rounded-2xl hover:bg-primary transition-all duration-300"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Explore More
+              </motion.button>
             </motion.div>
           </motion.div>
         )}
