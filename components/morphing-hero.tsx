@@ -14,26 +14,25 @@ export default function MorphingHero() {
     offset: ["start start", "end start"],
   })
 
-  // 1) 0.0 -> 0.4: Morph phase (shrink into business card)
-  // 2) 0.4 -> 0.6: Card stays sticky and fully visible
-  // 3) 0.6 -> 0.9: Card tilts backwards (3D tilt away) and slides downwards
+  // 1) 0.0 -> 0.6: Morph phase (shrink into business card)
+  // 2) 0.6 -> 1.0: 3D Tilt-Out and fade out entirely
   
-  const scale = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.9], [1, 0.85, 0.85, 0.7])
-  const opacity = useTransform(scrollYProgress, [0, 0.6, 0.9], [1, 1, 0])
-  const y = useTransform(scrollYProgress, [0, 0.6, 0.9], ["0vh", "0vh", "40vh"])
-  const rotateX = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.9], [0, 0, 0, -25]) // Tilt away negatively
-  const rotateZ = useTransform(scrollYProgress, [0, 0.4, 0.6, 0.9], [0, 0, 0, -3])
+  const scale = useTransform(scrollYProgress, [0, 0.6, 1], [1, 0.85, 0.65])
+  const opacity = useTransform(scrollYProgress, [0, 0.6, 0.9, 1], [1, 1, 0, 0])
+  const y = useTransform(scrollYProgress, [0, 0.6, 1], ["0vh", "0vh", "50vh"])
+  const rotateX = useTransform(scrollYProgress, [0, 0.6, 1], [0, 0, -45]) // Tilt away negatively
+  const rotateZ = useTransform(scrollYProgress, [0, 0.6, 1], [0, 0, -5])
   
-  // Outer background gradually fades from baby pink to off-white to provide contrast
-  const wrapperBg = useTransform(scrollYProgress, [0, 0.4], ["#FFEAEA", "#F8F8F8"])
+  // Outer background gradually fades from #FDE2E2 zero-gutter to a darker stage color #F5D5D5
+  const wrapperBg = useTransform(scrollYProgress, [0, 0.4], ["#FDE2E2", "#F5D5D5"])
 
-  // Adjust boundary rounding during morph
-  const borderRadius = useTransform(scrollYProgress, [0, 0.4], ["0rem", "2rem"])
+  // Adjust boundary rounding during morph (to approx 24px/2rem)
+  const borderRadius = useTransform(scrollYProgress, [0, 0.6], ["0rem", "2rem"])
   
   // Create a profound, physical drop-shadow dynamically during shrink
   const boxShadow = useTransform(
     scrollYProgress, 
-    [0.1, 0.4], 
+    [0.1, 0.6], 
     ["0 0px 0px rgba(0,0,0,0)", "0 60px 120px -20px rgba(179,57,81,0.15)"]
   )
 
@@ -55,7 +54,7 @@ export default function MorphingHero() {
             transformPerspective: 1200,
             transformOrigin: "center center",
           }}
-          className="w-full h-full bg-[#FFEAEA] overflow-hidden flex flex-col justify-center"
+          className="w-full h-full bg-[#FDE2E2] overflow-hidden flex flex-col justify-center"
         >
           {/* Inner Grid strictly aligned */}
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center">

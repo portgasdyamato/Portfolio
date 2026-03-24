@@ -44,7 +44,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         className="flex items-center gap-2 text-[#b33951] font-bold text-[11px] tracking-[0.2em] uppercase whitespace-nowrap"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-[#b33951]" />
-        Based in Delhi • Available for Freelance
+        UI/UX & Creative Engineering.
       </motion.div>
 
     </motion.div>
