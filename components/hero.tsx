@@ -71,7 +71,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   }, [])
 
   return (
-    <div className="col-span-1 md:col-span-2 relative overflow-hidden" style={{ minHeight: "min(92vh, 840px)" }}>
+    <div className="col-span-1 md:col-span-2 relative overflow-hidden" style={{ minHeight: "min(110vh, 1000px)" }}>
       {/* ─── INHERIT PAGE BACKGROUND ─── */}
       <div className="absolute inset-0 bg-transparent pointer-events-none" />
 
