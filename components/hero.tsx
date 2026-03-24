@@ -85,60 +85,62 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         }}
       />
 
-      {/* ─── EDITORIAL CENTER SPINE (creative designer card detail) ─── */}
-      <div className="hidden lg:flex absolute top-0 h-full flex-col items-center justify-center gap-0 pointer-events-none z-10" style={{ right: "6%", width: "48px" }}>
+      {/* ─── CREATIVE DESIGN STAMP (fills center dead zone) ─── */}
+      <div className="hidden lg:block absolute top-0 h-full pointer-events-none z-10 overflow-hidden" style={{ right: "3%", width: "120px" }}>
 
-        {/* Top label */}
-        <motion.span
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.8 }}
-          className="text-[7.5px] tracking-[0.5em] text-[#1a0a0a]/30 uppercase font-bold"
-          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-        >
-          Portfolio
-        </motion.span>
-
-        {/* Top hairline */}
+        {/* Giant ghost background word */}
         <motion.div
-          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
-          className="w-[1px] bg-[#1a0a0a]/10 flex-1 max-h-[60px]"
-          style={{ transformOrigin: "top" }}
-        />
-
-        {/* Center diamond cluster */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ delay: 0.9, duration: 0.5 }}
-          className="flex flex-col items-center gap-2 py-4"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4, duration: 1.2 }}
+          className="absolute inset-0 flex items-center justify-center"
         >
-          <div className="w-1 h-1 rounded-full bg-[#b33951]/60" />
-          <div className="w-1.5 h-1.5 rotate-45 bg-[#b33951]/40" />
-          <div className="w-1 h-1 rounded-full bg-[#b33951]/60" />
+          <span
+            className="text-[120px] font-black text-[#1a0a0a]/[0.04] select-none leading-none"
+            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", writingMode: "vertical-rl", transform: "rotate(180deg)", letterSpacing: "-0.05em" }}
+          >
+            S·A
+          </span>
         </motion.div>
 
-        {/* Middle section with vertical disciplines */}
+        {/* Vertical infinite marquee strip */}
         <motion.div
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0, duration: 0.6 }}
-          className="flex flex-col items-center gap-4 py-2"
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.8 }}
+          className="absolute left-1/2 -translate-x-1/2 top-0 h-full w-[1px] flex flex-col overflow-hidden"
         >
-          {["UI", "UX", "AI", "CODE"].map((word, i) => (
-            <span key={word} className="text-[8px] tracking-[0.3em] text-[#1a0a0a]/25 uppercase font-black">{word}</span>
-          ))}
+          <motion.div
+            animate={{ y: ["0%", "-50%"] }}
+            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+            className="flex flex-col items-center gap-6 absolute"
+            style={{ top: 0 }}
+          >
+            {["✦ UI", "UX ✦", "AI", "CODE ✦", "✦ DESIGN", "MOTION", "✦ UI", "UX ✦", "AI", "CODE ✦", "✦ DESIGN", "MOTION"].map((word, i) => (
+              <span
+                key={i}
+                className="text-[7px] tracking-[0.35em] text-[#b33951]/35 uppercase font-black whitespace-nowrap"
+                style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+              >
+                {word}
+              </span>
+            ))}
+          </motion.div>
         </motion.div>
 
-        {/* Bottom hairline */}
-        <motion.div
-          initial={{ scaleY: 0 }} animate={{ scaleY: 1 }} transition={{ delay: 0.7, duration: 0.6, ease: "easeOut" }}
-          className="w-[1px] bg-[#1a0a0a]/10 flex-1 max-h-[60px]"
-          style={{ transformOrigin: "bottom" }}
-        />
-
-        {/* Bottom label — year */}
-        <motion.span
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6, duration: 0.8 }}
-          className="text-[7.5px] tracking-[0.5em] text-[#b33951]/40 uppercase font-bold"
-          style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-        >
-          2024–25
-        </motion.span>
+        {/* Scattered accent dots */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.8 }}
+          className="absolute" style={{ top: "18%", right: "10px" }}>
+          <div className="w-2 h-2 rounded-full border border-[#b33951]/30" />
+        </motion.div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.1, duration: 0.8 }}
+          className="absolute" style={{ top: "36%", left: "8px" }}>
+          <div className="w-1 h-1 rounded-full bg-[#b33951]/40" />
+        </motion.div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2, duration: 0.8 }}
+          className="absolute" style={{ top: "62%", right: "14px" }}>
+          <div className="w-1.5 h-1.5 rotate-45 bg-[#1a0a0a]/10" />
+        </motion.div>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3, duration: 0.8 }}
+          className="absolute" style={{ top: "78%", left: "12px" }}>
+          <div className="w-2 h-2 rounded-full border border-[#1a0a0a]/10" />
+        </motion.div>
       </div>
 
       {/* ─── MAIN CONTENT ─── */}
