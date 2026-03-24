@@ -1,115 +1,146 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence, useSpring } from "framer-motion"
 
-const keywords = ["CREATIVE", "DEVELOPER", "STRATEGIST", "ENGINEER", "STORYTELLER", "ARCHITECT"]
+const keywords = ["CREATIVE", "DEVELOPER", "STRATEGIST", "DESIGNER", "STORYTELLER", "PIXEL ARTIST"]
 
 export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
-  const [currentKeyword, setCurrentKeyword] = useState(keywords[0])
+  const [mounted, setMounted] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [keyword, setKeyword] = useState(keywords[0])
+  const cursorX = useSpring(0, { stiffness: 100, damping: 50 })
+  const cursorY = useSpring(0, { stiffness: 100, damping: 50 })
 
   useEffect(() => {
-    const keywordInterval = setInterval(() => {
-      setCurrentKeyword(keywords[Math.floor(Math.random() * keywords.length)])
-    }, 800)
-
-    const progressInterval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(progressInterval)
+    setMounted(true)
+    const interval = setInterval(() => {
+      setProgress((v) => {
+        if (v >= 100) {
+          clearInterval(interval)
           setTimeout(finishLoadingAction, 1200)
           return 100
         }
-        const step = Math.random() > 0.8 ? 5 : 1
-        return Math.min(prev + step, 100)
+        return v + 2
       })
-    }, 40)
+      setKeyword(keywords[Math.floor(Math.random() * keywords.length)])
+    }, 60)
 
-    return () => {
-      clearInterval(keywordInterval)
-      clearInterval(progressInterval)
+    const handleMouseMove = (e: MouseEvent) => {
+      cursorX.set(e.clientX)
+      cursorY.set(e.clientY)
     }
-  }, [finishLoadingAction])
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => {
+      clearInterval(interval)
+      window.removeEventListener("mousemove", handleMouseMove)
+    }
+  }, [finishLoadingAction, cursorX, cursorY])
+
+  if (!mounted) return null
 
   return (
     <motion.div 
       initial={{ opacity: 1 }}
-      exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
-      className="fixed inset-0 z-[9999] bg-[#030303] flex flex-col items-center justify-center overflow-hidden"
+      exit={{ opacity: 0, scale: 1.1, filter: "blur(40px)", transition: { duration: 1, ease: "easeInOut" } }}
+      className="fixed inset-0 z-[9999] bg-[#030303] overflow-hidden flex items-center justify-center font-outfit"
     >
-      {/* Background Texture & Ambient Glows */}
-      <div className="absolute inset-0 z-0">
-        <div className="grain-overlay opacity-[0.05]" />
-        <div className="grid-overlay opacity-[0.03]" />
-        
-        {/* Glow Particles */}
-        <motion.div 
+      <div className="grain" />
+      
+      {/* Cinematic HUD details */}
+      <div className="absolute inset-0 px-20 py-20 flex flex-col justify-between items-start pointer-events-none opacity-20">
+        <div className="flex flex-col gap-1">
+          <span className="text-[10px] tracking-[1em] text-white">SYSTEM_INIT // 0x247</span>
+          <span className="text-[10px] tracking-[0.5em] text-white">RENEGADE_PORTFOLIO_V3.0</span>
+        </div>
+        <div className="w-[1px] h-32 bg-gradient-to-t from-white to-transparent" />
+      </div>
+
+      <div className="absolute right-20 bottom-20 flex flex-col items-end opacity-20">
+        <span className="text-[10px] tracking-[1em] text-white">© 2025 ALL RIGHTS RESERVED</span>
+        <span className="text-[10px] tracking-[0.5em] text-white mb-2">BUILT BY S.AGRAHARI</span>
+      </div>
+
+      {/* Main Kinetic Content */}
+      <div className="relative z-10 flex flex-col items-center gap-4">
+        <motion.div
           animate={{ 
-            scale: [1, 1.2, 1],
-            opacity: [0.05, 0.1, 0.05],
+            opacity: [0.3, 1, 0.3],
+            x: [0, 5, -5, 0],
+            skew: [0, 10, -10, 0]
           }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#FFB5B5]/20 rounded-full blur-[120px]"
-        />
-      </div>
+          transition={{ duration: 0.1, repeat: Infinity, repeatDelay: 1 }}
+          className="text-primary font-bold tracking-[1em] text-[10px] uppercase mb-8"
+        >
+          {keyword} // {progress}%
+        </motion.div>
 
-      {/* Main Content */}
-      <div className="relative z-10 flex flex-col items-center gap-12">
-        <div className="flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center gap-2"
+        <div className="relative">
+          {/* Glitch Shadow Effect */}
+          <motion.h1 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-7xl md:text-9xl font-black text-white italic tracking-tighter mix-blend-difference"
           >
-            <span className="text-[10px] font-mono tracking-[0.5em] text-white/30 uppercase mb-4">
-              System Initialization
-            </span>
-            <h1 className="text-4xl md:text-6xl font-black font-outfit tracking-tighter text-white uppercase overflow-hidden flex whitespace-nowrap">
-              Sakshi <span className="text-primary italic ml-4 font-light">Agrahari.</span>
-            </h1>
-          </motion.div>
+            SAKSHI.
+          </motion.h1>
           
-          <div className="h-[1px] w-48 bg-white/10 mt-8 relative overflow-hidden">
-            <motion.div 
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: progress / 100 }}
-              className="absolute inset-y-0 left-0 w-full bg-primary origin-left"
-            />
-          </div>
+          <motion.h1 
+            animate={{ 
+              x: [2, -2, 2],
+              opacity: [0, 0.2, 0]
+            }}
+            transition={{ duration: 0.1, repeat: Infinity }}
+            className="absolute inset-0 text-7xl md:text-9xl font-black text-primary italic tracking-tighter"
+          >
+            SAKSHI.
+          </motion.h1>
         </div>
 
-        <div className="flex flex-col items-center gap-4">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={currentKeyword}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.5, ease: "anticipate" }}
-              className="text-xs font-mono tracking-[0.3em] text-primary font-bold"
-            >
-              {currentKeyword}
-            </motion.span>
-          </AnimatePresence>
-          <span className="text-[10px] font-mono text-white/20">
-            {progress}% COMPLETED
-          </span>
+        <div className="w-64 h-[1px] bg-white/10 mt-12 relative overflow-hidden">
+           <motion.div 
+             initial={{ x: "-100%" }}
+             animate={{ x: `${progress - 100}%` }}
+             className="absolute inset-0 bg-primary"
+           />
         </div>
       </div>
 
-      {/* Exit Bloom Effect */}
-      <AnimatePresence>
-        {progress === 100 && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            className="absolute inset-0 z-50 bg-white flex items-center justify-center mix-blend-difference pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
+      {/* Mouse Mask Light (Interactivity) */}
+      <motion.div 
+        style={{ x: cursorX, y: cursorY, left: -250, top: -250 }}
+        className="fixed w-[500px] h-[500px] bg-primary/20 rounded-full blur-[150px] pointer-events-none mix-blend-screen"
+      />
+
+      {/* Absolute Dynamic Particles */}
+      {[...Array(15)].map((_, i) => (
+        <motion.div
+          key={i}
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ 
+            y: ["0vh", "110vh"],
+            opacity: [0, 0.3, 0],
+            x: Math.random() * 100 + "vw"
+          }}
+          transition={{ 
+            duration: Math.random() * 8 + 4,
+            repeat: Infinity,
+            delay: Math.random() * 5,
+            ease: "linear"
+          }}
+          className="absolute w-[2px] h-[1px] bg-white text-[8px] font-mono whitespace-nowrap overflow-hidden text-white/40 flex items-center justify-center p-1"
+        >
+          {Math.random() > 0.5 ? "0" : "1"}
+        </motion.div>
+      ))}
+
+      {/* Displacement SVG filter for custom glitch shape */}
+      <svg className="hidden">
+        <filter id="displacementFilter">
+          <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="50" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </svg>
     </motion.div>
   )
 }
