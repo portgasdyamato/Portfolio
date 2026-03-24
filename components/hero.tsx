@@ -74,7 +74,63 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         }}
       />
 
-      {/* ─── MAIN CONTENT: single col, giant type fills space ─── */}
+      {/* ─── FLOATING GEOMETRY (center zone, visible) ─── */}
+
+      {/* Large slowly-rotating diamond outline */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+        className="absolute pointer-events-none hidden lg:block"
+        style={{ right: "22%", top: "30%", width: 100, height: 100 }}
+      >
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <rect x="15" y="15" width="70" height="70" rx="4"
+            fill="none" stroke="#b33951" strokeWidth="1.5" strokeOpacity="0.38"
+            transform="rotate(45 50 50)"
+          />
+        </svg>
+      </motion.div>
+
+      {/* Medium ring — slowly floating up/down */}
+      <motion.div
+        animate={{ y: [0, -14, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute pointer-events-none hidden lg:block"
+        style={{ right: "30%", top: "52%", width: 64, height: 64 }}
+      >
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="32" r="28" fill="none" stroke="#1a0a0a" strokeWidth="1" strokeOpacity="0.18" />
+          <circle cx="32" cy="32" r="20" fill="#b33951" fillOpacity="0.08" />
+          <circle cx="32" cy="32" r="3" fill="#b33951" fillOpacity="0.45" />
+        </svg>
+      </motion.div>
+
+      {/* Small 4-point sparkle star */}
+      <motion.div
+        animate={{ rotate: [0, 90, 180, 270, 360], scale: [1, 1.12, 1, 0.9, 1] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute pointer-events-none hidden lg:block"
+        style={{ right: "19%", top: "62%", width: 32, height: 32 }}
+      >
+        <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <path d="M16 2 L18 14 L30 16 L18 18 L16 30 L14 18 L2 16 L14 14 Z" fill="#b33951" fillOpacity="0.4" />
+        </svg>
+      </motion.div>
+
+      {/* Tiny dashed orbiting ring */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+        className="absolute pointer-events-none hidden lg:block"
+        style={{ right: "26%", top: "18%", width: 52, height: 52 }}
+      >
+        <svg viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="26" cy="26" r="22" fill="none" stroke="#b33951" strokeWidth="0.9" strokeOpacity="0.3" strokeDasharray="3 5" />
+          <circle cx="26" cy="4" r="3" fill="#b33951" fillOpacity="0.55" />
+        </svg>
+      </motion.div>
+
+
       <div
         className="relative z-10 h-full flex flex-col justify-start pt-28 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-16"
         style={{ minHeight: "inherit" }}
