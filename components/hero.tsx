@@ -86,10 +86,10 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       />
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 flex flex-col justify-between h-full pt-24 pb-12 px-12 md:pt-32 md:pb-16 md:px-16 lg:pt-40 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
+      <div className="relative z-10 flex flex-col justify-between h-full pt-32 pb-12 px-12 md:pt-48 md:pb-16 md:px-16 lg:pt-60 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
         
         {/* Top Tagline */}
-        <div className="h-6 overflow-hidden">
+        <div className="h-6 overflow-hidden mt-2">
           <AnimatePresence mode="wait">
             <motion.span
               key={tagIdx}
