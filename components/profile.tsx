@@ -25,7 +25,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.5 }}
       style={{ y: yImage, transformOrigin: "top right" }}
-      className="flex flex-col items-center justify-start h-full pt-28 md:pt-36 lg:pt-44 relative w-full"
+      className="flex flex-col items-center justify-start h-full pt-16 md:pt-36 lg:pt-44 relative w-full"
     >
       <motion.div
         whileHover={{ scale: 1.03 }}
@@ -42,6 +42,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         />
       </motion.div>
 
+
       <motion.div 
         style={{ opacity: nameOpacity, y: nameY }}
         className="flex flex-col items-center mt-6 text-center"
@@ -54,7 +55,6 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           <span className="text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Freelance Specialist</span>
         </div>
       </motion.div>
-
       {/* ─── STATIC ROTATING BADGE (Top Right Pinhole) ─── */}
       {mounted && (
         <div className="absolute -top-4 md:-top-6 lg:-top-8 -right-4 md:right-0 lg:right-4 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">

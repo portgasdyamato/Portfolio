@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react"
 import { motion, useMotionValue, useSpring, AnimatePresence, MotionValue, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
-const TAGS = ["UI/UX Design", "AI Product Design", "Website Development", "Frontend Engineering"]
+const TAGS = ["UI/UX Design", "AI Product Design", "Website Development", "Frontend Engineering", "Interaction Designer"]
 
 // ── helper: Magnetic button ──
 function Magnetic({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) {
@@ -86,7 +86,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       />
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 flex flex-col justify-start h-full pt-28 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
+      <div className="relative z-10 flex flex-col justify-start h-full pt-42 pb-14 px-10 md:pt-36 md:pb-16 md:px-14 lg:pt-44 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
         
         {/* Top Tagline */}
         <div className="h-6 overflow-hidden mt-2">
