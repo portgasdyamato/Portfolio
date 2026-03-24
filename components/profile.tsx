@@ -11,9 +11,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   const sp = scrollProgress || mockScroll
 
   // Morph values
-  const scaleImage = useTransform(sp, [0, 0.4], [1, 0.75])
-  const opacitySubtitle = useTransform(sp, [0.3, 0.5], [0, 1])
-  const yImage = useTransform(sp, [0, 0.4], [0, 30])
+  const scaleImage = useTransform(sp, [0, 0.6], [1, 0.75])
+  const opacitySubtitle = useTransform(sp, [0.4, 0.6], [0, 1])
+  const yImage = useTransform(sp, [0, 0.6], [0, 30])
 
   return (
     <motion.div
@@ -44,7 +44,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         className="flex items-center gap-2 text-[#b33951] font-bold text-[11px] tracking-[0.2em] uppercase whitespace-nowrap"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-[#b33951]" />
-        UI/UX & Creative Engineering.
+        Sakshi Agrahari | Creative Designer
       </motion.div>
 
     </motion.div>
