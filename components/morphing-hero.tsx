@@ -80,8 +80,8 @@ export default function MorphingHero() {
       >
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
 
-          {/* ── CENTER CIRCULAR TEXT BADGE (Decorative Space Filler) ── */}
-          <div className="absolute top-[35%] left-[65%] -translate-x-1/2 -translate-y-1/2 w-[180px] aspect-square pointer-events-none z-10 hidden lg:block opacity-[0.65]">
+          {/* ── BOTTOM CIRCULAR TEXT BADGE (Decorative Space Filler) ── */}
+          <div className="absolute bottom-[10vh] left-[65%] -translate-x-1/2 translate-y-1/2 w-[160px] aspect-square pointer-events-none z-10 hidden lg:block opacity-[0.75]">
             <motion.div 
               animate={{ rotate: 360 }} 
               transition={{ duration: 24, repeat: Infinity, ease: "linear" }} 
