@@ -176,20 +176,23 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </motion.div>
         </div>
 
-        {/* ── CARD FOOTER SPECS ── */}
-        <div className="flex gap-8 sm:gap-14 mt-auto pt-6">
-          <div className="flex flex-col gap-1.5">
-             <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/50 uppercase font-black">Experience</span>
-             <span className="text-[12px] font-bold text-[#1a0a0a]">2+ Years</span>
+        {/* ── CARD FOOTER SPECS (Print Aesthetic) ── */}
+        <div className="flex flex-wrap gap-10 sm:gap-16 mt-auto pt-8 w-full relative">
+          {/* Decorative Card "Print" Dash */}
+          <div className="absolute top-0 left-0 w-8 h-[3px] bg-[#1a0a0a]" />
+
+          <div className="flex flex-col gap-1.5 relative">
+             <span className="text-[8px] tracking-[0.4em] text-[#b33951] uppercase font-black">Experience</span>
+             <span className="text-[11px] font-black text-[#1a0a0a] tracking-wider uppercase">2+ Years</span>
           </div>
-          <div className="flex flex-col gap-1.5">
-             <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/50 uppercase font-black">Satisfaction</span>
-             <span className="text-[12px] font-bold text-[#1a0a0a]">99% Rating</span>
+          <div className="flex flex-col gap-1.5 relative">
+             <span className="text-[8px] tracking-[0.4em] text-[#b33951] uppercase font-black">Clients</span>
+             <span className="text-[11px] font-black text-[#1a0a0a] tracking-wider uppercase">40+ Global</span>
           </div>
-          <div className="flex flex-col gap-1.5 hidden sm:flex">
-             <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/50 uppercase font-black">Availability</span>
-              <span className="text-[12px] font-bold text-[#1a0a0a] flex items-center gap-1.5">
-               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" /> Open for work
+          <div className="flex flex-col gap-1.5 hidden sm:flex relative">
+             <span className="text-[8px] tracking-[0.4em] text-[#b33951] uppercase font-black">Status</span>
+             <span className="text-[11px] font-black text-[#1a0a0a] tracking-wider uppercase flex items-center gap-1.5">
+               <span className="w-1.5 h-1.5 rounded-full bg-[#b33951] animate-pulse shadow-[0_0_8px_#b33951]" /> Available
              </span>
           </div>
         </div>

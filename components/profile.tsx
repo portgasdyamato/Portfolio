@@ -37,13 +37,21 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         />
       </motion.div>
 
-      {/* ── Sub-info Line (Fades in during morph) ── */}
+      {/* ── LUXURY SIGNATURE LOCKUP (Fades in during morph) ── */}
       <motion.div 
-        style={{ opacity: opacitySubtitle, marginTop: "24px" }}
-        className="flex items-center gap-2 text-[#b33951] font-bold text-[11px] tracking-[0.2em] uppercase whitespace-nowrap"
+        style={{ opacity: opacitySubtitle, marginTop: "20px" }}
+        className="flex flex-col items-center w-full max-w-[260px] relative px-4"
       >
-        <span className="w-1.5 h-1.5 rounded-full bg-[#b33951]" />
-        Sakshi Agrahari | Creative Designer
+        <div className="w-[8px] h-[3px] bg-[#1a0a0a] rounded-sm absolute left-6 top-1/2 -mt-1 md:block hidden" />
+        <div className="w-[8px] h-[3px] bg-[#1a0a0a] rounded-sm absolute right-6 top-1/2 -mt-1 md:block hidden" />
+        
+        <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-[#b33951]/20 to-transparent mb-3 pointer-events-none" />
+        <span className="text-[#1a0a0a] font-black text-[15px] sm:text-[16px] tracking-[0.2em] uppercase leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+          Sakshi Agrahari
+        </span>
+        <span className="text-[#b33951] font-bold text-[8px] sm:text-[8.5px] tracking-[0.35em] uppercase mt-1.5 opacity-90">
+          UI/UX & Creative Designer
+        </span>
       </motion.div>
 
     </motion.div>
