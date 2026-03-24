@@ -62,23 +62,17 @@ export default function Hero() {
   }, [])
 
   return (
-    <div
-      className="col-span-1 md:col-span-2 relative overflow-hidden"
-      style={{ minHeight: "min(88vh, 760px)", borderRadius: "2.5rem", background: "transparent" }}
-    >
+    <div className="col-span-1 md:col-span-2 relative overflow-hidden" style={{ minHeight: "min(88vh, 760px)" }}>
       {/* ─── INHERIT PAGE BACKGROUND ─── */}
-      <div
-        className="absolute inset-0"
-        style={{ background: "transparent" }}
-      />
+      <div className="absolute inset-0 bg-transparent pointer-events-none" />
 
       {/* Subtle Dot Grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,181,181,0.5) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
-          opacity: 0.25,
+          opacity: 0.35,
         }}
       />
 
@@ -95,14 +89,14 @@ export default function Hero() {
             top: 0,
             width: 800,
             height: 800,
-            background: "radial-gradient(circle, rgba(255,181,181,0.18) 0%, transparent 60%)",
+            background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%)",
           }}
         />
       )}
 
       {/* ─── STATIC ROTATING BADGE (Top Right) ─── */}
       {mounted && (
-        <div className="absolute top-8 right-8 lg:top-12 lg:right-12 w-28 h-28 pointer-events-none z-20">
+        <div className="absolute top-10 right-10 lg:top-14 lg:right-14 w-28 h-28 pointer-events-none z-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
@@ -119,7 +113,7 @@ export default function Hero() {
           </motion.div>
           {/* Center Dot */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-2.5 h-2.5 rounded-full bg-[#FFB5B5] shadow-[0_0_12px_rgba(255,181,181,0.8)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
           </div>
         </div>
       )}
@@ -136,100 +130,85 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="block text-[11px] tracking-[0.4em] font-bold text-[#FFB5B5] uppercase"
+              className="block text-[11px] tracking-[0.4em] font-bold text-white uppercase"
             >
               ✦ {TAGS[tagIdx]}
             </motion.span>
           </AnimatePresence>
         </div>
 
-        {/* ── SPACIOUS HEADLINE ── */}
-        <div className="flex-1 flex flex-col justify-center my-10 lg:my-14 gap-2">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span
-              className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-            >
-              Crafting
-            </span>
-          </motion.div>
+        {/* ── SPACIOUS HEADLINE & DESCRIPTION ── */}
+        <div className="flex-1 flex flex-col justify-center my-10 lg:my-12 gap-8">
+          <div className="flex flex-col gap-2">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
+              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Crafting
+              </span>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-4"
-          >
-            <span
-              className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#c0756e]"
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-              }}
-            >
-              Visionary
-            </span>
-          </motion.div>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
+              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-white" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Visionary
+              </span>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
+              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-light italic tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Experiences.
+              </span>
+            </motion.div>
+          </div>
+
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.4 }}
+            className="flex flex-col gap-8 max-w-xl"
           >
-            <span
-              className="block text-[64px] sm:text-[80px] lg:text-[110px] font-light italic tracking-tight leading-[0.9] text-[#1a0a0a]"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-            >
-              Experiences.
-            </span>
+            <p className="text-[#1a0a0a]/80 font-medium text-base leading-relaxed tracking-wide">
+              UI/UX designer sculpting human-centric interfaces where motion meets emotion and pixel-perfect precision.
+            </p>
+
+            {/* ── PREMIUM BUTTONS ── */}
+            <div className="flex items-center gap-4 flex-wrap">
+              <Magnetic
+                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                className="group flex items-center justify-center gap-2 bg-[#1a0a0a] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(26,10,10,0.2)] hover:scale-[1.03] transition-transform duration-300 min-w-[180px]"
+              >
+                View Work
+                <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Magnetic>
+
+              <Magnetic
+                onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+                className="flex items-center justify-center gap-2 bg-white text-[#1a0a0a] text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(255,255,255,0.4)] hover:scale-[1.03] transition-transform duration-300 border border-white/40 min-w-[180px]"
+              >
+                Let's Talk
+              </Magnetic>
+            </div>
           </motion.div>
         </div>
 
-        {/* ── INTENTIONALLY SPACED BOTTOM ROW ── */}
+        {/* ── CLEAN STATS BOTTOM ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end pt-10 border-t border-[#FFB5B5]/30 relative"
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex justify-between items-end pt-8 border-t border-[#1a0a0a]/10"
         >
-          {/* Description */}
-          <div className="md:col-span-5 lg:col-span-4">
-            <p className="text-[#9e6a65] text-sm md:text-base leading-relaxed tracking-wide">
-              UI/UX designer sculpting human-centric interfaces where motion meets emotion and pixel-perfect precision.
-            </p>
-          </div>
-
-          {/* Call to Actions */}
-          <div className="md:col-span-4 flex items-center gap-4 flex-wrap">
-            <Magnetic
-              onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-              className="group flex items-center gap-2.5 bg-white text-[#1a0a0a] shadow-[0_4px_20px_rgba(255,181,181,0.5)] text-[11px] tracking-[0.3em] font-black uppercase px-9 py-4.5 rounded-full hover:bg-black hover:text-white transition-all duration-400"
-            >
-              View Work
-              <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Magnetic>
-
-            <Magnetic
-              onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-              className="flex items-center gap-2 border-2 border-[#1a0a0a]/15 text-[#1a0a0a] text-[11px] tracking-[0.3em] font-black uppercase px-8 py-4 rounded-full hover:border-[#1a0a0a]/40 hover:bg-black/5 transition-all duration-300"
-            >
-              Let's Talk
-            </Magnetic>
-          </div>
-
-          {/* Clean Stats Group */}
-          <div className="md:col-span-3 lg:col-span-4 flex gap-10 justify-start md:justify-end">
+          <div className="flex gap-12 sm:gap-16">
              <div className="flex flex-col gap-1">
                 <span className="text-[32px] sm:text-[40px] font-black leading-none tracking-tighter text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2</span>
-                <span className="text-[9px] tracking-[0.3em] text-[#c0756e]/80 uppercase font-bold">Years</span>
+                <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/70 uppercase font-bold">Years Experience</span>
              </div>
              <div className="flex flex-col gap-1">
                 <span className="text-[32px] sm:text-[40px] font-black leading-none tracking-tighter text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>99%</span>
-                <span className="text-[9px] tracking-[0.3em] text-[#c0756e]/80 uppercase font-bold">Satisfaction</span>
+                <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/70 uppercase font-bold">Client Satisfaction</span>
              </div>
+          </div>
+          
+          <div className="hidden sm:flex flex-col items-end gap-1 text-right">
+             <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse mb-1" />
+             <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/70 uppercase font-bold">India</span>
+             <span className="text-[9px] tracking-[0.3em] text-[#1a0a0a]/70 uppercase font-bold">Remote</span>
           </div>
         </motion.div>
 
