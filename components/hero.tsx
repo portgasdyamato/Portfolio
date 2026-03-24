@@ -71,7 +71,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   }, [])
 
   return (
-    <div className="col-span-1 md:col-span-2 relative overflow-hidden" style={{ minHeight: "min(110vh, 1000px)" }}>
+    <div className="col-span-1 md:col-span-2 relative overflow-hidden" style={{ minHeight: "min(90vh, 800px)" }}>
       {/* ─── INHERIT PAGE BACKGROUND ─── */}
       <div className="absolute inset-0 bg-transparent pointer-events-none" />
 
@@ -86,7 +86,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       />
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 flex flex-col justify-start h-full pt-48 pb-12 px-12 md:pt-72 md:pb-16 md:px-16 lg:pt-96 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
+      <div className="relative z-10 flex flex-col justify-start h-full pt-16 pb-12 px-12 md:pt-24 md:pb-16 md:px-16 lg:pt-32 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
         
         {/* Top Tagline */}
         <div className="h-6 overflow-hidden mt-2">
@@ -105,7 +105,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         </div>
 
         {/* ── SPACIOUS HEADLINE & DESCRIPTION ── */}
-        <div className="flex flex-col justify-center py-[4vh] gap-8 mt-12 md:mt-20">
+        <div className="flex flex-col justify-center py-[4vh] gap-8">
           <div className="flex flex-col gap-2">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
               <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
