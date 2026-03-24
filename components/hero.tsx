@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion"
+import { motion, useMotionValue, useSpring, AnimatePresence, MotionValue, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
 const TAGS = ["UI/UX Design", "Motion Design", "Interaction Design", "Creative Direction"]
@@ -36,9 +36,18 @@ function Magnetic({ children, className, onClick }: { children: React.ReactNode;
   )
 }
 
-export default function Hero() {
+export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<number> }) {
   const [mounted, setMounted] = useState(false)
   const [tagIdx, setTagIdx] = useState(0)
+
+  // Optional: animate internal typography based on card's collapse progression
+  // fallback to a constant 0 if not passed so it renders identically on server
+  const mockScroll = useMotionValue(0)
+  const sp = scrollProgress || mockScroll
+
+  const scaleText = useTransform(sp, [0, 0.4], [1, 0.9])
+  const opacityButtons = useTransform(sp, [0.1, 0.3], [1, 0])
+  const yButtons = useTransform(sp, [0.1, 0.3], [0, 20])
 
   // Mouse glow
   const mx = useMotionValue(0)
@@ -122,7 +131,7 @@ export default function Hero() {
         </div>
 
         {/* ── SPACIOUS HEADLINE & DESCRIPTION ── */}
-        <div className="flex-1 flex flex-col justify-center my-10 lg:my-12 gap-8">
+        <motion.div style={{ scale: scaleText, originX: 0, originY: 0.5 }} className="flex-1 flex flex-col justify-center my-10 lg:my-12 gap-8">
           <div className="flex flex-col gap-2">
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
               <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
@@ -151,8 +160,8 @@ export default function Hero() {
               UI/UX designer sculpting human-centric interfaces where motion meets emotion and pixel-perfect precision.
             </p>
 
-            {/* ── PREMIUM BUTTONS ── */}
-            <div className="flex items-center gap-4 flex-wrap">
+            {/* ── PREMIUM BUTTONS (Hide on compact) ── */}
+            <motion.div style={{ opacity: opacityButtons, y: yButtons }} className="flex items-center gap-4 flex-wrap">
               <Magnetic
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
                 className="group flex items-center justify-center gap-2 bg-[#1a0a0a] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(26,10,10,0.2)] hover:scale-[1.03] transition-transform duration-300 min-w-[180px]"
@@ -167,9 +176,9 @@ export default function Hero() {
               >
                 Let's Talk
               </Magnetic>
-            </div>
+            </motion.div>
           </motion.div>
-        </div>
+        </motion.div>
 
         {/* ── CLEAN STATS BOTTOM ── */}
         <motion.div

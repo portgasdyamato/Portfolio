@@ -4,8 +4,7 @@ import { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import SplashScreen from "@/components/splash-screen"
 import Header from "@/components/header"
-import Hero from "@/components/hero"
-import Profile from "@/components/profile"
+import MorphingHero from "@/components/morphing-hero"
 import Projects from "@/components/projects"
 import Contact from "@/components/contact"
 import SocialLinks from "@/components/social-links"
@@ -49,15 +48,8 @@ export default function Home() {
         <CustomCursor />
         <Header />
 
-        {/* ─── FULL BLEED BABY PINK HERO WRAPPER ─── */}
-        <div className="w-full bg-[#FFEAEA] pt-24 md:pt-32 pb-16 lg:pb-24 rounded-b-[2.5rem] md:rounded-b-[4rem] mb-24 md:mb-32">
-          <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl">
-            <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <Hero />
-              <Profile />
-            </section>
-          </div>
-        </div>
+        {/* ─── FULL BLEED MORPHING HERO SECTION ─── */}
+        <MorphingHero />
 
         {/* ─── REST OF PAGE ─── */}
         <main className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-24 md:space-y-32">
