@@ -1,215 +1,319 @@
 "use client"
 
 import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
 
-const ROLES = ["Interaction Designer", "Motion Curator", "UI/UX Strategist", "Creative Director"]
+const TAGS = ["UI/UX Design", "Motion Design", "Interaction Design", "Design Systems", "Creative Direction"]
+
+// ── helper: Magnetic button ──
+function Magnetic({ children, className, onClick }: { children: React.ReactNode; className?: string; onClick?: () => void }) {
+  const ref = useRef<HTMLButtonElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  const sx = useSpring(x, { stiffness: 200, damping: 18 })
+  const sy = useSpring(y, { stiffness: 200, damping: 18 })
+
+  const onMove = (e: React.MouseEvent) => {
+    const r = ref.current?.getBoundingClientRect()
+    if (!r) return
+    x.set((e.clientX - r.left - r.width / 2) * 0.35)
+    y.set((e.clientY - r.top - r.height / 2) * 0.35)
+  }
+  const onLeave = () => { x.set(0); y.set(0) }
+
+  return (
+    <motion.button
+      ref={ref}
+      style={{ x: sx, y: sy }}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      onClick={onClick}
+      className={className}
+    >
+      {children}
+    </motion.button>
+  )
+}
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
-  const [roleIdx, setRoleIdx] = useState(0)
+  const [tagIdx, setTagIdx] = useState(0)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  // Mouse parallax – safe defaults for SSR
+  // Mouse glow
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
-  const sx = useSpring(mx, { stiffness: 60, damping: 20 })
-  const sy = useSpring(my, { stiffness: 60, damping: 20 })
-  // All transforms declared unconditionally at top level
-  const blobX = useTransform(sx, (v) => v * 0.04)
-  const blobY = useTransform(sy, (v) => v * 0.04)
-  const card1X = useTransform(sx, (v) => v * -0.015)
-  const card1Y = useTransform(sy, (v) => v * -0.015)
-  const card2X = useTransform(sx, (v) => v * 0.025)
-  const card2Y = useTransform(sy, (v) => v * 0.025)
+  const gx = useSpring(mx, { stiffness: 50, damping: 25 })
+  const gy = useSpring(my, { stiffness: 50, damping: 25 })
+
+  // Parallax layers — ALL declared at top
+  const p1x = useTransform(gx, (v) => v * 0.018)
+  const p1y = useTransform(gy, (v) => v * 0.018)
+  const p2x = useTransform(gx, (v) => v * -0.012)
+  const p2y = useTransform(gy, (v) => v * -0.012)
+  const p3x = useTransform(gx, (v) => v * 0.03)
+  const p3y = useTransform(gy, (v) => v * 0.03)
 
   useEffect(() => {
     setMounted(true)
     const el = containerRef.current
     if (!el) return
     const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect()
-      mx.set(e.clientX - rect.left - rect.width / 2)
-      my.set(e.clientY - rect.top - rect.height / 2)
+      const r = el.getBoundingClientRect()
+      mx.set(e.clientX - r.left - r.width / 2)
+      my.set(e.clientY - r.top - r.height / 2)
     }
     el.addEventListener("mousemove", onMove)
     return () => el.removeEventListener("mousemove", onMove)
   }, [mx, my])
 
   useEffect(() => {
-    const id = setInterval(() => setRoleIdx(i => (i + 1) % ROLES.length), 2200)
+    const id = setInterval(() => setTagIdx(i => (i + 1) % TAGS.length), 1800)
     return () => clearInterval(id)
   }, [])
-
-  if (!mounted) return <div className="col-span-1 md:col-span-2 min-h-[580px]" />
 
   return (
     <div
       ref={containerRef}
-      className="col-span-1 md:col-span-2 min-h-[580px] lg:min-h-[680px] relative overflow-hidden rounded-[2.5rem] bg-[#FDF8F5] border border-[#FFB5B5]/20 shadow-sm"
+      className="col-span-1 md:col-span-2 relative overflow-hidden"
+      style={{ minHeight: "min(88vh, 780px)", borderRadius: "2.5rem" }}
     >
-      {/* Organic pink blobs */}
-      <motion.div
-        style={{ x: blobX, y: blobY }}
-        className="pointer-events-none absolute -top-24 -left-24 w-[480px] h-[480px] rounded-full blur-[90px]"
-        animate={{ scale: [1, 1.08, 1] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-        style={{ x: blobX, y: blobY, background: "radial-gradient(circle, rgba(255,181,181,0.28) 0%, transparent 70%)" }}
-      />
-      <motion.div
-        className="pointer-events-none absolute -bottom-16 right-0 w-[360px] h-[360px] rounded-full blur-[80px]"
-        animate={{ scale: [1, 1.12, 1] }}
-        transition={{ duration: 11, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        style={{ background: "radial-gradient(circle, rgba(255,181,181,0.18) 0%, transparent 70%)" }}
+      {/* ─── BACKGROUND CANVAS ─── */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(160deg, #FFF9F7 0%, #FFF0EE 55%, #FFF9F5 100%)" }}
       />
 
-      {/* Fine dot texture */}
+      {/* Dot grid */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(255,181,181,0.4) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-          opacity: 0.35,
+          backgroundImage: "radial-gradient(circle, rgba(255,181,181,0.45) 1.3px, transparent 1.3px)",
+          backgroundSize: "28px 28px",
+          opacity: 0.3,
         }}
       />
 
-      {/* ── LAYOUT ── */}
-      <div className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+      {/* Mouse-reactive glow orb */}
+      {mounted && (
+        <motion.div
+          className="absolute pointer-events-none rounded-full"
+          style={{
+            x: gx,
+            y: gy,
+            translateX: "-50%",
+            translateY: "-50%",
+            left: "50%",
+            top: "50%",
+            width: 700,
+            height: 700,
+            background: "radial-gradient(circle, rgba(255,181,181,0.22) 0%, transparent 65%)",
+          }}
+        />
+      )}
 
-        {/* Top row: status pill + role tag */}
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-[#FFB5B5]/30 px-4 py-2 rounded-full shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#FFB5B5] animate-pulse" />
-            <span className="text-[10px] tracking-[0.35em] font-bold text-[#c0756e] uppercase">Open to work</span>
+      {/* ─── GIANT GHOST LETTERS (background art) ─── */}
+      <motion.div
+        style={{ x: p2x, y: p2y }}
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+      >
+        <span
+          className="text-[28vw] font-black leading-none tracking-tighter whitespace-nowrap"
+          style={{
+            fontFamily: "'Cormorant Garamond', Georgia, serif",
+            color: "transparent",
+            WebkitTextStroke: "1.5px rgba(255,181,181,0.18)",
+          }}
+        >
+          SAKSHI
+        </span>
+      </motion.div>
+
+      {/* ─── ORBITING BADGE ─── */}
+      {mounted && (
+        <div className="absolute top-10 right-10 lg:top-14 lg:right-14 w-20 h-20 lg:w-24 lg:h-24">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+            className="relative w-full h-full"
+          >
+            {/* Circular text path */}
+            <svg viewBox="0 0 100 100" className="w-full h-full">
+              <defs>
+                <path id="circle" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+              </defs>
+              <text
+                className="fill-[#c0756e]"
+                style={{ fontSize: "9.5px", fontFamily: "'Inter', sans-serif", letterSpacing: "0.15em", fontWeight: 700 }}
+              >
+                <textPath href="#circle">OPEN TO HIRE · OPEN TO HIRE ·</textPath>
+              </text>
+            </svg>
+          </motion.div>
+          {/* Center star */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-5 h-5 rounded-full bg-[#FFB5B5]" />
           </div>
+        </div>
+      )}
 
-          <div className="h-8 overflow-hidden flex items-center">
+      {/* ─── MAIN CONTENT ─── */}
+      <div className="relative z-10 flex flex-col h-full p-8 md:p-12 lg:px-16 lg:py-14" style={{ minHeight: "inherit" }}>
+
+        {/* Top: tag line */}
+        <div className="flex items-start justify-between">
+          <div className="h-6 overflow-hidden mt-1">
             <AnimatePresence mode="wait">
               <motion.span
-                key={roleIdx}
+                key={tagIdx}
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="text-[11px] tracking-[0.5em] text-[#FFB5B5] font-bold uppercase"
+                className="block text-[10px] tracking-[0.55em] uppercase font-bold text-[#FFB5B5]"
               >
-                {ROLES[roleIdx]}
+                {TAGS[tagIdx]}
               </motion.span>
             </AnimatePresence>
           </div>
+
+          {/* Year floating tag */}
+          <motion.div
+            style={{ x: p3x, y: p3y }}
+            className="hidden lg:flex items-center gap-2 bg-white/70 border border-[#FFB5B5]/25 rounded-full px-4 py-2 shadow-sm"
+          >
+            <span className="text-[9px] tracking-[0.5em] text-[#9e6a65] font-semibold uppercase">Portfolio '25</span>
+          </motion.div>
         </div>
 
-        {/* ── HERO HEADLINE ── */}
-        <div className="my-8 lg:my-0">
-          {/* Giant editorial number — art direction element */}
-          <div
-            className="absolute right-10 top-16 text-[260px] font-black leading-none select-none pointer-events-none hidden xl:block"
-            style={{ color: "rgba(255,181,181,0.07)", fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-          >
-            S.
+        {/* ── HEADLINE — the star of the show ── */}
+        <div className="flex-1 flex flex-col justify-center my-6 lg:my-0">
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span
+                className="block text-[13vw] sm:text-[11vw] lg:text-[9.5vw] font-black tracking-tighter leading-[0.85] text-[#1a0a0a]"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+              >
+                Crafting
+              </span>
+            </motion.div>
           </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="relative"
-            style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-          >
-            {/* Line 1 */}
-            <span
-              className="block text-[56px] sm:text-[76px] lg:text-[96px] font-black leading-[0.88] tracking-tight text-[#1a0a0a]"
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center gap-4"
             >
-              Crafting
-            </span>
-            {/* Line 2 — outlined / ghost text */}
-            <span
-              className="block text-[56px] sm:text-[76px] lg:text-[96px] font-black leading-[0.88] tracking-tight"
-              style={{ WebkitTextStroke: "2px #1a0a0a", color: "transparent" }}
+              {/* Outlined stroke text */}
+              <span
+                className="block text-[13vw] sm:text-[11vw] lg:text-[9.5vw] font-black tracking-tighter leading-[0.85]"
+                style={{
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  color: "transparent",
+                  WebkitTextStroke: "2px #1a0a0a",
+                }}
+              >
+                Visionary
+              </span>
+              {/* Inline rotating ping badge */}
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="hidden lg:flex w-16 h-16 rounded-full bg-[#FFB5B5]/20 border-2 border-[#FFB5B5]/60 items-center justify-center shrink-0"
+              >
+                <span className="text-xl">✦</span>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          <div className="overflow-hidden">
+            <motion.div
+              initial={{ y: "110%" }}
+              animate={{ y: 0 }}
+              transition={{ duration: 1, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
             >
-              visionary
-            </span>
-            {/* Line 3 — pink italic accent */}
-            <span
-              className="block text-[56px] sm:text-[76px] lg:text-[96px] font-light italic leading-[0.88] tracking-tight text-[#FFB5B5]"
-            >
-              experiences.
-            </span>
-          </motion.h1>
+              <span
+                className="block text-[13vw] sm:text-[11vw] lg:text-[9.5vw] font-light italic tracking-tight leading-[0.85] text-[#FFB5B5]"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+              >
+                Experiences.
+              </span>
+            </motion.div>
+          </div>
         </div>
 
-        {/* Bottom row: copy + CTA + stats */}
+        {/* ── BOTTOM ROW ── */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="flex flex-col lg:flex-row gap-8 items-start lg:items-end justify-between border-t border-[#FFB5B5]/20 pt-8"
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 border-t border-[#FFB5B5]/20 pt-7"
         >
-          <div className="max-w-xs">
-            <p className="text-[#9e6a65] text-sm leading-relaxed">
-              UI/UX designer who sculpts interfaces at the intersection of motion, emotion, and pixel-level precision.
+          {/* Bio + CTAs */}
+          <div className="flex flex-col gap-5">
+            <p className="text-[#9e6a65] text-sm leading-relaxed max-w-[280px]">
+              UI/UX designer sculpting human-centric interfaces where motion meets emotion.
             </p>
-            <div className="flex gap-3 mt-5">
-              <button
+
+            <div className="flex items-center gap-3 flex-wrap">
+              <Magnetic
                 onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                className="flex items-center gap-2 bg-[#1a0a0a] text-white text-[11px] tracking-[0.3em] font-bold uppercase px-7 py-4 rounded-full hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-400 group"
+                className="group flex items-center gap-2.5 bg-[#1a0a0a] text-white text-[10px] tracking-[0.4em] font-bold uppercase px-7 py-4 rounded-full hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-300"
               >
                 View Work
                 <ArrowUpRight size={13} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </button>
-              <button
+              </Magnetic>
+
+              <Magnetic
                 onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                className="flex items-center gap-2 border border-[#FFB5B5]/40 text-[#c0756e] text-[11px] tracking-[0.3em] font-bold uppercase px-7 py-4 rounded-full hover:bg-[#FFB5B5]/10 transition-all duration-300"
+                className="flex items-center gap-2 border border-[#FFB5B5]/50 text-[#c0756e] text-[10px] tracking-[0.4em] font-bold uppercase px-7 py-4 rounded-full hover:bg-[#FFB5B5]/12 transition-all duration-300"
               >
                 Let's Talk
-              </button>
+              </Magnetic>
             </div>
           </div>
 
           {/* Stats */}
-          <div className="flex gap-10 lg:gap-16">
+          <div className="flex gap-8 sm:gap-12 shrink-0">
             {[
-              { n: "4+", label: "Years Exp." },
-              { n: "42+", label: "Projects" },
-              { n: "99%", label: "Satisfaction" },
+              { n: "4+", l: "Years" },
+              { n: "42+", l: "Projects" },
+              { n: "99%", l: "Satisfaction" },
             ].map(s => (
-              <div key={s.label} className="flex flex-col gap-0.5">
+              <div key={s.l} className="flex flex-col gap-0.5">
                 <span
-                  className="text-[40px] font-black leading-none text-[#1a0a0a] tabular-nums"
+                  className="text-[36px] lg:text-[44px] font-black leading-none tracking-tighter text-[#1a0a0a]"
                   style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
                 >
                   {s.n}
                 </span>
-                <span className="text-[8px] tracking-[0.5em] text-[#c0756e]/60 uppercase font-semibold">{s.label}</span>
+                <span className="text-[8px] tracking-[0.55em] text-[#c0756e]/60 uppercase font-bold">{s.l}</span>
               </div>
             ))}
           </div>
         </motion.div>
       </div>
 
-      {/* Floating glass pills — interactive parallax */}
-      <motion.div
-        style={{ x: card1X, y: card1Y }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.7, duration: 0.6 }}
-        className="absolute top-8 right-[30%] bg-white/70 backdrop-blur-md border border-[#FFB5B5]/30 shadow-lg rounded-2xl px-5 py-3 hidden lg:flex items-center gap-3 pointer-events-none"
-      >
-        <div className="w-3 h-3 rounded-full bg-[#FFB5B5]" />
-        <span className="text-[10px] tracking-[0.3em] text-[#c0756e] font-bold uppercase">UI/UX</span>
-      </motion.div>
-
-      <motion.div
-        style={{ x: card2X, y: card2Y }}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.9, duration: 0.6 }}
-        className="absolute bottom-24 right-12 bg-white/70 backdrop-blur-md border border-[#FFB5B5]/30 shadow-lg rounded-2xl px-5 py-3 hidden lg:flex items-center gap-3 pointer-events-none"
-      >
-        <div className="w-3 h-3 rounded-full bg-[#1a0a0a]" />
-        <span className="text-[10px] tracking-[0.3em] text-[#1a0a0a] font-bold uppercase">Motion</span>
-      </motion.div>
+      {/* Parallax floating card: top-left */}
+      {mounted && (
+        <motion.div
+          style={{ x: p1x, y: p1y }}
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 1, duration: 0.6 }}
+          className="absolute left-10 bottom-32 hidden xl:flex items-center gap-3 bg-white/75 border border-[#FFB5B5]/25 backdrop-blur-xl rounded-2xl px-5 py-3 shadow-md pointer-events-none"
+        >
+          <div className="w-2.5 h-2.5 rounded-full bg-[#FFB5B5] animate-pulse" />
+          <span className="text-[9px] tracking-[0.35em] text-[#c0756e] font-bold uppercase">India · Remote</span>
+        </motion.div>
+      )}
     </div>
   )
 }

@@ -8,7 +8,7 @@ const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
 const NAV = [
-  { label: "Projects", id: "projects" },
+  { label: "Work", id: "projects" },
   { label: "About", id: "about" },
   { label: "Contact", id: "contact" },
 ]
@@ -19,165 +19,194 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 30)
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   return (
     <>
-      {/* ── HEADER BAR ── */}
-      <motion.header
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-2xl shadow-[0_1px_30px_rgba(255,181,181,0.15)] border-b border-[#FFB5B5]/20"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
-          {/* Logo */}
-          <button
-            onClick={() => scrollTo("home")}
-            className="flex items-center gap-3 group"
+      {/* ── FLOATING PILL HEADER ── */}
+      <div className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+        <motion.header
+          initial={{ y: -80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="pointer-events-auto w-full max-w-3xl"
+        >
+          <div
+            className="flex items-center justify-between gap-4 px-6 py-3.5 rounded-full"
+            style={{
+              background: scrolled
+                ? "rgba(255, 252, 250, 0.72)"
+                : "rgba(255, 252, 250, 0.55)",
+              backdropFilter: "blur(28px) saturate(180%)",
+              WebkitBackdropFilter: "blur(28px) saturate(180%)",
+              border: "1px solid rgba(255, 181, 181, 0.25)",
+              boxShadow: scrolled
+                ? "0 8px 40px rgba(255, 181, 181, 0.18), 0 2px 8px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8)"
+                : "0 4px 24px rgba(255, 181, 181, 0.12), inset 0 1px 0 rgba(255,255,255,0.7)",
+            }}
           >
-            <div className="w-8 h-8 rounded-full bg-[#FFB5B5] flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <span
-                className="text-white font-black text-sm"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-              >
-                S
-              </span>
-            </div>
-            <span
-              className="text-[#1a0a0a] font-bold tracking-[0.12em] text-sm uppercase group-hover:text-[#FFB5B5] transition-colors"
-              style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", letterSpacing: "0.18em" }}
-            >
-              Sakshi Agrahari
-            </span>
-          </button>
-
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
-            {NAV.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className="relative px-5 py-2.5 text-[10px] tracking-[0.4em] uppercase font-bold text-[#9e6a65] hover:text-[#1a0a0a] transition-colors group"
-              >
-                {item.label}
-                <span className="absolute bottom-1.5 left-5 right-5 h-[1.5px] bg-[#FFB5B5] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full" />
-              </button>
-            ))}
-          </nav>
-
-          {/* Right actions */}
-          <div className="flex items-center gap-2">
-            <motion.button
-              whileHover={{ scale: 1.08, rotate: 5 }}
-              whileTap={{ scale: 0.93 }}
-              onClick={() => setInfoOpen(true)}
-              className="w-9 h-9 rounded-full bg-[#FFB5B5]/15 border border-[#FFB5B5]/30 flex items-center justify-center text-[#c0756e] hover:bg-[#FFB5B5]/30 transition-all"
-            >
-              <Info size={14} />
-            </motion.button>
-
+            {/* Logo — just the name, elegant & impactful */}
             <button
-              className="md:hidden w-9 h-9 rounded-full bg-[#FFB5B5]/15 border border-[#FFB5B5]/30 flex items-center justify-center text-[#c0756e]"
-              onClick={() => setMenuOpen(!menuOpen)}
+              onClick={() => scrollTo("home")}
+              className="shrink-0 group"
             >
-              {menuOpen ? <X size={16} /> : <Menu size={16} />}
+              <span
+                className="text-[15px] font-bold italic tracking-wide text-[#1a0a0a] group-hover:text-[#c0756e] transition-colors duration-300"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", letterSpacing: "0.04em" }}
+              >
+                Sakshi Agrahari
+              </span>
             </button>
-          </div>
-        </div>
 
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.35, ease: "easeInOut" }}
-              className="overflow-hidden border-t border-[#FFB5B5]/20 bg-white/95 backdrop-blur-2xl md:hidden"
-            >
-              <nav className="flex flex-col py-4 px-6">
+            {/* Center divider */}
+            <div className="hidden md:block w-px h-4 bg-[#FFB5B5]/40" />
+
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex items-center gap-1">
+              {NAV.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className="relative px-4 py-1.5 text-[10px] tracking-[0.45em] uppercase font-bold text-[#9e6a65]/80 hover:text-[#1a0a0a] transition-colors duration-200 group rounded-full hover:bg-[#FFB5B5]/10"
+                >
+                  {item.label}
+                </button>
+              ))}
+            </nav>
+
+            {/* Right: ping + info */}
+            <div className="flex items-center gap-2.5">
+              {/* Availability dot */}
+              <div className="hidden sm:flex items-center gap-1.5 bg-[#FFB5B5]/12 border border-[#FFB5B5]/25 px-3 py-1.5 rounded-full">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFB5B5] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#c0756e]" />
+                </span>
+                <span className="text-[9px] tracking-[0.35em] font-bold text-[#c0756e] uppercase">Available</span>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 8 }}
+                whileTap={{ scale: 0.9 }}
+                onClick={() => setInfoOpen(true)}
+                className="w-8 h-8 rounded-full flex items-center justify-center text-[#c0756e] hover:bg-[#FFB5B5]/20 transition-all"
+                style={{ border: "1px solid rgba(255,181,181,0.3)" }}
+              >
+                <Info size={13} />
+              </motion.button>
+
+              {/* Mobile menu toggle */}
+              <button
+                className="md:hidden w-8 h-8 rounded-full flex items-center justify-center text-[#c0756e]"
+                style={{ border: "1px solid rgba(255,181,181,0.3)" }}
+                onClick={() => setMenuOpen(!menuOpen)}
+              >
+                {menuOpen ? <X size={14} /> : <Menu size={14} />}
+              </button>
+            </div>
+          </div>
+
+          {/* Mobile dropdown */}
+          <AnimatePresence>
+            {menuOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                transition={{ duration: 0.22 }}
+                className="mt-2 rounded-3xl overflow-hidden md:hidden"
+                style={{
+                  background: "rgba(255, 252, 250, 0.88)",
+                  backdropFilter: "blur(28px) saturate(180%)",
+                  WebkitBackdropFilter: "blur(28px) saturate(180%)",
+                  border: "1px solid rgba(255, 181, 181, 0.25)",
+                  boxShadow: "0 8px 40px rgba(255, 181, 181, 0.18)",
+                }}
+              >
                 {NAV.map((item, i) => (
                   <motion.button
                     key={item.id}
-                    initial={{ x: -20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: i * 0.07 }}
+                    initial={{ opacity: 0, x: -12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.06 }}
                     onClick={() => { scrollTo(item.id); setMenuOpen(false) }}
-                    className="py-4 text-left text-xl font-black text-[#1a0a0a] hover:text-[#FFB5B5] transition-colors tracking-tight border-b border-[#FFB5B5]/10 last:border-0"
-                    style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    className="w-full flex items-center justify-between px-7 py-5 text-left border-b border-[#FFB5B5]/10 last:border-0 hover:bg-[#FFB5B5]/8 transition-colors group"
                   >
-                    {item.label}
+                    <span
+                      className="text-2xl font-black italic text-[#1a0a0a] group-hover:text-[#c0756e] transition-colors"
+                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                    >
+                      {item.label}
+                    </span>
+                    <span className="text-[#FFB5B5] text-lg">→</span>
                   </motion.button>
                 ))}
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.header>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.header>
+      </div>
 
-      {/* ── INFO / ABOUT MODAL ── */}
+      {/* ── INFO MODAL ── */}
       <AnimatePresence>
         {infoOpen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] bg-[#1a0a0a]/40 backdrop-blur-sm flex items-center justify-center p-6"
+            className="fixed inset-0 z-[200] flex items-center justify-center p-6"
+            style={{ background: "rgba(26,10,10,0.35)", backdropFilter: "blur(8px)" }}
             onClick={() => setInfoOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.85, y: 40, opacity: 0 }}
+              initial={{ scale: 0.88, y: 30, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.85, y: 40, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              exit={{ scale: 0.88, y: 30, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 26 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#FDF8F5] border border-[#FFB5B5]/30 rounded-[2.5rem] p-10 max-w-md w-full shadow-[0_40px_80px_rgba(0,0,0,0.12)]"
+              className="max-w-sm w-full rounded-[2.5rem] p-10 overflow-hidden relative"
+              style={{
+                background: "rgba(253, 248, 245, 0.96)",
+                backdropFilter: "blur(40px)",
+                border: "1px solid rgba(255,181,181,0.3)",
+                boxShadow: "0 40px 100px rgba(0,0,0,0.12), 0 8px 24px rgba(255,181,181,0.15)",
+              }}
             >
-              {/* Decorative blob */}
-              <div className="w-16 h-16 rounded-full bg-[#FFB5B5]/20 flex items-center justify-center mb-6">
-                <Sparkles className="text-[#FFB5B5]" size={24} />
-              </div>
+              {/* Bg blob */}
+              <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#FFB5B5]/20 rounded-full blur-3xl pointer-events-none" />
 
-              <p className="text-[10px] tracking-[0.5em] font-bold text-[#FFB5B5] uppercase mb-2">About this site</p>
+              <div className="w-12 h-12 rounded-2xl bg-[#FFB5B5]/20 flex items-center justify-center mb-6">
+                <Sparkles className="text-[#c0756e]" size={20} />
+              </div>
+              <p className="text-[9px] tracking-[0.6em] font-bold text-[#FFB5B5] uppercase mb-2">Portfolio note</p>
               <h3
-                className="text-4xl font-black text-[#1a0a0a] leading-tight mb-4"
+                className="text-3xl font-black text-[#1a0a0a] leading-tight mb-4"
                 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
-                Designed with intention.
+                Designed with<br /><em>intention.</em>
               </h3>
               <p className="text-[#9e6a65] text-sm leading-relaxed mb-8">
-                Every interaction on this portfolio was thoughtfully sculpted — from the cinematic splash screen to the
-                smallest hover state. This is a living canvas of Sakshi's design philosophy: precision meets playfulness.
+                Every interaction here is deliberately crafted — from cinematic loading to the finest hover state. This is Sakshi's design philosophy made tangible.
               </p>
-
-              <div className="flex flex-col gap-3 mb-8">
+              <div className="space-y-3 mb-8">
                 {[
-                  { icon: Sparkles, label: "Cinematic Motion Design" },
-                  { icon: Code2, label: "Pixel-Perfect Engineering" },
-                ].map(({ icon: Icon, label }) => (
-                  <div
-                    key={label}
-                    className="flex items-center gap-4 bg-white border border-[#FFB5B5]/20 rounded-2xl p-4"
-                  >
-                    <div className="w-9 h-9 rounded-xl bg-[#FFB5B5]/15 flex items-center justify-center text-[#c0756e]">
-                      <Icon size={15} />
+                  { icon: Sparkles, t: "Cinematic Motion Design" },
+                  { icon: Code2, t: "Pixel-Perfect Engineering" },
+                ].map(({ icon: Icon, t }) => (
+                  <div key={t} className="flex items-center gap-3 bg-white rounded-2xl px-4 py-3 border border-[#FFB5B5]/15">
+                    <div className="w-8 h-8 rounded-xl bg-[#FFB5B5]/15 flex items-center justify-center text-[#c0756e]">
+                      <Icon size={13} />
                     </div>
-                    <span className="text-[11px] tracking-[0.2em] font-bold text-[#1a0a0a] uppercase">{label}</span>
+                    <span className="text-[10px] tracking-[0.2em] font-bold text-[#1a0a0a] uppercase">{t}</span>
                   </div>
                 ))}
               </div>
-
               <button
                 onClick={() => setInfoOpen(false)}
-                className="w-full h-14 bg-[#1a0a0a] text-white font-black uppercase text-[10px] tracking-[0.4em] rounded-full hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-400"
+                className="w-full h-13 py-4 bg-[#1a0a0a] text-white font-black uppercase text-[9px] tracking-[0.5em] rounded-full hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-300"
               >
                 Enter Portfolio
               </button>
