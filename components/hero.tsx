@@ -71,7 +71,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   }, [])
 
   return (
-    <div className="col-span-1 md:col-span-2 relative overflow-hidden" style={{ minHeight: "min(88vh, 760px)" }}>
+    <div className="col-span-1 md:col-span-2 relative overflow-hidden" style={{ minHeight: "min(92vh, 840px)" }}>
       {/* ─── INHERIT PAGE BACKGROUND ─── */}
       <div className="absolute inset-0 bg-transparent pointer-events-none" />
 
@@ -86,7 +86,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       />
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 flex flex-col justify-between h-full pt-32 pb-12 px-12 md:pt-48 md:pb-16 md:px-16 lg:pt-60 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
+      <div className="relative z-10 flex flex-col justify-between h-full pt-40 pb-12 px-12 md:pt-60 md:pb-16 md:px-16 lg:pt-80 lg:pb-20 lg:px-20" style={{ minHeight: "inherit" }}>
         
         {/* Top Tagline */}
         <div className="h-6 overflow-hidden mt-2">
