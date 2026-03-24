@@ -97,7 +97,7 @@ export default function Hero() {
           </motion.div>
           {/* Center Dot */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-2.5 h-2.5 rounded-full bg-white shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
+            <div className="w-2.5 h-2.5 rounded-full bg-brand-600 shadow-[0_0_12px_rgba(255,255,255,0.8)]" />
           </div>
         </div>
       )}
@@ -114,7 +114,7 @@ export default function Hero() {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -20, opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="block text-[11px] tracking-[0.4em] font-bold text-[#b33951] uppercase"
+              className="block text-[11px] tracking-[0.4em] font-bold text-brand-600 uppercase"
             >
               ✦ {TAGS[tagIdx]}
             </motion.span>
@@ -131,7 +131,7 @@ export default function Hero() {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-[#b33951]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+              <span className="block text-[64px] sm:text-[80px] lg:text-[110px] font-black tracking-tight leading-[0.9] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                 Visionary
               </span>
             </motion.div>
