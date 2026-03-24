@@ -66,7 +66,7 @@ export default function MorphingHero() {
     // We use z-10 so it correctly pins above the following content until exit
     <div 
       ref={containerRef} 
-      className="w-full h-screen flex items-center justify-center p-0 m-0 transition-colors bg-[#FDE2E2] z-10 relative"
+      className="w-full h-screen overflow-hidden flex items-center justify-center p-0 m-0 transition-colors bg-[#FDE2E2] z-10 relative"
     >
       {/* ── THE MORPHING CARD ── */}
       <div
