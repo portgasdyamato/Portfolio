@@ -15,7 +15,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   useEffect(() => setMounted(true), [])
 
   // Morph values
-  const yImage = useTransform(sp, [0, 0.6], [0, -80])
+  const yImage = useTransform(sp, [0, 0.6], [0, -110])
   const nameOpacity = useTransform(sp, [0.1, 0.4], [0, 1])
   const nameY = useTransform(sp, [0.1, 0.4], [15, 0])
 
