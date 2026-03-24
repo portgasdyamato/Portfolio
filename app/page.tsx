@@ -50,7 +50,7 @@ export default function Home() {
         <Header />
 
         {/* ─── FULL BLEED BABY PINK HERO WRAPPER ─── */}
-        <div className="w-full bg-[#FFEAEA] pt-24 md:pt-32 pb-16 lg:pb-24 rounded-b-[2.5rem] md:rounded-b-[4rem] shadow-sm mb-24 md:mb-32">
+        <div className="w-full bg-[#FFEAEA] pt-24 md:pt-32 pb-16 lg:pb-24 rounded-b-[2.5rem] md:rounded-b-[4rem] mb-24 md:mb-32">
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl">
             <section className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <Hero />

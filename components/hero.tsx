@@ -76,23 +76,7 @@ export default function Hero() {
         }}
       />
 
-      {/* Mouse-reactive soft glow orb */}
-      {mounted && (
-        <motion.div
-          className="absolute pointer-events-none rounded-full"
-          style={{
-            x: gx,
-            y: gy,
-            translateX: "-50%",
-            translateY: "-50%",
-            left: 0,
-            top: 0,
-            width: 800,
-            height: 800,
-            background: "radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 60%)",
-          }}
-        />
-      )}
+
 
       {/* ─── STATIC ROTATING BADGE (Top Right) ─── */}
       {mounted && (
