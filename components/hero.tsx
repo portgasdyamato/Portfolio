@@ -51,6 +51,10 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   const gx = useSpring(mx, { stiffness: 50, damping: 25 })
   const gy = useSpring(my, { stiffness: 50, damping: 25 })
 
+  // Business Card Morph Elements
+  const contactOpacity = useTransform(sp, [0.3, 0.6], [0, 1])
+  const contactY = useTransform(sp, [0.3, 0.6], [10, 0])
+
   useEffect(() => {
     setMounted(true)
     const onMove = (e: MouseEvent) => {
@@ -82,7 +86,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       />
 
       {/* ─── MAIN CONTENT ─── */}
-      <div className="relative z-10 flex flex-col justify-between h-full p-8 md:p-12 lg:p-14" style={{ minHeight: "inherit" }}>
+      <div className="relative z-10 flex flex-col justify-between h-full p-12 md:p-16 lg:p-20" style={{ minHeight: "inherit" }}>
         
         {/* Top Tagline */}
         <div className="h-6 overflow-hidden">
@@ -147,22 +151,45 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
                 Let's Talk
               </Magnetic>
             </div>
+
+            {/* ── CARD-ONLY META DETAILS (Fades in during morph) ── */}
+            <motion.div 
+              style={{ opacity: contactOpacity, y: contactY }}
+              className="grid grid-cols-2 gap-x-12 gap-y-4 pt-10 border-t border-[#1a0a0a]/[0.05]"
+            >
+              <div className="flex flex-col">
+                <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Contact</span>
+                <span className="text-[11px] font-bold text-[#1a0a0a]">hello@sakshi.design</span>
+              </div>
+              <div className="flex flex-col text-right">
+                <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Location</span>
+                <span className="text-[11px] font-bold text-[#1a0a0a]">Gurugram, India</span>
+              </div>
+              <div className="flex flex-col col-span-2 mt-2">
+                <span className="text-[8px] tracking-[0.3em] text-[#b33951] uppercase font-bold mb-1">Digital Presence</span>
+                <div className="flex items-center gap-4 text-[11px] font-bold text-[#1a0a0a]">
+                  <span>sakshiagrahari.com</span>
+                  <span className="w-1 h-1 rounded-full bg-[#1a0a0a]/20" />
+                  <span>@sakshi_agrahari</span>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
 
         {/* ── CARD FOOTER SPECS (Elegant Aesthetic) ── */}
-        <div className="flex flex-wrap gap-12 sm:gap-20 mt-auto pt-8 border-t border-[#1a0a0a]/[0.05] w-full">
+        <div className="flex flex-wrap items-end gap-12 sm:gap-20 mt-auto pt-10 w-full mb-2">
           <div className="flex flex-col gap-1.5">
              <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Experience</span>
-             <span className="text-[22px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2 Years.</span>
+             <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>~2 Yrs.</span>
           </div>
           <div className="flex flex-col gap-1.5">
              <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Clients</span>
-             <span className="text-[22px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>40+ Global.</span>
+             <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>40+ Global.</span>
           </div>
-          <div className="flex flex-col gap-1.5 hidden sm:flex">
-             <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Status</span>
-             <span className="text-[22px] font-medium italic text-[#1a0a0a] leading-none flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+          <div className="flex flex-col gap-1.5 hidden sm:flex ml-auto border-l border-[#1a0a0a]/10 pl-8">
+             <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Inquiry</span>
+             <span className="text-[20px] sm:text-[24px] font-medium italic text-[#1a0a0a] leading-none flex items-center gap-2" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                <span className="w-1.5 h-1.5 rounded-full bg-[#b33951] animate-pulse" /> Available.
              </span>
           </div>
