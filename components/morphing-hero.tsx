@@ -51,12 +51,10 @@ export default function MorphingHero() {
       duration: 0.6
     }, 0)
 
-    // PHASE 2 (60% to 100%): Seamless Recede & Exit
+    // PHASE 2 (60% to 100%): Drop into the pocket
     tl.to(cardRef.current, {
-      scale: 0.75, // Gently shrink backward into the distance
-      y: -50, // Drift slightly upward (avoids clipping into the bottom boundary pocket entirely)
-      opacity: 0, // Seamless, premium dissolve
-      ease: "power2.inOut",
+      y: 800, // Slide straight down into the bottom edge pocket
+      ease: "power2.in", // Accelerate like gravity
       duration: 0.4
     }, 0.6)
     
