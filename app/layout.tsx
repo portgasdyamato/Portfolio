@@ -36,10 +36,8 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Bitcount+Grid+Double:wght@100..900&family=Outfit:wght@100..900&family=Inter:wght@100..900&family=Syne:wght@400..800&family=Bungee&family=Silkscreen&family=Share+Tech+Mono&family=VT323&family=JetBrains+Mono:wght@100..800&family=Press+Start+2P&family=Major+Mono+Display&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="/super-pixel-font.css" />
       </head>
-      <body className="antialiased selection:bg-brand-500/30 selection:text-brand-900">
-        <CustomCursor />
+      <body className="antialiased">
         {children}
-        <PixelCharacter />
       </body>
     </html>
   )
