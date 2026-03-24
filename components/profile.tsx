@@ -40,9 +40,9 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         />
       </motion.div>
 
-      {/* ─── STATIC ROTATING BADGE (Top Right Corner) ─── */}
+      {/* ─── STATIC ROTATING BADGE (Top Right Pinhole) ─── */}
       {mounted && (
-        <div className="absolute -top-12 -right-4 md:-top-16 md:-right-8 lg:-top-24 lg:-right-16 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
+        <div className="absolute -top-8 right-0 md:right-4 lg:right-8 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-20">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
