@@ -95,8 +95,8 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
               <defs>
                 <path id="badgePath" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
               </defs>
-              <text className="fill-[#c0756e]" style={{ fontSize: "8.5px", fontWeight: "bold", letterSpacing: "0.18em" }}>
-                <textPath href="#badgePath">OPEN TO COLLABORATE • OPEN TO COLLABORATE •</textPath>
+              <text className="fill-[#c0756e]" style={{ fontSize: "8.5px", fontWeight: "bold", letterSpacing: "0.19em" }}>
+                <textPath href="#badgePath">OPEN TO COLLABORATE ✦ OPEN TO COLLABORATE ✦ </textPath>
               </text>
             </svg>
           </motion.div>
