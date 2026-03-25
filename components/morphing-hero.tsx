@@ -62,8 +62,15 @@ export default function MorphingHero() {
     // PHASE 1: MORPH TO CARD (0% to 0.3)
     tl.to(cardOuterRef.current, {
       scale: 0.7,
+      ease: "power2.inOut",
+      duration: 0.3
+    }, 0)
+    
+    // Animate visual properties directly on the tilting card so they tilt with it
+    tl.to(cardVisualRef.current, {
       borderRadius: "32px",
       boxShadow: "0 80px 160px -40px rgba(179,57,81,0.3)",
+      backgroundColor: "#FDE2E2",
       ease: "power2.inOut",
       duration: 0.3
     }, 0)
@@ -114,7 +121,7 @@ export default function MorphingHero() {
             backgroundColor: "#FDE2E2",
             transformStyle: "preserve-3d" 
           }}
-          className="w-full h-full relative overflow-hidden flex items-center shadow-2xl transition-shadow duration-500 rounded-[inherit]"
+          className="w-full h-full relative overflow-hidden flex items-center"
         >
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative" style={{ transform: "translateZ(50px)" }}>
             <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[65%] w-[1px] bg-[#1a0a0a]/[0.1] pointer-events-none z-0" />
