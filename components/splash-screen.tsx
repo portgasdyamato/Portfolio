@@ -26,13 +26,17 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
     return () => window.removeEventListener("mousemove", onMove)
   }, [mouseX, mouseY])
 
+  // Motion Values for Loading
+  const progressVal = useMotionValue(0)
+
   // Progress logic
   useEffect(() => {
     let count = 0
     const interval = setInterval(() => {
       const jump = Math.random() * 5 + 0.5
       count = Math.min(100, count + jump)
-      setProgress(count)
+      setProgress(Math.floor(count))
+      progressVal.set(count)
       
       if (count >= 100) {
         clearInterval(interval)
@@ -43,10 +47,10 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       }
     }, 45)
     return () => clearInterval(interval)
-  }, [finishLoadingAction])
+  }, [finishLoadingAction, progressVal])
 
   // Dynamic lens size based on progress
-  const lensSize = useTransform(progress, [0, 100], [250, 4000])
+  const lensSize = useTransform(progressVal, [0, 100], [250, 4000])
 
   return (
     <motion.div
