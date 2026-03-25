@@ -27,28 +27,24 @@ export default function Header() {
 
   return (
     <>
-      {/* ── ULTRA-SLEEK FLOATING NAV ── */}
+      {/* ── PREMIUM FROSTED GLASS NAV ── */}
       <div className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
         <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto"
+          className="pointer-events-auto w-full max-w-4xl"
         >
           <div
-            className={`flex items-center gap-4 sm:gap-6 px-5 sm:px-6 py-2.5 rounded-full border transition-all duration-500 ${
-              scrolled 
-                ? "bg-white/90 border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl scale-95" 
-                : "bg-[#FDE2E2]/70 border-[#c0756e]/15 backdrop-blur-md scale-100"
-            }`}
+            className="flex items-center justify-between gap-6 px-10 py-5 rounded-full border border-white/30 bg-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform duration-500 scale-100"
           >
             {/* Logo */}
             <button
               onClick={() => scrollTo("home")}
-              className="group flex items-center pr-3 sm:pr-4 border-r border-black/5"
+              className="group flex items-center pr-6 border-r border-black/5 shrink-0"
             >
               <span
-                className="text-[16px] sm:text-[18px] font-bold italic tracking-tight text-[#1a0a0a] group-hover:text-[#b33951] transition-colors duration-300"
+                className="text-[22px] sm:text-[26px] font-bold italic tracking-tight text-[#1a0a0a] group-hover:text-[#b33951] transition-colors duration-300"
                 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
                 Sakshi Agrahari
@@ -56,22 +52,22 @@ export default function Header() {
             </button>
 
             {/* Desktop Nav Items */}
-            <nav className="hidden md:flex items-center gap-1.5 relative">
+            <nav className="hidden md:flex items-center gap-2 relative">
               {NAV.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
                   onMouseEnter={() => setHoveredItem(item.id)}
                   onMouseLeave={() => setHoveredItem(null)}
-                  className={`relative px-4 py-1.5 text-[9.5px] tracking-[0.3em] uppercase font-black transition-colors duration-300 z-10 ${
-                    hoveredItem && hoveredItem !== item.id ? "text-[#1a0a0a]/40" : "text-[#1a0a0a]"
+                  className={`relative px-6 py-2 text-[11px] tracking-[0.35em] uppercase font-black transition-colors duration-300 z-10 ${
+                    hoveredItem && hoveredItem !== item.id ? "text-[#1a0a0a]/30" : "text-[#1a0a0a]"
                   }`}
                 >
                   {item.label}
                   {hoveredItem === item.id && (
                     <motion.div
                       layoutId="nav-pill"
-                      className="absolute inset-0 bg-white/80 shadow-sm rounded-full -z-10"
+                      className="absolute inset-0 bg-white shadow-lg shadow-black/5 rounded-full -z-10"
                       initial={false}
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
@@ -80,14 +76,14 @@ export default function Header() {
               ))}
             </nav>
 
-            <div className="flex items-center gap-3 pl-3 sm:pl-4 border-l border-black/5">
+            <div className="flex items-center gap-4 pl-6 border-l border-black/5 shrink-0">
                {/* Availability */}
-               <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-black/5 rounded-full">
-                <span className="relative flex h-1.5 w-1.5">
+               <div className="hidden sm:flex items-center gap-2.5 px-4 py-2 bg-black/5 rounded-full">
+                <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b33951] opacity-60" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#b33951]" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#b33951]" />
                 </span>
-                <span className="text-[8px] tracking-[0.2em] font-black text-[#1a0a0a] uppercase">Live</span>
+                <span className="text-[10px] tracking-[0.25em] font-black text-[#1a0a0a] uppercase">Live</span>
               </div>
 
               {/* Info Button */}
@@ -95,17 +91,17 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setInfoOpen(true)}
-                className="w-8 h-8 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#b33951] transition-all shadow-md"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#b33951] transition-all shadow-xl"
               >
-                <Info size={12} strokeWidth={3} />
+                <Info size={14} strokeWidth={3} />
               </motion.button>
 
               {/* Mobile Menu Toggle */}
               <button
-                className="md:hidden p-1.5 text-[#1a0a0a] hover:text-[#b33951] transition-colors"
+                className="md:hidden p-2 text-[#1a0a0a] hover:text-[#b33951] transition-colors"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
-                {menuOpen ? <X size={18} /> : <Menu size={18} />}
+                {menuOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
             </div>
           </div>
