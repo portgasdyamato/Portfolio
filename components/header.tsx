@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Info, Sparkles, Code2 } from "lucide-react"
+import { Menu, X, Info, Sparkles, Code2, ArrowUpRight } from "lucide-react"
 
 const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
@@ -17,94 +17,95 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30)
+    const onScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   return (
     <>
-      {/* ── FLOATING PILL HEADER ── */}
-      <div className="fixed top-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+      {/* ── ULTRA-SLEEK FLOATING NAV ── */}
+      <div className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
         <motion.header
-          initial={{ y: -80, opacity: 0 }}
+          initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto w-full max-w-3xl"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="pointer-events-auto"
         >
           <div
-            className="flex items-center justify-between gap-4 px-8 py-4 rounded-full transition-all duration-300"
-            style={{
-              background: scrolled
-                ? "rgba(255, 181, 181, 0.85)"
-                : "rgba(255, 181, 181, 0.4)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(255, 255, 255, 0.4)",
-              boxShadow: scrolled
-                ? "0 10px 40px rgba(255, 181, 181, 0.4), inset 0 1px 0 rgba(255,255,255,0.6)"
-                : "0 4px 20px rgba(255, 181, 181, 0.2), inset 0 1px 0 rgba(255,255,255,0.4)",
-            }}
+            className={`flex items-center gap-4 sm:gap-6 px-5 sm:px-6 py-2.5 rounded-full border transition-all duration-500 ${
+              scrolled 
+                ? "bg-white/90 border-black/5 shadow-[0_8px_32px_rgba(0,0,0,0.06)] backdrop-blur-xl scale-95" 
+                : "bg-[#FDE2E2]/70 border-[#c0756e]/15 backdrop-blur-md scale-100"
+            }`}
           >
-            {/* Logo — Large elegant text */}
+            {/* Logo */}
             <button
               onClick={() => scrollTo("home")}
-              className="shrink-0 group flex items-center"
+              className="group flex items-center pr-3 sm:pr-4 border-r border-black/5"
             >
               <span
-                className="text-[20px] md:text-[24px] font-black italic tracking-wide text-[#1a0a0a] group-hover:text-[#c0756e] transition-colors duration-300"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", letterSpacing: "0.06em" }}
+                className="text-[16px] sm:text-[18px] font-bold italic tracking-tight text-[#1a0a0a] group-hover:text-[#b33951] transition-colors duration-300"
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
                 Sakshi Agrahari
               </span>
             </button>
 
-            {/* Center divider */}
-            <div className="hidden md:block w-px h-4 bg-[#FFB5B5]/40" />
-
-            {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-1">
+            {/* Desktop Nav Items */}
+            <nav className="hidden md:flex items-center gap-1.5 relative">
               {NAV.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollTo(item.id)}
-                  className="relative px-4 py-1.5 text-[10px] tracking-[0.45em] uppercase font-bold text-[#9e6a65]/80 hover:text-[#1a0a0a] transition-colors duration-200 group rounded-full hover:bg-[#FFB5B5]/10"
+                  onMouseEnter={() => setHoveredItem(item.id)}
+                  onMouseLeave={() => setHoveredItem(null)}
+                  className={`relative px-4 py-1.5 text-[9.5px] tracking-[0.3em] uppercase font-black transition-colors duration-300 z-10 ${
+                    hoveredItem && hoveredItem !== item.id ? "text-[#1a0a0a]/40" : "text-[#1a0a0a]"
+                  }`}
                 >
                   {item.label}
+                  {hoveredItem === item.id && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-white/80 shadow-sm rounded-full -z-10"
+                      initial={false}
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
                 </button>
               ))}
             </nav>
 
-            {/* Right: ping + info */}
-            <div className="flex items-center gap-2.5">
-              {/* Availability dot */}
-              <div className="hidden sm:flex items-center gap-1.5 bg-[#FFB5B5]/12 border border-[#FFB5B5]/25 px-3 py-1.5 rounded-full">
+            <div className="flex items-center gap-3 pl-3 sm:pl-4 border-l border-black/5">
+               {/* Availability */}
+               <div className="hidden sm:flex items-center gap-2 px-3 py-1 bg-black/5 rounded-full">
                 <span className="relative flex h-1.5 w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#FFB5B5] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#c0756e]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b33951] opacity-60" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#b33951]" />
                 </span>
-                <span className="text-[9px] tracking-[0.35em] font-bold text-[#c0756e] uppercase">Available</span>
+                <span className="text-[8px] tracking-[0.2em] font-black text-[#1a0a0a] uppercase">Live</span>
               </div>
 
+              {/* Info Button */}
               <motion.button
-                whileHover={{ scale: 1.1, rotate: 8 }}
-                whileTap={{ scale: 0.9 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setInfoOpen(true)}
-                className="w-8 h-8 rounded-full flex items-center justify-center text-[#c0756e] hover:bg-[#FFB5B5]/20 transition-all"
-                style={{ border: "1px solid rgba(255,181,181,0.3)" }}
+                className="w-8 h-8 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#b33951] transition-all shadow-md"
               >
-                <Info size={13} />
+                <Info size={12} strokeWidth={3} />
               </motion.button>
 
-              {/* Mobile menu toggle */}
+              {/* Mobile Menu Toggle */}
               <button
-                className="md:hidden w-8 h-8 rounded-full flex items-center justify-center text-[#c0756e]"
-                style={{ border: "1px solid rgba(255,181,181,0.3)" }}
+                className="md:hidden p-1.5 text-[#1a0a0a] hover:text-[#b33951] transition-colors"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
-                {menuOpen ? <X size={14} /> : <Menu size={14} />}
+                {menuOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
             </div>
           </div>
@@ -113,37 +114,26 @@ export default function Header() {
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -8, scale: 0.96 }}
-                transition={{ duration: 0.22 }}
-                className="mt-2 rounded-3xl overflow-hidden md:hidden"
-                style={{
-                  background: "rgba(255, 252, 250, 0.88)",
-                  backdropFilter: "blur(28px) saturate(180%)",
-                  WebkitBackdropFilter: "blur(28px) saturate(180%)",
-                  border: "1px solid rgba(255, 181, 181, 0.25)",
-                  boxShadow: "0 8px 40px rgba(255, 181, 181, 0.18)",
-                }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                className="absolute top-full left-0 right-0 mt-3 p-4 bg-white/90 border border-black/5 rounded-3xl backdrop-blur-2xl shadow-2xl md:hidden overflow-hidden"
               >
-                {NAV.map((item, i) => (
-                  <motion.button
-                    key={item.id}
-                    initial={{ opacity: 0, x: -12 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.06 }}
-                    onClick={() => { scrollTo(item.id); setMenuOpen(false) }}
-                    className="w-full flex items-center justify-between px-7 py-5 text-left border-b border-[#FFB5B5]/10 last:border-0 hover:bg-[#FFB5B5]/8 transition-colors group"
-                  >
-                    <span
-                      className="text-2xl font-black italic text-[#1a0a0a] group-hover:text-[#c0756e] transition-colors"
-                      style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
+                <div className="flex flex-col gap-1">
+                  {NAV.map((item, i) => (
+                    <button
+                      key={item.id}
+                      onClick={() => { scrollTo(item.id); setMenuOpen(false) }}
+                      className="w-full flex items-center justify-between px-6 py-4 rounded-2xl hover:bg-black/5 transition-colors group"
                     >
-                      {item.label}
-                    </span>
-                    <span className="text-[#FFB5B5] text-lg">→</span>
-                  </motion.button>
-                ))}
+                      <span className="text-xl font-bold italic text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                        {item.label}
+                      </span>
+                      <ArrowUpRight size={16} className="text-[#1a0a0a]/30 group-hover:text-[#b33951] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                    </button>
+                  ))}
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -157,59 +147,46 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center p-6"
-            style={{ background: "rgba(26,10,10,0.35)", backdropFilter: "blur(8px)" }}
+            className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/40 backdrop-blur-md"
             onClick={() => setInfoOpen(false)}
           >
             <motion.div
-              initial={{ scale: 0.88, y: 30, opacity: 0 }}
+              initial={{ scale: 0.9, y: 20, opacity: 0 }}
               animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.88, y: 30, opacity: 0 }}
-              transition={{ type: "spring", stiffness: 300, damping: 26 }}
+              exit={{ scale: 0.9, y: 20, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-sm w-full rounded-[2.5rem] p-10 overflow-hidden relative"
-              style={{
-                background: "rgba(253, 248, 245, 0.96)",
-                backdropFilter: "blur(40px)",
-                border: "1px solid rgba(255,181,181,0.3)",
-                boxShadow: "0 40px 100px rgba(0,0,0,0.12), 0 8px 24px rgba(255,181,181,0.15)",
-              }}
+              className="max-w-md w-full bg-white rounded-[2.5rem] p-10 shadow-2xl relative overflow-hidden"
             >
-              {/* Bg blob */}
-              <div className="absolute -top-10 -right-10 w-40 h-40 bg-[#FFB5B5]/20 rounded-full blur-3xl pointer-events-none" />
-
-              <div className="w-12 h-12 rounded-2xl bg-[#FFB5B5]/20 flex items-center justify-center mb-6">
-                <Sparkles className="text-[#c0756e]" size={20} />
+              <div className="absolute top-0 right-0 p-6">
+                 <button onClick={() => setInfoOpen(false)} className="text-black/20 hover:text-black transition-colors"><X size={20}/></button>
               </div>
-              <p className="text-[9px] tracking-[0.6em] font-bold text-[#FFB5B5] uppercase mb-2">Portfolio note</p>
-              <h3
-                className="text-3xl font-black text-[#1a0a0a] leading-tight mb-4"
-                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
-              >
-                Designed with<br /><em>intention.</em>
+
+               <div className="w-14 h-14 rounded-2xl bg-[#FDE2E2] flex items-center justify-center mb-8">
+                <Sparkles className="text-[#b33951]" size={24} />
+              </div>
+
+              <h3 className="text-4xl font-bold italic text-[#1a0a0a] mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Designed for <br /> <em>Impact.</em>
               </h3>
-              <p className="text-[#9e6a65] text-sm leading-relaxed mb-8">
-                Every interaction here is deliberately crafted — from cinematic loading to the finest hover state. This is Sakshi's design philosophy made tangible.
+              
+              <p className="text-[#1a0a0a]/60 text-base leading-relaxed mb-8">
+                Every detail in this portfolio is meticulously crafted — from the cinematic morphing hero to the custom-engineered GSAP physics. This is where high-end design meets high-performance code.
               </p>
-              <div className="space-y-3 mb-8">
+
+              <div className="space-y-3">
                 {[
-                  { icon: Sparkles, t: "Cinematic Motion Design" },
-                  { icon: Code2, t: "Pixel-Perfect Engineering" },
+                  { icon: Code2, t: "Engineered with React & GSAP" },
+                  { icon: Sparkles, t: "UI/UX Visual Excellence" }
                 ].map(({ icon: Icon, t }) => (
-                  <div key={t} className="flex items-center gap-3 bg-white rounded-2xl px-4 py-3 border border-[#FFB5B5]/15">
-                    <div className="w-8 h-8 rounded-xl bg-[#FFB5B5]/15 flex items-center justify-center text-[#c0756e]">
-                      <Icon size={13} />
+                  <div key={t} className="flex items-center gap-4 bg-black/5 rounded-2xl px-5 py-4 border border-black/5 transition-colors hover:border-[#b33951]/20 group">
+                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#1a0a0a] group-hover:text-[#b33951] transition-colors shadow-sm">
+                      <Icon size={18} />
                     </div>
-                    <span className="text-[10px] tracking-[0.2em] font-bold text-[#1a0a0a] uppercase">{t}</span>
+                    <span className="text-[11px] tracking-[0.2em] font-black text-[#1a0a0a] uppercase">{t}</span>
                   </div>
                 ))}
               </div>
-              <button
-                onClick={() => setInfoOpen(false)}
-                className="w-full h-13 py-4 bg-[#1a0a0a] text-white font-black uppercase text-[9px] tracking-[0.5em] rounded-full hover:bg-[#FFB5B5] hover:text-[#1a0a0a] transition-all duration-300"
-              >
-                Enter Portfolio
-              </button>
             </motion.div>
           </motion.div>
         )}
