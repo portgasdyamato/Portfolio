@@ -26,13 +26,16 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
     return () => window.removeEventListener("mousemove", onMove)
   }, [mouseX, mouseY])
 
+  const progressValue = useMotionValue(0)
+
   // Progress logic
   useEffect(() => {
     let count = 0
     const interval = setInterval(() => {
       const jump = count < 20 ? 8 : (100 - count) * 0.1
       count = Math.min(100, count + jump)
-      setProgress(count)
+      setProgress(Math.floor(count))
+      progressValue.set(count)
       
       if (count >= 100) {
         clearInterval(interval)
@@ -43,7 +46,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       }
     }, 60)
     return () => clearInterval(interval)
-  }, [finishLoadingAction])
+  }, [finishLoadingAction, progressValue])
 
   // Generate randomized float directions for cada letter
   const driftSeeds = useMemo(() => name.map(() => ({
@@ -77,7 +80,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
               key={i} 
               char={char} 
               index={i} 
-              progress={progress} 
+              progressValue={progressValue} 
               mouseX={springX} 
               mouseY={springY} 
               seed={driftSeeds[i]}
@@ -126,29 +129,31 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
   )
 }
 
-function Letter({ char, index, progress, mouseX, mouseY, seed }: any) {
+function Letter({ char, index, progressValue, mouseX, mouseY, seed }: any) {
   // Magnet Logic
   const dist = useSpring(0, { stiffness: 40, damping: 20 })
   
   // High-frequency magnetic drift
-  const x = useTransform([mouseX, dist], ([mX, d]: any) => {
+  const x = useTransform([mouseX, dist, progressValue], ([mX, d, progress]: any) => {
+    // Target position (horizontal row)
+    const targetX = (index - 7) * 45 // 15 chars total
     const winW = typeof window !== "undefined" ? window.innerWidth : 1920
-    const targetX = (index - 7) * 45
     const alpha = progress / 100
+    // Final position = magnetic influence + lerp to target
     return (mX - (winW / 2) + targetX) * (1 - alpha) + targetX * alpha
   })
 
-  const y = useTransform([mouseY, dist], ([mY, d]: any) => {
-    const winH = typeof window !== "undefined" ? window.innerHeight : 1080
+  const y = useTransform([mouseY, dist, progressValue], ([mY, d, progress]: any) => {
     const targetY = 0
+    const winH = typeof window !== "undefined" ? window.innerHeight : 1080
     const idleY = seed.y
     const alpha = progress / 100
     return (mY - (winH / 2) + idleY * (1-alpha)) * (1 - alpha) + targetY * alpha
   })
 
-  const rotate = useTransform(progress, [0, 100], [seed.r, 0])
-  const opacity = useTransform(progress, [0, 20, 100], [0, 0.4, 1])
-  const scale = useTransform(progress, [0, 100], [1.5, 1])
+  const rotate = useTransform(progressValue, [0, 100], [seed.r, 0])
+  const opacity = useTransform(progressValue, [0, 20, 100], [0, 0.4, 1])
+  const scale = useTransform(progressValue, [0, 100], [1.5, 1])
 
   return (
     <motion.span
