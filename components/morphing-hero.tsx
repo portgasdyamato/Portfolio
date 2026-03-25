@@ -115,15 +115,19 @@ export default function MorphingHero() {
         onMouseLeave={handleMouseLeave}
         style={{ 
           transformOrigin: "center center",
-          backgroundColor: "#FDE2E2",
           perspective: "1500px" // Enable 3D depth for the internal tilt
         }}
         className="w-full h-full flex flex-col justify-center relative overflow-hidden group/card"
       >
-        {/* Tilting Inner Surface */}
+        {/* Tilting Surface (represents the physical card) */}
         <motion.div
-          style={{ rotateX: tiltX, rotateY: tiltY }}
-          className="w-full h-full relative flex items-center"
+          style={{ 
+            rotateX: tiltX, 
+            rotateY: tiltY,
+            backgroundColor: "#FDE2E2", // Moved background here
+            borderRadius: "inherit" // Inherit the GSAP-animated border-radius
+          }}
+          className="w-full h-full relative flex items-center shadow-[inherit]" // Inherit GSAP shadow
         >
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl h-full flex items-center relative">
             {/* Subtle Print Grid Border */}
