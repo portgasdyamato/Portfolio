@@ -132,21 +132,18 @@ function Letter({ char, index, progress, mouseX, mouseY, seed }: any) {
   
   // High-frequency magnetic drift
   const x = useTransform([mouseX, dist], ([mX, d]: any) => {
-    // Target position (horizontal row)
-    const targetX = (index - 7) * 45 // 15 chars total
-    // Drift position
-    const idleX = targetX + seed.x
-    // Lerp based on progress
+    const winW = typeof window !== "undefined" ? window.innerWidth : 1920
+    const targetX = (index - 7) * 45
     const alpha = progress / 100
-    // Final position = magnetic influence + lerp to target
-    return (mX - (window.innerWidth / 2) + targetX) * (1 - alpha) + targetX * alpha
+    return (mX - (winW / 2) + targetX) * (1 - alpha) + targetX * alpha
   })
 
   const y = useTransform([mouseY, dist], ([mY, d]: any) => {
+    const winH = typeof window !== "undefined" ? window.innerHeight : 1080
     const targetY = 0
     const idleY = seed.y
     const alpha = progress / 100
-    return (mY - (window.innerHeight / 2) + idleY * (1-alpha)) * (1 - alpha) + targetY * alpha
+    return (mY - (winH / 2) + idleY * (1-alpha)) * (1 - alpha) + targetY * alpha
   })
 
   const rotate = useTransform(progress, [0, 100], [seed.r, 0])
