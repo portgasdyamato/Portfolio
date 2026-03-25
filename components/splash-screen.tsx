@@ -1,20 +1,20 @@
 "use client"
 
-import { useState, useEffect, useRef, useMemo } from "react"
-import { motion, AnimatePresence, useSpring, useMotionValue, useTransform } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 
-const name = "SAKSHI AGRAHARI".split("")
+const name = "Sakshi Agrahari"
 
 export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
   const [progress, setProgress] = useState(0)
   const [mounted, setMounted] = useState(false)
   const finishCalled = useRef(false)
 
-  // ── MOUSE MAGNETIC FORCE ──
+  // Mouse Focus Lens
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 30, damping: 15 })
-  const springY = useSpring(mouseY, { stiffness: 30, damping: 15 })
+  const lensX = useSpring(mouseX, { stiffness: 150, damping: 40 })
+  const lensY = useSpring(mouseY, { stiffness: 150, damping: 40 })
 
   useEffect(() => {
     setMounted(true)
@@ -26,141 +26,103 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
     return () => window.removeEventListener("mousemove", onMove)
   }, [mouseX, mouseY])
 
-  const progressValue = useMotionValue(0)
-
   // Progress logic
   useEffect(() => {
     let count = 0
     const interval = setInterval(() => {
-      const jump = count < 20 ? 8 : (100 - count) * 0.1
+      const jump = Math.random() * 5 + 0.5
       count = Math.min(100, count + jump)
-      setProgress(Math.floor(count))
-      progressValue.set(count)
+      setProgress(count)
       
       if (count >= 100) {
         clearInterval(interval)
         if (!finishCalled.current) {
           finishCalled.current = true
-          setTimeout(() => finishLoadingAction(), 2000)
+          setTimeout(() => finishLoadingAction(), 1400)
         }
       }
-    }, 60)
+    }, 45)
     return () => clearInterval(interval)
-  }, [finishLoadingAction, progressValue])
+  }, [finishLoadingAction])
 
-  // Generate randomized float directions for cada letter
-  const driftSeeds = useMemo(() => name.map(() => ({
-    x: (Math.random() - 0.5) * 800,
-    y: (Math.random() - 0.5) * 800,
-    r: (Math.random() - 0.5) * 60
-  })), [])
+  // Dynamic lens size based on progress
+  const lensSize = useTransform(progress, [0, 100], [250, 4000])
 
   return (
     <motion.div
       key="splash"
       initial={{ opacity: 1 }}
       exit={{ 
-        y: "-100vh", 
+        clipPath: "circle(0% at 50% 50%)", 
         transition: { duration: 1.2, ease: [0.76, 0, 0.24, 1] } 
       }}
-      className="fixed inset-0 z-[9999] bg-[#FFF5F5] overflow-hidden flex items-center justify-center select-none cursor-crosshair"
+      className="fixed inset-0 z-[9999] bg-[#FFF5F5] overflow-hidden flex items-center justify-center select-none cursor-none"
     >
-      {/* ── INTERACTIVE DUST ── */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05]">
-          <div className="w-full h-full" style={{ 
-            backgroundImage: "radial-gradient(circle, #b33951 1px, transparent 1px)",
-            backgroundSize: "40px 40px"
-          }} />
+      {/* ── BACKGROUND GRAIN ── */}
+      <div className="absolute inset-0 opacity-[0.05] pointer-events-none mix-blend-multiply bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+
+      {/* ── LAYER 1: THE BLURRED BASE ── */}
+      <div className="relative flex flex-col items-center justify-center filter blur-[40px] opacity-10">
+        <h1 className="text-[55px] sm:text-[90px] md:text-[110px] lg:text-[140px] font-black text-[#1a0a0a] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          {name}
+        </h1>
+        <p className="text-[10px] tracking-[1em] uppercase font-black text-[#b33951] mt-8">
+           Experiences that matter.
+        </p>
       </div>
 
-      {/* ── THE LIQUID TYPE PLAYGROUND ── */}
-      <div className="relative w-full h-full flex items-center justify-center">
-        {name.map((char, i) => (
-           <Letter 
-              key={i} 
-              char={char} 
-              index={i} 
-              progressValue={progressValue} 
-              mouseX={springX} 
-              mouseY={springY} 
-              seed={driftSeeds[i]}
-           />
-        ))}
+      {/* ── LAYER 2: THE SELECTIVE FOCUS ── */}
+      {mounted && (
+        <motion.div
+          className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none"
+          style={{
+            clipPath: useTransform([lensX, lensY, lensSize], ([x, y, s]: any) => `circle(${s / 2}px at ${x}px ${y}px)`)
+          }}
+        >
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="text-[55px] sm:text-[90px] md:text-[110px] lg:text-[140px] font-black text-[#1a0a0a] tracking-tight drop-shadow-2xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                {name}
+            </h1>
+            <div className="flex items-center gap-12 mt-8">
+                <div className="w-16 h-px bg-[#b33951]" />
+                <p className="text-[11px] tracking-[1.2em] uppercase font-black text-[#b33951]">
+                    Focusing Design.
+                </p>
+                <div className="w-16 h-px bg-[#b33951]" />
+            </div>
+          </div>
+        </motion.div>
+      )}
 
-        {/* The Central Masking Line */}
+      {/* ── CUSTOM MOUSE CURSOR (LENS) ── */}
+      {mounted && (
         <motion.div 
-            initial={{ scaleX: 0 }}
-            animate={{ scaleX: progress / 100 }}
-            className="absolute top-1/2 left-0 right-0 h-[3px] bg-[#b33951]/10 pointer-events-none z-0"
-        />
+            style={{ x: lensX, y: lensY, translateX: "-50%", translateY: "-50%" }}
+            className="fixed w-10 h-10 border border-[#b33951]/40 rounded-full z-20 flex items-center justify-center pointer-events-none"
+        >
+            <div className="w-1 h-1 bg-[#b33951] rounded-full" />
+        </motion.div>
+      )}
+
+      {/* ── INFOGRAPHIC HUD ── */}
+      <div className="absolute top-12 left-14 flex flex-col gap-1 text-[#1a0a0a]/20 uppercase">
+         <span className="text-[9px] tracking-[0.5em] font-black">Refining Vision</span>
+         <span className="font-mono text-[11px] font-bold">MODE: SELECTIVE_FOCUS</span>
       </div>
 
-      {/* ── STATUS HUD (ELEVATED) ── */}
-      <div className="absolute top-12 left-12 flex flex-col gap-2">
-         <div className="flex items-center gap-4">
-            <span className="w-2 h-2 rounded-full bg-[#b33951] animate-pulse" />
-            <span className="text-[10px] tracking-[0.8em] uppercase font-black text-[#b33951]">Interaction Protocol</span>
-         </div>
-         <span className="text-[14px] font-black text-[#1a0a0a]/20 uppercase">Stage: Physical Convergence</span>
+      <div className="absolute top-12 right-14 flex items-center gap-6">
+         <motion.div 
+             initial={{ scaleX: 0 }}
+             animate={{ scaleX: progress / 100 }}
+             className="w-48 h-px bg-[#b33951]/20 origin-right" 
+         />
+         <span className="font-mono text-xl font-black text-[#b33951] italic">{Math.floor(progress)}%</span>
       </div>
 
-      <div className="absolute bottom-12 right-12 flex flex-col items-end gap-2">
-         <span className="font-mono text-5xl font-black text-[#b33951]/20">
-             {Math.floor(progress).toString().padStart(3, '0')}
-         </span>
-         <div className="flex items-center gap-4">
-             <span className="text-[9px] tracking-[0.5em] text-[#1a0a0a]/30 uppercase font-black">Syncing Gravitational Constants</span>
-             <div className="w-12 h-1 bg-[#1a0a0a]/5 relative overflow-hidden">
-                <motion.div 
-                   animate={{ x: ["-100%", "100%"] }} 
-                   transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                   className="absolute inset-0 bg-[#b33951]/40" 
-                />
-             </div>
-         </div>
+      <div className="absolute bottom-12 left-14 text-[9px] tracking-[0.4em] font-black text-[#1a0a0a]/30 uppercase">
+        Use cursor to discover.
       </div>
 
-      <div className="absolute bottom-12 left-12 max-w-xs">
-          <p className="text-[9px] tracking-[0.4em] leading-relaxed uppercase font-bold text-[#1a0a0a]/20">
-             Move your cursor to attract the letters. <br /> Hold for convergence.
-          </p>
-      </div>
     </motion.div>
-  )
-}
-
-function Letter({ char, index, progressValue, mouseX, mouseY, seed }: any) {
-  // Magnet Logic
-  const dist = useSpring(0, { stiffness: 40, damping: 20 })
-  
-  // High-frequency magnetic drift
-  const x = useTransform([mouseX, dist, progressValue], ([mX, d, progress]: any) => {
-    // Target position (horizontal row)
-    const targetX = (index - 7) * 45 // 15 chars total
-    const winW = typeof window !== "undefined" ? window.innerWidth : 1920
-    const alpha = progress / 100
-    // Final position = magnetic influence + lerp to target
-    return (mX - (winW / 2) + targetX) * (1 - alpha) + targetX * alpha
-  })
-
-  const y = useTransform([mouseY, dist, progressValue], ([mY, d, progress]: any) => {
-    const targetY = 0
-    const winH = typeof window !== "undefined" ? window.innerHeight : 1080
-    const idleY = seed.y
-    const alpha = progress / 100
-    return (mY - (winH / 2) + idleY * (1-alpha)) * (1 - alpha) + targetY * alpha
-  })
-
-  const rotate = useTransform(progressValue, [0, 100], [seed.r, 0])
-  const opacity = useTransform(progressValue, [0, 20, 100], [0, 0.4, 1])
-  const scale = useTransform(progressValue, [0, 100], [1.5, 1])
-
-  return (
-    <motion.span
-      style={{ x, y, rotate, opacity, scale, fontFamily: "'Cormorant Garamond', serif" }}
-      className={`absolute text-[60px] sm:text-[80px] md:text-[100px] font-black pointer-events-none ${char === " " ? "hidden" : "text-[#1a0a0a]"}`}
-    >
-      {char}
-    </motion.span>
   )
 }
