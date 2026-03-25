@@ -25,8 +25,8 @@ export default function MorphingHero() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: "+=2000", // Locks scroll for 2000 pixels down
-        scrub: 1, // Smooth linear interpolation (lerp)
+        end: "+=3000", // Increased distance for much more precise, tactile control
+        scrub: 1.5, // Heavier, more premium feel to the scroll link
         pin: true, // Crucial: physically locks the page exactly here
         onUpdate: (self) => {
           // Sync GSAP's scroll progress (0 to 1) into Framer Motion
@@ -35,30 +35,32 @@ export default function MorphingHero() {
       }
     })
 
-    // PHASE 1 (0% to 0.4): Morph into Business Card
+    // PHASE 1 (0% to 0.3): Morph into Business Card
     tl.to(cardRef.current, {
-      scale: 0.8,
+      scale: 0.7, // Shrunk slightly more to prep for the turn
       borderRadius: "24px",
-      boxShadow: "0 60px 120px -20px rgba(179,57,81,0.2)",
+      boxShadow: "0 60px 120px -20px rgba(179,57,81,0.25)",
       backgroundColor: "#FDE2E2",
       ease: "power2.inOut",
-      duration: 0.4
+      duration: 0.3
     }, 0)
 
-    // PHASE 2 (0.4 to 0.7): Rotate Vertical for the Pocket
+    // PHASE 2 (0.3 to 0.6): Rotate Vertical for the Pocket
     tl.to(cardRef.current, {
-      rotateZ: 90, // Turn it vertical to fit a "sleeve" or "pocket"
-      scale: 0.4, // Significantly smaller so it has plenty of space while turned vertical
+      rotateZ: 90, 
+      scale: 0.45, // Comfortable rotation scale
+      y: "15vh", // Begin dipping down slightly during the turn phase
       ease: "power2.inOut",
       duration: 0.3
-    }, 0.4)
+    }, 0.3)
 
-    // PHASE 3 (0.7 to 1.0): Slide into the Pocket
+    // PHASE 3 (0.6 to 1.0): Slide deep into the Pocket
     tl.to(cardRef.current, {
-      y: "110vh", // Slide completely out of view into lower boundary
-      ease: "power2.in", // Accelerate like it's being pulled/dropped
-      duration: 0.3
-    }, 0.7)
+      y: "115vh", // Pulls completely into the folder slot
+      opacity: 0.1, // Slight fade as it enters the deep darkness of the sleeve
+      ease: "power3.in", // Gravity/Acceleration feel
+      duration: 0.4
+    }, 0.6)
 
     // Sync Background Fade
     tl.to(containerRef.current, {
