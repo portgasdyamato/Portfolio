@@ -184,11 +184,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
 
 function TickerColumn({ index, mouseX }: { index: number, mouseX: any }) {
   const [speed, setSpeed] = useState(10) // Default slow speed for SSR
+  const [displayChars, setDisplayChars] = useState<string[]>(Array(20).fill("X"))
   const isAlt = index % 2 === 0
 
   useEffect(() => {
-    // Generate speed only on the client to avoid hydration mismatch
+    // Client-side only initialization
     setSpeed(Math.random() * 4 + 2)
+    const newChars = Array(20).fill(0).map(() => randomChars[Math.floor(Math.random() * randomChars.length)])
+    setDisplayChars(newChars)
   }, [])
 
   return (
@@ -198,9 +201,9 @@ function TickerColumn({ index, mouseX }: { index: number, mouseX: any }) {
          transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
          className="flex flex-col gap-8 py-8"
        >
-          {[...Array(20)].map((_, i) => (
+          {displayChars.map((char, i) => (
             <span key={i} className="text-[14px] text-[#b33951]/40 font-mono tracking-tighter mix-blend-multiply opacity-50">
-               {randomChars[Math.floor(Math.random() * randomChars.length)]}
+               {char}
             </span>
           ))}
        </motion.div>
