@@ -1,5 +1,6 @@
 "use client"
 
+// v1.3 - Unified Discovery Deployment
 import { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import SplashScreen from "@/components/splash-screen"
