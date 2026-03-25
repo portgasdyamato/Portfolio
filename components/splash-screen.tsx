@@ -1,5 +1,6 @@
 "use client"
 
+// v1.2 - Synchronized Core Experience
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 
