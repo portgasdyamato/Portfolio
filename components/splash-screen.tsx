@@ -1,5 +1,6 @@
 "use client"
 
+// v1.1 - Unified Physics & Discovery System
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { Sparkles } from "lucide-react"
