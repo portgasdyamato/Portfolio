@@ -182,10 +182,13 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
 }
 
 function TickerColumn({ index, mouseX }: { index: number, mouseX: any }) {
-  // Parallax / Intensity Logic
-  const columnRef = useRef<HTMLDivElement>(null)
-  const [speed, setSpeed] = useState(Math.random() * 4 + 2)
+  const [speed, setSpeed] = useState(10) // Default slow speed for SSR
   const isAlt = index % 2 === 0
+
+  useEffect(() => {
+    // Generate speed only on the client to avoid hydration mismatch
+    setSpeed(Math.random() * 4 + 2)
+  }, [])
 
   return (
     <div className="h-full w-full flex-1 relative overflow-hidden flex flex-col items-center">
