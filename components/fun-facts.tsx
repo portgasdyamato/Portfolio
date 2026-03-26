@@ -14,6 +14,17 @@ import * as THREE from "three"
 function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: any) {
   const { scene } = useGLTF(url)
   const group = useRef<any>(null)
+  const mouse = useRef({ x: 0, y: 0 })
+
+  // Listen for mouse move to rotate
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1
+      mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
 
   // FORCE SHADELESS LOOK (Self-Illuminated)
   useEffect(() => {
@@ -30,15 +41,23 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
 
   useFrame((state: any) => {
     if (!group.current) return
-    group.current.rotation.y += 0.01 * rotationSpeed
+    
+    // Smoothly rotate based on mouse position, clamped
+    const targetRotX = mouse.current.y * 0.5
+    const targetRotY = mouse.current.x * 0.8
+    
+    group.current.rotation.x += (targetRotX - group.current.rotation.x) * 0.05
+    group.current.rotation.y += (targetRotY - group.current.rotation.y) * 0.05
+    
+    // Continuous slow rotation + Floating
+    group.current.rotation.y += 0.005 * rotationSpeed
+    group.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.2 * floatIntensity
   })
 
   return (
-    <Float speed={2} rotationIntensity={1.2} floatIntensity={floatIntensity}>
-      <Center>
-        <primitive object={scene} scale={scale} ref={group} />
-      </Center>
-    </Float>
+    <Center>
+      <primitive object={scene} scale={scale} ref={group} />
+    </Center>
   )
 }
 
