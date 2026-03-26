@@ -48,8 +48,8 @@ const animals = [
 ]
 
 const hobbyItems = [
-  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 3.8, description: "Listening to lectures, podcasts, and music." },
-  { id: "camera", name: "Camera", url: "/camera.glb", scale: 3.5, description: "Street & nature photography." },
+  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 3.4, description: "Listening to lectures, podcasts, and music." },
+  { id: "camera", name: "Camera", url: "/camera.glb", scale: 3.2, description: "Street & nature photography." },
   { id: "sketching", name: "Sketching", icon: PenTool, description: "Doodling and sketching my ideas." },
   { id: "singing", name: "Singing", icon: Mic2, description: "Practicing vocals and singing." },
   { id: "philosophy", name: "Philosophy", icon: HelpCircle, description: "Exploring philosophy and traveling to new places." },
@@ -102,8 +102,8 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* 2. Hobbies: Drifting Galaxy (Aggressive Screen-Fit) */}
-      <div className="relative bg-[#000000] rounded-[5rem] h-[75vh] lg:h-[85vh] overflow-hidden p-6 lg:p-10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-center">
+      {/* 2. Hobbies: Drifting Galaxy (Space & Clipping Fixes) */}
+      <div className="relative bg-[#000000] rounded-[5rem] h-[85vh] lg:h-[90vh] overflow-hidden px-8 lg:px-16 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-start">
         
         {/* Sky Particles */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -119,32 +119,32 @@ export default function FunFacts() {
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,158,0.03)_0%,_transparent_70%)] pointer-events-none" />
 
-        <div className="relative z-10 w-full flex flex-col gap-6">
+        <div className="relative z-10 w-full flex flex-col gap-10">
            
-           {/* Row 1: Heading & Summary (Compact) */}
-           <div className="flex flex-col gap-2 max-w-2xl px-4 lg:px-0">
+           {/* Row 1: Heading & Summary */}
+           <div className="flex flex-col gap-3 max-w-2xl px-4 lg:px-0">
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
                 <Heart size={8} fill="currentColor" stroke="none" />
                 The Internal Balance
               </div>
-              <h3 className="text-[40px] lg:text-[65px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h3 className="text-[45px] lg:text-[70px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                 My <span className="text-[#F59E9E]">Hobbies.</span>
               </h3>
-              <p className="text-white/30 text-base font-inter leading-relaxed max-w-xl">
+              <p className="text-white/30 text-base lg:text-lg font-inter leading-relaxed max-w-xl">
                 Finding focus through simple pleasures — from the rhythm of capturing light to the morning espresso that fuels it all. 
               </p>
            </div>
 
-           {/* Row 2: The Interaction Stage (Compact Horizontal Spread) */}
-           <div className="relative h-[400px] w-full mt-4">
+           {/* Row 2: Interaction Stage */}
+           <div className="relative h-[450px] w-full mt-6">
               
-              {/* Massive Artifact: LEFT */}
-              <div className="absolute top-[0%] left-[-10%] lg:left-[-5%] w-[400px] h-[400px] z-20">
+              {/* STAGE LEFT: Headphones (Pushed down to fix clipping) */}
+              <div className="absolute top-[10%] left-[-5%] lg:left-[0%] w-[420px] h-[420px] z-20">
                  <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/headphones.glb" scale={3.8} rotationSpeed={1.5} floatIntensity={4} />
+                          <ModelViewer url="/headphones.glb" scale={3.4} rotationSpeed={1.5} floatIntensity={3} />
                        </Suspense>
                     </Canvas>
                  </div>
@@ -157,13 +157,13 @@ export default function FunFacts() {
                  </AnimatePresence>
               </div>
 
-              {/* Drifting Icons: CENTRAL WIDE CHANNEL */}
+              {/* Drifting Icons */}
               {[
-                { id: "sketching", icon: PenTool, x: "28%", y: "10%", dur: 5, delay: 0 },
+                { id: "sketching", icon: PenTool, x: "32%", y: "15%", dur: 5, delay: 0 },
                 { id: "singing", icon: Mic2, x: "50%", y: "45%", dur: 6, delay: 1 },
-                { id: "philosophy", icon: HelpCircle, x: "35%", y: "75%", dur: 4, delay: 0.5 },
-                { id: "retro", icon: Clock, x: "65%", y: "15%", dur: 7, delay: 0.2 },
-                { id: "photography", icon: Camera, x: "78%", y: "65%", dur: 5.5, delay: 1.5 }
+                { id: "philosophy", icon: HelpCircle, x: "38%", y: "75%", dur: 4, delay: 0.5 },
+                { id: "retro", icon: Clock, x: "65%", y: "20%", dur: 7, delay: 0.2 },
+                { id: "photography", icon: Camera, x: "75%", y: "65%", dur: 5.5, delay: 1.5 }
               ].map((h, i) => (
                 <div key={h.id} className="absolute z-20" style={{ left: h.x, top: h.y }}>
                   <motion.div animate={{ y: [0, 15, 0], x: [0, 10, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
@@ -184,13 +184,13 @@ export default function FunFacts() {
                 </div>
               ))}
 
-              {/* Massive Artifact: RIGHT */}
-              <div className="absolute top-[0%] right-[-10%] lg:right-[-5%] w-[400px] h-[400px] z-20">
+              {/* STAGE RIGHT: Camera (Shifted left to fix bleeding) */}
+              <div className="absolute top-[5%] right-[0%] lg:right-[5%] w-[420px] h-[420px] z-20">
                  <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/camera.glb" scale={3.5} rotationSpeed={-1.2} floatIntensity={5} />
+                          <ModelViewer url="/camera.glb" scale={3.2} rotationSpeed={-1.2} floatIntensity={4} />
                        </Suspense>
                     </Canvas>
                  </div>
