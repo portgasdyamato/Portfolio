@@ -36,7 +36,7 @@ export default function Header() {
           className="pointer-events-auto w-full max-w-4xl"
         >
           <div
-            className="flex items-center justify-between gap-6 px-10 py-5 rounded-full border border-white/30 bg-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform duration-500 scale-100"
+            className="flex items-center justify-between gap-3 sm:gap-6 px-4 py-2.5 sm:px-10 sm:py-5 rounded-full border border-white/30 bg-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform duration-500 scale-100"
           >
             {/* Logo */}
             <button
