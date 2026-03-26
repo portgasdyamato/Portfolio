@@ -36,7 +36,7 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 1 }: 
 const animals = [
   { name: "Pony", url: "/pony.glb", tag: "3P / SPIRITED", scale: 2.8 },
   { name: "Panda", url: "/panda.glb", tag: "3P / CHILL", scale: 3.2 },
-  { name: "Penguin", url: "/penguin.glb", tag: "3P / SOCIAL", scale: 2.2 },
+  { name: "Penguin", url: "/penguin.glb", tag: "3P / SOCIAL", scale: 2.8 },
 ]
 
 const driftingIcons = [
@@ -126,7 +126,7 @@ export default function FunFacts() {
 
           {/* Col 2: Camera */}
           <div className="relative w-full h-[300px] lg:h-[420px] overflow-visible z-20">
-            <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="absolute w-[500px] h-[520px] -top-[80px] left-1/2 -translate-x-1/2 cursor-grab active:cursor-grabbing">
+            <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="absolute w-[500px] h-[520px] -top-[140px] left-[60%] -translate-x-1/2 cursor-grab active:cursor-grabbing">
               <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                 <Suspense fallback={null}>
                   <OrbitControls enableZoom={false} enablePan={false} makeDefault />
