@@ -31,7 +31,8 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
   useFrame((state: any) => {
     if (!group.current) return
     group.current.rotation.y += 0.005 * rotationSpeed
-    group.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.15 * floatIntensity
+    // Reduced float intensity to prevent clipping during movement
+    group.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.1 * floatIntensity
   })
 
   return (
@@ -48,7 +49,7 @@ const animals = [
 ]
 
 const hobbyItems = [
-  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 7.0, description: "Listening to lectures, podcasts, and music." },
+  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 8.5, description: "Listening to lectures, podcasts, and music." },
   { id: "camera", name: "Camera", url: "/camera.glb", scale: 7.0, description: "Street & nature photography." },
   { id: "sketching", name: "Sketching", icon: PenTool, description: "Doodling and sketching my ideas." },
   { id: "singing", name: "Singing", icon: Mic2, description: "Practicing vocals and singing." },
@@ -102,7 +103,7 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* 2. Hobbies: Drifting Galaxy (AGGRESSIVE VERTICAL COMPRESSION) */}
+      {/* 2. Hobbies: Drifting Galaxy (AGGRESSIVE VERTICAL FIX) */}
       <div className="relative bg-[#000000] rounded-[5rem] h-[85vh] lg:h-[90vh] overflow-hidden px-8 lg:px-24 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-start text-white">
         
         {/* Sky Particles */}
@@ -156,16 +157,16 @@ export default function FunFacts() {
               </div>
            </div>
 
-           {/* Row 2: Interaction Stage (AGGRESSIVELY LIFTED) */}
-           <div className="relative h-[450px] w-full mt-[-100px] lg:mt-[-120px]">
+           {/* Row 2: Interaction Stage (AGGRESSIVELY PUSHED TO CENTER CHANNEL) */}
+           <div className="relative h-[400px] w-full mt-[-60px] lg:mt-[-80px]">
               
-              {/* STAGE LEFT: Headphones (SCALE 7.0 + PUSHED UP) */}
-              <div className="absolute top-[-15%] left-[-10%] lg:left-[-5%] w-[550px] h-[550px] z-20 overflow-visible">
+              {/* STAGE LEFT: Headphones (SCALE 8.5 + AGGRESSIVE VERTICAL LIFT) */}
+              <div className="absolute top-[30%] left-[-10%] lg:left-[-5%] w-[480px] h-[480px] z-20 overflow-visible">
                  <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/headphones.glb" scale={7.0} rotationSpeed={1.5} floatIntensity={1.5} />
+                          <ModelViewer url="/headphones.glb" scale={8.5} rotationSpeed={1.5} floatIntensity={1.0} />
                        </Suspense>
                     </Canvas>
                  </div>
@@ -178,12 +179,12 @@ export default function FunFacts() {
                  </AnimatePresence>
               </div>
 
-              {/* Drifting Icons (ALL PUSHED UP) */}
+              {/* Drifting Icons (PUSHED UP FROM BOTTOM) */}
               {[
-                { id: "sketching", icon: PenTool, x: "35%", y: "15%", dur: 5, delay: 0 },
-                { id: "singing", icon: Mic2, x: "50%", y: "40%", dur: 6, delay: 1 },
-                { id: "philosophy", icon: HelpCircle, x: "38%", y: "65%", dur: 4, delay: 0.5 },
-                { id: "retro", icon: Clock, x: "65%", y: "20%", dur: 7, delay: 0.2 }
+                { id: "sketching", icon: PenTool, x: "35%", y: "25%", dur: 5, delay: 0 },
+                { id: "singing", icon: Mic2, x: "52%", y: "55%", dur: 6, delay: 1 },
+                { id: "philosophy", icon: HelpCircle, x: "42%", y: "80%", dur: 4, delay: 0.5 },
+                { id: "retro", icon: Clock, x: "65%", y: "30%", dur: 7, delay: 0.2 }
               ].map((h, i) => (
                 <div key={h.id} className="absolute z-20" style={{ left: h.x, top: h.y }}>
                   <motion.div animate={{ y: [0, 15, 0], x: [0, 10, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
@@ -191,7 +192,7 @@ export default function FunFacts() {
                        <h.icon strokeWidth={1} size={24} />
                        <AnimatePresence>
                           {hoveredId === h.id && (
-                             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-50 pointer-events-none shadow-2xl">
+                             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-50 pointer-events-none shadow-2xl white-space-normal break-words">
                                 <span className="text-[8px] text-[#1a0a0a] font-black uppercase tracking-wider leading-tight">
                                    {hobbyItems.find(item => item.id === h.id)?.description || "A curious pursuit."}
                                 </span>
