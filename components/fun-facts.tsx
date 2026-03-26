@@ -57,11 +57,11 @@ const animals = [
 ]
 
 const hobbies = [
-  { icon: HeadphoneIcon, text: "Podcasts & Lectures", sub: "Domain Expansion", color: "#F59E9E", x: "10%", y: "20%", size: 90 },
+  { icon: Coffee, text: "Caffeine Fuel", sub: "Espresso Shots", color: "#F59E9E", x: "82%", y: "45%", size: 85 },
+  { icon: Camera, text: "Photography", sub: "Capturing Light", color: "#F59E9E", x: "42%", y: "15%", size: 95 },
+  { icon: HeadphoneIcon, text: "Podcasts", sub: "Domain Expansion", color: "#F59E9E", x: "10%", y: "20%", size: 85 },
   { icon: Mic2, text: "Singing", sub: "Vocal Soul", color: "#F59E9E", x: "25%", y: "55%", size: 75 },
-  { icon: PenTool, text: "Doodling & Sketching", sub: "Visual Journaling", color: "#F59E9E", x: "42%", y: "15%", size: 85 },
-  { icon: MapPin, text: "Travelling", sub: "Global Nomad", color: "#F59E9E", x: "68%", y: "45%", size: 80 },
-  { icon: HelpCircle, text: "Philosophy", sub: "Asking Why", color: "#F59E9E", x: "82%", y: "12%", size: 75 },
+  { icon: PenTool, text: "Sketching", sub: "Visual Journaling", color: "#F59E9E", x: "68%", y: "25%", size: 80 },
 ]
 
 export default function FunFacts() {
@@ -142,44 +142,44 @@ export default function FunFacts() {
       </div>
 
       {/* ── Life Outside: Hobbies Galaxy with Retro Antics ── */}
-      <div className="relative bg-[#1a0a0a] rounded-[4rem] p-12 md:p-24 overflow-hidden min-h-[700px] flex flex-col lg:flex-row items-center gap-20 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)]">
+      <div className="relative bg-[#000000] rounded-[4rem] p-12 md:p-24 overflow-hidden min-h-[700px] flex flex-col lg:flex-row items-center gap-20 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)]">
         
-        {/* Particle/Starfield Background */}
-        <div className="absolute inset-0 pointer-events-none opacity-20">
-           {[...Array(30)].map((_, i) => (
+        {/* Particle/Starfield Background (Higher Density for Night Sky) */}
+        <div className="absolute inset-0 pointer-events-none opacity-40">
+           {[...Array(60)].map((_, i) => (
               <motion.div
                 key={i}
                 animate={{ 
                   opacity: [0.1, 1, 0.1],
-                  scale: [0.5, 1, 0.5]
+                  scale: [0.3, 1, 0.3]
                 }}
-                transition={{ duration: 2 + Math.random() * 4, repeat: Infinity }}
-                className="absolute w-1 h-1 bg-white rounded-full"
+                transition={{ duration: 2 + Math.random() * 6, repeat: Infinity }}
+                className="absolute w-[1px] h-[1px] bg-white rounded-full shadow-[0_0_8px_white]"
                 style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%` }}
               />
            ))}
         </div>
 
         <div className="z-10 relative flex-1">
-           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-8">
+           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-8 border border-white/5 backdrop-blur-md">
              <Heart size={10} fill="currentColor" stroke="none" />
              The Curious Mind
            </div>
            <h3 className="text-[45px] md:text-[60px] font-bold italic text-white leading-[1.1] mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
              Where I find <br /> <span className="text-[#F59E9E]">Internal Balance.</span>
            </h3>
-           <p className="text-white/50 text-xl font-inter leading-relaxed mb-12 max-w-md">
-             When I'm not designing, I'm researching things outside my domain — from abstract philosophy to the history of retro objects.
+           <p className="text-white/40 text-xl font-inter leading-relaxed mb-12 max-w-sm">
+             Finding focus through simple pleasures — from the rhythm of capturing light to the morning espresso that fuels it all.
            </p>
 
            <div className="space-y-6">
               {[
-                { label: "Researching", value: "Philosophy & Lectures" },
-                { label: "Creating", value: "Singing & Doodling" },
-                { label: "Experiencing", value: "Travelling & Retro Antiques" }
+                { label: "Energizing", value: "Caffeine Fuel & Singing" },
+                { label: "Observing", value: "Photography & Philosophy" },
+                { label: "Preserving", value: "Retro Antiques & Sketching" }
               ].map(item => (
-                <div key={item.label} className="group border-b border-white/10 pb-4">
-                   <span className="text-[8px] uppercase tracking-[0.5em] text-white/30 block mb-2">{item.label}</span>
+                <div key={item.label} className="group border-b border-white/5 pb-4">
+                   <span className="text-[8px] uppercase tracking-[0.5em] text-white/20 block mb-2">{item.label}</span>
                    <span className="text-lg text-white font-medium group-hover:text-[#F59E9E] transition-colors uppercase tracking-tight">{item.value}</span>
                 </div>
               ))}
@@ -189,27 +189,27 @@ export default function FunFacts() {
         {/* ── 3D OBJECTS GALAXY (Desktop) ── */}
         <div className="relative flex-1 w-full h-[500px] hidden lg:block perspective-[1000px]">
            
-           {/* Headphones 3D Model */}
-           <div className="absolute top-[10%] left-[20%] w-[180px] h-[180px] z-20 cursor-grab active:cursor-grabbing">
+           {/* Headphones 3D Model - Enlarged */}
+           <div className="absolute top-[5%] left-[15%] w-[240px] h-[240px] z-20 cursor-grab active:cursor-grabbing">
               <Canvas dpr={[1, 2]}>
                 <Suspense fallback={null}>
-                  <ModelViewer url="/headphones.glb" scale={0.4} rotationSpeed={1.4} floatIntensity={3} />
+                  <ModelViewer url="/headphones.glb" scale={0.6} rotationSpeed={1.4} floatIntensity={3} />
                 </Suspense>
               </Canvas>
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                 <span className="text-[7px] font-mono tracking-[0.5em] text-white/20 uppercase">RETRO_AUDIOPHILE</span>
+              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                 <span className="text-[8px] font-black tracking-[0.4em] text-white/30 uppercase">THE_RHYTHM</span>
               </div>
            </div>
 
            {/* Watch 3D Model */}
-           <div className="absolute bottom-[10%] right-[15%] w-[160px] h-[160px] z-20">
+           <div className="absolute bottom-[2%] right-[10%] w-[180px] h-[180px] z-20">
               <Canvas dpr={[1, 2]}>
                 <Suspense fallback={null}>
-                  <ModelViewer url="/watch.glb" scale={0.45} rotationSpeed={-1.2} floatIntensity={3} />
+                  <ModelViewer url="/watch.glb" scale={0.5} rotationSpeed={-1.2} floatIntensity={4} />
                 </Suspense>
               </Canvas>
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                 <span className="text-[7px] font-mono tracking-[0.5em] text-white/20 uppercase">ANTIC_MECHANICS</span>
+                 <span className="text-[7px] font-mono tracking-[0.6em] text-white/20 uppercase">TIMECRAFT</span>
               </div>
            </div>
 
