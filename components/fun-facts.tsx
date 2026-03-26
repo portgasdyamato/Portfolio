@@ -151,8 +151,7 @@ export default function FunFacts() {
                  <AnimatePresence>
                     {hoveredId === 'headphones' && (
                        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none">
-                          <span className="text-[10px] text-[#F59E9E] font-black uppercase tracking-[0.3em] block mb-1">THE_RHYTHM</span>
-                          <span className="text-[9px] text-white/50 font-inter uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
+                          <span className="text-[10px] text-white/60 font-inter uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
                        </motion.div>
                     )}
                  </AnimatePresence>
@@ -198,7 +197,6 @@ export default function FunFacts() {
                  <AnimatePresence>
                     {hoveredId === 'camera' && (
                        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none">
-                          <span className="text-[10px] text-[#F59E9E] font-black uppercase tracking-[0.3em] block mb-1">OPTIC_SOUL</span>
                           <span className="text-[9px] text-white/50 font-inter uppercase tracking-widest">Street & nature photography.</span>
                        </motion.div>
                     )}
