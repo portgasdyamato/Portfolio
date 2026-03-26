@@ -43,9 +43,9 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
 }
 
 const animals = [
-  { name: "Pony", url: "/pony.glb", tag: "3P / SPIRITED", scale: 2.2 },
-  { name: "Panda", url: "/panda.glb", tag: "3P / CHILL", scale: 2.5 },
-  { name: "Penguin", url: "/penguin.glb", tag: "3P / SOCIAL", scale: 1.8 }
+  { name: "Pony", url: "/pony.glb", tag: "3P / SPIRITED", scale: 2.2, bg: "from-[#FFF5F5] to-[#F5E6E6]" },
+  { name: "Panda", url: "/panda.glb", tag: "3P / CHILL", scale: 2.5, bg: "from-[#F9F9F9] to-[#F0F0F0]" },
+  { name: "Penguin", url: "/penguin.glb", tag: "3P / SOCIAL", scale: 1.8, bg: "from-[#F0F7FF] to-[#E6F0FF]" }
 ]
 
 const hobbies = [
@@ -90,40 +90,45 @@ export default function FunFacts() {
                 transition={{ delay: i * 0.2, duration: 0.8 }}
                 className="group relative flex flex-col items-center"
               >
-                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[3.5rem] bg-[#fdfdfd] border border-[#F59E9E]/10 shadow-2xl shadow-[#1a0a0a]/[0.08] group-hover:border-[#F59E9E]/30 transition-all duration-700">
+                <div className={`relative w-full aspect-[4/5] overflow-hidden rounded-[4rem] bg-gradient-to-b ${anim.bg} border border-[#F59E9E]/10 shadow-2xl shadow-[#1a0a0a]/[0.05] group-hover:border-[#F59E9E]/40 transition-all duration-700`}>
                   {/* Subtle Grain/Texture Background */}
-                  <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                  <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
                   
-                  <div className="absolute inset-0 cursor-grab active:cursor-grabbing">
-                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px] animate-pulse">SYNCING_MODEL_0{i+1}...</div>}>
+                  {/* STUDIO SHOWCASE EFFECT: Bottom Gradient Tray */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/60 via-white/20 to-transparent pointer-events-none border-t border-white/30 backdrop-blur-[2px]" />
+                  
+                  {/* Showcase Reflection Accent */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-white/20 rounded-full blur-2xl pointer-events-none" />
+
+                  <div className="absolute inset-0 cursor-grab active:cursor-grabbing z-10">
+                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px] animate-pulse">SHOWCASE_SYNC...</div>}>
                       <Canvas camera={{ position: [0, 0, 5], fov: 40 }} dpr={[1, 2]}>
                         <PresentationControls global config={{ mass: 2, tension: 500 }} snap={{ mass: 4, tension: 1500 }}>
-                          <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
+                          <ModelViewer url={anim.url} scale={anim.scale * 1.05} rotationSpeed={1.2} floatIntensity={1.2} />
                         </PresentationControls>
                       </Canvas>
                     </Suspense>
                   </div>
                   
-                  {/* Premium Name Tag - Vertical Glass Pill */}
-                  <div className="absolute top-8 left-8 flex flex-col items-start gap-3">
-                     <div className="px-3 py-1 bg-[#1a0a0a] rounded-full text-white text-[8px] font-black tracking-[0.2em] shadow-xl">
+                  {/* Refined Name Tags */}
+                  <div className="absolute top-8 left-8 z-20">
+                     <div className="px-3 py-1 bg-[#1a0a0a]/90 backdrop-blur-md rounded-full text-white text-[8px] font-black tracking-[0.2em] shadow-lg">
                         {anim.tag}
                      </div>
                   </div>
 
-                  <div className="absolute bottom-8 right-8 overflow-hidden">
+                  <div className="absolute bottom-8 right-8 z-20 overflow-hidden">
                     <motion.div 
                       initial={{ x: 20, opacity: 0 }}
                       whileHover={{ x: 0, opacity: 1 }}
-                      className="bg-white/80 backdrop-blur-xl px-6 py-4 rounded-[2rem] border border-white flex items-center gap-4 shadow-2xl shadow-black/5"
+                      className="bg-white/90 backdrop-blur-2xl px-6 py-4 rounded-[2.5rem] border border-white/50 flex items-center gap-4 shadow-2xl shadow-black/10"
                     >
                        <div className="w-2 h-2 rounded-full bg-[#F59E9E] animate-pulse" />
                        <span className="text-xl font-black italic text-[#1a0a0a] font-inter tracking-tighter uppercase">{anim.name}</span>
                     </motion.div>
                     
-                    {/* Default visible indicator */}
-                    <div className="mt-2 text-right group-hover:opacity-0 transition-opacity">
-                       <span className="text-[10px] font-black text-[#F59E9E] uppercase tracking-widest">{anim.name}</span>
+                    <div className="mt-2 text-right group-hover:opacity-0 transition-opacity pr-2">
+                       <span className="text-[10px] font-black text-[#F59E9E]/60 uppercase tracking-[0.2em]">{anim.name}</span>
                     </div>
                   </div>
                 </div>
