@@ -138,7 +138,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
                 </Magnetic>
                 <Magnetic
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="flex items-center justify-center gap-2 bg-transparent text-[#b33951] text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full border border-[#b33951]/40 hover:bg-[#b33951] hover:text-white hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(179,57,81,0.3)] transition-all duration-300 min-w-[180px]"
+                  className="flex items-center justify-center gap-2 bg-transparent text-[#F59E9E] text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full border border-[#F59E9E]/40 hover:bg-[#F59E9E] hover:text-white hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(245,158,158,0.3)] transition-all duration-300 min-w-[180px]"
                 >
                   Let's Talk
                 </Magnetic>
@@ -150,14 +150,14 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
                 className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-8 sm:gap-14 pt-8 border-t border-[#1a0a0a]/[0.08]"
               >
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Contact</span>
-                  <a href="mailto:sakshiagrahari2004@gmail.com" className="text-[13.5px] font-bold text-[#1a0a0a] hover:text-[#b33951] transition-colors">
+                  <span className="text-[9px] tracking-[0.3em] text-[#F59E9E] uppercase font-bold">Contact</span>
+                  <a href="mailto:sakshiagrahari2004@gmail.com" className="text-[13.5px] font-bold text-[#1a0a0a] hover:text-[#F59E9E] transition-colors">
                     sakshiagrahari2004@gmail.com
                   </a>
                 </div>
                 
                 <div className="flex flex-col gap-1.5">
-                  <span className="text-[9px] tracking-[0.3em] text-[#b33951] uppercase font-bold">Location</span>
+                  <span className="text-[9px] tracking-[0.3em] text-[#F59E9E] uppercase font-bold">Location</span>
                   <span className="text-[13.5px] font-bold text-[#1a0a0a]">Planet Earth</span>
                 </div>
               </motion.div>

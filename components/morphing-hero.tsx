@@ -69,7 +69,7 @@ export default function MorphingHero() {
     // Animate visual properties directly on the tilting card so they tilt with it
     tl.to(cardVisualRef.current, {
       borderRadius: "32px",
-      boxShadow: "0 80px 160px -40px rgba(179,57,81,0.3)",
+      boxShadow: "0 80px 160px -40px rgba(245,158,158,0.3)",
       backgroundColor: "#FFF5F5",
       ease: "power2.inOut",
       duration: 0.3
@@ -139,7 +139,7 @@ export default function MorphingHero() {
           <motion.div animate={{ rotate: 360 }} transition={{ duration: 45, repeat: Infinity, ease: "linear" }}>
              <svg viewBox="0 0 200 200" className="w-full h-full">
                <path id="cc" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none" />
-               <text fill="#b33951" fontSize="12" fontWeight="900" letterSpacing="4" style={{ fontFamily: "'Inter', sans-serif" }}><textPath href="#cc">UI/UX DESIGN ✦ AI PRODUCT DESIGN ✦ WEB DEV ✦</textPath></text>
+               <text fill="#F59E9E" fontSize="12" fontWeight="900" letterSpacing="4" style={{ fontFamily: "'Inter', sans-serif" }}><textPath href="#cc">UI/UX DESIGN ✦ AI PRODUCT DESIGN ✦ WEB DEV ✦</textPath></text>
              </svg>
           </motion.div>
         </div>

@@ -73,7 +73,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       className="fixed inset-0 z-[9999] bg-[#FFF5F5] overflow-hidden flex flex-col items-center justify-center select-none cursor-crosshair font-black"
     >
       {/* ── THE INFINITE VERTICAL TICKER GRID ── */}
-      <div className="absolute inset-0 flex divide-x divide-[#b33951]/10 opacity-[0.25]">
+      <div className="absolute inset-0 flex divide-x divide-[#F59E9E]/10 opacity-[0.25]">
         {[...Array(12)].map((_, i) => (
           <TickerColumn 
             key={i} 
@@ -93,12 +93,12 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                 <motion.h1 
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="text-[120px] md:text-[200px] leading-none text-[#b33951] italic select-none mix-blend-multiply"
+                    className="text-[120px] md:text-[200px] leading-none text-[#F59E9E] italic select-none mix-blend-multiply"
                     style={{ fontFamily: "'Cormorant Garamond', serif" }}
                 >
                     {progress < 100 ? "S" : "A"}
                 </motion.h1>
-                <div className="absolute -inset-12 border-[0.5px] border-[#b33951]/20 rounded-full animate-spin-slow opacity-40 pointer-events-none" />
+                <div className="absolute -inset-12 border-[0.5px] border-[#F59E9E]/20 rounded-full animate-spin-slow opacity-40 pointer-events-none" />
               </div>
 
               {/* The Name (Assembling through progress) */}
@@ -132,13 +132,13 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
                         transition={{ duration: 1, delay: 1.2 }}
-                        className="w-12 h-px bg-[#b33951]" 
+                        className="w-12 h-px bg-[#F59E9E]" 
                       />
                       <motion.p 
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.4 }}
-                        className="text-[12px] tracking-[0.8em] uppercase text-[#b33951] font-black"
+                        className="text-[12px] tracking-[0.8em] uppercase text-[#F59E9E] font-black"
                       >
                          Discovery Protocol v.01
                       </motion.p>
@@ -146,7 +146,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                         initial={{ scaleX: 0 }}
                         animate={{ scaleX: 1 }}
                         transition={{ duration: 1, delay: 1.2 }}
-                        className="w-12 h-px bg-[#b33951]" 
+                        className="w-12 h-px bg-[#F59E9E]" 
                       />
                   </div>
               </div>
@@ -155,8 +155,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
 
       {/* ── BOTTOM CINEMATIC HUD ── */}
       <div className="absolute bottom-12 left-16 flex flex-col gap-3">
-          <div className="flex items-center gap-3 text-[10px] tracking-[0.5em] text-[#b33951] uppercase font-black">
-              <span className="w-2 h-2 rounded-full bg-[#b33951] animate-ping" />
+          <div className="flex items-center gap-3 text-[10px] tracking-[0.5em] text-[#F59E9E] uppercase font-black">
+              <span className="w-2 h-2 rounded-full bg-[#F59E9E] animate-ping" />
               <span>Establishing Aesthetic Gravity...</span>
           </div>
           <div className="flex items-center gap-5 text-[#1a0a0a]/30 font-mono text-[11px]">
@@ -175,12 +175,12 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                         key={i} 
                         initial={{ opacity: 0.1 }}
                         animate={{ opacity: progress > (i * 20) ? 1 : 0.1 }}
-                        className="w-4 h-1 bg-[#b33951]" 
+                        className="w-4 h-1 bg-[#F59E9E]" 
                       />
                    ))}
                </div>
           </div>
-          <span className="text-7xl font-mono font-black text-[#b33951] opacity-20">
+          <span className="text-7xl font-mono font-black text-[#F59E9E] opacity-20">
               {Math.floor(progress)}
           </span>
       </div>
@@ -210,7 +210,7 @@ function TickerColumn({ index, mouseX }: { index: number, mouseX: any }) {
          className="flex flex-col gap-8 py-8"
        >
           {displayChars.map((char, i) => (
-            <span key={i} className="text-[14px] text-[#b33951]/40 font-mono tracking-tighter mix-blend-multiply opacity-50">
+            <span key={i} className="text-[14px] text-[#F59E9E]/40 font-mono tracking-tighter mix-blend-multiply opacity-50">
                {char}
             </span>
           ))}

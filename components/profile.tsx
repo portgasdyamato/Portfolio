@@ -37,7 +37,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8 + delay, duration: 0.5 }}
-              className={`absolute pointer-events-none z-0 ${size} text-[#b33951]/40 select-none`}
+              className={`absolute pointer-events-none z-0 ${size} text-[#F59E9E]/40 select-none`}
               style={{ top, left }}
             >
               ✦
@@ -77,7 +77,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
             Sakshi Agrahari.
           </span>
           <div className="flex flex-col gap-1">
-            <span className="text-[10px] tracking-[0.35em] text-[#b33951] uppercase font-bold">UI/UX & AI Product Designer</span>
+            <span className="text-[10px] tracking-[0.35em] text-[#F59E9E] uppercase font-bold">UI/UX & AI Product Designer</span>
             <span className="text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Freelance Specialist</span>
           </div>
         </motion.div>

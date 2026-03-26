@@ -44,7 +44,7 @@ export default function Header() {
               className="group flex items-center pr-6 border-r border-black/5 shrink-0"
             >
               <span
-                className="text-[22px] sm:text-[26px] font-bold italic tracking-tight text-[#1a0a0a] group-hover:text-[#b33951] transition-colors duration-300"
+                className="text-[22px] sm:text-[26px] font-bold italic tracking-tight text-[#1a0a0a] group-hover:text-[#F59E9E] transition-colors duration-300"
                 style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
                 Sakshi Agrahari
@@ -80,8 +80,8 @@ export default function Header() {
                {/* Availability */}
                <div className="hidden sm:flex items-center gap-2.5 px-4 py-2 bg-black/5 rounded-full">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#b33951] opacity-60" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#b33951]" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F59E9E] opacity-60" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F59E9E]" />
                 </span>
                 <span className="text-[10px] tracking-[0.25em] font-black text-[#1a0a0a] uppercase">Live</span>
               </div>
@@ -91,14 +91,14 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setInfoOpen(true)}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#b33951] transition-all shadow-xl"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#F59E9E] transition-all shadow-xl"
               >
                 <Info size={14} strokeWidth={3} />
               </motion.button>
 
               {/* Mobile Menu Toggle */}
               <button
-                className="md:hidden p-2 text-[#1a0a0a] hover:text-[#b33951] transition-colors"
+                className="md:hidden p-2 text-[#1a0a0a] hover:text-[#F59E9E] transition-colors"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
                 {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -126,7 +126,7 @@ export default function Header() {
                       <span className="text-xl font-bold italic text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                         {item.label}
                       </span>
-                      <ArrowUpRight size={16} className="text-[#1a0a0a]/30 group-hover:text-[#b33951] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+                      <ArrowUpRight size={16} className="text-[#1a0a0a]/30 group-hover:text-[#F59E9E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </button>
                   ))}
                 </div>
@@ -158,8 +158,8 @@ export default function Header() {
                  <button onClick={() => setInfoOpen(false)} className="text-black/20 hover:text-black transition-colors"><X size={20}/></button>
               </div>
 
-               <div className="w-14 h-14 rounded-2xl bg-[#FDE2E2] flex items-center justify-center mb-8">
-                <Sparkles className="text-[#b33951]" size={24} />
+               <div className="w-14 h-14 rounded-2xl bg-[#FFF5F5] flex items-center justify-center mb-8">
+                <Sparkles className="text-[#F59E9E]" size={24} />
               </div>
 
               <h3 className="text-4xl font-bold italic text-[#1a0a0a] mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
@@ -175,8 +175,8 @@ export default function Header() {
                   { icon: Code2, t: "Engineered with React & GSAP" },
                   { icon: Sparkles, t: "UI/UX Visual Excellence" }
                 ].map(({ icon: Icon, t }) => (
-                  <div key={t} className="flex items-center gap-4 bg-black/5 rounded-2xl px-5 py-4 border border-black/5 transition-colors hover:border-[#b33951]/20 group">
-                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#1a0a0a] group-hover:text-[#b33951] transition-colors shadow-sm">
+                  <div key={t} className="flex items-center gap-4 bg-black/5 rounded-2xl px-5 py-4 border border-black/5 transition-colors hover:border-[#F59E9E]/20 group">
+                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#1a0a0a] group-hover:text-[#F59E9E] transition-colors shadow-sm">
                       <Icon size={18} />
                     </div>
                     <span className="text-[11px] tracking-[0.2em] font-black text-[#1a0a0a] uppercase">{t}</span>
