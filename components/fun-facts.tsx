@@ -48,8 +48,8 @@ const animals = [
 ]
 
 const hobbyItems = [
-  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 3.8, description: "Listening to lectures, podcasts, and music." },
-  { id: "camera", name: "Camera", url: "/camera.glb", scale: 4.5, description: "Street & nature photography." },
+  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 6.0, description: "Listening to lectures, podcasts, and music." },
+  { id: "camera", name: "Camera", url: "/camera.glb", scale: 8.0, description: "Street & nature photography." },
   { id: "sketching", name: "Sketching", icon: PenTool, description: "Doodling and sketching my ideas." },
   { id: "singing", name: "Singing", icon: Mic2, description: "Practicing vocals and singing." },
   { id: "philosophy", name: "Philosophy", icon: HelpCircle, description: "Exploring philosophy and traveling to new places." },
@@ -102,8 +102,8 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* 2. Hobbies: Drifting Galaxy (Upward Re-balance) */}
-      <div className="relative bg-[#000000] rounded-[5rem] h-[85vh] lg:h-[90vh] overflow-hidden px-8 lg:px-16 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-start">
+      {/* 2. Hobbies: Drifting Galaxy (MASSIVE 3D UPDATE) */}
+      <div className="relative bg-[#000000] rounded-[5rem] h-[85vh] lg:h-[90vh] overflow-hidden px-8 lg:px-16 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-start text-white">
         
         {/* Sky Particles */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -135,35 +135,35 @@ export default function FunFacts() {
               </p>
            </div>
 
-           {/* Row 2: Interaction Stage (Shifted Upwards) */}
-           <div className="relative h-[480px] w-full mt-[-20px] lg:mt-[-40px]">
+           {/* Row 2: Interaction Stage (MASSIVE SCALING & HOVER POSITION FIX) */}
+           <div className="relative h-[550px] w-full mt-[-40px] lg:mt-[-60px]">
               
-              {/* STAGE LEFT: Headphones (Shifted Up & Rescaled) */}
-              <div className="absolute top-[0%] left-[-5%] lg:left-[0%] w-[420px] h-[420px] z-20">
+              {/* STAGE LEFT: Headphones (SCALE 6.0 + TOP HOVER) */}
+              <div className="absolute top-[5%] left-[-15%] lg:left-[-5%] w-[550px] h-[550px] z-20">
                  <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/headphones.glb" scale={3.8} rotationSpeed={1.5} floatIntensity={3} />
+                          <ModelViewer url="/headphones.glb" scale={6.0} rotationSpeed={1.5} floatIntensity={3} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'headphones' && (
-                       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none">
-                          <span className="text-[9px] text-white/50 font-inter uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
+                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[240px] bg-white/5 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                          <span className="text-[10px] text-white/70 font-inter uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
                        </motion.div>
                     )}
                  </AnimatePresence>
               </div>
 
-              {/* Drifting Icons (Shifted Upwards) */}
+              {/* Drifting Icons */}
               {[
-                { id: "sketching", icon: PenTool, x: "32%", y: "5%", dur: 5, delay: 0 },
-                { id: "singing", icon: Mic2, x: "50%", y: "30%", dur: 6, delay: 1 },
-                { id: "philosophy", icon: HelpCircle, x: "38%", y: "65%", dur: 4, delay: 0.5 },
-                { id: "retro", icon: Clock, x: "65%", y: "10%", dur: 7, delay: 0.2 },
-                { id: "photography", icon: Camera, x: "75%", y: "50%", dur: 5.5, delay: 1.5 }
+                { id: "sketching", icon: PenTool, x: "35%", y: "0%", dur: 5, delay: 0 },
+                { id: "singing", icon: Mic2, x: "52%", y: "25%", dur: 6, delay: 1 },
+                { id: "philosophy", icon: HelpCircle, x: "42%", y: "65%", dur: 4, delay: 0.5 },
+                { id: "retro", icon: Clock, x: "62%", y: "15%", dur: 7, delay: 0.2 },
+                { id: "photography", icon: Camera, x: "70%", y: "55%", dur: 5.5, delay: 1.5 }
               ].map((h, i) => (
                 <div key={h.id} className="absolute z-20" style={{ left: h.x, top: h.y }}>
                   <motion.div animate={{ y: [0, 15, 0], x: [0, 10, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
@@ -171,7 +171,7 @@ export default function FunFacts() {
                        <h.icon strokeWidth={1} size={24} />
                     </div>
                     <span className="text-[7px] font-black uppercase tracking-[0.2em] text-white/20 mt-2 group-hover:text-white transition-colors">{h.id}</span>
-                    <AnimatePresence>
+                   <AnimatePresence>
                       {hoveredId === h.id && (
                          <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[110%] left-1/2 -translate-x-1/2 w-[160px] bg-[#F59E9E] p-3 rounded-2xl text-center z-30 pointer-events-none shadow-2xl">
                             <span className="text-[8px] text-[#1a0a0a] font-black uppercase tracking-wider leading-tight">
@@ -184,20 +184,20 @@ export default function FunFacts() {
                 </div>
               ))}
 
-              {/* STAGE RIGHT: Camera (Shifted Up & Massively Scaled) */}
-              <div className="absolute top-[-5%] right-[0%] lg:right-[5%] w-[480px] h-[480px] z-20">
+              {/* STAGE RIGHT: Camera (SCALE 8.0 + TOP HOVER) */}
+              <div className="absolute top-[-5%] right-[-15%] lg:right-[-10%] w-[550px] h-[550px] z-20">
                  <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/camera.glb" scale={4.5} rotationSpeed={-1.2} floatIntensity={4} />
+                          <ModelViewer url="/camera.glb" scale={8.0} rotationSpeed={-1.2} floatIntensity={4} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'camera' && (
-                       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none">
-                          <span className="text-[9px] text-white/50 font-inter uppercase tracking-widest">Street & nature photography.</span>
+                       <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-[0%] left-1/2 -translate-x-1/2 w-[240px] bg-white/5 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                          <span className="text-[10px] text-white/70 font-inter uppercase tracking-widest leading-relaxed">Street & nature photography.</span>
                        </motion.div>
                     )}
                  </AnimatePresence>
