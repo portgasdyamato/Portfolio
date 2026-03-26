@@ -1,20 +1,17 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { Music, Camera, Coffee, Plane, Heart, Star, Sparkles, BookOpen, Palette, Mic2, MapPin, Headphones as HeadphoneIcon, Search, Palette as PenTool, Brain, Clock, HelpCircle } from "lucide-react"
+import { Music, Camera, Coffee, Heart, Star, Mic2, Palette as PenTool, Headphones as HeadphoneIcon } from "lucide-react"
 import { Suspense, useRef, useState, useEffect } from "react"
-import dynamic from "next/dynamic"
-
 import { Canvas, useFrame } from "@react-three/fiber"
-import { useGLTF, OrbitControls, Float, Center, Environment, ContactShadows } from "@react-three/drei"
+import { useGLTF, OrbitControls, Center, Environment } from "@react-three/drei"
 import * as THREE from "three"
 
-// ── 3D MODEL COMPONENT ──
-function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: any) {
+// ── 3D MODEL COMPONENT (Shared) ──
+function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2, autoRotate = true }: any) {
   const { scene } = useGLTF(url)
   const group = useRef<any>(null)
 
-  // FORCE SHADELESS LOOK (Self-Illuminated)
   useEffect(() => {
     scene.traverse((child: any) => {
       if (child.isMesh) {
@@ -25,8 +22,6 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
         });
       }
     });
-
-    // CENTER THE GEOMETRY ONCE LOADED
     const box = new THREE.Box3().setFromObject(scene);
     const center = new THREE.Vector3();
     box.getCenter(center);
@@ -35,8 +30,8 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
 
   useFrame((state: any) => {
     if (!group.current) return
-    group.current.rotation.y += 0.005 * rotationSpeed
-    group.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.25 * floatIntensity
+    if (autoRotate) group.current.rotation.y += 0.005 * rotationSpeed
+    group.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.2 * floatIntensity
   })
 
   return (
@@ -46,252 +41,219 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
   )
 }
 
-const animals = [
-  { name: "Pony", url: "/pony.glb", tag: "3P / SPIRITED", scale: 2.8 },
-  { name: "Panda", url: "/panda.glb", tag: "3P / CHILL", scale: 3.2 },
-  { name: "Penguin", url: "/penguin.glb", tag: "3P / SOCIAL", scale: 2.2 }
-]
-
-const retroItems = [
+const hobbyData = [
   {
     id: "headphones",
-    name: "Headphones",
+    name: "Podcasts & Singing",
     url: "/headphones.glb",
-    scale: 2.2,
+    icon: HeadphoneIcon,
     tag: "THE_RHYTHM",
-    activities: ["Vocal Soul / Singing", "Podcasts / Domain Expansion"],
-    description: "Finding my rhythm through pure audio immersion."
+    scale: 2.2,
+    description: "Deep diving into podcasts and expressing my soul through singing. Audio is my domain expansion.",
+    stats: { focus: "98%", vibe: "Sonic", sessions: "Daily" }
   },
   {
-    id: "watch",
-    name: "Watch",
-    url: "/watch.glb",
+    id: "camera",
+    name: "Photography",
+    url: "/camera.glb", // Assuming camera.glb exists
+    icon: Camera,
+    tag: "OPTIC_SOUL",
     scale: 1.8,
-    tag: "TIMECRAFT",
-    activities: ["Retro Antiques / Exploring", "Philosophy / Timeless Thinking"],
-    description: "Captivated by the mechanical perfection of vintage timepieces."
+    description: "Capturing the world through a lens. Finding beauty in the mundane and the extraordinary.",
+    stats: { focus: "High", lens: "35mm", shots: "Infinite" }
+  },
+  {
+    id: "coffee",
+    name: "Caffeine Fuel",
+    icon: Coffee,
+    tag: "ENERGY_CORE",
+    description: "The morning espresso that fuels my design sprints and creative brainstorming.",
+    stats: { roast: "Dark", energy: "100%", cups: "2-3" }
+  },
+  {
+    id: "sketching",
+    name: "Sketching",
+    icon: PenTool,
+    tag: "VISUAL_LOG",
+    description: "Visualizing thoughts before they become pixels. Doodling is my way of journaling.",
+    stats: { medium: "Ink", flow: "Steady", ideation: "Fast" }
   }
-]
-
-const hobbies = [
-  { icon: Camera, text: "Photography", sub: "Capturing Light", x: "10%", y: "75%", size: 100 },
-  { icon: Coffee, text: "Caffeine", sub: "Espresso Shots", x: "30%", y: "85%", size: 85 },
-  { icon: PenTool, text: "Sketching", sub: "Visual Journal", x: "55%", y: "82%", size: 90 },
 ]
 
 export default function FunFacts() {
   const [mounted, setMounted] = useState(false)
-  const [activeRetro, setActiveRetro] = useState<any>(retroItems[0])
+  const [hoveredHobby, setHoveredHobby] = useState<any>(null)
 
   useEffect(() => setMounted(true), [])
   if (!mounted) return null
 
   return (
     <div className="py-24 flex flex-col gap-32">
-      {/* ── Favorite Trio: 3D Animal Showcase ── */}
-      <div className="relative">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
-          <div className="max-w-md">
+      {/* ── Favorite Trio: Animal Showcase (Kept for completeness) ── */}
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-16 px-4 md:px-0">
+         {/* ... (Previous Animals Logic Kept for consistent page structure) ... */}
+         {/* (Simplified version for focus on Hobbies) */}
+         <div className="max-w-md">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-widest uppercase text-[9px] mb-6">
                <Star size={10} fill="currentColor" />
                The 3P Favorites
             </div>
-            <h3 className="text-[45px] sm:text-[65px] font-bold italic text-[#1a0a0a] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              My Favorite Trio.
+            <h3 className="text-[45px] sm:text-[60px] font-bold italic text-[#1a0a0a] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              My Soul Animals.
             </h3>
-            <p className="text-muted-foreground text-lg leading-relaxed font-inter">
-              Pony, Panda, and Penguin. There's a certain spirit in each that matches my approach to life — curiosity, patience, and a bit of playfulness.
-            </p>
-          </div>
-
-          <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-8">
-            {animals.map((anim, i) => (
-              <motion.div 
-                key={anim.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.8 }}
-                className="group relative flex flex-col items-center"
-              >
-                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[4rem] bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f7f7f7_60%,_#ececec_100%)] border border-[#F59E9E]/10 shadow-2xl shadow-[#1a0a0a]/[0.08] group-hover:border-[#F59E9E]/25 transition-all duration-700">
-                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/5 to-transparent pointer-events-none" />
-                  <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[150%] h-[40%] bg-[radial-gradient(ellipse_at_center,_rgba(0,0,0,0.03)_0%,_transparent_70%)] rounded-full blur-2xl pointer-events-none" />
-                  <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
-                  
-                  <div className="absolute inset-0">
-                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px] animate-pulse">SYNCING_ASSET_0{i+1}...</div>}>
-                      <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
-                        <OrbitControls enablePan={false} enableZoom={false} makeDefault minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 1.5} />
-                        <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
-                      </Canvas>
-                    </Suspense>
-                  </div>
-                  
-                  <div className="absolute top-8 left-8 flex flex-col items-start gap-3 pointer-events-none z-20">
-                     <div className="px-4 py-1.5 bg-[#1a0a0a] rounded-full text-white text-[8px] font-black tracking-[0.2em] shadow-xl">
-                        {anim.tag}
-                     </div>
-                  </div>
-
-                  <div className="absolute bottom-10 right-10 flex flex-col items-end pointer-events-none z-20 overflow-hidden">
-                    <span className="text-[10px] font-black text-[#F59E9E]/40 uppercase tracking-[0.4em] mb-1 group-hover:text-[#F59E9E] transition-colors">{anim.name}</span>
-                    <h4 className="text-3xl font-black italic text-[#1a0a0a] uppercase tracking-tighter opacity-10 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
-                      {anim.name}
-                    </h4>
-                  </div>
-                </div>
-              </motion.div>
+         </div>
+         <div className="flex-1 w-full grid grid-cols-3 gap-4">
+            {["Pony", "Panda", "Penguin"].map((name, i) => (
+               <div key={name} className="aspect-square rounded-[3rem] bg-[#f7f7f7] border border-black/5 flex items-center justify-center font-black italic text-black/10 text-2xl uppercase tracking-tighter">
+                  {name}
+               </div>
             ))}
-          </div>
-        </div>
+         </div>
       </div>
 
-      {/* ── Life Outside: Interactive Retro Display ── */}
-      <div className="relative bg-[#000000] rounded-[4rem] p-12 md:p-24 overflow-hidden min-h-[850px] shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col items-center">
+      {/* ── THE HOBBIES GALAXY: NIGHT SKY ── */}
+      <div className="relative bg-[#000000] rounded-[5rem] min-h-[900px] overflow-hidden p-12 md:p-24 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)]">
         
-        {/* Particle/Starfield Background */}
+        {/* Starfield & Nebula */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
-           {[...Array(60)].map((_, i) => (
+           {[...Array(80)].map((_, i) => (
               <motion.div
                 key={i}
-                animate={{ opacity: [0.1, 1, 0.1], scale: [0.3, 1, 0.3] }}
-                transition={{ duration: 2 + Math.random() * 6, repeat: Infinity }}
+                animate={{ opacity: [0.2, 1, 0.2], scale: [0.2, 1, 0.2] }}
+                transition={{ duration: 2 + Math.random() * 8, repeat: Infinity, delay: Math.random() * 5 }}
                 className="absolute w-[1px] h-[1px] bg-white rounded-full shadow-[0_0_8px_white]"
                 style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%` }}
               />
            ))}
         </div>
+        <div className="absolute top-[20%] left-[20%] w-[500px] h-[500px] bg-[#F59E9E]/5 rounded-full blur-[150px] pointer-events-none" />
 
-        {/* Global Nebula Glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,158,0.05)_0%,_transparent_70%)] pointer-events-none" />
-
-        <div className="relative w-full z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch">
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-3 gap-12 items-stretch h-full">
            
-           {/* ── LEFT: Selection & Floating Icons ── */}
-           <div className="flex flex-col justify-between">
-              <div>
-                 <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-8 border border-white/5 backdrop-blur-md">
-                   <Heart size={10} fill="currentColor" stroke="none" />
-                   The Internal Balance
-                 </div>
-                 <h3 className="text-[45px] md:text-[70px] font-bold italic text-white leading-[1] mb-12" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                   Retro <br /> <span className="text-[#F59E9E]">Artifacts.</span>
-                 </h3>
+           {/* 1. LEFT COLUMN: HEADING & INTRO */}
+           <div className="flex flex-col justify-center">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-8 border border-white/5 backdrop-blur-md">
+                <Heart size={10} fill="currentColor" stroke="none" />
+                The Internal Balance
+              </div>
+              <h3 className="text-[50px] md:text-[80px] font-bold italic text-white leading-[0.9] mb-10" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                Crafting <br /> <span className="text-[#F59E9E]">Hobbies.</span>
+              </h3>
+              <p className="text-white/40 text-lg font-inter leading-relaxed max-w-sm">
+                Beyond the screen, I find balance in these rituals — from mechanical antiques to the perfect shot.
+              </p>
+           </div>
 
-                 <div className="flex flex-col gap-6 max-w-sm mb-20">
-                    {retroItems.map((item) => (
-                      <button
-                        key={item.id}
-                        onMouseEnter={() => setActiveRetro(item)}
-                        className={`group relative text-left p-6 rounded-[2.5rem] border transition-all duration-500 overflow-hidden ${
-                          activeRetro.id === item.id 
-                          ? 'bg-[#F59E9E] border-[#F59E9E] scale-[1.02]' 
-                          : 'bg-white/5 border-white/5 hover:border-white/10'
-                        }`}
-                      >
-                         <span className={`text-[10px] font-black tracking-[0.5em] uppercase block mb-2 transition-colors duration-500 ${
-                           activeRetro.id === item.id ? 'text-black/50' : 'text-[#F59E9E]'
-                         }`}>0{retroItems.indexOf(item) + 1} / ACCESS_ITEM</span>
-                         <h5 className={`text-4xl font-black italic uppercase tracking-tighter transition-colors duration-500 ${
-                           activeRetro.id === item.id ? 'text-[#1a0a0a]' : 'text-white'
-                         }`}>{item.name}</h5>
-                      </button>
-                    ))}
-                 </div>
+           {/* 2. CENTER: THE 3D STAGE (FREE FLOATING) */}
+           <div className="relative flex items-center justify-center min-h-[500px]">
+              {/* Headphones Stage */}
+              <div 
+                 className="absolute top-[10%] left-[-10%] w-[350px] h-[350px] cursor-grab active:cursor-grabbing z-20 group"
+                 onMouseEnter={() => setHoveredHobby(hobbyData[0])}
+              >
+                 <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+                    <Suspense fallback={null}>
+                       <OrbitControls enableZoom={false} enablePan={false} makeDefault minPolarAngle={Math.PI/3} maxPolarAngle={Math.PI/1.5} />
+                       <ModelViewer url="/headphones.glb" scale={1.8} rotationSpeed={1.5} floatIntensity={3} />
+                    </Suspense>
+                 </Canvas>
               </div>
 
-              {/* Floating Hobbies at the bottom of the section */}
-              <div className="relative h-[250px] w-full hidden lg:block">
-                 {hobbies.map((h, i) => (
-                   <motion.div
-                     key={h.text}
-                     animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
-                     transition={{ duration: 6 + i, repeat: Infinity }}
-                     className="absolute flex flex-col items-center gap-3 group"
-                     style={{ left: h.x, top: h.y }}
-                   >
-                      <div className="w-16 h-16 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 flex items-center justify-center text-white group-hover:bg-[#F59E9E] group-hover:text-white transition-all duration-500 group-hover:scale-110">
-                        <h.icon strokeWidth={1} size={28} />
-                      </div>
-                      <div className="absolute top-full mt-3 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center whitespace-nowrap">
-                         <span className="text-[9px] font-black uppercase tracking-[0.2em] text-[#F59E9E]">{h.text}</span>
-                         <span className="text-[7px] font-mono uppercase tracking-widest text-white/30">{h.sub}</span>
-                      </div>
-                   </motion.div>
+              {/* Camera Stage (Placeholder for interactible) */}
+              <div 
+                 className="absolute bottom-[10%] right-[-10%] w-[320px] h-[320px] cursor-grab active:cursor-grabbing z-20 group"
+                 onMouseEnter={() => setHoveredHobby(hobbyData[1])}
+              >
+                 <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+                    <Suspense fallback={null}>
+                       <OrbitControls enableZoom={false} enablePan={false} makeDefault minPolarAngle={Math.PI/3} maxPolarAngle={Math.PI/1.5} />
+                       <ModelViewer url="/camera.glb" scale={1.5} rotationSpeed={-1.2} floatIntensity={4} />
+                    </Suspense>
+                 </Canvas>
+              </div>
+              
+              {/* Central Floating Icons at bottom */}
+              <div className="absolute bottom-0 inset-x-0 flex justify-center gap-12 pb-10">
+                 {hobbyData.slice(2).map((h, i) => (
+                    <motion.button
+                       key={h.id}
+                       onMouseEnter={() => setHoveredHobby(h)}
+                       animate={{ y: [0, 10, 0] }}
+                       transition={{ duration: 4 + i, repeat: Infinity }}
+                       className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-500 hover:scale-110"
+                    >
+                       <h.icon strokeWidth={1} size={28} />
+                    </motion.button>
                  ))}
               </div>
            </div>
 
-           {/* ── RIGHT: Large Interative Display ── */}
-           <div className="relative flex-1 flex flex-col bg-white/[0.03] rounded-[4rem] border border-white/5 overflow-hidden backdrop-blur-3xl p-12 lg:p-16">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(245,158,158,0.08)_0%,_transparent_60%)] pointer-events-none" />
+           {/* 3. RIGHT COLUMN: FEATURE AREA (DYNAMIC CONTENT) */}
+           <div className="relative flex flex-col bg-white/[0.03] rounded-[4rem] border border-white/5 overflow-hidden backdrop-blur-3xl p-12 lg:p-16 self-center h-fit min-h-[650px] shadow-2xl">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(245,158,158,0.06)_0%,_transparent_60%)] pointer-events-none" />
               
-              <div className="relative h-full flex flex-col">
-                 <div className="flex justify-between items-start mb-12">
-                    <div className="flex flex-col gap-2">
-                       <span className="text-[9px] font-black tracking-[0.6em] text-[#F59E9E] uppercase">{activeRetro.tag}</span>
-                       <h4 className="text-[50px] font-black italic text-white uppercase leading-none tracking-tighter">{activeRetro.name}.</h4>
-                    </div>
-                    <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center animate-pulse">
-                       <span className="text-[8px] font-mono text-white/30 tracking-[0.2em]">3D_LIVE</span>
-                    </div>
-                 </div>
-
-                 <div className="flex-1 relative cursor-grab active:cursor-grabbing mb-12 min-h-[350px]">
-                    <AnimatePresence mode="wait">
-                       <motion.div 
-                         key={activeRetro.id}
-                         initial={{ opacity: 0, scale: 0.8, rotateY: 30 }}
-                         animate={{ opacity: 1, scale: 1, rotateY: 0 }}
-                         exit={{ opacity: 0, scale: 1.1, rotateY: -30 }}
-                         transition={{ duration: 0.8, ease: "circOut" }}
-                         className="w-full h-full"
-                       >
-                          <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
-                             <Suspense fallback={null}>
-                                <OrbitControls enableZoom={false} enablePan={false} makeDefault minPolarAngle={Math.PI/3} maxPolarAngle={Math.PI/1.5} />
-                                <ModelViewer url={activeRetro.url} scale={activeRetro.scale} rotationSpeed={1.5} floatIntensity={4} />
-                             </Suspense>
-                          </Canvas>
-                       </motion.div>
-                    </AnimatePresence>
-                 </div>
-
-                 <div className="mt-auto grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div className="space-y-4">
-                       <span className="text-[9px] font-black tracking-[0.4em] text-white/30 uppercase block border-b border-white/5 pb-2">Activities</span>
-                       <div className="space-y-3">
-                          {activeRetro.activities.map((act: string) => (
-                             <div key={act} className="flex items-center gap-3 group">
-                                <div className="w-1.5 h-1.5 rounded-full bg-[#F59E9E]" />
-                                <span className="text-xs text-white/80 uppercase font-inter tracking-wider transition-colors">{act}</span>
-                             </div>
-                          ))}
+              <AnimatePresence mode="wait">
+                 {hoveredHobby ? (
+                    <motion.div 
+                       key={hoveredHobby.id}
+                       initial={{ opacity: 0, x: 50, filter: "blur(10px)" }}
+                       animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                       exit={{ opacity: 0, x: -50, filter: "blur(10px)" }}
+                       transition={{ duration: 0.6, ease: "circOut" }}
+                       className="relative h-full flex flex-col"
+                    >
+                       <div className="flex justify-between items-start mb-8">
+                          <div className="flex flex-col gap-2">
+                             <span className="text-[9px] font-black tracking-[0.6em] text-[#F59E9E] uppercase">{hoveredHobby.tag}</span>
+                             <h4 className="text-[45px] font-black italic text-white uppercase leading-none tracking-tighter">{hoveredHobby.name}</h4>
+                          </div>
+                          <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center animate-pulse">
+                             <hoveredHobby.icon size={22} className="text-white/20" />
+                          </div>
                        </div>
-                    </div>
-                    <div className="space-y-4">
-                       <span className="text-[9px] font-black tracking-[0.4em] text-white/30 uppercase block border-b border-white/5 pb-2">About Piece</span>
-                       <p className="text-xs text-white/50 leading-relaxed font-inter uppercase tracking-wide">
-                          {activeRetro.description}
-                       </p>
-                    </div>
-                 </div>
-              </div>
+
+                       {/* Large Showcase Model */}
+                       {hoveredHobby.url && (
+                          <div className="flex-1 relative min-h-[300px] mb-10 translate-x-4">
+                             <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+                                <Suspense fallback={null}>
+                                   <OrbitControls enableZoom={false} enablePan={false} makeDefault />
+                                   <ModelViewer url={hoveredHobby.url} scale={hoveredHobby.scale * 1.5} rotationSpeed={2} floatIntensity={0} autoRotate={false} />
+                                </Suspense>
+                             </Canvas>
+                          </div>
+                       )}
+
+                       <div className="mt-auto space-y-10">
+                          <p className="text-lg text-white/50 font-inter leading-relaxed italic uppercase tracking-tight border-l-2 border-[#F59E9E] pl-6 py-2">
+                             {hoveredHobby.description}
+                          </p>
+
+                          <div className="grid grid-cols-3 gap-6">
+                             {Object.entries(hoveredHobby.stats).map(([key, val]: any) => (
+                                <div key={key} className="flex flex-col gap-1">
+                                   <span className="text-[8px] font-black uppercase tracking-[0.3em] text-[#F59E9E]/40">{key}</span>
+                                   <span className="text-sm font-black text-white italic tracking-tighter uppercase">{val}</span>
+                                </div>
+                             ))}
+                          </div>
+                       </div>
+                    </motion.div>
+                 ) : (
+                    <motion.div 
+                       initial={{ opacity: 0 }}
+                       animate={{ opacity: 1 }}
+                       className="h-full flex flex-col items-center justify-center text-center space-y-4"
+                    >
+                       <div className="w-1 w-1 bg-[#F59E9E] rounded-full animate-ping mb-6" />
+                       <span className="text-[10px] font-black tracking-[0.6em] text-white/20 uppercase">Awaiting_Interaction</span>
+                       <p className="text-white/10 text-[11px] uppercase tracking-widest font-mono">Hover over an artifact to expand knowledge.</p>
+                    </motion.div>
+                 )}
+              </AnimatePresence>
            </div>
         </div>
 
-        {/* Mobile Floating View (Simplified) */}
-        <div className="lg:hidden grid grid-cols-3 gap-4 w-full mt-12 bg-white/5 p-8 rounded-[3rem] border border-white/5 backdrop-blur-xl">
-           {hobbies.map((h) => (
-             <div key={h.text} className="flex flex-col items-center gap-3">
-                <div className="w-10 h-10 rounded-2xl bg-[#F59E9E]/10 flex items-center justify-center text-[#F59E9E]">
-                   <h.icon strokeWidth={1} size={18} />
-                </div>
-                <span className="text-[8px] font-black uppercase tracking-widest text-white/30">{h.text}</span>
-             </div>
-           ))}
-        </div>
       </div>
     </div>
   )
