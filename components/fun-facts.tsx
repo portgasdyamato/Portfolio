@@ -160,6 +160,10 @@ export default function FunFacts() {
            ))}
         </div>
 
+        {/* Subtle Nebula Glows */}
+        <div className="absolute top-[20%] left-[30%] w-[400px] h-[400px] bg-[#F59E9E]/10 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute bottom-[20%] right-[30%] w-[400px] h-[400px] bg-white/5 rounded-full blur-[120px] pointer-events-none" />
+
         <div className="z-10 relative flex-1">
            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-8 border border-white/5 backdrop-blur-md">
              <Heart size={10} fill="currentColor" stroke="none" />
@@ -187,29 +191,29 @@ export default function FunFacts() {
         </div>
 
         {/* ── 3D OBJECTS GALAXY (Desktop) ── */}
-        <div className="relative flex-1 w-full h-[500px] hidden lg:block perspective-[1000px]">
+        <div className="relative flex-1 w-full h-[600px] hidden lg:block perspective-[1000px]">
            
-           {/* Headphones 3D Model - Enlarged */}
-           <div className="absolute top-[5%] left-[15%] w-[240px] h-[240px] z-20 cursor-grab active:cursor-grabbing">
-              <Canvas dpr={[1, 2]}>
+           {/* Headphones 3D Model - MASSIVE SCALE */}
+           <div className="absolute top-[0%] left-[10%] w-[350px] h-[350px] z-20 cursor-grab active:cursor-grabbing">
+              <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                 <Suspense fallback={null}>
-                  <ModelViewer url="/headphones.glb" scale={0.6} rotationSpeed={1.4} floatIntensity={3} />
+                  <ModelViewer url="/headphones.glb" scale={1.8} rotationSpeed={1.4} floatIntensity={3} />
                 </Suspense>
               </Canvas>
-              <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                 <span className="text-[8px] font-black tracking-[0.4em] text-white/30 uppercase">THE_RHYTHM</span>
+              <div className="absolute bottom-5 left-1/2 -translate-x-1/2 flex flex-col items-center">
+                 <span className="text-[10px] font-black tracking-[0.4em] text-white/40 uppercase">THE_RHYTHM</span>
               </div>
            </div>
 
-           {/* Watch 3D Model */}
-           <div className="absolute bottom-[2%] right-[10%] w-[180px] h-[180px] z-20">
-              <Canvas dpr={[1, 2]}>
+           {/* Watch 3D Model - MASSIVE SCALE */}
+           <div className="absolute bottom-[5%] right-[5%] w-[320px] h-[320px] z-20">
+              <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                 <Suspense fallback={null}>
-                  <ModelViewer url="/watch.glb" scale={0.5} rotationSpeed={-1.2} floatIntensity={4} />
+                  <ModelViewer url="/watch.glb" scale={1.5} rotationSpeed={-1.2} floatIntensity={4} />
                 </Suspense>
               </Canvas>
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex flex-col items-center">
-                 <span className="text-[7px] font-mono tracking-[0.6em] text-white/20 uppercase">TIMECRAFT</span>
+                 <span className="text-[8px] font-mono tracking-[0.6em] text-white/30 uppercase">TIMECRAFT</span>
               </div>
            </div>
 
