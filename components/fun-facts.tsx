@@ -102,8 +102,8 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* 2. Hobbies: Drifting Galaxy (Horizontal Compact) */}
-      <div className="relative bg-[#000000] rounded-[5rem] min-h-[700px] overflow-hidden p-12 lg:p-24 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-center">
+      {/* 2. Hobbies: Drifting Galaxy (HORIZONTAL COMPACT) */}
+      <div className="relative bg-[#000000] rounded-[5rem] min-h-[650px] overflow-hidden p-8 lg:p-14 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-center">
         
         {/* Sky Particles */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -119,7 +119,7 @@ export default function FunFacts() {
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,158,0.03)_0%,_transparent_70%)] pointer-events-none" />
 
-        <div className="relative z-10 w-full flex flex-col gap-16">
+        <div className="relative z-10 w-full flex flex-col gap-8">
            
            {/* Row 1: Heading & Summary (Full Width) */}
            <div className="flex flex-col gap-4 max-w-2xl px-4 lg:px-0">
