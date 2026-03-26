@@ -57,13 +57,13 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <div className="py-20">
+    <div className="py-10 md:py-20">
       <div className="w-full">
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          className="mb-16"
+           initial={{ opacity: 0, x: -20 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           viewport={{ once: true }}
+           className="mb-10 md:mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
             Achievements & Awards

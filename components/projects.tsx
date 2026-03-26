@@ -18,9 +18,9 @@ export default function Projects() {
     : projectsData.filter((project) => project.status === filter)
 
   return (
-    <div className="py-12">
+    <div className="py-6 md:py-16">
       {/* Header */}
-      <div className="mb-12">
+      <div className="mb-8 md:mb-12">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -220,7 +220,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[600px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
+    <div className="relative w-full h-[450px] sm:h-[600px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
 
       <motion.div 

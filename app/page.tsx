@@ -53,7 +53,7 @@ export default function Home() {
         <MorphingHero />
 
         {/* ─── REST OF PAGE ─── */}
-        <main className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-24 md:space-y-32">
+        <main className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-12 md:space-y-32">
             <div className="w-screen relative left-1/2 -translate-x-1/2">
               <NewsTicker />
             </div>
