@@ -31,7 +31,8 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
   useFrame((state: any) => {
     if (!group.current) return
     group.current.rotation.y += 0.005 * rotationSpeed
-    group.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.25 * floatIntensity
+    // Reduced float intensity to 0.15 for more stable positioning
+    group.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.15 * floatIntensity
   })
 
   return (
@@ -48,8 +49,8 @@ const animals = [
 ]
 
 const hobbyItems = [
-  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 5.2, description: "Listening to lectures, podcasts, and music." },
-  { id: "camera", name: "Camera", url: "/camera.glb", scale: 7.0, description: "Street & nature photography." },
+  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 4.8, description: "Listening to lectures, podcasts, and music." },
+  { id: "camera", name: "Camera", url: "/camera.glb", scale: 6.2, description: "Street & nature photography." },
   { id: "sketching", name: "Sketching", icon: PenTool, description: "Doodling and sketching my ideas." },
   { id: "singing", name: "Singing", icon: Mic2, description: "Practicing vocals and singing." },
   { id: "philosophy", name: "Philosophy", icon: HelpCircle, description: "Exploring philosophy and traveling to new places." },
@@ -102,7 +103,7 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* 2. Hobbies: Drifting Galaxy (ULTRA-POLISHED SCALING & SPACING) */}
+      {/* 2. Hobbies: Drifting Galaxy (FINAL POLISH - THE BOUTIQUE STANDARD) */}
       <div className="relative bg-[#000000] rounded-[5rem] h-[85vh] lg:h-[90vh] overflow-hidden px-8 lg:px-24 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-start text-white">
         
         {/* Sky Particles */}
@@ -135,70 +136,68 @@ export default function FunFacts() {
               </p>
            </div>
 
-           {/* Row 2: Interaction Stage (OPTIMIZED SCALING + SPACING) */}
-           <div className="relative h-[480px] w-full mt-[-20px] lg:mt-[-30px]">
+           {/* Row 2: Interaction Stage (FINAL CENTERED BALANCE) */}
+           <div className="relative h-[480px] w-full mt-[-20px] lg:mt-[-40px]">
               
-              {/* Artifact: Headphones (SCALE 5.2 + CENTERED HOVER) */}
-              <div className="absolute top-[10%] left-[-10%] lg:left-[-5%] w-[480px] h-[480px] z-20">
+              {/* Artifact: Headphones (STABLE CENTER) */}
+              <div className="absolute top-[5%] left-[-10%] lg:left-[-5%] w-[480px] h-[480px] z-20">
                  <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/headphones.glb" scale={5.2} rotationSpeed={1.5} floatIntensity={3} />
+                          <ModelViewer url="/headphones.glb" scale={4.8} rotationSpeed={1.5} floatIntensity={1.5} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'headphones' && (
-                       <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="absolute bottom-[80%] left-1/2 -translate-x-1/2 w-[240px] bg-black/60 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                       <motion.div initial={{ opacity: 0, scale: 0.9, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 10 }} className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[240px] bg-black/80 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-2xl">
                           <span className="text-[10px] text-[#F59E9E] font-black uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
                        </motion.div>
                     )}
                  </AnimatePresence>
               </div>
 
-              {/* Drifting Icons (Polished Layout) */}
+              {/* Drifting Icons (WIDE CENTRAL CHANNEL) */}
               {[
-                { id: "sketching", icon: PenTool, x: "32%", y: "15%", dur: 5, delay: 0 },
-                { id: "singing", icon: Mic2, x: "50%", y: "45%", dur: 6, delay: 1 },
-                { id: "philosophy", icon: HelpCircle, x: "38%", y: "75%", dur: 4, delay: 0.5 },
-                { id: "retro", icon: Clock, x: "65%", y: "20%", dur: 7, delay: 0.2 },
-                { id: "photography", icon: Camera, x: "75%", y: "65%", dur: 5.5, delay: 1.5 }
+                { id: "sketching", icon: PenTool, x: "35%", y: "15%", dur: 5, delay: 0 },
+                { id: "singing", icon: Mic2, x: "52%", y: "45%", dur: 6, delay: 1 },
+                { id: "philosophy", icon: HelpCircle, x: "42%", y: "75%", dur: 4, delay: 0.5 },
+                { id: "retro", icon: Clock, x: "65%", y: "25%", dur: 7, delay: 0.2 },
+                { id: "photography", icon: Camera, x: "70%", y: "65%", dur: 5.5, delay: 1.5 }
               ].map((h, i) => (
                 <div key={h.id} className="absolute z-20" style={{ left: h.x, top: h.y }}>
                   <motion.div animate={{ y: [0, 15, 0], x: [0, 10, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
-                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer shadow-lg overflow-visible">
+                    <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer shadow-lg">
                        <h.icon strokeWidth={1} size={24} />
-                       
-                       {/* Icon Hover Reveal (CLEANER PLACEMENT) */}
-                       <AnimatePresence>
-                          {hoveredId === h.id && (
-                             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-50 pointer-events-none shadow-2xl whitespace-normal break-words">
-                                <span className="text-[8px] text-[#1a0a0a] font-black uppercase tracking-wider leading-tight">
-                                   {hobbyItems.find(item => item.id === h.id)?.description || "A curious pursuit."}
-                                </span>
-                             </motion.div>
-                          )}
-                       </AnimatePresence>
                     </div>
                     <span className="text-[7px] font-black uppercase tracking-[0.2em] text-white/20 mt-2 group-hover:text-white transition-colors">{h.id}</span>
+                    <AnimatePresence>
+                      {hoveredId === h.id && (
+                         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-50 pointer-events-none shadow-2xl">
+                            <span className="text-[8px] text-[#1a0a0a] font-black uppercase tracking-wider leading-tight">
+                               {hobbyItems.find(item => item.id === h.id)?.description || "A curious pursuit."}
+                            </span>
+                         </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.div>
                 </div>
               ))}
 
-              {/* Artifact: Camera (SCALE 7.0 + SPACED HOVER) */}
-              <div className="absolute top-[5%] right-[-10%] lg:right-[-5%] w-[480px] h-[480px] z-20">
+              {/* Artifact: Camera (STABLE CENTER) */}
+              <div className="absolute top-[0%] right-[-10%] lg:right-[-5%] w-[480px] h-[480px] z-20">
                  <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/camera.glb" scale={7.0} rotationSpeed={-1.2} floatIntensity={4} />
+                          <ModelViewer url="/camera.glb" scale={6.2} rotationSpeed={-1.2} floatIntensity={2} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'camera' && (
-                       <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.9 }} className="absolute bottom-[80%] left-1/2 -translate-x-1/2 w-[240px] bg-black/60 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                       <motion.div initial={{ opacity: 0, scale: 0.9, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 10 }} className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[240px] bg-black/80 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-2xl">
                           <span className="text-[10px] text-[#F59E9E] font-black uppercase tracking-widest leading-relaxed">Street & nature photography.</span>
                        </motion.div>
                     )}
