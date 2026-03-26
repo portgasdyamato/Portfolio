@@ -48,46 +48,12 @@ const animals = [
 ]
 
 const hobbyItems = [
-  {
-    id: "headphones",
-    name: "Headphones",
-    url: "/headphones.glb",
-    scale: 1.5,
-    description: "Listening to lectures, podcasts, and music.",
-    is3D: true
-  },
-  {
-    id: "camera",
-    name: "Camera",
-    url: "/watch.glb", // Reusing watch.glb as the Camera placeholder
-    scale: 1.3,
-    description: "Street & nature photography.",
-    is3D: true
-  },
-  {
-    id: "sketching",
-    name: "Sketching",
-    icon: PenTool,
-    description: "Doodling and sketching my ideas."
-  },
-  {
-    id: "singing",
-    name: "Singing",
-    icon: Mic2,
-    description: "Practicing vocals and singing."
-  },
-  {
-    id: "philosophy",
-    name: "Philosophy",
-    icon: HelpCircle,
-    description: "Exploring philosophy and traveling to new places."
-  },
-  {
-    id: "retro",
-    name: "Retro",
-    icon: Clock,
-    description: "Researching and collecting antique/retro items."
-  }
+  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 4.5, description: "Listening to lectures, podcasts, and music." },
+  { id: "camera", name: "Camera", url: "/camera.glb", scale: 4.0, description: "Street & nature photography." },
+  { id: "sketching", name: "Sketching", icon: PenTool, description: "Doodling and sketching my ideas." },
+  { id: "singing", name: "Singing", icon: Mic2, description: "Practicing vocals and singing." },
+  { id: "philosophy", name: "Philosophy", icon: HelpCircle, description: "Exploring philosophy and traveling to new places." },
+  { id: "retro", name: "Retro", icon: Clock, description: "Researching and collecting antique/retro items." }
 ]
 
 export default function FunFacts() {
@@ -99,7 +65,7 @@ export default function FunFacts() {
 
   return (
     <div className="py-24 flex flex-col gap-32">
-      {/* ── Favorite Trio: Animal Showcase (Restored) ── */}
+      {/* 1. Favorite Trio: 3D Animal Showcase */}
       <div className="relative px-4 lg:px-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
           <div className="max-w-md">
@@ -111,16 +77,15 @@ export default function FunFacts() {
               My Favorite Trio.
             </h3>
             <p className="text-muted-foreground text-lg leading-relaxed font-inter">
-              Pony, Panda, and Penguin. There's a certain spirit in each that matches my approach to life — curiosity, patience, and a bit of playfulness.
+              Pony, Panda, and Penguin. There's a certain spirit in each that matches my approach to life.
             </p>
           </div>
-
           <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-8">
             {animals.map((anim, i) => (
               <motion.div key={anim.name} className="group relative flex flex-col items-center">
-                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[4rem] bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f7f7f7_60%,_#ececec_100%)] border border-[#F59E9E]/10 shadow-2xl shadow-[#1a0a0a]/[0.08]">
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[4rem] bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f7f7f7_60%,_#ececec_100%)] border border-[#F59E9E]/10 shadow-2xl">
                   <div className="absolute inset-0">
-                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center animate-pulse">SYNCING...</div>}>
+                    <Suspense fallback={null}>
                       <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
                         <OrbitControls enablePan={false} enableZoom={false} makeDefault minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 1.5} />
                         <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
@@ -130,10 +95,6 @@ export default function FunFacts() {
                   <div className="absolute top-8 left-8">
                      <div className="px-4 py-1.5 bg-[#1a0a0a] rounded-full text-white text-[8px] font-black tracking-[0.2em]">{anim.tag}</div>
                   </div>
-                  <div className="absolute bottom-10 right-10 flex flex-col items-end pointer-events-none group-hover:translate-y-[-10px] transition-transform duration-500">
-                    <span className="text-[10px] font-black text-[#F59E9E]/40 uppercase tracking-[0.4em] mb-1">{anim.name}</span>
-                    <h4 className="text-3xl font-black italic text-[#1a0a0a] uppercase tracking-tighter opacity-10 group-hover:opacity-100 transition-all duration-500">{anim.name}</h4>
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -141,26 +102,23 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* ── Hobbies Section (Night Sky Reveal Below) ── */}
-      <div className="relative bg-[#000000] rounded-[5rem] min-h-[800px] overflow-hidden p-12 lg:p-24 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)]">
-        
-        {/* Sky Particles */}
+      {/* 2. Hobbies: Drifting Galaxy */}
+      <div className="relative bg-[#000000] rounded-[5rem] min-h-[1100px] overflow-hidden p-12 lg:p-24 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)]">
         <div className="absolute inset-0 pointer-events-none opacity-40">
-           {[...Array(60)].map((_, i) => (
+           {[...Array(100)].map((_, i) => (
               <motion.div
                 key={i}
                 animate={{ opacity: [0.2, 1, 0.2], scale: [0.2, 1, 0.2] }}
                 transition={{ duration: 3 + Math.random() * 5, repeat: Infinity, delay: Math.random() * 5 }}
-                className="absolute w-[1px] h-[1px] bg-white rounded-full shadow-[0_0_8px_white]"
+                className="absolute w-[1px] h-[1px] bg-white rounded-full"
                 style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%` }}
               />
            ))}
         </div>
+        <div className="absolute top-[30%] left-[20%] w-[600px] h-[600px] bg-[#F59E9E]/5 rounded-full blur-[180px] pointer-events-none" />
 
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch h-full">
-           
-           {/* LEFT: Heading */}
-           <div className="flex flex-col justify-center gap-6 self-start lg:sticky lg:top-12">
+        <div className="relative z-10 w-full grid grid-cols-1 lg:grid-cols-2 gap-20 items-stretch h-full">
+           <div className="flex flex-col justify-start pt-12 gap-6 self-start lg:sticky lg:top-24">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-4 border border-white/5 w-fit">
                 <Heart size={10} fill="currentColor" stroke="none" />
                 The Internal Balance
@@ -173,26 +131,20 @@ export default function FunFacts() {
               </p>
            </div>
 
-           {/* RIGHT: Interaction Area */}
-           <div className="relative flex-1 min-h-[700px]">
-              
-              {/* 1. MASSIVE 3D Artifacts */}
-              <div className="absolute top-[0%] left-[-5%] w-[600px] h-[600px] z-20">
-                 <div 
-                   onMouseEnter={() => setHoveredId('headphones')}
-                   onMouseLeave={() => setHoveredId(null)}
-                   className="w-full h-full cursor-grab active:cursor-grabbing"
-                 >
+           <div className="relative flex-1 min-h-[900px]">
+              {/* Massive Artifact: TOP LEFT */}
+              <div className="absolute top-[-5%] left-[-15%] w-[550px] h-[550px] z-20">
+                 <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
-                          <OrbitControls enableZoom={false} enablePan={false} makeDefault minPolarAngle={Math.PI/3} maxPolarAngle={Math.PI/1.5} />
-                          <ModelViewer url="/headphones.glb" scale={5.0} rotationSpeed={1.5} floatIntensity={4} />
+                          <OrbitControls enableZoom={false} enablePan={false} makeDefault />
+                          <ModelViewer url="/headphones.glb" scale={4.5} rotationSpeed={1.5} floatIntensity={4} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'headphones' && (
-                       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[80%] left-1/2 -translate-x-1/2 w-[300px] bg-white/5 border border-white/10 backdrop-blur-3xl p-6 rounded-[2.5rem] text-center z-30 pointer-events-none shadow-2xl">
+                       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[300px] bg-white/5 border border-white/10 backdrop-blur-3xl p-6 rounded-[2.5rem] text-center z-30 pointer-events-none">
                           <span className="text-[12px] text-[#F59E9E] font-black uppercase tracking-[0.4em] block mb-2">THE_RHYTHM</span>
                           <span className="text-[11px] text-white/50 font-inter uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
                        </motion.div>
@@ -200,22 +152,19 @@ export default function FunFacts() {
                  </AnimatePresence>
               </div>
 
-              <div className="absolute top-[15%] right-[-10%] w-[550px] h-[550px] z-20">
-                 <div 
-                   onMouseEnter={() => setHoveredId('camera')}
-                   onMouseLeave={() => setHoveredId(null)}
-                   className="w-full h-full cursor-grab active:cursor-grabbing"
-                 >
+              {/* Massive Artifact: BOTTOM RIGHT */}
+              <div className="absolute top-[40%] right-[-15%] w-[550px] h-[550px] z-20">
+                 <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/camera.glb" scale={4.5} rotationSpeed={-1.2} floatIntensity={5} />
+                          <ModelViewer url="/camera.glb" scale={4.0} rotationSpeed={-1.2} floatIntensity={5} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'camera' && (
-                       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[80%] left-1/2 -translate-x-1/2 w-[280px] bg-white/5 border border-white/10 backdrop-blur-3xl p-6 rounded-[2.5rem] text-center z-30 pointer-events-none shadow-2xl">
+                       <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[85%] left-1/2 -translate-x-1/2 w-[280px] bg-white/5 border border-white/10 backdrop-blur-3xl p-6 rounded-[2.5rem] text-center z-30 pointer-events-none">
                           <span className="text-[12px] text-[#F59E9E] font-black uppercase tracking-[0.4em] block mb-2">OPTIC_SOUL</span>
                           <span className="text-[11px] text-white/50 font-inter uppercase tracking-widest">Street & nature photography.</span>
                        </motion.div>
@@ -223,38 +172,22 @@ export default function FunFacts() {
                  </AnimatePresence>
               </div>
 
-              {/* 2. Drifting Icons - Randomized & Floating */}
+              {/* Drifting Icons */}
               {[
-                { id: "sketching", icon: PenTool, x: "10%", y: "70%", dur: 5, delay: 0 },
-                { id: "singing", icon: Mic2, x: "40%", y: "85%", dur: 6, delay: 1 },
-                { id: "philosophy", icon: HelpCircle, x: "70%", y: "65%", dur: 4, delay: 0.5 },
-                { id: "retro", icon: Clock, x: "85%", y: "88%", dur: 7, delay: 2 }
+                { id: "sketching", icon: PenTool, x: "55%", y: "10%", dur: 5, delay: 0 },
+                { id: "singing", icon: Mic2, x: "10%", y: "55%", dur: 6, delay: 1 },
+                { id: "philosophy", icon: HelpCircle, x: "70%", y: "85%", dur: 4, delay: 0.5 },
+                { id: "retro", icon: Clock, x: "0%", y: "90%", dur: 7, delay: 2 }
               ].map((h, i) => (
-                <div 
-                  key={h.id} 
-                  className="absolute z-20"
-                  style={{ left: h.x, top: h.y }}
-                >
-                  <motion.div 
-                    animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
-                    transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }}
-                    onMouseEnter={() => setHoveredId(h.id)}
-                    onMouseLeave={() => setHoveredId(null)}
-                    className="group relative flex flex-col items-center"
-                  >
-                    <div className="w-16 h-16 rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer shadow-[0_0_30px_rgba(245,158,158,0)] hover:shadow-[0_0_30px_rgba(245,158,158,0.3)]">
+                <div key={h.id} className="absolute z-20" style={{ left: h.x, top: h.y }}>
+                  <motion.div animate={{ y: [0, 15, 0], x: [0, 10, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
+                    <div className="w-16 h-16 rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer">
                        <h.icon strokeWidth={1} size={28} />
                     </div>
                     <span className="text-[8px] font-black uppercase tracking-[0.3em] text-white/20 mt-3 group-hover:text-white transition-colors">{h.id}</span>
-
                     <AnimatePresence>
                       {hoveredId === h.id && (
-                         <motion.div
-                           initial={{ opacity: 0, scale: 0.8 }}
-                           animate={{ opacity: 1, scale: 1 }}
-                           exit={{ opacity: 0, scale: 0.8 }}
-                           className="absolute top-[110%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-30 shadow-2xl pointer-events-none"
-                         >
+                         <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} className="absolute top-[110%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-30 pointer-events-none">
                             <span className="text-[9px] text-[#1a0a0a] font-black uppercase tracking-wider leading-tight">
                                {hobbyItems.find(item => item.id === h.id)?.description}
                             </span>
@@ -264,10 +197,8 @@ export default function FunFacts() {
                   </motion.div>
                 </div>
               ))}
-
            </div>
         </div>
-
       </div>
     </div>
   )
