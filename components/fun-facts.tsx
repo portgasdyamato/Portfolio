@@ -5,19 +5,11 @@ import { Music, Camera, Coffee, Plane, Heart, Star, Sparkles, BookOpen, Palette,
 import { Suspense, useRef, useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 
-// Dynamic imports for the Heavy 3D Components to prevent SSR & build errors if packages missing during dev
-const Canvas = dynamic(() => import("@react-three/fiber").then((mod) => mod.Canvas), { ssr: false })
-const PresentationControls = dynamic(() => import("@react-three/drei").then((mod) => mod.PresentationControls), { ssr: false })
-const Float = dynamic(() => import("@react-three/drei").then((mod) => mod.Float), { ssr: false })
-const Center = dynamic(() => import("@react-three/drei").then((mod) => mod.Center), { ssr: false })
-const Environment = dynamic(() => import("@react-three/drei").then((mod) => mod.Environment), { ssr: false })
-const ContactShadows = dynamic(() => import("@react-three/drei").then((mod) => mod.ContactShadows), { ssr: false })
+import { Canvas, useFrame } from "@react-three/fiber"
+import { useGLTF, PresentationControls, Float, Center, Environment, ContactShadows } from "@react-three/drei"
 
 // ── 3D MODEL COMPONENT ──
-// We use a small internal component that can safe-guard the GLB loading
-const ModelViewer = dynamic(() => Promise.resolve(({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: any) => {
-  const { useGLTF } = require("@react-three/drei")
-  const { useFrame } = require("@react-three/fiber")
+function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: any) {
   const { scene } = useGLTF(url)
   const group = useRef<any>(null)
 
@@ -33,7 +25,7 @@ const ModelViewer = dynamic(() => Promise.resolve(({ url, scale = 1, rotationSpe
       </Center>
     </Float>
   )
-}), { ssr: false })
+}
 
 const animals = [
   { name: "Pony", url: "/pony.glb", tag: "3P / SPIRITED", scale: 2.2 },
