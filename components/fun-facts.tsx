@@ -174,72 +174,96 @@ export default function FunFacts() {
            </div>
 
            {/* RIGHT: Interaction Area */}
-           <div className="flex flex-col justify-center space-y-24">
+           <div className="relative flex-1 min-h-[700px]">
               
-              {/* 1. 3D Artifacts Row */}
-              <div className="grid grid-cols-2 gap-12">
-                 {hobbyItems.filter(h => h.is3D).map((h) => (
-                    <div key={h.id} className="relative flex flex-col items-center">
-                       <div 
-                         onMouseEnter={() => setHoveredId(h.id)}
-                         onMouseLeave={() => setHoveredId(null)}
-                         className="w-[200px] h-[200px] cursor-grab active:cursor-grabbing relative z-20"
-                       >
-                          <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 7] }}>
-                             <Suspense fallback={null}>
-                                <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                                <ModelViewer url={h.url} scale={h.scale} rotationSpeed={1.5} floatIntensity={3} />
-                             </Suspense>
-                          </Canvas>
-                       </div>
-                       
-                       {/* Disclosure Below */}
-                       <AnimatePresence>
-                          {hoveredId === h.id && (
-                             <motion.div
-                               initial={{ opacity: 0, y: -20 }}
-                               animate={{ opacity: 1, y: 0 }}
-                               exit={{ opacity: 0, y: -20 }}
-                               className="absolute top-[80%] left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-xl p-4 rounded-3xl text-center z-30 pointer-events-none"
-                             >
-                                <span className="text-[10px] text-white/80 font-inter uppercase tracking-widest">{h.description}</span>
-                             </motion.div>
-                          )}
-                       </AnimatePresence>
-                    </div>
-                 ))}
+              {/* 1. LARGE 3D Artifacts */}
+              <div className="absolute top-[0%] left-[5%] w-[380px] h-[380px] z-20">
+                 <div 
+                   onMouseEnter={() => setHoveredId('headphones')}
+                   onMouseLeave={() => setHoveredId(null)}
+                   className="w-full h-full cursor-grab active:cursor-grabbing"
+                 >
+                    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+                       <Suspense fallback={null}>
+                          <OrbitControls enableZoom={false} enablePan={false} makeDefault minPolarAngle={Math.PI/3} maxPolarAngle={Math.PI/1.5} />
+                          <ModelViewer url="/headphones.glb" scale={2.5} rotationSpeed={1.5} floatIntensity={4} />
+                       </Suspense>
+                    </Canvas>
+                 </div>
+                 <AnimatePresence>
+                    {hoveredId === 'headphones' && (
+                       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 10 }} exit={{ opacity: 0, y: -10 }} className="absolute top-full left-1/2 -translate-x-1/2 w-[250px] bg-white/5 border border-white/10 backdrop-blur-xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                          <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] block mb-1">Ritual: Listen</span>
+                          <span className="text-[10px] text-white/60 font-inter uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
+                       </motion.div>
+                    )}
+                 </AnimatePresence>
               </div>
 
-              {/* 2. Floating Icons Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                 {hobbyItems.filter(h => !h.is3D).map((h) => (
-                    <div key={h.id} className="relative flex flex-col items-center group">
-                       <div 
-                         onMouseEnter={() => setHoveredId(h.id)}
-                         onMouseLeave={() => setHoveredId(null)}
-                         className="w-16 h-16 rounded-[1.8rem] bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-500 cursor-pointer shadow-xl"
-                       >
-                          {h.icon && <h.icon strokeWidth={1} size={28} />}
-                       </div>
-                       
-                       <span className="text-[9px] font-black uppercase tracking-widest text-white/20 mt-4 group-hover:text-white transition-colors">{h.name}</span>
-
-                       {/* Disclosure Below */}
-                       <AnimatePresence>
-                          {hoveredId === h.id && (
-                             <motion.div
-                               initial={{ opacity: 0, y: -10 }}
-                               animate={{ opacity: 1, y: 10 }}
-                               exit={{ opacity: 0, y: -10 }}
-                               className="absolute top-full left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-30 shadow-2xl pointer-events-none"
-                             >
-                                <span className="text-[9px] text-[#1a0a0a] font-black uppercase tracking-wider">{h.description}</span>
-                             </motion.div>
-                          )}
-                       </AnimatePresence>
-                    </div>
-                 ))}
+              <div className="absolute top-[10%] right-[0%] w-[320px] h-[320px] z-20">
+                 <div 
+                   onMouseEnter={() => setHoveredId('camera')}
+                   onMouseLeave={() => setHoveredId(null)}
+                   className="w-full h-full cursor-grab active:cursor-grabbing"
+                 >
+                    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+                       <Suspense fallback={null}>
+                          <OrbitControls enableZoom={false} enablePan={false} makeDefault />
+                          <ModelViewer url="/watch.glb" scale={2.2} rotationSpeed={-1.2} floatIntensity={5} />
+                       </Suspense>
+                    </Canvas>
+                 </div>
+                 <AnimatePresence>
+                    {hoveredId === 'camera' && (
+                       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 10 }} exit={{ opacity: 0, y: -10 }} className="absolute top-full left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                          <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] block mb-1">Ritual: Capture</span>
+                          <span className="text-[10px] text-white/60 font-inter uppercase tracking-widest">Street & nature photography.</span>
+                       </motion.div>
+                    )}
+                 </AnimatePresence>
               </div>
+
+              {/* 2. Drifting Icons - Randomized & Floating */}
+              {[
+                { id: "sketching", icon: PenTool, x: "10%", y: "70%", dur: 5, delay: 0 },
+                { id: "singing", icon: Mic2, x: "40%", y: "85%", dur: 6, delay: 1 },
+                { id: "philosophy", icon: HelpCircle, x: "70%", y: "65%", dur: 4, delay: 0.5 },
+                { id: "retro", icon: Clock, x: "85%", y: "88%", dur: 7, delay: 2 }
+              ].map((h, i) => (
+                <div 
+                  key={h.id} 
+                  className="absolute z-20"
+                  style={{ left: h.x, top: h.y }}
+                >
+                  <motion.div 
+                    animate={{ y: [0, 15, 0], x: [0, 10, 0] }}
+                    transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }}
+                    onMouseEnter={() => setHoveredId(h.id)}
+                    onMouseLeave={() => setHoveredId(null)}
+                    className="group relative flex flex-col items-center"
+                  >
+                    <div className="w-16 h-16 rounded-[2rem] bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer shadow-[0_0_30px_rgba(245,158,158,0)] hover:shadow-[0_0_30px_rgba(245,158,158,0.3)]">
+                       <h.icon strokeWidth={1} size={28} />
+                    </div>
+                    <span className="text-[8px] font-black uppercase tracking-[0.3em] text-white/20 mt-3 group-hover:text-white transition-colors">{h.id}</span>
+
+                    <AnimatePresence>
+                      {hoveredId === h.id && (
+                         <motion.div
+                           initial={{ opacity: 0, scale: 0.8 }}
+                           animate={{ opacity: 1, scale: 1 }}
+                           exit={{ opacity: 0, scale: 0.8 }}
+                           className="absolute top-[110%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-30 shadow-2xl pointer-events-none"
+                         >
+                            <span className="text-[9px] text-[#1a0a0a] font-black uppercase tracking-wider leading-tight">
+                               {hobbyItems.find(item => item.id === h.id)?.description}
+                            </span>
+                         </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.div>
+                </div>
+              ))}
 
            </div>
         </div>
