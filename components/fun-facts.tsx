@@ -48,8 +48,8 @@ const animals = [
 ]
 
 const hobbyItems = [
-  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 3.4, description: "Listening to lectures, podcasts, and music." },
-  { id: "camera", name: "Camera", url: "/camera.glb", scale: 3.2, description: "Street & nature photography." },
+  { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 3.8, description: "Listening to lectures, podcasts, and music." },
+  { id: "camera", name: "Camera", url: "/camera.glb", scale: 4.5, description: "Street & nature photography." },
   { id: "sketching", name: "Sketching", icon: PenTool, description: "Doodling and sketching my ideas." },
   { id: "singing", name: "Singing", icon: Mic2, description: "Practicing vocals and singing." },
   { id: "philosophy", name: "Philosophy", icon: HelpCircle, description: "Exploring philosophy and traveling to new places." },
@@ -102,7 +102,7 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* 2. Hobbies: Drifting Galaxy (Space & Clipping Fixes) */}
+      {/* 2. Hobbies: Drifting Galaxy (Upward Re-balance) */}
       <div className="relative bg-[#000000] rounded-[5rem] h-[85vh] lg:h-[90vh] overflow-hidden px-8 lg:px-16 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-start">
         
         {/* Sky Particles */}
@@ -135,16 +135,16 @@ export default function FunFacts() {
               </p>
            </div>
 
-           {/* Row 2: Interaction Stage */}
-           <div className="relative h-[450px] w-full mt-6">
+           {/* Row 2: Interaction Stage (Shifted Upwards) */}
+           <div className="relative h-[480px] w-full mt-[-20px] lg:mt-[-40px]">
               
-              {/* STAGE LEFT: Headphones (Pushed down to fix clipping) */}
-              <div className="absolute top-[10%] left-[-5%] lg:left-[0%] w-[420px] h-[420px] z-20">
+              {/* STAGE LEFT: Headphones (Shifted Up & Rescaled) */}
+              <div className="absolute top-[0%] left-[-5%] lg:left-[0%] w-[420px] h-[420px] z-20">
                  <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/headphones.glb" scale={3.4} rotationSpeed={1.5} floatIntensity={3} />
+                          <ModelViewer url="/headphones.glb" scale={3.8} rotationSpeed={1.5} floatIntensity={3} />
                        </Suspense>
                     </Canvas>
                  </div>
@@ -157,13 +157,13 @@ export default function FunFacts() {
                  </AnimatePresence>
               </div>
 
-              {/* Drifting Icons */}
+              {/* Drifting Icons (Shifted Upwards) */}
               {[
-                { id: "sketching", icon: PenTool, x: "32%", y: "15%", dur: 5, delay: 0 },
-                { id: "singing", icon: Mic2, x: "50%", y: "45%", dur: 6, delay: 1 },
-                { id: "philosophy", icon: HelpCircle, x: "38%", y: "75%", dur: 4, delay: 0.5 },
-                { id: "retro", icon: Clock, x: "65%", y: "20%", dur: 7, delay: 0.2 },
-                { id: "photography", icon: Camera, x: "75%", y: "65%", dur: 5.5, delay: 1.5 }
+                { id: "sketching", icon: PenTool, x: "32%", y: "5%", dur: 5, delay: 0 },
+                { id: "singing", icon: Mic2, x: "50%", y: "30%", dur: 6, delay: 1 },
+                { id: "philosophy", icon: HelpCircle, x: "38%", y: "65%", dur: 4, delay: 0.5 },
+                { id: "retro", icon: Clock, x: "65%", y: "10%", dur: 7, delay: 0.2 },
+                { id: "photography", icon: Camera, x: "75%", y: "50%", dur: 5.5, delay: 1.5 }
               ].map((h, i) => (
                 <div key={h.id} className="absolute z-20" style={{ left: h.x, top: h.y }}>
                   <motion.div animate={{ y: [0, 15, 0], x: [0, 10, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
@@ -184,13 +184,13 @@ export default function FunFacts() {
                 </div>
               ))}
 
-              {/* STAGE RIGHT: Camera (Shifted left to fix bleeding) */}
-              <div className="absolute top-[5%] right-[0%] lg:right-[5%] w-[420px] h-[420px] z-20">
+              {/* STAGE RIGHT: Camera (Shifted Up & Massively Scaled) */}
+              <div className="absolute top-[-5%] right-[0%] lg:right-[5%] w-[480px] h-[480px] z-20">
                  <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/camera.glb" scale={3.2} rotationSpeed={-1.2} floatIntensity={4} />
+                          <ModelViewer url="/camera.glb" scale={4.5} rotationSpeed={-1.2} floatIntensity={4} />
                        </Suspense>
                     </Canvas>
                  </div>
