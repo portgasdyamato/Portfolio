@@ -49,7 +49,7 @@ const animals = [
 
 const hobbyItems = [
   { id: "headphones", name: "Headphones", url: "/headphones.glb", scale: 5.5, description: "Listening to lectures, podcasts, and music." },
-  { id: "camera", name: "Camera", url: "/camera.glb", scale: 6.0, description: "Street & nature photography." },
+  { id: "camera", name: "Camera", url: "/camera.glb", scale: 7.0, description: "Street & nature photography." },
   { id: "sketching", name: "Sketching", icon: PenTool, description: "Doodling and sketching my ideas." },
   { id: "singing", name: "Singing", icon: Mic2, description: "Practicing vocals and singing." },
   { id: "philosophy", name: "Philosophy", icon: HelpCircle, description: "Exploring philosophy and traveling to new places." },
@@ -102,7 +102,7 @@ export default function FunFacts() {
         </div>
       </div>
 
-      {/* 2. Hobbies: Drifting Galaxy (MAPPED TO HEADING LEVEL) */}
+      {/* 2. Hobbies: Drifting Galaxy (CAMERA OVERFLOW FIX) */}
       <div className="relative bg-[#000000] rounded-[5rem] h-[85vh] lg:h-[90vh] overflow-hidden px-8 lg:px-24 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] flex flex-col justify-start text-white">
         
         {/* Sky Particles */}
@@ -121,7 +121,7 @@ export default function FunFacts() {
 
         <div className="relative z-10 w-full flex flex-col gap-10 h-full">
            
-           {/* Row 1: Heading & Content - CAMERA MAPPED TO RIGHT SIDE */}
+           {/* Row 1: Heading & Content */}
            <div className="flex flex-col lg:flex-row items-start justify-between gap-10 relative">
               <div className="flex flex-col gap-3 max-w-2xl px-4 lg:px-0">
                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
@@ -136,19 +136,19 @@ export default function FunFacts() {
                  </p>
               </div>
 
-              {/* Camera: MAPPED TO RIGHT SIDE OF HEADING (LIFTED) */}
-              <div className="hidden lg:block absolute right-[-5%] top-[-20%] w-[500px] h-[500px] z-20">
+              {/* Camera: MAPPED TO RIGHT SIDE (OVERFLOW ENABLED CONTAINER) */}
+              <div className="hidden lg:block absolute right-[-15%] top-[-25%] w-[650px] h-[650px] z-20 overflow-visible">
                  <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
-                    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+                    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/camera.glb" scale={6.0} rotationSpeed={-1.2} floatIntensity={1.5} />
+                          <ModelViewer url="/camera.glb" scale={7.0} rotationSpeed={-1.2} floatIntensity={1.5} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'camera' && (
-                       <motion.div initial={{ opacity: 0, scale: 0.9, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 10 }} className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[240px] bg-black/80 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-2xl">
+                       <motion.div initial={{ opacity: 0, scale: 0.9, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.9, y: 10 }} className="absolute bottom-[25%] left-1/2 -translate-x-1/2 w-[240px] bg-black/80 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-2xl">
                           <span className="text-[10px] text-[#F59E9E] font-black uppercase tracking-widest leading-relaxed">Street & nature photography.</span>
                        </motion.div>
                     )}
@@ -156,13 +156,13 @@ export default function FunFacts() {
               </div>
            </div>
 
-           {/* Row 2: Interaction Stage (Remaining Elements) */}
+           {/* Row 2: Interaction Stage */}
            <div className="relative flex-1 w-full mt-[-60px] lg:mt-[-80px]">
               
-              {/* STAGE LEFT: Headphones (Lower Left Balance) */}
-              <div className="absolute top-[30%] left-[-10%] lg:left-[-5%] w-[480px] h-[480px] z-20">
+              {/* STAGE LEFT: Headphones */}
+              <div className="absolute top-[30%] left-[-10%] lg:left-[-5%] w-[480px] h-[480px] z-20 overflow-visible">
                  <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
-                    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+                    <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
                           <ModelViewer url="/headphones.glb" scale={5.5} rotationSpeed={1.5} floatIntensity={1.5} />
@@ -178,7 +178,7 @@ export default function FunFacts() {
                  </AnimatePresence>
               </div>
 
-              {/* Drifting Icons (Distributed across Stage) */}
+              {/* Drifting Icons */}
               {[
                 { id: "sketching", icon: PenTool, x: "32%", y: "20%", dur: 5, delay: 0 },
                 { id: "singing", icon: Mic2, x: "50%", y: "55%", dur: 6, delay: 1 },
@@ -189,7 +189,6 @@ export default function FunFacts() {
                   <motion.div animate={{ y: [0, 15, 0], x: [0, 10, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
                     <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer shadow-lg overflow-visible">
                        <h.icon strokeWidth={1} size={24} />
-                       
                        <AnimatePresence>
                           {hoveredId === h.id && (
                              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-50 pointer-events-none shadow-2xl">
