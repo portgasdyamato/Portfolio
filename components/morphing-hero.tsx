@@ -134,8 +134,8 @@ export default function MorphingHero() {
       </div>
 
       {/* Fixed Circular Badge */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 hidden lg:block pointer-events-none">
-        <div className="w-[300px] aspect-square opacity-[0.4] mix-blend-multiply origin-center">
+      <div className="absolute bottom-[-50px] sm:bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 pointer-events-none">
+        <div className="w-[200px] sm:w-[300px] aspect-square opacity-[0.4] mix-blend-multiply origin-center overflow-hidden">
           <motion.div animate={{ rotate: 360 }} transition={{ duration: 45, repeat: Infinity, ease: "linear" }}>
              <svg viewBox="0 0 200 200" className="w-full h-full">
                <path id="cc" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none" />

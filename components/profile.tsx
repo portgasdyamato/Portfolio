@@ -52,7 +52,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ y: yImage, transformOrigin: "top right" }}
-        className="flex flex-col items-center justify-between h-full pt-16 md:pt-24 lg:pt-32 pb-12 relative w-full"
+        className="flex flex-col items-center justify-between h-full pt-10 md:pt-24 lg:pt-32 pb-8 md:pb-12 relative w-full"
       >
         <motion.div
           whileHover={{ scale: 1.03 }}

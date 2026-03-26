@@ -231,40 +231,41 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       </div>
 
       {/* ── BOTTOM CINEMATIC HUD ── */}
-      <div className="absolute bottom-12 left-16 flex flex-col gap-3">
+      <div className="absolute bottom-10 left-6 sm:left-12 md:left-16 flex flex-col gap-3">
           <div className="flex items-center gap-3 text-[10px] tracking-[0.5em] text-[#F59E9E] uppercase font-black">
               <span className="w-1.5 h-1.5 rounded-full bg-[#F59E9E] animate-pulse" />
-              <span>Initializing Creative Core...</span>
+              <span className="hidden sm:inline">Initializing Creative Core...</span>
+              <span className="sm:hidden">Initializing...</span>
           </div>
           <div className="flex items-center gap-5 text-[#1a0a0a]/30 font-mono text-[11px]">
                <span className="flex items-center gap-2">
                  <span className="w-3 h-[1px] bg-[#1a0a0a]/20" />
                  SYNC://ACTIVE
                </span>
-               <span className="opacity-50">—</span>
-               <span>LOC://EARTH</span>
+               <span className="opacity-50 hidden sm:inline">—</span>
+               <span className="hidden sm:inline">LOC://EARTH</span>
           </div>
       </div>
 
-      <div className="absolute bottom-12 right-16 flex items-center gap-12">
+      <div className="absolute bottom-10 right-6 sm:right-12 md:right-16 flex items-center gap-6 sm:gap-12">
           <div className="flex flex-col items-end gap-2">
-               <span className="text-[9px] tracking-[0.4em] font-black text-[#1a0a0a]/30 uppercase">System Integrity</span>
+               <span className="text-[8px] sm:text-[9px] tracking-[0.4em] font-black text-[#1a0a0a]/30 uppercase whitespace-nowrap">System Integrity</span>
                <div className="flex items-center gap-1.5">
                    {[...Array(8)].map((_, i) => (
                       <motion.div 
                         key={i} 
                         initial={{ opacity: 0.1 }}
                         animate={{ opacity: progress > (i * 12.5) ? 1 : 0.1 }}
-                        className="w-3 h-[2px] bg-[#F59E9E]" 
+                        className="w-2 sm:w-3 h-[2px] bg-[#F59E9E]" 
                       />
                    ))}
                </div>
           </div>
           <div className="relative">
-            <span className="text-8xl font-black text-[#F59E9E] opacity-[0.08] absolute -right-4 -bottom-4 select-none">
+            <span className="text-5xl sm:text-8xl font-black text-[#F59E9E] opacity-[0.08] absolute -right-2 -bottom-2 sm:-right-4 -bottom-4 select-none">
               {Math.floor(progress)}
             </span>
-            <span className="text-4xl font-mono font-black text-[#F59E9E] opacity-40 relative">
+            <span className="text-2xl sm:text-4xl font-mono font-black text-[#F59E9E] opacity-40 relative">
                 {Math.floor(progress)}
             </span>
           </div>
