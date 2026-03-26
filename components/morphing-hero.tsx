@@ -45,70 +45,74 @@ export default function MorphingHero() {
   }
 
   useGSAP(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "+=3500",
-        scrub: 1.5,
-        pin: true,
-        onUpdate: (self) => {
-          sp.set(self.progress)
-          setIsShrunk(self.progress > 0.25 && self.progress < 0.65)
+    const mm = gsap.matchMedia()
+
+    mm.add("(min-width: 1024px)", () => {
+      // DESKTOP: Full fancy morphing
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: "+=3500",
+          scrub: 1.5,
+          pin: true,
+          onUpdate: (self) => {
+            sp.set(self.progress)
+            setIsShrunk(self.progress > 0.1 && self.progress < 0.65)
+          }
         }
-      }
+      })
+
+      tl.to(cardOuterRef.current, { scale: 0.7, ease: "power2.inOut", duration: 0.3 }, 0)
+      tl.to(cardVisualRef.current, {
+        borderRadius: "32px",
+        boxShadow: "0 80px 160px -40px rgba(245,158,158,0.3)",
+        backgroundColor: "#FFF5F5",
+        ease: "power2.inOut",
+        duration: 0.3
+      }, 0)
+      tl.to({}, { duration: 0.3 }) 
+      tl.to(cardOuterRef.current, { rotateZ: 90, scale: 0.4, y: "18vh", ease: "power2.inOut", duration: 0.25 }, 0.6)
+      tl.to(cardOuterRef.current, { y: "115vh", opacity: 0, ease: "power3.in", duration: 0.2 }, 0.8)
+      tl.to(containerRef.current, { backgroundColor: "#FFF5F5", duration: 0.3 }, 0)
     })
 
-    // PHASE 1: MORPH TO CARD (0% to 0.3)
-    tl.to(cardOuterRef.current, {
-      scale: 0.7,
-      ease: "power2.inOut",
-      duration: 0.3
-    }, 0)
-    
-    // Animate visual properties directly on the tilting card so they tilt with it
-    tl.to(cardVisualRef.current, {
-      borderRadius: "32px",
-      boxShadow: "0 80px 160px -40px rgba(245,158,158,0.3)",
-      backgroundColor: "#FFF5F5",
-      ease: "power2.inOut",
-      duration: 0.3
-    }, 0)
+    mm.add("(max-width: 1023px)", () => {
+      // MOBILE/TABLET: Simple scroll with subtle fade-in, no pinning
+      setIsShrunk(true) // Always keep card design on mobile but at 100% size
+      
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+          onUpdate: (self) => sp.set(self.progress)
+        }
+      })
+      
+      // No pinning, just static styling for the mobile section
+      gsap.set(cardOuterRef.current, { scale: 1, y: 0, opacity: 1 })
+      gsap.set(cardVisualRef.current, { 
+        borderRadius: "0px", 
+        boxShadow: "none",
+        backgroundColor: "transparent" 
+      })
+    })
 
-    // PHASE 2: DEAD ZONE (0.3 to 0.6)
-    tl.to({}, { duration: 0.3 }) 
-
-    // PHASE 3: ROTATE (0.6 to 0.8)
-    tl.to(cardOuterRef.current, {
-      rotateZ: 90, 
-      scale: 0.4, 
-      y: "18vh",
-      ease: "power2.inOut",
-      duration: 0.25
-    }, 0.6)
-
-    // PHASE 4: SLIDE OUT (0.8 to 1.0)
-    tl.to(cardOuterRef.current, {
-      y: "115vh",
-      opacity: 0, 
-      ease: "power3.in",
-      duration: 0.2
-    }, 0.8)
-
-    tl.to(containerRef.current, { backgroundColor: "#FFF5F5", duration: 0.3 }, 0)
-    
+    return () => mm.revert()
   }, { scope: containerRef })
 
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-screen overflow-hidden flex items-center justify-center bg-[#FFF5F5] z-10 relative"
+      className="w-full h-auto min-h-screen lg:h-screen lg:overflow-hidden flex items-center justify-center bg-[#FFF5F5] z-10 relative"
     >
       {/* ── THE MACRO WRAPPER (Handles GSAP Scaling/Z-Rotation) ── */}
       <div
         ref={cardOuterRef}
         style={{ transformOrigin: "center center", perspective: "2000px" }}
-        className="w-full h-full relative flex items-center justify-center p-0 m-0"
+        className="w-full h-auto lg:h-full relative flex items-center justify-center p-0 m-0"
       >
         {/* ── THE INTERACTIVE PHYSICAL CARD (Handles 3D Tilt) ── */}
         <motion.div
@@ -121,7 +125,7 @@ export default function MorphingHero() {
             backgroundColor: "#FFF5F5",
             transformStyle: "preserve-3d" 
           }}
-          className="w-full h-full relative overflow-hidden flex items-center"
+          className="w-full h-auto lg:h-full relative lg:overflow-hidden flex items-center"
         >
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl min-h-full py-20 lg:py-0 flex items-center relative" style={{ transform: "translateZ(50px)" }}>
             <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[65%] w-[1px] bg-[#1a0a0a]/[0.1] pointer-events-none z-0" />
