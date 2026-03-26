@@ -8,10 +8,25 @@ import dynamic from "next/dynamic"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { useGLTF, PresentationControls, Float, Center, Environment, ContactShadows } from "@react-three/drei"
 
+import * as THREE from "three"
+
 // ── 3D MODEL COMPONENT ──
 function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: any) {
   const { scene } = useGLTF(url)
   const group = useRef<any>(null)
+
+  // FORCE SHADELESS LOOK (Self-Illuminated)
+  useEffect(() => {
+    scene.traverse((child: any) => {
+      if (child.isMesh) {
+        const originalMap = child.material.map;
+        child.material = new THREE.MeshBasicMaterial({
+          map: originalMap,
+          color: child.material.color
+        });
+      }
+    });
+  }, [scene]);
 
   useFrame((state: any) => {
     if (!group.current) return
@@ -75,30 +90,41 @@ export default function FunFacts() {
                 transition={{ delay: i * 0.2, duration: 0.8 }}
                 className="group relative flex flex-col items-center"
               >
-                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[3rem] bg-white border border-[#F59E9E]/10 shadow-2xl shadow-[#1a0a0a]/[0.05] group-hover:border-[#F59E9E]/30 transition-all duration-500">
+                <div className="relative w-full aspect-[4/5] overflow-hidden rounded-[3.5rem] bg-[#fdfdfd] border border-[#F59E9E]/10 shadow-2xl shadow-[#1a0a0a]/[0.08] group-hover:border-[#F59E9E]/30 transition-all duration-700">
+                  {/* Subtle Grain/Texture Background */}
+                  <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                  
                   <div className="absolute inset-0 cursor-grab active:cursor-grabbing">
-                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px]">LOADING_ASSET_0{i+1}</div>}>
+                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px] animate-pulse">SYNCING_MODEL_0{i+1}...</div>}>
                       <Canvas camera={{ position: [0, 0, 5], fov: 40 }} dpr={[1, 2]}>
-                        <ambientLight intensity={0.5} />
-                        <pointLight position={[10, 10, 10]} intensity={1} />
-                        <spotLight position={[-10, 10, 10]} angle={0.15} penumbra={1} intensity={1} />
-                        
                         <PresentationControls global config={{ mass: 2, tension: 500 }} snap={{ mass: 4, tension: 1500 }}>
                           <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
                         </PresentationControls>
-                        
-                        <Environment preset="city" />
-                        <ContactShadows position={[0, -1.8, 0]} opacity={0.3} blur={3} scale={8} far={4} />
                       </Canvas>
                     </Suspense>
                   </div>
                   
-                  <div className="absolute top-8 left-8 pointer-events-none">
-                     <span className="text-[9px] uppercase tracking-[0.4em] font-black text-[#F59E9E]/40">{anim.tag}</span>
+                  {/* Premium Name Tag - Vertical Glass Pill */}
+                  <div className="absolute top-8 left-8 flex flex-col items-start gap-3">
+                     <div className="px-3 py-1 bg-[#1a0a0a] rounded-full text-white text-[8px] font-black tracking-[0.2em] shadow-xl">
+                        {anim.tag}
+                     </div>
                   </div>
 
-                  <div className="absolute bottom-10 left-10 pointer-events-none bg-white/40 backdrop-blur-md px-5 py-2 rounded-2xl border border-white/50 translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500">
-                    <h4 className="text-2xl font-black font-inter text-[#1a0a0a] italic">{anim.name}</h4>
+                  <div className="absolute bottom-8 right-8 overflow-hidden">
+                    <motion.div 
+                      initial={{ x: 20, opacity: 0 }}
+                      whileHover={{ x: 0, opacity: 1 }}
+                      className="bg-white/80 backdrop-blur-xl px-6 py-4 rounded-[2rem] border border-white flex items-center gap-4 shadow-2xl shadow-black/5"
+                    >
+                       <div className="w-2 h-2 rounded-full bg-[#F59E9E] animate-pulse" />
+                       <span className="text-xl font-black italic text-[#1a0a0a] font-inter tracking-tighter uppercase">{anim.name}</span>
+                    </motion.div>
+                    
+                    {/* Default visible indicator */}
+                    <div className="mt-2 text-right group-hover:opacity-0 transition-opacity">
+                       <span className="text-[10px] font-black text-[#F59E9E] uppercase tracking-widest">{anim.name}</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -158,8 +184,6 @@ export default function FunFacts() {
            {/* Headphones 3D Model */}
            <div className="absolute top-[10%] left-[20%] w-[180px] h-[180px] z-20 cursor-grab active:cursor-grabbing">
               <Canvas dpr={[1, 2]}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[5, 5, 5]} />
                 <Suspense fallback={null}>
                   <ModelViewer url="/headphones.glb" scale={0.4} rotationSpeed={1.4} floatIntensity={3} />
                 </Suspense>
@@ -172,8 +196,6 @@ export default function FunFacts() {
            {/* Watch 3D Model */}
            <div className="absolute bottom-[10%] right-[15%] w-[160px] h-[160px] z-20">
               <Canvas dpr={[1, 2]}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[5, 5, 5]} />
                 <Suspense fallback={null}>
                   <ModelViewer url="/watch.glb" scale={0.45} rotationSpeed={-1.2} floatIntensity={3} />
                 </Suspense>
