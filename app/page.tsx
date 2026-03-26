@@ -59,21 +59,17 @@ export default function Home() {
               <NewsTicker />
             </div>
 
-            <section id="about" className="scroll-mt-32">
+            {/* ── WORK SECTION ── */}
+            <section id="projects" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
               <Achievements />
-              <FunFacts />
-            </section>
-
-            <section id="projects" className="scroll-mt-32">
               <Projects />
-            </section>
-
-            <section className="scroll-mt-32">
-              <Education />
-            </section>
-
-            <section className="scroll-mt-32">
               <Certificates />
+            </section>
+
+            {/* ── ABOUT SECTION ── */}
+            <section id="about" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
+              <FunFacts />
+              <Education />
             </section>
 
             <section className="scroll-mt-32">
