@@ -11,6 +11,7 @@ import Contact from "@/components/contact"
 import SocialLinks from "@/components/social-links"
 import DesignProcess from "@/components/design-process"
 import Achievements from "@/components/achievements"
+import FunFacts from "@/components/fun-facts"
 import Certificates from "@/components/certificates"
 import Education from "@/components/education"
 import ImageSection from "@/components/image-section"
@@ -58,12 +59,13 @@ export default function Home() {
               <NewsTicker />
             </div>
 
-            <section id="projects" className="scroll-mt-32">
-              <Projects />
-            </section>
-
             <section id="about" className="scroll-mt-32">
               <Achievements />
+              <FunFacts />
+            </section>
+
+            <section id="projects" className="scroll-mt-32">
+              <Projects />
             </section>
 
             <section className="scroll-mt-32">
