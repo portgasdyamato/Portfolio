@@ -43,9 +43,9 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
 }
 
 const animals = [
-  { name: "Pony", url: "/pony.glb", tag: "3P / SPIRITED", scale: 2.2 },
-  { name: "Panda", url: "/panda.glb", tag: "3P / CHILL", scale: 2.5 },
-  { name: "Penguin", url: "/penguin.glb", tag: "3P / SOCIAL", scale: 1.8 }
+  { name: "Pony", url: "/pony.glb", tag: "3P / SPIRITED", scale: 2.8 },
+  { name: "Panda", url: "/panda.glb", tag: "3P / CHILL", scale: 3.2 },
+  { name: "Penguin", url: "/penguin.glb", tag: "3P / SOCIAL", scale: 2.2 }
 ]
 
 const hobbies = [
@@ -99,9 +99,15 @@ export default function FunFacts() {
                   <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
                   
                   <div className="absolute inset-0 cursor-grab active:cursor-grabbing">
-                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px] animate-pulse">SYNCING_MODEL_0{i+1}...</div>}>
-                      <Canvas camera={{ position: [0, 0, 5], fov: 42 }} dpr={[1, 2]}>
-                        <PresentationControls global config={{ mass: 2, tension: 500 }} snap={{ mass: 4, tension: 1500 }}>
+                    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px] animate-pulse">SYNCING_ASSET_0{i+1}...</div>}>
+                      <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
+                        <PresentationControls 
+                          global 
+                          config={{ mass: 2, tension: 500 }} 
+                          snap={{ mass: 4, tension: 1500 }}
+                          azimuth={[-Math.PI / 4, Math.PI / 4]}
+                          polar={[-Math.PI / 6, Math.PI / 6]}
+                        >
                           <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
                         </PresentationControls>
                       </Canvas>
@@ -109,26 +115,17 @@ export default function FunFacts() {
                   </div>
                   
                   {/* Premium Name Tag - Vertical HUD Pill */}
-                  <div className="absolute top-8 left-8 flex flex-col items-start gap-3">
+                  <div className="absolute top-8 left-8 flex flex-col items-start gap-3 pointer-events-none z-20">
                      <div className="px-4 py-1.5 bg-[#1a0a0a] rounded-full text-white text-[8px] font-black tracking-[0.2em] shadow-xl">
                         {anim.tag}
                      </div>
                   </div>
 
-                  <div className="absolute bottom-8 right-8 overflow-hidden z-20">
-                    <motion.div 
-                      initial={{ x: 20, opacity: 0 }}
-                      whileHover={{ x: 0, opacity: 1 }}
-                      className="bg-white/90 backdrop-blur-2xl px-6 py-4 rounded-[2.5rem] border border-white/50 flex items-center gap-4 shadow-2xl shadow-black/10 transition-colors"
-                    >
-                       <div className="w-2.5 h-2.5 rounded-full bg-[#F59E9E] animate-pulse" />
-                       <span className="text-xl font-black italic text-[#1a0a0a] font-inter tracking-tighter uppercase">{anim.name}</span>
-                    </motion.div>
-                    
-                    {/* Default visible indicator */}
-                    <div className="mt-3 text-right group-hover:opacity-0 transition-opacity">
-                       <span className="text-[10px] font-black text-[#F59E9E]/60 uppercase tracking-[0.3em]">{anim.name}</span>
-                    </div>
+                  <div className="absolute bottom-10 right-10 flex flex-col items-end pointer-events-none z-20 overflow-hidden">
+                    <span className="text-[10px] font-black text-[#F59E9E]/40 uppercase tracking-[0.4em] mb-1 group-hover:text-[#F59E9E] transition-colors">{anim.name}</span>
+                    <h4 className="text-3xl font-black italic text-[#1a0a0a] uppercase tracking-tighter opacity-10 group-hover:opacity-100 transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                      {anim.name}
+                    </h4>
                   </div>
                 </div>
               </motion.div>
