@@ -6,25 +6,13 @@ import { Suspense, useRef, useState, useEffect } from "react"
 import dynamic from "next/dynamic"
 
 import { Canvas, useFrame } from "@react-three/fiber"
-import { useGLTF, PresentationControls, Float, Center, Environment, ContactShadows } from "@react-three/drei"
-
+import { useGLTF, OrbitControls, Float, Center, Environment, ContactShadows } from "@react-three/drei"
 import * as THREE from "three"
 
 // ── 3D MODEL COMPONENT ──
 function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: any) {
   const { scene } = useGLTF(url)
   const group = useRef<any>(null)
-  const mouse = useRef({ x: 0, y: 0 })
-
-  // Listen for mouse move to rotate
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouse.current.x = (e.clientX / window.innerWidth) * 2 - 1
-      mouse.current.y = -(e.clientY / window.innerHeight) * 2 + 1
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
 
   // FORCE SHADELESS LOOK (Self-Illuminated)
   useEffect(() => {
@@ -37,27 +25,28 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 2 }: 
         });
       }
     });
+
+    // CENTER THE GEOMETRY ONCE LOADED
+    const box = new THREE.Box3().setFromObject(scene);
+    const center = new THREE.Vector3();
+    box.getCenter(center);
+    scene.position.sub(center); 
   }, [scene]);
 
   useFrame((state: any) => {
     if (!group.current) return
     
-    // Smoothly rotate based on mouse position, clamped
-    const targetRotX = mouse.current.y * 0.5
-    const targetRotY = mouse.current.x * 0.8
-    
-    group.current.rotation.x += (targetRotX - group.current.rotation.x) * 0.05
-    group.current.rotation.y += (targetRotY - group.current.rotation.y) * 0.05
-    
-    // Continuous slow rotation + Floating
+    // Slow Auto Rotation
     group.current.rotation.y += 0.005 * rotationSpeed
-    group.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.2 * floatIntensity
+    
+    // Floating
+    group.current.position.y = Math.sin(state.clock.elapsedTime * 1.5) * 0.25 * floatIntensity
   })
 
   return (
-    <Center>
-      <primitive object={scene} scale={scale} ref={group} />
-    </Center>
+    <group ref={group}>
+       <primitive object={scene} scale={scale} />
+    </group>
   )
 }
 
@@ -117,18 +106,17 @@ export default function FunFacts() {
                   {/* Subtle Grain/Texture Background */}
                   <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
                   
-                  <div className="absolute inset-0 cursor-grab active:cursor-grabbing">
+                  <div className="absolute inset-0">
                     <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-[#F59E9E]/20 font-mono text-[10px] animate-pulse">SYNCING_ASSET_0{i+1}...</div>}>
                       <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
-                        <PresentationControls 
-                          global 
-                          config={{ mass: 2, tension: 500 }} 
-                          snap={{ mass: 4, tension: 1500 }}
-                          azimuth={[-Math.PI / 4, Math.PI / 4]}
-                          polar={[-Math.PI / 6, Math.PI / 6]}
-                        >
-                          <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
-                        </PresentationControls>
+                        <OrbitControls 
+                          enablePan={false} 
+                          enableZoom={false} 
+                          makeDefault 
+                          minPolarAngle={Math.PI / 4} 
+                          maxPolarAngle={Math.PI / 1.5} 
+                        />
+                        <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
                       </Canvas>
                     </Suspense>
                   </div>
