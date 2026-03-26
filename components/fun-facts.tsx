@@ -177,7 +177,7 @@ export default function FunFacts() {
            <div className="relative flex-1 min-h-[700px]">
               
               {/* 1. LARGE 3D Artifacts */}
-              <div className="absolute top-[0%] left-[5%] w-[380px] h-[380px] z-20">
+              <div className="absolute top-[0%] left-[0%] w-[450px] h-[450px] z-20">
                  <div 
                    onMouseEnter={() => setHoveredId('headphones')}
                    onMouseLeave={() => setHoveredId(null)}
@@ -186,13 +186,13 @@ export default function FunFacts() {
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault minPolarAngle={Math.PI/3} maxPolarAngle={Math.PI/1.5} />
-                          <ModelViewer url="/headphones.glb" scale={2.5} rotationSpeed={1.5} floatIntensity={4} />
+                          <ModelViewer url="/headphones.glb" scale={3.5} rotationSpeed={1.5} floatIntensity={4} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'headphones' && (
-                       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 10 }} exit={{ opacity: 0, y: -10 }} className="absolute top-full left-1/2 -translate-x-1/2 w-[250px] bg-white/5 border border-white/10 backdrop-blur-xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 10 }} exit={{ opacity: 0, y: -10 }} className="absolute top-[90%] left-1/2 -translate-x-1/2 w-[250px] bg-white/5 border border-white/10 backdrop-blur-xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
                           <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] block mb-1">Ritual: Listen</span>
                           <span className="text-[10px] text-white/60 font-inter uppercase tracking-widest leading-relaxed">Listening to lectures, podcasts, and music.</span>
                        </motion.div>
@@ -200,7 +200,7 @@ export default function FunFacts() {
                  </AnimatePresence>
               </div>
 
-              <div className="absolute top-[10%] right-[0%] w-[320px] h-[320px] z-20">
+              <div className="absolute top-[5%] right-[0%] w-[420px] h-[420px] z-20">
                  <div 
                    onMouseEnter={() => setHoveredId('camera')}
                    onMouseLeave={() => setHoveredId(null)}
@@ -209,13 +209,13 @@ export default function FunFacts() {
                     <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
                        <Suspense fallback={null}>
                           <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-                          <ModelViewer url="/watch.glb" scale={2.2} rotationSpeed={-1.2} floatIntensity={5} />
+                          <ModelViewer url="/camera.glb" scale={3.0} rotationSpeed={-1.2} floatIntensity={5} />
                        </Suspense>
                     </Canvas>
                  </div>
                  <AnimatePresence>
                     {hoveredId === 'camera' && (
-                       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 10 }} exit={{ opacity: 0, y: -10 }} className="absolute top-full left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
+                       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 10 }} exit={{ opacity: 0, y: -10 }} className="absolute top-[90%] left-1/2 -translate-x-1/2 w-[220px] bg-white/5 border border-white/10 backdrop-blur-xl p-4 rounded-3xl text-center z-30 pointer-events-none shadow-2xl">
                           <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] block mb-1">Ritual: Capture</span>
                           <span className="text-[10px] text-white/60 font-inter uppercase tracking-widest">Street & nature photography.</span>
                        </motion.div>
