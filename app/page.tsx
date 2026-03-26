@@ -19,6 +19,7 @@ import GrowWithMeHeading from "@/components/GrowWithMeHeading"
 import NewsTicker from "@/components/news-ticker"
 import CustomCursor from "@/components/custom-cursor"
 import PixelCharacter from "@/components/pixel-character"
+import { Sparkles } from "lucide-react"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -68,6 +69,16 @@ export default function Home() {
 
             {/* ── ABOUT SECTION ── */}
             <section id="about" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
+              <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto px-4 mt-10 md:mt-20">
+                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-6">
+                  <Sparkles size={12} fill="currentColor" strokeWidth={0} />
+                  Beyond The Resume
+                </div>
+                <h2 className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] leading-[1.05] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  Before you learn about me <span className="text-[#F59E9E]">Professionally,</span>
+                  <br /> let's learn some <span className="text-black/30">fun facts</span> about me.
+                </h2>
+              </div>
               <FunFacts />
               <Education />
             </section>
