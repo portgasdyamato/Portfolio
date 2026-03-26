@@ -60,13 +60,6 @@ export default function Home() {
               <NewsTicker />
             </div>
 
-            {/* ── WORK SECTION ── */}
-            <section id="projects" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
-              <Achievements />
-              <Projects />
-              <Certificates />
-            </section>
-
             {/* ── ABOUT SECTION ── */}
             <section id="about" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
               <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto px-4 mt-10 md:mt-20">
@@ -81,6 +74,13 @@ export default function Home() {
               </div>
               <FunFacts />
               <Education />
+            </section>
+
+            {/* ── WORK SECTION ── */}
+            <section id="projects" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
+              <Achievements />
+              <Projects />
+              <Certificates />
             </section>
 
             <section className="scroll-mt-32">

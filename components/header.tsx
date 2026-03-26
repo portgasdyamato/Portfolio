@@ -8,8 +8,8 @@ const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
 const NAV = [
-  { label: "Work", id: "projects" },
   { label: "About", id: "about" },
+  { label: "Work", id: "projects" },
   { label: "Contact", id: "contact" },
 ]
 
