@@ -70,7 +70,7 @@ export default function MorphingHero() {
     tl.to(cardVisualRef.current, {
       borderRadius: "32px",
       boxShadow: "0 80px 160px -40px rgba(179,57,81,0.3)",
-      backgroundColor: "#FDE2E2",
+      backgroundColor: "#FFF5F5",
       ease: "power2.inOut",
       duration: 0.3
     }, 0)
@@ -95,14 +95,14 @@ export default function MorphingHero() {
       duration: 0.2
     }, 0.8)
 
-    tl.to(containerRef.current, { backgroundColor: "#F5D5D5", duration: 0.3 }, 0)
+    tl.to(containerRef.current, { backgroundColor: "#FFF5F5", duration: 0.3 }, 0)
     
   }, { scope: containerRef })
 
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-screen overflow-hidden flex items-center justify-center bg-[#FDE2E2] z-10 relative"
+      className="w-full h-screen overflow-hidden flex items-center justify-center bg-[#FFF5F5] z-10 relative"
     >
       {/* ── THE MACRO WRAPPER (Handles GSAP Scaling/Z-Rotation) ── */}
       <div
@@ -118,7 +118,7 @@ export default function MorphingHero() {
           style={{ 
             rotateX: tiltX, 
             rotateY: tiltY,
-            backgroundColor: "#FDE2E2",
+            backgroundColor: "#FFF5F5",
             transformStyle: "preserve-3d" 
           }}
           className="w-full h-full relative overflow-hidden flex items-center"

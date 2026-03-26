@@ -39,7 +39,15 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
     let count = 0
     const interval = setInterval(() => {
       // Non-linear "organic" progress
-      const jump = count < 30 ? 6 : (100 - count) * 0.08
+      let jump;
+      if (count < 30) {
+        jump = 6;
+      } else if (count < 99) {
+        jump = (100 - count) * 0.1;
+      } else {
+        jump = 0.5; // Final push to 100
+      }
+      
       count = Math.min(100, count + jump)
       setProgress(count)
       
@@ -47,7 +55,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         clearInterval(interval)
         if (!finishCalled.current) {
           finishCalled.current = true
-          setTimeout(() => finishLoadingAction(), 2200)
+          setTimeout(() => finishLoadingAction(), 1200)
         }
       }
     }, 60)
