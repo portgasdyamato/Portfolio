@@ -98,7 +98,7 @@ export default function FunFacts() {
           MOBILE LAYOUT (block on <lg, hidden on lg+)
           Fully stacked, no absolute positioning.
          ════════════════════════════════════════ */}
-      <div className="block lg:hidden relative bg-[#000000] rounded-[3rem] overflow-hidden px-5 pt-10 pb-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-white flex flex-col gap-8">
+      <div className="block lg:hidden relative bg-[#000000] rounded-[3rem] px-5 pt-10 pb-20 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-white flex flex-col gap-8">
 
         {/* Starfield */}
         <div className="absolute inset-0 pointer-events-none opacity-30">
@@ -121,8 +121,8 @@ export default function FunFacts() {
         </div>
 
         {/* Camera Model Card */}
-        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center">
-          <div className="w-full h-[220px]">
+        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] flex flex-col items-center shadow-[0_15px_35px_rgba(0,0,0,0.3)]">
+          <div className="w-full h-[240px]">
             <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
               <Suspense fallback={null}>
                 <OrbitControls enableZoom={false} enablePan={false} makeDefault />
@@ -130,14 +130,15 @@ export default function FunFacts() {
               </Suspense>
             </Canvas>
           </div>
-          <div className="w-full px-6 py-5 bg-white/[0.03] border-t border-white/10 text-center">
-            <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] leading-tight">Street & nature photography.</span>
+          <div className="w-full p-6 bg-gradient-to-b from-white/[0.05] to-transparent border-t border-white/10 text-center">
+            <span className="text-[12px] text-[#F59E9E] font-black uppercase tracking-[0.25em] leading-tight block mb-1">STREET & NATURE</span>
+            <span className="text-[10px] text-white/40 font-bold uppercase tracking-[0.1em]">PHOTOGRAPHY</span>
           </div>
         </div>
 
         {/* Headphones Model Card */}
-        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center">
-          <div className="w-full h-[220px]">
+        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] flex flex-col items-center shadow-[0_15px_35px_rgba(0,0,0,0.3)]">
+          <div className="w-full h-[240px]">
             <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
               <Suspense fallback={null}>
                 <OrbitControls enableZoom={false} enablePan={false} makeDefault />
@@ -145,8 +146,9 @@ export default function FunFacts() {
               </Suspense>
             </Canvas>
           </div>
-          <div className="w-full px-6 py-5 bg-white/[0.03] border-t border-white/10 text-center">
-            <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] leading-tight">Listening to lectures, podcasts, and music.</span>
+          <div className="w-full p-6 bg-gradient-to-b from-white/[0.05] to-transparent border-t border-white/10 text-center">
+            <span className="text-[12px] text-[#F59E9E] font-black uppercase tracking-[0.25em] leading-tight block mb-1">LISTENING TO</span>
+            <span className="text-[10px] text-white/40 font-bold uppercase tracking-[0.1em]">LECTURES, PODCASTS, & MUSIC</span>
           </div>
         </div>
 
@@ -163,12 +165,12 @@ export default function FunFacts() {
               <AnimatePresence>
                 {hoveredId === h.id && (
                   <motion.div
-                    initial={{ opacity: 0, y: 6 }}
+                    initial={{ opacity: 0, y: -6 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 6 }}
-                    className="absolute -bottom-[80px] left-1/2 -translate-x-1/2 w-[160px] bg-[#1a0a0a]/90 border border-[#F59E9E]/30 backdrop-blur-xl p-3 rounded-2xl text-center z-[100] pointer-events-none shadow-2xl"
+                    exit={{ opacity: 0, y: -6 }}
+                    className="absolute -top-[70px] left-1/2 -translate-x-1/2 w-[160px] bg-white text-black border border-white shadow-[0_10px_40px_rgba(0,0,0,0.5)] p-4 rounded-3xl text-center z-[100] pointer-events-none"
                   >
-                    <span className="text-[9px] text-white font-black uppercase tracking-wider leading-tight">{h.desc}</span>
+                    <span className="text-[10px] font-black uppercase tracking-wider leading-relaxed">{h.desc}</span>
                   </motion.div>
                 )}
               </AnimatePresence>
