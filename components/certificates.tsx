@@ -56,31 +56,7 @@ const certificates = [
 ]
 
 function CertificateCard({ cert, index }: { cert: typeof certificates[0], index: number }) {
-  const x = useMotionValue(0)
-  const y = useMotionValue(0)
-
-  const mouseXSpring = useSpring(x)
-  const mouseYSpring = useSpring(y)
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["10deg", "-10deg"])
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-10deg", "10deg"])
-
-  function onMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const width = rect.width
-    const height = rect.height
-    const mouseX = e.clientX - rect.left
-    const mouseY = e.clientY - rect.top
-    const xPct = mouseX / width - 0.5
-    const yPct = mouseY / height - 0.5
-    x.set(xPct)
-    y.set(yPct)
-  }
-
-  function onMouseLeave() {
-    x.set(0)
-    y.set(0)
-  }
+  const [hovered, setHovered] = useState(false)
 
   return (
     <motion.div
@@ -88,74 +64,79 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
-      onMouseMove={onMouseMove}
-      onMouseLeave={onMouseLeave}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      className="group relative h-[360px] cursor-pointer"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group relative h-[420px] cursor-pointer"
     >
-      {/* GLOSS BADGE CONTAINER */}
-      <div className="absolute inset-0 bg-white/40 dark:bg-white/[0.03] backdrop-blur-2xl rounded-[2.5rem] border border-white/50 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.1)] group-hover:bg-white/60 overflow-hidden">
+      {/* Glossy Frame Background */}
+      <div className="absolute inset-x-0 bottom-0 h-[280px] bg-white/40 dark:bg-white/[0.02] backdrop-blur-2xl rounded-[2.5rem] border border-white/50 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:bg-white/60" />
+
+      {/* THE ACTUAL CERTIFICATE PAPER (Pops Up) */}
+      <motion.div 
+        animate={{ 
+          y: hovered ? -100 : 0, 
+          rotate: hovered ? -2 : 0,
+          scale: hovered ? 1.05 : 1
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="absolute inset-x-6 top-0 h-[320px] bg-white rounded-xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-black/[0.03] flex flex-col items-center p-8 overflow-hidden z-10"
+      >
+        {/* Certificate Border Deco */}
+        <div className="absolute inset-3 border-[0.5px] border-black/5 rounded-lg pointer-events-none" />
+        <div className="absolute inset-4 border border-black/[0.02] rounded-md pointer-events-none" />
         
-        {/* Holographic Shimmer Overlay */}
-        <motion.div 
-           className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-700"
-           style={{
-             background: `radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.4) 0%, transparent 60%)`,
-           }}
-        />
-
-        {/* Card Content Interior */}
-        <div className="relative h-full p-8 flex flex-col items-center text-center">
-          
-          {/* Top Label */}
-          <div className="mb-6 flex items-center gap-2">
-            <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: cert.color }} />
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/40 dark:text-white/40">{cert.badgeType}</span>
-          </div>
-
-          {/* Icon Badge Wall */}
-          <div className="relative w-24 h-24 mb-8 flex items-center justify-center">
-            {/* Pulsing Rings */}
-            <div className="absolute inset-0 bg-black/5 dark:bg-white/5 rounded-full animate-pulse" />
-            <div className="absolute -inset-2 border border-black/[0.03] dark:border-white/[0.03] rounded-full" />
-            
-            <div className="relative w-16 h-16 bg-white dark:bg-white/10 rounded-2xl shadow-xl border border-black/5 dark:border-white/10 flex items-center justify-center transform transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
-               <ShieldCheck size={32} style={{ color: cert.color }} strokeWidth={1.5} />
-            </div>
-          </div>
-
-          {/* Text Content */}
-          <div className="space-y-3">
-             <h3 className="text-xl md:text-2xl font-bold leading-tight text-[#1a0a0a] dark:text-white tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-               {cert.title}
-             </h3>
-             <div className="flex flex-col items-center">
-               <p className="text-sm font-inter font-bold text-black/60 dark:text-white/60 italic">{cert.issuer}</p>
-               <span className="text-[10px] uppercase font-black tracking-widest text-black/20 dark:text-white/20 mt-1">{cert.date}</span>
-             </div>
-          </div>
-
-          {/* Bottom Lockup */}
-          <div className="mt-auto pt-6 flex items-center justify-between w-full border-t border-black/[0.05] dark:border-white/[0.05]">
-             <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500/10 rounded-full">
-               <CheckCircle size={10} className="text-green-600 dark:text-green-400" />
-               <span className="text-[8px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">Verified</span>
-             </div>
-             
-             {cert.link && (
-               <a 
-                 href={cert.link} 
-                 target="_blank" 
-                 rel="noopener noreferrer"
-                 className="p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white"
-               >
-                 <ExternalLink size={14} />
-               </a>
-             )}
-          </div>
+        {/* Top Header */}
+        <div className="w-full flex justify-between items-center mb-10 relative z-10">
+           <div className="flex flex-col gap-0.5">
+              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-black/30">Official Credential</span>
+              <span className="text-[10px] font-bold text-black/60 italic font-inter leading-none">{cert.issuer}</span>
+           </div>
+           <div className="w-10 h-10 bg-black/[0.03] rounded-full flex items-center justify-center">
+              <ShieldCheck size={18} style={{ color: cert.color }} />
+           </div>
         </div>
 
+        {/* Certificate Title / Core Info */}
+        <div className="flex-1 flex flex-col items-center justify-center text-center relative z-10 w-full mb-8">
+           <h3 className="text-2xl md:text-3xl font-black text-[#1a0a0a] leading-tight mb-2 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+             {cert.title}
+           </h3>
+           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-black/[0.05] to-transparent mb-4" />
+           <p className="text-[9px] font-inter uppercase tracking-[0.2em] text-black/40 font-medium">Valid and Verified Completion</p>
+        </div>
+
+        {/* Bottom Lockup on the Document */}
+        <div className="w-full flex justify-between items-end relative z-10">
+           <div className="flex flex-col gap-1">
+              <span className="text-[8px] font-black uppercase tracking-widest text-black/20">Issued Date</span>
+              <span className="text-[10px] font-bold text-black/60 font-inter">{cert.date}</span>
+           </div>
+           <div className="flex flex-col items-end gap-1">
+             <div className="w-12 h-0.5 bg-black/5 rounded-full" />
+             <span className="text-[7px] font-black tracking-widest text-black/20 uppercase">Signature Area</span>
+           </div>
+        </div>
+      </motion.div>
+
+      {/* Interactive Reveal info on the card (Bottom Section) */}
+      <div className="absolute inset-x-8 bottom-8 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500/10 rounded-full">
+            <CheckCircle size={10} className="text-green-600 dark:text-green-400" />
+            <span className="text-[8px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">Credential Verified</span>
+          </div>
+          
+          {cert.link && (
+            <a 
+              href={cert.link} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="p-3 bg-[#1a0a0a]/5 dark:bg-white/5 rounded-full hover:bg-[#1a0a0a]/10 dark:hover:bg-white/10 transition-all text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
+            >
+              <ExternalLink size={16} />
+            </a>
+          )}
       </div>
+
     </motion.div>
   )
 }
