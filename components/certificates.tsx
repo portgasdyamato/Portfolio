@@ -4,6 +4,24 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { ExternalLink, ShieldCheck, CheckCircle, Award, Sparkles, Globe } from "lucide-react"
 import { useState } from "react"
 
+const CompanyLogo = ({ issuer, color }: { issuer: string; color: string }) => {
+  if (issuer === "IBM") return <div className="text-[12px] font-black tracking-tighter text-[#052D84] scale-x-125">IBM</div>
+  if (issuer === "Google Cloud") return <div className="w-full h-full flex items-center justify-center font-bold text-[#4285F4] text-[10px]">G</div>
+  if (issuer === "AWS") return <div className="w-full h-full flex flex-col items-center justify-center font-black text-orange-500 scale-y-75 leading-none"><span>A</span><span className="text-[6px] -mt-1">WS</span></div>
+  if (issuer === "Microsoft") return (
+    <div className="grid grid-cols-2 gap-0.5 w-4 h-4">
+      <div className="bg-[#F35022] w-full h-full" />
+      <div className="bg-[#7FBA00] w-full h-full" />
+      <div className="bg-[#00A4EF] w-full h-full" />
+      <div className="bg-[#FFB900] w-full h-full" />
+    </div>
+  )
+  if (issuer === "Cisco") return <div className="flex items-end gap-[1px] h-4"><div className="w-0.5 h-1 bg-cyan-500" /><div className="w-0.5 h-3 bg-cyan-500" /><div className="w-0.5 h-2 bg-cyan-500" /><div className="w-0.5 h-3 bg-cyan-500" /><div className="w-0.5 h-1 bg-cyan-500" /></div>
+  if (issuer === "Accenture") return <div className="text-purple-600 font-black text-[14px] italic transform -skew-x-12">{">"}</div>
+  if (issuer === "Columbia University") return <div className="text-[14px] font-bold text-sky-900 border-b-2 border-sky-500 leading-none">C</div>
+  return <ShieldCheck size={20} style={{ color }} />
+}
+
 const certificates = [
   {
     title: "Gen AI by GoogleCloud",
@@ -107,12 +125,12 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
               <span className="text-[8px] font-black uppercase tracking-[0.3em] text-black/20">Official Credential</span>
            </div>
            
-           {/* PREMIUM INSTITUTIONAL SEAL */}
+           {/* COMPANY BRANDED SEAL */}
            <div className="relative w-14 h-14 flex items-center justify-center -mt-2">
-              <div className="absolute inset-0 bg-black/[0.03] rounded-full animate-[spin_10s_linear_infinite]" />
+              <div className="absolute inset-0 bg-black/[0.03] rounded-full animate-[spin_12s_linear_infinite]" />
               <div className="absolute inset-1 border-[0.5px] border-black/10 rounded-full border-dashed" />
-              <div className="relative w-10 h-10 bg-white rounded-full shadow-sm border border-black/[0.05] flex items-center justify-center">
-                 <ShieldCheck size={20} style={{ color: cert.color }} strokeWidth={2} />
+              <div className="relative w-10 h-10 bg-white rounded-full shadow-lg border border-black/[0.05] flex items-center justify-center p-2.5 overflow-hidden">
+                 <CompanyLogo issuer={cert.issuer} color={cert.color} />
               </div>
            </div>
         </div>

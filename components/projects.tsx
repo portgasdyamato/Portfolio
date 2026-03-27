@@ -67,7 +67,7 @@ export default function Projects() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-2xl z-[100] overflow-y-auto"
+            className="fixed inset-0 bg-black/90 backdrop-blur-2xl z-[100] overflow-y-auto scrollbar-hide"
             onClick={() => setSelectedProject(null)}
           >
             <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-12 pointer-events-none">
