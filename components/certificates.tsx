@@ -66,30 +66,27 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative h-[360px] cursor-pointer"
-      style={{ zIndex: hovered ? 50 : index }}
+      className="group relative h-[420px] cursor-pointer"
+      style={{ zIndex: hovered ? 100 : 10 }}
     >
-      {/* Glossy Frame Background */}
-      <div className="absolute inset-x-0 bottom-0 h-[280px] bg-white/40 dark:bg-white/[0.02] backdrop-blur-2xl rounded-[2.5rem] border border-white/50 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:bg-white/60" />
+      {/* 1. FRAME BACKING */}
+      <div className="absolute inset-x-0 bottom-0 h-[300px] bg-black/5 dark:bg-white/[0.02] rounded-[2.5rem] border border-black/5 dark:border-white/5" />
 
-      {/* THE ACTUAL CERTIFICATE PAPER (Pops Up) */}
+      {/* 2. THE CERTIFICATE DOCUMENT (Inside Slot) */}
       <motion.div 
-        initial={{ y: 60 }}
         animate={{ 
-          y: hovered ? -100 : 60, 
+          y: hovered ? -100 : 30, 
+          scale: hovered ? 1.05 : 0.95,
           rotate: hovered ? -2 : 0,
-          scale: hovered ? 1.05 : 1
+          zIndex: hovered ? 50 : 0
         }}
         transition={{ type: "spring", stiffness: 350, damping: 25 }}
-        className="absolute inset-x-6 top-0 h-[320px] bg-white rounded-xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.2)] border border-black/[0.03] flex flex-col items-center p-8 overflow-hidden z-10"
+        className="absolute inset-x-8 top-0 h-[320px] bg-white rounded-xl shadow-[0_15px_40px_rgba(0,0,0,0.1)] border border-black/[0.03] flex flex-col items-center p-8 overflow-hidden"
       >
-        {/* Certificate Border Deco */}
+        {/* Document Details */}
         <div className="absolute inset-3 border-[0.5px] border-black/5 rounded-lg pointer-events-none" />
-        <div className="absolute inset-4 border border-black/[0.02] rounded-md pointer-events-none" />
-        
-        {/* Top Header */}
         <div className="w-full flex justify-between items-center mb-10 relative z-10">
-           <div className="flex flex-col gap-0.5">
+           <div className="flex flex-col gap-0.5 text-left items-start">
               <span className="text-[7px] font-black uppercase tracking-[0.3em] text-black/30">Official Credential</span>
               <span className="text-[10px] font-bold text-black/60 italic font-inter leading-none">{cert.issuer}</span>
            </div>
@@ -98,41 +95,44 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
            </div>
         </div>
 
-        {/* Certificate Title / Core Info */}
         <div className="flex-1 flex flex-col items-center justify-center text-center relative z-10 w-full mb-8">
-           <h3 className="text-2xl md:text-3xl font-black text-[#1a0a0a] leading-tight mb-2 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+           <h3 className="text-2xl font-black text-[#1a0a0a] leading-tight mb-2 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
              {cert.title}
            </h3>
            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-black/[0.05] to-transparent mb-4" />
-           <p className="text-[9px] font-inter uppercase tracking-[0.2em] text-black/40 font-medium">Valid and Verified Completion</p>
+           <p className="text-[9px] font-inter uppercase tracking-[0.2em] text-black/40 font-medium">Verified Certificate</p>
         </div>
 
-        {/* Bottom Lockup on the Document */}
         <div className="w-full flex justify-between items-end relative z-10">
-           <div className="flex flex-col gap-1">
+           <div className="flex flex-col gap-1 items-start text-left">
               <span className="text-[8px] font-black uppercase tracking-widest text-black/20">Issued Date</span>
               <span className="text-[10px] font-bold text-black/60 font-inter">{cert.date}</span>
            </div>
            <div className="flex flex-col items-end gap-1">
              <div className="w-12 h-0.5 bg-black/5 rounded-full" />
-             <span className="text-[7px] font-black tracking-widest text-black/20 uppercase">Signature Area</span>
+             <span className="text-[7px] font-black tracking-widest text-black/20 uppercase">Auth Sign</span>
            </div>
         </div>
       </motion.div>
 
-      {/* Interactive Reveal info on the card (Bottom Section) */}
-      <div className="absolute inset-x-8 bottom-8 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      {/* 3. GLASS FRONT (Pocket Face) */}
+      <div className="absolute inset-x-0 bottom-0 h-[220px] bg-white/30 dark:bg-white/[0.05] backdrop-blur-3xl rounded-b-[2.5rem] border-t border-white/40 dark:border-white/20 shadow-[0_-10px_40px_rgba(0,0,0,0.02)] z-20 pointer-events-none flex items-center justify-center">
+         <div className="flex flex-col items-center opacity-20 group-hover:opacity-0 transition-opacity duration-300">
+            <Award size={32} className="text-[#1a0a0a] dark:text-white" strokeWidth={1} />
+            <span className="text-[9px] font-black uppercase tracking-[0.3em] mt-2 text-[#1a0a0a] dark:text-white">View Credential</span>
+         </div>
+      </div>
+
+      {/* 4. ACTIONS (Visible only on hover or when document is out) */}
+      <div className="absolute inset-x-10 bottom-8 flex items-center justify-between z-30 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-green-500/10 rounded-full">
             <CheckCircle size={10} className="text-green-600 dark:text-green-400" />
-            <span className="text-[8px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">Credential Verified</span>
+            <span className="text-[8px] font-black uppercase tracking-widest text-green-600 dark:text-green-400">Verified</span>
           </div>
-          
           {cert.link && (
             <a 
-              href={cert.link} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-3 bg-[#1a0a0a]/5 dark:bg-white/5 rounded-full hover:bg-[#1a0a0a]/10 dark:hover:bg-white/10 transition-all text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
+              href={cert.link} target="_blank" rel="noopener noreferrer"
+              className="p-3 bg-[#1a0a0a]/5 dark:bg-white/5 rounded-full hover:bg-white dark:hover:bg-white/20 shadow-sm transition-all text-black/60 dark:text-white/60 hover:text-black dark:hover:text-white"
             >
               <ExternalLink size={16} />
             </a>
