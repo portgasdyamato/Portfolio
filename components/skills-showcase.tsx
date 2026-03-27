@@ -128,28 +128,37 @@ export default function SkillsShowcase() {
                   style={{ backgroundColor: folder.tabColor }}
                   layoutId={`folder-tab-${folder.id}`}
                 />
-                {/* PAPERS INSIDE (Layered & Staggered) */}
+                {/* PAPERS INSIDE (Premium Layered Documents) */}
                 {[...Array(3)].map((_, i) => (
                   <motion.div 
                     key={i}
-                    className="absolute left-[5%] w-[90%] h-[150px] bg-white rounded-t-lg shadow-inner border border-gray-100 p-4"
-                    initial={{ bottom: 20 }}
+                    className="absolute left-[8%] w-[84%] h-[150px] bg-white rounded-t-lg shadow-[0_4px_20px_rgba(0,0,0,0.1)] border border-black/5 flex flex-col pt-3 px-4"
+                    initial={{ bottom: 15, rotate: 0 }}
                     variants={{
                       hover: { 
-                        bottom: 40 + (i * 20),
-                        rotate: (i - 1) * 3,
-                        scale: 1 + (i * 0.02),
-                        opacity: 1 - (i * 0.15)
+                        bottom: 45 + (i * 28),
+                        rotate: (i - 1) * 4,
+                        scale: 1.02,
+                        zIndex: 10 - i
                       }
                     }}
-                    transition={{ type: "spring", stiffness: 400, damping: 25, delay: i * 0.03 }}
+                    transition={{ type: "spring", stiffness: 350, damping: 22, delay: i * 0.04 }}
                   >
-                    <div className="w-1/2 h-1.5 bg-gray-100 rounded-full mb-3" />
-                    <div className="w-full h-1 bg-gray-50 rounded-full mb-2" />
-                    <div className="w-3/4 h-1 bg-gray-50 rounded-full mb-2" />
+                    {/* Paper Tab Color Match */}
+                    <div className="absolute top-0 left-0 w-full h-1.5 rounded-t-lg opacity-40" style={{ backgroundColor: folder.accent }} />
+                    
+                    {/* Ghost Lines for Document Look */}
+                    <div className="w-12 h-1.5 bg-black/[0.04] rounded-full mb-3 mt-1" />
+                    <div className="w-full h-1 bg-black/[0.02] rounded-full mb-2" />
+                    <div className="w-4/5 h-1 bg-black/[0.02] rounded-full mb-2" />
+                    
                     {i === 0 && (
-                      <div className="flex justify-end mt-8 opacity-10">
-                         <Icon size={40} />
+                      <div className="mt-auto mb-4 flex justify-between items-end opacity-[0.08]">
+                         <div className="flex flex-col gap-1">
+                           <div className="w-8 h-1 bg-black rounded-full" />
+                           <div className="w-5 h-1 bg-black rounded-full" />
+                         </div>
+                         <Icon size={32} />
                       </div>
                     )}
                   </motion.div>
