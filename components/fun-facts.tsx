@@ -130,14 +130,14 @@ export default function FunFacts() {
               </Suspense>
             </Canvas>
           </div>
-          <div className="w-full p-6 bg-gradient-to-b from-white/[0.05] to-transparent border-t border-white/10 text-center">
-            <span className="text-[12px] text-[#F59E9E] font-black uppercase tracking-[0.25em] leading-tight block mb-1">STREET & NATURE</span>
-            <span className="text-[10px] text-white/40 font-bold uppercase tracking-[0.1em]">PHOTOGRAPHY</span>
+          <div className="w-full p-7 bg-white/[0.03] border-t border-white/10 flex flex-col items-center justify-center gap-1.5 min-h-[100px]">
+            <span className="text-[13px] text-[#F59E9E] font-black uppercase tracking-[0.3em] leading-none">STREET & NATURE</span>
+            <span className="text-[10px] text-white/30 font-bold uppercase tracking-[0.15em] leading-none">PHOTOGRAPHY GALLERY</span>
           </div>
         </div>
 
         {/* Headphones Model Card */}
-        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] flex flex-col items-center shadow-[0_15px_35px_rgba(0,0,0,0.3)]">
+        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] flex flex-col items-center shadow-[20px_20px_40px_rgba(0,0,0,0.4)]">
           <div className="w-full h-[240px]">
             <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
               <Suspense fallback={null}>
@@ -146,36 +146,40 @@ export default function FunFacts() {
               </Suspense>
             </Canvas>
           </div>
-          <div className="w-full p-6 bg-gradient-to-b from-white/[0.05] to-transparent border-t border-white/10 text-center">
-            <span className="text-[12px] text-[#F59E9E] font-black uppercase tracking-[0.25em] leading-tight block mb-1">LISTENING TO</span>
-            <span className="text-[10px] text-white/40 font-bold uppercase tracking-[0.1em]">LECTURES, PODCASTS, & MUSIC</span>
+          <div className="w-full p-7 bg-white/[0.03] border-t border-white/10 flex flex-col items-center justify-center gap-1.5 min-h-[100px]">
+            <span className="text-[13px] text-[#F59E9E] font-black uppercase tracking-[0.3em] leading-none">LISTENING TO</span>
+            <span className="text-[10px] text-white/30 font-bold uppercase tracking-[0.15em] leading-none">LECTURES, PODCASTS, & MUSIC</span>
           </div>
         </div>
 
         {/* Hobby Icons — simple 2x2 grid */}
-        <div className="relative z-10 grid grid-cols-2 gap-4 mt-4">
-          {driftingIcons.map((h) => (
-            <div
-              key={h.id}
-              onClick={() => setHoveredId(hoveredId === h.id ? null : h.id)}
-              className="relative flex flex-col items-center gap-2 bg-white/5 border border-white/10 rounded-2xl p-4 cursor-pointer active:bg-[#F59E9E]/20 transition-colors"
-            >
-              <h.icon strokeWidth={1} size={22} className="text-white/70" />
-              <span className="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">{h.id}</span>
-              <AnimatePresence>
-                {hoveredId === h.id && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -6 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -6 }}
-                    className="absolute -top-[70px] left-1/2 -translate-x-1/2 w-[160px] bg-white text-black border border-white shadow-[0_10px_40px_rgba(0,0,0,0.5)] p-4 rounded-3xl text-center z-[100] pointer-events-none"
-                  >
-                    <span className="text-[10px] font-black uppercase tracking-wider leading-relaxed">{h.desc}</span>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+        <div className="relative z-10 grid grid-cols-2 gap-4 mt-4 px-2">
+          {driftingIcons.map((h, idx) => {
+            const isRightColumn = (idx + 1) % 2 === 0;
+            
+            return (
+              <div
+                key={h.id}
+                onClick={() => setHoveredId(hoveredId === h.id ? null : h.id)}
+                className="relative flex flex-col items-center gap-2 bg-white/5 border border-white/10 rounded-2xl p-4 cursor-pointer active:bg-[#F59E9E]/20 transition-colors"
+              >
+                <h.icon strokeWidth={1} size={22} className="text-white/70" />
+                <span className="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">{h.id}</span>
+                <AnimatePresence>
+                  {hoveredId === h.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      className={`absolute -top-[75px] ${isRightColumn ? 'right-0' : 'left-0'} w-[180px] sm:w-[200px] bg-white text-black border border-white shadow-[0_15px_45px_rgba(0,0,0,0.6)] p-4 rounded-2xl text-center z-[110] pointer-events-none`}
+                    >
+                      <span className="text-[10px] font-black uppercase tracking-wider leading-relaxed">{h.desc}</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </div>
 
