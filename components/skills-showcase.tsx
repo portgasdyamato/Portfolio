@@ -159,8 +159,8 @@ export default function SkillsShowcase() {
       </div>
 
       {/* 2. Inter-Personal Capabilities Section */}
-      <div id="inter-personal-skills" className="mt-40 md:mt-52 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="flex flex-col items-center justify-center text-center mb-14 md:mb-16">
+      <div id="inter-personal-skills" className="mt-48 md:mt-52 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full scroll-mt-32">
+        <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-20">
           <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Inter-Personal Capabilities
           </h2>
@@ -170,7 +170,7 @@ export default function SkillsShowcase() {
         </div>
 
         {/* Animated Expanding Accordion Grid */}
-        <div className="flex flex-col lg:flex-row gap-4 lg:gap-4 w-full h-[75vh] sm:h-[65vh] min-h-[550px] lg:h-[450px]">
+        <div className="flex flex-col lg:flex-row gap-4 w-full h-[850px] lg:h-[450px]">
           {interpersonalSkills.map((skill) => {
             const isActive = activeSoft === skill.id;
             
@@ -197,11 +197,11 @@ export default function SkillsShowcase() {
                   </motion.div>
 
                   {/* Title & Desc Wrapper */}
-                  <div className="relative flex flex-col justify-end w-full h-full overflow-hidden">
+                  <div className="relative flex flex-col justify-end w-full h-full">
                     
                     {/* INACTIVE STATE TEXT */}
                     <div className={`absolute inset-0 flex items-center lg:items-center justify-start lg:justify-center transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-300'}`}>
-                      <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a]/50 text-xs sm:text-sm lg:text-lg lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap pt-1">
+                      <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a]/50 text-[10px] sm:text-xs lg:text-lg lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap px-1">
                         {skill.title}
                       </h4>
                     </div>

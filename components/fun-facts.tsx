@@ -115,7 +115,7 @@ export default function FunFacts() {
           <h3 className="text-[40px] font-bold italic text-white leading-[0.85]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             My <span className="text-[#F59E9E]">Hobbies.</span>
           </h3>
-          <p className="text-white/40 text-sm font-inter leading-relaxed">
+          <p className="text-white/40 text-[14px] font-inter leading-relaxed">
             Finding focus through simple pleasures — from the rhythm of capturing light to the morning espresso that fuels it all.
           </p>
         </div>
@@ -128,8 +128,8 @@ export default function FunFacts() {
               <ModelViewer url="/camera.glb" scale={7.0} rotationSpeed={-1.2} floatIntensity={1.5} />
             </Suspense>
           </Canvas>
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-xl rounded-2xl pointer-events-none">
-            <span className="text-[9px] text-white font-black uppercase tracking-widest">Street & nature photography.</span>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-6 py-4 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-3xl rounded-[2rem] pointer-events-none w-[85%] text-center">
+            <span className="text-[10px] md:text-[12px] text-white/90 font-black uppercase tracking-[0.15em] leading-relaxed">Street & nature photography.</span>
           </div>
         </div>
 
@@ -141,8 +141,8 @@ export default function FunFacts() {
               <ModelViewer url="/headphones.glb" scale={7.0} rotationSpeed={1.5} floatIntensity={1.0} />
             </Suspense>
           </Canvas>
-          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-xl rounded-2xl pointer-events-none">
-            <span className="text-[9px] text-white font-black uppercase tracking-widest">Listening to lectures, podcasts, and music.</span>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-6 py-4 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-3xl rounded-[2rem] pointer-events-none w-[85%] text-center">
+            <span className="text-[10px] md:text-[12px] text-white/90 font-black uppercase tracking-[0.15em] leading-relaxed">Listening to lectures, podcasts, and music.</span>
           </div>
         </div>
 
