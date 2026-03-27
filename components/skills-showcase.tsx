@@ -78,6 +78,7 @@ const interpersonalSkills = [
 
 export default function SkillsShowcase() {
   const [activeFolder, setActiveFolder] = useState<string | null>(null)
+  const [activeSoft, setActiveSoft] = useState<string>("01")
 
   return (
     <div className="py-24 w-full relative">
@@ -158,8 +159,8 @@ export default function SkillsShowcase() {
       </div>
 
       {/* 2. Inter-Personal Capabilities Section */}
-      <div className="mt-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-20">
+      <div className="mt-32 md:mt-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
           <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Inter-Personal Capabilities
           </h2>
@@ -168,32 +169,60 @@ export default function SkillsShowcase() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {interpersonalSkills.map((skill, idx) => (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              key={skill.id}
-              className="relative bg-white dark:bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 border border-black/[0.03] dark:border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.04)] overflow-hidden group hover:-translate-y-2 transition-transform duration-500"
-            >
-              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[100px] sm:text-[140px] font-black italic text-black/[0.03] dark:text-white/[0.03] select-none pointer-events-none transition-transform duration-700 group-hover:scale-110" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                {skill.id}
-              </div>
-              
-              <div className="w-14 h-14 bg-black/5 dark:bg-black/20 rounded-2xl flex items-center justify-center shadow-sm border border-black/5 mb-10 group-hover:bg-[#F59E9E]/20 transition-colors duration-500">
-                <skill.icon size={24} className="text-[#1a0a0a] dark:text-white/80 group-hover:text-[#F59E9E] transition-colors duration-500" />
-              </div>
-              
-              <h4 className="text-[13px] md:text-sm font-black tracking-[0.2em] uppercase text-[#1a0a0a] dark:text-white mb-5 relative z-10">
-                {skill.title}
-              </h4>
-              <p className="text-sm md:text-base text-muted-foreground font-inter leading-relaxed relative z-10 max-w-[90%]">
-                {skill.desc}
-              </p>
-            </motion.div>
-          ))}
+        {/* Animated Expanding Accordion Grid */}
+        <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 w-full h-[60vh] min-h-[500px] lg:h-[450px]">
+          {interpersonalSkills.map((skill) => {
+            const isActive = activeSoft === skill.id;
+            
+            return (
+              <motion.div
+                layout
+                key={skill.id}
+                onClick={() => setActiveSoft(skill.id)}
+                onMouseEnter={() => setActiveSoft(skill.id)}
+                className={`relative rounded-[2rem] lg:rounded-[3rem] overflow-hidden cursor-pointer group flex ${
+                  isActive ? 'flex-[4] lg:flex-[3] bg-white shadow-2xl border-black/5' : 'flex-[1] lg:flex-[1] bg-black/[0.02] border-black/5 hover:bg-black/[0.05]'
+                } border transition-all duration-300 ease-in-out`}
+              >
+                {/* Large Background Number */}
+                <div className="absolute -bottom-4 -right-2 lg:-bottom-10 lg:-right-4 text-[100px] lg:text-[180px] font-black italic text-black/[0.03] select-none pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  {skill.id}
+                </div>
+                
+                <div className={`absolute inset-0 p-5 lg:p-8 flex ${isActive ? 'flex-col justify-between' : 'flex-row lg:flex-col items-center lg:items-center justify-start lg:justify-between'} gap-4`}>
+                  
+                  {/* Icon */}
+                  <div className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-sm transition-colors duration-500 ${isActive ? 'bg-[#F59E9E]/10' : 'bg-white'}`}>
+                    <skill.icon size={22} className={isActive ? "text-[#F59E9E]" : "text-[#1a0a0a]/40"} />
+                  </div>
+
+                  {/* Title & Desc Wrapper */}
+                  <div className={`flex ${isActive ? 'flex-col items-start' : 'items-center lg:items-center lg:h-full lg:w-full'} overflow-hidden`}>
+                    
+                    <h4 className={`font-black uppercase tracking-[0.2em] transition-all duration-300 ${isActive ? 'text-[#1a0a0a] text-lg lg:text-2xl mb-2 lg:mb-4' : 'text-[#1a0a0a]/40 text-xs lg:text-sm lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap'}`}>
+                      {skill.title}
+                    </h4>
+                    
+                    <AnimatePresence>
+                      {isActive && (
+                        <motion.p 
+                          initial={{ opacity: 0, y: 10, height: 0 }} 
+                          animate={{ opacity: 1, y: 0, height: 'auto' }} 
+                          exit={{ opacity: 0, y: 10, height: 0 }} 
+                          transition={{ duration: 0.3 }}
+                          className="text-sm lg:text-base text-muted-foreground font-inter leading-relaxed max-w-sm lg:max-w-md"
+                        >
+                          {skill.desc}
+                        </motion.p>
+                      )}
+                    </AnimatePresence>
+                    
+                  </div>
+
+                </div>
+              </motion.div>
+            )
+          })}
         </div>
       </div>
 
