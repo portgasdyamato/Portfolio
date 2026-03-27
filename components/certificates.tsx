@@ -66,20 +66,22 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
       transition={{ duration: 0.8, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative h-[420px] cursor-pointer"
+      className="group relative h-[360px] cursor-pointer"
+      style={{ zIndex: hovered ? 50 : index }}
     >
       {/* Glossy Frame Background */}
       <div className="absolute inset-x-0 bottom-0 h-[280px] bg-white/40 dark:bg-white/[0.02] backdrop-blur-2xl rounded-[2.5rem] border border-white/50 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] transition-all duration-500 group-hover:bg-white/60" />
 
       {/* THE ACTUAL CERTIFICATE PAPER (Pops Up) */}
       <motion.div 
+        initial={{ y: 60 }}
         animate={{ 
-          y: hovered ? -100 : 0, 
+          y: hovered ? -100 : 60, 
           rotate: hovered ? -2 : 0,
           scale: hovered ? 1.05 : 1
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className="absolute inset-x-6 top-0 h-[320px] bg-white rounded-xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] border border-black/[0.03] flex flex-col items-center p-8 overflow-hidden z-10"
+        transition={{ type: "spring", stiffness: 350, damping: 25 }}
+        className="absolute inset-x-6 top-0 h-[320px] bg-white rounded-xl shadow-[0_15px_40px_rgba(0,0,0,0.12)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.2)] border border-black/[0.03] flex flex-col items-center p-8 overflow-hidden z-10"
       >
         {/* Certificate Border Deco */}
         <div className="absolute inset-3 border-[0.5px] border-black/5 rounded-lg pointer-events-none" />
@@ -151,7 +153,7 @@ export default function Certificates() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20 pointer-events-none">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-24 pointer-events-none">
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a0a0a]/5 dark:bg-white/5 rounded-full text-[#1a0a0a]/40 dark:text-white/40 font-black tracking-[0.2em] uppercase text-[9px] mb-6">
               <Award size={10} /> Professional Certification
@@ -169,8 +171,8 @@ export default function Certificates() {
           </div>
         </div>
 
-        {/* Certificates Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+        {/* Certificates Grid - Increased Gap for Pop-Out room */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-y-32 gap-x-12">
           {certificates.map((cert, index) => (
             <CertificateCard key={cert.title} cert={cert} index={index} />
           ))}
