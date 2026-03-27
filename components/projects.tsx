@@ -17,6 +17,18 @@ export default function Projects() {
     ? projectsData 
     : projectsData.filter((project) => project.status === filter)
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedProject !== null) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [selectedProject])
+
   return (
     <div className="py-6 md:py-16">
       {/* Header */}
@@ -60,30 +72,30 @@ export default function Projects() {
         setSelectedProject(idx)
       }} />
 
-      {/* Modal - REDESIGNED FOR NATURAL SCROLL */}
+      {/* Modal - RE-ENGINEERED WITH BODY LOCK */}
       <AnimatePresence>
         {selectedProject !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-2xl z-[100] overflow-y-auto scrollbar-hide"
+            className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[9999] overflow-y-auto scrollbar-hide"
             onClick={() => setSelectedProject(null)}
           >
-            <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-12 pointer-events-none">
+            <div className="min-h-full w-full flex items-center justify-center p-4 md:p-24">
               <motion.div
-                initial={{ scale: 0.95, opacity: 0, y: 30 }}
+                initial={{ scale: 0.9, opacity: 0, y: 50 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.95, opacity: 0, y: 30 }}
-                transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
-                className="w-full max-w-6xl bg-background rounded-[2rem] md:rounded-[3.5rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] pointer-events-auto text-foreground"
+                exit={{ scale: 0.9, opacity: 0, y: 50 }}
+                transition={{ type: "spring", damping: 35, stiffness: 250 }}
+                className="w-full max-w-6xl bg-background rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
-                  className="absolute top-4 right-4 md:top-10 md:right-10 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors z-50 text-foreground"
+                  className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground shadow-2xl"
                   onClick={() => setSelectedProject(null)}
                 >
-                  <X className="w-5 h-5 md:w-7 md:h-7" />
+                  <X className="w-6 h-6 md:w-8 md:h-8" />
                 </button>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
