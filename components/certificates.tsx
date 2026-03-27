@@ -22,12 +22,28 @@ const certificates = [
     badgeType: "Engineering"
   },
   {
+    title: "Enterprise Design Thinking",
+    issuer: "IBM",
+    date: "Sep 2025",
+    color: "#052D84",
+    link: "https://www.credly.com/badges/e15a6371-e278-4eea-ad7e-135957896f55/linked_in_profile",
+    badgeType: "Design Strategy"
+  },
+  {
+    title: "Open AI Engineering",
+    issuer: "Columbia University",
+    date: "July 2025",
+    color: "#B9D9EB",
+    link: "https://badges.plus.columbia.edu/be6f3a00-2061-41b7-8a52-8b171b834be6#acc.bYQjX6PC",
+    badgeType: "Applied AI"
+  },
+  {
     title: "AI Fundamentals",
     issuer: "IBM",
     date: "May 2025",
     color: "#052D84",
     link: "https://www.credly.com/badges/35aa2436-4b24-4353-89eb-b206dbb92a09",
-    badgeType: "Data Science"
+    badgeType: "Foundation"
   },
   {
     title: "Data Science Intro",
@@ -85,13 +101,13 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
       >
         {/* Document Details */}
         <div className="absolute inset-3 border-[0.5px] border-black/5 rounded-lg pointer-events-none" />
-        <div className="w-full flex justify-between items-center mb-10 relative z-10">
-           <div className="flex flex-col gap-0.5 text-left items-start">
-              <span className="text-[7px] font-black uppercase tracking-[0.3em] text-black/30">Official Credential</span>
-              <span className="text-[10px] font-bold text-black/60 italic font-inter leading-none">{cert.issuer}</span>
+        <div className="w-full flex justify-between items-start mb-6 relative z-10">
+           <div className="flex flex-col gap-1 text-left items-start">
+              <span className="text-[12px] font-black uppercase tracking-[0.2em] text-[#1a0a0a] border-b border-black/10 pb-0.5">{cert.issuer}</span>
+              <span className="text-[8px] font-black uppercase tracking-[0.3em] text-black/20">Official Credential</span>
            </div>
-           <div className="w-10 h-10 bg-black/[0.03] rounded-full flex items-center justify-center">
-              <ShieldCheck size={18} style={{ color: cert.color }} />
+           <div className="w-12 h-12 bg-black/[0.03] rounded-2xl flex items-center justify-center -mt-2">
+              <ShieldCheck size={24} style={{ color: cert.color }} strokeWidth={1.5} />
            </div>
         </div>
 
