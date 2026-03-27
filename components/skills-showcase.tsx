@@ -2,69 +2,78 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Code, Users, Lightbulb, PenTool, Database, X, ChevronRight, Zap } from "lucide-react"
+import { Code, Users, Lightbulb, PenTool, Database, X, ChevronRight, Zap, Target, MessageSquare, Palette } from "lucide-react"
 
 const skillCategories = [
   {
-    id: "tech",
-    title: "Software & Tech",
+    id: "frontend",
+    title: "Frontend Engineering",
     icon: Code,
-    color: "#1a1a1a",
-    tabColor: "#333",
-    accent: "#F59E9E",
-    description: "The core engineering stack I use to build robust and scalable applications.",
+    color: "#2C3E50",
+    tabColor: "#1A252F",
+    accent: "#61DAFB",
+    description: "The core frontend stack I use to build robust and scalable applications.",
     items: [
-      { name: "React & Next.js", desc: "Building blazing fast, SSR-enabled modern web apps.", level: 90 },
-      { name: "TypeScript", desc: "Writing type-safe, maintainable, and robust enterprise code.", level: 85 },
-      { name: "Node.js", desc: "Developing scalable backend services and REST/GraphQL APIs.", level: 80 },
-      { name: "PostgreSQL", desc: "Designing structured relational databases and writing complex queries.", level: 75 }
+      { name: "Frontend Frameworks", desc: "React.js, Next.js, Redux, React Router, Vite.", level: 95 },
+      { name: "Languages & Core", desc: "TypeScript, JavaScript (ES6+), HTML5, CSS3.", level: 90 },
+      { name: "UI & Styling", desc: "Tailwind CSS, Shadcn UI, Bootstrap, Material UI.", level: 90 },
+      { name: "Animation & Interaction", desc: "Framer Motion, CSS Animations, Lottie, Micro-interactions.", level: 85 }
     ]
   },
   {
-    id: "design",
-    title: "Design & UX",
+    id: "backend",
+    title: "Backend & Infra.",
+    icon: Database,
+    color: "#1a1a1a",
+    tabColor: "#333",
+    accent: "#68A063",
+    description: "Scalable backend services, REST APIs, and robust DevOps infrastructure.",
+    items: [
+      { name: "Server & APIs", desc: "Node.js, Express.js, REST APIs, GraphQL, FastAPI, WebSockets.", level: 85 },
+      { name: "Databases & ORMs", desc: "PostgreSQL, MongoDB, MySQL, Prisma, Drizzle ORM, Redis.", level: 80 },
+      { name: "Backend Languages", desc: "Python, Django, Java, C++.", level: 75 },
+      { name: "DevOps & Automation", desc: "Git, GitHub, Vercel, Docker, CI/CD, n8n Workflow Automation.", level: 85 }
+    ]
+  },
+  {
+    id: "ai",
+    title: "AI Engineering & LLMs",
+    icon: Zap,
+    color: "#FDE68A",
+    tabColor: "#FCD34D",
+    accent: "#1A0A0A",
+    description: "Integrating powerful generative AI models into seamless, end-to-end product experiences.",
+    items: [
+      { name: "Core LLM Integration", desc: "OpenAI API (GPT-4, Vision), Gemini API, Claude Code & Anthropic.", level: 90 },
+      { name: "AI Automation & Workflows", desc: "Agentic AI workflows, n8n automations, LLM logic orchestration.", level: 90 },
+      { name: "Prompting & Processing", desc: "Prompt Engineering, NLP, Vibe Coding, Web Speech API.", level: 95 },
+      { name: "Product Implementation", desc: "End-to-End AI Product Development, Design-to-Code Ownership.", level: 90 }
+    ]
+  },
+  {
+    id: "ux",
+    title: "UX & Product Design",
     icon: PenTool,
     color: "#E5E5E5",
     tabColor: "#CCCCCC",
     accent: "#1a0a0a",
-    description: "Tools and methodologies to create stunning, user-centric digital experiences.",
+    description: "Methodologies for creating human-centered, accessible, and stunning digital experiences.",
     items: [
-      { name: "Figma", desc: "Advanced prototyping, wireframing, and design system management.", level: 95 },
-      { name: "Tailwind CSS", desc: "Rapid UI styling with utility-first CSS and custom themes.", level: 95 },
-      { name: "Framer Motion", desc: "Creating fluid, complex web animations and micro-interactions.", level: 85 },
-      { name: "Three.js", desc: "Rendering interactive 3D web experiences using WebGL.", level: 70 }
-    ]
-  },
-  {
-    id: "soft",
-    title: "Interpersonal",
-    icon: Users,
-    color: "#F59E9E",
-    tabColor: "#E08989",
-    accent: "#ffffff",
-    description: "The underlying soft skills that enable me to collaborate uniquely and lead effectively.",
-    items: [
-      { name: "Communication", desc: "Clear articulation of ideas with technical and non-technical stakeholders.", level: 95 },
-      { name: "Leadership", desc: "Mentoring peers and guiding project teams to successful delivery.", level: 85 },
-      { name: "Adaptability", desc: "Quickly learning new environments, frameworks, and workflows.", level: 90 },
-      { name: "Problem Solving", desc: "Analytical thinking to tackle complex engineering bottlenecks.", level: 95 }
-    ]
-  },
-  {
-    id: "tools",
-    title: "Tools & Ecosystem",
-    icon: Database,
-    color: "#2C3E50",
-    tabColor: "#1A252F",
-    accent: "#FDE68A",
-    description: "The supplementary DevOps and workflow tools that keep everything running smoothly.",
-    items: [
-      { name: "Git & GitHub", desc: "Version control, CI/CD pipelines, and collaborative workflows.", level: 90 },
-      { name: "Docker", desc: "Containerizing applications for consistent deployment environments.", level: 75 },
-      { name: "AWS & Vercel", desc: "Cloud infrastructure provisioning and edge deployments.", level: 80 },
-      { name: "Prisma ORM", desc: "Type-safe database access and simplified schema migrations.", level: 85 }
+      { name: "Design Tooling", desc: "Figma, Adobe XD, Framer, Photoshop, Illustrator, Procreate.", level: 95 },
+      { name: "Design Systems", desc: "Component Libraries, Design Tokens, Atomic Design, Shadcn UI.", level: 90 },
+      { name: "Interaction Design", desc: "Prototyping, Microinteractions, Motion Design, Gestural UI.", level: 88 },
+      { name: "User Research", desc: "Usability Testing, User Interviews, Affinity Mapping, JTBD.", level: 85 }
     ]
   }
+]
+
+const interpersonalSkills = [
+  { id: "01", title: "Problem Solving", icon: Lightbulb, desc: "Brainstorming and concept development with an analytical mindset." },
+  { id: "02", title: "Creativity", icon: Palette, desc: "Translating complex ideas into intuitive visual interfaces and prototypes." },
+  { id: "03", title: "Communication", icon: MessageSquare, desc: "Bridging the gap between technical teams and business stakeholders." },
+  { id: "04", title: "Leadership", icon: Users, desc: "Mentoring peers and guiding project teams to successful delivery." },
+  { id: "05", title: "Critical Thinking", icon: Target, desc: "Evaluating and prioritizing tasks based on product strategy and OKRs." },
+  { id: "06", title: "Collaboration", icon: Zap, desc: "Fostering cross-functional harmony and seamless developer handoffs." }
 ]
 
 export default function SkillsShowcase() {
@@ -89,7 +98,7 @@ export default function SkillsShowcase() {
         </div>
 
         {/* Folders Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 relative z-10 w-full">
           {skillCategories.map((folder) => {
             const Icon = folder.icon
             const isDark = folder.color === "#1a1a1a" || folder.color === "#2C3E50"
@@ -145,6 +154,46 @@ export default function SkillsShowcase() {
               </motion.div>
             )
           })}
+        </div>
+      </div>
+
+      {/* 2. Inter-Personal Capabilities Section */}
+      <div className="mt-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-20">
+          <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            Inter-Personal Capabilities
+          </h2>
+          <p className="mt-2 md:mt-4 text-muted-foreground font-inter text-base md:text-lg">
+            Beyond the pixels and code, I focus on the human side of product development.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          {interpersonalSkills.map((skill, idx) => (
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+              key={skill.id}
+              className="relative bg-white dark:bg-white/5 backdrop-blur-xl rounded-[2.5rem] p-8 md:p-10 border border-black/[0.03] dark:border-white/10 shadow-[0_10px_40px_rgba(0,0,0,0.04)] overflow-hidden group hover:-translate-y-2 transition-transform duration-500"
+            >
+              <div className="absolute right-8 top-1/2 -translate-y-1/2 text-[100px] sm:text-[140px] font-black italic text-black/[0.03] dark:text-white/[0.03] select-none pointer-events-none transition-transform duration-700 group-hover:scale-110" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                {skill.id}
+              </div>
+              
+              <div className="w-14 h-14 bg-black/5 dark:bg-black/20 rounded-2xl flex items-center justify-center shadow-sm border border-black/5 mb-10 group-hover:bg-[#F59E9E]/20 transition-colors duration-500">
+                <skill.icon size={24} className="text-[#1a0a0a] dark:text-white/80 group-hover:text-[#F59E9E] transition-colors duration-500" />
+              </div>
+              
+              <h4 className="text-[13px] md:text-sm font-black tracking-[0.2em] uppercase text-[#1a0a0a] dark:text-white mb-5 relative z-10">
+                {skill.title}
+              </h4>
+              <p className="text-sm md:text-base text-muted-foreground font-inter leading-relaxed relative z-10 max-w-[90%]">
+                {skill.desc}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
 
