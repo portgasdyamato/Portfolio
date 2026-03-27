@@ -60,119 +60,118 @@ export default function Projects() {
         setSelectedProject(idx)
       }} />
 
-      {/* Modal */}
+      {/* Modal - REDESIGNED FOR NATURAL SCROLL */}
       <AnimatePresence>
         {selectedProject !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-2xl z-[100] flex items-start justify-center p-4 md:p-12 overflow-y-auto"
+            className="fixed inset-0 bg-black/90 backdrop-blur-2xl z-[100] overflow-y-auto"
             onClick={() => setSelectedProject(null)}
           >
-            <motion.div
-              initial={{ scale: 0.95, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 20 }}
-              transition={{ type: "spring", damping: 30, stiffness: 300 }}
-              className="w-full max-w-6xl bg-background rounded-[2rem] md:rounded-[3rem] p-6 md:p-12 relative border border-white/10 mx-auto text-foreground my-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="absolute top-4 right-4 md:top-8 md:right-8 w-10 h-10 md:w-12 md:h-12 rounded-full glass flex items-center justify-center hover:bg-white/10 transition-colors z-10"
-                onClick={() => setSelectedProject(null)}
+            <div className="min-h-screen w-full flex items-center justify-center p-4 md:p-12 pointer-events-none">
+              <motion.div
+                initial={{ scale: 0.95, opacity: 0, y: 30 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.95, opacity: 0, y: 30 }}
+                transition={{ type: "spring", damping: 30, stiffness: 300, mass: 0.8 }}
+                className="w-full max-w-6xl bg-background rounded-[2rem] md:rounded-[3.5rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] pointer-events-auto text-foreground"
+                onClick={(e) => e.stopPropagation()}
               >
-                <X className="w-5 h-5 md:w-6 md:h-6 text-foreground" />
-              </button>
+                <button
+                  className="absolute top-4 right-4 md:top-10 md:right-10 w-10 h-10 md:w-14 md:h-14 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors z-50 text-foreground"
+                  onClick={() => setSelectedProject(null)}
+                >
+                  <X className="w-5 h-5 md:w-7 md:h-7" />
+                </button>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
-                <div className="space-y-8">
-                  <div className="relative aspect-[16/10] rounded-[2rem] overflow-hidden shadow-2xl">
-                    <Image
-                      src={projectsData[selectedProject].image || "/placeholder.svg"}
-                      alt={projectsData[selectedProject].title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    <div className="grid grid-cols-2 gap-4">
-                      {projectsData[selectedProject].liveUrl && (
-                        <a
-                          href={projectsData[selectedProject].liveUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="h-14 md:h-16 px-4 bg-foreground text-background hover:bg-foreground/90 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest shadow-xl shadow-black/5"
-                        >
-                          <ExternalLink size={18} /> Live Demo
-                        </a>
-                      )}
-                      {projectsData[selectedProject].githubUrl && (
-                        <a
-                          href={projectsData[selectedProject].githubUrl}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="h-14 md:h-16 px-4 bg-white/5 border border-white/10 hover:bg-white/10 rounded-2xl font-bold transition-all flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest text-foreground backdrop-blur-sm"
-                        >
-                          <Github size={18} /> Source
-                        </a>
-                      )}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
+                  <div className="space-y-10">
+                    <div className="relative aspect-[16/10] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-white/5">
+                      <Image
+                        src={projectsData[selectedProject].image || "/placeholder.svg"}
+                        alt={projectsData[selectedProject].title}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
-                    
-                    <Link
-                      href={`/projects/${projectsData[selectedProject].slug}`}
-                      className="w-full h-16 md:h-20 bg-brand-600 hover:bg-brand-700 text-white rounded-2xl md:rounded-3xl font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.2em] shadow-xl shadow-brand-500/20 group relative overflow-hidden"
-                    >
-                      <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-                      <span className="relative z-10 flex items-center gap-2">
-                        View Case Study
-                        <ArrowUpRight size={18} className="md:w-6 md:h-6 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </span>
-                    </Link>
-                  </div>
-                </div>
-
-                <div className="flex flex-col">
-                  <span className="text-brand-600 dark:text-brand-400 font-black tracking-[0.3em] uppercase text-xs mb-6 flex items-center gap-3">
-                    <span className="w-8 h-[1px] bg-brand-600" />
-                    {projectsData[selectedProject].status} • {projectsData[selectedProject].duration}
-                  </span>
-                  <h2 className="text-3xl md:text-5xl font-black font-outfit mb-8 uppercase tracking-tighter leading-tight text-foreground">
-                    {projectsData[selectedProject].title}
-                  </h2>
-                  <p className="text-xl text-muted-foreground leading-relaxed mb-10 font-inter font-medium text-foreground">
-                    {projectsData[selectedProject].description}
-                  </p>
-
-                  <div className="space-y-8 md:space-y-10">
-                    <div>
-                      <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-4 md:mb-6 font-outfit border-b border-white/10 pb-2 inline-block">Stack Overview</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {projectsData[selectedProject].technologies.map(tech => (
-                          <span key={tech} className="px-3 py-1.5 md:px-5 md:py-2.5 bg-white/5 border border-white/10 rounded-lg md:rounded-xl text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-foreground">
-                            {tech}
-                          </span>
-                        ))}
+                    <div className="flex flex-col gap-5">
+                      <div className="grid grid-cols-2 gap-5">
+                        {projectsData[selectedProject].liveUrl && (
+                          <a
+                            href={projectsData[selectedProject].liveUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="h-14 md:h-16 bg-foreground text-background hover:bg-white transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest shadow-xl shadow-black/10"
+                          >
+                            <ExternalLink size={18} /> Live Demo
+                          </a>
+                        )}
+                        {projectsData[selectedProject].githubUrl && (
+                          <a
+                            href={projectsData[selectedProject].githubUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="h-14 md:h-16 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest text-foreground backdrop-blur-sm shadow-xl"
+                          >
+                            <Github size={18} /> Source
+                          </a>
+                        )}
                       </div>
+                      
+                      <Link
+                        href={`/projects/${projectsData[selectedProject].slug}`}
+                        className="w-full h-16 md:h-20 bg-brand-600 hover:bg-brand-500 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20 group relative overflow-hidden"
+                      >
+                         View Full Case Study
+                         <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </Link>
                     </div>
+                  </div>
 
-                    <div className="hidden md:block">
-                       <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-white/10 pb-2 inline-block">Core Impact</h4>
-                       <div className="grid grid-cols-1 gap-4 text-foreground">
-                         {projectsData[selectedProject].achievements.slice(0, 3).map((achievement, i) => (
-                           <div key={i} className="flex items-center gap-4 p-5 bg-white/5 border border-white/5 rounded-2xl group/item hover:border-brand-500/30 transition-all">
-                             <div className="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0">
-                               <CheckCircle2 size={20} />
+                  <div className="flex flex-col">
+                    <span className="text-brand-600 dark:text-brand-400 font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 flex items-center gap-4">
+                      <span className="w-12 h-[1px] bg-brand-600" />
+                      {projectsData[selectedProject].status} • {projectsData[selectedProject].duration}
+                    </span>
+                    <h2 className="text-4xl md:text-6xl font-black font-outfit mb-8 uppercase tracking-tighter leading-[0.9] text-foreground">
+                      {projectsData[selectedProject].title}
+                    </h2>
+                    <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12 font-inter font-medium text-foreground">
+                      {projectsData[selectedProject].description}
+                    </p>
+
+                    <div className="space-y-10 md:space-y-14">
+                      <div>
+                        <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Stack Overview</h4>
+                        <div className="flex flex-wrap gap-2.5">
+                          {projectsData[selectedProject].technologies.map(tech => (
+                            <span key={tech} className="px-4 py-2 bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground">
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="hidden md:block">
+                         <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Core Impact</h4>
+                         <div className="grid grid-cols-1 gap-5 text-foreground">
+                           {projectsData[selectedProject].achievements.slice(0, 3).map((achievement, i) => (
+                             <div key={i} className="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[1.5rem] group/item hover:border-brand-500/50 transition-all duration-500 shadow-sm">
+                               <div className="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/10">
+                                 <CheckCircle2 size={24} />
+                               </div>
+                               <span className="text-sm md:text-base font-bold uppercase tracking-tight text-foreground/70 group-hover/item:text-foreground transition-colors leading-snug">{achievement}</span>
                              </div>
-                             <span className="text-sm font-bold uppercase tracking-tight text-foreground/80 group-hover/item:text-white transition-colors">{achievement}</span>
-                           </div>
-                         ))}
+                           ))}
+                         </div>
                        </div>
-                     </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -106,8 +106,14 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
               <span className="text-[12px] font-black uppercase tracking-[0.2em] text-[#1a0a0a] border-b border-black/10 pb-0.5">{cert.issuer}</span>
               <span className="text-[8px] font-black uppercase tracking-[0.3em] text-black/20">Official Credential</span>
            </div>
-           <div className="w-12 h-12 bg-black/[0.03] rounded-2xl flex items-center justify-center -mt-2">
-              <ShieldCheck size={24} style={{ color: cert.color }} strokeWidth={1.5} />
+           
+           {/* PREMIUM INSTITUTIONAL SEAL */}
+           <div className="relative w-14 h-14 flex items-center justify-center -mt-2">
+              <div className="absolute inset-0 bg-black/[0.03] rounded-full animate-[spin_10s_linear_infinite]" />
+              <div className="absolute inset-1 border-[0.5px] border-black/10 rounded-full border-dashed" />
+              <div className="relative w-10 h-10 bg-white rounded-full shadow-sm border border-black/[0.05] flex items-center justify-center">
+                 <ShieldCheck size={20} style={{ color: cert.color }} strokeWidth={2} />
+              </div>
            </div>
         </div>
 
