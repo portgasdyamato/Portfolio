@@ -192,31 +192,30 @@ export default function SkillsShowcase() {
                 <div className={`absolute inset-0 p-5 lg:p-8 flex ${isActive ? 'flex-col justify-between' : 'flex-row lg:flex-col items-center lg:items-center justify-start lg:justify-between'} gap-4`}>
                   
                   {/* Icon */}
-                  <div className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-sm transition-colors duration-500 ${isActive ? 'bg-[#F59E9E]/10' : 'bg-white'}`}>
+                  <motion.div layout="position" className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-sm transition-colors duration-500 ${isActive ? 'bg-[#F59E9E]/10' : 'bg-white'}`}>
                     <skill.icon size={22} className={isActive ? "text-[#F59E9E]" : "text-[#1a0a0a]/40"} />
-                  </div>
+                  </motion.div>
 
                   {/* Title & Desc Wrapper */}
-                  <div className={`flex ${isActive ? 'flex-col items-start' : 'items-center lg:items-center lg:h-full lg:w-full'} overflow-hidden`}>
+                  <div className="relative flex flex-col justify-end w-full h-full overflow-hidden">
                     
-                    <h4 className={`font-black uppercase tracking-[0.2em] transition-all duration-300 ${isActive ? 'text-[#1a0a0a] text-lg lg:text-2xl mb-2 lg:mb-4' : 'text-[#1a0a0a]/40 text-xs lg:text-sm lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap'}`}>
-                      {skill.title}
-                    </h4>
-                    
-                    <AnimatePresence>
-                      {isActive && (
-                        <motion.p 
-                          initial={{ opacity: 0, y: 10, height: 0 }} 
-                          animate={{ opacity: 1, y: 0, height: 'auto' }} 
-                          exit={{ opacity: 0, y: 10, height: 0 }} 
-                          transition={{ duration: 0.3 }}
-                          className="text-sm lg:text-base text-muted-foreground font-inter leading-relaxed max-w-sm lg:max-w-md"
-                        >
-                          {skill.desc}
-                        </motion.p>
-                      )}
-                    </AnimatePresence>
-                    
+                    {/* INACTIVE STATE TEXT */}
+                    <div className={`absolute inset-0 flex items-center lg:items-center justify-start lg:justify-center transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-300'}`}>
+                      <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a]/50 text-base lg:text-lg lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap">
+                        {skill.title}
+                      </h4>
+                    </div>
+
+                    {/* ACTIVE STATE TEXT */}
+                    <div className={`flex flex-col justify-end w-full transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-4 pointer-events-none absolute bottom-0'}`}>
+                       <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a] text-xl lg:text-3xl mb-2 lg:mb-4">
+                         {skill.title}
+                       </h4>
+                       <p className="text-sm lg:text-base text-muted-foreground font-inter leading-relaxed max-w-sm lg:max-w-md">
+                         {skill.desc}
+                       </p>
+                    </div>
+
                   </div>
 
                 </div>
