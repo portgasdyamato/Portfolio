@@ -141,11 +141,8 @@ export default function SkillsShowcase() {
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  {/* Subtle Colored Top Bar */}
-                  <div className="absolute top-0 left-0 w-full h-1.5 rounded-t-lg" style={{ backgroundColor: folder.accent }} />
-                  
                   {/* High-End Document Placeholder Details */}
-                  <div className="flex items-center gap-3 mb-4 mt-1">
+                  <div className="flex items-center gap-3 mb-4 mt-3">
                     <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center">
                        <Icon size={16} color={folder.accent} />
                     </div>
