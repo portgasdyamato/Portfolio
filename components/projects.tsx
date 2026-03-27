@@ -1,7 +1,8 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
+import { createPortal } from "react-dom"
 import { ExternalLink, Github, X, ArrowUpRight, CheckCircle2 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -72,122 +73,124 @@ export default function Projects() {
         setSelectedProject(idx)
       }} />
 
-      {/* MODAL - MOVED TO TOP LEVEL TO AVOID 3D PARENT ISSUES */}
-      <AnimatePresence>
-        {selectedProject !== null && projectsData[selectedProject] && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto"
-            onClick={() => setSelectedProject(null)}
-          >
-            {/* THIS FLEX CONTAINER NOW HANDLES ALL SCROLLING NATURALLY */}
-            <div className="w-full min-h-full py-12 md:py-24 px-4 flex flex-col items-center justify-start pointer-events-none">
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0, y: 100 }}
-                animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.9, opacity: 0, y: 100 }}
-                transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
-                className="w-full max-w-6xl bg-background rounded-[3rem] md:rounded-[4rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-12 pointer-events-auto"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <button
-                  className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground"
-                  onClick={() => setSelectedProject(null)}
+      {/* MODAL via Portal - renders directly on document.body to escape 3D transforms */}
+      {typeof document !== 'undefined' && createPortal(
+        <AnimatePresence>
+          {selectedProject !== null && projectsData[selectedProject] && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, zIndex: 99999, overflowY: 'auto', background: 'rgba(0,0,0,0.95)', backdropFilter: 'blur(40px)' }}
+              onClick={() => setSelectedProject(null)}
+            >
+              <div style={{ width: '100%', minHeight: '100%', padding: '48px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0, y: 100 }}
+                  animate={{ scale: 1, opacity: 1, y: 0 }}
+                  exit={{ scale: 0.9, opacity: 0, y: 100 }}
+                  transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
+                  className="w-full max-w-6xl bg-background rounded-[3rem] md:rounded-[4rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-12"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <X className="w-6 h-6 md:w-8 md:h-8" />
-                </button>
+                  <button
+                    className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground"
+                    onClick={() => setSelectedProject(null)}
+                  >
+                    <X className="w-6 h-6 md:w-8 md:h-8" />
+                  </button>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
-                  <div className="space-y-10">
-                    <div className="relative aspect-[16/10] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-white/5">
-                      <Image
-                        src={projectsData[selectedProject].image || "/placeholder.svg"}
-                        alt={projectsData[selectedProject].title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <div className="flex flex-col gap-5">
-                      <div className="grid grid-cols-2 gap-5">
-                        {projectsData[selectedProject].liveUrl && (
-                          <a
-                            href={projectsData[selectedProject].liveUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="h-14 md:h-16 bg-foreground text-background font-black transition-all rounded-2xl flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest shadow-xl shadow-black/10"
-                          >
-                            <ExternalLink size={18} /> Live Demo
-                          </a>
-                        )}
-                        {projectsData[selectedProject].githubUrl && (
-                          <a
-                            href={projectsData[selectedProject].githubUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="h-14 md:h-16 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest text-foreground backdrop-blur-sm shadow-xl"
-                          >
-                            <Github size={18} /> Source
-                          </a>
-                        )}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
+                    <div className="space-y-10">
+                      <div className="relative aspect-[16/10] rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl border border-white/5">
+                        <Image
+                          src={projectsData[selectedProject].image || "/placeholder.svg"}
+                          alt={projectsData[selectedProject].title}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
-                      
-                      <Link
-                        href={`/projects/${projectsData[selectedProject].slug}`}
-                        className="w-full h-16 md:h-20 bg-brand-600 hover:bg-brand-500 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20"
-                      >
-                         View Full Case Study
-                         <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-col">
-                    <span className="text-brand-600 dark:text-brand-400 font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 flex items-center gap-4">
-                      <span className="w-12 h-[1px] bg-brand-600" />
-                      {projectsData[selectedProject].status} • {projectsData[selectedProject].duration}
-                    </span>
-                    <h2 className="text-4xl md:text-6xl font-black font-outfit mb-8 uppercase tracking-tighter leading-[0.9] text-foreground">
-                      {projectsData[selectedProject].title}
-                    </h2>
-                    <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12 font-inter font-medium text-foreground">
-                      {projectsData[selectedProject].description}
-                    </p>
-
-                    <div className="space-y-10 md:space-y-14">
-                      <div>
-                        <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Stack Overview</h4>
-                        <div className="flex flex-wrap gap-2.5">
-                          {projectsData[selectedProject].technologies.map((tech: string) => (
-                            <span key={tech} className="px-4 py-2 bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground">
-                              {tech}
-                            </span>
-                          ))}
+                      <div className="flex flex-col gap-5">
+                        <div className="grid grid-cols-2 gap-5">
+                          {projectsData[selectedProject].liveUrl && (
+                            <a
+                              href={projectsData[selectedProject].liveUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="h-14 md:h-16 bg-foreground text-background font-black transition-all rounded-2xl flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest shadow-xl shadow-black/10"
+                            >
+                              <ExternalLink size={18} /> Live Demo
+                            </a>
+                          )}
+                          {projectsData[selectedProject].githubUrl && (
+                            <a
+                              href={projectsData[selectedProject].githubUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="h-14 md:h-16 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest text-foreground backdrop-blur-sm shadow-xl"
+                            >
+                              <Github size={18} /> Source
+                            </a>
+                          )}
                         </div>
+                        
+                        <Link
+                          href={`/projects/${projectsData[selectedProject].slug}`}
+                          className="w-full h-16 md:h-20 bg-brand-600 hover:bg-brand-500 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20"
+                        >
+                           View Full Case Study
+                           <ArrowUpRight size={22} />
+                        </Link>
                       </div>
+                    </div>
 
-                      <div className="hidden md:block">
-                         <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Core Impact</h4>
-                         <div className="grid grid-cols-1 gap-5 text-foreground">
-                           {projectsData[selectedProject].achievements.slice(0, 3).map((achievement: string, i: number) => (
-                             <div key={i} className="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[1.5rem] group/item hover:border-brand-500/50 transition-all duration-500 shadow-sm">
-                               <div className="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/10">
-                                 <CheckCircle2 size={24} />
+                    <div className="flex flex-col">
+                      <span className="text-brand-600 dark:text-brand-400 font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 flex items-center gap-4">
+                        <span className="w-12 h-[1px] bg-brand-600" />
+                        {projectsData[selectedProject].status} • {projectsData[selectedProject].duration}
+                      </span>
+                      <h2 className="text-4xl md:text-6xl font-black font-outfit mb-8 uppercase tracking-tighter leading-[0.9] text-foreground">
+                        {projectsData[selectedProject].title}
+                      </h2>
+                      <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12 font-inter font-medium text-foreground">
+                        {projectsData[selectedProject].description}
+                      </p>
+
+                      <div className="space-y-10 md:space-y-14">
+                        <div>
+                          <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Stack Overview</h4>
+                          <div className="flex flex-wrap gap-2.5">
+                            {projectsData[selectedProject].technologies.map((tech: string) => (
+                              <span key={tech} className="px-4 py-2 bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="hidden md:block">
+                           <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Core Impact</h4>
+                           <div className="grid grid-cols-1 gap-5 text-foreground">
+                             {projectsData[selectedProject].achievements.slice(0, 3).map((achievement: string, i: number) => (
+                               <div key={i} className="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[1.5rem] group/item hover:border-brand-500/50 transition-all duration-500 shadow-sm">
+                                 <div className="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/10">
+                                   <CheckCircle2 size={24} />
+                                 </div>
+                                 <span className="text-sm md:text-base font-bold uppercase tracking-tight text-foreground/70 group-hover/item:text-foreground transition-colors leading-snug">{achievement}</span>
                                </div>
-                               <span className="text-sm md:text-base font-bold uppercase tracking-tight text-foreground/70 group-hover/item:text-foreground transition-colors leading-snug">{achievement}</span>
-                             </div>
-                           ))}
+                             ))}
+                           </div>
                          </div>
-                       </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </motion.div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   )
 }
