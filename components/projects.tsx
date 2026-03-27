@@ -72,27 +72,28 @@ export default function Projects() {
         setSelectedProject(idx)
       }} />
 
-      {/* Modal - RE-ENGINEERED WITH BODY LOCK */}
+      {/* MODAL - MOVED TO TOP LEVEL TO AVOID 3D PARENT ISSUES */}
       <AnimatePresence>
-        {selectedProject !== null && (
+        {selectedProject !== null && projectsData[selectedProject] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[9999] overflow-y-auto scrollbar-hide"
+            className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto"
             onClick={() => setSelectedProject(null)}
           >
-            <div className="min-h-full w-full flex items-center justify-center p-4 md:p-24">
+            {/* THIS FLEX CONTAINER NOW HANDLES ALL SCROLLING NATURALLY */}
+            <div className="w-full min-h-full py-12 md:py-24 px-4 flex flex-col items-center justify-start pointer-events-none">
               <motion.div
-                initial={{ scale: 0.9, opacity: 0, y: 50 }}
+                initial={{ scale: 0.9, opacity: 0, y: 100 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: 0.9, opacity: 0, y: 50 }}
-                transition={{ type: "spring", damping: 35, stiffness: 250 }}
-                className="w-full max-w-6xl bg-background rounded-[2.5rem] md:rounded-[4rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground"
+                exit={{ scale: 0.9, opacity: 0, y: 100 }}
+                transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
+                className="w-full max-w-6xl bg-background rounded-[3rem] md:rounded-[4rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-12 pointer-events-auto"
                 onClick={(e) => e.stopPropagation()}
               >
                 <button
-                  className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground shadow-2xl"
+                  className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground"
                   onClick={() => setSelectedProject(null)}
                 >
                   <X className="w-6 h-6 md:w-8 md:h-8" />
@@ -115,7 +116,7 @@ export default function Projects() {
                             href={projectsData[selectedProject].liveUrl}
                             target="_blank"
                             rel="noreferrer"
-                            className="h-14 md:h-16 bg-foreground text-background hover:bg-white transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest shadow-xl shadow-black/10"
+                            className="h-14 md:h-16 bg-foreground text-background font-black transition-all rounded-2xl flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest shadow-xl shadow-black/10"
                           >
                             <ExternalLink size={18} /> Live Demo
                           </a>
@@ -134,7 +135,7 @@ export default function Projects() {
                       
                       <Link
                         href={`/projects/${projectsData[selectedProject].slug}`}
-                        className="w-full h-16 md:h-20 bg-brand-600 hover:bg-brand-500 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20 group relative overflow-hidden"
+                        className="w-full h-16 md:h-20 bg-brand-600 hover:bg-brand-500 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20"
                       >
                          View Full Case Study
                          <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -158,7 +159,7 @@ export default function Projects() {
                       <div>
                         <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Stack Overview</h4>
                         <div className="flex flex-wrap gap-2.5">
-                          {projectsData[selectedProject].technologies.map(tech => (
+                          {projectsData[selectedProject].technologies.map((tech: string) => (
                             <span key={tech} className="px-4 py-2 bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground">
                               {tech}
                             </span>
@@ -169,7 +170,7 @@ export default function Projects() {
                       <div className="hidden md:block">
                          <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Core Impact</h4>
                          <div className="grid grid-cols-1 gap-5 text-foreground">
-                           {projectsData[selectedProject].achievements.slice(0, 3).map((achievement, i) => (
+                           {projectsData[selectedProject].achievements.slice(0, 3).map((achievement: string, i: number) => (
                              <div key={i} className="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[1.5rem] group/item hover:border-brand-500/50 transition-all duration-500 shadow-sm">
                                <div className="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/10">
                                  <CheckCircle2 size={24} />
