@@ -5,10 +5,12 @@ import { Camera, Heart, Star, Mic2, Palette as PenTool, HelpCircle, Clock } from
 import { Suspense, useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { useGLTF, OrbitControls } from "@react-three/drei"
+// @ts-ignore
 import * as THREE from "three"
 
 function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 1 }: any) {
-  const { scene } = useGLTF(url)
+  const gltf = useGLTF(url) as any
+  const scene = gltf.scene
   const group = useRef<any>(null)
 
   useEffect(() => {
@@ -91,15 +93,91 @@ export default function FunFacts() {
       </div>
 
       {/* ── SECTION 2: Hobbies Galaxy ── */}
-      {/*
-        LAYOUT STRATEGY:
-        - Outer container: position=relative, overflow=hidden, fixed height
-        - Row 1 (heading + camera): normal flow, sits at top via padding
-        - Row 2 (headphones + icons): absolutely positioned in the LOWER HALF
-          using top: 48%, so it never depends on Row 1's dynamic height.
-          This guarantees it stays fully inside bounds.
-      */}
-      <div className="relative bg-[#000000] rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] h-[110vh] sm:h-[100vh] lg:h-[90vh] overflow-hidden px-4 sm:px-8 lg:px-24 pt-16 lg:pt-24 pb-8 lg:pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-white">
+
+      {/* ════════════════════════════════════════
+          MOBILE LAYOUT (block on <lg, hidden on lg+)
+          Fully stacked, no absolute positioning.
+         ════════════════════════════════════════ */}
+      <div className="block lg:hidden relative bg-[#000000] rounded-[3rem] overflow-hidden px-5 pt-10 pb-8 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-white flex flex-col gap-8">
+
+        {/* Starfield */}
+        <div className="absolute inset-0 pointer-events-none opacity-30">
+          {[...Array(60)].map((_, i) => (
+            <motion.div key={i} animate={{ opacity: [0.2, 1, 0.2] }} transition={{ duration: 3 + Math.random() * 5, repeat: Infinity, delay: Math.random() * 5 }} className="absolute w-[1px] h-[1px] bg-white rounded-full" style={{ top: `${Math.random() * 100}%`, left: `${Math.random() * 100}%` }} />
+          ))}
+        </div>
+
+        {/* Heading */}
+        <div className="relative z-10 flex flex-col gap-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
+            <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
+          </div>
+          <h3 className="text-[40px] font-bold italic text-white leading-[0.85]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            My <span className="text-[#F59E9E]">Hobbies.</span>
+          </h3>
+          <p className="text-white/40 text-sm font-inter leading-relaxed">
+            Finding focus through simple pleasures — from the rhythm of capturing light to the morning espresso that fuels it all.
+          </p>
+        </div>
+
+        {/* Camera Model */}
+        <div className="relative z-10 w-full h-[260px] rounded-3xl overflow-hidden bg-white/5 border border-white/10">
+          <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+            <Suspense fallback={null}>
+              <OrbitControls enableZoom={false} enablePan={false} makeDefault />
+              <ModelViewer url="/camera.glb" scale={7.0} rotationSpeed={-1.2} floatIntensity={1.5} />
+            </Suspense>
+          </Canvas>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-xl rounded-2xl pointer-events-none">
+            <span className="text-[9px] text-white font-black uppercase tracking-widest">Street & nature photography.</span>
+          </div>
+        </div>
+
+        {/* Headphones Model */}
+        <div className="relative z-10 w-full h-[260px] rounded-3xl overflow-hidden bg-white/5 border border-white/10">
+          <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+            <Suspense fallback={null}>
+              <OrbitControls enableZoom={false} enablePan={false} makeDefault />
+              <ModelViewer url="/headphones.glb" scale={7.0} rotationSpeed={1.5} floatIntensity={1.0} />
+            </Suspense>
+          </Canvas>
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-xl rounded-2xl pointer-events-none">
+            <span className="text-[9px] text-white font-black uppercase tracking-widest">Listening to lectures, podcasts, and music.</span>
+          </div>
+        </div>
+
+        {/* Hobby Icons — simple 2x2 grid */}
+        <div className="relative z-10 grid grid-cols-2 gap-4">
+          {driftingIcons.map((h) => (
+            <div
+              key={h.id}
+              onClick={() => setHoveredId(hoveredId === h.id ? null : h.id)}
+              className="relative flex flex-col items-center gap-2 bg-white/5 border border-white/10 rounded-2xl p-4 cursor-pointer active:bg-[#F59E9E]/20 transition-colors"
+            >
+              <h.icon strokeWidth={1} size={22} className="text-white/70" />
+              <span className="text-[8px] font-black uppercase tracking-[0.2em] text-white/40">{h.id}</span>
+              <AnimatePresence>
+                {hoveredId === h.id && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 6 }}
+                    className="absolute -top-[60px] left-1/2 -translate-x-1/2 w-[160px] bg-white/10 border border-[#F59E9E]/30 backdrop-blur-xl p-3 rounded-2xl text-center z-50 pointer-events-none"
+                  >
+                    <span className="text-[8px] text-white font-black uppercase tracking-wider leading-tight">{h.desc}</span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ════════════════════════════════════════
+          DESKTOP LAYOUT (hidden on <lg, block on lg+)
+          Original absolute-positioned layout.
+         ════════════════════════════════════════ */}
+      <div className="hidden lg:block relative bg-[#000000] rounded-[5rem] h-[90vh] overflow-hidden px-24 pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-white">
 
         {/* Starfield */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -109,24 +187,23 @@ export default function FunFacts() {
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(245,158,158,0.03)_0%,_transparent_70%)] pointer-events-none" />
 
-        {/* ── ROW 1: Heading + Camera (top zone, normal flow) ── */}
-        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 items-start gap-10 lg:gap-20">
-          {/* Col 1: Text */}
+        {/* ROW 1: Heading + Camera */}
+        <div className="relative z-10 grid grid-cols-2 items-start gap-20">
           <div className="flex flex-col gap-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
               <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
             </div>
-            <h3 className="text-[45px] lg:text-[70px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h3 className="text-[70px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               My <span className="text-[#F59E9E]">Hobbies.</span>
             </h3>
-            <p className="text-white/30 text-base lg:text-lg font-inter leading-relaxed max-w-xl">
+            <p className="text-white/30 text-lg font-inter leading-relaxed max-w-xl">
               Finding focus through simple pleasures — from the rhythm of capturing light to the morning espresso that fuels it all.
             </p>
           </div>
 
-          {/* Col 2: Camera */}
-          <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[420px] overflow-visible z-20">
-            <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="absolute w-[280px] sm:w-[350px] lg:w-[500px] h-[300px] sm:h-[350px] lg:h-[520px] -top-[40px] sm:-top-[80px] lg:-top-[140px] left-1/2 lg:left-[60%] -translate-x-1/2 cursor-grab active:cursor-grabbing">
+          {/* Camera */}
+          <div className="relative w-full h-[420px] overflow-visible z-20">
+            <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="absolute w-[500px] h-[520px] -top-[140px] left-[60%] -translate-x-1/2 cursor-grab active:cursor-grabbing">
               <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                 <Suspense fallback={null}>
                   <OrbitControls enableZoom={false} enablePan={false} makeDefault />
@@ -135,7 +212,7 @@ export default function FunFacts() {
               </Canvas>
               <AnimatePresence>
                 {hoveredId === 'camera' && (
-                  <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute bottom-[0%] sm:bottom-[10%] lg:bottom-[22%] left-1/2 -translate-x-1/2 w-[220px] lg:w-[240px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
+                  <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute bottom-[22%] left-1/2 -translate-x-1/2 w-[240px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
                     <span className="text-[10px] text-white font-black uppercase tracking-widest drop-shadow-md">Street & nature photography.</span>
                   </motion.div>
                 )}
@@ -144,11 +221,9 @@ export default function FunFacts() {
           </div>
         </div>
 
-        {/* ── ROW 2: Headphones + Icons (absolutely in bottom half, top: 46%) ── */}
+        {/* ROW 2: Headphones + Icons */}
         <div className="absolute inset-x-0 z-20" style={{ top: '50%', bottom: 0 }}>
-
-          {/* Headphones (scale 7.0, left side) */}
-          <div className="absolute -top-[10%] lg:top-0 left-[-20%] sm:left-[-15%] lg:left-[-5%] w-[320px] sm:w-[400px] lg:w-[500px] h-[320px] sm:h-[400px] lg:h-[500px] overflow-visible">
+          <div className="absolute top-0 left-[-5%] w-[500px] h-[500px] overflow-visible">
             <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
               <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                 <Suspense fallback={null}>
@@ -159,24 +234,23 @@ export default function FunFacts() {
             </div>
             <AnimatePresence>
               {hoveredId === 'headphones' && (
-                <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute top-[0%] sm:top-[-10%] lg:top-[-18%] left-1/2 -translate-x-1/2 w-[220px] lg:w-[240px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
+                <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute top-[-18%] left-1/2 -translate-x-1/2 w-[240px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
                   <span className="text-[10px] text-white font-black uppercase tracking-widest drop-shadow-md">Listening to lectures, podcasts, and music.</span>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
 
-          {/* Drifting Icons */}
           {driftingIcons.map((h) => (
             <div key={h.id} className="absolute z-20" style={{ left: h.x, top: h.y }}>
               <motion.div animate={{ y: [0, 12, 0], x: [0, 8, 0] }} transition={{ duration: h.dur, repeat: Infinity, delay: h.delay }} onMouseEnter={() => setHoveredId(h.id)} onMouseLeave={() => setHoveredId(null)} className="group relative flex flex-col items-center">
-                <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer shadow-lg">
+                <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-white hover:bg-[#F59E9E] transition-all duration-700 cursor-pointer shadow-lg">
                   <h.icon strokeWidth={1} size={24} />
                 </div>
                 <span className="text-[7px] font-black uppercase tracking-[0.2em] text-white/20 mt-2 group-hover:text-white transition-colors">{h.id}</span>
                 <AnimatePresence>
                   {hoveredId === h.id && (
-                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[160px] lg:w-[180px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-3 rounded-2xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
+                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[180px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-3 rounded-2xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
                       <span className="text-[8px] text-white font-black uppercase tracking-wider leading-tight drop-shadow-md">{h.desc}</span>
                     </motion.div>
                   )}
@@ -185,8 +259,8 @@ export default function FunFacts() {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   )
 }
+

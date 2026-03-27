@@ -159,8 +159,8 @@ export default function SkillsShowcase() {
       </div>
 
       {/* 2. Inter-Personal Capabilities Section */}
-      <div className="mt-32 md:mt-40 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="flex flex-col items-center justify-center text-center mb-12 md:mb-16">
+      <div id="inter-personal-skills" className="mt-40 md:mt-52 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="flex flex-col items-center justify-center text-center mb-14 md:mb-16">
           <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             Inter-Personal Capabilities
           </h2>
@@ -170,7 +170,7 @@ export default function SkillsShowcase() {
         </div>
 
         {/* Animated Expanding Accordion Grid */}
-        <div className="flex flex-col lg:flex-row gap-3 lg:gap-4 w-full h-[60vh] min-h-[500px] lg:h-[450px]">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-4 w-full h-[75vh] sm:h-[65vh] min-h-[550px] lg:h-[450px]">
           {interpersonalSkills.map((skill) => {
             const isActive = activeSoft === skill.id;
             
@@ -180,8 +180,8 @@ export default function SkillsShowcase() {
                 key={skill.id}
                 onClick={() => setActiveSoft(skill.id)}
                 onMouseEnter={() => setActiveSoft(skill.id)}
-                className={`relative rounded-[2rem] lg:rounded-[3rem] overflow-hidden cursor-pointer group flex ${
-                  isActive ? 'flex-[4] lg:flex-[3] bg-white shadow-2xl border-black/5' : 'flex-[1] lg:flex-[1] bg-black/[0.02] border-black/5 hover:bg-black/[0.05]'
+                className={`relative rounded-[2.2rem] lg:rounded-[3rem] overflow-hidden cursor-pointer group flex ${
+                  isActive ? 'flex-[6] lg:flex-[3] bg-white shadow-2xl border-black/5' : 'flex-[1] lg:flex-[1] bg-black/[0.02] border-black/5 hover:bg-black/[0.05]'
                 } border transition-all duration-300 ease-in-out`}
               >
                 {/* Large Background Number */}
@@ -201,17 +201,17 @@ export default function SkillsShowcase() {
                     
                     {/* INACTIVE STATE TEXT */}
                     <div className={`absolute inset-0 flex items-center lg:items-center justify-start lg:justify-center transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-300'}`}>
-                      <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a]/50 text-base lg:text-lg lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap">
+                      <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a]/50 text-xs sm:text-sm lg:text-lg lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap pt-1">
                         {skill.title}
                       </h4>
                     </div>
 
                     {/* ACTIVE STATE TEXT */}
-                    <div className={`flex flex-col justify-end w-full transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-4 pointer-events-none absolute bottom-0'}`}>
-                       <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a] text-xl lg:text-3xl mb-2 lg:mb-4">
+                    <div className={`flex flex-col justify-end w-full transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-6 pointer-events-none absolute bottom-0'}`}>
+                       <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a] text-xl lg:text-3xl mb-3 lg:mb-4 pt-4">
                          {skill.title}
                        </h4>
-                       <p className="text-sm lg:text-base text-muted-foreground font-inter leading-relaxed max-w-sm lg:max-w-md">
+                       <p className="text-sm lg:text-base text-muted-foreground font-inter leading-relaxed max-w-sm lg:max-w-md pb-1">
                          {skill.desc}
                        </p>
                     </div>
