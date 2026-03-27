@@ -128,41 +128,38 @@ export default function SkillsShowcase() {
                   style={{ backgroundColor: folder.tabColor }}
                   layoutId={`folder-tab-${folder.id}`}
                 />
-                {/* PAPERS INSIDE (Premium Layered Documents) */}
-                {[...Array(3)].map((_, i) => (
-                  <motion.div 
-                    key={i}
-                    className="absolute left-[8%] w-[84%] h-[150px] bg-white rounded-t-lg shadow-[0_4px_20px_rgba(0,0,0,0.1)] border border-black/5 flex flex-col pt-3 px-4"
-                    initial={{ bottom: 15, rotate: 0 }}
-                    variants={{
-                      hover: { 
-                        bottom: 45 + (i * 28),
-                        rotate: (i - 1) * 4,
-                        scale: 1.02,
-                        zIndex: 10 - i
-                      }
-                    }}
-                    transition={{ type: "spring", stiffness: 350, damping: 22, delay: i * 0.04 }}
-                  >
-                    {/* Paper Tab Color Match */}
-                    <div className="absolute top-0 left-0 w-full h-1.5 rounded-t-lg opacity-40" style={{ backgroundColor: folder.accent }} />
-                    
-                    {/* Ghost Lines for Document Look */}
-                    <div className="w-12 h-1.5 bg-black/[0.04] rounded-full mb-3 mt-1" />
-                    <div className="w-full h-1 bg-black/[0.02] rounded-full mb-2" />
-                    <div className="w-4/5 h-1 bg-black/[0.02] rounded-full mb-2" />
-                    
-                    {i === 0 && (
-                      <div className="mt-auto mb-4 flex justify-between items-end opacity-[0.08]">
-                         <div className="flex flex-col gap-1">
-                           <div className="w-8 h-1 bg-black rounded-full" />
-                           <div className="w-5 h-1 bg-black rounded-full" />
-                         </div>
-                         <Icon size={32} />
-                      </div>
-                    )}
-                  </motion.div>
-                ))}
+                {/* SINGLE PREMIUM DOCUMENT */}
+                <motion.div 
+                  className="absolute left-[12%] w-[76%] h-[160px] bg-white rounded-t-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-black/5 flex flex-col pt-4 px-5 z-0"
+                  initial={{ bottom: 15, rotate: 0 }}
+                  variants={{
+                    hover: { 
+                      bottom: 80,
+                      rotate: -1,
+                      scale: 1.05
+                    }
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  {/* Subtle Colored Top Bar */}
+                  <div className="absolute top-0 left-0 w-full h-1.5 rounded-t-lg" style={{ backgroundColor: folder.accent }} />
+                  
+                  {/* High-End Document Placeholder Details */}
+                  <div className="flex items-center gap-3 mb-4 mt-1">
+                    <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center">
+                       <Icon size={16} color={folder.accent} />
+                    </div>
+                    <div className="flex flex-col gap-1 flex-1">
+                       <div className="w-1/2 h-2 bg-black/[0.05] rounded-full" />
+                       <div className="w-1/3 h-1.5 bg-black/[0.03] rounded-full" />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="w-full h-1.5 bg-black/[0.02] rounded-full" />
+                    <div className="w-full h-1.5 bg-black/[0.02] rounded-full" />
+                    <div className="w-4/5 h-1.5 bg-black/[0.02] rounded-full" />
+                  </div>
+                </motion.div>
 
                 {/* FRONT OF FOLDER */}
                 <motion.div 
