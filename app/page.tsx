@@ -78,8 +78,8 @@ export default function Home() {
 
             {/* ── WORK SECTION ── */}
             <section id="projects" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
-              <Achievements />
               <Projects />
+              <Achievements />
               <Certificates />
             </section>
 

@@ -99,7 +99,7 @@ export default function FunFacts() {
           using top: 48%, so it never depends on Row 1's dynamic height.
           This guarantees it stays fully inside bounds.
       */}
-      <div className="relative bg-[#000000] rounded-[5rem] h-[90vh] overflow-hidden px-8 lg:px-24 pt-20 lg:pt-24 pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-white">
+      <div className="relative bg-[#000000] rounded-[3rem] md:rounded-[4rem] lg:rounded-[5rem] h-[110vh] sm:h-[100vh] lg:h-[90vh] overflow-hidden px-4 sm:px-8 lg:px-24 pt-16 lg:pt-24 pb-8 lg:pb-12 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-white">
 
         {/* Starfield */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
@@ -125,8 +125,8 @@ export default function FunFacts() {
           </div>
 
           {/* Col 2: Camera */}
-          <div className="relative w-full h-[300px] lg:h-[420px] overflow-visible z-20">
-            <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="absolute w-[500px] h-[520px] -top-[140px] left-[60%] -translate-x-1/2 cursor-grab active:cursor-grabbing">
+          <div className="relative w-full h-[250px] sm:h-[300px] lg:h-[420px] overflow-visible z-20">
+            <div onMouseEnter={() => setHoveredId('camera')} onMouseLeave={() => setHoveredId(null)} className="absolute w-[280px] sm:w-[350px] lg:w-[500px] h-[300px] sm:h-[350px] lg:h-[520px] -top-[40px] sm:-top-[80px] lg:-top-[140px] left-1/2 lg:left-[60%] -translate-x-1/2 cursor-grab active:cursor-grabbing">
               <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                 <Suspense fallback={null}>
                   <OrbitControls enableZoom={false} enablePan={false} makeDefault />
@@ -135,8 +135,8 @@ export default function FunFacts() {
               </Canvas>
               <AnimatePresence>
                 {hoveredId === 'camera' && (
-                  <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-[22%] left-1/2 -translate-x-1/2 w-[240px] bg-black/80 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-2xl">
-                    <span className="text-[10px] text-[#F59E9E] font-black uppercase tracking-widest">Street & nature photography.</span>
+                  <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute bottom-[0%] sm:bottom-[10%] lg:bottom-[22%] left-1/2 -translate-x-1/2 w-[220px] lg:w-[240px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
+                    <span className="text-[10px] text-white font-black uppercase tracking-widest drop-shadow-md">Street & nature photography.</span>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -145,10 +145,10 @@ export default function FunFacts() {
         </div>
 
         {/* ── ROW 2: Headphones + Icons (absolutely in bottom half, top: 46%) ── */}
-        <div className="absolute inset-x-0 z-20" style={{ top: '46%', bottom: 0 }}>
+        <div className="absolute inset-x-0 z-20" style={{ top: '50%', bottom: 0 }}>
 
           {/* Headphones (scale 7.0, left side) */}
-          <div className="absolute top-0 left-[-10%] lg:left-[-5%] w-[500px] h-[500px] overflow-visible">
+          <div className="absolute -top-[10%] lg:top-0 left-[-20%] sm:left-[-15%] lg:left-[-5%] w-[320px] sm:w-[400px] lg:w-[500px] h-[320px] sm:h-[400px] lg:h-[500px] overflow-visible">
             <div onMouseEnter={() => setHoveredId('headphones')} onMouseLeave={() => setHoveredId(null)} className="w-full h-full cursor-grab active:cursor-grabbing">
               <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }} style={{ overflow: 'visible' }}>
                 <Suspense fallback={null}>
@@ -159,8 +159,8 @@ export default function FunFacts() {
             </div>
             <AnimatePresence>
               {hoveredId === 'headphones' && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute top-[-18%] left-1/2 -translate-x-1/2 w-[240px] bg-black/80 border border-white/10 backdrop-blur-3xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-2xl">
-                  <span className="text-[10px] text-[#F59E9E] font-black uppercase tracking-widest">Listening to lectures, podcasts, and music.</span>
+                <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute top-[0%] sm:top-[-10%] lg:top-[-18%] left-1/2 -translate-x-1/2 w-[220px] lg:w-[240px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-4 rounded-3xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
+                  <span className="text-[10px] text-white font-black uppercase tracking-widest drop-shadow-md">Listening to lectures, podcasts, and music.</span>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -176,8 +176,8 @@ export default function FunFacts() {
                 <span className="text-[7px] font-black uppercase tracking-[0.2em] text-white/20 mt-2 group-hover:text-white transition-colors">{h.id}</span>
                 <AnimatePresence>
                   {hoveredId === h.id && (
-                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 10 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[180px] bg-[#F59E9E] p-3 rounded-2xl text-center z-50 pointer-events-none shadow-2xl">
-                      <span className="text-[8px] text-[#1a0a0a] font-black uppercase tracking-wider leading-tight">{h.desc}</span>
+                    <motion.div initial={{ opacity: 0, y: 10, scale: 0.95 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 10, scale: 0.95 }} className="absolute bottom-[130%] left-1/2 -translate-x-1/2 w-[160px] lg:w-[180px] bg-white/10 border border-[#F59E9E]/40 backdrop-blur-xl p-3 rounded-2xl text-center z-50 pointer-events-none shadow-[0_8px_32px_rgba(245,158,158,0.2)]">
+                      <span className="text-[8px] text-white font-black uppercase tracking-wider leading-tight drop-shadow-md">{h.desc}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
