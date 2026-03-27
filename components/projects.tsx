@@ -22,11 +22,14 @@ export default function Projects() {
   useEffect(() => {
     if (selectedProject !== null) {
       document.body.style.overflow = 'hidden'
+      document.body.style.touchAction = 'none'
     } else {
       document.body.style.overflow = 'unset'
+      document.body.style.touchAction = 'unset'
     }
     return () => {
       document.body.style.overflow = 'unset'
+      document.body.style.touchAction = 'unset'
     }
   }, [selectedProject])
 
@@ -81,16 +84,18 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto scrollbar-hide"
+              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto scrollbar-hide overscroll-contain"
               onClick={() => setSelectedProject(null)}
+              onWheel={(e) => e.stopPropagation()}
             >
-              <div style={{ width: '100%', minHeight: '100%', padding: '48px 16px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start' }}>
+              {/* NATURAL BLOCK FLOW FOR GUARANTEED SCROLL CAPTURE */}
+              <div className="w-full min-h-screen py-12 md:py-24 px-4">
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0, y: 100 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.9, opacity: 0, y: 100 }}
                   transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
-                  className="w-full max-w-6xl bg-background rounded-[3rem] md:rounded-[4rem] p-6 md:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-12"
+                  className="w-full max-w-6xl bg-background rounded-[3rem] md:rounded-[4rem] p-6 md:p-16 mx-auto relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-12"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
