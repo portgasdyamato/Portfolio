@@ -84,10 +84,6 @@ export default function Home() {
               <Certificates />
             </section>
 
-            <section className="scroll-mt-32">
-              <DesignProcess />
-            </section>
-
             {/* ── SKILLS SECTION ── */}
             <section id="skills" className="scroll-mt-32">
               <SkillsShowcase />
