@@ -111,7 +111,8 @@ export default function SkillsShowcase() {
                 layoutId={`folder-${folder.id}`}
                 onClick={() => setActiveFolder(folder.id)}
                 className="relative h-[220px] w-full cursor-pointer group perspective-[1000px]"
-                whileHover={{ y: -10 }}
+                whileHover="hover"
+                initial="initial"
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
                 {/* BACK OF FOLDER */}
@@ -127,13 +128,32 @@ export default function SkillsShowcase() {
                   style={{ backgroundColor: folder.tabColor }}
                   layoutId={`folder-tab-${folder.id}`}
                 />
-                {/* PAPERS INSIDE */}
-                <div className="absolute bottom-[20px] left-[5%] w-[90%] h-[150px] bg-white rounded-t-lg shadow-inner border border-gray-100 transition-transform duration-500 group-hover:-translate-y-6 flex flex-col p-4 opacity-50 group-hover:opacity-100">
-                  <div className="w-1/2 h-2 bg-gray-200 rounded-full mb-3" />
-                  <div className="w-full h-2 bg-gray-100 rounded-full mb-2" />
-                  <div className="w-3/4 h-2 bg-gray-100 rounded-full mb-2" />
-                  <div className="w-full h-2 bg-gray-100 rounded-full mb-2" />
-                </div>
+                {/* PAPERS INSIDE (Layered & Staggered) */}
+                {[...Array(3)].map((_, i) => (
+                  <motion.div 
+                    key={i}
+                    className="absolute left-[5%] w-[90%] h-[150px] bg-white rounded-t-lg shadow-inner border border-gray-100 p-4"
+                    initial={{ bottom: 20 }}
+                    variants={{
+                      hover: { 
+                        bottom: 40 + (i * 20),
+                        rotate: (i - 1) * 3,
+                        scale: 1 + (i * 0.02),
+                        opacity: 1 - (i * 0.15)
+                      }
+                    }}
+                    transition={{ type: "spring", stiffness: 400, damping: 25, delay: i * 0.03 }}
+                  >
+                    <div className="w-1/2 h-1.5 bg-gray-100 rounded-full mb-3" />
+                    <div className="w-full h-1 bg-gray-50 rounded-full mb-2" />
+                    <div className="w-3/4 h-1 bg-gray-50 rounded-full mb-2" />
+                    {i === 0 && (
+                      <div className="flex justify-end mt-8 opacity-10">
+                         <Icon size={40} />
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
 
                 {/* FRONT OF FOLDER */}
                 <motion.div 
@@ -268,7 +288,7 @@ export default function SkillsShowcase() {
                         <X size={20} />
                       </button>
                       
-                      <div>
+                       <div>
                         <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-black/5 border border-white/10`}>
                           <Icon size={32} color={folder.accent} strokeWidth={1.5} />
                         </div>
