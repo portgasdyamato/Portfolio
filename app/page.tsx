@@ -15,6 +15,7 @@ import FunFacts from "@/components/fun-facts"
 import Certificates from "@/components/certificates"
 import Education from "@/components/education"
 import ImageSection from "@/components/image-section"
+import SkillsShowcase from "@/components/skills-showcase"
 import GrowWithMeHeading from "@/components/GrowWithMeHeading"
 import NewsTicker from "@/components/news-ticker"
 import CustomCursor from "@/components/custom-cursor"
@@ -85,6 +86,11 @@ export default function Home() {
 
             <section className="scroll-mt-32">
               <DesignProcess />
+            </section>
+
+            {/* ── SKILLS SECTION ── */}
+            <section id="skills" className="scroll-mt-32">
+              <SkillsShowcase />
             </section>
 
             <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr]">

@@ -11,6 +11,7 @@ const scrollTo = (id: string) =>
 const NAV = [
   { label: "About", id: "about" },
   { label: "Work", id: "projects" },
+  { label: "Skills", id: "skills" },
   { label: "Contact", id: "contact" },
 ]
 
