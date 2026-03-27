@@ -120,34 +120,38 @@ export default function FunFacts() {
           </p>
         </div>
 
-        {/* Camera Model */}
-        <div className="relative z-10 w-full h-[260px] rounded-3xl overflow-hidden bg-white/5 border border-white/10">
-          <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
-            <Suspense fallback={null}>
-              <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-              <ModelViewer url="/camera.glb" scale={7.0} rotationSpeed={-1.2} floatIntensity={1.5} />
-            </Suspense>
-          </Canvas>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-6 py-4 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-3xl rounded-[2rem] pointer-events-none w-[85%] text-center">
-            <span className="text-[10px] md:text-[12px] text-white/90 font-black uppercase tracking-[0.15em] leading-relaxed">Street & nature photography.</span>
+        {/* Camera Model Card */}
+        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center">
+          <div className="w-full h-[220px]">
+            <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+              <Suspense fallback={null}>
+                <OrbitControls enableZoom={false} enablePan={false} makeDefault />
+                <ModelViewer url="/camera.glb" scale={7.0} rotationSpeed={-1.2} floatIntensity={1.5} />
+              </Suspense>
+            </Canvas>
+          </div>
+          <div className="w-full px-6 py-5 bg-white/[0.03] border-t border-white/10 text-center">
+            <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] leading-tight">Street & nature photography.</span>
           </div>
         </div>
 
-        {/* Headphones Model */}
-        <div className="relative z-10 w-full h-[260px] rounded-3xl overflow-hidden bg-white/5 border border-white/10">
-          <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
-            <Suspense fallback={null}>
-              <OrbitControls enableZoom={false} enablePan={false} makeDefault />
-              <ModelViewer url="/headphones.glb" scale={7.0} rotationSpeed={1.5} floatIntensity={1.0} />
-            </Suspense>
-          </Canvas>
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-6 py-4 bg-white/10 border border-[#F59E9E]/30 backdrop-blur-3xl rounded-[2rem] pointer-events-none w-[85%] text-center">
-            <span className="text-[10px] md:text-[12px] text-white/90 font-black uppercase tracking-[0.15em] leading-relaxed">Listening to lectures, podcasts, and music.</span>
+        {/* Headphones Model Card */}
+        <div className="relative z-10 w-full bg-white/5 border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col items-center">
+          <div className="w-full h-[220px]">
+            <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 8] }}>
+              <Suspense fallback={null}>
+                <OrbitControls enableZoom={false} enablePan={false} makeDefault />
+                <ModelViewer url="/headphones.glb" scale={7.0} rotationSpeed={1.5} floatIntensity={1.0} />
+              </Suspense>
+            </Canvas>
+          </div>
+          <div className="w-full px-6 py-5 bg-white/[0.03] border-t border-white/10 text-center">
+            <span className="text-[11px] text-[#F59E9E] font-black uppercase tracking-[0.2em] leading-tight">Listening to lectures, podcasts, and music.</span>
           </div>
         </div>
 
         {/* Hobby Icons — simple 2x2 grid */}
-        <div className="relative z-10 grid grid-cols-2 gap-4">
+        <div className="relative z-10 grid grid-cols-2 gap-4 mt-4">
           {driftingIcons.map((h) => (
             <div
               key={h.id}
@@ -162,9 +166,9 @@ export default function FunFacts() {
                     initial={{ opacity: 0, y: 6 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 6 }}
-                    className="absolute -top-[60px] left-1/2 -translate-x-1/2 w-[160px] bg-white/10 border border-[#F59E9E]/30 backdrop-blur-xl p-3 rounded-2xl text-center z-50 pointer-events-none"
+                    className="absolute -bottom-[80px] left-1/2 -translate-x-1/2 w-[160px] bg-[#1a0a0a]/90 border border-[#F59E9E]/30 backdrop-blur-xl p-3 rounded-2xl text-center z-[100] pointer-events-none shadow-2xl"
                   >
-                    <span className="text-[8px] text-white font-black uppercase tracking-wider leading-tight">{h.desc}</span>
+                    <span className="text-[9px] text-white font-black uppercase tracking-wider leading-tight">{h.desc}</span>
                   </motion.div>
                 )}
               </AnimatePresence>
