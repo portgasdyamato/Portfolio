@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState } from "react"
 import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X, Briefcase } from "lucide-react"
+import { cn } from "@/lib/utils"
 import LearningJourney from "./learning-journey"
 
 const educationJourney = [
@@ -98,75 +99,110 @@ export default function Education() {
       </div>
 
       {/* Modal */}
+      {/* ─── Premium Modal ─── */}
       <AnimatePresence>
         {selected !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-2xl z-[150] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 bg-[#FFF5F5]/40 dark:bg-black/60 backdrop-blur-3xl z-[150] flex items-center justify-center p-4 md:p-8"
             onClick={() => setSelected(null)}
           >
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 30 }}
+              initial={{ scale: 0.9, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 30 }}
-              className="w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-background rounded-[2rem] md:rounded-[3rem] p-6 md:p-14 relative border border-white/5 shadow-3xl scrollbar-hide"
+              exit={{ scale: 0.9, opacity: 0, y: 50 }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
+              className="w-full max-w-5xl max-h-[90vh] overflow-y-auto bg-white/60 dark:bg-[#1a0a0a]/80 rounded-[3rem] p-8 md:p-20 relative border border-white/80 dark:border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] scrollbar-hide"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Handle (Mobile) */}
+              <div className="w-12 h-1 bg-black/5 dark:bg-white/10 rounded-full absolute top-6 left-1/2 -translate-x-1/2 md:hidden" />
+              
               <button 
-                className="absolute top-4 right-4 md:top-10 md:right-10 w-10 h-10 md:w-12 md:h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors z-[160]"
+                className="absolute top-10 right-10 hidden md:flex w-14 h-14 bg-white/20 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-full items-center justify-center hover:bg-brand-500 hover:text-white transition-all transform hover:rotate-90 z-[160] group"
                 onClick={() => setSelected(null)}
               >
-                <X size={20} />
+                <X size={24} className="opacity-60 group-hover:opacity-100" />
               </button>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                <div>
-                  <div className={`w-20 h-20 rounded-3xl mb-10 flex items-center justify-center bg-gradient-to-br ${educationJourney[selected].color}`}>
-                    {(() => {
-                      const Icon = educationJourney[selected].icon
-                      return <Icon className="w-10 h-10 text-white" />
-                    })()}
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-bold font-outfit mb-6 uppercase leading-[1.1]">
-                    {educationJourney[selected].level}
-                  </h2>
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-3 text-lg font-inter text-muted-foreground">
-                      <MapPin size={20} className="text-brand-500" />
-                      {educationJourney[selected].institution}
-                    </div>
-                    <div className="flex items-center gap-3 text-lg font-inter text-muted-foreground">
-                      <Calendar size={20} className="text-brand-500" />
-                      {educationJourney[selected].duration}
-                    </div>
-                  </div>
+              <div className="flex flex-col gap-16 md:gap-24">
+                {/* Modal Header */}
+                <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-12">
+                   <div className="flex-1 space-y-6">
+                      <div className="flex items-center gap-4">
+                         <div className={cn("w-16 h-16 rounded-[2rem] flex items-center justify-center bg-gradient-to-br shadow-2xl shadow-brand-500/10", educationJourney[selected].color)}>
+                            {(() => {
+                              const Icon = educationJourney[selected].icon
+                              return <Icon className="w-8 h-8 text-white" />
+                            })()}
+                         </div>
+                         <div className="h-0.5 w-12 bg-brand-500/20" />
+                      </div>
+                      <h2 className="text-4xl md:text-7xl font-bold font-outfit text-[#1a0a0a] dark:text-white leading-[0.9] italic tracking-tighter">
+                        {educationJourney[selected].level}
+                      </h2>
+                      <div className="flex flex-wrap gap-4 pt-2">
+                        <div className="flex items-center gap-2 px-4 py-2 bg-brand-500/5 dark:bg-white/5 rounded-full text-sm font-medium border border-brand-500/10">
+                          <MapPin size={16} className="text-brand-500" />
+                          <span className="text-[#1a0a0a]/70 dark:text-white/70">{educationJourney[selected].institution}</span>
+                        </div>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-brand-500/5 dark:bg-white/5 rounded-full text-sm font-medium border border-brand-500/10">
+                          <Calendar size={16} className="text-brand-500" />
+                          <span className="text-[#1a0a0a]/70 dark:text-white/70">{educationJourney[selected].duration}</span>
+                        </div>
+                      </div>
+                   </div>
+
+                   {/* Grade Score Card */}
+                   <div className="w-full md:w-auto p-10 bg-white/40 dark:bg-black/20 rounded-[2.5rem] border border-brand-500/10 flex flex-col items-center justify-center min-w-[200px] relative overflow-hidden group">
+                      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-500/40 to-transparent" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-600/40 mb-2">Performance</span>
+                      <span className="text-6xl font-black font-outfit text-brand-600 tracking-tighter">
+                        {educationJourney[selected].gpa}
+                      </span>
+                      <div className="absolute -bottom-8 -right-8 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity duration-700">
+                         <Star size={120} className="fill-brand-500" />
+                      </div>
+                   </div>
                 </div>
 
-                <div className="flex flex-col">
-                  <div className="px-8 py-6 glass rounded-[2rem] border-brand-500/20 mb-10">
-                    <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2 block">Performance</span>
-                    <span className="text-4xl font-black font-outfit text-brand-600">
-                      {educationJourney[selected].gpa}
-                    </span>
-                  </div>
+                {/* Content Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24 pb-12">
+                   <div className="md:col-span-12 space-y-12">
+                      <div className="space-y-6">
+                        <div className="flex items-center gap-4">
+                           <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-brand-600/60 flex-shrink-0">Key Milestones & Distinctions</h4>
+                           <div className="h-px w-full bg-brand-500/10" />
+                        </div>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                           {educationJourney[selected].achievements.map((ach, i) => (
+                             <motion.div
+                               key={i}
+                               initial={{ opacity: 0, y: 20 }}
+                               animate={{ opacity: 1, y: 0 }}
+                               transition={{ delay: i * 0.1 }}
+                               className="p-6 bg-white shadow-sm dark:bg-white/5 rounded-[1.5rem] border border-white/40 dark:border-white/5 hover:border-brand-500/20 hover:shadow-xl transition-all group flex items-start gap-4"
+                             >
+                                <div className={cn("mt-1.5 w-2 h-2 rounded-full bg-gradient-to-br flex-shrink-0", educationJourney[selected].color)} />
+                                <span className="text-sm font-semibold font-inter text-[#1a0a0a]/80 dark:text-white/80 group-hover:text-brand-600 transition-colors leading-relaxed">{ach}</span>
+                             </motion.div>
+                           ))}
+                        </div>
+                      </div>
 
-                  <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6">Distinctions</h4>
-                  <div className="space-y-4">
-                    {educationJourney[selected].achievements.map((ach, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-4 p-5 glass rounded-2xl hover:bg-brand-500/5 transition-colors border-white/5"
-                      >
-                        <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${educationJourney[selected].color}`} />
-                        <span className="text-sm font-semibold font-inter">{ach}</span>
-                      </motion.div>
-                    ))}
-                  </div>
+                      <div className="space-y-6">
+                         <div className="flex items-center gap-4">
+                            <h4 className="text-[11px] font-black uppercase tracking-[0.4em] text-brand-600/60 flex-shrink-0">Scholastic Narrative</h4>
+                            <div className="h-px w-full bg-brand-500/10" />
+                         </div>
+                         <p className="text-lg md:text-2xl font-inter text-[#1a0a0a]/60 dark:text-white/60 leading-relaxed max-w-4xl italic">
+                            "{educationJourney[selected].description}"
+                         </p>
+                      </div>
+                   </div>
                 </div>
               </div>
             </motion.div>
