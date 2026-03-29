@@ -15,7 +15,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   useEffect(() => setMounted(true), [])
 
   // Morph values
-  const yImage = useTransform(sp, [0, 0.6], [0, -110])
+  const yImage = useTransform(sp, [0, 0.6], [0, -60])
   const nameOpacity = useTransform(sp, [0.1, 0.4], [0, 1])
   const nameY = useTransform(sp, [0.1, 0.4], [15, 0])
 
@@ -55,15 +55,14 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         className="flex flex-col items-center justify-between h-full pt-10 md:pt-24 lg:pt-32 pb-8 md:pb-12 relative w-full"
       >
         <motion.div
-          whileHover={{ scale: 1.03 }}
-          transition={{ duration: 0.3 }}
-          className="rounded-3xl overflow-hidden w-full max-w-[500px]"
+          whileHover={{ scale: 1.05 }}
+          className="rounded-3xl overflow-hidden w-full max-w-[340px] transition-all duration-500 ease-out"
         >
           <Image
             src={pfp}
             alt="Sakshi Agrahari"
-            width={600}
-            height={800}
+            width={400}
+            height={600}
             className="w-full h-auto object-cover"
             unoptimized
           />
