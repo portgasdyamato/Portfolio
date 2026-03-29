@@ -68,7 +68,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          backgroundImage: "radial-gradient(circle, rgba(245,158,158,0.15) 1px, transparent 1px)",
+          backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
           opacity: 0.35,
         }}

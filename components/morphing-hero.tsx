@@ -67,14 +67,14 @@ export default function MorphingHero() {
       tl.to(cardVisualRef.current, {
         borderRadius: "32px",
         boxShadow: "0 80px 160px -40px rgba(245,158,158,0.3)",
-        backgroundColor: "#FFFFFF",
+        backgroundColor: "#FFF5F5",
         ease: "power2.inOut",
         duration: 0.3
       }, 0)
       tl.to({}, { duration: 0.3 }) 
       tl.to(cardOuterRef.current, { rotateZ: 90, scale: 0.4, y: "18vh", ease: "power2.inOut", duration: 0.25 }, 0.6)
       tl.to(cardOuterRef.current, { y: "115vh", opacity: 0, ease: "power3.in", duration: 0.2 }, 0.8)
-      tl.to(containerRef.current, { backgroundColor: "#FFF0F0", duration: 0.3 }, 0)
+      tl.to(containerRef.current, { backgroundColor: "#FFEFEE", duration: 0.3 }, 0)
     })
 
     mm.add("(max-width: 1023px)", () => {
@@ -96,7 +96,7 @@ export default function MorphingHero() {
       gsap.set(cardVisualRef.current, { 
         borderRadius: "0px", 
         boxShadow: "none",
-        backgroundColor: "#FFFFFF" 
+        backgroundColor: "#FFF5F5" 
       })
     })
 
@@ -106,7 +106,7 @@ export default function MorphingHero() {
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-auto min-h-screen lg:h-screen lg:overflow-hidden flex items-center justify-center bg-[#FFF0F0] z-10 relative"
+      className="w-full h-auto min-h-screen lg:h-screen lg:overflow-hidden flex items-center justify-center bg-[#FFEEEC] z-10 relative"
     >
       {/* ── THE MACRO WRAPPER (Handles GSAP Scaling/Z-Rotation) ── */}
       <div
@@ -122,7 +122,7 @@ export default function MorphingHero() {
           style={{ 
             rotateX: tiltX, 
             rotateY: tiltY,
-            backgroundColor: "#FFFFFF",
+            backgroundColor: "#FFF5F5",
             transformStyle: "preserve-3d" 
           }}
           className="w-full h-auto lg:h-full relative lg:overflow-hidden flex items-center"
