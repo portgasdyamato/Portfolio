@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X, Briefcase } from "lucide-react"
 import LearningJourney from "./learning-journey"
 
@@ -74,6 +74,18 @@ const educationJourney = [
 export default function Education() {
   const [selected, setSelected] = useState<number | null>(null)
 
+  // Body Scroll Lock
+  useEffect(() => {
+    if (selected !== null) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [selected])
+
   return (
     <div className="py-20">
       <div className="w-full">
@@ -104,14 +116,14 @@ export default function Education() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-3xl z-[2000] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 bg-black/90 backdrop-blur-3xl z-[2000] flex items-start justify-center overflow-y-auto p-4 md:p-12 lg:p-20 scrollbar-hide"
             onClick={() => setSelected(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 30 }}
-              className="w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-background rounded-[2rem] md:rounded-[3rem] p-6 md:p-14 relative border border-white/10 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_24px_48px_-12px_rgba(0,0,0,0.4)] scrollbar-hide"
+              className="w-full max-w-4xl bg-background rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 relative border border-white/10 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_32px_64px_-16px_rgba(0,0,0,0.5)] flex-shrink-0"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
