@@ -38,7 +38,7 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
 
   return (
     <div ref={containerRef} className="relative w-full py-12 overflow-hidden">
-      {/* ─── Restored Curved Path (Desktop) ─── */}
+      {/* ─── Desktop Curved Path ─── */}
       <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[200px] h-full pointer-events-none">
         <svg className="w-full h-full" viewBox="0 0 200 1400" preserveAspectRatio="none">
           <defs>
@@ -69,7 +69,16 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
         </svg>
       </div>
 
-      <div className="relative z-10 flex flex-col gap-20 md:gap-24 px-4 md:px-0 max-w-7xl mx-auto mt-10">
+      {/* ─── Mobile Vertical Ribbon ─── */}
+      <div className="lg:hidden absolute left-6 top-0 bottom-0 w-[1px] h-full pointer-events-none">
+        <div className="h-full w-full bg-brand-500/10 border-l border-dashed border-brand-500/20" />
+        <motion.div 
+          className="absolute top-0 left-0 w-full bg-brand-500"
+          style={{ height: useTransform(pathProgress, [0, 1], ["0%", "100%"]) }}
+        />
+      </div>
+
+      <div className="relative z-10 flex flex-col gap-12 md:gap-24 px-4 md:px-0 max-w-7xl mx-auto mt-10">
         {items.map((item, index) => (
           <JourneyCard 
             key={index} 
@@ -79,7 +88,7 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
           />
         ))}
         {/* End Spacer */}
-        <div className="h-10" /> 
+        <div className="h-2" /> 
       </div>
     </div>
   )
@@ -142,7 +151,7 @@ function JourneyCard({
           className="w-full relative cursor-pointer"
         >
           {/* ✦ THE COMPACT ELITE CARD ✦ */}
-          <div className="bg-white dark:bg-[#0c0c0c] p-6 md:p-10 rounded-[2.5rem] relative overflow-hidden transition-all duration-500 border border-black/[0.04] dark:border-white/[0.04] shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_10px_20px_-10px_rgba(0,0,0,0.2)]">
+          <div className="bg-white dark:bg-[#0c0c0c] p-5 md:p-10 rounded-[2rem] md:rounded-[2.5rem] relative overflow-hidden transition-all duration-500 border border-black/[0.04] dark:border-white/[0.04] shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_10px_20px_-10px_rgba(0,0,0,0.2)]">
             
             {/* Spotlight Glow */}
             <motion.div
@@ -155,24 +164,24 @@ function JourneyCard({
               }}
             />
 
-            <div className="relative z-10 flex flex-col gap-6">
+            <div className="relative z-10 flex flex-col gap-4 md:gap-6">
                {/* Header: Clean & Compact */}
                <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                     <div className="w-9 h-9 rounded-xl bg-[#1a0a0a] flex items-center justify-center text-white shadow-md">
-                        <item.icon size={16} strokeWidth={1.5} />
+                     <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-[#1a0a0a] flex items-center justify-center text-white shadow-md">
+                        <item.icon size={15} strokeWidth={1.5} />
                      </div>
-                     <span className="text-[10px] font-black font-inter text-black/30 dark:text-white/30 uppercase italic">
+                     <span className="text-[9px] md:text-[10px] font-black font-inter text-black/30 dark:text-white/30 uppercase italic">
                        {item.date}
                      </span>
                   </div>
-                  <span className="text-[9px] font-black tracking-[0.4em] text-brand-600/40 uppercase group-hover:text-brand-600 transition-colors">Archive</span>
+                  <span className="text-[8px] md:text-[9px] font-black tracking-[0.4em] text-brand-600/40 uppercase group-hover:text-brand-600 transition-colors">Archive</span>
                </div>
 
                {/* Typography Section */}
                <div className="space-y-4">
                   <div className="space-y-2">
-                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-[#1a0a0a] dark:text-white leading-[0.95] group-hover:text-brand-600 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                     <h3 className="text-xl md:text-3xl lg:text-4xl font-black tracking-tight text-[#1a0a0a] dark:text-white leading-[0.95] group-hover:text-brand-600 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                         {item.level.split(' ').map((word, i) => (
                            <span key={i} className={cn(i % 2 === 1 ? "italic font-light" : "")}>
                              {word}{' '}
@@ -181,24 +190,24 @@ function JourneyCard({
                      </h3>
                      
                      {/* Refined Institution Display */}
-                     <div className="flex items-center gap-3 py-1">
-                        <div className="w-1.5 h-4 bg-brand-500/20 group-hover:bg-brand-500 transition-colors" />
-                        <p className="text-[10px] md:text-xs font-black text-[#1a0a0a]/60 dark:text-white/60 uppercase tracking-[0.2em] font-inter">
+                     <div className="flex items-center gap-2 md:gap-3 py-0.5 md:py-1">
+                        <div className="w-1 h-3 md:w-1.5 md:h-4 bg-brand-500/20 group-hover:bg-brand-500 transition-colors" />
+                        <p className="text-[9px] md:text-[10px] font-black text-[#1a0a0a]/60 dark:text-white/60 uppercase tracking-[0.2em] font-inter">
                            {item.institution}
                         </p>
                      </div>
                   </div>
 
-                  <p className="text-xs md:text-sm text-black/40 dark:text-white/30 leading-relaxed font-inter line-clamp-2 pt-2 border-t border-black/[0.02]">
+                  <p className="hidden md:block text-xs md:text-sm text-black/40 dark:text-white/30 leading-relaxed font-inter line-clamp-2 pt-2 border-t border-black/[0.02]">
                       {item.description}
                   </p>
                </div>
 
                {/* Footer: Details & Result */}
-               <div className="flex items-center justify-between pt-6 border-t border-black/[0.04] dark:border-white/[0.04]">
+               <div className="flex items-center justify-between pt-4 md:pt-6 border-t border-black/[0.04] dark:border-white/[0.04]">
                   <div className="flex flex-col">
-                     <span className="text-[9px] font-black uppercase tracking-[0.4em] text-black/40 dark:text-white/40 mb-1">Results</span>
-                     <span className="text-2xl font-black font-outfit text-[#1a0a0a] dark:text-white tracking-tighter">
+                     <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] text-black/40 dark:text-white/40 mb-0.5">Results</span>
+                     <span className="text-xl md:text-2xl font-black font-outfit text-[#1a0a0a] dark:text-white tracking-tighter">
                         {item.gpa}
                      </span>
                   </div>
@@ -207,7 +216,7 @@ function JourneyCard({
                   <motion.div 
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
-                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-brand-500/10 border border-brand-500/20 text-[10px] font-black uppercase tracking-[0.2em] text-brand-600 hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-all cursor-pointer shadow-sm"
+                    className="flex items-center gap-2 px-4 py-2 md:px-6 md:py-3 rounded-full bg-brand-500/10 border border-brand-500/10 md:border-brand-500/20 text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] text-brand-600 hover:bg-brand-500 hover:text-white transition-all cursor-pointer"
                   >
                     Details &rarr;
                   </motion.div>
