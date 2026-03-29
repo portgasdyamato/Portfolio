@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { ExternalLink, ShieldCheck, CheckCircle, Award, Sparkles, Globe } from "lucide-react"
 import { useState } from "react"
+import NextImage from "next/image"
 
 const CompanyLogo = ({ issuer, color }: { issuer: string; color: string }) => {
   if (issuer === "IBM") return <div className="text-[12px] font-black tracking-tighter text-[#052D84] scale-x-125">IBM</div>
@@ -14,7 +15,7 @@ const CompanyLogo = ({ issuer, color }: { issuer: string; color: string }) => {
   )
 
   if (issuer === "AWS") return (
-    <Image 
+    <NextImage 
       src="/aws-svgrepo-com.svg" 
       alt="AWS" 
       width={24} 
@@ -42,7 +43,7 @@ const CompanyLogo = ({ issuer, color }: { issuer: string; color: string }) => {
   )
 
   if (issuer === "Columbia University") return (
-    <Image 
+    <NextImage 
       src="/columbia_university.png" 
       alt="Columbia University" 
       width={40} 
