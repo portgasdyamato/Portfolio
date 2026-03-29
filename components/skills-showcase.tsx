@@ -106,81 +106,80 @@ export default function SkillsShowcase() {
             const textColor = isDark ? "text-white" : "text-[#1a0a0a]"
             
             return (
+              <motion.div 
+                key={folder.id}
+                layoutId={`folder-${folder.id}`}
+                onClick={() => setActiveFolder(folder.id)}
+                className="relative h-[220px] w-full cursor-pointer group perspective-[1000px]"
+                whileHover="hover"
+                // ── MOBILE ONLY OVERRIDE ──
+                // Slide up automatically on phone as cards enter view
+                whileInView={(typeof window !== 'undefined' && window.innerWidth < 1024) ? "hover" : ""}
+                viewport={{ amount: 0.9, once: true }}
+                initial="initial"
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              >
+                {/* BACK OF FOLDER */}
                 <motion.div 
-                  key={folder.id}
-                  layoutId={`folder-${folder.id}`}
-                  onClick={() => setActiveFolder(folder.id)}
-                  className="relative h-[220px] w-full cursor-pointer group perspective-[1000px]"
-                  whileHover="hover"
-                  whileInView="hover"
-                  viewport={{ once: false, amount: 0.6 }}
-                  initial="initial"
+                  className="absolute bottom-0 left-0 w-full h-[180px] rounded-b-xl rounded-tr-xl shadow-lg border border-black/5"
+                  style={{ backgroundColor: folder.tabColor }}
+                  layoutId={`folder-back-${folder.id}`}
+                />
+
+                {/* TAB OF FOLDER */}
+                <motion.div 
+                  className="absolute bottom-[180px] left-0 w-1/2 h-[30px] rounded-t-xl"
+                  style={{ backgroundColor: folder.tabColor }}
+                  layoutId={`folder-tab-${folder.id}`}
+                />
+                {/* SINGLE PREMIUM DOCUMENT */}
+                <motion.div 
+                  className="absolute left-[12%] w-[76%] h-[160px] bg-white rounded-t-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-black/5 flex flex-col pt-4 px-5 z-0"
+                  initial={{ bottom: 15, rotate: 0 }}
+                  variants={{
+                    hover: { 
+                      bottom: 80,
+                      rotate: -1,
+                      scale: 1.05
+                    }
+                  }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
-                  {/* BACK OF FOLDER */}
-                  <motion.div 
-                    className="absolute bottom-0 left-0 w-full h-[180px] rounded-b-xl rounded-tr-xl shadow-lg border border-black/5"
-                    style={{ backgroundColor: folder.tabColor }}
-                    layoutId={`folder-back-${folder.id}`}
-                  />
-  
-                  {/* TAB OF FOLDER */}
-                  <motion.div 
-                    className="absolute bottom-[180px] left-0 w-1/2 h-[30px] rounded-t-xl"
-                    style={{ backgroundColor: folder.tabColor }}
-                    layoutId={`folder-tab-${folder.id}`}
-                  />
-                  {/* SINGLE DOCUMENT */}
-                  <motion.div 
-                    className="absolute left-[12%] w-[76%] h-[160px] bg-white rounded-t-lg shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-black/5 flex flex-col pt-4 px-5 z-0"
-                    initial={{ bottom: 15, rotate: 0 }}
-                    variants={{
-                      hover: { 
-                        bottom: 80,
-                        rotate: -1,
-                        scale: 1.05
-                      }
-                    }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  >
-                    {/* Document Placeholder Details */}
-                    <div className="flex items-center gap-3 mb-4 mt-3">
-                      <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center">
-                         <Icon size={16} color={folder.accent} />
-                      </div>
-                      <div className="flex flex-col gap-1 flex-1">
-                         <div className="w-1/2 h-2 bg-black/[0.05] rounded-full" />
-                         <div className="w-1/3 h-1.5 bg-black/[0.03] rounded-full" />
-                      </div>
+                  {/* High-End Document Placeholder Details */}
+                  <div className="flex items-center gap-3 mb-4 mt-3">
+                    <div className="w-8 h-8 rounded-lg bg-black/[0.03] flex items-center justify-center">
+                       <Icon size={16} color={folder.accent} />
                     </div>
-                    <div className="space-y-2">
-                      <div className="w-full h-1.5 bg-black/[0.02] rounded-full" />
-                      <div className="w-full h-1.5 bg-black/[0.02] rounded-full" />
-                      <div className="w-4/5 h-1.5 bg-black/[0.02] rounded-full" />
+                    <div className="flex flex-col gap-1 flex-1">
+                       <div className="w-1/2 h-2 bg-black/[0.05] rounded-full" />
+                       <div className="w-1/3 h-1.5 bg-black/[0.03] rounded-full" />
                     </div>
-                  </motion.div>
-  
-                  {/* FRONT OF FOLDER */}
-                  <motion.div 
-                    className="absolute bottom-0 left-0 w-full h-[180px] rounded-xl shadow-2xl origin-bottom transition-all duration-500 border border-white/20 p-6 flex flex-col justify-end overflow-hidden"
-                    style={{ backgroundColor: folder.color }}
-                    variants={{
-                      hover: { rotateX: -15 }
-                    }}
-                    layoutId={`folder-front-${folder.id}`}
-                  >
-                    <div className="absolute top-4 right-4 opacity-20 transition-opacity group-hover:opacity-100">
-                      <Icon size={48} color={folder.accent} strokeWidth={1} />
-                    </div>
-                    <h3 className={`text-2xl font-black italic tracking-wide mb-1 ${textColor}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                      {folder.title}
-                    </h3>
-                    <p className={`text-xs font-inter uppercase tracking-widest opacity-60 font-medium ${textColor}`}>
-                      {folder.items.length} Skills Inside
-                    </p>
-                  </motion.div>
-  
+                  </div>
+                  <div className="space-y-2">
+                    <div className="w-full h-1.5 bg-black/[0.02] rounded-full" />
+                    <div className="w-full h-1.5 bg-black/[0.02] rounded-full" />
+                    <div className="w-4/5 h-1.5 bg-black/[0.02] rounded-full" />
+                  </div>
                 </motion.div>
+
+                {/* FRONT OF FOLDER */}
+                <motion.div 
+                  className="absolute bottom-0 left-0 w-full h-[180px] rounded-xl shadow-2xl origin-bottom transition-transform duration-500 ease-out group-hover:rotate-x-[-15deg] border border-white/20 p-6 flex flex-col justify-end overflow-hidden"
+                  style={{ backgroundColor: folder.color }}
+                  layoutId={`folder-front-${folder.id}`}
+                >
+                  <div className="absolute top-4 right-4 opacity-20 transition-opacity group-hover:opacity-100">
+                    <Icon size={48} color={folder.accent} strokeWidth={1} />
+                  </div>
+                  <h3 className={`text-2xl font-black italic tracking-wide mb-1 ${textColor}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    {folder.title}
+                  </h3>
+                  <p className={`text-xs font-inter uppercase tracking-widest opacity-60 font-medium ${textColor}`}>
+                    {folder.items.length} Skills Inside
+                  </p>
+                </motion.div>
+
+              </motion.div>
             )
           })}
         </div>

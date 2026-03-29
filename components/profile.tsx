@@ -56,7 +56,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
       >
         <motion.div
           whileHover={{ scale: 1.05 }}
-          className="rounded-3xl overflow-hidden w-full max-w-[340px] transition-all duration-500 ease-out"
+          className="rounded-3xl overflow-hidden w-full max-w-[240px] md:max-w-[340px] transition-all duration-500 ease-out"
         >
           <Image
             src={pfp}
