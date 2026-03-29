@@ -95,7 +95,7 @@ export default function Achievements() {
                 transition={{ delay: index * 0.05, duration: 0.5 }}
                 className={cn(
                   "group relative p-10 bg-white dark:bg-[#1a1a1a] border border-black/[0.05] dark:border-white/5 rounded-[3rem] flex flex-col justify-between transition-all duration-500 hover:-translate-y-2",
-                  "shadow-[0_10px_20px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_45px_100px_-25px_rgba(0,0,0,0.15),0_15px_30px_-15px_rgba(0,0,0,0.1)] hover:border-brand-500/30",
+                  "shadow-[0_4px_12px_rgba(0,0,0,0.03)] dark:shadow-none hover:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_12px_24px_-12px_rgba(0,0,0,0.2)] hover:border-brand-500/30",
                   isLarge ? "md:col-span-3 lg:col-span-4 min-h-[400px]" : "md:col-span-3 lg:col-span-2 min-h-[350px]"
                 )}
               >

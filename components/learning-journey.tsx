@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll, useSpring } from "framer-motion"
+import { useRef, useState } from "react"
+import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { LucideIcon, Star } from "lucide-react"
 
@@ -31,22 +31,45 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
   })
 
   const pathProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 35,
+    stiffness: 100,
+    damping: 30,
     restDelta: 0.001
   })
 
   return (
-    <div ref={containerRef} className="relative w-full py-10 md:py-24">
-      {/* ─── Premium Central Path (Desktop) ─── */}
-      <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-brand-500/20 to-transparent pointer-events-none">
-        <motion.div 
-          style={{ scaleY: pathProgress }}
-          className="absolute top-0 left-0 w-full h-full bg-brand-500 origin-top shadow-[0_0_15px_rgba(245,158,158,0.5)]"
-        />
+    <div ref={containerRef} className="relative w-full py-12 overflow-hidden">
+      {/* ─── Restored Curved Path (Desktop) ─── */}
+      <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[200px] h-full pointer-events-none">
+        <svg className="w-full h-full" viewBox="0 0 200 1400" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FB7185" stopOpacity="0" />
+              <stop offset="10%" stopColor="#FB7185" stopOpacity="1" />
+              <stop offset="90%" stopColor="#FB7185" stopOpacity="1" />
+              <stop offset="100%" stopColor="#FB7185" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          
+          <path
+            d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
+            fill="none"
+            stroke="rgba(251, 113, 133, 0.1)"
+            strokeWidth="2"
+            strokeDasharray="4 4"
+          />
+          
+          <motion.path
+            d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
+            fill="none"
+            stroke="url(#pathGradient)"
+            strokeWidth="3"
+            strokeLinecap="round"
+            style={{ pathLength: pathProgress }}
+          />
+        </svg>
       </div>
 
-      <div className="relative z-10 flex flex-col gap-24 md:gap-40 px-4 md:px-0 max-w-7xl mx-auto">
+      <div className="relative z-10 flex flex-col gap-20 md:gap-24 px-4 md:px-0 max-w-7xl mx-auto mt-10">
         {items.map((item, index) => (
           <JourneyCard 
             key={index} 
@@ -73,11 +96,21 @@ function JourneyCard({
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
   const isEven = index % 2 === 0
+  
+  // Spotlight Effect
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  function handleMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent) {
+    const { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
+  }
 
   return (
     <motion.div
       ref={cardRef}
-      initial={{ opacity: 0, y: 50 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -86,109 +119,104 @@ function JourneyCard({
         isEven ? "lg:justify-start" : "lg:justify-end"
       )}
     >
-      {/* Central Node Dot (Desktop) */}
-      <div className="hidden lg:flex absolute left-1/2 top-10 -translate-x-1/2 items-center justify-center z-30">
-        <motion.div 
-          initial={{ scale: 0 }}
-          whileInView={{ scale: 1 }}
-          viewport={{ once: true }}
-          className="w-4 h-4 rounded-full bg-background border-2 border-brand-500 shadow-[0_0_15px_rgba(245,158,158,0.4)]"
-        />
+      {/* ✦ REFINED BOUTIQUE NODE MARKER ✦ */}
+      <div className={cn(
+          "absolute top-8 hidden lg:flex items-center justify-center z-30",
+          isEven ? "-right-[calc(11%+8px)]" : "-left-[calc(11%+8px)]"
+        )}
+      >
+           <div className="w-2 h-2 rounded-full bg-[#1a0a0a] ring-2 ring-brand-500/10" />
       </div>
 
-      {/* Card Wrapper */}
       <div className={cn(
-        "relative flex w-full lg:w-[45%] pl-8 lg:pl-0 z-20 group",
-        isEven ? "lg:pr-16" : "lg:pl-16"
+        "relative flex w-full lg:w-[40%] z-20 group",
+        isEven ? "pl-12 lg:pl-0 lg:pr-16" : "pl-12 lg:pl-16 lg:flex-row-reverse"
       )}>
-        {/* Mobile Marker Only */}
-        <div className="absolute left-0 top-10 w-4 h-4 rounded-full bg-brand-500 shadow-[0_0_15px_rgba(245,158,158,0.4)] lg:hidden" />
+        {/* Mobile Marker */}
+        <div className="absolute left-0 top-8 w-3 h-3 rounded-full bg-[#1a0a0a] lg:hidden border border-background" />
 
         <motion.div 
           onClick={onClick}
-          whileHover={{ y: -8, scale: 1.02 }}
+          onMouseMove={handleMouseMove}
+          whileHover={{ y: -4 }}
           className="w-full relative cursor-pointer"
         >
-          {/* Main Card - High Contrast & Premium Elevation */}
-          <div className="relative bg-white dark:bg-[#1a1a1a] p-8 md:p-12 rounded-[3.5rem] border border-black/[0.03] dark:border-white/5 transition-all duration-500 group-hover:border-brand-500/30 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_45px_100px_-25px_rgba(0,0,0,0.15),0_15px_30px_-15px_rgba(0,0,0,0.1)]">
+          {/* ✦ THE COMPACT ELITE CARD ✦ */}
+          <div className="bg-white dark:bg-[#0c0c0c] p-6 md:p-10 rounded-[2.5rem] relative overflow-hidden transition-all duration-500 border border-black/[0.04] dark:border-white/[0.04] shadow-[0_4px_12px_rgba(0,0,0,0.02)] hover:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_10px_20px_-10px_rgba(0,0,0,0.2)]">
             
-            {/* Index Number (Oversized & Light) */}
-            <div className={cn(
-              "absolute -top-12 text-[160px] font-black text-black/[0.02] dark:text-white/[0.01] pointer-events-none select-none italic font-outfit",
-              isEven ? "right-16" : "left-16"
-            )}>
-              0{index + 1}
-            </div>
+            {/* Spotlight Glow */}
+            <motion.div
+              className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+              style={{
+                background: useTransform(
+                  [mouseX, mouseY],
+                  ([x, y]) => `radial-gradient(350px circle at ${x}px ${y}px, rgba(251,113,133,0.05), transparent 80%)`
+                ),
+              }}
+            />
 
-            {/* Header: Icon & Date */}
-            <div className="flex items-center justify-between mb-12 relative z-10">
-               <div className={cn(
-                 "w-16 h-16 rounded-[1.8rem] flex items-center justify-center bg-[#FFF5F5]/50 dark:bg-white/5 border border-brand-500/10 shadow-sm group-hover:bg-brand-500 group-hover:shadow-[0_10px_20px_-8px_rgba(245,158,158,0.5)] transition-all duration-500 transform group-hover:-rotate-12",
-                 item.color
-               )}>
-                 <item.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+            <div className="relative z-10 flex flex-col gap-6">
+               {/* Header: Clean & Compact */}
+               <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                     <div className="w-9 h-9 rounded-xl bg-[#1a0a0a] flex items-center justify-center text-white shadow-md">
+                        <item.icon size={16} strokeWidth={1.5} />
+                     </div>
+                     <span className="text-[10px] font-black font-inter text-black/30 dark:text-white/30 uppercase italic">
+                       {item.date}
+                     </span>
+                  </div>
+                  <span className="text-[9px] font-black tracking-[0.4em] text-brand-600/40 uppercase group-hover:text-brand-600 transition-colors">Archive</span>
                </div>
-               
-               <div className="flex flex-col items-end">
-                  <span className="text-[11px] font-black font-inter text-brand-500/60 uppercase tracking-[0.4em] mb-1 group-hover:text-brand-500 transition-colors">
-                    {item.date}
-                  </span>
-                  <div className="h-[2px] w-8 bg-brand-500/10 rounded-full group-hover:w-16 transition-all duration-700" />
+
+               {/* Typography Section */}
+               <div className="space-y-4">
+                  <div className="space-y-2">
+                     <h3 className="text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-[#1a0a0a] dark:text-white leading-[0.95] group-hover:text-brand-600 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        {item.level.split(' ').map((word, i) => (
+                           <span key={i} className={cn(i % 2 === 1 ? "italic font-light" : "")}>
+                             {word}{' '}
+                           </span>
+                        ))}
+                     </h3>
+                     
+                     {/* Refined Institution Display */}
+                     <div className="flex items-center gap-3 py-1">
+                        <div className="w-1.5 h-4 bg-brand-500/20 group-hover:bg-brand-500 transition-colors" />
+                        <p className="text-[10px] md:text-xs font-black text-[#1a0a0a]/60 dark:text-white/60 uppercase tracking-[0.2em] font-inter">
+                           {item.institution}
+                        </p>
+                     </div>
+                  </div>
+
+                  <p className="text-xs md:text-sm text-black/40 dark:text-white/30 leading-relaxed font-inter line-clamp-2 pt-2 border-t border-black/[0.02]">
+                      {item.description}
+                  </p>
                </div>
-            </div>
 
-            {/* Content Body */}
-            <div className="space-y-6 relative z-10">
-              <div className="flex items-center gap-3">
-                 <div className="h-1 w-6 bg-brand-500/20 rounded-full group-hover:w-12 transition-all" />
-                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-600/40">Academic Milestone</span>
-              </div>
-              
-              <h3 className="text-3xl md:text-5xl font-bold font-outfit text-[#1a0a0a] dark:text-white leading-[1.1] italic tracking-tighter group-hover:text-brand-600 transition-colors">
-                {item.level}
-              </h3>
-              
-              <div className="space-y-1">
-                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20 dark:text-white/20">Institution</span>
-                <p className="text-lg md:text-xl font-medium text-[#1a0a0a]/60 dark:text-white/60 font-inter leading-relaxed">
-                  {item.institution}
-                </p>
-              </div>
-
-              <p className="text-base text-muted-foreground/60 leading-relaxed font-inter line-clamp-2 pt-6 border-t border-black/[0.03] dark:border-white/[0.03] group-hover:text-muted-foreground transition-colors">
-                {item.description}
-              </p>
-            </div>
-
-            {/* Footer: Grade & Interactive */}
-            <div className="flex items-center justify-between mt-12 relative z-10">
-               <div className="flex items-center gap-4">
-                 <div className="w-10 h-10 rounded-full bg-brand-500/5 flex items-center justify-center border border-brand-500/10">
-                    <Star size={16} className="text-brand-500 fill-brand-500 group-hover:scale-125 transition-transform" />
-                 </div>
-                 <div className="flex flex-col">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30 dark:text-white/20">Cumulative Grade</span>
-                    <span className="text-xl md:text-2xl font-black font-outfit text-brand-600 tracking-tight">
+               {/* Footer: Details & Result */}
+               <div className="flex items-center justify-between pt-6 border-t border-black/[0.04] dark:border-white/[0.04]">
+                  <div className="flex flex-col">
+                     <span className="text-[9px] font-black uppercase tracking-[0.4em] text-black/40 dark:text-white/40 mb-1">Results</span>
+                     <span className="text-2xl font-black font-outfit text-[#1a0a0a] dark:text-white tracking-tighter">
                         {item.gpa}
-                    </span>
-                 </div>
-               </div>
+                     </span>
+                  </div>
 
-               <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-black/40 dark:text-white/30 group-hover:text-brand-500 transition-all">
-                  Full Dossier
-                  <motion.span 
-                    animate={{ x: [0, 6, 0] }} 
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  {/* High-Visibility Details Button */}
+                  <motion.div 
+                    animate={{ x: [0, 4, 0] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                    className="flex items-center gap-2 px-6 py-3 rounded-full bg-brand-500/10 border border-brand-500/20 text-[10px] font-black uppercase tracking-[0.2em] text-brand-600 hover:bg-brand-500 hover:text-white hover:border-brand-500 transition-all cursor-pointer shadow-sm"
                   >
-                    &rarr;
-                  </motion.span>
+                    Details &rarr;
+                  </motion.div>
                </div>
             </div>
 
-            {/* Background Aesthetic Detail */}
-            <div className="absolute inset-0 rounded-[3.5rem] overflow-hidden pointer-events-none">
-              <div className={`absolute top-0 right-0 w-80 h-80 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-[0.03] blur-[120px] transition-opacity duration-1000`} />
-            </div>
+            {/* Pattern Mesh Overlay */}
+            <div className="absolute inset-0 opacity-[0.015] pointer-events-none" 
+                 style={{ backgroundImage: 'radial-gradient(#000 0.5px, transparent 0.5px)', backgroundSize: '20px 20px' }} />
           </div>
         </motion.div>
       </div>

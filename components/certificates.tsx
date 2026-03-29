@@ -149,7 +149,7 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
           zIndex: hovered ? 50 : 0
         }}
         transition={{ type: "spring", stiffness: 350, damping: 25 }}
-        className="absolute inset-x-8 top-0 h-[320px] bg-white rounded-xl shadow-[0_15px_40px_rgba(0,0,0,0.1)] border border-black/[0.03] flex flex-col items-center p-8 overflow-hidden"
+        className="absolute inset-x-8 top-0 h-[320px] bg-white rounded-xl shadow-[0_1px_2px_rgba(0,0,0,0.1),0_12px_24px_-12px_rgba(0,0,0,0.2)] border border-black/[0.05] flex flex-col items-center p-8 overflow-hidden"
       >
         {/* Document Details */}
         <div className="absolute inset-3 border-[0.5px] border-black/5 rounded-lg pointer-events-none" />
@@ -163,7 +163,7 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
            <div className="relative w-14 h-14 flex items-center justify-center -mt-2">
               <div className="absolute inset-0 bg-black/[0.03] rounded-full animate-[spin_12s_linear_infinite]" />
               <div className="absolute inset-1 border-[0.5px] border-black/10 rounded-full border-dashed" />
-              <div className="relative w-10 h-10 bg-white rounded-full shadow-lg border border-black/[0.05] flex items-center justify-center p-2.5 overflow-hidden">
+              <div className="relative w-10 h-10 bg-white rounded-full shadow-[0_2px_4px_rgba(0,0,0,0.05)] border border-black/[0.08] flex items-center justify-center p-2.5 overflow-hidden">
                  <CompanyLogo issuer={cert.issuer} color={cert.color} />
               </div>
            </div>
@@ -190,7 +190,7 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
       </motion.div>
 
       {/* 3. GLASS FRONT (Pocket Face) */}
-      <div className="absolute inset-x-0 bottom-0 h-[220px] bg-white/80 dark:bg-white/[0.08] backdrop-blur-2xl rounded-b-[2.5rem] border-t border-white/50 dark:border-white/20 shadow-[0_-15px_40px_rgba(0,0,0,0.05)] z-20 pointer-events-none flex items-center justify-center">
+      <div className="absolute inset-x-0 bottom-0 h-[220px] bg-white/80 dark:bg-white/[0.08] backdrop-blur-2xl rounded-b-[2.5rem] border-t border-black/[0.05] dark:border-white/20 shadow-[0_-2px_4px_rgba(0,0,0,0.01),0_-8px_16px_-8px_rgba(0,0,0,0.05)] z-20 pointer-events-none flex items-center justify-center">
          <div className="flex flex-col items-center opacity-40 group-hover:opacity-0 transition-opacity duration-300">
             <Award size={32} className="text-[#1a0a0a] dark:text-white" strokeWidth={1} />
             <span className="text-[9px] font-black uppercase tracking-[0.3em] mt-2 text-[#1a0a0a] dark:text-white">View Credential</span>

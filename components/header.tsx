@@ -38,7 +38,7 @@ export default function Header() {
           className="pointer-events-auto w-full max-w-4xl"
         >
           <div
-            className="flex items-center justify-between gap-3 sm:gap-6 px-4 py-2.5 sm:px-10 sm:py-5 rounded-full border border-white/30 bg-white/20 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] transition-transform duration-500 scale-100"
+            className="flex items-center justify-between gap-3 sm:gap-6 px-4 py-2.5 sm:px-10 sm:py-5 rounded-full border border-black/[0.08] bg-white/80 backdrop-blur-3xl shadow-[0_1px_2px_rgba(0,0,0,0.05),0_12px_24px_-12px_rgba(0,0,0,0.15)] transition-transform duration-500 scale-100"
           >
             {/* Logo */}
             <button
@@ -93,7 +93,7 @@ export default function Header() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setInfoOpen(true)}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#F59E9E] transition-all shadow-xl"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#F59E9E] transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
               >
                 <Info size={14} strokeWidth={3} />
               </motion.button>
@@ -116,7 +116,7 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                 transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                className="absolute top-full left-0 right-0 mt-3 p-4 bg-white/90 border border-black/5 rounded-3xl backdrop-blur-2xl shadow-2xl md:hidden overflow-hidden"
+                className="absolute top-full left-0 right-0 mt-3 p-4 bg-white/95 border border-black/5 rounded-3xl backdrop-blur-3xl shadow-[0_1px_2px_rgba(0,0,0,0.05),0_16px_32px_-16px_rgba(0,0,0,0.2)] md:hidden overflow-hidden"
               >
                 <div className="flex flex-col gap-1">
                   {NAV.map((item, i) => (
@@ -154,7 +154,7 @@ export default function Header() {
               exit={{ scale: 0.9, y: 20, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-md w-full bg-white rounded-[2.5rem] p-10 shadow-2xl relative overflow-hidden"
+              className="max-w-md w-full bg-white rounded-[2.5rem] p-10 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_32px_64px_-16px_rgba(0,0,0,0.4)] relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 p-6">
                  <button onClick={() => setInfoOpen(false)} className="text-black/20 hover:text-black transition-colors"><X size={20}/></button>

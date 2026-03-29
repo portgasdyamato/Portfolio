@@ -104,14 +104,14 @@ export default function Education() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 backdrop-blur-2xl z-[150] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 bg-black/80 backdrop-blur-3xl z-[2000] flex items-center justify-center p-4 md:p-8"
             onClick={() => setSelected(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 30 }}
-              className="w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-background rounded-[2rem] md:rounded-[3rem] p-6 md:p-14 relative border border-white/5 shadow-3xl scrollbar-hide"
+              className="w-full max-w-4xl max-h-[85vh] overflow-y-auto bg-background rounded-[2rem] md:rounded-[3rem] p-6 md:p-14 relative border border-white/10 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_24px_48px_-12px_rgba(0,0,0,0.4)] scrollbar-hide"
               onClick={(e) => e.stopPropagation()}
             >
               <button 
