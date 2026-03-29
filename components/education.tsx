@@ -78,11 +78,14 @@ export default function Education() {
   useEffect(() => {
     if (selected !== null) {
       document.body.style.overflow = "hidden"
+      document.documentElement.style.overflow = "hidden"
     } else {
       document.body.style.overflow = "unset"
+      document.documentElement.style.overflow = "unset"
     }
     return () => {
       document.body.style.overflow = "unset"
+      document.documentElement.style.overflow = "unset"
     }
   }, [selected])
 
@@ -116,13 +119,14 @@ export default function Education() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/90 backdrop-blur-3xl z-[2000] flex items-center justify-center p-4 md:p-8"
+            className="fixed inset-0 bg-black/99 backdrop-blur-3xl z-[2000] flex items-center justify-center p-4 md:p-8"
             onClick={() => setSelected(null)}
           >
             <motion.div
               initial={{ scale: 0.9, opacity: 0, y: 30 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 30 }}
+              data-lenis-prevent
               className="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-background rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 relative border border-white/10 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_32px_64px_-16px_rgba(0,0,0,0.5)] scrollbar-hide"
               onClick={(e) => e.stopPropagation()}
             >
