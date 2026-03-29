@@ -43,17 +43,17 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
         <svg className="w-full h-full" viewBox="0 0 200 1400" preserveAspectRatio="none">
           <defs>
             <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#FB7185" stopOpacity="0" />
-              <stop offset="10%" stopColor="#FB7185" stopOpacity="1" />
-              <stop offset="90%" stopColor="#FB7185" stopOpacity="1" />
-              <stop offset="100%" stopColor="#FB7185" stopOpacity="0" />
+              <stop offset="0%" stopColor="#F59E9E" stopOpacity="0" />
+              <stop offset="10%" stopColor="#F59E9E" stopOpacity="1" />
+              <stop offset="90%" stopColor="#F59E9E" stopOpacity="1" />
+              <stop offset="100%" stopColor="#F59E9E" stopOpacity="0" />
             </linearGradient>
           </defs>
           
           <path
             d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
             fill="none"
-            stroke="rgba(251, 113, 133, 0.1)"
+            stroke="rgba(245, 158, 158, 0.15)"
             strokeWidth="4"
             strokeDasharray="4 6"
           />
@@ -71,9 +71,9 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
 
       {/* ─── Mobile Vertical Ribbon ─── */}
       <div className="lg:hidden absolute left-6 top-0 bottom-0 w-1 h-full pointer-events-none">
-        <div className="h-full w-full bg-brand-500/10 border-l-[3px] border-dashed border-brand-500/20" />
+        <div className="h-full w-full bg-[#F59E9E]/10 border-l-[3px] border-dashed border-[#F59E9E]/20" />
         <motion.div 
-          className="absolute top-0 left-0 w-full bg-brand-500 shadow-[0_0_15px_rgba(251,113,133,0.5)]"
+          className="absolute top-0 left-0 w-full bg-[#F59E9E] shadow-[0_0_15px_rgba(245,158,158,0.5)]"
           style={{ height: useTransform(pathProgress, [0, 1], ["0%", "100%"]) }}
         />
       </div>

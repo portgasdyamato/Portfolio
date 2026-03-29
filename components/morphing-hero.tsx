@@ -128,7 +128,10 @@ export default function MorphingHero() {
           className="w-full h-auto lg:h-full relative lg:overflow-hidden flex items-center"
         >
           <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl min-h-full py-20 lg:py-0 flex items-center relative" style={{ transform: "translateZ(50px)" }}>
-            <div className="hidden lg:block absolute top-[10vh] bottom-[10vh] left-[65%] w-[1px] bg-[#1a0a0a]/[0.1] pointer-events-none z-0" />
+            <div className="hidden lg:flex absolute top-[25vh] bottom-[25vh] left-[65%] w-[2px] pointer-events-none z-0 flex-row">
+              <div className="h-full w-[1px] bg-white opacity-80" />
+              <div className="h-full w-[1px] bg-[#1a0a0a]/[0.06]" />
+            </div>
             <section className="grid grid-cols-1 lg:grid-cols-[13fr_7fr] flex-1 gap-12 lg:gap-8 w-full min-h-full items-center py-12 pointer-events-auto relative z-10">
               <Hero scrollProgress={sp} />
               <Profile scrollProgress={sp} />
