@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { motion, useTransform, MotionValue, useMotionValue } from "framer-motion"
 import Image from "next/image"
 
-const pfp = "/pfp2.png" // If your image is pfp.png
+const pfp = "/pfp2.gif" // Dynamic PFP variant
 
 export default function Profile({ scrollProgress }: { scrollProgress?: MotionValue<number> }) {
   // Gracefully handle absent scrollProgress
