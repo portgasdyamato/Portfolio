@@ -1,9 +1,9 @@
 "use client"
 
-import { useRef, useMemo, useState } from "react"
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "framer-motion"
+import { useRef } from "react"
+import { motion, useScroll, useSpring } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { LucideIcon } from "lucide-react"
+import { LucideIcon, Star } from "lucide-react"
 
 interface JourneyItem {
   level: string
@@ -24,73 +24,39 @@ interface LearningJourneyProps {
 
 export default function LearningJourney({ items, onCardClick }: LearningJourneyProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"]
   })
 
-  // Smooth out the progress for the path drawing
   const pathProgress = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
+    stiffness: 80,
+    damping: 35,
     restDelta: 0.001
   })
 
   return (
-    <div ref={containerRef} className="relative w-full py-20 overflow-hidden">
-      {/* Central Curved Path - Desktop */}
-      <div className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[200px] h-full pointer-events-none">
-        <svg className="w-full h-full" viewBox="0 0 200 1400" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="pathGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-              <stop offset="0%" stopColor="#FFB5B5" stopOpacity="0" />
-              <stop offset="10%" stopColor="#FFB5B5" stopOpacity="1" />
-              <stop offset="90%" stopColor="#FFB5B5" stopOpacity="1" />
-              <stop offset="100%" stopColor="#FFB5B5" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          
-          {/* Background Path (Dashed) */}
-          <path
-            d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
-            fill="none"
-            stroke="rgba(255, 181, 181, 0.15)"
-            strokeWidth="3"
-            strokeDasharray="8 8"
-          />
-          
-          {/* Animated Progress Path */}
-          <motion.path
-            d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
-            fill="none"
-            stroke="url(#pathGradient)"
-            strokeWidth="4"
-            strokeLinecap="round"
-            style={{ pathLength: pathProgress }}
-          />
-        </svg>
-      </div>
-
-      {/* Central Straight Line - Mobile */}
-      <div className="md:hidden absolute left-6 top-0 bottom-0 w-1 bg-brand-500/20">
+    <div ref={containerRef} className="relative w-full py-10 md:py-24">
+      {/* ─── Premium Central Path (Desktop) ─── */}
+      <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[1px] bg-gradient-to-b from-transparent via-brand-500/20 to-transparent pointer-events-none">
         <motion.div 
-          className="w-full bg-brand-600 origin-top"
-          style={{ scaleY: pathProgress, height: "100%" }}
+          style={{ scaleY: pathProgress }}
+          className="absolute top-0 left-0 w-full h-full bg-brand-500 origin-top shadow-[0_0_15px_rgba(245,158,158,0.5)]"
         />
       </div>
 
-      <div className="relative z-10 flex flex-col gap-32 md:gap-40 px-4 md:px-0 max-w-7xl mx-auto mt-20">
+      <div className="relative z-10 flex flex-col gap-24 md:gap-40 px-4 md:px-0 max-w-7xl mx-auto">
         {items.map((item, index) => (
           <JourneyCard 
             key={index} 
             item={item} 
             index={index} 
-            total={items.length} 
             onClick={() => onCardClick(index)}
           />
         ))}
         {/* End Spacer */}
-        <div className="h-20" /> 
+        <div className="h-10" /> 
       </div>
     </div>
   )
@@ -99,104 +65,132 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
 function JourneyCard({ 
   item, 
   index, 
-  total,
   onClick 
 }: { 
   item: JourneyItem, 
   index: number, 
-  total: number,
   onClick: () => void 
 }) {
   const cardRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ["start end", "end center"]
-  })
-
-  // More dramatic entrance
-  const scale = useTransform(scrollYProgress, [0, 0.8], [0.8, 1])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [0, 1])
-  
   const isEven = index % 2 === 0
 
   return (
     <motion.div
       ref={cardRef}
-      style={{ scale, opacity }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={cn(
-        "flex items-center w-full relative",
-        isEven ? "md:justify-start" : "md:justify-end"
+        "flex w-full relative",
+        isEven ? "lg:justify-start" : "lg:justify-end"
       )}
     >
+      {/* Central Node Dot (Desktop) */}
+      <div className="hidden lg:flex absolute left-1/2 top-10 -translate-x-1/2 items-center justify-center z-30">
+        <motion.div 
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          viewport={{ once: true }}
+          className="w-4 h-4 rounded-full bg-background border-2 border-brand-500 shadow-[0_0_15px_rgba(245,158,158,0.4)]"
+        />
+      </div>
+
+      {/* Card Wrapper */}
       <div className={cn(
-        "relative flex w-full md:w-[42%] pl-10 md:pl-0 z-20",
-        isEven ? "md:pr-12" : "md:pl-12 md:flex-row-reverse"
+        "relative flex w-full lg:w-[45%] pl-8 lg:pl-0 z-20 group",
+        isEven ? "lg:pr-16" : "lg:pl-16"
       )}>
-        
-        {/* Desktop Node Marker - Sleek & Modern */}
-        <div className={cn(
-            "absolute top-1/2 -translate-y-1/2 hidden md:flex items-center justify-center w-12 h-12 z-30",
-             // Restoring cards to their original exterior positions as per user request
-            isEven ? "-right-[calc(8%+24px)]" : "-left-[calc(8%+24px)]"
-          )}
+        {/* Mobile Marker Only */}
+        <div className="absolute left-0 top-10 w-4 h-4 rounded-full bg-brand-500 shadow-[0_0_15px_rgba(245,158,158,0.4)] lg:hidden" />
+
+        <motion.div 
+          onClick={onClick}
+          whileHover={{ y: -8, scale: 1.02 }}
+          className="w-full relative cursor-pointer"
         >
-             {/* Center Core */}
-             <div className="w-4 h-4 rounded-full bg-brand-600 shadow-[0_0_15px_rgba(255,181,181,0.8)] z-20" />
-             
-             {/* Orbital Ring 1 (Slow) */}
-             <div className="absolute inset-0 rounded-full border border-brand-500/30 animate-[spin_4s_linear_infinite]" 
-                  style={{ borderTopColor: 'transparent', borderBottomColor: 'transparent' }} 
-             />
-             
-             {/* Orbital Ring 2 (Fast Reverse) */}
-             <div className="absolute inset-2 rounded-full border border-brand-400/50 animate-[spin_2s_linear_infinite_reverse]" 
-                  style={{ borderLeftColor: 'transparent', borderRightColor: 'transparent' }} 
-             />
-             
-             {/* Hover Glow Effect */}
-             <div className="absolute inset-0 rounded-full bg-brand-500/0 hover:bg-brand-500/10 transition-colors duration-300 transform hover:scale-150" />
-        </div>
-        
-        {/* Mobile Marker */}
-        <div className="absolute left-[18px] top-1/2 -translate-y-1/2 w-4 h-4 bg-brand-600 rounded-full z-20 md:hidden border-2 border-background ring-4 ring-brand-500/20" />
+          {/* Main Card - High Contrast & Premium Elevation */}
+          <div className="relative bg-white dark:bg-[#1a1a1a] p-8 md:p-12 rounded-[3.5rem] border border-black/[0.03] dark:border-white/5 transition-all duration-500 group-hover:border-brand-500/30 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.05)] hover:shadow-[0_45px_100px_-25px_rgba(0,0,0,0.15),0_15px_30px_-15px_rgba(0,0,0,0.1)]">
+            
+            {/* Index Number (Oversized & Light) */}
+            <div className={cn(
+              "absolute -top-12 text-[160px] font-black text-black/[0.02] dark:text-white/[0.01] pointer-events-none select-none italic font-outfit",
+              isEven ? "right-16" : "left-16"
+            )}>
+              0{index + 1}
+            </div>
 
-        <div onClick={onClick} className="w-full group cursor-pointer">
-           {/* Reusing the glass card design but enhancing it */}
-          <div className="glass-card p-5 md:p-8 rounded-[2rem] relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-brand-500/30">
-             {/* Gradient Blob */}
-             <div className={`absolute -top-12 -right-12 w-32 h-32 bg-gradient-to-br ${item.color} opacity-10 blur-3xl group-hover:opacity-20 transition-opacity`} />
+            {/* Header: Icon & Date */}
+            <div className="flex items-center justify-between mb-12 relative z-10">
+               <div className={cn(
+                 "w-16 h-16 rounded-[1.8rem] flex items-center justify-center bg-[#FFF5F5]/50 dark:bg-white/5 border border-brand-500/10 shadow-sm group-hover:bg-brand-500 group-hover:shadow-[0_10px_20px_-8px_rgba(245,158,158,0.5)] transition-all duration-500 transform group-hover:-rotate-12",
+                 item.color
+               )}>
+                 <item.icon className="w-8 h-8 text-white group-hover:scale-110 transition-transform" />
+               </div>
+               
+               <div className="flex flex-col items-end">
+                  <span className="text-[11px] font-black font-inter text-brand-500/60 uppercase tracking-[0.4em] mb-1 group-hover:text-brand-500 transition-colors">
+                    {item.date}
+                  </span>
+                  <div className="h-[2px] w-8 bg-brand-500/10 rounded-full group-hover:w-16 transition-all duration-700" />
+               </div>
+            </div>
 
-             <div className="flex justify-between items-start mb-6">
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center bg-gradient-to-br ${item.color} shadow-lg shadow-brand-500/10`}>
-                  <item.icon className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-xs font-bold font-inter bg-foreground/5 px-3 py-1 rounded-full text-muted-foreground uppercase tracking-widest">
-                  {item.date}
-                </span>
-             </div>
+            {/* Content Body */}
+            <div className="space-y-6 relative z-10">
+              <div className="flex items-center gap-3">
+                 <div className="h-1 w-6 bg-brand-500/20 rounded-full group-hover:w-12 transition-all" />
+                 <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-600/40">Academic Milestone</span>
+              </div>
+              
+              <h3 className="text-3xl md:text-5xl font-bold font-outfit text-[#1a0a0a] dark:text-white leading-[1.1] italic tracking-tighter group-hover:text-brand-600 transition-colors">
+                {item.level}
+              </h3>
+              
+              <div className="space-y-1">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-black/20 dark:text-white/20">Institution</span>
+                <p className="text-lg md:text-xl font-medium text-[#1a0a0a]/60 dark:text-white/60 font-inter leading-relaxed">
+                  {item.institution}
+                </p>
+              </div>
 
-             <h3 className="text-xl md:text-2xl font-bold font-outfit mb-2 leading-tight uppercase group-hover:text-brand-600 transition-colors">
-               {item.level}
-             </h3>
-             
-             <div className="flex items-center gap-2 text-muted-foreground text-sm font-inter mb-4">
-                <span>{item.institution}</span>
-             </div>
-
-             <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-6 font-inter">
+              <p className="text-base text-muted-foreground/60 leading-relaxed font-inter line-clamp-2 pt-6 border-t border-black/[0.03] dark:border-white/[0.03] group-hover:text-muted-foreground transition-colors">
                 {item.description}
-             </p>
+              </p>
+            </div>
 
-             <div className="flex items-center justify-between border-t border-border/50 pt-4">
-                <span className="text-lg font-black font-outfit text-brand-600">
-                  {item.gpa}
-                </span>
-                <div className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground group-hover:text-brand-500 transition-colors">
-                  View Details &rarr;
-                </div>
-             </div>
+            {/* Footer: Grade & Interactive */}
+            <div className="flex items-center justify-between mt-12 relative z-10">
+               <div className="flex items-center gap-4">
+                 <div className="w-10 h-10 rounded-full bg-brand-500/5 flex items-center justify-center border border-brand-500/10">
+                    <Star size={16} className="text-brand-500 fill-brand-500 group-hover:scale-125 transition-transform" />
+                 </div>
+                 <div className="flex flex-col">
+                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-black/30 dark:text-white/20">Cumulative Grade</span>
+                    <span className="text-xl md:text-2xl font-black font-outfit text-brand-600 tracking-tight">
+                        {item.gpa}
+                    </span>
+                 </div>
+               </div>
+
+               <div className="flex items-center gap-2 text-[10px] font-black uppercase tracking-[0.3em] text-black/40 dark:text-white/30 group-hover:text-brand-500 transition-all">
+                  Full Dossier
+                  <motion.span 
+                    animate={{ x: [0, 6, 0] }} 
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    &rarr;
+                  </motion.span>
+               </div>
+            </div>
+
+            {/* Background Aesthetic Detail */}
+            <div className="absolute inset-0 rounded-[3.5rem] overflow-hidden pointer-events-none">
+              <div className={`absolute top-0 right-0 w-80 h-80 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-[0.03] blur-[120px] transition-opacity duration-1000`} />
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </motion.div>
   )
