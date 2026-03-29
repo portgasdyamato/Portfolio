@@ -54,15 +54,15 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
             d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
             fill="none"
             stroke="rgba(251, 113, 133, 0.1)"
-            strokeWidth="2"
-            strokeDasharray="4 4"
+            strokeWidth="4"
+            strokeDasharray="4 6"
           />
           
           <motion.path
             d="M 100 0 C 100 100, 20 150, 20 300 C 20 450, 180 450, 180 600 C 180 750, 20 750, 20 900 C 20 1050, 180 1050, 180 1200 C 180 1350, 100 1350, 100 1400"
             fill="none"
             stroke="url(#pathGradient)"
-            strokeWidth="3"
+            strokeWidth="4"
             strokeLinecap="round"
             style={{ pathLength: pathProgress }}
           />
@@ -70,10 +70,10 @@ export default function LearningJourney({ items, onCardClick }: LearningJourneyP
       </div>
 
       {/* ─── Mobile Vertical Ribbon ─── */}
-      <div className="lg:hidden absolute left-6 top-0 bottom-0 w-[1px] h-full pointer-events-none">
-        <div className="h-full w-full bg-brand-500/10 border-l border-dashed border-brand-500/20" />
+      <div className="lg:hidden absolute left-6 top-0 bottom-0 w-1 h-full pointer-events-none">
+        <div className="h-full w-full bg-brand-500/10 border-l-[3px] border-dashed border-brand-500/20" />
         <motion.div 
-          className="absolute top-0 left-0 w-full bg-brand-500"
+          className="absolute top-0 left-0 w-full bg-brand-500 shadow-[0_0_15px_rgba(251,113,133,0.5)]"
           style={{ height: useTransform(pathProgress, [0, 1], ["0%", "100%"]) }}
         />
       </div>
