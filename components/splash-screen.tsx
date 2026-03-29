@@ -127,14 +127,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                       scale: progress < 100 ? 1 : 1.1,
                       filter: "blur(0px)"
                     }}
-                    className="w-[140px] h-[140px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden flex items-center justify-center z-20"
+                    className="w-[140px] md:w-[220px] lg:w-[260px] h-auto flex items-center justify-center z-20"
                 >
                     <Image 
                       src="/pfp2.gif" 
                       alt="Core Identity" 
                       width={260} 
                       height={260} 
-                      className="w-full h-full object-cover" 
+                      className="w-full h-auto object-contain" 
                       unoptimized 
                     />
                 </motion.div>
