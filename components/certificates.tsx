@@ -179,8 +179,8 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
       </motion.div>
 
       {/* 3. GLASS FRONT (Pocket Face) */}
-      <div className="absolute inset-x-0 bottom-0 h-[220px] bg-white/30 dark:bg-white/[0.05] backdrop-blur-3xl rounded-b-[2.5rem] border-t border-white/40 dark:border-white/20 shadow-[0_-10px_40px_rgba(0,0,0,0.02)] z-20 pointer-events-none flex items-center justify-center">
-         <div className="flex flex-col items-center opacity-20 group-hover:opacity-0 transition-opacity duration-300">
+      <div className="absolute inset-x-0 bottom-0 h-[220px] bg-white/80 dark:bg-white/[0.08] backdrop-blur-2xl rounded-b-[2.5rem] border-t border-white/50 dark:border-white/20 shadow-[0_-15px_40px_rgba(0,0,0,0.05)] z-20 pointer-events-none flex items-center justify-center">
+         <div className="flex flex-col items-center opacity-40 group-hover:opacity-0 transition-opacity duration-300">
             <Award size={32} className="text-[#1a0a0a] dark:text-white" strokeWidth={1} />
             <span className="text-[9px] font-black uppercase tracking-[0.3em] mt-2 text-[#1a0a0a] dark:text-white">View Credential</span>
          </div>

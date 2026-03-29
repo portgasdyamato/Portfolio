@@ -30,7 +30,7 @@ export default function Header() {
   return (
     <>
       {/* ── PREMIUM FROSTED GLASS NAV ── */}
-      <div className="fixed top-8 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
+      <div className="fixed top-8 left-0 right-0 z-[1000] flex justify-center px-6 pointer-events-none">
         <motion.header
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -145,7 +145,7 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[200] flex items-center justify-center p-6 bg-black/40 backdrop-blur-md"
+            className="fixed inset-0 z-[1001] flex items-center justify-center p-6 bg-black/40 backdrop-blur-md"
             onClick={() => setInfoOpen(false)}
           >
             <motion.div
