@@ -92,49 +92,57 @@ export default function Achievements() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05, duration: 0.5 }}
                 className={cn(
-                  "group relative p-10 bg-white/40 dark:bg-black/20 backdrop-blur-3xl border border-white/50 dark:border-white/5 rounded-[3rem] overflow-hidden flex flex-col justify-between transition-all duration-700 hover:shadow-[0_40px_100px_-30px_rgba(0,0,0,0.05)] hover:border-brand-500/20",
+                  "group relative p-10 bg-white dark:bg-[#1a1a1a] border border-black/[0.05] dark:border-white/5 rounded-[3rem] overflow-hidden flex flex-col justify-between transition-all duration-500 hover:-translate-y-2",
+                  "shadow-[0_10px_20px_-15px_rgba(0,0,0,0.1)] hover:shadow-[0_30px_40px_-15px_rgba(0,0,0,0.15),0_15px_30px_-18px_rgba(0,0,0,0.2)] hover:border-brand-500/30",
                   isLarge ? "md:col-span-3 lg:col-span-4 min-h-[400px]" : "md:col-span-3 lg:col-span-2 min-h-[350px]"
                 )}
               >
-                {/* Visual Accent */}
-                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${achievement.color} opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-1000 blur-[100px] pointer-events-none`} />
+                {/* Subtle Interior Glow */}
+                <div className={`absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br ${achievement.color} opacity-0 group-hover:opacity-[0.03] transition-all duration-1000 blur-[120px] pointer-events-none`} />
                 
                 <div className="relative z-10">
                    <div className="flex justify-between items-start mb-12">
                       <div className={cn(
-                        "w-16 h-16 rounded-[1.5rem] flex items-center justify-center bg-white dark:bg-white/5 shadow-sm group-hover:bg-brand-500 group-hover:shadow-[0_15px_30px_-5px_rgba(245,158,158,0.3)] transition-all duration-700 transform group-hover:-rotate-6",
+                        "w-16 h-16 rounded-[1.8rem] flex items-center justify-center bg-white dark:bg-white/5 border border-brand-500/10 shadow-sm group-hover:bg-brand-500 group-hover:shadow-[0_10px_20px_-8px_rgba(245,158,158,0.5)] transition-all duration-500 transform group-hover:rotate-6",
                       )}>
-                        <Icon className="w-8 h-8 text-[#1a0a0a] dark:text-white group-hover:text-white transition-colors" />
+                        <Icon className="w-8 h-8 text-brand-600 dark:text-white group-hover:text-white transition-colors" />
                       </div>
                       <div className="flex flex-col items-end">
-                         <span className="text-[11px] font-black font-inter text-[#1a0a0a]/30 dark:text-white/20 tracking-widest uppercase">
-                           {achievement.year}
+                         <span className="text-[10px] font-black font-inter text-brand-500/40 tracking-[0.3em] uppercase">
+                           Class of {achievement.year}
                          </span>
-                         <div className="h-0.5 w-6 bg-brand-500/10 mt-1" />
+                         <div className="h-[2px] w-8 bg-brand-500/10 mt-1 rounded-full group-hover:w-12 transition-all duration-500" />
                       </div>
                    </div>
                    
                    <div className="space-y-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand-500/30 group-hover:bg-brand-500 transition-colors" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-600/40 block">Distinction</span>
+                      </div>
                       <h3 className={cn(
                         "font-bold font-outfit text-[#1a0a0a] dark:text-white leading-tight transition-colors italic",
-                        isLarge ? "text-3xl md:text-5xl" : "text-2xl"
+                        isLarge ? "text-3xl md:text-6xl" : "text-2xl md:text-3xl"
                       )}>
                         {achievement.title}
                       </h3>
-                      <p className="text-[#1a0a0a]/60 dark:text-white/50 text-base leading-relaxed font-inter max-w-[90%] font-medium">
+                      <p className="text-[#1a0a0a]/50 dark:text-white/40 text-base leading-relaxed font-inter max-w-[95%] font-medium group-hover:text-[#1a0a0a]/70 dark:group-hover:text-white/60 transition-colors">
                         {achievement.description}
                       </p>
                    </div>
                 </div>
 
                 {/* Footer Decor */}
-                <div className="relative z-10 mt-12 flex items-center gap-3">
-                   <div className="w-1.5 h-1.5 rounded-full bg-brand-500/40" />
-                   <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#1a0a0a]/20 dark:text-white/10">Recognition Archive</span>
+                <div className="relative z-10 mt-12 flex items-center justify-between">
+                   <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-500/20" />
+                      <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#1a0a0a]/20 dark:text-white/10">Auth Record</span>
+                   </div>
+                   <div className="w-12 h-0.5 bg-black/5 dark:bg-white/5 rounded-full" />
                 </div>
 
                 {/* Large Background Icon for Detail */}
-                <Icon className="absolute -bottom-10 -right-10 w-48 h-48 text-[#1a0a0a]/[0.01] dark:text-white/[0.01] rotate-12 group-hover:rotate-0 transition-transform duration-1000" />
+                <Icon className="absolute -bottom-10 -right-10 w-48 h-48 text-brand-500/[0.01] dark:text-white/[0.01] rotate-12 group-hover:rotate-0 transition-transform duration-1000" />
               </motion.div>
             )
           })}
