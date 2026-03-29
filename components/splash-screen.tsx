@@ -3,6 +3,7 @@
 // v1.2 - Synchronized Core Experience
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
+import Image from "next/image"
 
 const nameColumns = [
   "DESIGN", 
@@ -117,20 +118,26 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       <div className="relative z-20 flex flex-col items-center justify-center w-full h-full p-10 mt-[-5vh]">
           
           <div className="flex flex-col items-center gap-12">
-              {/* Massive Center Initial */}
-              <div className="relative group">
-                <motion.h1 
+              {/* Massive Center Avatar */}
+              <div className="relative group flex items-center justify-center">
+                <motion.div 
                     initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                     animate={{ 
                       opacity: 1, 
                       scale: progress < 100 ? 1 : 1.1,
                       filter: "blur(0px)"
                     }}
-                    className="text-[140px] md:text-[240px] lg:text-[280px] leading-none text-[#F59E9E] italic select-none mix-blend-multiply flex items-center justify-center"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                    className="w-[140px] h-[140px] md:w-[220px] md:h-[220px] lg:w-[260px] lg:h-[260px] rounded-full overflow-hidden flex items-center justify-center z-20"
                 >
-                    {progress < 100 ? "S" : "A"}
-                </motion.h1>
+                    <Image 
+                      src="/pfp2.gif" 
+                      alt="Core Identity" 
+                      width={260} 
+                      height={260} 
+                      className="w-full h-full object-cover" 
+                      unoptimized 
+                    />
+                </motion.div>
                 <div className="absolute -inset-16 border-[0.5px] border-[#F59E9E]/30 rounded-full animate-spin-slow opacity-20 pointer-events-none" />
                 
                 {/* Decorative Small Text Circle */}
