@@ -75,7 +75,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
 
         <motion.div 
           style={{ opacity: nameOpacity, y: nameY }}
-          className="flex flex-col items-center mt-6 text-center"
+          className="flex flex-col items-center mt-3 text-center"
         >
           <span className="text-[32px] sm:text-[40px] font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
             Sakshi Agrahari.

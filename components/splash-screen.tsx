@@ -132,7 +132,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                     {/* Bypassing next/image to prevent strictly enforced aspect-ratios */}
                     {/* Adding mix-blend-multiply to dissolve any white background matte in the original GIF */}
                     <img 
-                      src="/pfp2.gif" 
+                      src="/slpash.gif" 
                       alt="Core Identity" 
                       className="w-full h-auto object-contain mix-blend-multiply drop-shadow-2xl" 
                     />
