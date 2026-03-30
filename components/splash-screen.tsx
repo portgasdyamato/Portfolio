@@ -124,10 +124,10 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                     initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
                     animate={{ 
                       opacity: 1, 
-                      scale: progress < 100 ? 1 : 1.1,
+                      scale: 1,
                       filter: "blur(0px)"
                     }}
-                    className="w-[120px] md:w-[180px] lg:w-[220px] h-auto z-20"
+                    className="w-[90px] md:w-[120px] lg:w-[160px] h-auto z-20"
                 >
                     {/* Bypassing next/image to prevent strictly enforced aspect-ratios */}
                     {/* Adding mix-blend-multiply to dissolve any white background matte in the original GIF */}
