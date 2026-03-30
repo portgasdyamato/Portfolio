@@ -72,7 +72,7 @@ export default function FunFacts() {
               Pony, Panda, and Penguin. There's a certain spirit in each that matches my approach to life.
             </p>
           </div>
-          <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-8">
             {animals.map((anim) => (
               <div key={anim.name} className="relative w-full aspect-[4/5] overflow-hidden rounded-[4rem] bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f7f7f7_60%,_#ececec_100%)] border border-[#F59E9E]/10 shadow-2xl">
                 <div className="absolute inset-0">
