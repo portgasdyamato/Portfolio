@@ -127,7 +127,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                       scale: 1,
                       filter: "blur(0px)"
                     }}
-                    className="w-[90px] md:w-[120px] lg:w-[160px] h-auto z-20"
+                    className="w-[160px] md:w-[220px] lg:w-[320px] h-auto z-20"
                 >
                     {/* Bypassing next/image to prevent strictly enforced aspect-ratios */}
                     {/* Adding mix-blend-multiply to dissolve any white background matte in the original GIF */}
