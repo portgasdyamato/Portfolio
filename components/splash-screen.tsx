@@ -127,15 +127,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                       scale: progress < 100 ? 1 : 1.1,
                       filter: "blur(0px)"
                     }}
-                    className="w-[140px] md:w-[220px] lg:w-[260px] h-auto flex items-center justify-center z-20"
+                    className="w-[120px] md:w-[180px] lg:w-[220px] h-auto z-20"
                 >
-                    <Image 
+                    {/* Bypassing next/image to prevent strictly enforced aspect-ratios */}
+                    {/* Adding mix-blend-multiply to dissolve any white background matte in the original GIF */}
+                    <img 
                       src="/pfp2.gif" 
                       alt="Core Identity" 
-                      width={260} 
-                      height={260} 
-                      className="w-full h-auto object-contain" 
-                      unoptimized 
+                      className="w-full h-auto object-contain mix-blend-multiply drop-shadow-2xl" 
                     />
                 </motion.div>
                 <div className="absolute -inset-16 border-[0.5px] border-[#F59E9E]/30 rounded-full animate-spin-slow opacity-20 pointer-events-none" />
