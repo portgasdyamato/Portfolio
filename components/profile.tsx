@@ -55,6 +55,11 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         className="flex flex-col items-center justify-between h-full pt-10 md:pt-24 lg:pt-32 pb-8 md:pb-12 relative w-full"
       >
         <motion.div
+          animate={{ y: [0, -40, 0] }}
+          transition={{ 
+            y: { repeat: Infinity, duration: 4, ease: "easeInOut" },
+            scale: { duration: 0.5, ease: "easeOut" }
+          }}
           whileHover={{ scale: 1.05 }}
           className="rounded-3xl overflow-hidden w-full max-w-[240px] md:max-w-[340px] transition-all duration-500 ease-out"
         >
