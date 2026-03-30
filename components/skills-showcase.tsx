@@ -212,7 +212,14 @@ export default function SkillsShowcase() {
                 } border transition-all duration-300 ease-in-out`}
               >
                 {/* Large Background Number */}
-                <div className="absolute -bottom-4 -right-2 lg:-bottom-10 lg:-right-4 text-[100px] lg:text-[180px] font-black italic text-black/[0.03] select-none pointer-events-none transition-transform duration-700 group-hover:scale-105" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                <div 
+                  className={`absolute leading-none font-black italic text-black/[0.03] select-none pointer-events-none transition-all duration-700 ease-in-out ${
+                    isActive 
+                      ? 'bottom-2 right-4 lg:bottom-4 lg:right-6 text-[80px] lg:text-[140px]' 
+                      : 'top-1/2 right-6 -translate-y-1/2 lg:top-auto lg:-translate-y-0 lg:bottom-6 lg:right-1/2 lg:translate-x-1/2 text-[45px] lg:text-[70px]'
+                  }`} 
+                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                >
                   {skill.id}
                 </div>
                 
