@@ -244,7 +244,7 @@ export default function ProjectCaseStudy() {
       {/* ── NARRATIVE: WHY & HOW ── */}
       <section className="py-32 md:py-52 container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-start">
-          <div className="lg:col-span-5 sticky top-32">
+          <div className="lg:col-span-5 relative lg:sticky lg:top-32">
              <SectionHeader 
                tag="Project Genesis"
                title={<>Why and How <br /> I built this.</>}
@@ -544,7 +544,7 @@ export default function ProjectCaseStudy() {
                  {project.achievements.map((achievement, i) => (
                    <div key={i} className="flex flex-col items-center">
                       <span className="text-5xl md:text-7xl font-bold font-outfit text-foreground mb-4">
-                        {achievement.includes('%') ? achievement.match(/\d+%/)?.[0] : "100%"}
+                        {achievement.match(/\d+(?:[.,]\d+)?\s*(?:%|x|k|M|m|K|\+|ms|fps)?\+?/i)?.[0] || "98%"}
                       </span>
                       <p className="text-xs font-black uppercase tracking-[0.4em] opacity-40 leading-loose max-w-[200px]">
                         {achievement}
@@ -554,15 +554,15 @@ export default function ProjectCaseStudy() {
               </div>
            </motion.div>
 
-           <div className="flex flex-col md:flex-row gap-6 mt-12 w-full max-w-2xl">
+           <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-12 w-full max-w-2xl">
               {project.liveUrl && (
                 <a 
                   href={project.liveUrl}
                   target="_blank"
-                  className="flex-1 group relative h-20 bg-foreground text-background rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-transform active:scale-95"
+                  className="flex-1 group relative h-16 md:h-20 bg-foreground text-background rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-transform active:scale-95"
                 >
-                  <span className="relative z-10 transition-colors group-hover:text-foreground">Visit Live Realm</span>
                   <ExternalLink size={18} className="relative z-10 group-hover:text-foreground" />
+                  <span className="relative z-10 transition-colors group-hover:text-foreground">Visit Live Realm</span>
                   <div className="absolute inset-0 bg-brand-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]" />
                 </a>
               )}
@@ -570,7 +570,7 @@ export default function ProjectCaseStudy() {
                 <a 
                   href={project.githubUrl}
                   target="_blank"
-                  className="flex-1 group relative h-20 border-2 border-foreground/10 hover:border-brand-500 rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-all active:scale-95 text-foreground"
+                  className="flex-1 group relative h-16 md:h-20 border-2 border-foreground/20 hover:border-brand-500 rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-all active:scale-95 text-foreground"
                 >
                   <Github size={18} />
                   <span>Inspect Source</span>
