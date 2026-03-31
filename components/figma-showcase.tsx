@@ -62,13 +62,13 @@ export default function FigmaShowcase() {
     <section className="pt-0 pb-16 md:pb-32 relative overflow-hidden" id="design-artifacts">
       <div className="container mx-auto px-4 md:px-12 flex flex-col items-center">
         {/* Header - Super Minimalist */}
-        <div className="flex flex-col items-center mb-10 md:mb-16 gap-3">
-          <div className="flex items-center gap-2 opacity-30 text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em]">
-            <Figma size={10} />
+        <div className="flex flex-col items-center mb-16 md:mb-24 gap-4">
+          <div className="flex items-center gap-2 opacity-40 text-[9px] md:text-[11px] font-black uppercase tracking-[0.5em] text-foreground/70">
+            <Figma size={12} className="text-brand-500" />
             Creative Lab
           </div>
-          <h2 className="text-2xl md:text-5xl font-black font-outfit uppercase tracking-tighter text-foreground text-center mb-0">
-            Figma Design <span className="text-foreground/30 font-serif italic font-medium">Artifacts</span>
+          <h2 className="text-3xl md:text-6xl font-black font-outfit uppercase tracking-tighter text-foreground text-center mb-0 leading-[0.9]">
+            Figma Design <span className="text-foreground/20 font-serif italic font-medium">Artifacts</span>
           </h2>
         </div>
 
@@ -86,15 +86,16 @@ export default function FigmaShowcase() {
             >
               <div className="w-full flex flex-col items-center group pt-6 md:pt-12">
                 {/* Details Above Frame */}
-                <div className="flex flex-col items-center text-center mb-8 md:mb-10">
-                   <h3 className="text-lg md:text-3xl font-black uppercase tracking-tight text-foreground mb-2 md:mb-3">{ARTIFACTS[index].name}</h3>
-                   <p className="text-[10px] md:text-sm font-medium text-foreground/50 max-w-xl leading-relaxed italic px-8 md:px-0">
+                <div className="flex flex-col items-center text-center mb-12 md:mb-14">
+                   <h3 className="text-xl md:text-4xl font-black uppercase tracking-tight text-foreground mb-3 md:mb-4">{ARTIFACTS[index].name}</h3>
+                   <div className="w-12 h-[1px] bg-brand-500/30 mb-4 md:mb-6" />
+                   <p className="text-xs md:text-base font-medium text-foreground/60 max-w-2xl leading-relaxed italic px-8 md:px-0">
                      {ARTIFACTS[index].description}
                    </p>
                 </div>
 
                 {/* The Pure Artifact Screen */}
-                <div className="w-full overflow-hidden relative rounded-[1.5rem] bg-black shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)]">
+                <div className="w-full overflow-hidden relative rounded-[2rem] bg-white/5 border border-white/10">
                   <div className={`w-full ${ARTIFACTS[index].aspect} max-h-[75vh] overflow-hidden relative`}>
                      <iframe 
                       width="100%" 

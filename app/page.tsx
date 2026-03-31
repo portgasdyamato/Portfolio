@@ -78,9 +78,11 @@ export default function Home() {
 
                 {/* ── WORK SECTION ── */}
                 <section id="projects" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
-                  <div className="flex flex-col gap-6 md:gap-10">
+                  <div className="flex flex-col gap-24 md:gap-48">
                     <Projects />
-                    <FigmaShowcase />
+                    <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
+                      <FigmaShowcase />
+                    </div>
                   </div>
                   <Achievements />
                   <Certificates />
