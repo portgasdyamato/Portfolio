@@ -191,11 +191,11 @@ export default function FigmaShowcase() {
                      <div className="flex items-center gap-4 text-foreground/30">
                         <Play size={14} className="opacity-50" />
                         <div className="w-[1px] h-4 bg-white/10" />
-                        <ExternalLink size={14} className="group-hover:text-brand-500 transition-colors" />
+
                      </div>
                   </div>
 
-                  <div className={`w-full ${ARTIFACTS[index].aspect} h-[70vh] overflow-hidden relative bg-black`}>
+                  <div className={`w-full ${ARTIFACTS[index].aspect} md:h-[70vh] overflow-hidden relative bg-black`}>
                      <iframe 
                       width="100%" 
                       height="100%"
