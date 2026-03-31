@@ -43,30 +43,47 @@ export default function Projects() {
   return (
     <div className="py-6 md:py-16">
       {/* Header */}
-      <div className="mb-14 md:mb-12 text-center">
+      <div className="mb-14 md:mb-20 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center gap-4 md:gap-6"
+          className="flex flex-col items-center"
         >
-          <div className="px-4">
-            <h2 className="text-3xl md:text-5xl font-bold font-outfit mb-3 md:mb-4 uppercase tracking-tighter">
-              Featured Projects
-            </h2>
-            <p className="text-muted-foreground text-sm md:text-lg max-w-xl font-inter mx-auto leading-relaxed">
-              A collection of digital experiences combining design thinking with technological innovation.
-            </p>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-6">
+            <ArrowUpRight size={12} strokeWidth={2.5} />
+            The Portfolio
           </div>
           
-          <div className="flex gap-2 p-1 bg-white/50 dark:bg-white/5 backdrop-blur-md rounded-2xl border border-white/20">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight mb-4" 
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            Featured <span className="text-[#F59E9E]">Projects.</span>
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="max-w-2xl text-muted-foreground font-inter text-base md:text-lg mb-10 leading-relaxed"
+          >
+            A collection of digital experiences combining human-centered design with robust engineering and cutting-edge technology.
+          </motion.p>
+          
+          <div className="flex gap-2 p-1.5 bg-white/50 dark:bg-black/20 backdrop-blur-md rounded-2xl border border-black/5 dark:border-white/5 shadow-xl">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setFilter(category)}
-                className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all ${
+                className={`px-6 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                   filter === category
-                    ? "bg-brand-600 text-white shadow-lg shadow-brand-500/20"
+                    ? "bg-[#1a0a0a] dark:bg-white text-white dark:text-[#1a0a0a] shadow-lg"
                     : "hover:bg-brand-500/10 text-muted-foreground"
                 }`}
               >
@@ -365,7 +382,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
       }}
       className="bg-transparent group/project cursor-pointer flex flex-col items-center gap-4 md:gap-6"
     >
-      <div className="relative w-full h-[280px] sm:h-[350px] md:h-[450px] shrink-0 pointer-events-none">
+      <div className="relative w-full h-[280px] sm:h-[320px] md:h-[380px] shrink-0 pointer-events-none">
         <motion.div 
           animate={{ 
             scale: isHovered ? 1.05 : 1,
@@ -413,23 +430,23 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         <div className="flex items-center justify-center pointer-events-auto w-full">
            <AnimatePresence>
              {isActive && (
-                <motion.div
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
-                  className="flex flex-col md:flex-row items-center justify-center gap-5 md:gap-8 w-full"
-                >
-                  <button 
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      onProjectClick(project)
-                    }}
-                    className="group relative h-12 md:h-[52px] px-8 md:px-10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[9px] md:text-[10px] font-bold uppercase tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden shadow-sm"
+                  <motion.div
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
+                    className="flex flex-row items-center justify-center gap-3 md:gap-8 w-full"
                   >
-                    <span className="relative z-10 transition-colors duration-500 group-hover:text-white dark:group-hover:text-[#1a0a0a]">Quick View</span>
-                    <div className="absolute inset-0 bg-[#1a0a0a] dark:bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
-                  </button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        onProjectClick(project)
+                      }}
+                      className="group relative h-10 md:h-[52px] px-4 md:px-10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden shadow-sm shrink-0"
+                    >
+                      <span className="relative z-10 transition-colors duration-500 group-hover:text-white dark:group-hover:text-[#1a0a0a]">Quick View</span>
+                      <div className="absolute inset-0 bg-[#1a0a0a] dark:bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
+                    </button>
                   
                   <Link 
                     href={`/projects/${project.slug}`}
@@ -439,10 +456,10 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative h-12 md:h-[52px] px-10 md:px-12 bg-[#F59E9E] text-[#1a0a0a] rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
+                      className="group relative h-10 md:h-[52px] px-6 md:px-12 bg-[#F59E9E] text-[#1a0a0a] rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
                     >
-                      <span className="relative z-10 flex items-center gap-2.5 transition-colors duration-500 group-hover:text-white">
-                         Case Study <ArrowUpRight size={16} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500" />
+                      <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-white">
+                         Case Study <ArrowUpRight size={14} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 md:w-4 md:h-4" />
                       </span>
                       <div className="absolute inset-0 bg-[#E87A7A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                     </motion.div>
