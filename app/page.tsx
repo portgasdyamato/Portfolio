@@ -22,8 +22,16 @@ import CustomCursor from "@/components/custom-cursor"
 import PixelCharacter from "@/components/pixel-character"
 import { Sparkles } from "lucide-react"
 
+// Global session tracker (Survivies SPA navigations, resets on Refresh)
+let hasShownSplash = false;
+
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(!hasShownSplash)
+
+  const handleFinishLoading = () => {
+    setIsLoading(false);
+    hasShownSplash = true;
+  };
 
   useEffect(() => {
     // Force set overflow to hidden until splash exits
@@ -38,7 +46,7 @@ export default function Home() {
     <>
       <AnimatePresence mode="wait">
         {isLoading ? (
-          <SplashScreen key="splash" finishLoadingAction={() => setIsLoading(false)} />
+          <SplashScreen key="splash" finishLoadingAction={handleFinishLoading} />
         ) : (
           <motion.div 
             key="content"

@@ -2,11 +2,13 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Figma, ChevronLeft, ChevronRight, Zap, Play, Info, ExternalLink } from "lucide-react"
+import Link from "next/link"
+import { Figma, ChevronLeft, ChevronRight, Zap, Play, Info, ExternalLink, ArrowUpRight } from "lucide-react"
 
 const ARTIFACTS = [
   {
     name: "Spotify Experience Redesign",
+    slug: "spotify-redesign",
     type: "Desktop Modal Protocol",
     description: "A cinematic reimagining of the Spotify desktop player, focusing on immersive modal transitions and glassmorphic UI depth.",
     url: "https://embed.figma.com/proto/9HGoM1V4IJ4v3rScyL4CqG/Spotify-Modal-Pop-Up--Redesign-?node-id=1-1532&scaling=scale-down-to-fit&content-scaling=fixed&page-id=0%3A1&embed-host=share",
@@ -15,6 +17,7 @@ const ARTIFACTS = [
   },
   {
     name: "Kinetic UI Card",
+    slug: "kinetic-ui",
     type: "Advanced Interaction Study",
     description: "An exploration of fluid layout shifts, elegantly transitioning between high-impact titles and descriptive layers.",
     url: "https://embed.figma.com/proto/SvtspfTdkmo95Hs4LA5JJc/Interactive-Card-with-Animation?node-id=1-69&p=f&scaling=scale-down-to-fit&content-scaling=fixed&page-id=0%3A1&embed-host=share",
@@ -23,6 +26,7 @@ const ARTIFACTS = [
   },
   {
     name: "Interactive Flip Cards",
+    slug: "flip-cards",
     type: "Micro-Interaction Lab",
     description: "A high-fidelity prototype exploring physical drag-and-flip mechanics and depth layers for mobile navigation.",
     url: "https://embed.figma.com/proto/As39bcQnDyAGkBN1hIbvwB/Untitled?node-id=1-82&scaling=scale-down-to-fit&content-scaling=fixed&page-id=0%3A1&embed-host=share",
@@ -190,10 +194,16 @@ export default function FigmaShowcase() {
                         <div className="w-2 h-2 rounded-full bg-brand-500 animate-pulse shadow-[0_0_15px_rgba(245,126,126,0.9)]" />
                         <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/30 font-mono">Interactive Laboratory Prototype</span>
                      </div>
-                     <div className="flex items-center gap-4 text-foreground/30">
-                        <Play size={14} className="opacity-50" />
+                     <div className="flex items-center gap-4 text-foreground/30 pointer-events-auto">
+                        <Link 
+                           href={`/projects/${ARTIFACTS[index].slug}`}
+                           className="flex items-center gap-2 group/link transition-all"
+                        >
+                            <span className="text-[10px] font-black uppercase tracking-widest text-foreground/20 group-hover/link:text-brand-500 transition-colors">Inspect Interaction Protocol</span>
+                            <ArrowUpRight size={14} className="group-hover/link:text-brand-500 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-all" />
+                        </Link>
                         <div className="w-[1px] h-4 bg-white/10" />
-
+                        <Play size={14} className="opacity-50" />
                      </div>
                   </div>
 
