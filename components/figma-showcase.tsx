@@ -104,36 +104,38 @@ export default function FigmaShowcase() {
       </div>
 
       <div className="container mx-auto px-4 md:px-12 flex flex-col items-center relative z-10">
-        {/* Header - Boutique Editorial Lockup */}
-        <div className="flex flex-col items-center mb-12 md:mb-20">
+        {/* Unified Section Heading */}
+        <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-24">
           <motion.div 
-             initial={{ opacity: 0, scale: 0.9 }}
-             whileInView={{ opacity: 1, scale: 1 }}
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="px-5 py-2 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/5 rounded-full backdrop-blur-xl mb-10 flex items-center gap-3 group shadow-xl transition-all duration-500 hover:border-brand-500/30 hover:bg-white/15"
+             className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-6"
           >
-            <div className="relative flex items-center justify-center">
-              <Figma size={14} className="text-[#F24E1E] group-hover:scale-110 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-[#F24E1E]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
-            </div>
-            <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em] text-foreground/60 transition-colors group-hover:text-foreground">Creative Lab</span>
-            <div className="flex items-center">
-              <div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(245,126,126,0.6)]" />
-              <div className="absolute w-1.5 h-1.5 rounded-full bg-brand-500 animate-ping opacity-75" />
-            </div>
+            <Figma size={12} fill="currentColor" strokeWidth={0} />
+            Creative Laboratory
           </motion.div>
           
-          <div className="relative text-center">
-            <h2 className="text-4xl md:text-7xl font-bold font-outfit uppercase tracking-tighter text-foreground leading-[0.85] mb-4">
-              Figma Design <br className="md:hidden" />
-              <span className="text-foreground/5 font-serif italic font-medium ml-0 md:ml-4 select-none">Artifacts</span>
-            </h2>
-            <div className="flex justify-center items-center gap-6 opacity-30">
-               <div className="h-[1px] w-12 bg-foreground" />
-               <Zap size={14} />
-               <div className="h-[1px] w-12 bg-foreground" />
-            </div>
-          </div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight" 
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            Figma Design <span className="text-[#F59E9E]">Artifacts.</span>
+          </motion.h2>
+          
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="max-w-2xl text-muted-foreground mt-4 font-inter text-base md:text-lg"
+          >
+            A curated showcase of high-fidelity prototypes and interaction studies, merging creative intuition with technical precision.
+          </motion.p>
         </div>
 
         {/* Carousel Wrapper */}
