@@ -554,12 +554,12 @@ export default function ProjectCaseStudy() {
               </div>
            </motion.div>
 
-           <div className="flex flex-col md:flex-row gap-4 md:gap-6 mt-12 w-full max-w-2xl">
+           <div className="flex flex-col items-center sm:flex-row justify-center gap-4 md:gap-6 mt-12 w-full">
               {project.liveUrl && (
                 <a 
                   href={project.liveUrl}
                   target="_blank"
-                  className="flex-1 group relative h-16 md:h-20 bg-foreground text-background rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-transform active:scale-95"
+                  className="w-[90%] max-w-[320px] sm:max-w-none sm:w-auto px-8 md:px-12 group relative h-16 md:h-20 bg-foreground text-background rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-transform active:scale-95"
                 >
                   <ExternalLink size={18} className="relative z-10 group-hover:text-foreground" />
                   <span className="relative z-10 transition-colors group-hover:text-foreground">Visit Live Realm</span>
@@ -570,7 +570,7 @@ export default function ProjectCaseStudy() {
                 <a 
                   href={project.githubUrl}
                   target="_blank"
-                  className="flex-1 group relative h-16 md:h-20 border-2 border-foreground/20 hover:border-brand-500 rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-all active:scale-95 text-foreground"
+                  className="w-[90%] max-w-[320px] sm:max-w-none sm:w-auto px-8 md:px-12 group relative h-16 md:h-20 border-2 border-foreground/20 hover:border-brand-500 rounded-full overflow-hidden flex items-center justify-center gap-3 font-black text-xs uppercase tracking-[0.3em] transition-all active:scale-95 text-foreground"
                 >
                   <Github size={18} />
                   <span>Inspect Source</span>
