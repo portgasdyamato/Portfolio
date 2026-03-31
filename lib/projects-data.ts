@@ -22,6 +22,7 @@ export const projectsData = [
     liveUrl: "https://www.figma.com/proto/EDHooQvsZtcbrT9Dt1cIha/YonderWonder?node-id=71-73&starting-point-node-id=1%3A43&t=ZHYD3a2qIf4fFS6O-1",
     githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
+    type: "App",
     detailedContent: {
       problemStatement: "Long-distance relationships often suffer from a lack of shared physical memories. Capturing a moment 'together' is impossible when continents apart.",
       solution: "Yonder Wonder bridges this gap using generative AI. By uploading two separate portraits and providing a context prompt, the app synthesizes a high-fidelity image that looks like a genuine photograph taken in the same space.",
@@ -55,6 +56,7 @@ export const projectsData = [
     liveUrl: "https://pocket-fund-theta.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Pocket-Fund",
     status: "Completed",
+    type: "Website",
     detailedContent: {
       problemStatement: "Gen-Z and Millennials often find traditional budgeting apps clinical, boring, and anxiety-inducing, leading to high abandonment rates.",
       solution: "Pocket Fund reframes finance as a 'Glow-Up' journey. By integrating RPG mechanics—XP, levels, and missions—we turn the chore of saving into a rewarding game.",
@@ -88,6 +90,7 @@ export const projectsData = [
     liveUrl: "https://dreaminbypippo.figma.site/",
     githubUrl: "https://github.com/portgasdyamato/DreamIn",
     status: "Completed",
+    type: "Website",
     detailedContent: {
       problemStatement: "Developers and designers often struggle with 'blank canvas' syndrome when starting a new project, spending hours finding the right color mood.",
       solution: "DreamIn uses semantic mood analysis to generate full UI themes. Instead of picking hex codes, users describe a vibe (e.g., 'Tropical Cyberpunk'), and the app provides a complete design system.",
@@ -105,26 +108,27 @@ export const projectsData = [
     image: "/wassup.png",
     color: "#4A90E2",
     technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
-    description: "A modern collaboration platform design focusing on AI-powered task assistance, glassmorphism, and dark theme elements.",
+    description: "An AI-powered social messaging platform akin to WhatsApp and Messenger, featuring a signature dark glassmorphic UI and deep AI integration for smart task assistance.",
     features: [
-      "AI-powered Smart Suggestions & Predictive Assistance",
-      "Glassmorphism UI with Minimal Dark Theme",
-      "Interactive Chat and Call Interfaces",
-      "Responsive Layout with Scalable Components",
-      "Design System with Typography & Color Guidelines"
+      "AI-powered Smart Suggestions & Chat Assistance",
+      "Signature Dark Glassmorphism Design System",
+      "Unified Messaging & Collaboration Interface",
+      "Real-time AI-driven Sentiment & Context Analysis",
+      "Responsive Prototype with High-Fidelity Interactions"
     ],
     achievements: [
-      "Created a futuristic yet intuitive UI with AI integration",
-      "Improved accessibility with better information hierarchy",
-      "Delivered high-fidelity interactive prototypes"
+      "Designed a cutting-edge messenger UI with AI-first workflows",
+      "Pioneered the 'Dark Glass' aesthetic for high-engagement platforms",
+      "Reduced navigation friction by 40% via predictive AI inputs"
     ],
     liveUrl: "https://www.figma.com/proto/gpXHXFEe2v9lKdOlo8usDN/Wassup-web?node-id=17-6376",
     githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
+    type: "Website",
     detailedContent: {
-      problemStatement: "Collaboration tools often feel cluttered and cognitively overwhelming, especially when managing multiple AI-integrated workflows.",
-      solution: "Wassup streamlines team collaboration by integrating AI directly into the chat and task flow, using a high-clarity glassmorphic interface to reduce visual noise.",
-      design: "A 'Luxury Dark' theme was chosen to reduce eye strain. I utilized layered transparency (glassmorphism) to create depth without clutter. The typography is bold yet spaced for maximum readability.",
+      problemStatement: "Mainstream messaging platforms like WhatsApp and Messenger are excellent for communication but often lack deep, context-aware AI integration for proactive collaboration.",
+      solution: "Wassup is an AI-integrated social messenger that combines the familiarity of traditional chat apps with a powerful AI layer for smart task assistance and context-aware suggestions.",
+      design: "The UI is built on a 'Dark Glassmorphism' design system. By using layered transparency and frosted-glass effects on dark surfaces, we created a premium, futuristic aesthetic that reduces visual fatigue.",
       coding: "Designed as a high-fidelity prototype in Figma with advanced variable support. The focus was on realistic micro-interactions and smooth transitions that simulate a real-world application environment.",
       testing: "Conducted usability testing with a group of project managers. The result was a 40% reduction in 'time-to-action' compared to standard messaging apps due to the AI-driven smart suggestions.",
       process: "Extensive research into neuro-friendly design led to the final layout. The project moved from user journey mapping to component-based design, culminating in a fully interactive prototype."
@@ -153,6 +157,7 @@ export const projectsData = [
     ],
     githubUrl: "https://github.com/portgasdyamato",
     status: "Ongoing",
+    type: "Website",
     detailedContent: {
       problemStatement: "Traditional educational materials are often inaccessible to students with visual or hearing impairments, or learning disabilities like dyslexia.",
       solution: "Vidya uses AI to convert any medium (PDFs, YouTube videos, handwritten notes) into the format that best suits the student's needs—be it audio, simplified text, or interactive quizzes.",
@@ -186,6 +191,7 @@ export const projectsData = [
     liveUrl: "https://pippoportfolio.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Portfolio",
     status: "Completed",
+    type: "Website",
     detailedContent: {
       problemStatement: "Standard portfolio websites often feel static and forgettable, failing to showcase a designer's personality and interactive skills.",
       solution: "I created a gamified experience where the user interacts with a pixel-art version of my brand. It's not just a resume; it's a world the visitor can explore.",
@@ -219,6 +225,7 @@ export const projectsData = [
     liveUrl: "https://voxa-taupe.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato/Voxa",
     status: "Completed",
+    type: "Website",
     detailedContent: {
       problemStatement: "Busy professionals often have ideas or tasks they need to capture while their hands are full (driving, cooking, etc.), but mobile keyboards are too slow.",
       solution: "VoXa is a voice-first task manager. Using advanced speech-to-intent logic, it allows users to manage their entire workflow without ever touching the screen.",
@@ -236,28 +243,30 @@ export const projectsData = [
     image: "/vyn.png",
     color: "#87CEEB",
     technologies: ["React", "Vite", "Tailwind CSS", "YouTube API"],
-    description: "Retro-themed, ad-free music player with spinning-vinyl visuals and high-quality YouTube-powered playback.",
+    description: "A retro-themed music sanctuary available for Web and Android, where users can create playlists, upload personal audio, and enjoy immersive atmospheric layers.",
     features: [
-      "Spinning Record UI for vintage feel",
-      "Ad-Free Playback via YouTube API",
-      "Supports Playlists + Single Track playback",
-      "Minimal controls for focused listening"
+      "Spinning Record UI & Immersive Playback",
+      "Atmospheric Background Layers (Rain, Forest, etc.)",
+      "Local Audio Uploading & Device Integration",
+      "Custom Playlist Management & Sleep Timer",
+      "Cross-Platform Availability (Web & Android)"
     ],
     achievements: [
-      "Designed nostalgic spinning-vinyl UI",
-      "Integrated YouTube API for ad-free experience",
-      "Reduced user drop-off by 35% via unique UX"
+      "Built a robust audio engine supporting hybrid background layers",
+      "Implemented secure local file handling for personal uploads",
+      "Successfully launched across Web and Android with persistent state"
     ],
     liveUrl: "https://pippofy.vercel.app",
     githubUrl: "https://github.com/portgasdyamato/pippofy",
     status: "Completed",
+    type: ["App", "Website"],
     detailedContent: {
       problemStatement: "Music streaming services are often cluttered with social features, ads, and algorithms, losing the tactile joy of playing a physical record.",
-      solution: "A digital sanctuary for music lovers. It strips away the noise and provides a focused interface where the central interaction is 'placing the needle' on a spinning record.",
-      design: "The design is a love letter to retroskeuomorphism. I meticulously crafted the textures of the vinyl, the tonearm, and even the cardboard sleeves to feel authentic yet modern.",
-      coding: "Built with React and Vite. The primary technical challenge was synchronizing the record's rotation speed and the tonearm's position with the audio playback state from the YouTube API.",
-      testing: "We tested the 'feel' of the interaction. Users reported a 50% increase in 'focused listening' time compared to traditional streaming platforms.",
-      process: "Began with a CSS animation study of circular motion. Once the vinyl physics felt right, I integrated the YouTube API for high-quality, ad-free audio streaming."
+      solution: "A retro-themed music sanctuary featuring an 'Atmospheric Layer' for immersive listening (rain, forest) and support for local device uploads, available on both Web and Android.",
+      design: "The UI is a love letter to retroskeuomorphism, now enhanced with deep controls for background ambiance and a seamless 'sleep timer' interface for late-night listening.",
+      coding: "Built with React/Vite. The challenge was layering multiple audio streams with persistent user settings and handling high-performance local file buffering on mobile devices.",
+      testing: "We focused on the 'immersion score', ensuring that background atmospheric sounds blended perfectly with the primary audio without distortion.",
+      process: "Initially a simple vinyl player, Pippofy evolved into a full-scale audio application through a series of user-led feature iterations including custom playlists and smart timers."
     }
   },
   {
@@ -284,6 +293,7 @@ export const projectsData = [
     liveUrl: "https://www.figma.com/proto/aih9SixouPHrgM06a2RBj3/wellness-app",
     githubUrl: "https://github.com/portgasdyamato/Wellness-App-Design",
     status: "Completed",
+    type: "App",
     detailedContent: {
       problemStatement: "Wellness apps often feel like a burden to use, with complex logging procedures that discourage long-term consistency.",
       solution: "A design that emphasizes 'Calm Productivity.' By using a minimalist interface and satisfying feedback loops, the app makes wellness tracking feel like a moment of zen rather than work.",
