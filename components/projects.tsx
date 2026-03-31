@@ -43,18 +43,18 @@ export default function Projects() {
   return (
     <div className="py-6 md:py-16">
       {/* Header */}
-      <div className="mb-8 md:mb-12 text-center">
+      <div className="mb-14 md:mb-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="flex flex-col items-center gap-6"
+          className="flex flex-col items-center gap-4 md:gap-6"
         >
-          <div>
-            <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 uppercase tracking-tighter">
+          <div className="px-4">
+            <h2 className="text-3xl md:text-5xl font-bold font-outfit mb-3 md:mb-4 uppercase tracking-tighter">
               Featured Projects
             </h2>
-            <p className="text-muted-foreground text-lg max-w-xl font-inter mx-auto">
+            <p className="text-muted-foreground text-sm md:text-lg max-w-xl font-inter mx-auto leading-relaxed">
               A collection of digital experiences combining design thinking with technological innovation.
             </p>
           </div>
@@ -254,7 +254,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[450px] sm:h-[600px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
+    <div className="relative w-full h-[550px] sm:h-[700px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
 
       <motion.div 
@@ -356,15 +356,16 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
       transition={{ type: "spring", stiffness: 220, damping: 28, mass: 1 }}
       style={{
         position: "absolute",
-        width: "min(650px, 85vw)",
-        height: "850px", 
+        width: "min(650px, 92vw)",
+        height: "auto", 
+        minHeight: "500px",
         transformStyle: "preserve-3d",
         zIndex: Math.round(100 - Math.abs(offset) * 40),
         pointerEvents: isActive ? "auto" : "none",
       }}
-      className="bg-transparent group/project cursor-pointer flex flex-col items-center gap-6"
+      className="bg-transparent group/project cursor-pointer flex flex-col items-center gap-4 md:gap-6"
     >
-      <div className="relative w-full h-[380px] md:h-[450px] shrink-0 pointer-events-none">
+      <div className="relative w-full h-[280px] sm:h-[350px] md:h-[450px] shrink-0 pointer-events-none">
         <motion.div 
           animate={{ 
             scale: isHovered ? 1.05 : 1,
@@ -382,13 +383,13 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         </motion.div>
       </div>
 
-      <div className="flex flex-col items-center w-full z-10 mt-4 md:mt-6">
+      <div className="flex flex-col items-center w-full z-10 mt-2 md:mt-6">
         <motion.div 
           animate={{ y: [0, -4, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-4 md:mb-6"
         >
-          <div className={`px-4 py-1.5 rounded-[0.4rem] text-white text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] flex items-center gap-2 shadow-sm ${
+          <div className={`px-3 py-1 rounded-[0.4rem] text-white text-[7px] md:text-[9px] font-black uppercase tracking-[0.3em] flex items-center gap-2 shadow-sm ${
             project.status === 'Completed' ? 'bg-[#28B880]' : 'bg-amber-500'
           }`}>
             <div className="w-1 h-1 bg-white rounded-full animate-pulse" />
@@ -405,7 +406,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
           ))}
         </motion.div>
         
-        <h3 className="text-4xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-6 md:mb-8 italic text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <h3 className="text-3xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-5 md:mb-8 italic text-center" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           {project.title}
         </h3>
         

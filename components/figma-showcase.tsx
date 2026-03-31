@@ -59,21 +59,21 @@ export default function FigmaShowcase() {
   } as any
 
   return (
-    <section className="pt-0 pb-24 md:pb-32 relative overflow-hidden" id="design-artifacts">
+    <section className="pt-0 pb-16 md:pb-32 relative overflow-hidden" id="design-artifacts">
       <div className="container mx-auto px-4 md:px-12 flex flex-col items-center">
         {/* Header - Super Minimalist */}
-        <div className="flex flex-col items-center mb-16 gap-3">
-          <div className="flex items-center gap-2 opacity-30 text-[9px] font-black uppercase tracking-[0.4em]">
+        <div className="flex flex-col items-center mb-10 md:mb-16 gap-3">
+          <div className="flex items-center gap-2 opacity-30 text-[8px] md:text-[9px] font-black uppercase tracking-[0.4em]">
             <Figma size={10} />
             Creative Lab
           </div>
-          <h2 className="text-3xl md:text-5xl font-black font-outfit uppercase tracking-tighter text-foreground text-center mb-0">
+          <h2 className="text-2xl md:text-5xl font-black font-outfit uppercase tracking-tighter text-foreground text-center mb-0">
             Figma Design <span className="text-foreground/30 font-serif italic font-medium">Artifacts</span>
           </h2>
         </div>
 
         {/* Carousel Wrapper */}
-        <div className="relative w-full flex flex-col items-center min-h-[400px]">
+        <div className="relative w-full flex flex-col items-center min-h-[350px] md:min-h-[450px]">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={index}
@@ -84,11 +84,13 @@ export default function FigmaShowcase() {
               exit="exit"
               className={`w-full flex flex-col items-center ${ARTIFACTS[index].width} mx-auto px-4 md:px-0`}
             >
-              <div className="w-full flex flex-col items-center group pt-12">
+              <div className="w-full flex flex-col items-center group pt-6 md:pt-12">
                 {/* Details Above Frame */}
-                <div className="flex flex-col items-center text-center mb-10">
-                   <h3 className="text-xl md:text-3xl font-black uppercase tracking-tight text-foreground mb-3">{ARTIFACTS[index].name}</h3>
-                   <p className="text-xs md:text-sm font-medium text-foreground/50 max-w-xl leading-relaxed italic">{ARTIFACTS[index].description}</p>
+                <div className="flex flex-col items-center text-center mb-8 md:mb-10">
+                   <h3 className="text-lg md:text-3xl font-black uppercase tracking-tight text-foreground mb-2 md:mb-3">{ARTIFACTS[index].name}</h3>
+                   <p className="text-[10px] md:text-sm font-medium text-foreground/50 max-w-xl leading-relaxed italic px-8 md:px-0">
+                     {ARTIFACTS[index].description}
+                   </p>
                 </div>
 
                 {/* The Pure Artifact Screen */}
@@ -110,18 +112,18 @@ export default function FigmaShowcase() {
           </AnimatePresence>
 
           {/* Controls */}
-          <div className="absolute top-[60%] -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none px-4 md:-mx-12 z-50">
+          <div className="absolute top-[82%] md:top-[60%] -translate-y-1/2 left-0 right-0 flex justify-between pointer-events-none px-1 md:-mx-12 z-50">
             <button 
               onClick={() => paginate(-1)}
-              className="pointer-events-auto h-12 w-12 md:h-16 md:w-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-xl group"
+              className="pointer-events-auto h-10 w-10 md:h-16 md:w-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-[0_10px_20px_-10px_rgba(0,0,0,0.3)] group"
             >
-              <ChevronLeft size={24} className="group-hover:-translate-x-1 transition-transform" />
+              <ChevronLeft size={20} className="md:w-6 md:h-6 group-hover:-translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={() => paginate(1)}
-              className="pointer-events-auto h-12 w-12 md:h-16 md:w-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-xl group"
+              className="pointer-events-auto h-10 w-10 md:h-16 md:w-16 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-xl group"
             >
-              <ChevronRight size={24} className="group-hover:translate-x-1 transition-transform" />
+              <ChevronRight size={20} className="md:w-6 md:h-6 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
         </div>
