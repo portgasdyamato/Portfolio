@@ -45,8 +45,9 @@ export default function FigmaShowcase() {
     enter: (direction: number) => ({
       x: direction > 0 ? "20%" : "-20%",
       opacity: 0,
-      scale: 0.95,
-      filter: "blur(4px)"
+      scale: 0.9,
+      filter: "blur(8px)",
+      rotateY: direction > 0 ? 10 : -10
     }),
     center: {
       zIndex: 1,
@@ -54,9 +55,12 @@ export default function FigmaShowcase() {
       opacity: 1,
       scale: 1,
       filter: "blur(0px)",
+      rotateY: 0,
       transition: { 
-        duration: 0.8, 
-        ease: [0.16, 1, 0.3, 1],
+        type: "spring",
+        stiffness: 180,
+        damping: 25,
+        mass: 1,
         opacity: { duration: 0.4 }
       }
     },
@@ -64,76 +68,76 @@ export default function FigmaShowcase() {
       zIndex: 0,
       x: direction < 0 ? "20%" : "-20%",
       opacity: 0,
-      scale: 0.95,
-      filter: "blur(4px)",
+      scale: 0.9,
+      filter: "blur(8px)",
+      rotateY: direction < 0 ? 10 : -10,
       transition: { 
-        duration: 0.8, 
-        ease: [0.16, 1, 0.3, 1],
+        type: "spring",
+        stiffness: 180,
+        damping: 25,
+        mass: 1,
         opacity: { duration: 0.4 }
       }
     })
   }
 
   return (
-    <section className="pt-0 pb-24 md:pb-40 relative overflow-visible" id="design-artifacts">
+    <section className="pt-0 pb-32 md:pb-48 relative overflow-visible" id="design-artifacts">
       {/* ── Immersive Background Elements ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div 
           animate={{ 
-            x: [0, 50, -50, 0],
-            y: [0, -30, 30, 0],
-            rotate: [0, 90, 180, 270, 360]
+            x: [0, 40, -40, 0],
+            y: [0, -20, 20, 0],
           }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-brand-500/5 rounded-full blur-[120px]" 
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-1/4 -left-20 w-[600px] h-[600px] bg-brand-500/5 rounded-full blur-[140px]" 
         />
         <motion.div 
           animate={{ 
-            x: [0, -50, 50, 0],
-            y: [0, 30, -30, 0],
-            rotate: [360, 270, 180, 90, 0]
+            x: [0, -40, 40, 0],
+            y: [0, 20, -20, 0],
           }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-[#F59E9E]/5 rounded-full blur-[100px]" 
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-1/4 -right-20 w-[500px] h-[500px] bg-[#F59E9E]/5 rounded-full blur-[120px]" 
         />
       </div>
 
       <div className="container mx-auto px-4 md:px-12 flex flex-col items-center relative z-10">
-        {/* Header - Super Minimalist & Elegant */}
-        <div className="flex flex-col items-center mb-16 md:mb-28 gap-6">
+        {/* Header - Boutique Editorial Lockup */}
+        <div className="flex flex-col items-center mb-12 md:mb-20">
           <motion.div 
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-center gap-3 px-5 py-2 bg-white/5 border border-black/[0.03] dark:border-white/5 rounded-full shadow-sm backdrop-blur-md"
+             initial={{ opacity: 0, scale: 0.9 }}
+             whileInView={{ opacity: 1, scale: 1 }}
+             viewport={{ once: true }}
+             className="px-5 py-2 bg-white/10 dark:bg-black/20 border border-white/20 dark:border-white/5 rounded-full backdrop-blur-xl mb-10 flex items-center gap-3 group shadow-xl transition-all duration-500 hover:border-brand-500/30 hover:bg-white/15"
           >
-            <div className="relative">
-              <Figma size={14} className="text-[#F24E1E] relative z-10" />
-              <div className="absolute inset-0 bg-[#F24E1E]/20 blur-sm animate-pulse" />
+            <div className="relative flex items-center justify-center">
+              <Figma size={14} className="text-[#F24E1E] group-hover:scale-110 transition-transform duration-500" />
+              <div className="absolute inset-0 bg-[#F24E1E]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
-            <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.5em] text-foreground/50">
-              Creative Lab
-            </span>
+            <span className="text-[10px] md:text-[11px] font-black uppercase tracking-[0.3em] text-foreground/60 transition-colors group-hover:text-foreground">Creative Lab</span>
+            <div className="flex items-center">
+              <div className="w-1.5 h-1.5 rounded-full bg-brand-500 shadow-[0_0_8px_rgba(245,126,126,0.6)]" />
+              <div className="absolute w-1.5 h-1.5 rounded-full bg-brand-500 animate-ping opacity-75" />
+            </div>
           </motion.div>
           
-          <div className="relative">
-            <h2 className="text-4xl md:text-8xl font-black font-outfit uppercase tracking-tighter text-foreground text-center mb-0 leading-[0.85]">
+          <div className="relative text-center">
+            <h2 className="text-4xl md:text-7xl font-bold font-outfit uppercase tracking-tighter text-foreground leading-[0.85] mb-4">
               Figma Design <br className="md:hidden" />
-              <span className="text-foreground/10 font-serif italic font-medium ml-0 md:ml-4">Artifacts</span>
+              <span className="text-foreground/5 font-serif italic font-medium ml-0 md:ml-4 select-none">Artifacts</span>
             </h2>
-            {/* Subtle Floating Sparkles */}
-            <motion.div 
-              animate={{ y: [0, -10, 0], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity }}
-              className="absolute -top-10 -right-10 md:-right-20 text-brand-500/30"
-            >
-              <Zap size={40} className="md:w-16 md:h-16" />
-            </motion.div>
+            <div className="flex justify-center items-center gap-6 opacity-30">
+               <div className="h-[1px] w-12 bg-foreground" />
+               <Zap size={14} />
+               <div className="h-[1px] w-12 bg-foreground" />
+            </div>
           </div>
         </div>
 
         {/* Carousel Wrapper */}
-        <div className="relative w-full flex flex-col items-center min-h-[400px] md:min-h-[550px]">
+        <div className="relative w-full flex flex-col items-center min-h-[450px] md:min-h-[600px] perspective-[2000px]">
           <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
               key={index}
@@ -143,43 +147,55 @@ export default function FigmaShowcase() {
               animate="center"
               exit="exit"
               className={`w-full flex flex-col items-center ${ARTIFACTS[index].width} mx-auto px-4 md:px-0`}
+              style={{ transformStyle: "preserve-3d" }}
             >
-              <div className="w-full flex flex-col items-center group pt-2 md:pt-4">
-                {/* Details Above Frame */}
-                <div className="flex flex-col items-center text-center mb-14 md:mb-20">
-                   <span className="px-3 py-1 bg-brand-500/10 text-brand-500 text-[8px] font-black uppercase tracking-widest rounded-md mb-6">
-                     Case Study 0{index + 1}
-                   </span>
-                   <h3 className="text-2xl md:text-5xl font-black uppercase tracking-tight text-foreground mb-6 leading-tight max-w-3xl">
+               <div className="w-full flex flex-col items-center group pt-0">
+                {/* Details Above Frame - Editorial Space */}
+                <div className="relative flex flex-col items-center text-center mb-10 md:mb-14 min-h-[140px] justify-center">
+                   <div className="absolute inset-0 bg-white/[0.02] dark:bg-black/[0.02] blur-3xl -z-10 rounded-full scale-150" />
+                   
+                   <div className="flex items-center gap-4 mb-6">
+                      <span className="px-3 py-1 bg-brand-500/10 text-brand-500 text-[9px] font-bold uppercase tracking-widest rounded-md border border-brand-500/10">
+                        Case Study 0{index + 1}
+                      </span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-foreground/10" />
+                      <span className="text-[9px] font-black uppercase tracking-widest text-foreground/40">{ARTIFACTS[index].type}</span>
+                   </div>
+
+                   <h3 className="text-2xl md:text-4xl font-black uppercase tracking-tight text-foreground mb-6 leading-tight max-w-4xl drop-shadow-sm px-2">
                      {ARTIFACTS[index].name}
                    </h3>
-                   <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-brand-500/40 to-transparent mb-8" />
-                   <p className="text-sm md:text-lg font-medium text-foreground/50 max-w-3xl leading-relaxed italic px-4 md:px-0 font-serif">
+                   <div className="w-20 h-[2px] rounded-full bg-gradient-to-r from-transparent via-brand-500/60 to-transparent mb-8" />
+                   <p className="text-sm md:text-lg font-medium text-foreground/50 max-w-4xl leading-relaxed italic px-6 md:px-12 font-serif opacity-80 decoration-brand-500/10 underline underline-offset-8">
                      "{ARTIFACTS[index].description}"
                    </p>
                 </div>
 
                 {/* The Pure Artifact Screen with Frame */}
                 <div 
-                  className="w-full overflow-hidden relative rounded-[2.5rem] bg-white/[0.02] dark:bg-black/20 border border-black/5 dark:border-white/10 backdrop-blur-xl transition-all duration-700 group-hover:shadow-[0_80px_120px_-30px_rgba(0,0,0,0.2)] md:group-hover:scale-[1.01]"
+                  className="w-full overflow-hidden relative rounded-2xl bg-black transition-all duration-1000 group-hover:shadow-[0_120px_160px_-40px_rgba(0,0,0,0.4)] md:group-hover:scale-[1.02]"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 >
-                  {/* Glassmorphic Top Bar */}
-                  <div className="w-full h-12 bg-white/5 border-b border-white/5 flex items-center justify-between px-6 pointer-events-none">
-                     <div className="flex gap-1.5 px-1">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/30" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400/30" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/30" />
+                  {/* Glassmorphic Top Bar - Advanced UI */}
+                  <div className="w-full h-14 bg-white/5 flex items-center justify-between px-8 pointer-events-none relative z-20">
+                     <div className="flex gap-2">
+                        <div className="w-3 h-3 rounded-full bg-[#FF5F57] shadow-inner opacity-60" />
+                        <div className="w-3 h-3 rounded-full bg-[#FEBC2E] shadow-inner opacity-60" />
+                        <div className="w-3 h-3 rounded-full bg-[#28C840] shadow-inner opacity-60" />
                      </div>
-                     <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-500 animate-pulse shadow-[0_0_8px_rgba(245,126,126,0.8)]" />
-                        <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-foreground/20">Live Interactive Protocol</span>
+                     <div className="absolute left-1/2 -translate-x-1/2 flex items-center gap-3">
+                        <div className="w-2 h-2 rounded-full bg-brand-500 animate-pulse shadow-[0_0_15px_rgba(245,126,126,0.9)]" />
+                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/30 font-mono">Interactive Laboratory Prototype</span>
                      </div>
-                     <ExternalLink size={12} className="text-foreground/20" />
+                     <div className="flex items-center gap-4 text-foreground/30">
+                        <Play size={14} className="opacity-50" />
+                        <div className="w-[1px] h-4 bg-white/10" />
+                        <ExternalLink size={14} className="group-hover:text-brand-500 transition-colors" />
+                     </div>
                   </div>
 
-                  <div className={`w-full ${ARTIFACTS[index].aspect} max-h-[80vh] overflow-hidden relative`}>
+                  <div className={`w-full ${ARTIFACTS[index].aspect} h-[70vh] overflow-hidden relative bg-black`}>
                      <iframe 
                       width="100%" 
                       height="100%"
@@ -188,60 +204,65 @@ export default function FigmaShowcase() {
                       loading="lazy"
                       title={ARTIFACTS[index].name}
                       style={{ border: "none" }}
-                    />
+                     />
                   </div>
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          {/* Controls - Refined & Intelligently Positioned */}
-          <div className="absolute top-[80%] md:top-[65%] left-0 right-0 flex justify-between pointer-events-none px-2 md:-mx-16 z-50">
+          {/* Controls - Premium Floating Interaction */}
+          <div className="absolute top-[85%] md:top-[65%] left-0 right-0 flex justify-between pointer-events-none px-4 md:-mx-20 z-50">
             <motion.button 
-              whileHover={{ scale: 1.1, x: -5 }}
+              whileHover={{ scale: 1.15, x: -10 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => paginate(-1)}
-              className="pointer-events-auto h-12 w-12 md:h-20 md:w-20 rounded-full flex items-center justify-center bg-white/10 dark:bg-black/10 backdrop-blur-2xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] group/btn"
+              className="pointer-events-auto h-14 w-14 md:h-24 md:w-24 rounded-full flex items-center justify-center bg-white/10 dark:bg-black/10 backdrop-blur-3xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] group/btn"
             >
-              <ChevronLeft size={24} className="md:w-10 md:h-10 group-hover/btn:-translate-x-1 transition-transform duration-500" />
+              <ChevronLeft size={32} className="md:w-12 md:h-12 group-hover/btn:-translate-x-2 transition-transform duration-700 ease-out" />
             </motion.button>
             <motion.button 
-              whileHover={{ scale: 1.1, x: 5 }}
+              whileHover={{ scale: 1.15, x: 10 }}
               whileTap={{ scale: 0.9 }}
               onClick={() => paginate(1)}
-              className="pointer-events-auto h-12 w-12 md:h-20 md:w-20 rounded-full flex items-center justify-center bg-white/10 dark:bg-black/10 backdrop-blur-2xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] group/btn"
+              className="pointer-events-auto h-14 w-14 md:h-24 md:w-24 rounded-full flex items-center justify-center bg-white/10 dark:bg-black/10 backdrop-blur-3xl border border-white/10 text-foreground hover:bg-brand-500 hover:text-white transition-all shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] group/btn"
             >
-              <ChevronRight size={24} className="md:w-10 md:h-10 group-hover/btn:translate-x-1 transition-transform duration-500" />
+              <ChevronRight size={32} className="md:w-12 md:h-12 group-hover/btn:translate-x-2 transition-transform duration-700 ease-out" />
             </motion.button>
           </div>
         </div>
 
-        {/* Dynamic Progress Indicator */}
-        <div className="flex items-center gap-6 mt-16 md:mt-24">
-          <div className="flex gap-2">
-            {ARTIFACTS.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  setDirection(i > index ? 1 : -1)
-                  setIndex(i)
-                }}
-                className={`group relative h-1.5 transition-all duration-700 rounded-full overflow-hidden ${index === i ? 'w-16 bg-brand-500' : 'w-4 bg-foreground/10 hover:bg-foreground/20'}`}
-              >
-                {index === i && (
-                  <motion.div 
-                    layoutId="activeProgress"
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                    animate={{ x: ['-100%', '100%'] }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                  />
-                )}
-              </button>
-            ))}
+        {/* Cinematic Progress Indicator */}
+        <div className="flex flex-col md:flex-row items-center gap-8 mt-24 md:mt-32">
+          <div className="flex items-center gap-8 bg-white/5 dark:bg-black/20 px-8 py-4 rounded-full backdrop-blur-md border border-white/10">
+            <span className="text-[10px] font-black font-mono tracking-[0.5em] text-foreground/40 mt-0.5">0{index + 1}</span>
+            <div className="flex gap-3">
+              {ARTIFACTS.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => {
+                    setDirection(i > index ? 1 : -1)
+                    setIndex(i)
+                  }}
+                  className={`group relative h-2 transition-all duration-1000 rounded-full overflow-hidden ${index === i ? 'w-20 bg-brand-500' : 'w-4 bg-foreground/10 hover:bg-foreground/30'}`}
+                >
+                  {index === i && (
+                    <motion.div 
+                      layoutId="activeProgress"
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                      animate={{ x: ['-100%', '100%'] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                    />
+                  )}
+                </button>
+              ))}
+            </div>
+            <span className="text-[10px] font-black font-mono tracking-[0.5em] text-foreground/40 mt-0.5">0{ARTIFACTS.length}</span>
           </div>
-          <span className="text-[10px] font-black font-mono tracking-[0.4em] opacity-30 mt-0.5">
-            0{index + 1} / 0{ARTIFACTS.length}
-          </span>
+          <div className="flex items-center gap-4 text-foreground/20 font-black tracking-widest text-[9px] uppercase font-mono">
+             <div className="w-8 h-[1px] bg-foreground/20" />
+             Sequential Artifact Showcase
+          </div>
         </div>
       </div>
     </section>
