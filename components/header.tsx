@@ -20,12 +20,41 @@ export default function Header() {
   const [infoOpen, setInfoOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [hoveredItem, setHoveredItem] = useState<string | null>(null)
+  const [visible, setVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => {
+      const currentScrollY = window.scrollY
+      setScrolled(currentScrollY > 20)
+      
+      // Smart show/hide logic
+      if (currentScrollY < 10) {
+        setVisible(true)
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling UP
+        setVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling DOWN
+        setVisible(false)
+      }
+      
+      setLastScrollY(currentScrollY)
+    }
+
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  }, [lastScrollY])
+
+  const handleNavClick = (id: string) => {
+    scrollTo(id)
+    setMenuOpen(false)
+    // Keep visible for a moment then hide as requested
+    setVisible(true)
+    setTimeout(() => {
+      setVisible(false)
+    }, 1500)
+  }
 
   return (
     <>
@@ -33,16 +62,23 @@ export default function Header() {
       <div className="fixed top-8 left-0 right-0 z-[1000] flex justify-center px-6 pointer-events-none">
         <motion.header
           initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="pointer-events-auto w-full max-w-4xl"
+          animate={{ 
+            y: visible ? 0 : -150, 
+            opacity: visible ? 1 : 0 
+          }}
+          transition={{ 
+            duration: 0.8, 
+            ease: [0.16, 1, 0.3, 1],
+            opacity: { duration: 0.4 }
+          }}
+          className={`pointer-events-auto w-full max-w-4xl ${!visible ? 'pointer-events-none' : ''}`}
         >
           <div
             className="flex items-center justify-between gap-3 sm:gap-6 px-4 py-2.5 sm:px-10 sm:py-5 rounded-full border border-black/[0.08] bg-white/80 backdrop-blur-3xl shadow-[0_1px_2px_rgba(0,0,0,0.05),0_12px_24px_-12px_rgba(0,0,0,0.15)] transition-transform duration-500 scale-100"
           >
             {/* Logo */}
             <button
-              onClick={() => scrollTo("home")}
+              onClick={() => handleNavClick("home")}
               className="group flex items-center pr-6 border-r border-black/5 shrink-0"
             >
               <span
@@ -58,7 +94,7 @@ export default function Header() {
               {NAV.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => scrollTo(item.id)}
+                  onClick={() => handleNavClick(item.id)}
                   onMouseEnter={() => setHoveredItem(item.id)}
                   onMouseLeave={() => setHoveredItem(null)}
                   className={`relative px-6 py-2 text-[11px] tracking-[0.35em] uppercase font-black transition-colors duration-300 z-10 ${
@@ -92,7 +128,7 @@ export default function Header() {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setInfoOpen(true)}
+                onClick={() => { setInfoOpen(true); setVisible(true); }}
                 className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#F59E9E] transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
               >
                 <Info size={14} strokeWidth={3} />
@@ -122,7 +158,7 @@ export default function Header() {
                   {NAV.map((item, i) => (
                     <button
                       key={item.id}
-                      onClick={() => { scrollTo(item.id); setMenuOpen(false) }}
+                      onClick={() => handleNavClick(item.id)}
                       className="w-full flex items-center justify-between px-6 py-4 rounded-2xl hover:bg-black/5 transition-colors group"
                     >
                       <span className="text-xl font-bold italic text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>

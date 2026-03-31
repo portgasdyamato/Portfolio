@@ -96,118 +96,110 @@ export default function Projects() {
             >
               <div className="w-full min-h-screen py-12 md:py-24 px-4">
                 <motion.div
-                  initial={{ scale: 0.9, opacity: 0, y: 50 }}
+                  initial={{ scale: 0.9, opacity: 0, y: 100 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
-                  exit={{ scale: 0.9, opacity: 0, y: 50 }}
+                  exit={{ scale: 0.9, opacity: 0, y: 100 }}
                   transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
-                  className="w-full max-w-5xl mx-auto relative text-white mb-24"
+                  className="w-full max-w-6xl bg-background rounded-[3rem] md:rounded-[4rem] p-6 md:p-16 mx-auto relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-12"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
-                    className="absolute -top-16 right-0 md:-top-20 md:-right-20 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:scale-110 transition-all z-50 text-white backdrop-blur-xl"
+                    className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground"
                     onClick={() => setSelectedProject(null)}
                   >
                     <X className="w-6 h-6 md:w-8 md:h-8" />
                   </button>
 
-                  <div className="flex flex-col items-center gap-16 md:gap-24">
-                    {/* BOUNDLESS IMAGE UNIT */}
-                    <div className="relative w-full flex justify-center">
-                      <motion.div 
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.2, duration: 0.8 }}
-                        className="relative w-full max-h-[65vh] flex items-center justify-center"
-                      >
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
+                    <div className="space-y-10">
+                      {/* BOUNDLESS IMAGE UNIT WITHIN MODAL */}
+                      <div className="relative w-full h-auto flex items-center justify-center">
                         <img
                           src={projectsData[selectedProject].image || "/placeholder.svg"}
                           alt={projectsData[selectedProject].title}
-                          className="max-w-full max-h-[65vh] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                          className="w-full h-auto max-h-[500px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                         />
-                      </motion.div>
+                      </div>
+                      
+                      <div className="flex flex-col gap-5">
+                        <div className="grid grid-cols-2 gap-5">
+                          {projectsData[selectedProject].liveUrl && (
+                            <a
+                              href={projectsData[selectedProject].liveUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group relative h-14 md:h-16 bg-foreground text-background font-black transition-all rounded-2xl flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest overflow-hidden"
+                            >
+                              <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-foreground">
+                                <ExternalLink size={18} /> Live Demo
+                              </span>
+                              <div className="absolute inset-0 bg-background translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
+                            </a>
+                          )}
+                          {projectsData[selectedProject].githubUrl && (
+                            <a
+                              href={projectsData[selectedProject].githubUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="group relative h-14 md:h-16 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest text-foreground overflow-hidden"
+                            >
+                              <span className="relative z-10 flex items-center gap-2 group-hover:text-background transition-colors duration-500">
+                                <Github size={18} /> Source
+                              </span>
+                              <div className="absolute inset-0 bg-foreground translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
+                            </a>
+                          )}
+                        </div>
+                        
+                        <Link
+                          href={`/projects/${projectsData[selectedProject].slug}`}
+                          className="group relative w-full h-16 md:h-20 bg-brand-600 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20 overflow-hidden"
+                        >
+                           <span className="relative z-10 flex items-center gap-3 transition-colors duration-500 group-hover:text-white">
+                             View Full Case Study <ArrowUpRight size={22} />
+                           </span>
+                           <div className="absolute inset-0 bg-brand-500 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
+                        </Link>
+                      </div>
                     </div>
 
-                    {/* EDITORIAL CONTENT UNIT */}
-                    <div className="flex flex-col items-center text-center max-w-3xl px-4">
-                      <span className="text-[#F59E9E] font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 flex items-center gap-4">
-                        <span className="w-8 h-[1px] bg-[#F59E9E]/40" />
+                    <div className="flex flex-col text-left">
+                      <span className="text-brand-600 dark:text-brand-400 font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 flex items-center gap-4">
+                        <span className="w-12 h-[1px] bg-brand-600" />
                         {projectsData[selectedProject].status} • {projectsData[selectedProject].duration}
-                        <span className="w-8 h-[1px] bg-[#F59E9E]/40" />
                       </span>
-                      
-                      <h2 className="text-5xl md:text-8xl font-medium mb-10 leading-[0.9] tracking-tight italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                      <h2 className="text-4xl md:text-6xl font-black font-outfit mb-8 uppercase tracking-tighter leading-[0.9] text-foreground">
                         {projectsData[selectedProject].title}
                       </h2>
-
-                      <p className="text-lg md:text-2xl text-white/70 leading-relaxed mb-16 font-light max-w-2xl">
+                      <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12 font-inter font-medium">
                         {projectsData[selectedProject].description}
                       </p>
 
-                      {/* ACTIONS UNIT */}
-                      <div className="flex flex-col md:flex-row items-center gap-6 mb-20 w-full justify-center">
-                        {projectsData[selectedProject].liveUrl && (
-                          <a
-                            href={projectsData[selectedProject].liveUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group relative h-14 md:h-16 px-10 bg-white/10 backdrop-blur-3xl border border-white/10 text-white rounded-full flex items-center justify-center gap-3 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] transition-all overflow-hidden w-full md:w-auto"
-                          >
-                            <span className="relative z-10 flex items-center gap-2 group-hover:text-black transition-colors duration-500">
-                               <ExternalLink size={18} /> Live Experience
-                            </span>
-                            <div className="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
-                          </a>
-                        )}
-                        {projectsData[selectedProject].githubUrl && (
-                          <a
-                            href={projectsData[selectedProject].githubUrl}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="group relative h-14 md:h-16 px-10 bg-white/5 border border-white/5 text-white/60 hover:text-white rounded-full flex items-center justify-center gap-3 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] transition-all overflow-hidden w-full md:w-auto"
-                          >
-                            <span className="relative z-10 flex items-center gap-2 group-hover:text-black transition-colors duration-500">
-                               <Github size={18} /> Source Code
-                            </span>
-                             <div className="absolute inset-0 bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
-                          </a>
-                        )}
-                        <Link
-                          href={`/projects/${projectsData[selectedProject].slug}`}
-                          className="group relative h-14 md:h-16 px-10 bg-[#F59E9E] text-black rounded-full flex items-center justify-center gap-3 text-[10px] md:text-xs font-black uppercase tracking-[0.25em] transition-all overflow-hidden w-full md:w-auto shadow-[0_10px_30px_-5px_rgba(245,158,158,0.4)]"
-                        >
-                           <span className="relative z-10 flex items-center gap-2 group-hover:text-white transition-colors duration-500">
-                             Full Case Study <ArrowUpRight size={20} />
-                           </span>
-                           <div className="absolute inset-0 bg-[#E87A7A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
-                        </Link>
-                      </div>
-
-                      {/* DATA UNIT */}
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-left w-full border-t border-white/10 pt-16">
-                        <div className="space-y-6">
-                           <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#F59E9E]">Stack Architecture</h4>
-                           <div className="flex flex-wrap gap-3">
-                              {projectsData[selectedProject].technologies.map((tech: string) => (
-                                <span key={tech} className="px-4 py-2 bg-white/5 border border-white/5 rounded-full text-[9px] font-bold uppercase tracking-widest text-white/70">
-                                  {tech}
-                                </span>
-                              ))}
-                           </div>
+                      <div className="space-y-10 md:space-y-14">
+                        <div>
+                          <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Stack Overview</h4>
+                          <div className="flex flex-wrap gap-2.5">
+                            {projectsData[selectedProject].technologies.map((tech: string) => (
+                              <span key={tech} className="px-4 py-2 bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground">
+                                {tech}
+                              </span>
+                            ))}
+                          </div>
                         </div>
 
-                        <div className="space-y-8">
-                           <h4 className="text-[10px] font-black uppercase tracking-[0.3em] text-[#F59E9E]">Core Impact</h4>
-                           <div className="space-y-6">
-                              {projectsData[selectedProject].achievements.slice(0, 3).map((achievement: string, i: number) => (
-                                <div key={i} className="flex items-start gap-4 group/item">
-                                  <div className="w-6 h-6 rounded-lg bg-[#F59E9E]/10 text-[#F59E9E] flex items-center justify-center shrink-0 mt-0.5">
-                                    <CheckCircle2 size={14} />
-                                  </div>
-                                  <span className="text-xs md:text-sm font-medium tracking-wide text-white/60 group-hover/item:text-white transition-colors leading-relaxed uppercase">{achievement}</span>
-                                </div>
-                              ))}
+                        <div className="hidden md:block">
+                           <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Core Impact</h4>
+                           <div className="grid grid-cols-1 gap-5 text-foreground">
+                             {projectsData[selectedProject].achievements.slice(0, 3).map((achievement: string, i: number) => (
+                               <div key={i} className="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[1.5rem] group/item hover:border-brand-500/50 transition-all duration-500 shadow-sm">
+                                 <div className="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/10">
+                                   <CheckCircle2 size={24} />
+                                 </div>
+                                 <span className="text-sm md:text-base font-bold uppercase tracking-tight text-foreground/70 group-hover/item:text-foreground transition-colors leading-snug">{achievement}</span>
+                               </div>
+                             ))}
                            </div>
-                        </div>
+                         </div>
                       </div>
                     </div>
                   </div>

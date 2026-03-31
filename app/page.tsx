@@ -7,6 +7,7 @@ import SplashScreen from "@/components/splash-screen"
 import Header from "@/components/header"
 import MorphingHero from "@/components/morphing-hero"
 import Projects from "@/components/projects"
+import FigmaShowcase from "@/components/figma-showcase"
 import Contact from "@/components/contact"
 import SocialLinks from "@/components/social-links"
 import Achievements from "@/components/achievements"
@@ -77,7 +78,10 @@ export default function Home() {
 
                 {/* ── WORK SECTION ── */}
                 <section id="projects" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
-                  <Projects />
+                  <div className="flex flex-col gap-6 md:gap-10">
+                    <Projects />
+                    <FigmaShowcase />
+                  </div>
                   <Achievements />
                   <Certificates />
                 </section>
