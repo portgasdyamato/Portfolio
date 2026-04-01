@@ -86,7 +86,7 @@ export default function ProjectCaseStudy() {
              {/* Technical Backdrop */}
              <div className="absolute inset-x-0 inset-y-0 z-0 opacity-[0.04] dark:opacity-[0.1] pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
              
-             <div className="container mx-auto px-6 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
+             <div className="max-w-7xl mx-auto w-full px-8 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
                 <motion.div 
                    initial={{ opacity: 0, x: -50 }}
                    animate={{ opacity: 1, x: 0 }}
@@ -171,7 +171,7 @@ export default function ProjectCaseStudy() {
              </motion.div>
 
              {/* ── MOBILE CENTER STACK ── */}
-             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5 }} className="container mx-auto flex flex-col items-center relative z-10 h-full justify-center text-center">
+             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5 }} className="max-w-7xl mx-auto w-full px-8 md:px-16 lg:px-24 flex flex-col items-center relative z-10 h-full justify-center text-center">
                 <div className="flex flex-col items-center gap-8 md:gap-12">
                    <motion.div 
                       animate={{ y: [0, -15, 0] }} 
@@ -202,10 +202,10 @@ export default function ProjectCaseStudy() {
           </div>
         ) : (
           /* ── THE EDITORIAL NARRATIVE (BALANCED SPLIT) ── */
-          <div className="w-full h-screen relative flex items-center bg-[#ffffff] dark:bg-[#000000] overflow-hidden px-6">
+          <div className="w-full h-screen relative flex items-center bg-[#ffffff] dark:bg-[#000000] overflow-hidden px-8 md:px-16 lg:px-24">
              <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none" style={{ background: `radial-gradient(circle at 30% 50%, ${project.color}, transparent 50%)` }} />
              
-             <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
+             <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
                 <motion.div 
                    initial={{ opacity: 0, x: -50 }} 
                    animate={{ opacity: 1, x: 0 }} 
@@ -254,7 +254,8 @@ export default function ProjectCaseStudy() {
       </section>
 
       {/* ── NARRATIVE: WHY & HOW ── */}
-      <section className="py-32 md:py-52 container mx-auto px-6">
+      <section className="py-32 md:py-52">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-start">
           <div className="lg:col-span-5 relative lg:sticky lg:top-32">
              <SectionHeader 
@@ -338,8 +339,9 @@ export default function ProjectCaseStudy() {
                  </motion.div>
                ))}
             </div>
-          </div>
-        </div>
+           </div>
+         </div>
+       </div>
       </section>
 
       {/* ── RESEARCH PHASE ── */}
@@ -347,7 +349,7 @@ export default function ProjectCaseStudy() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none" />
 
-        <div className="container mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
           <div className="flex flex-col items-center text-center mb-24 md:mb-32">
              <SectionHeader 
                tag="Strategic Analysis"
@@ -445,7 +447,7 @@ export default function ProjectCaseStudy() {
       {/* ── WORKFLOW EVOLUTION ── */}
       {dc.workflow && (
       <section className="py-32 md:py-40 bg-white dark:bg-zinc-950 border-b border-black/5 dark:border-white/5 relative">
-        <div className="container mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
            <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
               <div className="w-full lg:w-[40%]">
                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 rounded-full text-brand-500 font-black tracking-[0.2em] uppercase text-[9px] mb-8">
@@ -471,15 +473,16 @@ export default function ProjectCaseStudy() {
                  <div className="absolute inset-0 bg-brand-500/5 blur-[100px] rounded-full group-hover:bg-brand-500/10 transition-colors duration-700 pointer-events-none" />
                  <div className="relative rounded-[2rem] md:rounded-[3rem] overflow-hidden border-2 border-black/5 dark:border-white/5 shadow-2xl bg-white dark:bg-zinc-900 group-hover:shadow-[0_40px_100px_rgba(0,0,0,0.1)] dark:group-hover:shadow-[0_40px_100px_rgba(255,255,255,0.02)] transition-all duration-700">
                     <img src={dc.workflow.image} alt="Workflow Mapping Sketch" className="w-full h-auto object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 mix-blend-multiply dark:mix-blend-screen" />
-                 </div>
-              </div>
-           </div>
-        </div>
-      </section>
-      )}
+                  </div>
+               </div>
+            </div>
+          </div>
+       </section>
+       )}
 
       {/* ── BRANDING & AESTHETICS ── */}
-      <section className="py-32 md:py-52 container mx-auto px-6 overflow-hidden">
+      <section className="py-32 md:py-52">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 overflow-hidden">
         <div className="flex flex-col lg:flex-row gap-24 items-center">
            <div className="w-full lg:w-1/2">
              <SectionHeader 
@@ -541,15 +544,16 @@ export default function ProjectCaseStudy() {
                  ))}
                  
                  {/* Decorative Pulse */}
-                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-500/20 blur-[80px] rounded-full animate-pulse pointer-events-none" />
-              </div>
-           </div>
-        </div>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-brand-500/20 blur-[80px] rounded-full animate-pulse pointer-events-none" />
+               </div>
+            </div>
+         </div>
+       </div>
       </section>
 
       {/* ── TECHNICAL ARCHITECTURE ── */}
       <section className="py-32 md:py-52 bg-foreground text-background">
-        <div className="container mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
               <div>
                 <motion.div 
@@ -614,7 +618,7 @@ export default function ProjectCaseStudy() {
       <section className="py-52 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[500px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none" />
         
-        <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 relative z-10 flex flex-col items-center text-center">
            <motion.div
              initial={{ opacity: 0, scale: 0.9 }}
              whileInView={{ opacity: 1, scale: 1 }}

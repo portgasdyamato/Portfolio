@@ -108,16 +108,15 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto scrollbar-hide overscroll-contain"
+              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto overscroll-contain flex items-start justify-center py-6 md:py-16 px-4"
               onClick={() => setSelectedProject(null)}
             >
-              <div className="w-full min-h-screen py-12 md:py-24 px-4">
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0, y: 100 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.9, opacity: 0, y: 100 }}
                   transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
-                  className="w-full max-w-6xl bg-background rounded-[3rem] md:rounded-[4rem] p-6 md:p-16 mx-auto relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-12"
+                  className="w-full max-w-6xl bg-background rounded-[2.5rem] md:rounded-[4rem] p-5 md:p-12 lg:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-8"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
@@ -134,7 +133,7 @@ export default function Projects() {
                         <img
                           src={projectsData[selectedProject].image || "/placeholder.svg"}
                           alt={projectsData[selectedProject].title}
-                          className="w-full h-auto max-h-[500px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                          className="w-full h-auto max-h-[300px] md:max-h-[500px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                         />
                       </div>
                       
@@ -221,7 +220,6 @@ export default function Projects() {
                     </div>
                   </div>
                 </motion.div>
-              </div>
             </motion.div>
           )}
         </AnimatePresence>,
