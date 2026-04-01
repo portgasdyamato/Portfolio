@@ -63,13 +63,13 @@ export default function FunFacts() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
           <div className="max-w-md">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-widest uppercase text-[9px] mb-6">
-              <Star size={10} fill="currentColor" /> The 3P Favorites
+              <Star size={10} fill="currentColor" /> Experimental 3D Interaction
             </div>
             <h3 className="text-[45px] sm:text-[65px] font-bold italic text-[#1a0a0a] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               My Favorite Trio.
             </h3>
-            <p className="text-muted-foreground text-lg leading-relaxed font-inter">
-              Pony, Panda, and Penguin. There's a certain spirit in each that matches my approach to life.
+            <p className="text-[#1a0a0a]/80 text-lg leading-relaxed font-inter">
+              Pony, Panda, and Penguin. I built this immersive 3D experience to explore real-time UI interactions and because these three perfectly match my approach to life.
             </p>
           </div>
           <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-8">
@@ -116,7 +116,7 @@ export default function FunFacts() {
             My <span className="text-[#F59E9E]">Hobbies.</span>
           </h3>
           <p className="text-white/40 text-[14px] font-inter leading-relaxed">
-            Finding focus through simple pleasures — from the rhythm of capturing light to the morning espresso that fuels it all.
+            Finding focus through simple pleasures, from the rhythm of capturing light to the morning espresso that fuels it all.
           </p>
         </div>
 
@@ -207,7 +207,7 @@ export default function FunFacts() {
               My <span className="text-[#F59E9E]">Hobbies.</span>
             </h3>
             <p className="text-white/30 text-lg font-inter leading-relaxed max-w-xl">
-              Finding focus through simple pleasures — from the rhythm of capturing light to the morning espresso that fuels it all.
+              Finding focus through simple pleasures, from the rhythm of capturing light to the morning espresso that fuels it all.
             </p>
           </div>
 

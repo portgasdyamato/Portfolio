@@ -103,18 +103,18 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           <div className="flex flex-col justify-center py-4 gap-6">
             <div className="flex flex-col gap-1 md:gap-2 lowercase sm:uppercase">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[36px] sm:text-[75px] md:text-[90px] lg:text-[105px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                  Crafting
+                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                  AI Product
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[36px] sm:text-[75px] md:text-[90px] lg:text-[105px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                  Smart Digital
+                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                  Designer &
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[36px] sm:text-[75px] md:text-[90px] lg:text-[105px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
-                  Experiences.
+                <span className="block text-[30px] sm:text-[60px] md:text-[75px] lg:text-[85px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                  Frontend Engineer.
                 </span>
               </motion.div>
             </div>
@@ -124,7 +124,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               className="flex flex-col gap-8 max-w-xl"
             >
               <p className="text-[#1a0a0a]/80 font-medium text-base leading-relaxed tracking-wide">
-                I code high-performance websites and design intelligent products. I am an AI Product Designer, UI/UX Specialist, and Website Developer.
+                I design and build AI-powered digital products, combining UX design, code, and intelligent systems with a human-centric touch to create meaningful, intuitive experiences.
               </p>
 
               {/* Buttons */}

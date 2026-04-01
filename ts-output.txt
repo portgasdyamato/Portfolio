@@ -1,0 +1,4 @@
+components/project-detail-client.tsx(586,7): error TS1128: Declaration or statement expected.
+components/project-detail-client.tsx(588,5): error TS1109: Expression expected.
+components/project-detail-client.tsx(589,3): error TS1109: Expression expected.
+components/project-detail-client.tsx(590,1): error TS1128: Declaration or statement expected.

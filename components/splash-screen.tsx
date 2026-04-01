@@ -247,7 +247,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                  <span className="w-3 h-[1px] bg-[#1a0a0a]/20" />
                  SYNC://ACTIVE
                </span>
-               <span className="opacity-50 hidden sm:inline">—</span>
+               <span className="opacity-50 hidden sm:inline">//</span>
                <span className="hidden sm:inline">LOC://EARTH</span>
           </div>
       </div>

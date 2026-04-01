@@ -6,20 +6,17 @@ import { AnimatePresence, motion } from "framer-motion"
 import SplashScreen from "@/components/splash-screen"
 import Header from "@/components/header"
 import MorphingHero from "@/components/morphing-hero"
-import Projects from "@/components/projects"
-import FigmaShowcase from "@/components/figma-showcase"
-import Contact from "@/components/contact"
-import SocialLinks from "@/components/social-links"
-import Achievements from "@/components/achievements"
+
+import Footer from "@/components/footer"
 import FunFacts from "@/components/fun-facts"
-import Certificates from "@/components/certificates"
 import Education from "@/components/education"
-import ImageSection from "@/components/image-section"
+import Achievements from "@/components/achievements"
+
 import SkillsShowcase from "@/components/skills-showcase"
-import GrowWithMeHeading from "@/components/GrowWithMeHeading"
+
 import NewsTicker from "@/components/news-ticker"
 import CustomCursor from "@/components/custom-cursor"
-import PixelCharacter from "@/components/pixel-character"
+
 import { Sparkles } from "lucide-react"
 
 // Global session tracker (Survivies SPA navigations, resets on Refresh)
@@ -84,41 +81,16 @@ export default function Home() {
                   <Education />
                 </section>
 
-                {/* ── WORK SECTION ── */}
-                <section id="projects" className="scroll-mt-32 flex flex-col gap-12 md:gap-32">
-                  <div className="flex flex-col gap-24 md:gap-48">
-                    <Projects />
-                    <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
-                      <FigmaShowcase />
-                    </div>
-                  </div>
-                  <Achievements />
-                  <Certificates />
-                </section>
+                <Achievements />
 
                 {/* ── SKILLS SECTION ── */}
                 <section id="skills" className="scroll-mt-32">
                   <SkillsShowcase />
                 </section>
 
-                <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr]">
-                  <div className="order-1">
-                    <ImageSection />
-                  </div>
-                  <div className="order-3 lg:order-2 hidden md:flex justify-center ml-0 lg:ml-24 mb-4 sm:mb-8 md:mb-12 lg:mb-20">
-                    <GrowWithMeHeading />
-                  </div>
-                  <div id="contact" className="order-2 lg:order-3 w-full lg:w-2/3 ml-0 lg:ml-40 mr-0 lg:mr-8 mb-4 sm:mb-6 lg:mb-8">
-                    <Contact />
-                  </div>
-                </div>
               </main>
-              
-              <div className="pb-6 px-4">
-                <SocialLinks />
-              </div>
 
-              <PixelCharacter />
+              <Footer />
           </motion.div>
         )}
       </AnimatePresence>

@@ -5,17 +5,22 @@ import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Info, Sparkles, Code2, ArrowUpRight } from "lucide-react"
 
+import { useRouter, usePathname } from "next/navigation"
+
 const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
 const NAV = [
-  { label: "About", id: "about" },
-  { label: "Work", id: "projects" },
-  { label: "Skills", id: "skills" },
-  { label: "Contact", id: "contact" },
+  { label: "About", id: "about", path: "/#about" },
+  { label: "Work", id: "work", path: "/work" },
+  { label: "Skills", id: "skills", path: "/#skills" },
+  { label: "Contact", id: "contact", path: "/#contact" },
 ]
 
 export default function Header() {
+  const router = useRouter()
+  const pathname = usePathname()
+  
   const [menuOpen, setMenuOpen] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
@@ -46,8 +51,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [lastScrollY])
 
-  const handleNavClick = (id: string) => {
-    scrollTo(id)
+  const handleNavClick = (id: string, path?: string) => {
+    if (path) {
+      if (path.startsWith("/#") && pathname === "/") {
+        scrollTo(path.replace("/#", ""))
+      } else {
+        router.push(path)
+      }
+    } else {
+      scrollTo(id)
+    }
+    
     setMenuOpen(false)
     // Keep visible for a moment then hide as requested
     setVisible(true)
@@ -78,7 +92,7 @@ export default function Header() {
           >
             {/* Logo */}
             <button
-              onClick={() => handleNavClick("home")}
+              onClick={() => handleNavClick("home", "/")}
               className="group flex items-center pr-6 border-r border-black/5 shrink-0"
             >
               <span
@@ -94,7 +108,7 @@ export default function Header() {
               {NAV.map((item) => (
                 <button
                   key={item.id}
-                  onClick={() => handleNavClick(item.id)}
+                  onClick={() => handleNavClick(item.id, item.path)}
                   onMouseEnter={() => setHoveredItem(item.id)}
                   onMouseLeave={() => setHoveredItem(null)}
                   className={`relative px-6 py-2 text-[11px] tracking-[0.35em] uppercase font-black transition-colors duration-300 z-10 ${
@@ -158,7 +172,7 @@ export default function Header() {
                   {NAV.map((item, i) => (
                     <button
                       key={item.id}
-                      onClick={() => handleNavClick(item.id)}
+                      onClick={() => handleNavClick(item.id, item.path)}
                       className="w-full flex items-center justify-between px-6 py-4 rounded-2xl hover:bg-black/5 transition-colors group"
                     >
                       <span className="text-xl font-bold italic text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
@@ -205,7 +219,7 @@ export default function Header() {
               </h3>
               
               <p className="text-[#1a0a0a]/60 text-base leading-relaxed mb-8">
-                Every detail in this portfolio is meticulously crafted — from the cinematic morphing hero to the custom-engineered GSAP physics. This is where high-end design meets high-performance code.
+                Every detail in this portfolio is meticulously crafted, from the cinematic morphing hero to the custom-engineered GSAP physics. This is where high-end design meets high-performance code.
               </p>
 
               <div className="space-y-3">

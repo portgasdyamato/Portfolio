@@ -1,0 +1,29 @@
+el}\\u003c/span\\u003e
+    \\u003c/div\\u003e
+  )
+}
+
+        \\u003cdiv class\\u004eame\\u003d"absol\\u0075te bottom-\\u0031\\u0030 inset-x-\\u0031\\u0030 flex j\\u0075stify-between items-center text-\\u005b\\u0038px] font-mono tracking-\\u005b\\u0030.\\u0035em] text-white/\\u0031\\u0030 \\u0075ppercase"\\u003e
+           \\u003cspan\\u003e\\u0043reated by \\u0053akshi \\u0041grahari\\u003c/span\\u003e
+           \\u003cspan class\\u004eame\\u003d"hidden md\\u003ablock"\\u003e\\u0053ystem\\u003a v\\u0037.\\u0030\\u0034 // \\u0048igh\\u0046idelity_\\u0053eries\\u003c/span\\u003e
+           \\u003cspan\\u003e\\u0045\\u0053\\u0054\\u003a \\u0032\\u0030\\u0032\\u0036\\u003c/span\\u003e
+        \\u003c/div\\u003e
+      \\u003c/section\\u003e
+
+    \\u003c/div\\u003e
+  )
+}
+
+f\\u0075nction \\u0053ection\\u0054itle({ n\\u0075m, title, s\\u0075btitle }\\u003a { n\\u0075m\\u003a string\\u003b title\\u003a string\\u003b s\\u0075btitle\\u003f\\u003a string }) {
+  ret\\u0075rn (
+    \\u003cdiv class\\u004eame\\u003d"space-y-\\u0036 mb-\\u0031\\u0036"\\u003e
+      \\u003cdiv class\\u004eame\\u003d"flex items-center gap-\\u0034 text-brand-\\u0035\\u0030\\u0030"\\u003e
+        \\u003cspan class\\u004eame\\u003d"text-\\u005b\\u0031\\u0030px] font-mono \\u0075ppercase tracking-widest"\\u003e{n\\u0075m} // {s\\u0075btitle}\\u003c/span\\u003e
+        \\u003cdiv class\\u004eame\\u003d"h-\\u005b\\u0031px] w-\\u0031\\u0036 bg-brand-\\u0035\\u0030\\u0030/\\u0033\\u0030" /\\u003e
+      \\u003c/div\\u003e
+      \\u003ch\\u0032 class\\u004eame\\u003d"text-\\u0036xl md\\u003atext-\\u0038xl lg\\u003atext-\\u005b\\u0031\\u0030rem] font-o\\u0075tfit font-black \\u0075ppercase tracking-tighter text-white leading-\\u005b\\u0030.\\u0038]"\\u003e
+        {title}.
+      \\u003c/h\\u0032\\u003e
+    \\u003c/div\\u003e
+  )
+}
