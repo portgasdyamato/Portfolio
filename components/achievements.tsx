@@ -1,155 +1,246 @@
 "use client"
 
+import { useState } from "react"
 import { motion } from "framer-motion"
-import { Award, Trophy, Star, Medal, Coins } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Trophy, Star, Users, Cpu, Coins, Zap, GraduationCap, Award } from "lucide-react"
 
 const achievements = [
   {
+    id: "solvathon",
     icon: Trophy,
-    title: "UI UX Solvathon Winner",
-    description: "Won 1st Place among 700+ participants for in-depth UX research and high-fidelity UI design.",
+    label: "1st Place",
+    title: "UI/UX Solvathon",
+    org: "700+ Participants",
+    detail: "Secured first place for conducting deep UX research and crafting a high-fidelity, user-centric interface.",
     year: "2025",
-    color: "from-amber-400 to-orange-600",
+    gradient: "from-[#FDE68A] to-[#D97706]", // Gold
   },
   {
+    id: "harvard",
+    icon: GraduationCap,
+    label: "Selected Scholar",
+    title: "Harvard Aspire",
+    org: "Leadership Program",
+    detail: "Chosen for the Harvard Aspire Leadership Program, engaging in AI-integrated leadership modules.",
+    year: "2025",
+    gradient: "from-[#E9D5FF] to-[#9333EA]", // Purple
+  },
+  {
+    id: "techfest",
     icon: Star,
-    title: "Harvard Aspire Scholar",
-    description: "Selected as a scholar for the Harvard Aspire Leadership Program, focusing on AI-integrated leadership.",
-    year: "2025",
-    color: "from-brand-400 to-brand-600",
-  },
-  {
-    icon: Trophy,
-    title: "GSSoc Campus Ambassador & Contributor",
-    description: "Organised the event and contributed significantly to open source projects.",
-    year: "2025",
-    color: "from-yellow-400 to-amber-600",
-  },
-  {
-    icon: Award,
-    title: "Gen AI Exchange",
-    description: "Innovating using GoogleCloud's Gen AI tools to build practical AI solutions.",
-    year: "2025",
-    color: "from-blue-400 to-indigo-600",
-  },
-  {
-    icon: Star,
-    title: "TechFest Winner",
-    description: "2nd runner up in state level TechFest for developing a Culinary website with integrated AI chatbot.",
+    label: "2nd Runner Up",
+    title: "State TechFest",
+    org: "State Level Competition",
+    detail: "Won 3rd place in the state-level TechFest for developing a culinary platform with an AI chatbot.",
     year: "2024",
-    color: "from-emerald-400 to-teal-600",
+    gradient: "from-[#A7F3D0] to-[#059669]", // Green
   },
   {
+    id: "shefi",
     icon: Coins,
-    title: "SheFi 14 Scholar",
-    description: "Selected for US-based program empowering women in Web3 and blockchain technology.",
+    label: "US Program Scholar",
+    title: "SheFi 14",
+    org: "Web3 & Blockchain",
+    detail: "Selected for a prestigious US-based cohort empowering women in Web3 and decentralized technologies.",
     year: "2025",
-    color: "from-brand-400 to-brand-600",
+    gradient: "from-[#FECDD3] to-[#E11D48]", // Pink/Red
   },
   {
-    icon: Medal,
-    title: "Hackathon Runner up",
-    description: "2nd runner up in a hackathon focusing on turning designs into code using AI technology.",
+    id: "hackathon",
+    icon: Zap,
+    label: "2nd Place",
+    title: "AI Hackathon",
+    org: "Design-to-Code",
+    detail: "Secured the runner-up position in an intense hackathon bridging UI design and AI code generation.",
     year: "2025",
-    color: "from-orange-400 to-brand-600",
+    gradient: "from-[#DDD6FE] to-[#7C3AED]", // Violet
+  },
+  {
+    id: "gssoc",
+    icon: Users,
+    label: "Campus Ambassador",
+    title: "GSSoc Open Source",
+    org: "Event Organiser",
+    detail: "Led and organized campus events while making significant contributions to global open-source projects.",
+    year: "2025",
+    gradient: "from-[#FFB5B5] to-[#F43F5E]", // Brand to Rose
+  },
+  {
+    id: "genai",
+    icon: Cpu,
+    label: "Innovator",
+    title: "Gen AI Exchange",
+    org: "Google Cloud",
+    detail: "Architected and built practical AI solutions utilizing Google Cloud's Generative AI infrastructure.",
+    year: "2025",
+    gradient: "from-[#BFDBFE] to-[#2563EB]", // Blue
   },
 ]
 
+function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: number }) {
+  const Icon = item.icon
+  const [isHovered, setIsHovered] = useState(false)
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="relative w-full aspect-[3/4] cursor-pointer group perspective-[1200px]"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={() => setIsHovered(!isHovered)}
+    >
+      <motion.div
+        animate={{ 
+          rotateY: isHovered ? 180 : 0, 
+          rotateZ: isHovered ? (index % 2 === 0 ? -5 : 6) : 0,
+          scale: isHovered ? 1.02 : 1
+        }}
+        transition={{ 
+          rotateY: { duration: 0.8, type: "spring", stiffness: 200, damping: 20 },
+          scale: { duration: 0.8, type: "spring", stiffness: 200, damping: 20 },
+          rotateZ: { delay: isHovered ? 0.3 : 0, duration: 0.5, type: "spring", stiffness: 300, damping: 25 }
+        }}
+        className="relative w-full h-full preserve-3d"
+        style={{ transformStyle: "preserve-3d" }}
+      >
+        {/* ── 1. FRONT FACE (The Unified Exhibition Placard) ── */}
+        <div 
+          className="absolute inset-0 bg-white dark:bg-[#1a1a1a] p-1.5 sm:p-2 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.06)] border border-black/[0.04] dark:border-white/[0.05] flex flex-col pointer-events-none"
+          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+        >
+          {/* Decorative Tape Front */}
+          <div className="absolute top-[-8px] left-[42%] w-12 h-4 bg-white/80 dark:bg-black/80 shadow-sm border border-black/5 rotate-[2deg] z-20" />
+
+          {/* Unified Gallery Background */}
+          <div className="relative w-full h-full rounded-xl border-[0.5px] border-black/[0.04] dark:border-white/[0.05] bg-[#FDFBF7] dark:bg-[#151515] overflow-hidden flex flex-col items-center justify-center p-6 pb-12">
+            
+            {/* Elegant Year Tag (Architectural Detail) */}
+            <div className="absolute top-4 right-5 text-right z-10">
+               <span className="text-[14px] font-bold italic text-[#F59E9E] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{item.year}</span>
+               <div className="w-8 h-[1px] bg-[#F59E9E]/30 mt-1 ml-auto" />
+            </div>
+
+            {/* Central Graphic (Minimalist Rings) */}
+            <div className="relative w-32 h-32 flex items-center justify-center mb-6">
+               <div className="absolute inset-0 rounded-full border border-black/[0.06] dark:border-white/[0.06] scale-[1.3]" />
+               <div className="absolute inset-4 rounded-full border border-black/[0.08] dark:border-white/[0.08] scale-[1.15]" />
+               <motion.div 
+                 animate={{ scale: isHovered ? 1.05 : 1 }} 
+                 className="relative w-16 h-16 rounded-full bg-[#F59E9E] shadow-[0_8px_20px_rgba(245,158,158,0.35)] flex items-center justify-center text-white"
+               >
+                 <Icon size={24} strokeWidth={1.5} />
+               </motion.div>
+            </div>
+
+            {/* Typography Section */}
+            <div className="flex flex-col items-center gap-1 text-center">
+               <span className="text-[8px] font-black uppercase tracking-[0.3em] text-[#F59E9E] bg-[#F59E9E]/10 px-2 py-0.5 rounded-sm mb-1">
+                 {item.label}
+               </span>
+               <h4 className="text-[20px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                 {item.title}
+               </h4>
+            </div>
+
+            {/* Bottom context hints */}
+            <div className="absolute bottom-4 left-0 right-0 flex justify-center items-center gap-2 opacity-30">
+               <span className="text-[7px] font-black uppercase tracking-[0.4em] text-[#1a0a0a] dark:text-white">REVEAL STORY</span>
+            </div>
+          </div>
+        </div>
+
+        {/* ── 2. BACK FACE (The Memory / Journal Entry) ── */}
+        <div 
+          className="absolute inset-0 bg-[#FFFDF9] dark:bg-[#1a1a1a] rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.08)] border border-[#F59E9E]/20 p-6 flex flex-col items-center text-center pointer-events-none"
+          style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+        >
+          {/* Decorative Tape Back (Peeling Animation) */}
+          <motion.div 
+            animate={{ 
+               rotateZ: isHovered ? (index % 2 === 0 ? -14 : 14) : -2, // Peels away more dramatically
+               rotateX: isHovered ? 35 : 0, // Lifts off the paper in 3D
+               y: isHovered ? -3 : 0,
+               boxShadow: isHovered ? "0px 10px 15px rgba(0,0,0,0.12), 0px 4px 6px rgba(0,0,0,0.05)" : "0px 1px 2px rgba(0,0,0,0.05)"
+            }}
+            transition={{ delay: isHovered ? 0.3 : 0, duration: 0.5, type: "spring", stiffness: 300 }}
+            className={`absolute top-[-8px] w-12 h-4 bg-white/90 dark:bg-black/90 border border-black/[0.08] z-20 ${
+              index % 2 === 0 ? 'origin-bottom-left left-[45%]' : 'origin-bottom-right right-[45%]'
+            }`} 
+          />
+          
+          <div className="mt-6 mb-4 w-10 h-10 rounded-full bg-[#F59E9E]/10 flex items-center justify-center border border-[#F59E9E]/30 text-[#F59E9E]">
+            <Award size={18} />
+          </div>
+
+          <span className="text-[9px] font-black uppercase tracking-[0.3em] text-[#1a0a0a]/40 dark:text-white/40 mb-2">
+            The Story
+          </span>
+          
+          <h4 className="text-[22px] font-bold italic text-[#1a0a0a] dark:text-white leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            {item.title}
+          </h4>
+
+          {/* Separator Line */}
+          <div className="w-10 h-[1.5px] bg-[#F59E9E]/80 mx-auto my-2" />
+
+          <p className="text-[12px] sm:text-[13px] text-[#1a0a0a]/70 dark:text-white/70 font-inter leading-relaxed px-2 italic mb-3">
+            "{item.detail}"
+          </p>
+
+          <div className="mt-auto pt-3 border-t border-black/15 dark:border-white/15 w-full flex flex-col gap-1">
+             <span className="text-[8px] font-black uppercase tracking-[0.25em] text-[#1a0a0a]/30 dark:text-white/30">
+               Recognized By
+             </span>
+             <span className="text-[10px] font-bold text-[#F59E9E] uppercase tracking-widest">
+               {item.org}
+             </span>
+          </div>
+
+        </div>
+      </motion.div>
+    </motion.div>
+  )
+}
+
 export default function Achievements() {
   return (
-    <div className="py-20 relative">
-      {/* Background Decorative Rings (Contained) */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-[600px] h-[600px] border border-brand-500/5 rounded-full" />
-        <div className="absolute -bottom-24 -left-24 w-[400px] h-[400px] border border-brand-500/5 rounded-full" />
-      </div>
+    <section id="achievements" className="py-24 md:py-32 relative scroll-mt-32 overflow-visible">
+      
+      {/* Background ambient accents */}
+      <div className="absolute top-20 right-[-100px] w-[500px] h-[500px] bg-[#FFB5B5]/[0.05] blur-[100px] rounded-full pointer-events-none" />
 
-      <div className="relative z-10 w-full px-4 md:px-8">
-        <motion.div
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           className="mb-20 text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-brand-500/5 dark:bg-brand-500/10 rounded-full text-brand-500 font-black tracking-[0.2em] uppercase text-[10px] mb-6">
-            <Trophy size={12} /> Milestone recognition
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full overflow-visible">
+
+        {/* ── Header ── */}
+        <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-24">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm">
+            <Star size={10} className="text-[#F59E9E]" /> Milestones & Memories
           </div>
-          <h2 className="text-4xl md:text-7xl font-bold font-outfit text-[#1a0a0a] dark:text-white leading-[0.9] tracking-tighter italic">
-            Achievements & <span className="text-[#1a0a0a]/20 dark:text-white/20">Awards.</span>
+          <h2
+            className="text-[40px] md:text-[60px] lg:text-[70px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1] tracking-tighter"
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+          >
+            A visual archive of my{" "}
+            <span className="text-[#F59E9E]">Awards.</span>
           </h2>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 pb-20">
-          {achievements.map((achievement, index) => {
-            const Icon = achievement.icon
-            // Dynamic column spans for a Bento feel
-            const isLarge = index === 0 || index === 3
-            
-            return (
-              <motion.div
-                key={achievement.title}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05, duration: 0.5 }}
-                className={cn(
-                  "group relative p-10 bg-white dark:bg-[#1a1a1a] border border-black/[0.05] dark:border-white/5 rounded-[3rem] flex flex-col justify-between transition-all duration-500 hover:-translate-y-2",
-                  "shadow-[0_4px_12px_rgba(0,0,0,0.03)] dark:shadow-none hover:shadow-[0_1px_2px_rgba(0,0,0,0.05),0_12px_24px_-12px_rgba(0,0,0,0.2)] hover:border-brand-500/30",
-                  isLarge ? "md:col-span-3 lg:col-span-4 min-h-[400px]" : "md:col-span-3 lg:col-span-2 min-h-[350px]"
-                )}
-              >
-                {/* Subtle Interior Glow - Contain it inside the card using overflow-hidden on the INNER container if needed or just use relative */}
-                <div className="absolute inset-0 rounded-[3rem] overflow-hidden pointer-events-none">
-                  <div className={`absolute -top-24 -right-24 w-96 h-96 bg-gradient-to-br ${achievement.color} opacity-0 group-hover:opacity-[0.03] transition-all duration-1000 blur-[120px]`} />
-                  <Icon className="absolute -bottom-10 -right-10 w-48 h-48 text-brand-500/[0.01] dark:text-white/[0.01] rotate-12 group-hover:rotate-0 transition-transform duration-1000" />
-                </div>
-                
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                   <div className="flex justify-between items-start mb-12">
-                      <div className={cn(
-                        "w-16 h-16 rounded-[1.8rem] flex items-center justify-center bg-white dark:bg-white/5 border border-brand-500/10 shadow-sm group-hover:bg-brand-500 group-hover:shadow-[0_10px_20px_-8px_rgba(245,158,158,0.5)] transition-all duration-500 transform group-hover:rotate-6",
-                      )}>
-                        <Icon className="w-8 h-8 text-brand-600 dark:text-white group-hover:text-white transition-colors" />
-                      </div>
-                      <div className="flex flex-col items-end">
-                         <span className="text-[10px] font-black font-inter text-brand-500/40 tracking-[0.3em] uppercase">
-                           Class of {achievement.year}
-                         </span>
-                         <div className="h-[2px] w-8 bg-brand-500/10 mt-1 rounded-full group-hover:w-12 transition-all duration-500" />
-                      </div>
-                   </div>
-                   
-                   <div className="space-y-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-brand-500/30 group-hover:bg-brand-500 transition-colors" />
-                        <span className="text-[10px] font-black uppercase tracking-[0.4em] text-brand-600/40 block">Distinction</span>
-                      </div>
-                      <h3 className={cn(
-                        "font-bold font-outfit text-[#1a0a0a] dark:text-white leading-tight transition-colors italic",
-                        isLarge ? "text-3xl md:text-6xl" : "text-2xl md:text-3xl"
-                      )}>
-                        {achievement.title}
-                      </h3>
-                      <p className="text-[#1a0a0a]/50 dark:text-white/40 text-base leading-relaxed font-inter max-w-[95%] font-medium group-hover:text-[#1a0a0a]/70 dark:group-hover:text-white/60 transition-colors">
-                        {achievement.description}
-                      </p>
-                   </div>
-
-                   {/* Footer Decor */}
-                   <div className="relative z-10 mt-12 flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                         <div className="w-1.5 h-1.5 rounded-full bg-brand-500/20" />
-                         <span className="text-[9px] font-black uppercase tracking-[0.4em] text-[#1a0a0a]/20 dark:text-white/10">Auth Record</span>
-                      </div>
-                      <div className="w-12 h-0.5 bg-black/5 dark:bg-white/5 rounded-full" />
-                   </div>
-                </div>
-              </motion.div>
-            )
-          })}
+          <p className="max-w-md text-muted-foreground mt-4 font-inter text-sm">
+            Hover over any memory card to flip it and read the story behind the recognition.
+          </p>
         </div>
+
+        {/* ── Flip Card Grid ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
+          {achievements.map((item, i) => (
+            <div key={item.id} className="w-full max-w-[320px] mx-auto">
+              <MilestoneCard item={item} index={i} />
+            </div>
+          ))}
+        </div>
+
       </div>
-    </div>
+    </section>
   )
 }
