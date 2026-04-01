@@ -86,7 +86,7 @@ export default function ProjectCaseStudy() {
              {/* Technical Backdrop */}
              <div className="absolute inset-x-0 inset-y-0 z-0 opacity-[0.04] dark:opacity-[0.1] pointer-events-none" style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
              
-             <div className="max-w-7xl mx-auto w-full px-8 md:px-16 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
+             <div className="max-w-screen-2xl mx-auto w-full px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
                 <motion.div 
                    initial={{ opacity: 0, x: -50 }}
                    animate={{ opacity: 1, x: 0 }}
@@ -171,7 +171,7 @@ export default function ProjectCaseStudy() {
              </motion.div>
 
              {/* ── MOBILE CENTER STACK ── */}
-             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5 }} className="max-w-7xl mx-auto w-full px-8 md:px-16 lg:px-24 flex flex-col items-center relative z-10 h-full justify-center text-center">
+             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5 }} className="max-w-screen-2xl mx-auto w-full px-8 md:px-16 lg:px-20 flex flex-col items-center relative z-10 h-full justify-center text-center">
                 <div className="flex flex-col items-center gap-8 md:gap-12">
                    <motion.div 
                       animate={{ y: [0, -15, 0] }} 
@@ -205,7 +205,7 @@ export default function ProjectCaseStudy() {
           <div className="w-full h-screen relative flex items-center bg-[#ffffff] dark:bg-[#000000] overflow-hidden px-8 md:px-16 lg:px-24">
              <div className="absolute inset-0 z-0 opacity-[0.05] pointer-events-none" style={{ background: `radial-gradient(circle at 30% 50%, ${project.color}, transparent 50%)` }} />
              
-             <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
+             <div className="max-w-screen-2xl mx-auto w-full px-8 md:px-16 lg:px-20 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 pt-20 lg:pt-0">
                 <motion.div 
                    initial={{ opacity: 0, x: -50 }} 
                    animate={{ opacity: 1, x: 0 }} 
@@ -255,7 +255,7 @@ export default function ProjectCaseStudy() {
 
       {/* ── NARRATIVE: WHY & HOW ── */}
       <section className="py-32 md:py-52">
-        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-start">
           <div className="lg:col-span-5 relative lg:sticky lg:top-32">
              <SectionHeader 
@@ -349,7 +349,7 @@ export default function ProjectCaseStudy() {
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none" />
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-20">
           <div className="flex flex-col items-center text-center mb-24 md:mb-32">
              <SectionHeader 
                tag="Strategic Analysis"
@@ -447,7 +447,7 @@ export default function ProjectCaseStudy() {
       {/* ── WORKFLOW EVOLUTION ── */}
       {dc.workflow && (
       <section className="py-32 md:py-40 bg-white dark:bg-zinc-950 border-b border-black/5 dark:border-white/5 relative">
-        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-20">
            <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
               <div className="w-full lg:w-[40%]">
                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-brand-500/10 rounded-full text-brand-500 font-black tracking-[0.2em] uppercase text-[9px] mb-8">
@@ -553,7 +553,7 @@ export default function ProjectCaseStudy() {
 
       {/* ── TECHNICAL ARCHITECTURE ── */}
       <section className="py-32 md:py-52 bg-foreground text-background">
-        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24">
+        <div className="max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-20">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
               <div>
                 <motion.div 
@@ -600,7 +600,7 @@ export default function ProjectCaseStudy() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.05 }}
-                      className="p-6 md:p-10 border border-background/10 rounded-3xl flex items-center justify-center text-center group hover:bg-background hover:text-foreground transition-all duration-500"
+                       className="p-6 md:p-10 border border-background/10 rounded-3xl flex items-center justify-center text-center group hover:bg-background hover:text-foreground transition-all duration-500"
                     >
                        <span className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em]">{tech}</span>
                     </motion.div>
@@ -618,7 +618,7 @@ export default function ProjectCaseStudy() {
       <section className="py-52 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[500px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none" />
         
-        <div className="max-w-7xl mx-auto px-8 md:px-16 lg:px-24 relative z-10 flex flex-col items-center text-center">
+        <div className="max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-20 relative z-10 flex flex-col items-center text-center">
            <motion.div
              initial={{ opacity: 0, scale: 0.9 }}
              whileInView={{ opacity: 1, scale: 1 }}

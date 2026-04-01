@@ -108,7 +108,7 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto overscroll-contain flex items-start justify-center py-6 md:py-16 px-4"
+              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto scrollbar-hide overscroll-contain flex items-start justify-center py-6 md:py-16 px-4"
               onClick={() => setSelectedProject(null)}
             >
                 <motion.div
