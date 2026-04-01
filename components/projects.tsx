@@ -28,15 +28,15 @@ export default function Projects() {
   // Lock body scroll when modal is open
   useEffect(() => {
     if (selectedProject !== null) {
-      document.body.style.overflow = 'hidden'
-      document.body.style.touchAction = 'none'
+      document.documentElement.classList.add('no-scroll')
+      document.body.classList.add('no-scroll')
     } else {
-      document.body.style.overflow = 'unset'
-      document.body.style.touchAction = 'unset'
+      document.documentElement.classList.remove('no-scroll')
+      document.body.classList.remove('no-scroll')
     }
     return () => {
-      document.body.style.overflow = 'unset'
-      document.body.style.touchAction = 'unset'
+      document.documentElement.classList.remove('no-scroll')
+      document.body.classList.remove('no-scroll')
     }
   }, [selectedProject])
 
@@ -118,6 +118,7 @@ export default function Projects() {
                   transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
                   className="w-full max-w-6xl max-h-[90vh] overflow-y-auto scrollbar-hide bg-background rounded-[2rem] md:rounded-[3.5rem] p-5 md:p-10 lg:p-12 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground touch-auto"
                   onClick={(e) => e.stopPropagation()}
+                  onWheel={(e) => e.stopPropagation()}
                 >
                   <button
                     className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground"

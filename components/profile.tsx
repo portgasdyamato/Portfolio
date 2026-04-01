@@ -52,12 +52,12 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ y: yImage, transformOrigin: "top right" }}
-        className="flex flex-col items-center justify-between h-full pt-10 md:pt-24 lg:pt-32 pb-8 md:pb-12 relative w-full"
+        className="flex flex-col items-center justify-between h-full pt-16 md:pt-32 lg:pt-40 pb-8 md:pb-12 relative w-full"
       >
         <motion.div
-          animate={{ y: [0, -40, 0] }}
+          animate={{ y: [0, -20, 0] }}
           transition={{ 
-            y: { repeat: Infinity, duration: 4, ease: "easeInOut" },
+            y: { repeat: Infinity, duration: 5, ease: "easeInOut" },
             scale: { duration: 0.5, ease: "easeOut" }
           }}
           whileHover={{ scale: 1.05 }}

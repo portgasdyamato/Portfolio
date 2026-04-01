@@ -32,7 +32,7 @@ export default function WorkPage() {
         </section>
       </main>
 
-      <Footer />
+      <Footer hideContact={true} />
     </motion.div>
   )
 }

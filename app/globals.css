@@ -173,6 +173,12 @@
 }
 
 /* Hide scrollbar classes */
+.no-scroll {
+  overflow: hidden !important;
+  overscroll-behavior: contain !important;
+  touch-action: none !important;
+}
+
 .scrollbar-hide {
   -ms-overflow-style: none;
   scrollbar-width: none;

@@ -682,7 +682,7 @@ export default function ProjectCaseStudy() {
          <div className="w-1 h-12 bg-gradient-to-t from-foreground to-transparent" />
       </div>
 
-      <Footer />
+      <Footer hideContact={true} />
     </div>
   )
 }
