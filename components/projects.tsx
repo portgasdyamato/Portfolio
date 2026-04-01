@@ -108,7 +108,7 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] overflow-y-auto scrollbar-hide overscroll-contain flex items-start justify-center py-6 md:py-16 px-4"
+              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] flex items-center justify-center p-4 md:p-8"
               onClick={() => setSelectedProject(null)}
             >
                 <motion.div
@@ -116,7 +116,7 @@ export default function Projects() {
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.9, opacity: 0, y: 100 }}
                   transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
-                  className="w-full max-w-6xl bg-background rounded-[2.5rem] md:rounded-[4rem] p-5 md:p-12 lg:p-16 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground mb-8"
+                  className="w-full max-w-6xl max-h-[90vh] overflow-y-auto scrollbar-hide bg-background rounded-[2rem] md:rounded-[3.5rem] p-5 md:p-10 lg:p-12 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground touch-auto"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <button
