@@ -11,7 +11,7 @@ const config: Config = {
   theme: {
   	extend: {
   		fontFamily: {
-  			outfit: ['Cormorant Garamond', 'Outfit', 'Georgia', 'serif'],
+  			outfit: ['Libre Baskerville', 'Cormorant Garamond', 'Outfit', 'Georgia', 'serif'],
   			inter: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
   		},
   		colors: {

@@ -170,7 +170,7 @@ function CertificateCard({ cert, index }: { cert: typeof certificates[0], index:
         </div>
 
         <div className="flex-1 flex flex-col items-center justify-center text-center relative z-10 w-full mb-8">
-           <h3 className="text-2xl font-black text-[#1a0a0a] leading-tight mb-2 italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+           <h3 className="text-2xl font-black text-[#1a0a0a] leading-tight mb-2 italic" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
              {cert.title}
            </h3>
            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-black/[0.05] to-transparent mb-4" />
@@ -232,12 +232,12 @@ export default function Certificates() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#1a0a0a]/5 dark:bg-white/5 rounded-full text-[#1a0a0a]/40 dark:text-white/40 font-black tracking-[0.2em] uppercase text-[9px] mb-6">
               <Award size={10} /> Professional Certification
             </div>
-            <h2 className="text-[45px] md:text-[65px] font-bold italic text-[#1a0a0a] dark:text-white leading-[0.9]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="text-[45px] md:text-[65px] font-bold italic text-[#1a0a0a] dark:text-white leading-[0.9]" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
               Academic & <span className="text-black/30 dark:text-white/30">Industry Creds.</span>
             </h2>
           </div>
           <div className="hidden md:flex flex-col items-end text-right">
-             <div className="flex items-center gap-2 text-2xl font-black italic text-black/10 dark:text-white/10" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+             <div className="flex items-center gap-2 text-2xl font-black italic text-black/10 dark:text-white/10" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
                 <Sparkles size={24} />
                 <span>Verified Excellence</span>
              </div>

@@ -103,17 +103,17 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           <div className="flex flex-col justify-center py-4 gap-6">
             <div className="flex flex-col gap-1 md:gap-2 lowercase sm:uppercase">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                   AI Product
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                   Designer &
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[30px] sm:text-[60px] md:text-[75px] lg:text-[85px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[30px] sm:text-[60px] md:text-[75px] lg:text-[85px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                   Frontend Engineer.
                 </span>
               </motion.div>

@@ -94,7 +94,7 @@ export default function ProjectCaseStudy() {
                    className="w-full lg:w-1/2 flex flex-col items-start text-left"
                 >
                    <div className="h-0.5 w-12 bg-brand-500 mb-8" />
-                   <h1 className="text-[38px] md:text-[60px] lg:text-[72px] font-bold italic tracking-tighter leading-[0.95] mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                   <h1 className="text-[38px] md:text-[60px] lg:text-[72px] font-bold italic tracking-tighter leading-[0.95] mb-6" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                       {project.title}
                    </h1>
                    <p className="text-base md:text-lg text-muted-foreground font-inter italic opacity-70 max-w-lg mb-10">
@@ -188,7 +188,7 @@ export default function ProjectCaseStudy() {
                    </motion.div>
 
                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="px-4">
-                       <h1 className="text-[42px] md:text-[80px] lg:text-[104px] font-bold italic tracking-tighter leading-[0.9] max-w-6xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                       <h1 className="text-[42px] md:text-[80px] lg:text-[104px] font-bold italic tracking-tighter leading-[0.9] max-w-6xl" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                           {project.title}
                        </h1>
                        <div className="mt-8 flex items-center justify-center gap-4 md:gap-6 opacity-30">
@@ -213,7 +213,7 @@ export default function ProjectCaseStudy() {
                    className="w-full lg:w-[45%] flex flex-col justify-center order-2 lg:order-1 text-left"
                 >
                    <div className="h-0.5 w-12 bg-brand-500 mb-8" />
-                   <h1 className="text-[40px] md:text-[64px] lg:text-[76px] font-bold italic tracking-tighter leading-[0.95] mb-10" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                   <h1 className="text-[40px] md:text-[64px] lg:text-[76px] font-bold italic tracking-tighter leading-[0.95] mb-10" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                       {project.title}
                    </h1>
 
@@ -369,7 +369,7 @@ export default function ProjectCaseStudy() {
                     <div className="h-[2px] w-12 bg-brand-500 shadow-[0_0_10px_rgba(236,72,153,0.5)]" />
                     <span className="text-[10px] font-black uppercase tracking-[0.6em]">Core Findings</span>
                  </div>
-                 <h4 className="text-[42px] font-bold italic tracking-tighter text-foreground leading-[0.9]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                 <h4 className="text-[42px] font-bold italic tracking-tighter text-foreground leading-[0.9]" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
                     Strategic <span className="opacity-30">Breakthroughs.</span>
                  </h4>
               </div>
@@ -402,7 +402,7 @@ export default function ProjectCaseStudy() {
                      <div className="h-[2px] w-12 bg-brand-500 shadow-[0_0_10px_rgba(236,72,153,0.5)]" />
                      <span className="text-[10px] font-black uppercase tracking-[0.6em]">Research Methods</span>
                   </div>
-                  <h4 className="text-[42px] font-bold italic tracking-tighter text-foreground leading-[0.9]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <h4 className="text-[42px] font-bold italic tracking-tighter text-foreground leading-[0.9]" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
                      Strategic <span className="opacity-30">Methodologies.</span>
                   </h4>
                </div>
@@ -428,7 +428,7 @@ export default function ProjectCaseStudy() {
 
                       <div className="flex flex-col gap-1.5 mt-4">
                          <span className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/40">Core Method</span>
-                         <h5 className="text-[18px] md:text-[20px] font-bold italic tracking-tighter text-foreground group-hover:text-brand-500 transition-colors duration-500" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{method}</h5>
+                         <h5 className="text-[18px] md:text-[20px] font-bold italic tracking-tighter text-foreground group-hover:text-brand-500 transition-colors duration-500" style={{ fontFamily: "'Jersey 20', sans-serif" }}>{method}</h5>
                       </div>
 
                       <div className="absolute right-6 bottom-6 flex items-center gap-1 opacity-20">
@@ -454,7 +454,7 @@ export default function ProjectCaseStudy() {
                    <Layers size={12} />
                    Workflow Evolution
                  </div>
-                 <h2 className="text-[40px] md:text-[60px] font-bold italic leading-[1.05] tracking-tight mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                 <h2 className="text-[40px] md:text-[60px] font-bold italic leading-[1.05] tracking-tight mb-8" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
                    Design <br /> <span className="text-brand-500">Process.</span>
                  </h2>
                  <p className="text-lg opacity-80 text-muted-foreground leading-relaxed font-inter mb-10">
@@ -502,7 +502,7 @@ export default function ProjectCaseStudy() {
                 <div>
                    <h5 className="text-[10px] font-black uppercase tracking-[0.4em] text-foreground/50 mb-6">Typography & Fonts</h5>
                    <div className="space-y-4">
-                      <p className="text-4xl font-bold italic tracking-tighter" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{vi.typography.split('&')[0]}</p>
+                      <p className="text-4xl font-bold italic tracking-tighter" style={{ fontFamily: "'Jersey 20', sans-serif" }}>{vi.typography.split('&')[0]}</p>
                       <p className="text-base font-medium tracking-widest opacity-60 font-inter uppercase">{vi.typography.split('&')[1] || "Inter Tight"}</p>
                    </div>
                 </div>
@@ -565,7 +565,7 @@ export default function ProjectCaseStudy() {
                     <Code2 size={12} />
                     Logic & Infrastructure
                   </div>
-                  <h2 className="text-[40px] md:text-[70px] font-bold italic leading-[1.05] tracking-tight mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <h2 className="text-[40px] md:text-[70px] font-bold italic leading-[1.05] tracking-tight mb-8" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
                     Engineering <br /> <span className="text-brand-500/80">Excellence.</span>
                   </h2>
                   <div className="text-base md:text-xl opacity-60 leading-relaxed font-inter mb-12 space-y-4">
@@ -625,7 +625,7 @@ export default function ProjectCaseStudy() {
              viewport={{ once: true }}
              className="mb-24"
            >
-              <h2 className="text-[50px] md:text-[90px] font-bold italic leading-tight mb-12" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+              <h2 className="text-[50px] md:text-[90px] font-bold italic leading-tight mb-12" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
                 Measured <span className="text-brand-500">Impact.</span>
               </h2>
               
@@ -699,7 +699,7 @@ function SectionHeader({ tag, title, icon: Icon }: { tag: string, title: any, ic
         <Icon size={12} />
         {tag}
       </div>
-      <h2 className="text-[40px] md:text-[60px] font-bold italic leading-tight text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+      <h2 className="text-[40px] md:text-[60px] font-bold italic leading-tight text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
         {title}
       </h2>
     </motion.div>

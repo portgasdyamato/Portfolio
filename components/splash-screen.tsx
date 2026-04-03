@@ -171,7 +171,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
                                     className="text-[40px] sm:text-[70px] md:text-[90px] lg:text-[120px] text-[#1a0a0a] font-light tracking-tight"
                                     style={{ 
-                                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                                      fontFamily: "'Libre Baskerville', serif",
                                       perspective: "1000px"
                                     }}
                                 >
