@@ -233,7 +233,7 @@ const PixelCharacter = () => {
                   className="absolute bottom-full right-0 mb-4 max-w-xs"
                 >
                   <div className="bg-white px-4 py-3 rounded-2xl shadow-lg border-2 border-brand-200 relative">
-                    <p className="text-[13px] text-gray-800 font-medium italic font-libre leading-relaxed">
+                    <p className="text-sm text-gray-800 font-medium">
                       {messages[currentMessage]}
                     </p>
                     {/* Speech bubble tail */}

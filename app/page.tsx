@@ -72,7 +72,7 @@ export default function Home() {
                       <Sparkles size={12} fill="currentColor" strokeWidth={0} />
                       Beyond The Resume
                     </div>
-                    <h2 className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] leading-[1.05] tracking-tight" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+                    <h2 className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] leading-[1.05] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                       Before you learn about me <span className="text-[#F59E9E]">Professionally,</span>
                       <br /> let's learn some <span className="text-black/30">fun facts</span> about me.
                     </h2>

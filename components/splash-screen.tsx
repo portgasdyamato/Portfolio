@@ -157,7 +157,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
               {/* The Name (Assembling through progress) */}
               <div className="flex flex-col items-center gap-2 sm:gap-6">
                   <h2 className="flex flex-col md:flex-row items-center gap-2 md:gap-8 overflow-hidden py-4">
-                    {["SAKSHI", "AGRAHARI"].map((word, wIdx) => (
+                    {["Sakshi", "Agrahari"].map((word, wIdx) => (
                         <div key={wIdx} className="flex overflow-hidden">
                             {word.split("").map((char, i) => (
                                 <motion.span
@@ -169,7 +169,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                                         rotateX: progress > (15 + i * 4 + wIdx * 20) ? 0 : -90
                                     }}
                                     transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                    className="text-[40px] sm:text-[70px] md:text-[90px] lg:text-[120px] text-[#1a0a0a] font-light tracking-tight"
+                                    className="text-[40px] sm:text-[70px] md:text-[90px] lg:text-[120px] text-[#1a0a0a] font-light italic tracking-tight"
                                     style={{ 
                                       fontFamily: "'Libre Baskerville', serif",
                                       perspective: "1000px"

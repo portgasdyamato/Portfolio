@@ -221,7 +221,7 @@ export default function Achievements() {
           </div>
           <h2
             className="text-[40px] md:text-[60px] lg:text-[70px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1] tracking-tighter"
-            style={{ fontFamily: "'Libre Baskerville', serif" }}
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             A visual archive of my{" "}
             <span className="text-[#F59E9E]">Awards.</span>

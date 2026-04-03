@@ -13,11 +13,7 @@ const config: Config = {
   		fontFamily: {
   			outfit: ['Cormorant Garamond', 'Outfit', 'Georgia', 'serif'],
   			inter: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
-  			libre: ['"Libre Baskerville"', 'serif'],
-  			pixel: ['Silkscreen', 'cursive'],
-  			mono: ['"JetBrains Mono"', 'monospace'],
-  			vt323: ['VT323', 'monospace'],
-  			share: ['"Share Tech Mono"', 'monospace'],
+  			libre: ['Libre Baskerville', 'serif'],
   		},
   		colors: {
   			background: 'hsl(var(--background))',

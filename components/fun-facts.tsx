@@ -65,7 +65,7 @@ export default function FunFacts() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-widest uppercase text-[9px] mb-6">
               <Star size={10} fill="currentColor" /> Experimental 3D Interaction
             </div>
-            <h3 className="text-[45px] sm:text-[65px] font-bold italic text-[#1a0a0a] leading-tight mb-6" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+            <h3 className="text-[45px] sm:text-[65px] font-bold italic text-[#1a0a0a] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               My Favorite Trio.
             </h3>
             <p className="text-[#1a0a0a]/80 text-lg leading-relaxed font-inter">
@@ -112,7 +112,7 @@ export default function FunFacts() {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
             <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
           </div>
-          <h3 className="text-[40px] font-bold italic text-white leading-[0.85]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+          <h3 className="text-[40px] font-bold italic text-white leading-[0.85]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             My <span className="text-[#F59E9E]">Hobbies.</span>
           </h3>
           <p className="text-white/40 text-[14px] font-inter leading-relaxed">
@@ -203,7 +203,7 @@ export default function FunFacts() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
               <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
             </div>
-            <h3 className="text-[70px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+            <h3 className="text-[70px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
               My <span className="text-[#F59E9E]">Hobbies.</span>
             </h3>
             <p className="text-white/30 text-lg font-inter leading-relaxed max-w-xl">
