@@ -119,7 +119,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             
             {/* Elegant Year Tag (Architectural Detail) */}
             <div className="absolute top-4 right-5 text-right z-10">
-               <span className="text-[14px] font-bold italic text-[#F59E9E] tracking-tight" style={{ fontFamily: "'Jersey 20', sans-serif" }}>{item.year}</span>
+               <span className="text-[14px] font-bold italic text-[#F59E9E] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{item.year}</span>
                <div className="w-8 h-[1px] bg-[#F59E9E]/30 mt-1 ml-auto" />
             </div>
 
@@ -140,7 +140,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
                <span className="text-[8px] font-black uppercase tracking-[0.3em] text-[#F59E9E] bg-[#F59E9E]/10 px-2 py-0.5 rounded-sm mb-1">
                  {item.label}
                </span>
-               <h4 className="text-[20px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.1]" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
+               <h4 className="text-[20px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                  {item.title}
                </h4>
             </div>
@@ -179,7 +179,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             The Story
           </span>
           
-          <h4 className="text-[22px] font-bold italic text-[#1a0a0a] dark:text-white leading-tight" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
+          <h4 className="text-[22px] font-bold italic text-[#1a0a0a] dark:text-white leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             {item.title}
           </h4>
 
@@ -221,7 +221,7 @@ export default function Achievements() {
           </div>
           <h2
             className="text-[40px] md:text-[60px] lg:text-[70px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1] tracking-tighter"
-            style={{ fontFamily: "'Jersey 20', sans-serif" }}
+            style={{ fontFamily: "'Libre Baskerville', serif" }}
           >
             A visual archive of my{" "}
             <span className="text-[#F59E9E]">Awards.</span>

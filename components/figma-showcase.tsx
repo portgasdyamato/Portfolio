@@ -126,7 +126,7 @@ export default function FigmaShowcase() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight" 
-            style={{ fontFamily: "'Jersey 20', sans-serif" }}
+            style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             Figma Design <span className="text-[#F59E9E]">Artifacts.</span>
           </motion.h2>

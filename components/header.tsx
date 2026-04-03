@@ -97,7 +97,7 @@ export default function Header() {
             >
               <span
                 className="text-[22px] sm:text-[26px] font-bold italic tracking-tight text-[#1a0a0a] group-hover:text-[#F59E9E] transition-colors duration-300"
-                style={{ fontFamily: "'Jersey 20', sans-serif" }}
+                style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}
               >
                 Sakshi Agrahari
               </span>
@@ -175,7 +175,7 @@ export default function Header() {
                       onClick={() => handleNavClick(item.id, item.path)}
                       className="w-full flex items-center justify-between px-6 py-4 rounded-2xl hover:bg-black/5 transition-colors group"
                     >
-                      <span className="text-xl font-bold italic text-[#1a0a0a]" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
+                      <span className="text-xl font-bold italic text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                         {item.label}
                       </span>
                       <ArrowUpRight size={16} className="text-[#1a0a0a]/30 group-hover:text-[#F59E9E] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
@@ -214,7 +214,7 @@ export default function Header() {
                 <Sparkles className="text-[#F59E9E]" size={24} />
               </div>
 
-              <h3 className="text-4xl font-bold italic text-[#1a0a0a] mb-4 leading-tight" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
+              <h3 className="text-4xl font-bold italic text-[#1a0a0a] mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                 Designed for <br /> <em>Impact.</em>
               </h3>
               

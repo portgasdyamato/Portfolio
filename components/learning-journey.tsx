@@ -181,7 +181,7 @@ function JourneyCard({
                {/* Typography Section */}
                <div className="space-y-4">
                   <div className="space-y-2">
-                     <h3 className="text-xl md:text-3xl lg:text-4xl font-black tracking-tight text-[#1a0a0a] dark:text-white leading-[0.95] group-hover:text-brand-600 transition-colors" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
+                     <h3 className="text-xl md:text-3xl lg:text-4xl font-black tracking-tight text-[#1a0a0a] dark:text-white leading-[0.95] group-hover:text-brand-600 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                         {item.level.split(' ').map((word, i) => (
                            <span key={i} className={cn(i % 2 === 1 ? "italic font-light" : "")}>
                              {word}{' '}

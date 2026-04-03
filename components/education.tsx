@@ -99,7 +99,7 @@ export default function Education() {
           className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6"
         >
           <div>
-            <h2 className="text-4xl md:text-5xl font-bold font-outfit uppercase tracking-tighter">
+            <h2 className="text-4xl md:text-5xl font-bold font-libre italic tracking-tighter">
               Learning Trajectory
             </h2>
             <p className="text-muted-foreground text-lg max-w-xl font-inter mt-4">

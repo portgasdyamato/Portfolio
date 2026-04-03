@@ -61,7 +61,7 @@ export default function Projects() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight mb-4" 
-            style={{ fontFamily: "'Jersey 20', sans-serif" }}
+            style={{ fontFamily: "'Libre Baskerville', serif" }}
           >
             Featured <span className="text-[#F59E9E]">Projects.</span>
           </motion.h2>
@@ -422,7 +422,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
           ))}
         </motion.div>
         
-        <h3 className="text-3xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-5 md:mb-8 italic text-center" style={{ fontFamily: "'Jersey 20', sans-serif" }}>
+        <h3 className="text-3xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-5 md:mb-8 italic text-center" style={{ fontFamily: "'Libre Baskerville', serif" }}>
           {project.title}
         </h3>
         
