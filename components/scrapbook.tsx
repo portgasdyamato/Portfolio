@@ -35,8 +35,8 @@ const INITIAL_ITEMS: ScrapItem[] = [
     type: "image",
     content: "/blb.gif",
     rotation: 5,
-    x: "36%",
-    y: "14%",
+    x: "28%",
+    y: "10%",
     zIndex: 12,
     scale: 0.5,
   },
@@ -56,8 +56,8 @@ const INITIAL_ITEMS: ScrapItem[] = [
     type: "image",
     content: "/bk.gif",
     rotation: -5,
-    x: "18%",
-    y: "55%",
+    x: "15%",
+    y: "68%",
     zIndex: 9,
     scale: 0.5,
   },
@@ -408,14 +408,14 @@ function ScrapWrapper({
       )}
       
       {item.type === "video" && (
-        <div className="relative w-[340px] md:w-[500px] max-w-[90vw] overflow-hidden rounded-2xl shadow-2xl bg-black/5 aspect-[16/10] flex items-center justify-center">
+        <div className="relative w-[340px] md:w-[500px] max-w-[90vw] aspect-[16/10] flex items-center justify-center pointer-events-none">
           <video
             ref={videoRef}
             src={item.content as string}
             muted
             loop
             playsInline
-            className="w-full h-full object-contain rotate-90 scale-[1.35]"
+            className="w-full h-full object-cover rotate-90 scale-[1.35]"
           />
         </div>
       )}
@@ -431,9 +431,6 @@ function ScrapWrapper({
           {/* Paper Texture Overlay */}
           <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
           
-          {/* Subtle Corner Shadow */}
-          <div className="absolute bottom-0 right-0 w-8 h-8 bg-black/[0.03] rounded-tl-full pointer-events-none" />
-
           {/* Content with Elegant Serif */}
           <p 
             className="text-[#1a0a0a]/80 font-medium leading-relaxed tracking-tight text-[12px] md:text-[14px] relative z-10 italic"
@@ -444,10 +441,6 @@ function ScrapWrapper({
           >
             "{item.content}"
           </p>
-          
-          <div className="absolute bottom-3 right-3 opacity-20 group-hover/note:opacity-60 transition-opacity">
-             <Heart size={10} fill="currentColor" className="text-[#F59E9E]" />
-          </div>
         </div>
       )}
 
