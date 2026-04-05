@@ -326,6 +326,7 @@ function ScrapWrapper({
   const rotationShift = useTransform(progress, [0, 1], [-item.rotation, item.rotation])
 
   return (
+    <motion.div
       initial={{ opacity: 0, scale: 0 }}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
