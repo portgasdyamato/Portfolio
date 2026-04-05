@@ -59,7 +59,7 @@ const INITIAL_ITEMS: ScrapItem[] = [
     x: "72%",
     y: "35%",
     zIndex: 100,
-    scale: 0.55,
+    scale: 0.45,
   },
   {
     id: "pot-gif",
@@ -203,8 +203,8 @@ export default function Scrapbook() {
         type: "note",
         content: inputValue,
         rotation: (Math.random() - 0.5) * 20,
-        x: `${25 + Math.random() * 50}%`,
-        y: `${35 + Math.random() * 30}%`,
+        x: `${20 + Math.random() * 60}%`, // Wider spread to avoid main center gif
+        y: `${30 + Math.random() * 40}%`,
         zIndex: 30,
         scale: 0.85,
         color: ["#E1F5FE", "#E8F5E9", "#FFF3E0", "#F3E5F5"][Math.floor(Math.random() * 4)],
@@ -326,10 +326,11 @@ function ScrapWrapper({
   const rotationShift = useTransform(progress, [0, 1], [-item.rotation, item.rotation])
 
   return (
-    <motion.div
       initial={{ opacity: 0, scale: 0 }}
       onMouseEnter={() => onHoverChange?.(true)}
       onMouseLeave={() => onHoverChange?.(false)}
+      drag={item.type === "note"} // Make notes draggable
+      dragMomentum={false}
       animate={{ 
         opacity: 1, 
         scale: item.scale || 1, 
@@ -344,9 +345,14 @@ function ScrapWrapper({
         translateX: "-50%",
         translateY: "-50%",
       }}
-      className="absolute w-fit h-fit transform-gpu origin-center"
-      whileHover={{ scale: (item.scale || 1) * 1.05, zIndex: 110 }}
-      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+      className={`absolute w-fit h-fit transform-gpu origin-center ${item.type === "note" ? "cursor-grab active:cursor-grabbing" : ""}`}
+      whileHover={{ scale: (item.scale || 1) * 1.08, zIndex: 200 }} // Move to forward layers on hover
+      transition={{ 
+        type: "spring", 
+        stiffness: 400, 
+        damping: 30,
+        layout: { duration: 0.3 }
+      }}
     >
       {item.type === "photo" && (
         <div className="bg-white p-2 md:p-2.5 pb-6 shadow-[0_15px_40px_rgba(0,0,0,0.08)] rounded-3xl border border-black/5 whitespace-nowrap overflow-hidden">
@@ -381,14 +387,14 @@ function ScrapWrapper({
       )}
       
       {item.type === "video" && (
-        <div className="relative w-[280px] md:w-[450px] max-w-[90vw] overflow-hidden rounded-2xl shadow-2xl bg-black/5">
+        <div className="relative w-[280px] md:w-[450px] max-w-[90vw] overflow-hidden rounded-2xl ">
           <video
             ref={videoRef}
             src={item.content as string}
             muted
             loop
             playsInline
-            className="w-full h-auto object-contain"
+            className="w-full h-auto object-contain rotate-90"
           />
         </div>
       )}
