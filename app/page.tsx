@@ -1,22 +1,18 @@
 "use client"
 
-// v1.3 - Unified Discovery Deployment
 import { useState, useEffect } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import SplashScreen from "@/components/splash-screen"
 import Header from "@/components/header"
 import MorphingHero from "@/components/morphing-hero"
-
 import Footer from "@/components/footer"
 import FunFacts from "@/components/fun-facts"
 import Education from "@/components/education"
 import Achievements from "@/components/achievements"
-
 import SkillsShowcase from "@/components/skills-showcase"
-
+import Scrapbook from "@/components/scrapbook"
 import NewsTicker from "@/components/news-ticker"
 import CustomCursor from "@/components/custom-cursor"
-
 import { Sparkles } from "lucide-react"
 
 // Global session tracker (Survivies SPA navigations, resets on Refresh)
@@ -87,6 +83,9 @@ export default function Home() {
                 <section id="skills" className="scroll-mt-32">
                   <SkillsShowcase />
                 </section>
+
+                {/* ── PERSONAL SCRAPBOOK ── */}
+                <Scrapbook />
 
               </main>
 
