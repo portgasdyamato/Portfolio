@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
     "@emotion/is-prop-valid": "latest",
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^3.9.1",
