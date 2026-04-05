@@ -408,14 +408,14 @@ function ScrapWrapper({
       )}
       
       {item.type === "video" && (
-        <div className="relative w-[340px] md:w-[500px] max-w-[90vw] aspect-[16/10] flex items-center justify-center pointer-events-none">
+        <div className="relative w-[180px] md:w-[280px] max-w-[90vw] aspect-[10/16] flex items-center justify-center pointer-events-none">
           <video
             ref={videoRef}
             src={item.content as string}
             muted
             loop
             playsInline
-            className="w-full h-full object-cover rotate-90 scale-[1.35]"
+            className="w-[280px] md:w-[480px] max-w-none h-auto object-contain rotate-90"
           />
         </div>
       )}
