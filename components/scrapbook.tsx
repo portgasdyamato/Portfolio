@@ -408,7 +408,7 @@ function ScrapWrapper({
       )}
       
       {item.type === "video" && (
-        <div className="relative w-[180px] md:w-[280px] max-w-[90vw] aspect-[10/16] flex items-center justify-center pointer-events-none">
+        <div className="relative w-[180px] md:w-[280px] max-w-[90vw] aspect-[10/16] flex items-center justify-center">
           <video
             ref={videoRef}
             src={item.content as string}
