@@ -247,7 +247,7 @@ export default function Scrapbook() {
   }
 
   return (
-    <section ref={containerRef} className="relative w-full h-[110vh] md:h-[130vh] py-20 overflow-hidden bg-transparent select-none">
+    <section id="scrapbook" ref={containerRef} className="relative w-full h-[110vh] md:h-[130vh] py-20 overflow-hidden bg-transparent select-none">
       {/* Ambient Audio Element */}
       <audio ref={audioRef} src="/pippo.mpeg" loop />
 
