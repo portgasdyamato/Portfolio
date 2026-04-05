@@ -144,9 +144,9 @@ export default function Header() {
                 whileHover={{ scale: 1.05, rotate: 15 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleNavClick("scrapbook", "/#scrapbook")}
-                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-[#F59E9E] transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-black transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)] shrink-0"
               >
-                <Wand size={16} fill="currentColor" className="text-[#F59E9E]" />
+                <Wand size={14} className="text-white" />
               </motion.button>
 
               {/* Mobile Menu Toggle */}

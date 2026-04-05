@@ -35,8 +35,8 @@ const INITIAL_ITEMS: ScrapItem[] = [
     type: "image",
     content: "/blb.gif",
     rotation: 5,
-    x: "35%",
-    y: "12%",
+    x: "32%",
+    y: "14%",
     zIndex: 12,
     scale: 0.5,
   },
@@ -57,7 +57,7 @@ const INITIAL_ITEMS: ScrapItem[] = [
     content: "/bk.gif",
     rotation: -5,
     x: "15%",
-    y: "40%",
+    y: "48%",
     zIndex: 9,
     scale: 0.5,
   },
@@ -408,14 +408,14 @@ function ScrapWrapper({
       )}
       
       {item.type === "video" && (
-        <div className="relative w-[300px] md:w-[480px] max-w-[90vw] overflow-hidden rounded-2xl shadow-2xl bg-black/5 aspect-[16/10]">
+        <div className="relative w-[340px] md:w-[500px] max-w-[90vw] overflow-hidden rounded-2xl shadow-2xl bg-black/5 aspect-[16/10] flex items-center justify-center">
           <video
             ref={videoRef}
             src={item.content as string}
             muted
             loop
             playsInline
-            className="w-full h-full object-cover rotate-90"
+            className="w-full h-full object-contain rotate-90 scale-[1.35]"
           />
         </div>
       )}
@@ -424,40 +424,29 @@ function ScrapWrapper({
         <div
           style={{ 
             backgroundColor: item.color,
-            boxShadow: "2px 5px 15px rgba(0,0,0,0.08), inset 0 0 40px rgba(0,0,0,0.02)"
+            boxShadow: "0 10px 30px rgba(0,0,0,0.06), inset 0 0 40px rgba(255,255,255,0.4)"
           }}
-          className="p-5 md:p-6 w-[160px] md:w-[230px] rounded-sm relative overflow-hidden group/note border-t border-white/40 pt-10"
+          className="p-6 w-[180px] md:w-[250px] rounded-lg border-l-8 border-black/5 relative overflow-hidden group/note transition-all"
         >
-          {/* Notebook Spiral - Real world inspired detail */}
-          <div className="absolute top-2 left-0 right-0 flex justify-center gap-3 px-4 opacity-30">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="flex flex-col items-center gap-0.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-black/40 shadow-inner" />
-                <div className="w-0.5 h-3 bg-black/20" />
-              </div>
-            ))}
-          </div>
+          {/* Subtle Vertical Paper Lines Texture */}
+          <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[repeating-linear-gradient(90deg,transparent,transparent_23px,#000_24px)]" />
+          
+          {/* Notebook Pin Detail */}
+          <div className="absolute top-4 left-[-12px] w-4 h-4 rounded-full bg-white shadow-md border border-black/5 z-20" />
 
-          {/* Paper Texture Overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper-fibers.png')]" />
-          
-          {/* Folded Corner Effect */}
-          <div className="absolute top-0 right-0 w-6 h-6 bg-black/5 clip-path-fold origin-top-right transition-transform group-hover/note:scale-110" />
-          
-          {/* Content with Handwriting Font */}
+          {/* Content with Elegant Serif */}
           <p 
-            className="text-[#1a0a0a]/80 font-medium leading-relaxed tracking-tight text-[11px] md:text-[13px] relative z-10 italic"
+            className="text-[#1a0a0a]/80 font-medium leading-relaxed tracking-tight text-[12px] md:text-[14px] relative z-10 italic"
             style={{ 
               fontFamily: "'Libre Baskerville', serif",
-              lineHeight: "1.6"
+              lineHeight: "1.8"
             }}
           >
             "{item.content}"
           </p>
           
-          {/* Subtle Sparkle Indicator for the note */}
-          <div className="absolute bottom-2 right-2 opacity-0 group-hover/note:opacity-100 transition-opacity">
-            <Sparkles size={10} className="text-[#1a0a0a]/20" />
+          <div className="absolute bottom-3 right-3 opacity-20 group-hover/note:opacity-60 transition-opacity">
+             <Heart size={10} fill="currentColor" className="text-[#F59E9E]" />
           </div>
         </div>
       )}
