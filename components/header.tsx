@@ -88,7 +88,7 @@ export default function Header() {
           className={`pointer-events-auto w-full max-w-4xl ${!visible ? 'pointer-events-none' : ''}`}
         >
           <div
-            className="flex items-center justify-between gap-3 sm:gap-6 px-4 py-2.5 sm:px-10 sm:py-5 pr-2.5 sm:pr-2.5 rounded-full border border-black/[0.08] bg-white/80 backdrop-blur-3xl shadow-[0_1px_2px_rgba(0,0,0,0.05),0_12px_24px_-12px_rgba(0,0,0,0.15)] transition-transform duration-500 scale-100"
+            className="flex items-center justify-between gap-3 sm:gap-6 px-4 py-2.5 sm:px-10 sm:py-5 pr-5 sm:pr-8 rounded-full border border-black/[0.08] bg-white/80 backdrop-blur-3xl shadow-[0_1px_2px_rgba(0,0,0,0.05),0_12px_24px_-12px_rgba(0,0,0,0.15)] transition-transform duration-500 scale-100"
           >
             {/* Logo */}
             <button
