@@ -155,7 +155,25 @@ export default function Scrapbook() {
 
   useEffect(() => {
     setIsMounted(true)
-    setItems(INITIAL_ITEMS) // Force update to latest on mount
+    const fetchNotes = async () => {
+      try {
+        const res = await fetch("/api/scrapbook-notes")
+        const data = await res.json()
+        if (data.notes) {
+          // Normalize coordinates if coming from DB (removing % if present before merge)
+          const dbNotes = data.notes.map((n: any) => ({
+            ...n,
+            type: "note" as const,
+            zIndex: 30,
+            scale: 0.85,
+          }))
+          setItems([...INITIAL_ITEMS, ...dbNotes])
+        }
+      } catch (e) {
+        console.error("Failed to load notes", e)
+      }
+    }
+    fetchNotes()
   }, [])
 
   const handlePlayerHover = (isHovering: boolean) => {
@@ -167,7 +185,7 @@ export default function Scrapbook() {
     }
   }
 
-  const handleAddMessage = () => {
+  const handleAddMessage = async () => {
     if (!inputValue.trim()) return
 
     const lowerMessage = inputValue.toLowerCase()
@@ -188,8 +206,20 @@ export default function Scrapbook() {
         scale: 0.85,
         color: ["#E1F5FE", "#E8F5E9", "#FFF3E0", "#F3E5F5"][Math.floor(Math.random() * 4)],
       }
+
       setItems(prev => [...prev, newItem])
       setInputValue("")
+
+      // Persist to DB
+      try {
+        await fetch("/api/scrapbook-notes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(newItem),
+        })
+      } catch (e) {
+        console.error("Failed to save note", e)
+      }
     }
   }
 
@@ -313,8 +343,8 @@ function ScrapWrapper({
       transition={{ type: "spring", stiffness: 200, damping: 25 }}
     >
       {item.type === "photo" && (
-        <div className="bg-white p-2 md:p-2.5 pb-6 shadow-[0_15px_40px_rgba(0,0,0,0.08)] rounded-[2px] border border-black/5 whitespace-nowrap">
-          <div className="relative w-[120px] md:w-[180px] aspect-[4/5] overflow-hidden grayscale-[0.3] hover:grayscale-0 transition-all duration-700">
+        <div className="bg-white p-2 md:p-2.5 pb-6 shadow-[0_15px_40px_rgba(0,0,0,0.08)] rounded-3xl border border-black/5 whitespace-nowrap overflow-hidden">
+          <div className="relative w-[120px] md:w-[180px] aspect-[4/5] overflow-hidden grayscale-[0.3] hover:grayscale-0 transition-all duration-700 rounded-2xl">
             <Image
               src={item.content as string}
               alt="Moment"
