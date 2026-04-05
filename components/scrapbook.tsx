@@ -42,6 +42,16 @@ const INITIAL_ITEMS: ScrapItem[] = [
     caption: "Magic in the works",
   },
   {
+    id: "blb-gif",
+    type: "image",
+    content: "/blb.gif",
+    rotation: -5,
+    x: "15%",
+    y: "40%",
+    zIndex: 9,
+    scale: 0.5,
+  },
+  {
     id: "deer-gif",
     type: "image",
     content: "/deer.gif",
@@ -289,7 +299,7 @@ export default function Scrapbook() {
           </AnimatePresence>
         </div>
 
-          <div className="relative flex-1 w-full max-w-6xl mx-auto min-h-[450px]">
+          <div className="relative flex-1 w-full max-w-7xl mx-auto min-h-[450px]">
             <AnimatePresence>
               {items.map((item) => (
                 <ScrapWrapper 
