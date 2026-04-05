@@ -38,7 +38,7 @@ const INITIAL_ITEMS: ScrapItem[] = [
     x: "28%",
     y: "10%",
     zIndex: 12,
-    scale: 0.5,
+    scale: 0.35,
   },
   {
     id: "photo-2",
@@ -50,16 +50,6 @@ const INITIAL_ITEMS: ScrapItem[] = [
     zIndex: 11,
     scale: 0.75,
     caption: "Magic in the works",
-  },
-  {
-    id: "bk-gif",
-    type: "image",
-    content: "/bk.gif",
-    rotation: -5,
-    x: "15%",
-    y: "68%",
-    zIndex: 9,
-    scale: 0.5,
   },
   {
     id: "deer-gif",
@@ -79,7 +69,7 @@ const INITIAL_ITEMS: ScrapItem[] = [
     x: "72%",
     y: "35%",
     zIndex: 100,
-    scale: 0.45,
+    scale: 0.35,
   },
   {
     id: "pot-gif",

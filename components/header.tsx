@@ -93,7 +93,7 @@ export default function Header() {
             {/* Logo */}
             <button
               onClick={() => handleNavClick("home", "/")}
-              className="group flex items-center pr-6 border-r border-black/5 shrink-0"
+              className="group flex items-center shrink-0 pr-4 sm:pr-8 border-r border-black/5"
             >
               <span
                 className="text-[22px] sm:text-[26px] font-bold italic tracking-tight text-[#1a0a0a] group-hover:text-[#F59E9E] transition-colors duration-300"
