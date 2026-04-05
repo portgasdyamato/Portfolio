@@ -8,7 +8,7 @@ import { Sparkles, Heart, Camera, Coffee, MapPin, Send, AlertCircle } from "luci
 // ── Types for our scrap items ──
 type ScrapItem = {
   id: string
-  type: "photo" | "note" | "shape" | "stamp" | "image"
+  type: "photo" | "note" | "shape" | "stamp" | "image" | "video"
   content: string | JSX.Element
   rotation: number
   x: string // Percentage from left
@@ -72,9 +72,9 @@ const INITIAL_ITEMS: ScrapItem[] = [
     scale: 0.6,
   },
   {
-    id: "player-gif",
-    type: "image",
-    content: "/player.gif",
+    id: "player-video",
+    type: "video",
+    content: "/player.mp4",
     rotation: 0,
     x: "50%",
     y: "50%",
@@ -143,6 +143,7 @@ const NEGATIVE_WORDS = [
 export default function Scrapbook() {
   const containerRef = useRef<HTMLDivElement>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const [isMounted, setIsMounted] = useState(false)
   const [items, setItems] = useState<ScrapItem[]>(INITIAL_ITEMS)
   const [inputValue, setInputValue] = useState("")
@@ -177,11 +178,13 @@ export default function Scrapbook() {
   }, [])
 
   const handlePlayerHover = (isHovering: boolean) => {
-    if (!audioRef.current) return
+    if (!audioRef.current || !videoRef.current) return
     if (isHovering) {
       audioRef.current.play().catch(e => console.log("Audio play blocked by browser:", e))
+      videoRef.current.play().catch(e => console.log("Video play blocked by browser:", e))
     } else {
       audioRef.current.pause()
+      videoRef.current.pause()
     }
   }
 
@@ -293,7 +296,8 @@ export default function Scrapbook() {
                   key={item.id} 
                   item={item} 
                   progress={scrollYProgress} 
-                  onHoverChange={item.id === 'player-gif' ? handlePlayerHover : undefined}
+                  onHoverChange={item.id === 'player-video' ? handlePlayerHover : undefined}
+                  videoRef={item.id === 'player-video' ? videoRef : undefined}
                 />
               ))}
             </AnimatePresence>
@@ -308,11 +312,13 @@ export default function Scrapbook() {
 function ScrapWrapper({ 
   item, 
   progress, 
-  onHoverChange 
+  onHoverChange,
+  videoRef
 }: { 
   item: ScrapItem; 
   progress: any; 
-  onHoverChange?: (isHovering: boolean) => void 
+  onHoverChange?: (isHovering: boolean) => void;
+  videoRef?: React.RefObject<HTMLVideoElement | null>;
 }) {
   const isLeft = parseFloat(item.x) < 50
   // Reduced shift range for better containment
@@ -371,6 +377,19 @@ function ScrapWrapper({
               alt="Floating Scrap" 
               className="w-full h-auto object-contain drop-shadow-[10px_10px_30px_rgba(0,0,0,0.05)]" 
            />
+        </div>
+      )}
+      
+      {item.type === "video" && (
+        <div className="relative w-[280px] md:w-[450px] max-w-[90vw] overflow-hidden rounded-2xl shadow-2xl bg-black/5">
+          <video
+            ref={videoRef}
+            src={item.content as string}
+            muted
+            loop
+            playsInline
+            className="w-full h-auto object-contain"
+          />
         </div>
       )}
 
