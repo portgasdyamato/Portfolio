@@ -38,7 +38,7 @@ const INITIAL_ITEMS: ScrapItem[] = [
     x: "28%",
     y: "10%",
     zIndex: 12,
-    scale: 0.35,
+    scale: 0.25,
   },
   {
     id: "photo-2",
