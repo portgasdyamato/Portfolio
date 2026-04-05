@@ -35,7 +35,7 @@ const INITIAL_ITEMS: ScrapItem[] = [
     type: "image",
     content: "/blb.gif",
     rotation: 5,
-    x: "32%",
+    x: "36%",
     y: "14%",
     zIndex: 12,
     scale: 0.5,
@@ -56,8 +56,8 @@ const INITIAL_ITEMS: ScrapItem[] = [
     type: "image",
     content: "/bk.gif",
     rotation: -5,
-    x: "15%",
-    y: "48%",
+    x: "18%",
+    y: "55%",
     zIndex: 9,
     scale: 0.5,
   },
@@ -424,15 +424,15 @@ function ScrapWrapper({
         <div
           style={{ 
             backgroundColor: item.color,
-            boxShadow: "0 10px 30px rgba(0,0,0,0.06), inset 0 0 40px rgba(255,255,255,0.4)"
+            boxShadow: "0 10px 40px rgba(0,0,0,0.06), inset 0 0 50px rgba(255,255,255,0.4)"
           }}
-          className="p-6 w-[180px] md:w-[250px] rounded-lg border-l-8 border-black/5 relative overflow-hidden group/note transition-all"
+          className="p-6 w-[180px] md:w-[250px] rounded-sm border-l-[12px] border-black/5 relative overflow-hidden group/note transition-all"
         >
-          {/* Subtle Vertical Paper Lines Texture */}
-          <div className="absolute inset-0 opacity-[0.05] pointer-events-none bg-[repeating-linear-gradient(90deg,transparent,transparent_23px,#000_24px)]" />
+          {/* Paper Texture Overlay */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]" />
           
-          {/* Notebook Pin Detail */}
-          <div className="absolute top-4 left-[-12px] w-4 h-4 rounded-full bg-white shadow-md border border-black/5 z-20" />
+          {/* Subtle Corner Shadow */}
+          <div className="absolute bottom-0 right-0 w-8 h-8 bg-black/[0.03] rounded-tl-full pointer-events-none" />
 
           {/* Content with Elegant Serif */}
           <p 

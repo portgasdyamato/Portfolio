@@ -3,7 +3,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Info, Sparkles, Wand, Code2, ArrowUpRight } from "lucide-react"
+import { Menu, X, Info, Sparkles, Wand, Code2, ArrowUpRight, LayoutGrid } from "lucide-react"
 
 import { useRouter, usePathname } from "next/navigation"
 
@@ -14,7 +14,6 @@ const NAV = [
   { label: "About", id: "about", path: "/#about" },
   { label: "Work", id: "work", path: "/work" },
   { label: "Skills", id: "skills", path: "/#skills" },
-  { label: "Memory", id: "scrapbook", path: "/#scrapbook" },
   { label: "Contact", id: "contact", path: "/#contact" },
 ]
 
@@ -139,14 +138,20 @@ export default function Header() {
                 <span className="text-[10px] tracking-[0.25em] font-black text-[#1a0a0a] uppercase">Live</span>
               </div>
 
-              {/* Magical Scrapbook Button */}
+              {/* Custom Scrapbook Redirect Button */}
               <motion.button
-                whileHover={{ scale: 1.05, rotate: 15 }}
+                whileHover={{ scale: 1.05, rotate: 90 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => handleNavClick("scrapbook", "/#scrapbook")}
-                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-black transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)] shrink-0"
+                className="w-10 h-10 rounded-full flex items-center justify-center bg-[#1a0a0a] text-white hover:bg-black transition-all shadow-[0_4px_12px_rgba(0,0,0,0.1)] shrink-0"
               >
-                <Wand size={14} className="text-white" />
+                {/* Custom Four-Circle Grid SVG to match user image */}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="7" cy="7" r="5" fill="white" />
+                  <circle cx="17" cy="7" r="5" fill="white" />
+                  <circle cx="7" cy="17" r="5" fill="white" />
+                  <circle cx="17" cy="17" r="5" fill="white" />
+                </svg>
               </motion.button>
 
               {/* Mobile Menu Toggle */}
@@ -189,6 +194,57 @@ export default function Header() {
         </motion.header>
       </div>
 
+      {/* ── INFO MODAL ── */}
+      <AnimatePresence>
+        {infoOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1001] flex items-center justify-center p-6 bg-black/40 backdrop-blur-md"
+            onClick={() => setInfoOpen(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, y: 20, opacity: 0 }}
+              animate={{ scale: 1, y: 0, opacity: 1 }}
+              exit={{ scale: 0.9, y: 20, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-md w-full bg-white rounded-[2.5rem] p-10 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_32px_64px_-16px_rgba(0,0,0,0.4)] relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 p-6">
+                 <button onClick={() => setInfoOpen(false)} className="text-black/20 hover:text-black transition-colors"><X size={20}/></button>
+              </div>
+
+               <div className="w-14 h-14 rounded-2xl bg-[#FFF5F5] flex items-center justify-center mb-8">
+                <Sparkles className="text-[#F59E9E]" size={24} />
+              </div>
+
+              <h3 className="text-4xl font-bold italic text-[#1a0a0a] mb-4 leading-tight" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                Designed for <br /> <em>Impact.</em>
+              </h3>
+              
+              <p className="text-[#1a0a0a]/60 text-base leading-relaxed mb-8">
+                Every detail in this portfolio is meticulously crafted, from the cinematic morphing hero to the custom-engineered GSAP physics. This is where high-end design meets high-performance code.
+              </p>
+
+              <div className="space-y-3">
+                {[
+                  { icon: Code2, t: "Engineered with React & GSAP" },
+                  { icon: Sparkles, t: "UI/UX Visual Excellence" }
+                ].map(({ icon: Icon, t }) => (
+                  <div key={t} className="flex items-center gap-4 bg-black/5 rounded-2xl px-5 py-4 border border-black/5 transition-colors hover:border-[#F59E9E]/20 group">
+                    <div className="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#1a0a0a] group-hover:text-[#F59E9E] transition-colors shadow-sm">
+                      <Icon size={18} />
+                    </div>
+                    <span className="text-[11px] tracking-[0.2em] font-black text-[#1a0a0a] uppercase">{t}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }
