@@ -2,10 +2,12 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import BookingCall from "./booking-call";
 
 const ImageSection = () => {
   return (
     <div className="relative flex flex-col justify-center items-center h-full">
+      <BookingCall />
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -17,7 +19,7 @@ const ImageSection = () => {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.6 }}
           whileHover={{ scale: 1.02 }}
-          className="relative mt-8 sm:mt-16 md:mt-20 lg:mt-28 mb-3 sm:mb-4 md:mb-5 ml-2 sm:ml-3 md:ml-5"
+          className="relative mt-4 sm:mt-8 mb-3 sm:mb-4 md:mb-5 ml-2 sm:ml-3 md:ml-5"
         >
           <Image
             src="/heh.gif"
