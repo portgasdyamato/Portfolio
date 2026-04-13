@@ -210,18 +210,18 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         />
       </div>
 
-      {/* Floating Characters - Hid for small mobile, showed on larger mobile */}
+      {/* Floating Characters - Showed on mobile too to fill space */}
       <motion.div 
         animate={{ y: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-        className="absolute bottom-[18%] sm:bottom-[22%] left-[15%] sm:left-[18%] z-20 hidden sm:block"
+        className="absolute bottom-[8%] sm:bottom-[22%] left-[8%] sm:left-[18%] z-20"
       >
         <Image 
           src="/pot.gif" 
           alt="pot"
           width={112} 
           height={112}
-          className="w-10 sm:w-28 drop-shadow-2xl opacity-90" 
+          className="w-20 sm:w-28 drop-shadow-2xl opacity-90" 
           unoptimized
           priority
         />
@@ -230,14 +230,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       <motion.div 
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-        className="absolute bottom-[22%] sm:bottom-[28%] right-[15%] sm:right-[22%] z-20 hidden sm:block"
+        className="absolute bottom-[12%] sm:bottom-[28%] right-[8%] sm:right-[22%] z-20"
       >
         <Image 
           src="/deer.gif" 
           alt="deer"
           width={144} 
           height={144} 
-          className="w-12 sm:w-36 drop-shadow-2xl opacity-90" 
+          className="w-24 sm:w-36 drop-shadow-2xl opacity-90" 
           unoptimized
           priority
         />

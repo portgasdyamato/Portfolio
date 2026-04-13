@@ -12,7 +12,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
     height={24} 
     className={className}
     style={{
-      filter: 'brightness(0) saturate(100%) invert(100%)'
+      filter: 'brightness(0) invert(1)'
     }}
   />
 )
@@ -123,7 +123,7 @@ export default function Contact() {
         </div>
 
         {/* Social Links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 gap-4 max-w-xl mx-auto">
           {socialLinks.map((social, index) => {
             const Icon = social.icon
             return (
