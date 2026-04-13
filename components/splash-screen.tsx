@@ -206,17 +206,17 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       <motion.div 
         animate={{ y: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-        className="absolute bottom-[18%] sm:bottom-[20%] left-[15%] sm:left-[20%] z-20 hidden sm:block"
+        className="absolute bottom-[18%] sm:bottom-[22%] left-[15%] sm:left-[18%] z-20 hidden sm:block"
       >
-        <img src="/pot.gif" className="w-10 sm:w-14 drop-shadow-2xl mix-blend-multiply opacity-50" />
+        <img src="/pot.gif" className="w-10 sm:w-28 drop-shadow-2xl opacity-90" />
       </motion.div>
       
       <motion.div 
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-        className="absolute bottom-[22%] sm:bottom-[25%] right-[15%] sm:right-[25%] z-20 hidden sm:block"
+        className="absolute bottom-[22%] sm:bottom-[28%] right-[15%] sm:right-[22%] z-20 hidden sm:block"
       >
-        <img src="/deer.gif" className="w-12 sm:w-16 drop-shadow-2xl mix-blend-multiply opacity-50" />
+        <img src="/deer.gif" className="w-12 sm:w-36 drop-shadow-2xl opacity-90" />
       </motion.div>
 
       {/* ── Center: Typography ── */}

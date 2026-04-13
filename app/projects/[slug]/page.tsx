@@ -615,7 +615,7 @@ export default function ProjectCaseStudy() {
       </section>
 
       {/* ── IMPACT & FINAL CALL ── */}
-      <section className="py-52 relative overflow-hidden">
+      <section className="pt-52 pb-12 relative overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-[500px] bg-brand-500/5 blur-[150px] rounded-full pointer-events-none" />
         
         <div className="max-w-screen-2xl mx-auto px-8 md:px-16 lg:px-20 relative z-10 flex flex-col items-center text-center">
@@ -669,7 +669,7 @@ export default function ProjectCaseStudy() {
 
            <Link 
              href="/work" 
-             className="mt-12 group flex items-center gap-4 text-foreground/40 hover:text-foreground transition-colors"
+             className="mt-8 group flex items-center gap-4 text-foreground/40 hover:text-foreground transition-colors"
            >
               <ArrowLeft className="group-hover:-translate-x-2 transition-transform" />
               <span className="text-xs font-black uppercase tracking-[0.4em]">Back to All Works</span>
@@ -677,10 +677,6 @@ export default function ProjectCaseStudy() {
         </div>
       </section>
 
-      {/* ── FOOTER DECOR ── */}
-      <div className="pb-8 flex justify-center opacity-10">
-         <div className="w-1 h-8 bg-gradient-to-t from-foreground to-transparent" />
-      </div>
 
       <Footer hideContact={true} />
     </div>

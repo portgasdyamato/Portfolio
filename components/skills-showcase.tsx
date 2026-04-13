@@ -6,6 +6,21 @@ import { Code, Users, Lightbulb, PenTool, Database, X, ChevronRight, Zap, Target
 
 const skillCategories = [
   {
+    id: "ux",
+    title: "UX & Product Design",
+    icon: PenTool,
+    color: "#E5E5E5",
+    tabColor: "#CCCCCC",
+    accent: "#1a0a0a",
+    description: "Methodologies for creating human-centered, accessible, and stunning digital experiences.",
+    items: [
+      { name: "Design Tooling", desc: "Figma, Adobe XD, Framer, Photoshop, Illustrator, Procreate.", level: 95 },
+      { name: "Design Systems", desc: "Component Libraries, Design Tokens, Atomic Design, Shadcn UI.", level: 90 },
+      { name: "Interaction Design", desc: "Prototyping, Microinteractions, Motion Design, Gestural UI.", level: 88 },
+      { name: "User Research", desc: "Usability Testing, User Interviews, Affinity Mapping, JTBD.", level: 85 }
+    ]
+  },
+  {
     id: "frontend",
     title: "Frontend Engineering",
     icon: Code,
@@ -18,21 +33,6 @@ const skillCategories = [
       { name: "Languages & Core", desc: "TypeScript, JavaScript (ES6+), HTML5, CSS3.", level: 90 },
       { name: "UI & Styling", desc: "Tailwind CSS, Shadcn UI, Bootstrap, Material UI.", level: 90 },
       { name: "Animation & Interaction", desc: "Framer Motion, CSS Animations, Lottie, Micro-interactions.", level: 85 }
-    ]
-  },
-  {
-    id: "backend",
-    title: "Backend & Infra.",
-    icon: Database,
-    color: "#1a1a1a",
-    tabColor: "#333",
-    accent: "#68A063",
-    description: "Scalable backend services, REST APIs, and robust DevOps infrastructure.",
-    items: [
-      { name: "Server & APIs", desc: "Node.js, Express.js, REST APIs, GraphQL, FastAPI, WebSockets.", level: 85 },
-      { name: "Databases & ORMs", desc: "PostgreSQL, MongoDB, MySQL, Prisma, Drizzle ORM, Redis.", level: 80 },
-      { name: "Backend Languages", desc: "Python, Django, Java, C++.", level: 75 },
-      { name: "DevOps & Automation", desc: "Git, GitHub, Vercel, Docker, CI/CD, n8n Workflow Automation.", level: 85 }
     ]
   },
   {
@@ -51,18 +51,18 @@ const skillCategories = [
     ]
   },
   {
-    id: "ux",
-    title: "UX & Product Design",
-    icon: PenTool,
-    color: "#E5E5E5",
-    tabColor: "#CCCCCC",
-    accent: "#1a0a0a",
-    description: "Methodologies for creating human-centered, accessible, and stunning digital experiences.",
+    id: "backend",
+    title: "Backend & Infra.",
+    icon: Database,
+    color: "#1a1a1a",
+    tabColor: "#333",
+    accent: "#68A063",
+    description: "Scalable backend services, REST APIs, and robust DevOps infrastructure.",
     items: [
-      { name: "Design Tooling", desc: "Figma, Adobe XD, Framer, Photoshop, Illustrator, Procreate.", level: 95 },
-      { name: "Design Systems", desc: "Component Libraries, Design Tokens, Atomic Design, Shadcn UI.", level: 90 },
-      { name: "Interaction Design", desc: "Prototyping, Microinteractions, Motion Design, Gestural UI.", level: 88 },
-      { name: "User Research", desc: "Usability Testing, User Interviews, Affinity Mapping, JTBD.", level: 85 }
+      { name: "Server & APIs", desc: "Node.js, Express.js, REST APIs, GraphQL, FastAPI, WebSockets.", level: 85 },
+      { name: "Databases & ORMs", desc: "PostgreSQL, MongoDB, MySQL, Prisma, Drizzle ORM, Redis.", level: 80 },
+      { name: "Backend Languages", desc: "Python, Django, Java, C++.", level: 75 },
+      { name: "DevOps & Automation", desc: "Git, GitHub, Vercel, Docker, CI/CD, n8n Workflow Automation.", level: 85 }
     ]
   }
 ]

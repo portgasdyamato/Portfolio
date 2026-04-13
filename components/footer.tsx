@@ -25,7 +25,7 @@ export default function Footer({ hideContact = false }: { hideContact?: boolean 
         </div>
       )}
       
-      <div className={`pb-6 px-4 ${hideContact ? 'mt-12' : 'mt-8'}`}>
+      <div className={`pb-6 px-4 ${hideContact ? 'mt-4' : 'mt-8'}`}>
         <SocialLinks />
       </div>
 
