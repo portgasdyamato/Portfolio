@@ -22,7 +22,7 @@ const socialLinks = [
     name: "Email",
     icon: Mail,
     url: "mailto:sakshiagrahari2004@gmail.com",
-    color: "#FFB2B2",
+    color: "#F59E9E",
     description: "Drop me a line",
     handle: "sakshiagrahari2004@gmail.com",
   },
@@ -30,7 +30,7 @@ const socialLinks = [
     name: "Discord",
     icon: DiscordIcon,
     url: "https://discord.com/users/934897501054586900",
-    color: "#FFB2B2",
+    color: "#F59E9E",
     description: "Follow my journey",
     handle: "@scerilia",
   },
@@ -38,7 +38,7 @@ const socialLinks = [
     name: "LinkedIn",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/sakshi-902777290/",
-    color: "#FFB2B2",
+    color: "#F59E9E",
     description: "Let's connect professionally",
     handle: "@Sakshi",
   },
@@ -46,7 +46,7 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     url: "https://github.com/portgasdyamato",
-    color: "#FFB2B2",
+    color: "#F59E9E",
     description: "Check out my code",
     handle: "@pippo",
   },
@@ -87,7 +87,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M200,200 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FFB2B2"
+                  stroke="#F59E9E"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -122,7 +122,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M120,120 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FFB2B2"
+                  stroke="#F59E9E"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -157,7 +157,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M320,320 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FFB2B2"
+                  stroke="#F59E9E"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -212,7 +212,7 @@ export default function Contact() {
                   <path
                     key={j}
                     d={`M10,10 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                    stroke="#FFB2B2"
+                    stroke="#F59E9E"
                     strokeWidth="0.5"
                     fill="none"
                   />
@@ -251,7 +251,7 @@ export default function Contact() {
                     <motion.path
                       key={i}
                       d={`M16,16 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                      stroke="#FFB2B2"
+                      stroke="#F59E9E"
                       strokeWidth="1.5"
                       fill="none"
                       initial={{ pathLength: 0 }}
@@ -445,7 +445,7 @@ export default function Contact() {
                       <path
                         key={i}
                         d={`M5,5 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                        stroke="#FFB2B2"
+                        stroke="#F59E9E"
                         strokeWidth="0.5"
                         fill="none"
                       />
