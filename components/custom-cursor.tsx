@@ -64,7 +64,7 @@ export default function CustomCursor() {
           x: ringX,
           y: ringY,
           scale: isHovering ? 1.8 : 1,
-          backgroundColor: isHovering ? "rgba(255, 181, 181, 0.1)" : "transparent",
+          backgroundColor: isHovering ? "rgba(245, 158, 158, 0.1)" : "transparent",
           willChange: "transform",
         }}
       />

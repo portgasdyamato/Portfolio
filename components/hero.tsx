@@ -92,7 +92,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -20, opacity: 0 }}
                 transition={{ duration: 0.4 }}
-                className="block text-[11px] tracking-[0.4em] font-bold text-brand-600 uppercase"
+                className="block text-[11px] tracking-[0.4em] font-bold text-[#F59E9E] uppercase"
               >
                 ✦ {TAGS[tagIdx]}
               </motion.span>
@@ -108,7 +108,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-brand-600" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-[#F59E9E]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Designer &
                 </span>
               </motion.div>

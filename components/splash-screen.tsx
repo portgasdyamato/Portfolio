@@ -1,316 +1,306 @@
 "use client"
 
-// v1.2 - Synchronized Core Experience
 import { useState, useEffect, useRef } from "react"
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from "framer-motion"
-import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
 
-const nameColumns = [
-  "DESIGN", 
-  "CONCEPT", 
-  "AESTHETIC", 
-  "PRODUCT", 
-  "CREATIVE", 
-  "DEVELOP",
-  "IMPACT",
-  "IDENTITY"
-]
+// ─── Component: 3D Boutique Folder ──
+function BoutiqueFolder({ color, tabColor, accent, title, icon: Icon, delay, rotate, mobileScale = 0.6 }: any) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7, y: 30 }}
+      animate={{ opacity: 1, scale: 1, y: 0, rotate }}
+      transition={{ delay, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+      className="relative w-[100px] sm:w-[140px] h-[85px] sm:h-[120px] cursor-pointer group transform-gpu"
+      style={{ perspective: "1000px" }}
+    >
+      {/* BACK OF FOLDER */}
+      <div 
+        className="absolute bottom-0 left-0 w-full h-[65px] sm:h-[95px] rounded-b-lg sm:rounded-b-xl rounded-tr-lg sm:rounded-tr-xl shadow-lg border border-black/5"
+        style={{ backgroundColor: tabColor }}
+      />
 
-const randomChars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+".split("")
+      {/* TAB OF FOLDER */}
+      <div 
+        className="absolute bottom-[65px] sm:bottom-[95px] left-0 w-1/2 h-[10px] sm:h-[16px] rounded-t-md sm:rounded-t-lg"
+        style={{ backgroundColor: tabColor }}
+      />
+
+      {/* PEEKING DOCUMENT */}
+      <motion.div 
+        className="absolute left-[12%] w-[76%] h-[60px] sm:h-[85px] bg-white rounded-t-md sm:rounded-t-lg shadow-md border border-black/5 flex flex-col pt-1.5 sm:pt-2 px-2 sm:px-3 z-0"
+        animate={{ bottom: [10, 20, 10] }}
+        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: delay + 0.5 }}
+      >
+        <div className="flex items-center gap-1 sm:gap-1.5 mb-2">
+          <div className="w-3 h-3 sm:w-4 sm:h-4 rounded bg-black/[0.03] flex items-center justify-center">
+             <Icon size={8} color={accent} />
+          </div>
+          <div className="w-1/2 h-1 bg-black/[0.05] rounded-full" />
+        </div>
+        <div className="space-y-1">
+          <div className="w-full h-0.5 sm:h-1 bg-black/[0.02] rounded-full" />
+          <div className="w-4/5 h-0.5 sm:h-1 bg-black/[0.02] rounded-full" />
+        </div>
+      </motion.div>
+
+      {/* FRONT OF FOLDER */}
+      <div 
+        className="absolute bottom-0 left-0 w-full h-[65px] sm:h-[95px] rounded-lg sm:rounded-xl shadow-xl border border-white/20 p-2.5 sm:p-4 flex flex-col justify-end overflow-hidden origin-bottom"
+        style={{ backgroundColor: color, transform: "rotateX(-18deg)" }}
+      >
+        <div className="absolute top-1 sm:top-2 right-1 sm:right-2 opacity-15">
+          <Icon size={18} color={accent} strokeWidth={1.5} />
+        </div>
+        <h3 className="text-[10px] sm:text-[14px] font-black italic text-white leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          {title}
+        </h3>
+        <p className="text-[5px] sm:text-[6px] uppercase tracking-widest text-white/50 font-bold">
+          Archive
+        </p>
+      </div>
+    </motion.div>
+  )
+}
+
+// ─── Component: Polaroid Card ──
+function Polaroid({ src, caption, rotate, delay }: { src: string, caption: string, rotate: number, delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8, y: 20 }}
+      animate={{ opacity: 1, scale: 1, y: 0, rotate }}
+      transition={{ delay, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="p-2 sm:p-3 pb-6 sm:pb-8 bg-white shadow-[0_12px_45px_rgba(0,0,0,0.08)] flex flex-col gap-1.5 sm:gap-2.5 border border-black/[0.03] transform-gpu w-[90px] sm:w-[130px]"
+    >
+      <div className="aspect-square bg-[#f8f8f8] overflow-hidden relative border border-black/[0.02] rounded-sm">
+         <img src={src} className="w-full h-full object-cover mix-blend-multiply opacity-90" />
+      </div>
+      <span className="text-[7px] sm:text-[9px] font-bold text-black/25 text-center uppercase tracking-[0.2em]">{caption}</span>
+    </motion.div>
+  )
+}
+
+// ─── Component: Sticky Note ──
+function StickyNote({ text, color, delay }: { text: string, color: string, delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1, rotate: 6 }}
+      transition={{ delay, duration: 0.6 }}
+      className="px-3 sm:px-4 py-3 sm:py-4 shadow-[0_10px_35px_rgba(0,0,0,0.05)] border border-black/[0.04] relative transform-gpu w-[110px] sm:w-[160px]"
+      style={{ background: color }}
+    >
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-8 sm:w-14 h-4 sm:h-6 bg-white/40 backdrop-blur-md border border-black/[0.02] rotate-2 shadow-sm" />
+      <span className="text-[8px] sm:text-[12px] font-bold text-[#1a0a0a]/50 leading-relaxed font-inter">{text}</span>
+    </motion.div>
+  )
+}
+
+function FigmaIcon({ size, color }: any) {
+  return (
+    <svg viewBox="0 0 38 57" width={size} height={size * 1.5}>
+      <path d="M19 28.5a9.5 9.5 0 1 1 0-19H9.5v19H19z" fill={color}/>
+      <path d="M19 47.5a9.5 9.5 0 1 1 0-19H9.5v19H19z" fill={color}/>
+      <path d="M19 47.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19z" fill={color}/>
+      <path d="M28.5 28.5a9.5 9.5 0 1 1 0-19 9.5 9.5 0 0 1 0 19z" fill={color}/>
+      <path d="M28.5 47.5a9.5 9.5 0 1 1 0-19 9.5 9.5 0 0 1 0 19z" fill={color}/>
+    </svg>
+  )
+}
+
+function DesignIcon({ size, color }: any) {
+  return (
+    <svg viewBox="0 0 24 24" width={size} height={size} fill="none" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 19l7-7 3 3-7 7-3-3z" />
+      <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z" />
+      <path d="M2 2l7.5 1.5" />
+      <path d="M14 11l7 7" />
+    </svg>
+  )
+}
 
 export default function SplashScreen({ finishLoadingAction }: { finishLoadingAction: () => void }) {
   const [progress, setProgress] = useState(0)
-  const [mounted, setMounted] = useState(false)
   const finishCalled = useRef(false)
 
-  // Mouse Interaction (Variable Speed Ticker)
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const springX = useSpring(mouseX, { stiffness: 100, damping: 40 })
-  const springY = useSpring(mouseY, { stiffness: 100, damping: 40 })
-
-  useEffect(() => {
-    setMounted(true)
-    const onMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX)
-      mouseY.set(e.clientY)
-    }
-    window.addEventListener("mousemove", onMove)
-    return () => window.removeEventListener("mousemove", onMove)
-  }, [mouseX, mouseY])
-
-  // Progress logic
   useEffect(() => {
     let count = 0
-    const interval = setInterval(() => {
-      // Non-linear "organic" progress
-      let jump;
-      if (count < 30) {
-        jump = 6;
-      } else if (count < 99) {
-        jump = (100 - count) * 0.1;
-      } else {
-        jump = 0.5; // Final push to 100
-      }
-      
+    const iv = setInterval(() => {
+      const jump = count < 30 ? 5 : count < 88 ? (100 - count) * 0.12 : 0.6
       count = Math.min(100, count + jump)
       setProgress(count)
-      
-      if (count >= 100) {
-        clearInterval(interval)
-        if (!finishCalled.current) {
-          finishCalled.current = true
-          setTimeout(() => finishLoadingAction(), 1500)
-        }
+      if (count >= 100 && !finishCalled.current) {
+        clearInterval(iv)
+        finishCalled.current = true
+        setTimeout(() => finishLoadingAction(), 1100)
       }
-    }, 60)
-    return () => clearInterval(interval)
+    }, 50)
+    return () => clearInterval(iv)
   }, [finishLoadingAction])
 
   return (
     <motion.div
       key="splash"
       initial={{ opacity: 1 }}
-      exit={{ 
-        clipPath: "inset(0 0 100% 0)", 
-        transition: { duration: 1.5, ease: [0.76, 0, 0.24, 1] } 
-      }}
-      className="fixed inset-0 z-[9999] bg-[#FFECF0] overflow-hidden flex flex-col items-center justify-center select-none cursor-crosshair font-black"
+      exit={{ opacity: 0, scale: 1.05, transition: { duration: 0.9, ease: "easeInOut" } }}
+      className="fixed inset-0 z-[9999] overflow-hidden select-none bg-[#FCFAF5]"
+      style={{ cursor: 'crosshair' }}
     >
-      {/* ── GRAIN OVERLAY (High-End Aesthetic) ── */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.4] mix-blend-multiply grain-overlay z-50" />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.4] mix-blend-multiply grain-overlay z-10" />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05]" 
+        style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1.5px)', backgroundSize: '24px 24px sm:32px 32px' }} 
+      />
 
-      {/* ── THE INFINITE VERTICAL TICKER GRID ── */}
-      <div className="absolute inset-0 flex divide-x divide-[#F59E9E]/10 opacity-[0.15]">
-        {[...Array(12)].map((_, i) => (
-          <TickerColumn 
-            key={i} 
-            index={i} 
-            mouseX={springX} 
-            mouseY={springY}
-          />
-        ))}
+      {/* ── Header Labels ── */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 1 }}
+        className="absolute top-6 sm:top-8 left-0 right-0 z-50 flex justify-between px-6 sm:px-10 pointer-events-none"
+      >
+        <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-black/20">© 2026</span>
+        <div className="flex gap-4">
+          <span className="hidden sm:block text-[10px] font-black uppercase tracking-[0.4em] text-black/20">Creative Intent</span>
+          <span className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-[#F59E9E] animate-pulse">Running</span>
+        </div>
+      </motion.div>
+
+      {/* ── Scattered Artifacts (Positions updated for better mobile spacing) ── */}
+      
+      {/* Top Left: Polaroid */}
+      <div className="absolute top-[8%] sm:top-[12%] left-[5%] sm:left-[10%] z-20">
+        <Polaroid src="/slpash.gif" caption="mood_01" rotate={-8} delay={0.4} />
       </div>
 
-      {/* ── FLOATING DESIGN ELEMENTS ── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-         <motion.div 
-           animate={{ 
-             x: [0, 50, 0], 
-             y: [0, -30, 0],
-             rotate: [0, 10, 0]
-           }} 
-           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-           className="absolute top-[15%] left-[10%] w-[300px] h-[300px] border-[0.5px] border-[#F59E9E]/20 rounded-full" 
-         />
-         <motion.div 
-           animate={{ 
-             x: [0, -40, 0], 
-             y: [0, 60, 0],
-             rotate: [0, -15, 0]
-           }} 
-           transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-           className="absolute bottom-[20%] right-[15%] w-[400px] h-[400px] border-[0.5px] border-[#F59E9E]/10" 
-         />
+      {/* Mid Left: Figma Folder */}
+      <div className="absolute top-[38%] sm:top-[45%] left-[2%] sm:left-[6%] z-20">
+        <BoutiqueFolder 
+          color="#1E1E1E" 
+          tabColor="#2C2C2C" 
+          accent="#A259FF" 
+          title="Figma" 
+          icon={FigmaIcon} 
+          delay={0.6}
+          rotate={-5}
+        />
       </div>
 
-      {/* ── CENTRAL REVEAL: THE BRAND STAMP ── */}
-      <div className="relative z-20 flex flex-col items-center justify-center w-full h-full p-10 mt-[-5vh]">
-          
-          <div className="flex flex-col items-center gap-12">
-              {/* Massive Center Avatar */}
-              <div className="relative group flex items-center justify-center">
-                <motion.div 
-                    initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-                    animate={{ 
-                      opacity: 1, 
-                      scale: 1,
-                      filter: "blur(0px)"
-                    }}
-                    className="w-[160px] md:w-[220px] lg:w-[320px] h-auto z-20"
+      {/* Top Right: Status Sticky */}
+      <div className="absolute top-[10%] sm:top-[15%] right-[5%] sm:right-[10%] z-20">
+        <StickyNote text="Crafting digital magic." color="#FFF9E5" delay={0.5} />
+      </div>
+
+      {/* Mid Right: Design Gear Folder */}
+      <div className="absolute top-[35%] sm:top-[42%] right-[2%] sm:right-[8%] z-20">
+        <BoutiqueFolder 
+          color="#F59E9E" 
+          tabColor="#E88C8C" 
+          accent="#ffffff" 
+          title="Toolkit" 
+          icon={DesignIcon} 
+          delay={0.7}
+          rotate={8}
+        />
+      </div>
+
+      {/* Floating Characters - Hid for small mobile, showed on larger mobile */}
+      <motion.div 
+        animate={{ y: [0, -8, 0] }}
+        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+        className="absolute bottom-[18%] sm:bottom-[20%] left-[15%] sm:left-[20%] z-20 hidden sm:block"
+      >
+        <img src="/pot.gif" className="w-10 sm:w-14 drop-shadow-2xl mix-blend-multiply opacity-50" />
+      </motion.div>
+      
+      <motion.div 
+        animate={{ y: [0, 8, 0] }}
+        transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
+        className="absolute bottom-[22%] sm:bottom-[25%] right-[15%] sm:right-[25%] z-20 hidden sm:block"
+      >
+        <img src="/deer.gif" className="w-12 sm:w-16 drop-shadow-2xl mix-blend-multiply opacity-50" />
+      </motion.div>
+
+      {/* ── Center: Typography ── */}
+      <div className="absolute inset-0 z-40 flex flex-col items-center justify-center pointer-events-none px-6">
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 1 }}
+          className="mb-6 sm:mb-10"
+        >
+          <span className="text-[10px] sm:text-[12px] font-medium text-black/20 bg-black/[0.02] px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-black/[0.02]" style={{ fontFamily: "'Inter', sans-serif" }}>
+             Archive: <span className="text-black/50 font-semibold tracking-wide">Sakshi A.</span>
+          </span>
+        </motion.div>
+
+        <div className="flex flex-col items-center w-full">
+            <div className="flex flex-wrap justify-center overflow-visible">
+              {"Sakshi".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                  animate={{ opacity: progress > 10 + i * 5 ? 1 : 0, y: progress > 10 + i * 5 ? 0 : 30, filter: "blur(0px)" }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-bold italic text-[#1a0a0a] tracking-tight sm:tracking-tighter leading-[0.8]"
+                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
                 >
-                    {/* Bypassing next/image to prevent strictly enforced aspect-ratios */}
-                    {/* Adding mix-blend-multiply to dissolve any white background matte in the original GIF */}
-                    <img 
-                      src="/slpash.gif" 
-                      alt="Core Identity" 
-                      className="w-full h-auto object-contain mix-blend-multiply drop-shadow-2xl" 
-                    />
-                </motion.div>
-                <div className="absolute -inset-16 border-[0.5px] border-[#F59E9E]/30 rounded-full animate-spin-slow opacity-20 pointer-events-none" />
-                
-                {/* Decorative Small Text Circle */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
-                    <motion.div 
-                      animate={{ rotate: 360 }} 
-                      transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      className="w-[350px] md:w-[500px] aspect-square opacity-[0.15]"
-                    >
-                       <svg viewBox="0 0 200 200" className="w-full h-full">
-                         <path id="circlePath" d="M 100, 100 m -85, 0 a 85,85 0 1,1 170,0 a 85,85 0 1,1 -170,0" fill="none" />
-                         <text fill="#F59E9E" fontSize="7" fontWeight="900" letterSpacing="6" className="uppercase"><textPath href="#circlePath">✦ SAKSHI AGRAHARI / PORTFOLIO V.01 / CREATIVE DIRECTION / UI/UX / AI ✦</textPath></text>
-                       </svg>
-                    </motion.div>
-                </div>
-              </div>
-
-              {/* The Name (Assembling through progress) */}
-              <div className="flex flex-col items-center gap-2 sm:gap-6">
-                  <h2 className="flex flex-col md:flex-row items-center gap-2 md:gap-8 overflow-hidden py-4">
-                    {["Sakshi", "Agrahari"].map((word, wIdx) => (
-                        <div key={wIdx} className="flex overflow-hidden">
-                            {word.split("").map((char, i) => (
-                                <motion.span
-                                    key={i}
-                                    initial={{ y: "100%", opacity: 0, rotateX: -90 }}
-                                    animate={{ 
-                                        y: progress > (15 + i * 4 + wIdx * 20) ? 0 : "100%", 
-                                        opacity: progress > (15 + i * 4 + wIdx * 20) ? 1 : 0,
-                                        rotateX: progress > (15 + i * 4 + wIdx * 20) ? 0 : -90
-                                    }}
-                                    transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                                    className="text-[40px] sm:text-[70px] md:text-[90px] lg:text-[120px] text-[#1a0a0a] font-light italic tracking-tight"
-                                    style={{ 
-                                      fontFamily: "'Libre Baskerville', serif",
-                                      perspective: "1000px"
-                                    }}
-                                >
-                                    {char}
-                                </motion.span>
-                            ))}
-                        </div>
-                    ))}
-                  </h2>
-
-                  {/* High-End HUD Stats */}
-                  <div className="flex items-center gap-10 overflow-hidden">
-                      <motion.div 
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 1.5, delay: 0.8 }}
-                        className="w-20 h-[0.5px] bg-[#F59E9E]/40" 
-                      />
-                      <motion.div 
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 1, duration: 1 }}
-                        className="flex flex-col items-center gap-1"
-                      >
-                        <p className="text-[10px] tracking-[1em] uppercase text-[#F59E9E] font-black">
-                           Discovery Protocol
-                        </p>
-                        <span className="text-[8px] tracking-[0.4em] text-[#1a0a0a]/40 font-mono">ESTAB. 2026 // SYSTEM.DEPLOY</span>
-                      </motion.div>
-                      <motion.div 
-                        initial={{ scaleX: 0 }}
-                        animate={{ scaleX: 1 }}
-                        transition={{ duration: 1.5, delay: 0.8 }}
-                        className="w-20 h-[0.5px] bg-[#F59E9E]/40" 
-                      />
-                  </div>
-              </div>
-          </div>
-      </div>
-
-      {/* ── PROGRESS FLASH (Cinematic Effect at 100) ── */}
-      <AnimatePresence>
-        {progress >= 100 && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: [0, 1, 0] }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 bg-white z-[100] pointer-events-none"
-          />
-        )}
-      </AnimatePresence>
-
-      {/* ── HUD CORNERS: ARCHIVE DATA ── */}
-      <div className="absolute top-12 left-12 flex flex-col gap-1 text-[9px] tracking-widest text-[#F59E9E]/60 font-mono">
-          <span>ID: SA_NODE_01</span>
-          <span>ST: READY</span>
-      </div>
-      <div className="absolute top-12 right-12 flex flex-col items-end gap-1 text-[9px] tracking-widest text-[#F59E9E]/60 font-mono">
-          <span>PORTFOLIO_V.1.3</span>
-          <span>© 2026</span>
-      </div>
-
-      {/* ── BOTTOM CINEMATIC HUD ── */}
-      <div className="absolute bottom-10 left-6 sm:left-12 md:left-16 flex flex-col gap-3">
-          <div className="flex items-center gap-3 text-[10px] tracking-[0.5em] text-[#F59E9E] uppercase font-black">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#F59E9E] animate-pulse" />
-              <span className="hidden sm:inline">Initializing Creative Core...</span>
-              <span className="sm:hidden">Initializing...</span>
-          </div>
-          <div className="flex items-center gap-5 text-[#1a0a0a]/30 font-mono text-[11px]">
-               <span className="flex items-center gap-2">
-                 <span className="w-3 h-[1px] bg-[#1a0a0a]/20" />
-                 SYNC://ACTIVE
-               </span>
-               <span className="opacity-50 hidden sm:inline">//</span>
-               <span className="hidden sm:inline">LOC://EARTH</span>
-          </div>
-      </div>
-
-      <div className="absolute bottom-10 right-6 sm:right-12 md:right-16 flex items-center gap-6 sm:gap-12">
-          <div className="flex flex-col items-end gap-2">
-               <span className="text-[8px] sm:text-[9px] tracking-[0.4em] font-black text-[#1a0a0a]/30 uppercase whitespace-nowrap">System Integrity</span>
-               <div className="flex items-center gap-1.5">
-                   {[...Array(8)].map((_, i) => (
-                      <motion.div 
-                        key={i} 
-                        initial={{ opacity: 0.1 }}
-                        animate={{ opacity: progress > (i * 12.5) ? 1 : 0.1 }}
-                        className="w-2 sm:w-3 h-[2px] bg-[#F59E9E]" 
-                      />
-                   ))}
-               </div>
-          </div>
-          <div className="relative">
-            <span className="text-5xl sm:text-8xl font-black text-[#F59E9E] opacity-[0.08] absolute -right-2 -bottom-2 sm:-right-4 -bottom-4 select-none">
-              {Math.floor(progress)}
-            </span>
-            <span className="text-2xl sm:text-4xl font-mono font-black text-[#F59E9E] opacity-40 relative">
-                {Math.floor(progress)}
-            </span>
-          </div>
-      </div>
-
-      {/* Frame Border */}
-      <div className="absolute inset-0 z-50 pointer-events-none border-[12px] border-[#FFECF0]" />
-    </motion.div>
-  )
-}
-
-function TickerColumn({ index, mouseX, mouseY }: { index: number, mouseX: any, mouseY: any }) {
-  const [speed, setSpeed] = useState(15) 
-  const isAlt = index % 2 === 0
-  const columnWord = nameColumns[index % nameColumns.length]
-
-  useEffect(() => {
-    setSpeed(Math.random() * 10 + 10)
-  }, [])
-
-  return (
-    <div className="h-full w-full flex-1 relative overflow-hidden flex flex-col items-center group">
-       <motion.div 
-         animate={{ y: isAlt ? ["-50%", "0%"] : ["0%", "-50%"] }}
-         transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
-         className="flex flex-col gap-12 py-12"
-       >
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="flex flex-col items-center gap-12">
-               {columnWord.split("").map((char, j) => (
-                 <span 
-                   key={j} 
-                   className="text-[12px] text-[#F59E9E] font-mono tracking-tighter mix-blend-multiply opacity-20"
-                 >
-                    {char}
-                 </span>
-               ))}
+                  {char}
+                </motion.span>
+              ))}
             </div>
-          ))}
-       </motion.div>
-    </div>
+            
+            <div className="flex flex-wrap justify-center overflow-visible">
+              {"Agrahari".split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
+                  animate={{ opacity: progress > 40 + i * 4 ? 1 : 0, y: progress > 40 + i * 4 ? 0 : 30, filter: "blur(0px)" }}
+                  transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                  className="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-light italic text-[#F59E9E] tracking-tight sm:tracking-tighter leading-[0.8]"
+                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: progress > 70 ? 1 : 0, y: progress > 70 ? 0 : 10 }}
+          transition={{ duration: 1 }}
+          className="mt-8 sm:mt-12 flex flex-col items-center"
+        >
+          <div className="h-[1px] w-24 sm:w-32 bg-black/[0.08] mb-3 sm:mb-4" />
+          <h2 className="text-[9px] sm:text-[13px] tracking-[0.4em] sm:tracking-[0.6em] text-black/25 uppercase font-black" style={{ fontFamily: "'Inter', sans-serif" }}>
+            Designer &amp; Builder
+          </h2>
+        </motion.div>
+      </div>
+
+      {/* ── Legend ── */}
+      <motion.div
+         initial={{ opacity: 0 }}
+         animate={{ opacity: progress > 60 ? 1 : 0 }}
+         className="absolute bottom-10 sm:bottom-12 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none"
+      >
+        <div className="flex items-center gap-4 sm:gap-8">
+           {["Archive", "Moodboard", "Toolkit"].map((text, idx) => (
+             <span key={idx} className="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.25em] text-black/15">
+                {text}
+             </span>
+           ))}
+        </div>
+      </motion.div>
+
+      {/* ── Progress ── */}
+      <div className="absolute bottom-0 left-0 right-0 h-[3px] sm:h-[4px] bg-black/[0.02] z-50">
+        <motion.div
+          className="h-full bg-[#1a0a0a]/80"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+    </motion.div>
   )
 }
