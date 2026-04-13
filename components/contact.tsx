@@ -130,21 +130,33 @@ export default function Contact() {
               <motion.button
                 key={social.name}
                 onClick={() => handleSocialClick(social.url)}
-                initial={{ opacity: 0, y: 20 }}
+                initial="initial"
+                whileHover="hover"
+                whileTap="tap"
+                variants={{
+                  initial: { opacity: 0, y: 20 },
+                  animate: { opacity: 1, y: 0 },
+                  hover: { 
+                    scale: 1.02,
+                    backgroundColor: "rgba(255, 255, 255, 0.2)",
+                    borderColor: "rgba(255, 255, 255, 0.4)",
+                    transition: { duration: 0.3 }
+                  },
+                  tap: { scale: 0.98 }
+                }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1 + index * 0.1 }}
-                whileHover={{
-                  scale: 1.02,  
-                  backgroundColor: "rgba(255, 255, 255, 0.2)",
-                  borderColor: "rgba(255, 255, 255, 0.4)"
-                }}
-                whileTap={{ scale: 0.98 }}
                 className="w-full h-20 md:h-24 flex items-center justify-between p-4 bg-white/10 backdrop-blur-md rounded-[1.5rem] md:rounded-[2rem] transition-all group/item shadow-lg border border-white/20 relative overflow-hidden"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="p-2.5 bg-white/20 rounded-xl">
+                  <motion.div 
+                    variants={{
+                      hover: { backgroundColor: "#1a0a0a" }
+                    }}
+                    className="p-2.5 bg-white/20 rounded-xl transition-colors duration-500"
+                  >
                     <Icon className="w-5 h-5 md:w-6 md:h-6 text-white" strokeWidth={1.5} />
-                  </div>
+                  </motion.div>
                   <div className="text-left">
                     <h3 className="font-bold text-sm sm:text-base text-white">{social.name}</h3>
                     <p className="text-[10px] sm:text-xs text-white/60 font-mono tracking-tight uppercase">
@@ -153,9 +165,14 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="opacity-40 group-hover/item:opacity-100 transition-opacity pr-2">
+                <motion.div 
+                  variants={{
+                    hover: { x: 5, y: -5, opacity: 1 }
+                  }}
+                  className="opacity-40 transition-all pr-2"
+                >
                   <ArrowUpRight className="w-5 h-5 text-white" strokeWidth={1.5} />
-                </div>
+                </motion.div>
               </motion.button>
             )
           })}
