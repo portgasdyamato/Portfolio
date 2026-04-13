@@ -669,7 +669,7 @@ export default function ProjectCaseStudy() {
 
            <Link 
              href="/work" 
-             className="mt-32 group flex items-center gap-4 text-foreground/40 hover:text-foreground transition-colors"
+             className="mt-12 group flex items-center gap-4 text-foreground/40 hover:text-foreground transition-colors"
            >
               <ArrowLeft className="group-hover:-translate-x-2 transition-transform" />
               <span className="text-xs font-black uppercase tracking-[0.4em]">Back to All Works</span>
@@ -678,8 +678,8 @@ export default function ProjectCaseStudy() {
       </section>
 
       {/* ── FOOTER DECOR ── */}
-      <div className="pb-20 flex justify-center opacity-10">
-         <div className="w-1 h-12 bg-gradient-to-t from-foreground to-transparent" />
+      <div className="pb-8 flex justify-center opacity-10">
+         <div className="w-1 h-8 bg-gradient-to-t from-foreground to-transparent" />
       </div>
 
       <Footer hideContact={true} />
