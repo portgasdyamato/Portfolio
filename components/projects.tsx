@@ -455,7 +455,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative h-10 md:h-[52px] px-6 md:px-12 bg-[#F59E9E] text-[#1a0a0a] rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
+                      className="group relative h-10 md:h-[52px] px-6 md:px-12 bg-[#F59E9E] text-white rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
                     >
                       <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-white">
                          Case Study <ArrowUpRight size={14} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 md:w-4 md:h-4" />

@@ -114,7 +114,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
                 <span className="block text-[30px] sm:text-[60px] md:text-[75px] lg:text-[85px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
-                  Frontend Engineer.
+                  Design Engineer.
                 </span>
               </motion.div>
             </div>
