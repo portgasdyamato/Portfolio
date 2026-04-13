@@ -67,8 +67,8 @@ export default function BookingCall() {
               Ready to create <br />
               <span className="opacity-70">something magic?</span>
             </h3>
-            <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed max-w-[280px]">
-              Schedule a virtual coffee, intro call, or discuss a potential project/interview.
+            <p className="text-white/80 text-sm md:text-base font-medium leading-relaxed max-w-[320px]">
+              Whether it's a virtual coffee, a recruiter intro, or your next big freelance collaboration—let's make it happen.
             </p>
           </div>
 

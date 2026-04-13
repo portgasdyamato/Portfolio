@@ -138,7 +138,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
                 </Magnetic>
                 <Magnetic
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="flex items-center justify-center gap-2 bg-transparent text-[#F59E9E] text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full border border-[#F59E9E]/40 hover:bg-[#F59E9E] hover:text-white hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(245,158,158,0.3)] transition-all duration-300 min-w-[180px]"
+                  className="flex items-center justify-center gap-2 bg-white/40 backdrop-blur-sm text-[#1a0a0a] text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full border border-black/10 hover:bg-[#1a0a0a] hover:text-white hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(26,10,10,0.2)] transition-all duration-300 min-w-[180px]"
                 >
                   Let's Talk
                 </Magnetic>
