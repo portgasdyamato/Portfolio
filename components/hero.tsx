@@ -131,14 +131,14 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               <div className="flex items-center gap-4 flex-wrap mt-2">
                 <Magnetic
                   onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group flex items-center justify-center gap-2 bg-[#1a0a0a] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(26,10,10,0.2)] hover:bg-[#F59E9E] hover:scale-[1.03] transition-all duration-300 min-w-[180px]"
+                  className="group flex items-center justify-center gap-2 bg-[#1a0a0a] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(26,10,10,0.1)] hover:bg-white hover:text-[#1a0a0a] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(26,10,10,0.15)] transition-all duration-300 min-w-[170px] border border-transparent hover:border-[#1a0a0a]/10"
                 >
                   View Work
                   <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Magnetic>
                 <Magnetic
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="flex items-center justify-center gap-2 bg-[#F59E9E] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(245,158,158,0.2)] hover:bg-[#1a0a0a] hover:scale-[1.03] transition-all duration-300 min-w-[180px]"
+                  className="flex items-center justify-center gap-2 bg-[#F59E9E] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(245,158,158,0.15)] hover:bg-white hover:text-[#F59E9E] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(245,158,158,0.2)] transition-all duration-300 min-w-[170px] border border-transparent hover:border-[#F59E9E]/20"
                 >
                   Let's Talk
                 </Magnetic>
