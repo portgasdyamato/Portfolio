@@ -282,7 +282,7 @@ const PixelCharacter = () => {
               }}
             >
               {/* Cinnamon Roll Character from GIF */}
-              <div className="w-16 h-16 relative overflow-hidden">
+              <div className="w-16 h-16 relative">
                 <motion.div
                   key={expression} // This will trigger re-render when expression changes
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -336,12 +336,12 @@ const PixelCharacter = () => {
                 
                 {/* Optional shadow/glow effect with expression-based color */}
                 <div 
-                  className={`absolute inset-0 rounded-full -z-10 pointer-events-none transition-colors duration-300 blur-sm ${
-                    expression === "happy" ? "bg-gradient-to-br from-yellow-200/30 to-orange-200/30" :
-                    expression === "excited" ? "bg-gradient-to-br from-brand-200/40 to-brand-400/40" :
-                    expression === "winking" ? "bg-gradient-to-br from-brand-200/30 to-brand-300/30" :
-                    !isFollowing ? "bg-gradient-to-br from-blue-200/40 to-brand-400/40" :
-                    "bg-gradient-to-br from-brand-200/20 to-brand-300/20"
+                  className={`absolute inset-0 rounded-full -z-10 pointer-events-none transition-all duration-500 blur-xl ${
+                    expression === "happy" ? "bg-gradient-to-br from-yellow-300/40 via-orange-200/20 to-transparent" :
+                    expression === "excited" ? "bg-gradient-to-br from-brand-400/50 via-brand-200/30 to-transparent" :
+                    expression === "winking" ? "bg-gradient-to-br from-brand-300/40 via-brand-100/20 to-transparent" :
+                    !isFollowing ? "bg-[radial-gradient(circle,rgba(59,130,246,0.6)_0%,rgba(37,99,235,0.2)_60%,transparent_100%)] scale-150" :
+                    "bg-gradient-to-br from-brand-300/30 via-brand-100/10 to-transparent"
                   }`}
                 ></div>
                 
@@ -351,13 +351,13 @@ const PixelCharacter = () => {
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
-                    className="absolute -bottom-1 -right-1 w-3 h-3 bg-blue-500 rounded-full border border-white"
+                    className="absolute -bottom-1 -right-1 w-4 h-4 bg-blue-500 rounded-full border-2 border-white shadow-[0_2px_10px_rgba(59,130,246,0.4)] z-20"
                     title="Stationary mode - Double click to follow again"
                   >
                     <motion.div
-                      animate={{ scale: [1, 1.3, 1] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                      className="w-full h-full bg-blue-400 rounded-full"
+                      animate={{ scale: [1, 1.4, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                      className="w-full h-full bg-blue-400 rounded-full opacity-50"
                     />
                   </motion.div>
                 )}
