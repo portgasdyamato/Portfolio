@@ -56,7 +56,7 @@ export default function BookingCall() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="px-6 py-2.5 bg-white text-[#F59E9E] rounded-full text-[11px] font-black uppercase tracking-[0.2em] shadow-lg flex items-center gap-2"
+              className="px-6 py-2.5 bg-[#1a0a0a] text-white rounded-full text-[11px] font-black uppercase tracking-[0.2em] shadow-lg flex items-center gap-2"
             >
               Book Now <Sparkles size={14} />
             </motion.div>

@@ -273,7 +273,7 @@ export default function Contact() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="text-xl sm:text-2xl md:text-3xl font-bold mb-2"
+            className="text-xl sm:text-2xl md:text-3xl font-bold mb-2 text-white"
           >
             Let's Connect and Create Magic Together!
           </motion.h2>
@@ -282,7 +282,7 @@ export default function Contact() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="text-[#8B0000]/60 text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 font-medium"
+            className="text-white/70 text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 font-medium"
           >
             <MessageCircle className="w-5 h-5" />
             I'd love to hear from you
@@ -490,7 +490,7 @@ export default function Contact() {
               })}
             </svg>
           </motion.div>
-          <p className="text-gray-700 italic text-sm sm:text-base">"Great things happen when creative minds connect!" 🚀</p>
+          <p className="text-white/70 italic text-sm sm:text-base">"Great things happen when creative minds connect!" 🚀</p>
         </motion.div>
       </div>
     </motion.div>
