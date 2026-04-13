@@ -226,8 +226,8 @@ export default function SkillsShowcase() {
                 <div className={`absolute inset-0 p-5 lg:p-8 flex ${isActive ? 'flex-col justify-between' : 'flex-row lg:flex-col items-center lg:items-center justify-start lg:justify-between'} gap-4`}>
                   
                   {/* Icon */}
-                  <motion.div layout="position" className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-sm transition-colors duration-500 ${isActive ? 'bg-[#F59E9E]/10' : 'bg-white'}`}>
-                    <skill.icon size={22} className={isActive ? "text-[#F59E9E]" : "text-[#1a0a0a]/40"} />
+                  <motion.div layout="position" className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-sm transition-colors duration-500 ${isActive ? 'bg-[#1a0a0a]' : 'bg-white'}`}>
+                    <skill.icon size={22} className={isActive ? "text-white" : "text-[#1a0a0a]/40"} />
                   </motion.div>
 
                   {/* Title & Desc Wrapper */}
