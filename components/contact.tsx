@@ -37,7 +37,7 @@ const socialLinks = [
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://www.linkedin.com/in/sakshi-902777290/",
+    url: "https://www.linkedin.com/in/ethsakshi",
     color: "#FFFFFF",
     description: "Let's connect professionally",
     handle: "@Sakshi",

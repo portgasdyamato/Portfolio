@@ -5,7 +5,7 @@ import { motion } from "framer-motion"
 const socialLinks = [
   { name: "GITHUB", url: "https://github.com/portgasdyamato" },
   { name: "EMAIL", url: "mailto:sakshiagrahari2004@gmail.com" },
-  { name: "LINKEDIN", url: "https://www.linkedin.com/in/sakshi-902777290/" },
+  { name: "LINKEDIN", url: "https://www.linkedin.com/in/ethsakshi" },
 ]
 
 export default function SocialLinks() {
