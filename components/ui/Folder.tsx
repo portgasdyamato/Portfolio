@@ -88,7 +88,7 @@ const Folder: React.FC<FolderProps> = ({
 
       {/* ── Floating Label BELOW the container ── */}
       <AnimatePresence>
-        {(hovered || active) && label && (
+        {hovered && label && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 25 }} // Push it outside the main bar

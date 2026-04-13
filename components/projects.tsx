@@ -8,7 +8,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { projectsData } from "@/lib/projects-data"
 
-const ALLOWED_PROJECTS = ["pocket-fund", "voxa", "wassup", "wellness-tracker", "yonder-wonder", "pippofy"];
+const ALLOWED_PROJECTS = ["vidya", "pocket-fund", "voxa", "wassup", "wellness-tracker", "yonder-wonder", "pippofy"];
 
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
