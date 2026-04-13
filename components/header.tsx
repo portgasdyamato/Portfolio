@@ -37,8 +37,15 @@ export default function Header() {
 
   const handleNavClick = (id: string, path?: string) => {
     if (path) {
-      if (path.startsWith("/#") && pathname === "/") {
-        scrollTo(path.replace("/#", ""))
+      if (path.startsWith("/#")) {
+        const targetId = path.replace("/#", "")
+        if (pathname === "/") {
+          scrollTo(targetId)
+        } else {
+          // If we're on a subpage, navigate to home and then the browser should handle the hash
+          // We use router.push but ensure the path is correct
+          router.push(`/${path.startsWith("/") ? path.substring(1) : path}`)
+        }
       } else {
         router.push(path)
       }

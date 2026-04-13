@@ -32,6 +32,22 @@ export default function Home() {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = "auto"
+
+      // Handle hash-based navigation from other pages (like /work#scrapbook)
+      if (typeof window !== 'undefined' && window.location.hash) {
+        const id = window.location.hash.substring(1)
+        
+        // Use a small timeout to let the page settle and Lenis initialize
+        const scrollTimer = setTimeout(() => {
+          const element = document.getElementById(id)
+          if (element) {
+            // Use standard scroll for initial landing to bypass potential Lenis issues
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 800) 
+
+        return () => clearTimeout(scrollTimer)
+      }
     }
   }, [isLoading])
 
