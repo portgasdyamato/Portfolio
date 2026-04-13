@@ -1,4 +1,5 @@
 "use client"
+import Image from "next/image"
 
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect } from "react"
@@ -511,6 +512,13 @@ const PixelCharacter = () => {
             </motion.button>
           )}
         </AnimatePresence>
+      </div>
+      
+      {/* Hidden preloader for faster state transitions */}
+      <div className="hidden">
+        <Image src="/hehe.gif" alt="pre" width={1} height={1} priority unoptimized />
+        <Image src="/heh.gif" alt="pre" width={1} height={1} priority unoptimized />
+        <Image src="/hah.gif" alt="pre" width={1} height={1} priority unoptimized />
       </div>
     </div>
   )

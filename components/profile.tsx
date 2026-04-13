@@ -70,6 +70,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
             height={600}
             className="w-full h-auto object-cover"
             unoptimized
+            priority
           />
         </motion.div>
 

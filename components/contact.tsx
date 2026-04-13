@@ -62,9 +62,16 @@ export default function Contact() {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: 0.6 }}
-      className="bg-gradient-to-br from-[#FFC0CB] via-[#F59E9E] to-[#E88C8C] p-4 sm:p-6 md:p-8 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden shadow-lg border border-white/20 mb-8 sm:mb-16 md:mb-24 lg:mb-32" 
+      whileHover={{ 
+        y: -10,
+        rotateX: 1,
+        rotateY: -1,
+      }}
+      transition={{ delay: 0.6, duration: 0.8 }}
+      className="bg-gradient-to-br from-[#FFC0CB] via-[#F59E9E] to-[#E88C8C] p-4 sm:p-6 md:p-8 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden shadow-lg border border-white/20 mb-8 sm:mb-16 md:mb-24 lg:mb-32 group perspective-1000" 
     >
+      {/* Shine Effect */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out pointer-events-none z-20" />
       {/* Sharp Petal Flower Pattern Background (2nd pattern style) */}
       <div className="absolute inset-0 opacity-8">
         <svg className="w-full h-full" viewBox="0 0 400 400" fill="none">

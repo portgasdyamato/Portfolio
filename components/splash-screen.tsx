@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import Image from "next/image"
 
 // ─── Component: 3D Boutique Folder ──
 function BoutiqueFolder({ color, tabColor, accent, title, icon: Icon, delay, rotate, mobileScale = 0.6 }: any) {
@@ -72,7 +73,14 @@ function Polaroid({ src, caption, rotate, delay }: { src: string, caption: strin
       className="p-2 sm:p-3 pb-6 sm:pb-8 bg-white shadow-[0_12px_45px_rgba(0,0,0,0.08)] flex flex-col gap-1.5 sm:gap-2.5 border border-black/[0.03] transform-gpu w-[90px] sm:w-[130px]"
     >
       <div className="aspect-square bg-[#f8f8f8] overflow-hidden relative border border-black/[0.02] rounded-sm">
-         <img src={src} className="w-full h-full object-cover mix-blend-multiply opacity-90" />
+         <Image 
+           src={src} 
+           alt={caption}
+           fill
+           className="object-cover mix-blend-multiply opacity-90"
+           unoptimized
+           priority
+         />
       </div>
       <span className="text-[7px] sm:text-[9px] font-bold text-black/25 text-center uppercase tracking-[0.2em]">{caption}</span>
     </motion.div>
@@ -208,7 +216,15 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
         className="absolute bottom-[18%] sm:bottom-[22%] left-[15%] sm:left-[18%] z-20 hidden sm:block"
       >
-        <img src="/pot.gif" className="w-10 sm:w-28 drop-shadow-2xl opacity-90" />
+        <Image 
+          src="/pot.gif" 
+          alt="pot"
+          width={112} 
+          height={112}
+          className="w-10 sm:w-28 drop-shadow-2xl opacity-90" 
+          unoptimized
+          priority
+        />
       </motion.div>
       
       <motion.div 
@@ -216,7 +232,15 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
         className="absolute bottom-[22%] sm:bottom-[28%] right-[15%] sm:right-[22%] z-20 hidden sm:block"
       >
-        <img src="/deer.gif" className="w-12 sm:w-36 drop-shadow-2xl opacity-90" />
+        <Image 
+          src="/deer.gif" 
+          alt="deer"
+          width={144} 
+          height={144} 
+          className="w-12 sm:w-36 drop-shadow-2xl opacity-90" 
+          unoptimized
+          priority
+        />
       </motion.div>
 
       {/* ── Center: Typography ── */}
