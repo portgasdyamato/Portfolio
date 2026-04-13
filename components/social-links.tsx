@@ -14,7 +14,7 @@ export default function SocialLinks() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.7 }}
-      className="bg-[#FFE4E4] p-8 rounded-3xl"
+      className="bg-[#FFE0EA] p-8 rounded-3xl"
     >
       <div className="flex justify-between items-center mb-8">
         {socialLinks.map((link, index) => (

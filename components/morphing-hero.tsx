@@ -66,15 +66,15 @@ export default function MorphingHero() {
       tl.to(cardOuterRef.current, { scale: 0.7, ease: "power2.inOut", duration: 0.3 }, 0)
       tl.to(cardVisualRef.current, {
         borderRadius: "32px",
-        boxShadow: "0 80px 160px -40px rgba(245,158,158,0.3)",
-        backgroundColor: "#FFF5F5",
+        boxShadow: "0 80px 160px -40px rgba(255,77,122,0.25)",
+        backgroundColor: "#FFECF0",
         ease: "power2.inOut",
         duration: 0.3
       }, 0)
       tl.to({}, { duration: 0.3 }) 
       tl.to(cardOuterRef.current, { rotateZ: 90, scale: 0.4, y: "18vh", ease: "power2.inOut", duration: 0.25 }, 0.6)
       tl.to(cardOuterRef.current, { y: "115vh", opacity: 0, ease: "power3.in", duration: 0.2 }, 0.8)
-      tl.to(containerRef.current, { backgroundColor: "#FFEFEE", duration: 0.3 }, 0)
+      tl.to(containerRef.current, { backgroundColor: "#FFE0EA", duration: 0.3 }, 0)
     })
 
     mm.add("(max-width: 1023px)", () => {
@@ -96,7 +96,7 @@ export default function MorphingHero() {
       gsap.set(cardVisualRef.current, { 
         borderRadius: "0px", 
         boxShadow: "none",
-        backgroundColor: "#FFF5F5" 
+        backgroundColor: "#FFECF0" 
       })
     })
 
@@ -106,7 +106,7 @@ export default function MorphingHero() {
   return (
     <div 
       ref={containerRef} 
-      className="w-full h-auto min-h-screen lg:h-screen lg:overflow-hidden flex items-center justify-center bg-[#FFEEEC] z-10 relative"
+      className="w-full h-auto min-h-screen lg:h-screen lg:overflow-hidden flex items-center justify-center bg-[#FFE0EA] z-10 relative"
     >
       {/* ── THE MACRO WRAPPER (Handles GSAP Scaling/Z-Rotation) ── */}
       <div
@@ -122,7 +122,7 @@ export default function MorphingHero() {
           style={{ 
             rotateX: tiltX, 
             rotateY: tiltY,
-            backgroundColor: "#FFF5F5",
+            backgroundColor: "#FFECF0",
             transformStyle: "preserve-3d" 
           }}
           className="w-full h-auto lg:h-full relative lg:overflow-hidden flex items-center"
@@ -146,7 +146,7 @@ export default function MorphingHero() {
           <motion.div animate={{ rotate: 360 }} transition={{ duration: 45, repeat: Infinity, ease: "linear" }}>
              <svg viewBox="0 0 200 200" className="w-full h-full">
                <path id="cc" d="M 100, 100 m -80, 0 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0" fill="none" />
-               <text fill="#F59E9E" fontSize="12" fontWeight="900" letterSpacing="4" style={{ fontFamily: "'Inter', sans-serif" }}><textPath href="#cc">UI/UX DESIGN ✦ AI PRODUCT DESIGN ✦ WEB DEV ✦</textPath></text>
+               <text fill="#FF4D7A" fontSize="12" fontWeight="900" letterSpacing="4" style={{ fontFamily: "'Inter', sans-serif" }}><textPath href="#cc">UI/UX DESIGN ✦ AI PRODUCT DESIGN ✦ WEB DEV ✦</textPath></text>
              </svg>
           </motion.div>
         </div>

@@ -22,7 +22,7 @@ const socialLinks = [
     name: "Email",
     icon: Mail,
     url: "mailto:sakshiagrahari2004@gmail.com",
-    color: "#FFB5B5",
+    color: "#FF4D7A",
     description: "Drop me a line",
     handle: "sakshiagrahari2004@gmail.com",
   },
@@ -30,7 +30,7 @@ const socialLinks = [
     name: "Discord",
     icon: DiscordIcon,
     url: "https://discord.com/users/934897501054586900",
-    color: "#FFB5B5",
+    color: "#FF4D7A",
     description: "Follow my journey",
     handle: "@scerilia",
   },
@@ -38,7 +38,7 @@ const socialLinks = [
     name: "LinkedIn",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/sakshi-902777290/",
-    color: "#FFB5B5",
+    color: "#FF4D7A",
     description: "Let's connect professionally",
     handle: "@Sakshi",
   },
@@ -46,7 +46,7 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     url: "https://github.com/portgasdyamato",
-    color: "#FFB5B5",
+    color: "#FF4D7A",
     description: "Check out my code",
     handle: "@pippo",
   },
@@ -63,7 +63,7 @@ export default function Contact() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.6 }}
-      className="bg-gradient-to-br from-[#FFE4E4] via-[#FFD1D1] to-[#FFB5B5] p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden shadow-lg mt-8 sm:mt-16 md:mt-24 lg:mt-32" 
+      className="bg-gradient-to-br from-[#FF6B9D] via-[#FF4D7A] to-[#E63068] p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden shadow-lg mt-8 sm:mt-16 md:mt-24 lg:mt-32" 
     >
       {/* Sharp Petal Flower Pattern Background (2nd pattern style) */}
       <div className="absolute inset-0 opacity-8">
@@ -87,7 +87,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M200,200 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FFB5B5"
+                  stroke="#FF4D7A"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -122,7 +122,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M120,120 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FFB5B5"
+                  stroke="#FF4D7A"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -157,7 +157,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M320,320 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#FFB5B5"
+                  stroke="#FF4D7A"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -212,7 +212,7 @@ export default function Contact() {
                   <path
                     key={j}
                     d={`M10,10 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                    stroke="#FFB5B5"
+                    stroke="#FF4D7A"
                     strokeWidth="0.5"
                     fill="none"
                   />
@@ -251,7 +251,7 @@ export default function Contact() {
                     <motion.path
                       key={i}
                       d={`M16,16 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                      stroke="#FFB5B5"
+                      stroke="#FF4D7A"
                       strokeWidth="1.5"
                       fill="none"
                       initial={{ pathLength: 0 }}
@@ -445,7 +445,7 @@ export default function Contact() {
                       <path
                         key={i}
                         d={`M5,5 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                        stroke="#FFB5B5"
+                        stroke="#FF4D7A"
                         strokeWidth="0.5"
                         fill="none"
                       />
@@ -485,7 +485,7 @@ export default function Contact() {
                 const y3 = 4 + 2 * Math.sin(nextAngle)
 
                 return (
-                  <path key={i} d={`M32,4 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`} fill="#FFB5B5" opacity={0.6} />
+                  <path key={i} d={`M32,4 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`} fill="#FF4D7A" opacity={0.6} />
                 )
               })}
             </svg>

@@ -75,7 +75,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         clipPath: "inset(0 0 100% 0)", 
         transition: { duration: 1.5, ease: [0.76, 0, 0.24, 1] } 
       }}
-      className="fixed inset-0 z-[9999] bg-[#FFF5F5] overflow-hidden flex flex-col items-center justify-center select-none cursor-crosshair font-black"
+      className="fixed inset-0 z-[9999] bg-[#FFECF0] overflow-hidden flex flex-col items-center justify-center select-none cursor-crosshair font-black"
     >
       {/* ── GRAIN OVERLAY (High-End Aesthetic) ── */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.4] mix-blend-multiply grain-overlay z-50" />
@@ -277,7 +277,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       </div>
 
       {/* Frame Border */}
-      <div className="absolute inset-0 z-50 pointer-events-none border-[12px] border-[#FFF5F5]" />
+      <div className="absolute inset-0 z-50 pointer-events-none border-[12px] border-[#FFECF0]" />
     </motion.div>
   )
 }
