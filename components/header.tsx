@@ -49,18 +49,18 @@ export default function Header() {
   }
 
   return (
-    <div className="fixed top-6 sm:top-8 left-0 right-0 z-[1000] px-4 sm:px-6 flex justify-center pointer-events-none">
+    <div className="fixed top-6 sm:top-8 left-0 right-0 z-[1000] px-4 sm:px-6 flex justify-end sm:justify-center pointer-events-none">
       <motion.header
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: visible ? 0 : -120, opacity: visible ? 1 : 0 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-        className="pointer-events-auto"
+        className="pointer-events-auto relative"
       >
         {/* ── UNIFIED BOUTIQUE NAV PILL ── */}
-        <div className="flex items-center bg-white/60 backdrop-blur-3xl border border-black/[0.04] p-1.5 sm:p-2 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.06)] gap-1 sm:gap-2">
+        <div className="flex items-center bg-white/60 backdrop-blur-3xl border border-black/[0.04] p-1.5 sm:p-2 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.06)] gap-1 sm:gap-2 max-w-fit">
           
           {/* Main Navigation Folders (Desktop & Tablet) */}
-          <nav className="hidden sm:flex items-center gap-0">
+          <nav className="hidden md:flex items-center gap-0">
             {NAV_ITEMS.map((item) => (
               <Folder 
                 key={item.id}
@@ -75,20 +75,29 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Compressed Mobile Toggle (Phones Only) */}
-          <div className="sm:hidden flex items-center pr-2">
+          {/* Mobile Display Indicator (Tablets/Mid-size) */}
+          <div className="hidden sm:flex md:hidden items-center px-3">
              <button 
                 onClick={() => setMenuOpen(!menuOpen)}
                 className="w-10 h-10 rounded-full flex items-center justify-center text-black/60 hover:text-black transition-all bg-black/[0.02]"
              >
                 {menuOpen ? <X size={20} /> : <Menu size={20} />}
              </button>
-             {/* Small indicator on mobile if any folder is active */}
-             <div className="ml-1 w-1.5 h-1.5 rounded-full bg-[#F59E9E] animate-pulse" />
+          </div>
+
+          {/* Compressed Mobile Toggle (Phones Only - pinned to corner) */}
+          <div className="sm:hidden flex items-center px-1">
+             <button 
+                onClick={() => setMenuOpen(!menuOpen)}
+                className="w-10 h-10 rounded-full flex items-center justify-center text-black/60 hover:text-black transition-all bg-black/[0.02]"
+             >
+                {menuOpen ? <X size={20} /> : <Menu size={20} />}
+             </button>
+             <div className="mx-1 w-1 h-1 rounded-full bg-[#F59E9E] opacity-50" />
           </div>
 
           {/* Separator Line (Desktop/Tablet Only) */}
-          <div className="h-8 w-[1px] bg-black/[0.1] mx-1 hidden sm:block" />
+          <div className="h-8 w-[1px] bg-black/[0.1] mx-1 hidden md:block" />
 
           {/* Scrapbook Trigger Button */}
           <motion.button
@@ -108,14 +117,14 @@ export default function Header() {
 
         </div>
 
-        {/* HIGH-FIDELITY MOBILE MENU DROPDOWN */}
+        {/* HIGH-FIDELITY MOBILE MENU DROPDOWN - Alignment Fix */}
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 10, rotate: -2 }}
-              animate={{ opacity: 1, scale: 1, y: 0, rotate: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 10, rotate: -2 }}
-              className="absolute top-full left-1/2 -translate-x-1/2 mt-4 p-4 bg-white/95 backdrop-blur-3xl rounded-[32px] border border-black/0.05 shadow-2xl sm:hidden w-[300px] origin-top"
+              initial={{ opacity: 0, scale: 0.95, y: 10, x: 0 }}
+              animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10, x: 0 }}
+              className="absolute top-full right-0 mt-4 p-4 bg-white/95 backdrop-blur-3xl rounded-[32px] border border-black/0.05 shadow-2xl w-[85vw] sm:w-[300px] origin-top-right transition-all"
             >
               <div className="grid grid-cols-2 gap-3">
                  {NAV_ITEMS.map((item, idx) => (
@@ -124,7 +133,7 @@ export default function Header() {
                      initial={{ opacity: 0, y: 10 }}
                      animate={{ opacity: 1, y: 0, transition: { delay: idx * 0.05 } }}
                      onClick={() => handleNavClick(item.id, item.path)}
-                     className={`flex flex-col items-center justify-center p-4 rounded-[24px] border border-black/0.03 transition-all relative overflow-hidden ${pathname === item.path ? 'bg-black/[0.02]' : 'hover:bg-black/[0.01]'}`}
+                     className={`flex flex-col items-center justify-center p-4 rounded-[24px] border border-black/0.03 transition-all relative overflow-hidden ${pathname === item.path ? 'bg-black/[0.02]' : 'hover:bg-black/[0.02]'}`}
                    >
                        <div className="scale-[0.8] mb-3 transform-gpu">
                           <Folder 
