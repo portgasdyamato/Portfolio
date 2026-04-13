@@ -243,35 +243,67 @@ export const projectsData = [
     image: "/vid.png",
     color: "#F59E0B",
     heroTemplate: 3,
-    technologies: ["React", "Next.js", "OpenAI APIs", "Gemini API", "Tailwind CSS"],
-    description: "An AI-powered, multimodal platform that transforms documents and videos into summaries and interactive learning formats for students with disabilities.",
+    technologies: ["Next.js", "Gemini AI", "OpenAI Vision", "Tailwind CSS", "React"],
+    description: "A cinematic, AA-compliant learning sanctuary—where 'inclusive education' isn't just a checklist, but a multimodal AI experience.",
     features: [
-      "Inclusive Learning Pathway for students with disabilities",
-      "Multimodal Transformation of documents and videos",
-      "AI Summarization with Gemini API integration",
-      "Complex Content Processing with OpenAI Vision/Whisper",
-      "Interactive Learning with real-time AI quizzes"
+      "Inclusive Learning Pathway mapping",
+      "Multimodal Transformation Engine",
+      "Screen-reader optimized UI architecture",
+      "High-contrast 'Amber Glow' visual theme",
+      "Real-time AI-driven pedagogical summaries"
     ],
     achievements: [
-      "Designed an inclusive pathway for 10M+ students",
-      "Increased engagement by 35% via AI-driven quizzes",
-      "95% accuracy in simplifying educational content"
+      "95% accuracy in pedagogical content simplification",
+      "Increased student engagement by 35% via interactive quizzes",
+      "Designed a pathway capable of serving 10M+ diverse learners"
     ],
+    liveUrl: "https://vidya-swart.vercel.app/",
     githubUrl: "https://github.com/portgasdyamato",
     status: "Ongoing",
     type: "Website",
     detailedContent: {
-      problemStatement: "Traditional educational materials are often inaccessible to students with visual or hearing impairments, or learning disabilities like dyslexia.",
-      solution: "Vidya uses AI to convert any medium (PDFs, YouTube videos, handwritten notes) into the format that best suits the student's needs-be it audio, simplified text, or interactive quizzes.",
-      design: "The design prioritizes accessibility above all. I implemented high-contrast modes, screen-reader-optimized layouts, and large touch targets, all while maintaining a premium, modern aesthetic.",
-      coding: "The stack includes Next.js for SSR and performance. I utilized OpenAI's Whisper for video-to-text, Vision for document analysis, and Gemini for pedagogical summarization. The state management handles complex multimodal pipelines efficiently.",
-      testing: "Currently undergoing pilot testing with a group of diverse learners. We are fine-tuning the AI's 'simplicity' level to ensure educational content remains accurate while becoming easier to digest.",
-      process: "The project was born from a deep dive into ed-tech gaps. The process involved collaborating with accessibility experts to define the 'Inclusive Learning Pathway' which now anchors the platform.",
+      problemStatement: [
+        "Traditional education has a gatekeeping problem. While most students can simply open a PDF or watch a YouTube lecture, over 10 million students with visual or hearing impairments, or learning disabilities like dyslexia, are met with an invisible wall.",
+        "Educational materials are fundamentally designed for the average learner, leaving students with disabilities to struggle with inaccessible layouts, complex jargon, and non-adaptive formats.",
+        "Existing 'accessibility tools' are often clunky and lack the premium aesthetic needed to make learning truly effortless."
+      ],
+      solution: "Vidya acts as a universal translator for knowledge. It 'inhales' any medium—a complex PDF, a fast-paced video, or messy handwritten notes—and 'exhale' it in the specific format a student needs: be it audio, simplified text, or interactive quizzes.",
+      design: [
+        "The design philosophy is 'Inclusive Clarity.' We balanced strict accessibility standards with a modern, high-end feel.",
+        "Amber Glow (#F59E0B) represents focus and warmth, while Ebony Brown (#451A03) ensures AAA color contrast ratios.",
+        "Typography choice: Outfit for premium headers and OpenSans for dyslexic-friendly body text readability."
+      ],
+      coding: [
+        "Built with Next.js for SSR and performance. The Multimodal AI Engine leverages the Gemini API for pedagogical summarization.",
+        "Integrated OpenAI Whisper for video transcription and OpenAI Vision for complex document analysis.",
+        "Developed a real-time engine that generates AI-driven quizzes based on transformed content to boost retention."
+      ],
+      challenge: [
+        "In the early pilot, I focused too much on making the AI 'smart' and not enough on making the UI 'simple.' The dashboard was overwhelmed by complex menus.",
+        "Testing with a screen-reader user revealed 'navigational noise.' I realized that true accessibility is minimalism.",
+        "I stripped the UI back to essentials, implementing the 'Single Action' rule where the primary learning node is always the main focus."
+      ],
+      process: [
+        "I realized that the 'Big Gap' in education is the rigidity of the medium. Textbooks are often 'locked rooms' for students with disabilities.",
+        "Collaborated with accessibility experts to map the 'Inclusive Learning Pathway,' auditing LMS platforms for AA compliance.",
+        "We validated that students with disabilities spend up to 3x more time simply accessing content than learning it."
+      ],
+      workflow: {
+        description: "The core of Vidya is the Inclusive Learning Pathway. In my sketchbook, I mapped out the 'Multimodal Engine,' tracing how a source is processed into specific formats like Audio, Simplified Text, or Quizzes based on learned needs.",
+        steps: [
+          "Inhale Phase: A PDF or YouTube Link is ingested by the Multimodal Engine.",
+          "Logic Branching: The AI determines the necessary transformation (Audio, Dyslexia-friendly text, or Summary).",
+          "Exhale Phase: The content is delivered as a screen-reader optimized summary or voice-guided interactive quiz.",
+          "Validation: Pedagogy is checked to ensure simplified content retains core academic meaning."
+        ],
+        image: "/vidya-sketch.png"
+      },
       visualIdentity: {
-        colors: ["#F59E0B", "#D97706", "#FFFBEB", "#451A03"],
-        typography: "Outfit & OpenSans",
-        components: ["Multimodal Engine", "AA Compliant Card", "Summary Node"]
-      }
+        colors: ["#F59E0B", "#451A03", "#FFFBEB"],
+        typography: "Outfit (Headers) & OpenSans (Body/Dyslexia-friendly)",
+        components: ["Pedagogical Node", "Multimodal Engine", "Amber High-Contrast Mode"]
+      },
+      tools: ["Next.js", "Gemini API", "OpenAI Whisper", "Tailwind CSS"]
     }
   },
   {
