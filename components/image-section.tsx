@@ -6,7 +6,7 @@ import BookingCall from "./booking-call";
 
 const ImageSection = () => {
   return (
-    <div className="relative flex flex-col justify-center items-center h-full">
+    <div className="relative flex flex-col justify-start items-center h-full">
       <BookingCall />
       <motion.div
         initial={{ opacity: 0, y: 20 }}

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Calendar, Coffee, Laptop, Briefcase, Zap, ArrowRight, Sparkles } from "lucide-react"
+import { Calendar, Coffee, Laptop, Briefcase, Zap, ArrowRight, Sparkles, MessageSquare } from "lucide-react"
 
 export default function BookingCall() {
   const options = [
@@ -20,74 +20,91 @@ export default function BookingCall() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="w-full max-w-[450px] mb-12 group animate-float"
+      className="w-full max-w-[450px] mb-12 group perspective-1000"
     >
       <motion.div 
         onClick={handleBookingClick}
-        whileHover={{ y: -5, scale: 1.01 }}
+        whileHover={{ 
+          y: -8,
+          rotateX: 2,
+          rotateY: -2,
+          boxShadow: "0 20px 40px rgba(245, 158, 158, 0.2)"
+        }}
         whileTap={{ scale: 0.98 }}
-        className="relative cursor-pointer overflow-hidden rounded-[2.5rem] bg-white/40 p-8 backdrop-blur-xl transition-all hover:bg-white/50 border border-white/50 shadow-[0_8px_32px_rgba(245,158,158,0.15)]"
+        className="relative cursor-pointer overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#FFF5F7] via-[#FFE4E9] to-[#FFD1DA] p-8 backdrop-blur-2xl transition-all duration-500 border border-white/60 shadow-[0_8px_32px_rgba(245,158,158,0.1)]"
       >
-        {/* Animated Background Elements */}
-        <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#F59E9E]/20 blur-3xl transition-all duration-700 group-hover:bg-[#F59E9E]/30 group-hover:scale-110" />
-        <div className="absolute -left-20 -bottom-20 h-40 w-40 rounded-full bg-[#FFC0CB]/20 blur-3xl transition-all duration-700 group-hover:bg-[#FFC0CB]/30 group-hover:scale-110" />
+        {/* Decorative Floating Mesh Gradient */}
+        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-gradient-to-br from-[#FFB2B2]/30 to-transparent blur-[60px] transition-all duration-1000 group-hover:scale-125" />
+        <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-gradient-to-tr from-[#FFC0CB]/30 to-transparent blur-[60px] transition-all duration-1000 group-hover:scale-125" />
         
         <div className="relative z-10">
-          <div className="flex items-center justify-between mb-6">
-            <div className="relative">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#F59E9E] to-[#FFC0CB] text-white shadow-lg shadow-[#F59E9E]/20">
-                <Calendar size={24} />
+          <div className="flex items-center justify-between mb-8">
+            <div className="flex items-center gap-3">
+              <div className="relative h-12 w-12 shrink-0">
+                <div className="absolute inset-0 bg-[#FFB2B2]/20 rounded-2xl blur-sm group-hover:blur-md transition-all" />
+                <div className="relative flex h-full w-full items-center justify-center rounded-2xl bg-white/90 text-[#FFB2B2] shadow-sm">
+                  <Calendar size={22} strokeWidth={1.5} />
+                </div>
               </div>
-              <motion.div 
-                animate={{ rotate: 360 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-1 -right-1 text-[#F59E9E]"
-              >
-                <Sparkles size={14} fill="currentColor" />
-              </motion.div>
+              <div>
+                <span className="text-[11px] font-bold text-[#FFB2B2]/80 tracking-widest uppercase block mb-0.5">Scheduler</span>
+                <div className="flex items-center gap-1.5 font-outfit font-black text-[#1a0a0a] text-sm">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#FFB2B2] animate-pulse" />
+                  Available to Book
+                </div>
+              </div>
             </div>
             
             <motion.div
-              className="flex items-center gap-2 rounded-full bg-[#F59E9E]/10 px-4 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-[#F59E9E] border border-[#F59E9E]/20"
+              whileHover={{ x: 3 }}
+              className="flex items-center gap-2 text-xs font-bold text-[#FFB2B2]"
             >
-              Let's Connect <ArrowRight size={12} strokeWidth={3} />
+              Let's sync <ArrowRight size={14} />
             </motion.div>
           </div>
 
-          <h3 className="mb-3 text-2xl md:text-3xl font-bold text-[#1a0a0a] leading-tight" style={{ fontFamily: "qax" }}>
-            Ready to start something <br />
-            <span className="bg-gradient-to-r from-[#F59E9E] via-[#E88C8C] to-[#F59E9E] bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient-x">
-              Great together?
+          <h3 className="mb-4 text-2xl md:text-3xl font-bold text-[#1a0a0a] leading-[1.15]" style={{ fontFamily: "qax" }}>
+            Ready to start <br />
+            <span className="relative">
+              something great?
+              <motion.div 
+                className="absolute -bottom-1 left-0 h-px w-full bg-[#FFB2B2]/40"
+                initial={{ scaleX: 0 }}
+                whileHover={{ scaleX: 1 }}
+                transition={{ duration: 0.3 }}
+              />
             </span>
           </h3>
           
-          <p className="mb-8 text-sm md:text-base text-black/60 leading-relaxed font-outfit font-medium">
-            I'm always open to discussing new opportunities, collaborations, or just having a friendly intro chat over a virtual coffee.
+          <p className="mb-8 text-sm md:text-base text-black/50 leading-relaxed font-outfit font-medium max-w-[90%]">
+            Discuss opportunities, collaborations, or just a friendly intro chat over a virtual coffee.
           </p>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3">
             {options.map((opt, i) => {
               const Icon = opt.icon
               return (
                 <motion.div 
                   key={opt.name}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 + i * 0.1 }}
-                  className="flex items-center gap-3 rounded-2xl bg-white/60 p-3 border border-white/40 shadow-sm transition-all hover:bg-white/80 hover:shadow-md"
+                  whileHover={{ 
+                    scale: 1.05,
+                    backgroundColor: "rgba(255, 255, 255, 0.9)",
+                    borderColor: "rgba(245, 158, 158, 0.4)"
+                  }}
+                  className="flex items-center gap-2.5 rounded-2xl bg-white/50 p-3 border border-white/40 shadow-sm transition-all duration-300"
                 >
-                  <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#F59E9E]/15 text-[#F59E9E]">
-                    <Icon size={16} />
+                  <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#FFB2B2]/10 text-[#FFB2B2]">
+                    <Icon size={14} />
                   </div>
-                  <span className="text-[10px] font-bold text-black/80 uppercase tracking-widest">{opt.name}</span>
+                  <span className="text-[10px] font-bold text-black/70 tracking-tight">{opt.name}</span>
                 </motion.div>
               )
             })}
           </div>
         </div>
 
-        {/* Interactive hover line */}
-        <div className="absolute bottom-0 left-0 h-1.5 w-full scale-x-0 bg-gradient-to-r from-[#F59E9E] via-[#FFC0CB] to-[#F59E9E] transition-transform duration-500 origin-left group-hover:scale-x-100" />
+        {/* Subtle Glass Noise Overlay */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
       </motion.div>
     </motion.div>
   )

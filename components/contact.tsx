@@ -22,7 +22,7 @@ const socialLinks = [
     name: "Email",
     icon: Mail,
     url: "mailto:sakshiagrahari2004@gmail.com",
-    color: "#F59E9E",
+    color: "#FFB2B2",
     description: "Drop me a line",
     handle: "sakshiagrahari2004@gmail.com",
   },
@@ -30,7 +30,7 @@ const socialLinks = [
     name: "Discord",
     icon: DiscordIcon,
     url: "https://discord.com/users/934897501054586900",
-    color: "#F59E9E",
+    color: "#FFB2B2",
     description: "Follow my journey",
     handle: "@scerilia",
   },
@@ -38,7 +38,7 @@ const socialLinks = [
     name: "LinkedIn",
     icon: Linkedin,
     url: "https://www.linkedin.com/in/sakshi-902777290/",
-    color: "#F59E9E",
+    color: "#FFB2B2",
     description: "Let's connect professionally",
     handle: "@Sakshi",
   },
@@ -46,7 +46,7 @@ const socialLinks = [
     name: "GitHub",
     icon: Github,
     url: "https://github.com/portgasdyamato",
-    color: "#F59E9E",
+    color: "#FFB2B2",
     description: "Check out my code",
     handle: "@pippo",
   },
@@ -63,7 +63,7 @@ export default function Contact() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.6 }}
-      className="bg-gradient-to-br from-[#FFC0CB] via-[#F59E9E] to-[#E88C8C] p-4 sm:p-6 md:p-8 rounded-2xl sm:rounded-3xl relative overflow-hidden shadow-lg mt-8 sm:mt-16 md:mt-24 lg:mt-32" 
+      className="bg-gradient-to-br from-[#FFF5F7] via-[#FFE4E9] to-[#FFD1DA] p-4 sm:p-6 md:p-8 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden shadow-[0_8px_32px_rgba(245,158,158,0.1)] border border-white/60 mb-8 sm:mb-16 md:mb-24 lg:mb-32" 
     >
       {/* Sharp Petal Flower Pattern Background (2nd pattern style) */}
       <div className="absolute inset-0 opacity-8">
@@ -87,7 +87,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M200,200 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#F59E9E"
+                  stroke="#FFB2B2"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -122,7 +122,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M120,120 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#F59E9E"
+                  stroke="#FFB2B2"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -157,7 +157,7 @@ export default function Contact() {
                 <motion.path
                   key={i}
                   d={`M320,320 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                  stroke="#F59E9E"
+                  stroke="#FFB2B2"
                   strokeWidth="1"
                   fill="none"
                   initial={{ pathLength: 0, opacity: 0 }}
@@ -212,7 +212,7 @@ export default function Contact() {
                   <path
                     key={j}
                     d={`M10,10 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                    stroke="#F59E9E"
+                    stroke="#FFB2B2"
                     strokeWidth="0.5"
                     fill="none"
                   />
@@ -251,7 +251,7 @@ export default function Contact() {
                     <motion.path
                       key={i}
                       d={`M16,16 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                      stroke="#F59E9E"
+                      stroke="#FFB2B2"
                       strokeWidth="1.5"
                       fill="none"
                       initial={{ pathLength: 0 }}
@@ -305,7 +305,7 @@ export default function Contact() {
                   y: -2,
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex h-16 sm:h-20 md:h-24 items-center justify-between p-3 sm:p-4 md:p-5 bg-white/40 backdrop-blur-sm rounded-xl sm:rounded-2xl hover:bg-white/60 transition-all group/item shadow-sm border border-white/30 relative overflow-hidden"
+                className="w-full flex h-16 sm:h-20 md:h-24 items-center justify-between p-3 sm:p-4 md:p-5 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl hover:bg-white/80 transition-all group/item shadow-sm border border-white/30 relative overflow-hidden"
               >
                 {/* Animated sharp petal decoration */}
                 <motion.div
@@ -422,7 +422,7 @@ export default function Contact() {
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ delay: 2 + index * 0.1, type: "spring" }}
-              className="p-3 sm:p-4 bg-white/40 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-sm border border-white/20 relative"
+              className="p-3 sm:p-4 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-sm border border-white/20 relative"
             >
               {/* Sharp petal decoration */}
               <motion.div
@@ -445,7 +445,7 @@ export default function Contact() {
                       <path
                         key={i}
                         d={`M5,5 L${x1},${y1} L${x2},${y2} L${x3},${y3} Z`}
-                        stroke="#F59E9E"
+                        stroke="#FFB2B2"
                         strokeWidth="0.5"
                         fill="none"
                       />

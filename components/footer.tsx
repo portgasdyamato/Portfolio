@@ -11,7 +11,7 @@ export default function Footer({ hideContact = false }: { hideContact?: boolean 
     <>
       {!hideContact && (
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl mt-12 md:mt-32">
-          <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr]">
+          <div className="grid gap-2 sm:gap-4 grid-cols-1 lg:grid-cols-[550px_auto_2fr] items-start">
             <div className="order-1">
               <ImageSection />
             </div>

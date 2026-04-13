@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export default function GrowWithMeHeading() {
   return (
-    <div className="relative h-[600px] sm:h-[800px] md:h-[900px] lg:h-[1000px] mt-8 sm:mt-16 md:mt-24 lg:mt-32 w-full flex items-end overflow-hidden">
+    <div className="relative h-[600px] sm:h-[800px] md:h-[900px] lg:h-[1000px] w-full flex items-end overflow-hidden">
       <motion.div
         className="flex flex-col items-center justify-end h-[1200px] sm:h-[1600px] md:h-[2000px] lg:h-[2400px] w-full"
         style={{ willChange: "transform" }}
