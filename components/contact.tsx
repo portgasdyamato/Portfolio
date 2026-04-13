@@ -63,7 +63,7 @@ export default function Contact() {
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 0.6 }}
-      className="bg-gradient-to-br from-[#FFF5F7] via-[#FFE4E9] to-[#FFD1DA] p-4 sm:p-6 md:p-8 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden shadow-[0_8px_32px_rgba(245,158,158,0.1)] border border-white/60 mb-8 sm:mb-16 md:mb-24 lg:mb-32" 
+      className="bg-gradient-to-br from-[#FFC0CB] via-[#F59E9E] to-[#E88C8C] p-4 sm:p-6 md:p-8 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden shadow-lg border border-white/20 mb-8 sm:mb-16 md:mb-24 lg:mb-32" 
     >
       {/* Sharp Petal Flower Pattern Background (2nd pattern style) */}
       <div className="absolute inset-0 opacity-8">
@@ -282,7 +282,7 @@ export default function Contact() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.9 }}
-            className="text-gray-700 text-sm sm:text-base md:text-lg flex items-center justify-center gap-2"
+            className="text-[#8B0000]/60 text-sm sm:text-base md:text-lg flex items-center justify-center gap-2 font-medium"
           >
             <MessageCircle className="w-5 h-5" />
             I'd love to hear from you
@@ -305,7 +305,7 @@ export default function Contact() {
                   y: -2,
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full flex h-16 sm:h-20 md:h-24 items-center justify-between p-3 sm:p-4 md:p-5 bg-white/60 backdrop-blur-sm rounded-xl sm:rounded-2xl hover:bg-white/80 transition-all group/item shadow-sm border border-white/30 relative overflow-hidden"
+                className="w-full flex h-16 sm:h-20 md:h-24 items-center justify-between p-3 sm:p-4 md:p-5 bg-white/70 backdrop-blur-md rounded-xl sm:rounded-2xl hover:bg-white/90 transition-all group/item shadow-sm border border-white/40 relative overflow-hidden"
               >
                 {/* Animated sharp petal decoration */}
                 <motion.div

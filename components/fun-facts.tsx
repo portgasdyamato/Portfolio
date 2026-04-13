@@ -113,7 +113,7 @@ export default function FunFacts() {
             <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
           </div>
           <h3 className="text-[40px] font-bold italic text-white leading-[0.85]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            My <span className="text-[#F59E9E]">Hobbies.</span>
+            My Night Window <span className="text-[#F59E9E]">Hobbies.</span>
           </h3>
           <p className="text-white/40 text-[14px] font-inter leading-relaxed">
             Finding focus through simple pleasures, from the rhythm of capturing light to the morning espresso that fuels it all.
@@ -204,7 +204,7 @@ export default function FunFacts() {
               <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
             </div>
             <h3 className="text-[70px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-              My <span className="text-[#F59E9E]">Hobbies.</span>
+              My Night Window <span className="text-[#F59E9E]">Hobbies.</span>
             </h3>
             <p className="text-white/30 text-lg font-inter leading-relaxed max-w-xl">
               Finding focus through simple pleasures, from the rhythm of capturing light to the morning espresso that fuels it all.
