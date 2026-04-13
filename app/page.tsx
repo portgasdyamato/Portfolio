@@ -35,18 +35,32 @@ export default function Home() {
 
       // Handle hash-based navigation from other pages (like /work#scrapbook)
       if (typeof window !== 'undefined' && window.location.hash) {
-        const id = window.location.hash.substring(1)
+        const hash = window.location.hash.substring(1)
         
-        // Use a small timeout to let the page settle and Lenis initialize
-        const scrollTimer = setTimeout(() => {
-          const element = document.getElementById(id)
+        let attempts = 0
+        const maxAttempts = 20
+        
+        const followElement = () => {
+          const element = document.getElementById(hash)
           if (element) {
-            // Use standard scroll for initial landing to bypass potential Lenis issues
+            // Priority scroll to sync with dynamic layout changes
             element.scrollIntoView({ behavior: 'smooth' })
+            attempts++
+            
+            // Tight loop for the first 5 seconds to catch GSAP setup
+            const delay = attempts < 8 ? 400 : 1000
+            if (attempts < maxAttempts) {
+              setTimeout(followElement, delay)
+            }
+          } else if (attempts < maxAttempts) {
+            attempts++
+            setTimeout(followElement, 300)
           }
-        }, 800) 
+        }
 
-        return () => clearTimeout(scrollTimer)
+        // Start following after Splash exits
+        const initialTimer = setTimeout(followElement, 1200)
+        return () => clearTimeout(initialTimer)
       }
     }
   }, [isLoading])

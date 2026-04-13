@@ -172,7 +172,7 @@ export default function Projects() {
                           href={`/projects/${projectsData[selectedProject].slug}`}
                           className="group relative w-full h-16 md:h-20 bg-brand-600 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20 overflow-hidden"
                         >
-                           <span className="relative z-10 flex items-center gap-3 transition-colors duration-500 group-hover:text-white">
+                           <span className="relative z-10 flex items-center gap-3 transition-colors duration-500 group-hover:text-white text-white">
                              View Full Case Study <ArrowUpRight size={22} />
                            </span>
                            <div className="absolute inset-0 bg-brand-500 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
@@ -457,9 +457,9 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                       whileTap={{ scale: 0.98 }}
                       className="group relative h-10 md:h-[52px] px-6 md:px-12 bg-[#F59E9E] text-white rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
                     >
-                      <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-white">
-                         Case Study <ArrowUpRight size={14} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 md:w-4 md:h-4" />
-                      </span>
+                       <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-white text-white">
+                          Case Study <ArrowUpRight size={14} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 md:w-4 md:h-4" />
+                       </span>
                       <div className="absolute inset-0 bg-[#E87A7A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                     </motion.div>
                   </Link>
