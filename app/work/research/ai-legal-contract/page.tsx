@@ -81,70 +81,6 @@ export default function AiLegalContractResearchPage() {
     }
   }
 
-  useEffect(() => {
-    // Load PDF.js script dynamically
-    const script = document.createElement("script")
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"
-    script.onload = () => {
-      const pdfjsLib = (window as any).pdfjsLib
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"
-      
-      const loadingTask = pdfjsLib.getDocument("/AI Legal Contract Reveiw Feature.pdf")
-      loadingTask.promise.then(async (pdf: any) => {
-        const numPages = pdf.numPages;
-        const container = containerRef.current;
-        if (!container) return;
-        container.innerHTML = "";
-        
-        // Render pages sequentially to ensure order and full loading
-        for (let i = 1; i <= numPages; i++) {
-          const page = await pdf.getPage(i);
-          const viewport = page.getViewport({ scale: 2.0 });
-          const canvas = document.createElement("canvas");
-          const context = canvas.getContext("2d");
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-          canvas.className = "w-full max-w-[1000px] h-auto mb-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white rounded-2xl overflow-hidden";
-          container.appendChild(canvas);
-          await page.render({ canvasContext: context, viewport }).promise;
-        }
-        setIsLoading(false);
-      }).catch((err: any) => {
-        console.error("Error loading PDF:", err);
-        setIsLoading(false);
-      });
-    }
-    document.head.appendChild(script)
-    return () => { if (document.head.contains(script)) document.head.removeChild(script); }
-  }, [])
-
-  const generateSvgPath = (points: Point[]) => {
-    if (points.length === 0) return "";
-    return points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(" ");
-  }
-
-  return (
-    <>
-      <style jsx global>{`
-        ${isHighlightMode ? 'body * { cursor: none !important; }' : ''}
-      `}</style>
-
-      {/* Standard Portfolio Cursor OR Custom Highlighter Cursor */}
-      {!isHighlightMode && <CustomCursor />}
-      {isHighlightMode && (
-        <div 
-          className="fixed pointer-events-none z-[999999] rounded-full bg-[#F4FF00] mix-blend-multiply opacity-70 border-[2px] border-yellow-400"
-          style={{ 
-            left: mousePos.x, 
-            top: mousePos.y, 
-            width: 28, 
-            height: 28, 
-            transform: 'translate(-50%, -50%)',
-            transition: 'width 0.1s, height 0.1s, opacity 0.1s'
-          }} 
-        />
-      )}
-
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
@@ -219,6 +155,11 @@ export default function AiLegalContractResearchPage() {
     document.head.appendChild(script)
     return () => { if (document.head.contains(script)) document.head.removeChild(script); }
   }, [])
+
+  const generateSvgPath = (points: Point[]) => {
+    if (points.length === 0) return "";
+    return points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(" ");
+  }
 
   return (
     <>
@@ -321,6 +262,9 @@ export default function AiLegalContractResearchPage() {
                   </button>
                 )}
               </div>
+            </div>
+          </div>
+        </motion.div>
             </div>
           </div>
         </motion.div>
