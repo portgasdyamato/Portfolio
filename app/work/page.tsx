@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Header from "@/components/header"
 import Projects from "@/components/projects"
 import FigmaShowcase from "@/components/figma-showcase"
+import UserResearch from "@/components/user-research"
 import Certificates from "@/components/certificates"
 import CustomCursor from "@/components/custom-cursor"
 import Footer from "@/components/footer"
@@ -24,6 +25,9 @@ export default function WorkPage() {
         <section id="work" className="flex flex-col gap-12 md:gap-32">
           <div className="flex flex-col gap-24 md:gap-48">
             <Projects />
+            <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
+              <UserResearch />
+            </div>
             <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
               <FigmaShowcase />
             </div>

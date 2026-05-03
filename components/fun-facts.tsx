@@ -56,7 +56,7 @@ export default function FunFacts() {
   if (!mounted) return null
 
   return (
-    <div className="py-24 flex flex-col gap-32">
+    <div className="py-24 flex flex-col gap-48">
 
       {/* ── SECTION 1: Favorite Trio ── */}
       <div className="relative px-4 lg:px-0">
