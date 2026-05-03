@@ -270,7 +270,7 @@ export default function AiLegalContractResearchPage() {
         <main 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth pt-16"
+          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth pt-16 touch-auto"
         >
           {isLoading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#F59E9E]/60 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm">
@@ -279,20 +279,20 @@ export default function AiLegalContractResearchPage() {
             </div>
           )}
           
-          <div className="min-h-full w-full flex justify-center py-12 md:py-20 px-4 sm:px-8">
+          <div className="min-h-full w-full flex justify-center py-12 md:py-20 px-4 sm:px-8 pointer-events-none">
             {/* Zoomable Container */}
             <motion.div 
               animate={{ scale: zoom }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="w-full max-w-[1000px] flex flex-col items-center origin-top relative"
+              className="w-full max-w-[1000px] flex flex-col items-center origin-top relative pointer-events-auto"
             >
               {/* Real PDF Canvases */}
-              <div ref={containerRef} className="w-full flex flex-col items-center pointer-events-auto relative z-10" />
+              <div ref={containerRef} className="w-full flex flex-col items-center relative z-0 pointer-events-auto" />
 
-              {/* Interactive Drawing Overlay - ABSOLUTE STABILITY */}
+              {/* Interactive Drawing Overlay */}
               {isHighlightMode && (
                 <div 
-                  className="absolute inset-0 z-30 touch-none cursor-none pointer-events-auto"
+                  className="absolute inset-0 z-50 touch-none cursor-none pointer-events-auto"
                   onPointerDown={handlePointerDown}
                   onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
@@ -331,9 +331,9 @@ export default function AiLegalContractResearchPage() {
                 </div>
               )}
 
-              {/* Passive SVG Layer (Visible when not drawing) */}
+              {/* Passive SVG Layer */}
               {!isHighlightMode && (
-                <div className="absolute inset-0 z-0 pointer-events-none">
+                <div className="absolute inset-0 z-10 pointer-events-none">
                   <svg className="w-full h-full overflow-visible">
                     {strokes.map((stroke, i) => (
                       <path 
