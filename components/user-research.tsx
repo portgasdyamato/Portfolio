@@ -9,11 +9,11 @@ export default function UserResearch() {
 
   const caseStudies = [
     {
-      id: "legal-contract",
-      title: "Design Legal Contract Feature",
-      category: "User Research",
-      description: "Comprehensive user research and findings for the legal contract feature.",
-      pdfUrl: "/Decision-First-Legal-Intelligence.pdf"
+      id: "ai-legal-contract",
+      title: "AI Legal Contract Feature Review",
+      category: "Product Design",
+      description: "A deep dive into my product thinking, reasoning, and the design decisions behind the AI legal contract feature.",
+      pdfUrl: "/AI Legal Contract Reveiw Feature.pdf"
     }
   ]
 
@@ -25,12 +25,12 @@ export default function UserResearch() {
             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.9]"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
-            User Research
+            Product Design
             <br />
-            <span className="text-[#F59E9E]">Case Studies.</span>
+            <span className="text-[#F59E9E]">& Research.</span>
           </h2>
           <p className="mt-6 text-base md:text-lg text-black/60 dark:text-white/60 max-w-2xl font-inter leading-relaxed">
-            Deep dives into user behavior, feature discovery, and data-driven insights.
+            Showcasing my product design abilities—how I approach complex problems, my underlying reasoning, and the strategic thinking that drives my designs.
           </p>
         </div>
       </div>
