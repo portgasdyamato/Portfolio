@@ -270,7 +270,7 @@ export default function AiLegalContractResearchPage() {
         <main 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth pt-32"
+          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth pt-16"
         >
           {isLoading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#F59E9E]/60 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm">
@@ -290,44 +290,67 @@ export default function AiLegalContractResearchPage() {
               <div ref={containerRef} className="w-full flex flex-col items-center pointer-events-auto" />
 
               {/* Interactive Drawing Overlay - ABSOLUTE STABILITY */}
-              <div 
-                className={`absolute inset-0 z-20 touch-none ${isHighlightMode ? 'pointer-events-auto cursor-none' : 'pointer-events-none'}`}
-                onPointerDown={handlePointerDown}
-                onPointerMove={handlePointerMove}
-                onPointerUp={handlePointerUp}
-                onPointerCancel={handlePointerUp}
-                onPointerLeave={handlePointerUp}
-              >
-                <svg className="w-full h-full pointer-events-none overflow-visible">
-                  {/* Render existing strokes */}
-                  {strokes.map((stroke, i) => (
-                    <path 
-                      key={`stroke-${i}`} 
-                      d={generateSvgPath(stroke)} 
-                      stroke="#F4FF00" 
-                      strokeWidth={32} 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      fill="none" 
-                      opacity={0.45}
-                      style={{ mixBlendMode: 'multiply' }}
-                    />
-                  ))}
-                  {/* Render current active stroke */}
-                  {currentStrokeState.length > 0 && (
-                    <path 
-                      d={generateSvgPath(currentStrokeState)} 
-                      stroke="#F4FF00" 
-                      strokeWidth={32} 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      fill="none" 
-                      opacity={0.45}
-                      style={{ mixBlendMode: 'multiply' }}
-                    />
-                  )}
-                </svg>
-              </div>
+              {isHighlightMode && (
+                <div 
+                  className="absolute inset-0 z-20 touch-none cursor-none"
+                  onPointerDown={handlePointerDown}
+                  onPointerMove={handlePointerMove}
+                  onPointerUp={handlePointerUp}
+                  onPointerCancel={handlePointerUp}
+                  onPointerLeave={handlePointerUp}
+                >
+                  <svg className="w-full h-full pointer-events-none overflow-visible">
+                    {/* Render existing strokes */}
+                    {strokes.map((stroke, i) => (
+                      <path 
+                        key={`stroke-${i}`} 
+                        d={generateSvgPath(stroke)} 
+                        stroke="#F4FF00" 
+                        strokeWidth={32} 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        fill="none" 
+                        opacity={0.45}
+                        style={{ mixBlendMode: 'multiply' }}
+                      />
+                    ))}
+                    {/* Render current active stroke */}
+                    {currentStrokeState.length > 0 && (
+                      <path 
+                        d={generateSvgPath(currentStrokeState)} 
+                        stroke="#F4FF00" 
+                        strokeWidth={32} 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        fill="none" 
+                        opacity={0.45}
+                        style={{ mixBlendMode: 'multiply' }}
+                      />
+                    )}
+                  </svg>
+                </div>
+              )}
+
+              {/* Passive SVG Layer (Visible when not drawing) */}
+              {!isHighlightMode && (
+                <div className="absolute inset-0 z-20 pointer-events-none">
+                  <svg className="w-full h-full overflow-visible">
+                    {strokes.map((stroke, i) => (
+                      <path 
+                        key={`stroke-passive-${i}`} 
+                        d={generateSvgPath(stroke)} 
+                        stroke="#F4FF00" 
+                        strokeWidth={32} 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        fill="none" 
+                        opacity={0.45}
+                        style={{ mixBlendMode: 'multiply' }}
+                      />
+                    ))}
+                  </svg>
+                </div>
+              )}
             </motion.div>
           </div>
         </main>
