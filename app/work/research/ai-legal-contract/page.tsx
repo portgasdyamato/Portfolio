@@ -287,12 +287,12 @@ export default function AiLegalContractResearchPage() {
               className="w-full max-w-[1000px] flex flex-col items-center origin-top relative"
             >
               {/* Real PDF Canvases */}
-              <div ref={containerRef} className="w-full flex flex-col items-center pointer-events-auto" />
+              <div ref={containerRef} className="w-full flex flex-col items-center pointer-events-auto relative z-10" />
 
               {/* Interactive Drawing Overlay - ABSOLUTE STABILITY */}
               {isHighlightMode && (
                 <div 
-                  className="absolute inset-0 z-20 touch-none cursor-none"
+                  className="absolute inset-0 z-30 touch-none cursor-none pointer-events-auto"
                   onPointerDown={handlePointerDown}
                   onPointerMove={handlePointerMove}
                   onPointerUp={handlePointerUp}
@@ -333,7 +333,7 @@ export default function AiLegalContractResearchPage() {
 
               {/* Passive SVG Layer (Visible when not drawing) */}
               {!isHighlightMode && (
-                <div className="absolute inset-0 z-20 pointer-events-none">
+                <div className="absolute inset-0 z-0 pointer-events-none">
                   <svg className="w-full h-full overflow-visible">
                     {strokes.map((stroke, i) => (
                       <path 
