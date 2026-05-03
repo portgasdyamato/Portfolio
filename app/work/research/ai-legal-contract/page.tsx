@@ -148,88 +148,68 @@ export default function AiLegalContractResearchPage() {
         />
       )}
 
-      <div className="min-h-screen bg-[#FFF5F7] dark:bg-[#FFF5F7] flex flex-col selection:bg-[#F59E9E]/30 relative overflow-x-hidden">
-        {/* Retro Pink Browser Header */}
-        <div className="w-full z-50 sticky top-0 border-b-[3px] border-[#ECA8BA] bg-[#FCEBF0] shadow-[0_8px_30px_rgba(236,168,186,0.3)]">
-          {/* Title Bar */}
-          <div className="flex justify-between items-center px-4 py-2 border-b-[3px] border-[#ECA8BA] bg-[#FCEBF0]">
-            <div className="text-[#ECA8BA] font-black text-sm md:text-base tracking-widest uppercase font-inter ml-2">
-              AI Legal Contract Feature
-            </div>
-            <div className="flex items-center gap-1.5">
-              {/* Tetris */}
-              <div className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex flex-wrap p-[2px] gap-[2px] bg-white">
-                <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
-                <div className="w-[4.5px] h-[4.5px] bg-transparent" />
-                <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
-                <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
-              </div>
-              {/* Minus */}
-              <div className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex items-center justify-center bg-white">
-                <div className="w-2.5 h-[3px] bg-[#ECA8BA]" />
-              </div>
-              {/* X */}
-              <Link href="/work" className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex items-center justify-center bg-white relative cursor-pointer hover:bg-[#ECA8BA] group transition-colors">
-                <div className="w-[12px] h-[3px] bg-[#ECA8BA] group-hover:bg-white rotate-45 absolute transition-colors" />
-                <div className="w-[12px] h-[3px] bg-[#ECA8BA] group-hover:bg-white -rotate-45 absolute transition-colors" />
+      <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col selection:bg-[#F59E9E]/30 relative overflow-x-hidden font-inter">
+        {/* Premium Research Toolbar */}
+        <div className="w-full z-50 sticky top-0 border-b border-black/5 dark:border-white/5 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <div className="flex items-center justify-between px-6 md:px-10 py-4">
+            {/* Left: Back Button & Context */}
+            <div className="flex items-center gap-6">
+              <Link href="/work" className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center cursor-pointer hover:bg-[#F59E9E] hover:text-white transition-all duration-300 group shadow-sm" title="Back to Work">
+                <ArrowLeft size={18} strokeWidth={2.5} className="text-black/60 dark:text-white/60 group-hover:text-white transition-colors" />
               </Link>
-            </div>
-          </div>
-
-          {/* Address Bar */}
-          <div className="flex items-center px-3 md:px-5 py-2.5 gap-2 md:gap-4 bg-[#FCEBF0]">
-            {/* Back Button (Chevron Left) */}
-            <Link href="/work" className="w-8 h-8 rounded-full border-[2.5px] border-[#ECA8BA] bg-[#FFF5F7] flex items-center justify-center cursor-pointer hover:bg-white transition-colors flex-shrink-0" title="Back to Work">
-              <div className="w-3 h-3 border-t-[3px] border-l-[3px] border-[#ECA8BA] -rotate-45 ml-1" />
-            </Link>
-            
-            {/* Controls URL Pill */}
-            <div className="flex-1 rounded-full border-[2.5px] border-[#ECA8BA] bg-[#FFF5F7] flex items-center justify-between px-2 sm:px-5 py-1.5 overflow-hidden">
-              <div className="hidden md:flex text-[#ECA8BA]/70 font-mono text-sm font-bold truncate mr-4">
-                portfolio.local/research/ai-legal-contract
+              <div className="h-6 w-px bg-black/10 dark:bg-white/10 hidden sm:block" />
+              <div className="flex flex-col hidden sm:flex">
+                <span className="text-[10px] font-bold text-[#F59E9E] uppercase tracking-[0.2em] mb-0.5">Research</span>
+                <h1 
+                  className="text-xl font-bold text-black/90 dark:text-white/90 tracking-tight"
+                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                >
+                  AI Legal Contract
+                </h1>
               </div>
+            </div>
 
-              {/* Toolbar Controls */}
-              <div className="flex items-center gap-1 sm:gap-2 mx-auto md:mx-0">
-                <button onClick={handleZoomOut} className="p-1.5 hover:bg-[#ECA8BA]/20 rounded-full transition-colors text-[#ECA8BA] cursor-pointer" title="Zoom Out">
-                  <ZoomOut size={18} strokeWidth={2.5} />
-                </button>
-                <span className="text-xs font-mono font-bold w-10 text-center text-[#ECA8BA]">
-                  {Math.round(zoom * 100)}%
-                </span>
-                <button onClick={handleZoomIn} className="p-1.5 hover:bg-[#ECA8BA]/20 rounded-full transition-colors text-[#ECA8BA] cursor-pointer" title="Zoom In">
-                  <ZoomIn size={18} strokeWidth={2.5} />
+            {/* Right: Controls - Softened Design */}
+            <div className="flex items-center gap-3 bg-black/5 dark:bg-white/5 rounded-2xl p-1.5 px-4 border border-black/5 dark:border-white/5 shadow-inner">
+              <div className="flex items-center gap-1">
+                <button onClick={handleZoomOut} className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-xl transition-all text-black/40 hover:text-[#F59E9E] cursor-pointer shadow-none hover:shadow-sm" title="Zoom Out">
+                  <ZoomOut size={18} strokeWidth={2} />
                 </button>
                 
-                <div className="w-[2.5px] h-4 bg-[#ECA8BA]/30 mx-1 rounded-full" />
+                <span className="text-[11px] font-mono font-black w-12 text-center text-black/60 dark:text-white/60">
+                  {Math.round(zoom * 100)}%
+                </span>
 
+                <button onClick={handleZoomIn} className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-xl transition-all text-black/40 hover:text-[#F59E9E] cursor-pointer shadow-none hover:shadow-sm" title="Zoom In">
+                  <ZoomIn size={18} strokeWidth={2} />
+                </button>
+              </div>
+              
+              <div className="w-px h-5 bg-black/10 dark:bg-white/10 mx-1" />
+
+              <div className="flex items-center gap-1">
                 <button 
                   onClick={() => setIsHighlightMode(!isHighlightMode)}
-                  className={`p-1.5 rounded-full transition-colors cursor-pointer ${
-                    isHighlightMode ? "bg-[#F4FF00]/40 text-[#D4B000]" : "hover:bg-[#ECA8BA]/20 text-[#ECA8BA]"
+                  className={`p-2 rounded-xl transition-all cursor-pointer shadow-none hover:shadow-sm ${
+                    isHighlightMode 
+                      ? "bg-[#F59E9E] text-white" 
+                      : "hover:bg-white dark:hover:bg-zinc-800 text-black/40 hover:text-[#F59E9E]"
                   }`}
                   title="Toggle Highlighter"
                 >
-                  <Highlighter size={18} strokeWidth={2.5} />
+                  <Highlighter size={18} strokeWidth={2} />
                 </button>
 
                 {strokes.length > 0 && (
                   <button 
                     onClick={() => { setStrokes([]); setCurrentStrokeState([]); }}
-                    className="p-1.5 hover:bg-red-500/10 rounded-full transition-colors text-red-500/60 hover:text-red-500 cursor-pointer ml-1"
+                    className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-xl transition-all text-black/40 hover:text-red-500 cursor-pointer shadow-none hover:shadow-sm ml-1"
                     title="Clear Highlights"
                   >
-                    <Eraser size={18} strokeWidth={2.5} />
+                    <Eraser size={18} strokeWidth={2} />
                   </button>
                 )}
               </div>
-            </div>
-
-            {/* Heart */}
-            <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
-              <svg className="w-6 h-6 text-[#ECA8BA] fill-current hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-              </svg>
             </div>
           </div>
         </div>
