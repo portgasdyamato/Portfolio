@@ -94,13 +94,17 @@ export default function AiLegalContractResearchPage() {
   // Drawing Handlers
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isHighlightMode) return;
-    e.currentTarget.setPointerCapture(e.pointerId);
     isDrawing.current = true;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / zoom;
     const y = (e.clientY - rect.top) / zoom;
-    currentStrokeRef.current = [{x, y}];
-    setCurrentStrokeState([{x, y}]);
+    
+    const newPoint = { x, y };
+    currentStrokeRef.current = [newPoint];
+    setCurrentStrokeState([newPoint]);
+    
+    // Set capture to the element being drawn on
+    (e.target as HTMLElement).setPointerCapture(e.pointerId);
   }
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -108,17 +112,28 @@ export default function AiLegalContractResearchPage() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / zoom;
     const y = (e.clientY - rect.top) / zoom;
-    currentStrokeRef.current.push({x, y});
-    setCurrentStrokeState([...currentStrokeRef.current]);
+    
+    const newPoint = { x, y };
+    currentStrokeRef.current = [...currentStrokeRef.current, newPoint];
+    setCurrentStrokeState(currentStrokeRef.current);
   }
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDrawing.current) return;
     isDrawing.current = false;
-    e.currentTarget.releasePointerCapture(e.pointerId);
-    setStrokes(prev => [...prev, currentStrokeRef.current]);
+    
+    if (currentStrokeRef.current.length > 0) {
+      setStrokes(prev => [...prev, [...currentStrokeRef.current]]);
+    }
+    
     currentStrokeRef.current = [];
     setCurrentStrokeState([]);
+    
+    try {
+      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+    } catch (err) {
+      // Ignore if already released
+    }
   }
 
   const generateSvgPath = (points: Point[]) => {
