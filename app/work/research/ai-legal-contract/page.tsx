@@ -119,20 +119,29 @@ export default function AiLegalContractResearchPage() {
     }
   };
 
-  // Forward wheel events from canvas (which absorbs them) to the scrollable parent
+  // Forward wheel events from the canvas layer AND the drawing overlay to the scrollable parent
+  // This runs regardless of highlight mode so scrolling is never blocked
   useEffect(() => {
-    const container = containerRef.current;
     const scrollEl = scrollRef.current;
-    if (!container || !scrollEl) return;
+    if (!scrollEl) return;
+
+    const SCROLL_SENSITIVITY = 2.5; // multiplier for faster scrolling
 
     const forwardWheel = (e: WheelEvent) => {
-      if (isHighlightMode) return; // let drawing mode handle its own events
-      scrollEl.scrollBy({ top: e.deltaY, left: e.deltaX });
+      // Only block native scroll forwarding if the user is actively drawing
+      if (isDrawing.current) return;
+      e.preventDefault();
+      scrollEl.scrollBy({
+        top: e.deltaY * SCROLL_SENSITIVITY,
+        left: e.deltaX * SCROLL_SENSITIVITY,
+        behavior: 'auto',
+      });
     };
 
-    container.addEventListener("wheel", forwardWheel, { passive: true });
-    return () => container.removeEventListener("wheel", forwardWheel);
-  }, [isHighlightMode]);
+    // Listen on the whole page so both the canvas and overlay are covered
+    window.addEventListener("wheel", forwardWheel, { passive: false });
+    return () => window.removeEventListener("wheel", forwardWheel);
+  }, []);
 
   useEffect(() => {
     // Load PDF.js script dynamically
@@ -312,6 +321,11 @@ export default function AiLegalContractResearchPage() {
                 onPointerUp={handlePointerUp}
                 onPointerCancel={handlePointerUp}
                 onPointerLeave={handlePointerUp}
+                onWheel={(e) => {
+                  // Only eat the wheel event if actively drawing; otherwise let it bubble to the window listener
+                  if (!isDrawing.current) return;
+                  e.stopPropagation();
+                }}
               >
                 <svg className="w-full h-full pointer-events-none overflow-visible">
                   {/* Render existing strokes */}
