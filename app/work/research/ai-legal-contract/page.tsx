@@ -265,9 +265,6 @@ export default function AiLegalContractResearchPage() {
             </div>
           </div>
         </motion.div>
-            </div>
-          </div>
-        </motion.div>
 
         {/* PDF Rendering Area - Scrollable Container */}
         <main className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent">
