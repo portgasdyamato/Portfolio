@@ -145,9 +145,111 @@ export default function AiLegalContractResearchPage() {
         />
       )}
 
-      <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col selection:bg-[#F59E9E]/30 relative overflow-x-hidden font-inter">
-        {/* Premium Research Toolbar - BRANDED PINK */}
-        <div className="w-full z-50 sticky top-0 border-b border-[#F59E9E]/20 bg-[#F59E9E] shadow-[0_4px_20px_rgba(245,158,158,0.15)]">
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Smart Sticky Toolbar logic
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    const currentScrollY = scrollRef.current.scrollTop;
+    
+    if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+    setLastScrollY(currentScrollY);
+
+    // Update current page based on scroll position
+    const canvases = scrollRef.current.querySelectorAll('canvas');
+    let activePage = 1;
+    canvases.forEach((canvas, index) => {
+      const rect = canvas.getBoundingClientRect();
+      if (rect.top < window.innerHeight / 2) {
+        activePage = index + 1;
+      }
+    });
+    setCurrentPage(activePage);
+  };
+
+  const scrollToPage = (pageNumber: number) => {
+    if (!scrollRef.current) return;
+    const canvases = scrollRef.current.querySelectorAll('canvas');
+    if (canvases[pageNumber - 1]) {
+      canvases[pageNumber - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  useEffect(() => {
+    // Load PDF.js script dynamically
+    const script = document.createElement("script")
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"
+    script.onload = () => {
+      const pdfjsLib = (window as any).pdfjsLib
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"
+      
+      const loadingTask = pdfjsLib.getDocument("/AI Legal Contract Reveiw Feature.pdf")
+      loadingTask.promise.then(async (pdf: any) => {
+        setTotalPages(pdf.numPages);
+        const container = containerRef.current;
+        if (!container) return;
+        container.innerHTML = "";
+        
+        // Render pages sequentially to ensure order and full loading
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 2.0 });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          canvas.className = "w-full max-w-[1000px] h-auto mb-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white rounded-2xl overflow-hidden";
+          container.appendChild(canvas);
+          await page.render({ canvasContext: context, viewport }).promise;
+        }
+        setIsLoading(false);
+      }).catch((err: any) => {
+        console.error("Error loading PDF:", err);
+        setIsLoading(false);
+      });
+    }
+    document.head.appendChild(script)
+    return () => { if (document.head.contains(script)) document.head.removeChild(script); }
+  }, [])
+
+  return (
+    <>
+      <style jsx global>{`
+        ${isHighlightMode ? 'body * { cursor: none !important; }' : ''}
+      `}</style>
+
+      {/* Standard Portfolio Cursor OR Custom Highlighter Cursor */}
+      {!isHighlightMode && <CustomCursor />}
+      {isHighlightMode && (
+        <div 
+          className="fixed pointer-events-none z-[999999] rounded-full bg-[#F4FF00] mix-blend-multiply opacity-70 border-[2px] border-yellow-400"
+          style={{ 
+            left: mousePos.x, 
+            top: mousePos.y, 
+            width: 28, 
+            height: 28, 
+            transform: 'translate(-50%, -50%)',
+            transition: 'width 0.1s, height 0.1s, opacity 0.1s'
+          }} 
+        />
+      )}
+
+      <div className="h-screen bg-white dark:bg-zinc-950 flex flex-col selection:bg-[#F59E9E]/30 relative overflow-hidden font-inter">
+        {/* Smart Branded Toolbar */}
+        <motion.div 
+          initial={false}
+          animate={{ y: isVisible ? 0 : -100 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full z-50 fixed top-0 border-b border-[#F59E9E]/20 bg-[#F59E9E] shadow-[0_4px_20px_rgba(245,158,158,0.15)]"
+        >
           <div className="flex items-center justify-between px-6 md:px-10 py-4">
             {/* Left: Back Button & Context */}
             <div className="flex items-center gap-6">
@@ -166,31 +268,47 @@ export default function AiLegalContractResearchPage() {
               </div>
             </div>
 
-            {/* Right: Controls - BRANDED WHITE ON PINK */}
-            <div className="flex items-center gap-3 bg-white/10 rounded-2xl p-1.5 px-4 border border-white/10 shadow-inner">
-              <div className="flex items-center gap-1">
+            {/* Right: Controls & Navigation */}
+            <div className="flex items-center gap-3">
+              {/* Page Navigator */}
+              <div className="flex items-center gap-2 bg-white/10 rounded-2xl p-1 px-3 border border-white/10 shadow-inner">
+                <button 
+                  onClick={() => scrollToPage(currentPage - 1)}
+                  disabled={currentPage <= 1}
+                  className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
+                  title="Previous Page"
+                >
+                  <ArrowLeft size={16} strokeWidth={3} className="rotate-90" />
+                </button>
+                <span className="text-[10px] font-black text-white uppercase tracking-widest min-w-[70px] text-center">
+                  {currentPage} <span className="opacity-40">/</span> {totalPages}
+                </span>
+                <button 
+                  onClick={() => scrollToPage(currentPage + 1)}
+                  disabled={currentPage >= totalPages}
+                  className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
+                  title="Next Page"
+                >
+                  <ArrowLeft size={16} strokeWidth={3} className="-rotate-90" />
+                </button>
+              </div>
+
+              {/* Main Controls Group */}
+              <div className="flex items-center gap-2 bg-white/10 rounded-2xl p-1 px-3 border border-white/10 shadow-inner">
                 <button onClick={handleZoomOut} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm" title="Zoom Out">
                   <ZoomOut size={18} strokeWidth={2.5} />
                 </button>
-                
-                <span className="text-[11px] font-mono font-black w-12 text-center text-white">
-                  {Math.round(zoom * 100)}%
-                </span>
-
+                <span className="text-[11px] font-mono font-black w-10 text-center text-white">{Math.round(zoom * 100)}%</span>
                 <button onClick={handleZoomIn} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm" title="Zoom In">
                   <ZoomIn size={18} strokeWidth={2.5} />
                 </button>
-              </div>
-              
-              <div className="w-px h-5 bg-white/20 mx-1" />
+                
+                <div className="w-px h-4 bg-white/20 mx-1" />
 
-              <div className="flex items-center gap-1">
                 <button 
                   onClick={() => setIsHighlightMode(!isHighlightMode)}
                   className={`p-2 rounded-xl transition-all cursor-pointer shadow-none hover:shadow-sm ${
-                    isHighlightMode 
-                      ? "bg-white text-[#F59E9E]" 
-                      : "hover:bg-white/20 text-white"
+                    isHighlightMode ? "bg-white text-[#F59E9E]" : "hover:bg-white/20 text-white"
                   }`}
                   title="Toggle Highlighter"
                 >
@@ -198,18 +316,14 @@ export default function AiLegalContractResearchPage() {
                 </button>
 
                 {strokes.length > 0 && (
-                  <button 
-                    onClick={() => { setStrokes([]); setCurrentStrokeState([]); }}
-                    className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm ml-1"
-                    title="Clear Highlights"
-                  >
+                  <button onClick={() => { setStrokes([]); setCurrentStrokeState([]); }} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm ml-1" title="Clear Highlights">
                     <Eraser size={18} strokeWidth={2.5} />
                   </button>
                 )}
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* PDF Rendering Area - Scrollable Container */}
         <main className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent">
