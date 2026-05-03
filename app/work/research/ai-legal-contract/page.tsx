@@ -35,62 +35,6 @@ export default function AiLegalContractResearchPage() {
     return () => window.removeEventListener("mousemove", updateMousePos)
   }, [isHighlightMode])
 
-  useEffect(() => {
-    // Load PDF.js script dynamically to avoid SSR/Worker issues
-    const script = document.createElement("script")
-    script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"
-    script.onload = () => {
-      const pdfjsLib = (window as any).pdfjsLib
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"
-      
-      const loadingTask = pdfjsLib.getDocument("/AI Legal Contract Reveiw Feature.pdf")
-      loadingTask.promise.then((pdf: any) => {
-        const numPages = pdf.numPages;
-        const container = containerRef.current;
-        if (!container) return;
-        container.innerHTML = ""; // Clear existing
-        
-        let pagesRendered = 0;
-
-        for (let i = 1; i <= numPages; i++) {
-          pdf.getPage(i).then((page: any) => {
-            const viewport = page.getViewport({ scale: 2.0 }); // Render at 2x resolution for crispness
-            const canvas = document.createElement("canvas");
-            const context = canvas.getContext("2d");
-            canvas.height = viewport.height;
-            canvas.width = viewport.width;
-            
-            // Clean styling for each page
-            canvas.className = "w-full max-w-[1000px] h-auto mb-4 md:mb-8 shadow-[0_5px_30px_rgba(0,0,0,0.08)] bg-white rounded-lg md:rounded-xl overflow-hidden";
-            canvas.dataset.pageNumber = i.toString();
-            
-            container.appendChild(canvas);
-
-            // Sort canvases by page number to ensure correct order
-            const canvases = Array.from(container.querySelectorAll("canvas"));
-            canvases.sort((a: any, b: any) => parseInt(a.dataset.pageNumber) - parseInt(b.dataset.pageNumber));
-            canvases.forEach(c => container.appendChild(c));
-            
-            page.render({ canvasContext: context, viewport }).promise.then(() => {
-              pagesRendered++;
-              if (pagesRendered === numPages) setIsLoading(false);
-            });
-          });
-        }
-      }).catch((err: any) => {
-        console.error("Error loading PDF:", err);
-        setIsLoading(false);
-      });
-    }
-    document.head.appendChild(script)
-    
-    return () => {
-      if (document.head.contains(script)) {
-        document.head.removeChild(script)
-      }
-    }
-  }, [])
-
   // Drawing Handlers
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isHighlightMode) return;
@@ -104,7 +48,7 @@ export default function AiLegalContractResearchPage() {
     setCurrentStrokeState([newPoint]);
     
     // Set capture to the element being drawn on
-    (e.target as HTMLElement).setPointerCapture(e.pointerId);
+    (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   }
 
   const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -115,26 +59,64 @@ export default function AiLegalContractResearchPage() {
     
     const newPoint = { x, y };
     currentStrokeRef.current = [...currentStrokeRef.current, newPoint];
-    setCurrentStrokeState(currentStrokeRef.current);
+    setCurrentStrokeState([...currentStrokeRef.current]);
   }
 
   const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
     if (!isDrawing.current) return;
     isDrawing.current = false;
     
-    if (currentStrokeRef.current.length > 0) {
-      setStrokes(prev => [...prev, [...currentStrokeRef.current]]);
+    const finalStroke = [...currentStrokeRef.current];
+    if (finalStroke.length > 0) {
+      setStrokes(prev => [...prev, finalStroke]);
     }
     
     currentStrokeRef.current = [];
     setCurrentStrokeState([]);
     
     try {
-      (e.target as HTMLElement).releasePointerCapture(e.pointerId);
+      (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
     } catch (err) {
-      // Ignore if already released
+      // Ignore
     }
   }
+
+  useEffect(() => {
+    // Load PDF.js script dynamically
+    const script = document.createElement("script")
+    script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"
+    script.onload = () => {
+      const pdfjsLib = (window as any).pdfjsLib
+      pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js"
+      
+      const loadingTask = pdfjsLib.getDocument("/AI Legal Contract Reveiw Feature.pdf")
+      loadingTask.promise.then(async (pdf: any) => {
+        const numPages = pdf.numPages;
+        const container = containerRef.current;
+        if (!container) return;
+        container.innerHTML = "";
+        
+        // Render pages sequentially to ensure order and full loading
+        for (let i = 1; i <= numPages; i++) {
+          const page = await pdf.getPage(i);
+          const viewport = page.getViewport({ scale: 2.0 });
+          const canvas = document.createElement("canvas");
+          const context = canvas.getContext("2d");
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+          canvas.className = "w-full max-w-[1000px] h-auto mb-8 shadow-[0_20px_50px_rgba(0,0,0,0.1)] bg-white rounded-2xl overflow-hidden";
+          container.appendChild(canvas);
+          await page.render({ canvasContext: context, viewport }).promise;
+        }
+        setIsLoading(false);
+      }).catch((err: any) => {
+        console.error("Error loading PDF:", err);
+        setIsLoading(false);
+      });
+    }
+    document.head.appendChild(script)
+    return () => { if (document.head.contains(script)) document.head.removeChild(script); }
+  }, [])
 
   const generateSvgPath = (points: Point[]) => {
     if (points.length === 0) return "";
