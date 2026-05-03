@@ -119,6 +119,21 @@ export default function AiLegalContractResearchPage() {
     }
   };
 
+  // Forward wheel events from canvas (which absorbs them) to the scrollable parent
+  useEffect(() => {
+    const container = containerRef.current;
+    const scrollEl = scrollRef.current;
+    if (!container || !scrollEl) return;
+
+    const forwardWheel = (e: WheelEvent) => {
+      if (isHighlightMode) return; // let drawing mode handle its own events
+      scrollEl.scrollBy({ top: e.deltaY, left: e.deltaX });
+    };
+
+    container.addEventListener("wheel", forwardWheel, { passive: true });
+    return () => container.removeEventListener("wheel", forwardWheel);
+  }, [isHighlightMode]);
+
   useEffect(() => {
     // Load PDF.js script dynamically
     const script = document.createElement("script")
