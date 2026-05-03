@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FileText } from "lucide-react"
+import { FileText, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 
 export default function UserResearch() {
