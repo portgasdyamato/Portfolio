@@ -270,66 +270,64 @@ export default function AiLegalContractResearchPage() {
         <main 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth pt-16 touch-auto"
+          className="flex-1 w-full overflow-y-auto overflow-x-hidden bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth pt-16"
         >
           {isLoading && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#F59E9E]/60 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#F59E9E]/60 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm pointer-events-none">
               <Loader2 className="w-10 h-10 animate-spin" />
               <span className="text-xs font-black tracking-[0.3em] uppercase">Rendering Research...</span>
             </div>
           )}
           
-          <div className="min-h-full w-full flex justify-center py-12 md:py-20 px-4 sm:px-8 pointer-events-none">
+          <div className="min-h-full w-full flex justify-center py-12 md:py-20 px-4 sm:px-8">
             {/* Zoomable Container */}
             <motion.div 
               animate={{ scale: zoom }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="w-full max-w-[1000px] flex flex-col items-center origin-top relative pointer-events-auto"
+              className="w-full max-w-[1000px] flex flex-col items-center origin-top relative"
             >
               {/* Real PDF Canvases */}
-              <div ref={containerRef} className="w-full flex flex-col items-center relative z-0 pointer-events-auto" />
+              <div ref={containerRef} className="w-full flex flex-col items-center relative z-0" />
 
               {/* Interactive Drawing Overlay */}
-              {isHighlightMode && (
-                <div 
-                  className="absolute inset-0 z-50 touch-none cursor-none pointer-events-auto"
-                  onPointerDown={handlePointerDown}
-                  onPointerMove={handlePointerMove}
-                  onPointerUp={handlePointerUp}
-                  onPointerCancel={handlePointerUp}
-                  onPointerLeave={handlePointerUp}
-                >
-                  <svg className="w-full h-full pointer-events-none overflow-visible">
-                    {/* Render existing strokes */}
-                    {strokes.map((stroke, i) => (
-                      <path 
-                        key={`stroke-${i}`} 
-                        d={generateSvgPath(stroke)} 
-                        stroke="#F4FF00" 
-                        strokeWidth={32} 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        fill="none" 
-                        opacity={0.45}
-                        style={{ mixBlendMode: 'multiply' }}
-                      />
-                    ))}
-                    {/* Render current active stroke */}
-                    {currentStrokeState.length > 0 && (
-                      <path 
-                        d={generateSvgPath(currentStrokeState)} 
-                        stroke="#F4FF00" 
-                        strokeWidth={32} 
-                        strokeLinecap="round" 
-                        strokeLinejoin="round" 
-                        fill="none" 
-                        opacity={0.45}
-                        style={{ mixBlendMode: 'multiply' }}
-                      />
-                    )}
-                  </svg>
-                </div>
-              )}
+              <div 
+                className={`absolute inset-0 z-20 touch-none overflow-visible ${isHighlightMode ? "pointer-events-auto cursor-none" : "pointer-events-none"}`}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+                onPointerLeave={handlePointerUp}
+              >
+                <svg className="w-full h-full pointer-events-none overflow-visible">
+                  {/* Render existing strokes */}
+                  {strokes.map((stroke, i) => (
+                    <path 
+                      key={`stroke-${i}`} 
+                      d={generateSvgPath(stroke)} 
+                      stroke="#F4FF00" 
+                      strokeWidth={32} 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      fill="none" 
+                      opacity={0.45}
+                      style={{ mixBlendMode: 'multiply' }}
+                    />
+                  ))}
+                  {/* Render current active stroke */}
+                  {currentStrokeState.length > 0 && (
+                    <path 
+                      d={generateSvgPath(currentStrokeState)} 
+                      stroke="#F4FF00" 
+                      strokeWidth={32} 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      fill="none" 
+                      opacity={0.45}
+                      style={{ mixBlendMode: 'multiply' }}
+                    />
+                  )}
+                </svg>
+              </div>
 
               {/* Passive SVG Layer */}
               {!isHighlightMode && (
