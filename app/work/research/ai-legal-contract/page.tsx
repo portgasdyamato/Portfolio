@@ -195,7 +195,7 @@ export default function AiLegalContractResearchPage() {
             {/* Left: Back Button & Context */}
             <div className="flex items-center gap-6">
               <Link href="/work" className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center cursor-pointer hover:bg-white hover:text-[#F59E9E] transition-all duration-300 group shadow-sm border border-white/10" title="Back to Work">
-                <ArrowLeft size={18} strokeWidth={3} className="text-white transition-colors" />
+                <ArrowLeft size={18} strokeWidth={3} className="text-white group-hover:text-[#F59E9E] transition-colors" />
               </Link>
               <div className="h-6 w-px bg-white/20 hidden sm:block" />
               <div className="flex flex-col hidden sm:flex">
@@ -267,7 +267,11 @@ export default function AiLegalContractResearchPage() {
         </motion.div>
 
         {/* PDF Rendering Area - Scrollable Container */}
-        <main className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent">
+        <main 
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth"
+        >
           {isLoading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#F59E9E]/60 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm">
               <Loader2 className="w-10 h-10 animate-spin" />
@@ -283,7 +287,7 @@ export default function AiLegalContractResearchPage() {
               className="w-full max-w-[1000px] flex flex-col items-center origin-top relative"
             >
               {/* Real PDF Canvases */}
-              <div ref={containerRef} className="w-full flex flex-col items-center pointer-events-none" />
+              <div ref={containerRef} className="w-full flex flex-col items-center" />
 
               {/* Interactive Drawing Overlay - ABSOLUTE STABILITY */}
               <div 
