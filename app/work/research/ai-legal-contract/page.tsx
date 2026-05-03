@@ -211,62 +211,66 @@ export default function AiLegalContractResearchPage() {
           </div>
         </div>
 
-        {/* PDF Rendering Area */}
-        <main className="flex-1 w-full relative flex justify-center py-12 md:py-20 px-4 sm:px-8 overflow-x-hidden touch-none">
+        {/* PDF Rendering Area - Scrollable Container */}
+        <main className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent">
           {isLoading && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#ECA8BA]/60">
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#F59E9E]/60 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm">
               <Loader2 className="w-10 h-10 animate-spin" />
-              <span className="text-sm font-bold tracking-widest uppercase">Loading Document...</span>
+              <span className="text-xs font-black tracking-[0.3em] uppercase">Rendering Research...</span>
             </div>
           )}
           
-          {/* Zoomable Container */}
-          <motion.div 
-            animate={{ scale: zoom }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="w-full max-w-[1000px] flex flex-col items-center origin-top relative z-10"
-          >
-            {/* Real PDF Canvases */}
-            <div ref={containerRef} className="w-full flex flex-col items-center" />
-
-            {/* Interactive Drawing Overlay */}
-            <div 
-              className={`absolute inset-0 z-20 touch-none ${isHighlightMode ? 'pointer-events-auto' : 'pointer-events-none'}`}
-              onPointerDown={handlePointerDown}
-              onPointerMove={handlePointerMove}
-              onPointerUp={handlePointerUp}
-              onPointerCancel={handlePointerUp}
-              onPointerLeave={handlePointerUp}
+          <div className="min-h-full w-full flex justify-center py-12 md:py-20 px-4 sm:px-8">
+            {/* Zoomable Container */}
+            <motion.div 
+              animate={{ scale: zoom }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="w-full max-w-[1000px] flex flex-col items-center origin-top relative"
             >
-              <svg className="w-full h-full pointer-events-none">
-                {strokes.map((stroke, i) => (
-                  <path 
-                    key={i} 
-                    d={generateSvgPath(stroke)} 
-                    stroke="#F4FF00" 
-                    strokeWidth={32} 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    fill="none" 
-                    opacity={0.5}
-                    style={{ mixBlendMode: 'multiply' }}
-                  />
-                ))}
-                {currentStrokeState.length > 0 && (
-                  <path 
-                    d={generateSvgPath(currentStrokeState)} 
-                    stroke="#F4FF00" 
-                    strokeWidth={32} 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    fill="none" 
-                    opacity={0.5}
-                    style={{ mixBlendMode: 'multiply' }}
-                  />
-                )}
-              </svg>
-            </div>
-          </motion.div>
+              {/* Real PDF Canvases */}
+              <div ref={containerRef} className="w-full flex flex-col items-center pointer-events-none" />
+
+              {/* Interactive Drawing Overlay - ABSOLUTE STABILITY */}
+              <div 
+                className={`absolute inset-0 z-20 touch-none ${isHighlightMode ? 'pointer-events-auto cursor-none' : 'pointer-events-none'}`}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+                onPointerLeave={handlePointerUp}
+              >
+                <svg className="w-full h-full pointer-events-none overflow-visible">
+                  {/* Render existing strokes */}
+                  {strokes.map((stroke, i) => (
+                    <path 
+                      key={`stroke-${i}`} 
+                      d={generateSvgPath(stroke)} 
+                      stroke="#F4FF00" 
+                      strokeWidth={32} 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      fill="none" 
+                      opacity={0.45}
+                      style={{ mixBlendMode: 'multiply' }}
+                    />
+                  ))}
+                  {/* Render current active stroke */}
+                  {currentStrokeState.length > 0 && (
+                    <path 
+                      d={generateSvgPath(currentStrokeState)} 
+                      stroke="#F4FF00" 
+                      strokeWidth={32} 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      fill="none" 
+                      opacity={0.45}
+                      style={{ mixBlendMode: 'multiply' }}
+                    />
+                  )}
+                </svg>
+              </div>
+            </motion.div>
+          </div>
         </main>
       </div>
     </>
