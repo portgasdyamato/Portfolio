@@ -4,15 +4,27 @@ import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
 import { ZoomIn, ZoomOut, Highlighter, ArrowLeft, Loader2 } from "lucide-react"
 import Link from "next/link"
+import CustomCursor from "@/components/custom-cursor"
 
 export default function AiLegalContractResearchPage() {
   const [zoom, setZoom] = useState(1)
   const [isHighlightMode, setIsHighlightMode] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
 
   const handleZoomIn = () => setZoom((prev) => Math.min(prev + 0.25, 2.5))
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 0.25, 0.5))
+
+  // Mouse tracker for the custom highlighter cursor
+  useEffect(() => {
+    if (!isHighlightMode) return;
+    const updateMousePos = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY })
+    }
+    window.addEventListener("mousemove", updateMousePos)
+    return () => window.removeEventListener("mousemove", updateMousePos)
+  }, [isHighlightMode])
 
   useEffect(() => {
     // Load PDF.js script dynamically to avoid SSR/Worker issues
@@ -73,14 +85,30 @@ export default function AiLegalContractResearchPage() {
   return (
     <>
       <style jsx global>{`
-        ${isHighlightMode ? 'body * { cursor: url("/highlighter.png"), crosshair !important; }' : ''}
+        ${isHighlightMode ? 'body * { cursor: none !important; }' : ''}
       `}</style>
+
+      {/* Standard Portfolio Cursor OR Custom Highlighter Cursor */}
+      {!isHighlightMode && <CustomCursor />}
+      {isHighlightMode && (
+        <div 
+          className="fixed pointer-events-none z-[999999] rounded-full bg-[#F4FF00] mix-blend-multiply opacity-70 border-[2px] border-yellow-400"
+          style={{ 
+            left: mousePos.x, 
+            top: mousePos.y, 
+            width: 28, 
+            height: 28, 
+            transform: 'translate(-50%, -50%)',
+            transition: 'width 0.1s, height 0.1s, opacity 0.1s'
+          }} 
+        />
+      )}
 
       <div className="min-h-screen bg-[#F4F4F5] dark:bg-zinc-950 flex flex-col selection:bg-[#F59E9E]/30 relative overflow-x-hidden">
         {/* Custom Premium Control Panel */}
         <header className="h-[72px] border-b border-black/5 dark:border-white/5 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl flex items-center justify-between px-6 md:px-10 z-50 sticky top-0 shadow-sm">
           <div className="flex items-center gap-6">
-            <Link href="/work" className="p-2.5 bg-black/[0.03] hover:bg-black/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] rounded-full transition-all flex items-center justify-center">
+            <Link href="/work" className="p-2.5 bg-black/[0.03] hover:bg-black/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] rounded-full transition-all flex items-center justify-center cursor-pointer">
               <ArrowLeft size={18} className="text-black/80 dark:text-white/80" />
             </Link>
             <div className="h-5 w-px bg-black/10 dark:bg-white/10 hidden sm:block" />
@@ -92,7 +120,7 @@ export default function AiLegalContractResearchPage() {
           <div className="flex items-center gap-2 bg-black/[0.02] dark:bg-white/[0.02] rounded-full p-1.5 px-2 border border-black/[0.04] dark:border-white/[0.04] shadow-sm">
             <button 
               onClick={handleZoomOut}
-              className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-full transition-all text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm"
+              className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-full transition-all text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm cursor-pointer"
               title="Zoom Out"
             >
               <ZoomOut size={18} strokeWidth={2} />
@@ -104,7 +132,7 @@ export default function AiLegalContractResearchPage() {
 
             <button 
               onClick={handleZoomIn}
-              className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-full transition-all text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm"
+              className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-full transition-all text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm cursor-pointer"
               title="Zoom In"
             >
               <ZoomIn size={18} strokeWidth={2} />
@@ -114,9 +142,9 @@ export default function AiLegalContractResearchPage() {
 
             <button 
               onClick={() => setIsHighlightMode(!isHighlightMode)}
-              className={`p-2 rounded-full transition-all flex items-center gap-2 ${
+              className={`p-2 rounded-full transition-all flex items-center gap-2 cursor-pointer ${
                 isHighlightMode 
-                  ? "bg-[#F59E9E]/20 text-[#F59E9E] shadow-inner" 
+                  ? "bg-yellow-400/20 text-yellow-600 dark:text-yellow-400 shadow-inner" 
                   : "hover:bg-white dark:hover:bg-zinc-800 text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm"
               }`}
               title="Toggle Highlighter"
