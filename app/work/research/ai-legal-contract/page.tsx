@@ -149,19 +149,19 @@ export default function AiLegalContractResearchPage() {
       )}
 
       <div className="min-h-screen bg-white dark:bg-zinc-950 flex flex-col selection:bg-[#F59E9E]/30 relative overflow-x-hidden font-inter">
-        {/* Premium Research Toolbar */}
-        <div className="w-full z-50 sticky top-0 border-b border-black/5 dark:border-white/5 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+        {/* Premium Research Toolbar - BRANDED PINK */}
+        <div className="w-full z-50 sticky top-0 border-b border-[#F59E9E]/20 bg-[#F59E9E] shadow-[0_4px_20px_rgba(245,158,158,0.15)]">
           <div className="flex items-center justify-between px-6 md:px-10 py-4">
             {/* Left: Back Button & Context */}
             <div className="flex items-center gap-6">
-              <Link href="/work" className="w-10 h-10 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center cursor-pointer hover:bg-[#F59E9E] hover:text-white transition-all duration-300 group shadow-sm" title="Back to Work">
-                <ArrowLeft size={18} strokeWidth={2.5} className="text-black/60 dark:text-white/60 group-hover:text-white transition-colors" />
+              <Link href="/work" className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center cursor-pointer hover:bg-white hover:text-[#F59E9E] transition-all duration-300 group shadow-sm border border-white/10" title="Back to Work">
+                <ArrowLeft size={18} strokeWidth={3} className="text-white transition-colors" />
               </Link>
-              <div className="h-6 w-px bg-black/10 dark:bg-white/10 hidden sm:block" />
+              <div className="h-6 w-px bg-white/20 hidden sm:block" />
               <div className="flex flex-col hidden sm:flex">
-                <span className="text-[10px] font-bold text-[#F59E9E] uppercase tracking-[0.2em] mb-0.5">Research</span>
+                <span className="text-[10px] font-bold text-white/70 uppercase tracking-[0.2em] mb-0.5">Research</span>
                 <h1 
-                  className="text-xl font-bold text-black/90 dark:text-white/90 tracking-tight"
+                  className="text-xl font-bold text-white tracking-tight"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}
                 >
                   AI Legal Contract
@@ -169,44 +169,44 @@ export default function AiLegalContractResearchPage() {
               </div>
             </div>
 
-            {/* Right: Controls - Softened Design */}
-            <div className="flex items-center gap-3 bg-black/5 dark:bg-white/5 rounded-2xl p-1.5 px-4 border border-black/5 dark:border-white/5 shadow-inner">
+            {/* Right: Controls - BRANDED WHITE ON PINK */}
+            <div className="flex items-center gap-3 bg-white/10 rounded-2xl p-1.5 px-4 border border-white/10 shadow-inner">
               <div className="flex items-center gap-1">
-                <button onClick={handleZoomOut} className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-xl transition-all text-black/40 hover:text-[#F59E9E] cursor-pointer shadow-none hover:shadow-sm" title="Zoom Out">
-                  <ZoomOut size={18} strokeWidth={2} />
+                <button onClick={handleZoomOut} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm" title="Zoom Out">
+                  <ZoomOut size={18} strokeWidth={2.5} />
                 </button>
                 
-                <span className="text-[11px] font-mono font-black w-12 text-center text-black/60 dark:text-white/60">
+                <span className="text-[11px] font-mono font-black w-12 text-center text-white">
                   {Math.round(zoom * 100)}%
                 </span>
 
-                <button onClick={handleZoomIn} className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-xl transition-all text-black/40 hover:text-[#F59E9E] cursor-pointer shadow-none hover:shadow-sm" title="Zoom In">
-                  <ZoomIn size={18} strokeWidth={2} />
+                <button onClick={handleZoomIn} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm" title="Zoom In">
+                  <ZoomIn size={18} strokeWidth={2.5} />
                 </button>
               </div>
               
-              <div className="w-px h-5 bg-black/10 dark:bg-white/10 mx-1" />
+              <div className="w-px h-5 bg-white/20 mx-1" />
 
               <div className="flex items-center gap-1">
                 <button 
                   onClick={() => setIsHighlightMode(!isHighlightMode)}
                   className={`p-2 rounded-xl transition-all cursor-pointer shadow-none hover:shadow-sm ${
                     isHighlightMode 
-                      ? "bg-[#F59E9E] text-white" 
-                      : "hover:bg-white dark:hover:bg-zinc-800 text-black/40 hover:text-[#F59E9E]"
+                      ? "bg-white text-[#F59E9E]" 
+                      : "hover:bg-white/20 text-white"
                   }`}
                   title="Toggle Highlighter"
                 >
-                  <Highlighter size={18} strokeWidth={2} />
+                  <Highlighter size={18} strokeWidth={2.5} />
                 </button>
 
                 {strokes.length > 0 && (
                   <button 
                     onClick={() => { setStrokes([]); setCurrentStrokeState([]); }}
-                    className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-xl transition-all text-black/40 hover:text-red-500 cursor-pointer shadow-none hover:shadow-sm ml-1"
+                    className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm ml-1"
                     title="Clear Highlights"
                   >
-                    <Eraser size={18} strokeWidth={2} />
+                    <Eraser size={18} strokeWidth={2.5} />
                   </button>
                 )}
               </div>
