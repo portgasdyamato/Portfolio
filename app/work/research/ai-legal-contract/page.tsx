@@ -270,7 +270,7 @@ export default function AiLegalContractResearchPage() {
         <main 
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth"
+          className="flex-1 w-full overflow-auto bg-zinc-50 dark:bg-zinc-950/50 relative selection:bg-transparent scroll-smooth pt-32"
         >
           {isLoading && (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#F59E9E]/60 z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-sm">
@@ -287,7 +287,7 @@ export default function AiLegalContractResearchPage() {
               className="w-full max-w-[1000px] flex flex-col items-center origin-top relative"
             >
               {/* Real PDF Canvases */}
-              <div ref={containerRef} className="w-full flex flex-col items-center" />
+              <div ref={containerRef} className="w-full flex flex-col items-center pointer-events-auto" />
 
               {/* Interactive Drawing Overlay - ABSOLUTE STABILITY */}
               <div 
