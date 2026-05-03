@@ -241,28 +241,30 @@ export default function AiLegalContractResearchPage() {
               onPointerCancel={handlePointerUp}
               onPointerLeave={handlePointerUp}
             >
-              <svg className="w-full h-full pointer-events-none" style={{ mixBlendMode: 'multiply' }}>
+              <svg className="w-full h-full pointer-events-none">
                 {strokes.map((stroke, i) => (
                   <path 
                     key={i} 
                     d={generateSvgPath(stroke)} 
                     stroke="#F4FF00" 
-                    strokeWidth={24} 
+                    strokeWidth={32} 
                     strokeLinecap="round" 
                     strokeLinejoin="round" 
                     fill="none" 
-                    opacity={0.6}
+                    opacity={0.5}
+                    style={{ mixBlendMode: 'multiply' }}
                   />
                 ))}
                 {currentStrokeState.length > 0 && (
                   <path 
                     d={generateSvgPath(currentStrokeState)} 
                     stroke="#F4FF00" 
-                    strokeWidth={24} 
+                    strokeWidth={32} 
                     strokeLinecap="round" 
                     strokeLinejoin="round" 
                     fill="none" 
-                    opacity={0.6}
+                    opacity={0.5}
+                    style={{ mixBlendMode: 'multiply' }}
                   />
                 )}
               </svg>
