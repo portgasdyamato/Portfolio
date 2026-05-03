@@ -228,7 +228,7 @@ export default function AiLegalContractResearchPage() {
                   className="text-xl font-bold text-white tracking-tight"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}
                 >
-                  AI Legal Contract
+                  AI Legal Contract Review Feature Design
                 </h1>
               </div>
             </div>

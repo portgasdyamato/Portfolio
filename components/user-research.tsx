@@ -9,9 +9,9 @@ export default function UserResearch() {
   const caseStudies = [
     {
       id: "ai-legal-contract",
-      title: "AI Legal Contract Feature Review",
+      title: "AI Legal Contract Review Feature Design",
       category: "Product Design",
-      description: "A deep dive into my product thinking, reasoning, and the design decisions behind the AI legal contract feature.",
+      description: "A deep dive into my product thinking, reasoning, and the design decisions behind the AI legal contract review feature.",
       pdfUrl: "/AI Legal Contract Reveiw Feature.pdf"
     }
   ]
