@@ -41,56 +41,51 @@ export default function UserResearch() {
       </div>
 
       <div className="flex justify-center">
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-3xl">
           {caseStudies.map((study) => (
             <Link href="/work/research/ai-legal-contract" key={study.id}>
               <motion.div
                 whileHover={{ y: -8 }}
-                className="group cursor-pointer w-full rounded-[3.5rem] bg-white dark:bg-zinc-900 overflow-hidden shadow-[0_40px_100px_rgba(245,158,158,0.12)] hover:shadow-[0_50px_120px_rgba(245,158,158,0.2)] transition-all duration-500 border border-[#F59E9E]/10 p-10 md:p-14"
+                className="group cursor-pointer w-full rounded-[3rem] bg-white dark:bg-zinc-900 overflow-hidden shadow-[0_30px_70px_rgba(245,158,158,0.08)] hover:shadow-[0_40px_100px_rgba(245,158,158,0.15)] transition-all duration-500 border border-[#F59E9E]/10 p-12 md:p-16"
               >
-                <div className="flex flex-col h-full">
-                  <div>
-                    {/* Mini-Toolbar Anchor */}
-                    <div className="inline-flex items-center gap-4 bg-[#F59E9E] rounded-2xl px-5 py-2.5 shadow-lg shadow-[#F59E9E]/20 mb-12">
-                      <div className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-white/50 animate-pulse" />
-                        <span className="text-white font-black text-[10px] uppercase tracking-[0.2em] font-inter">Interactive Document</span>
-                      </div>
-                      <div className="w-px h-3 bg-white/20" />
-                      <div className="flex items-center gap-3">
-                        <Highlighter size={14} strokeWidth={2.5} className="text-white/80" />
-                        <ZoomIn size={14} strokeWidth={2.5} className="text-white/80" />
-                      </div>
+                <div className="flex flex-col h-full items-center text-center">
+                  {/* Subtle Context Badge */}
+                  <div className="inline-flex items-center gap-3 bg-[#F59E9E]/5 rounded-full px-5 py-2 border border-[#F59E9E]/10 mb-12 group-hover:bg-[#F59E9E]/10 transition-colors">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#F59E9E] animate-pulse" />
+                    <span className="text-[#F59E9E] font-black text-[9px] uppercase tracking-[0.3em] font-inter">Interactive Research</span>
+                    <div className="flex items-center gap-2 ml-2 border-l border-[#F59E9E]/20 pl-3">
+                       <Highlighter size={12} strokeWidth={2.5} className="text-[#F59E9E]/60" />
+                       <ZoomIn size={12} strokeWidth={2.5} className="text-[#F59E9E]/60" />
                     </div>
-
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="w-12 h-12 bg-[#F59E9E]/10 rounded-2xl flex items-center justify-center text-[#F59E9E]">
-                        <FileText size={24} strokeWidth={2} />
-                      </div>
-                      <span className="text-[#F59E9E]/40 font-black text-[11px] uppercase tracking-[0.3em] font-inter">
-                        {study.category}
-                      </span>
-                    </div>
-                    
-                    <h3 
-                      className="text-4xl md:text-6xl font-bold mb-6 text-black/90 dark:text-white/95 leading-[1.05] tracking-tight transition-colors group-hover:text-[#F59E9E]"
-                      style={{ fontFamily: "'Cormorant Garamond', serif" }}
-                    >
-                      {study.title}
-                    </h3>
-                    
-                    <p className="text-black/40 dark:text-white/40 font-inter text-lg leading-relaxed max-w-xl font-light">
-                      {study.description}
-                    </p>
                   </div>
 
-                  {/* Branded Footer Link */}
-                  <div className="mt-12 flex items-center gap-6 group/link">
-                    <span className="text-[12px] font-black text-[#F59E9E] uppercase tracking-[0.3em]">Open Case Study</span>
-                    <div className="flex-1 h-px bg-[#F59E9E]/10 group-hover/link:bg-[#F59E9E]/30 transition-colors" />
-                    <div className="w-14 h-14 rounded-full bg-[#F59E9E]/10 flex items-center justify-center text-[#F59E9E] group-hover:bg-[#F59E9E] group-hover:text-white group-hover:translate-x-2 transition-all duration-500 shadow-sm">
-                      <ArrowLeft size={20} className="rotate-180" strokeWidth={3} />
+                  <div className="flex items-center gap-3 mb-8">
+                    <div className="h-px w-8 bg-[#F59E9E]/20" />
+                    <span className="text-[#F59E9E]/40 font-black text-[10px] uppercase tracking-[0.4em] font-inter">
+                      {study.category}
+                    </span>
+                    <div className="h-px w-8 bg-[#F59E9E]/20" />
+                  </div>
+                  
+                  <h3 
+                    className="text-5xl md:text-7xl font-bold mb-8 text-black/90 dark:text-white/95 leading-[1.05] tracking-tight group-hover:text-[#F59E9E] transition-colors"
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  >
+                    {study.title}
+                  </h3>
+                  
+                  <p className="text-black/40 dark:text-white/40 font-inter text-lg leading-relaxed max-w-xl font-light mb-14">
+                    {study.description}
+                  </p>
+
+                  {/* Minimal Premium Button */}
+                  <div className="flex flex-col items-center gap-4 group/btn">
+                    <div className="w-16 h-16 rounded-full bg-black/5 dark:bg-white/5 flex items-center justify-center text-black/20 dark:text-white/20 group-hover:bg-[#F59E9E] group-hover:text-white group-hover:scale-110 transition-all duration-500 shadow-sm border border-black/5 dark:border-white/5">
+                      <ArrowLeft size={24} className="rotate-180" strokeWidth={2} />
                     </div>
+                    <span className="text-[11px] font-black text-black/30 dark:text-white/30 uppercase tracking-[0.4em] group-hover:text-[#F59E9E] transition-colors">
+                      View Full Document
+                    </span>
                   </div>
                 </div>
               </motion.div>
