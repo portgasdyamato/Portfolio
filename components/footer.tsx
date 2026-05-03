@@ -11,16 +11,24 @@ export default function Footer({ hideContact = false }: { hideContact?: boolean 
     <>
       {!hideContact && (
         <div className="container mx-auto px-4 sm:px-6 md:px-12 lg:px-16 max-w-8xl mt-12 md:mt-32">
-          <div className="grid gap-4 sm:gap-6 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1.5fr)] items-start">
-            <div className="order-1">
+          {/* Relative wrapper so the heading can be absolutely centered without eating layout space */}
+          <div className="relative flex flex-col lg:flex-row items-start justify-between gap-6">
+
+            {/* Left: BookingCall card */}
+            <div className="w-full lg:w-[420px] shrink-0 z-10">
               <ImageSection />
             </div>
-            <div className="order-3 lg:order-2 hidden md:flex justify-center mb-4 sm:mb-8 md:mb-12 lg:mb-20">
+
+            {/* Center: GROW WITH ME — absolutely centered in the full row, pointer-events-none so it never blocks clicks */}
+            <div className="hidden md:flex absolute inset-0 items-center justify-center pointer-events-none z-0">
               <GrowWithMeHeading />
             </div>
-            <div id="contact" className="order-2 lg:order-3 w-full mb-4 sm:mb-6 lg:mb-8">
+
+            {/* Right: Contact card */}
+            <div id="contact" className="w-full lg:w-[420px] shrink-0 z-10 mb-4 sm:mb-6 lg:mb-8">
               <Contact />
             </div>
+
           </div>
         </div>
       )}
