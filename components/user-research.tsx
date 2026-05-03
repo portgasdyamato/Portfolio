@@ -39,20 +39,67 @@ export default function UserResearch() {
           <Link href="/work/research/ai-legal-contract" key={study.id}>
             <motion.div
               whileHover={{ y: -5 }}
-              className="group cursor-pointer bg-[#F59E9E]/5 hover:bg-[#F59E9E]/10 border border-[#F59E9E]/20 p-8 rounded-3xl transition-all duration-300 h-full"
+              className="group cursor-pointer w-full rounded-xl border-[3px] border-[#ECA8BA] bg-[#FCEBF0] overflow-hidden shadow-[0_8px_30px_rgba(236,168,186,0.3)] transition-all duration-300 flex flex-col h-full"
             >
-              <div className="w-14 h-14 bg-[#F59E9E]/20 rounded-2xl flex items-center justify-center mb-6 text-[#F59E9E]">
-                <FileText size={24} strokeWidth={1.5} />
+              {/* Title Bar */}
+              <div className="flex justify-end items-center px-3 py-2 border-b-[3px] border-[#ECA8BA] gap-1.5 bg-[#FCEBF0]">
+                {/* Tetris shape */}
+                <div className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex flex-wrap p-[2px] gap-[2px] bg-white">
+                  <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
+                  <div className="w-[4.5px] h-[4.5px] bg-transparent" />
+                  <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
+                  <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
+                </div>
+                {/* Minus */}
+                <div className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex items-center justify-center bg-white">
+                  <div className="w-2.5 h-[3px] bg-[#ECA8BA]" />
+                </div>
+                {/* X */}
+                <div className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex items-center justify-center bg-white relative">
+                  <div className="w-[12px] h-[3px] bg-[#ECA8BA] rotate-45 absolute" />
+                  <div className="w-[12px] h-[3px] bg-[#ECA8BA] -rotate-45 absolute" />
+                </div>
               </div>
-              <div className="inline-block px-3 py-1 bg-background rounded-full text-xs font-mono mb-4 text-foreground/60 border border-border">
-                {study.category}
+
+              {/* Address Bar */}
+              <div className="flex items-center px-3 py-2 border-b-[3px] border-[#ECA8BA] gap-3 bg-[#FCEBF0]">
+                {/* Chevron Left */}
+                <div className="w-2.5 h-2.5 border-t-[3px] border-r-[3px] border-[#ECA8BA] rotate-45 ml-1" />
+                {/* URL Bar */}
+                <div className="flex-1 h-5 rounded-full border-[2.5px] border-[#ECA8BA] bg-[#FFF5F7]" />
+                {/* Heart */}
+                <svg className="w-5 h-5 text-[#ECA8BA] fill-current" viewBox="0 0 24 24">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
               </div>
-              <h3 className="text-2xl font-bold mb-3 group-hover:text-[#F59E9E] transition-colors">
-                {study.title}
-              </h3>
-              <p className="text-foreground/60 font-inter text-sm">
-                {study.description}
-              </p>
+
+              {/* Main Body */}
+              <div className="flex flex-1 p-3 gap-3 bg-[#FCEBF0]">
+                {/* Content Area */}
+                <div className="flex-1 bg-[#FFF5F7] rounded-lg border-[3px] border-[#ECA8BA] p-6 flex flex-col items-center justify-center relative overflow-hidden group-hover:bg-white transition-colors duration-500">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none bg-[radial-gradient(circle_at_center,_#ECA8BA_1px,_transparent_1px)] bg-[size:12px_12px]" />
+                  
+                  <FileText size={36} strokeWidth={1.5} className="text-[#ECA8BA] mb-5 group-hover:scale-110 transition-transform duration-500" />
+                  
+                  <div className="inline-block px-3 py-1 bg-[#ECA8BA]/10 rounded-full text-xs font-mono mb-4 text-[#ECA8BA] border border-[#ECA8BA]/30 font-bold uppercase tracking-wider">
+                    {study.category}
+                  </div>
+                  
+                  <h3 className="text-xl sm:text-2xl font-black text-center mb-3 text-[#ECA8BA] tracking-tight leading-snug">
+                    {study.title}
+                  </h3>
+                  
+                  <p className="text-center text-xs sm:text-sm font-inter text-[#ECA8BA]/80 px-2 leading-relaxed">
+                    {study.description}
+                  </p>
+                </div>
+
+                {/* Scrollbar Track */}
+                <div className="w-5 flex flex-col py-1 items-center relative">
+                  <div className="w-3.5 h-full border-[2.5px] border-[#ECA8BA]/40 rounded-full absolute" />
+                  <div className="w-[10px] h-12 sm:h-16 bg-white border-[2.5px] border-[#ECA8BA] rounded-full z-10 mt-1 group-hover:mt-16 transition-all duration-700 ease-in-out" />
+                </div>
+              </div>
             </motion.div>
           </Link>
         ))}

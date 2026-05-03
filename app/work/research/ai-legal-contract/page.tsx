@@ -2,9 +2,12 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion } from "framer-motion"
-import { ZoomIn, ZoomOut, Highlighter, ArrowLeft, Loader2 } from "lucide-react"
+import { ZoomIn, ZoomOut, Highlighter, ArrowLeft, Loader2, Eraser } from "lucide-react"
 import Link from "next/link"
 import CustomCursor from "@/components/custom-cursor"
+
+type Point = { x: number; y: number }
+type Stroke = Point[]
 
 export default function AiLegalContractResearchPage() {
   const [zoom, setZoom] = useState(1)
@@ -12,6 +15,12 @@ export default function AiLegalContractResearchPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const containerRef = useRef<HTMLDivElement>(null)
+
+  // Drawing state
+  const [strokes, setStrokes] = useState<Stroke[]>([])
+  const [currentStrokeState, setCurrentStrokeState] = useState<Stroke>([])
+  const currentStrokeRef = useRef<Stroke>([])
+  const isDrawing = useRef(false)
 
   const handleZoomIn = () => setZoom((prev) => Math.min(prev + 0.25, 2.5))
   const handleZoomOut = () => setZoom((prev) => Math.max(prev - 0.25, 0.5))
@@ -82,6 +91,41 @@ export default function AiLegalContractResearchPage() {
     }
   }, [])
 
+  // Drawing Handlers
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isHighlightMode) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    isDrawing.current = true;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / zoom;
+    const y = (e.clientY - rect.top) / zoom;
+    currentStrokeRef.current = [{x, y}];
+    setCurrentStrokeState([{x, y}]);
+  }
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDrawing.current || !isHighlightMode) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / zoom;
+    const y = (e.clientY - rect.top) / zoom;
+    currentStrokeRef.current.push({x, y});
+    setCurrentStrokeState([...currentStrokeRef.current]);
+  }
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!isDrawing.current) return;
+    isDrawing.current = false;
+    e.currentTarget.releasePointerCapture(e.pointerId);
+    setStrokes(prev => [...prev, currentStrokeRef.current]);
+    currentStrokeRef.current = [];
+    setCurrentStrokeState([]);
+  }
+
+  const generateSvgPath = (points: Point[]) => {
+    if (points.length === 0) return "";
+    return points.map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`).join(" ");
+  }
+
   return (
     <>
       <style jsx global>{`
@@ -104,72 +148,146 @@ export default function AiLegalContractResearchPage() {
         />
       )}
 
-      <div className="min-h-screen bg-[#F4F4F5] dark:bg-zinc-950 flex flex-col selection:bg-[#F59E9E]/30 relative overflow-x-hidden">
-        {/* Custom Premium Control Panel */}
-        <header className="h-[72px] border-b border-black/5 dark:border-white/5 bg-white/95 dark:bg-zinc-950/95 backdrop-blur-xl flex items-center justify-between px-6 md:px-10 z-50 sticky top-0 shadow-sm">
-          <div className="flex items-center gap-6">
-            <Link href="/work" className="p-2.5 bg-black/[0.03] hover:bg-black/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] rounded-full transition-all flex items-center justify-center cursor-pointer">
-              <ArrowLeft size={18} className="text-black/80 dark:text-white/80" />
+      <div className="min-h-screen bg-[#FFF5F7] dark:bg-[#FFF5F7] flex flex-col selection:bg-[#F59E9E]/30 relative overflow-x-hidden">
+        {/* Retro Pink Browser Header */}
+        <div className="w-full z-50 sticky top-0 border-b-[3px] border-[#ECA8BA] bg-[#FCEBF0] shadow-[0_8px_30px_rgba(236,168,186,0.3)]">
+          {/* Title Bar */}
+          <div className="flex justify-between items-center px-4 py-2 border-b-[3px] border-[#ECA8BA] bg-[#FCEBF0]">
+            <div className="text-[#ECA8BA] font-black text-sm md:text-base tracking-widest uppercase font-inter ml-2">
+              AI Legal Contract Feature
+            </div>
+            <div className="flex items-center gap-1.5">
+              {/* Tetris */}
+              <div className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex flex-wrap p-[2px] gap-[2px] bg-white">
+                <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
+                <div className="w-[4.5px] h-[4.5px] bg-transparent" />
+                <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
+                <div className="w-[4.5px] h-[4.5px] bg-[#ECA8BA]" />
+              </div>
+              {/* Minus */}
+              <div className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex items-center justify-center bg-white">
+                <div className="w-2.5 h-[3px] bg-[#ECA8BA]" />
+              </div>
+              {/* X */}
+              <Link href="/work" className="w-[22px] h-[22px] border-[2.5px] border-[#ECA8BA] flex items-center justify-center bg-white relative cursor-pointer hover:bg-[#ECA8BA] group transition-colors">
+                <div className="w-[12px] h-[3px] bg-[#ECA8BA] group-hover:bg-white rotate-45 absolute transition-colors" />
+                <div className="w-[12px] h-[3px] bg-[#ECA8BA] group-hover:bg-white -rotate-45 absolute transition-colors" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Address Bar */}
+          <div className="flex items-center px-3 md:px-5 py-2.5 gap-2 md:gap-4 bg-[#FCEBF0]">
+            {/* Back Button (Chevron Left) */}
+            <Link href="/work" className="w-8 h-8 rounded-full border-[2.5px] border-[#ECA8BA] bg-[#FFF5F7] flex items-center justify-center cursor-pointer hover:bg-white transition-colors flex-shrink-0" title="Back to Work">
+              <div className="w-3 h-3 border-t-[3px] border-l-[3px] border-[#ECA8BA] -rotate-45 ml-1" />
             </Link>
-            <div className="h-5 w-px bg-black/10 dark:bg-white/10 hidden sm:block" />
-            <h1 className="font-bold text-base md:text-lg hidden sm:block text-black/90 dark:text-white/90 font-inter tracking-tight">
-              AI Legal Contract Feature Review
-            </h1>
-          </div>
-
-          <div className="flex items-center gap-2 bg-black/[0.02] dark:bg-white/[0.02] rounded-full p-1.5 px-2 border border-black/[0.04] dark:border-white/[0.04] shadow-sm">
-            <button 
-              onClick={handleZoomOut}
-              className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-full transition-all text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm cursor-pointer"
-              title="Zoom Out"
-            >
-              <ZoomOut size={18} strokeWidth={2} />
-            </button>
             
-            <span className="text-xs font-mono font-medium w-12 text-center text-black/60 dark:text-white/60">
-              {Math.round(zoom * 100)}%
-            </span>
+            {/* Controls URL Pill */}
+            <div className="flex-1 rounded-full border-[2.5px] border-[#ECA8BA] bg-[#FFF5F7] flex items-center justify-between px-2 sm:px-5 py-1.5 overflow-hidden">
+              <div className="hidden md:flex text-[#ECA8BA]/70 font-mono text-sm font-bold truncate mr-4">
+                portfolio.local/research/ai-legal-contract
+              </div>
 
-            <button 
-              onClick={handleZoomIn}
-              className="p-2 hover:bg-white dark:hover:bg-zinc-800 rounded-full transition-all text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm cursor-pointer"
-              title="Zoom In"
-            >
-              <ZoomIn size={18} strokeWidth={2} />
-            </button>
+              {/* Toolbar Controls */}
+              <div className="flex items-center gap-1 sm:gap-2 mx-auto md:mx-0">
+                <button onClick={handleZoomOut} className="p-1.5 hover:bg-[#ECA8BA]/20 rounded-full transition-colors text-[#ECA8BA] cursor-pointer" title="Zoom Out">
+                  <ZoomOut size={18} strokeWidth={2.5} />
+                </button>
+                <span className="text-xs font-mono font-bold w-10 text-center text-[#ECA8BA]">
+                  {Math.round(zoom * 100)}%
+                </span>
+                <button onClick={handleZoomIn} className="p-1.5 hover:bg-[#ECA8BA]/20 rounded-full transition-colors text-[#ECA8BA] cursor-pointer" title="Zoom In">
+                  <ZoomIn size={18} strokeWidth={2.5} />
+                </button>
+                
+                <div className="w-[2.5px] h-4 bg-[#ECA8BA]/30 mx-1 rounded-full" />
 
-            <div className="w-px h-5 bg-black/10 dark:bg-white/10 mx-2" />
+                <button 
+                  onClick={() => setIsHighlightMode(!isHighlightMode)}
+                  className={`p-1.5 rounded-full transition-colors cursor-pointer ${
+                    isHighlightMode ? "bg-[#F4FF00]/40 text-[#D4B000]" : "hover:bg-[#ECA8BA]/20 text-[#ECA8BA]"
+                  }`}
+                  title="Toggle Highlighter"
+                >
+                  <Highlighter size={18} strokeWidth={2.5} />
+                </button>
 
-            <button 
-              onClick={() => setIsHighlightMode(!isHighlightMode)}
-              className={`p-2 rounded-full transition-all flex items-center gap-2 cursor-pointer ${
-                isHighlightMode 
-                  ? "bg-yellow-400/20 text-yellow-600 dark:text-yellow-400 shadow-inner" 
-                  : "hover:bg-white dark:hover:bg-zinc-800 text-black/50 hover:text-black/90 dark:text-white/50 dark:hover:text-white/90 shadow-none hover:shadow-sm"
-              }`}
-              title="Toggle Highlighter"
-            >
-              <Highlighter size={18} strokeWidth={2} />
-            </button>
+                {strokes.length > 0 && (
+                  <button 
+                    onClick={() => { setStrokes([]); setCurrentStrokeState([]); }}
+                    className="p-1.5 hover:bg-red-500/10 rounded-full transition-colors text-red-500/60 hover:text-red-500 cursor-pointer ml-1"
+                    title="Clear Highlights"
+                  >
+                    <Eraser size={18} strokeWidth={2.5} />
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {/* Heart */}
+            <div className="w-8 h-8 flex items-center justify-center flex-shrink-0">
+              <svg className="w-6 h-6 text-[#ECA8BA] fill-current hover:scale-110 transition-transform cursor-pointer" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
           </div>
-        </header>
+        </div>
 
         {/* PDF Rendering Area */}
-        <main className="flex-1 w-full relative flex justify-center py-12 md:py-20 px-4 sm:px-8">
+        <main className="flex-1 w-full relative flex justify-center py-12 md:py-20 px-4 sm:px-8 overflow-x-hidden touch-none">
           {isLoading && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-black/40 dark:text-white/40">
-              <Loader2 className="w-10 h-10 animate-spin text-[#F59E9E]" />
-              <span className="text-sm font-semibold tracking-widest uppercase">Loading Document...</span>
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-[#ECA8BA]/60">
+              <Loader2 className="w-10 h-10 animate-spin" />
+              <span className="text-sm font-bold tracking-widest uppercase">Loading Document...</span>
             </div>
           )}
           
-          {/* PDF Pages Container */}
+          {/* Zoomable Container */}
           <motion.div 
-            ref={containerRef}
             animate={{ scale: zoom }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="w-full flex flex-col items-center origin-top relative z-10"
-          />
+            className="w-full max-w-[1000px] flex flex-col items-center origin-top relative z-10"
+          >
+            {/* Real PDF Canvases */}
+            <div ref={containerRef} className="w-full flex flex-col items-center" />
+
+            {/* Interactive Drawing Overlay */}
+            <div 
+              className={`absolute inset-0 z-20 touch-none ${isHighlightMode ? 'pointer-events-auto' : 'pointer-events-none'}`}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
+              onPointerLeave={handlePointerUp}
+            >
+              <svg className="w-full h-full pointer-events-none" style={{ mixBlendMode: 'multiply' }}>
+                {strokes.map((stroke, i) => (
+                  <path 
+                    key={i} 
+                    d={generateSvgPath(stroke)} 
+                    stroke="#F4FF00" 
+                    strokeWidth={24} 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    fill="none" 
+                    opacity={0.6}
+                  />
+                ))}
+                {currentStrokeState.length > 0 && (
+                  <path 
+                    d={generateSvgPath(currentStrokeState)} 
+                    stroke="#F4FF00" 
+                    strokeWidth={24} 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    fill="none" 
+                    opacity={0.6}
+                  />
+                )}
+              </svg>
+            </div>
+          </motion.div>
         </main>
       </div>
     </>
