@@ -151,16 +151,17 @@ export default function AiLegalContractResearchPage() {
       // Mouse wheels report deltaMode=0 with larger deltaY (~100px) or deltaMode=1
       let multiplier: number;
       if (e.deltaMode === 1) {
-        // Line mode (some mice) — each "line" maps to ~40px
-        multiplier = 40;
+        // Line mode (some mice) — each "line" maps to ~80px for fast scroll
+        multiplier = 80;
       } else if (e.deltaMode === 2) {
         // Page mode — each "page" maps to scrollEl height
         multiplier = scrollEl.clientHeight;
       } else {
-        // Pixel mode — touchpad gives small values, boost them significantly
-        // Detect touchpad: small absolute deltaY values (< 50px) indicate trackpad
+        // Pixel mode — distinguish touchpad (small deltaY) vs mouse wheel (large deltaY)
+        // Touchpad: deltaY typically 3–15px per tick → boost 8x
+        // Mouse wheel: deltaY typically 80–120px per tick → boost 5x
         const isTouchpad = Math.abs(e.deltaY) < 50 && !e.ctrlKey;
-        multiplier = isTouchpad ? 5 : 2; // 5x boost for touchpad, 2x for mouse wheel
+        multiplier = isTouchpad ? 8 : 5;
       }
 
       scrollEl.scrollBy({
