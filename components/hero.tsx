@@ -63,10 +63,10 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   }, [])
 
   return (
-    <div className="col-span-1 relative overflow-hidden" style={{ minHeight: "min(90vh, 800px)" }}>
-      {/* Background dot grid */}
+    <div className="col-span-1 lg:col-span-8 relative w-full lg:h-full lg:min-h-0" style={{ minHeight: "clamp(380px, 70vh, 800px)" }}>
+      {/* Background dot grid - overflow-hidden stays here to clip the background only */}
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit]"
         style={{
           backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
@@ -76,15 +76,15 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
 
       {/* ─── MAIN CONTENT: single col, type fills space ─── */}
       <div
-        className="relative z-10 h-full flex flex-col justify-between pt-20 pb-10 px-10 md:pt-24 md:pb-12 md:px-14 lg:pt-32 lg:pb-16 lg:px-16"
+        className="relative z-10 flex flex-col pt-14 pb-6 px-5 sm:pt-18 sm:pb-8 sm:px-8 md:pt-24 md:pb-12 md:px-12 lg:pt-32 lg:pb-16 lg:px-16 gap-0"
         style={{ minHeight: "inherit" }}
       >
 
         {/* ── ALL CONTENT ── */}
-        <div className="flex flex-col min-w-0">
+        <div className="flex flex-col min-w-0 gap-0">
 
           {/* Rotating tagline */}
-          <div className="h-6 overflow-hidden mt-2">
+          <div className="h-5 sm:h-6 overflow-hidden mt-1 sm:mt-2">
             <AnimatePresence mode="wait">
               <motion.span
                 key={tagIdx}
@@ -100,20 +100,20 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </div>
 
           {/* Headline */}
-          <div className="flex flex-col justify-center py-4 gap-6">
+          <div className="flex flex-col justify-center py-2 sm:py-3 md:py-4 gap-3 sm:gap-4 md:gap-6">
             <div className="flex flex-col gap-1 md:gap-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[36px] sm:text-[55px] md:text-[68px] lg:text-[78px] xl:text-[95px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   AI Product
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[32px] sm:text-[65px] md:text-[80px] lg:text-[95px] font-black tracking-tight leading-[0.88] text-[#F59E9E]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
+                <span className="block text-[36px] sm:text-[55px] md:text-[68px] lg:text-[78px] xl:text-[95px] font-black tracking-tight leading-[0.88] text-[#F59E9E]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Designer &
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block text-[30px] sm:text-[60px] md:text-[75px] lg:text-[85px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+                <span className="block text-[32px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[85px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                   Design Engineer.
                 </span>
               </motion.div>
@@ -121,24 +121,24 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
 
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.4 }}
-              className="flex flex-col gap-8 max-w-xl"
+              className="flex flex-col gap-4 sm:gap-6 md:gap-8 max-w-xl"
             >
-              <p className="text-[#1a0a0a]/80 font-medium text-base leading-relaxed tracking-wide">
+              <p className="text-[#1a0a0a]/80 font-medium text-sm sm:text-base leading-relaxed tracking-wide">
                 I design and build AI-powered digital products, combining UX design, code, and intelligent systems with a human-centric touch to create meaningful, intuitive experiences.
               </p>
 
               {/* Buttons */}
-              <div className="flex items-center gap-4 flex-wrap mt-2">
+              <div className="flex items-center gap-3 sm:gap-4 flex-wrap mt-1 sm:mt-2">
                 <Magnetic
                   onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
-                  className="group flex items-center justify-center gap-2 bg-[#1a0a0a] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(26,10,10,0.1)] hover:bg-white hover:text-[#1a0a0a] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(26,10,10,0.15)] transition-all duration-300 min-w-[170px] border border-transparent hover:border-[#1a0a0a]/10"
+                  className="group flex items-center justify-center gap-2 bg-[#1a0a0a] text-white text-[9.5px] sm:text-[10.5px] tracking-[0.25em] font-black uppercase px-7 sm:px-9 py-3 sm:py-4 rounded-full shadow-[0_8px_30px_rgba(26,10,10,0.1)] hover:bg-white hover:text-[#1a0a0a] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(26,10,10,0.15)] transition-all duration-300 min-w-[140px] sm:min-w-[170px] border border-transparent hover:border-[#1a0a0a]/10"
                 >
                   View Work
                   <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Magnetic>
                 <Magnetic
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
-                  className="flex items-center justify-center gap-2 bg-[#F59E9E] text-white text-[10.5px] tracking-[0.25em] font-black uppercase px-9 py-4 rounded-full shadow-[0_8px_30px_rgba(245,158,158,0.15)] hover:bg-white hover:text-[#F59E9E] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(245,158,158,0.2)] transition-all duration-300 min-w-[170px] border border-transparent hover:border-[#F59E9E]/20"
+                  className="flex items-center justify-center gap-2 bg-[#F59E9E] text-white text-[9.5px] sm:text-[10.5px] tracking-[0.25em] font-black uppercase px-7 sm:px-9 py-3 sm:py-4 rounded-full shadow-[0_8px_30px_rgba(245,158,158,0.15)] hover:bg-white hover:text-[#F59E9E] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(245,158,158,0.2)] transition-all duration-300 min-w-[140px] sm:min-w-[170px] border border-transparent hover:border-[#F59E9E]/20"
                 >
                   Let's Talk
                 </Magnetic>
@@ -147,18 +147,18 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               {/* Morph-reveal contact info */}
               <motion.div
                 style={{ opacity: contactOpacity, y: contactY }}
-                className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-8 sm:gap-14 pt-8 border-t border-[#1a0a0a]/[0.08]"
+                className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-8 md:gap-14 pt-5 sm:pt-6 border-t border-[#1a0a0a]/[0.08]"
               >
                 <div className="flex flex-col gap-1.5">
                   <span className="text-[9px] tracking-[0.3em] text-[#F59E9E] uppercase font-bold">Contact</span>
-                  <a href="mailto:sakshiagrahari2004@gmail.com" className="text-[13.5px] font-bold text-[#1a0a0a] hover:text-[#F59E9E] transition-colors">
+                  <a href="mailto:sakshiagrahari2004@gmail.com" className="text-[12px] sm:text-[13.5px] font-bold text-[#1a0a0a] hover:text-[#F59E9E] transition-colors">
                     sakshiagrahari2004@gmail.com
                   </a>
                 </div>
                 
                 <div className="flex flex-col gap-1.5">
                   <span className="text-[9px] tracking-[0.3em] text-[#F59E9E] uppercase font-bold">Location</span>
-                  <span className="text-[13.5px] font-bold text-[#1a0a0a]">Planet Earth</span>
+                  <span className="text-[12px] sm:text-[13.5px] font-bold text-[#1a0a0a]">Planet Earth</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -166,5 +166,6 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
         </div>
       </div>
     </div>
+
   )
 }

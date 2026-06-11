@@ -237,7 +237,7 @@ export default function Scrapbook() {
   }
 
   return (
-    <section id="scrapbook" ref={containerRef} className="relative w-full h-[110vh] md:h-[130vh] py-20 overflow-hidden bg-transparent select-none scroll-mt-32">
+    <section id="scrapbook" ref={containerRef} className="relative w-full h-[90vh] sm:h-[110vh] md:h-[130vh] py-12 sm:py-16 md:py-20 overflow-hidden bg-transparent select-none scroll-mt-32">
       {/* Ambient Audio Element */}
       <audio ref={audioRef} src="/pippo.mpeg" loop />
 
@@ -260,7 +260,7 @@ export default function Scrapbook() {
             <Camera size={12} fill="currentColor" strokeWidth={0} />
             The Scrapbook
           </motion.div>
-          <h2 className="text-[32px] md:text-[45px] lg:text-[55px] font-bold italic text-[#1a0a0a] leading-[1.2] tracking-tight" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+          <h2 className="text-[22px] sm:text-[32px] md:text-[45px] lg:text-[55px] font-bold italic text-[#1a0a0a] leading-[1.2] tracking-tight" style={{ fontFamily: "'Libre Baskerville', serif" }}>
             Fragments of <span className="text-[#F59E9E]">Caffeine</span> <br className="hidden md:block" /> & Pure <span className="text-black/30">Imagination.</span>
           </h2>
         </div>

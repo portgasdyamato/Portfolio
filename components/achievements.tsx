@@ -87,7 +87,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-full aspect-[3/4] cursor-pointer group perspective-[1200px]"
+      className="relative w-full aspect-[3/4] cursor-pointer group perspective-[1200px] max-w-[200px] xs:max-w-[220px] sm:max-w-full mx-auto sm:mx-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsHovered(!isHovered)}
@@ -108,14 +108,14 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
       >
         {/* ── 1. FRONT FACE (The Unified Exhibition Placard) ── */}
         <div 
-          className="absolute inset-0 bg-white dark:bg-[#1a1a1a] p-1.5 sm:p-2 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.06)] border border-black/[0.04] dark:border-white/[0.05] flex flex-col pointer-events-none"
+          className="absolute inset-0 bg-white dark:bg-[#1a1a1a] p-1 sm:p-1.5 md:p-2 rounded-2xl shadow-[0_15px_35px_rgba(0,0,0,0.06)] border border-black/[0.04] dark:border-white/[0.05] flex flex-col pointer-events-none"
           style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
         >
           {/* Decorative Tape Front */}
           <div className="absolute top-[-8px] left-[42%] w-12 h-4 bg-white/80 dark:bg-black/80 shadow-sm border border-black/5 rotate-[2deg] z-20" />
 
           {/* Unified Gallery Background */}
-          <div className="relative w-full h-full rounded-xl border-[0.5px] border-black/[0.04] dark:border-white/[0.05] bg-[#FDFBF7] dark:bg-[#151515] overflow-hidden flex flex-col items-center justify-center p-6 pb-12">
+          <div className="relative w-full h-full rounded-xl border-[0.5px] border-black/[0.04] dark:border-white/[0.05] bg-[#FDFBF7] dark:bg-[#151515] overflow-hidden flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 pb-8 sm:pb-10 md:pb-12">
             
             {/* Elegant Year Tag (Architectural Detail) */}
             <div className="absolute top-4 right-5 text-right z-10">
@@ -124,14 +124,14 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             </div>
 
             {/* Central Graphic (Minimalist Rings) */}
-            <div className="relative w-32 h-32 flex items-center justify-center mb-6">
+            <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center mb-3 sm:mb-4 md:mb-6">
                <div className="absolute inset-0 rounded-full border border-black/[0.06] dark:border-white/[0.06] scale-[1.3]" />
                <div className="absolute inset-4 rounded-full border border-black/[0.08] dark:border-white/[0.08] scale-[1.15]" />
                <motion.div 
                  animate={{ scale: isHovered ? 1.05 : 1 }} 
-                 className="relative w-16 h-16 rounded-full bg-[#F59E9E] shadow-[0_8px_20px_rgba(245,158,158,0.35)] flex items-center justify-center text-white"
+                 className="relative w-9 h-9 sm:w-11 sm:h-11 md:w-12 md:h-12 lg:w-16 lg:h-16 rounded-full bg-[#F59E9E] shadow-[0_8px_20px_rgba(245,158,158,0.35)] flex items-center justify-center text-white"
                >
-                 <Icon size={24} strokeWidth={1.5} />
+                 <Icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" strokeWidth={1.5} />
                </motion.div>
             </div>
 
@@ -140,7 +140,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
                <span className="text-[8px] font-black uppercase tracking-[0.3em] text-[#F59E9E] bg-[#F59E9E]/10 px-2 py-0.5 rounded-sm mb-1">
                  {item.label}
                </span>
-               <h4 className="text-[20px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+               <h4 className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[20px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
                  {item.title}
                </h4>
             </div>
@@ -207,7 +207,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-24 md:py-32 relative scroll-mt-32 overflow-visible">
+    <section id="achievements" className="py-12 sm:py-16 md:py-24 lg:py-32 relative scroll-mt-32 overflow-visible">
       
       {/* Background ambient accents */}
       <div className="absolute top-20 right-[-100px] w-[500px] h-[500px] bg-[#FFB5B5]/[0.05] blur-[100px] rounded-full pointer-events-none" />
@@ -215,12 +215,12 @@ export default function Achievements() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full overflow-visible">
 
         {/* ── Header ── */}
-        <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-24">
+        <div className="flex flex-col items-center justify-center text-center mb-8 sm:mb-12 md:mb-16 lg:mb-24">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm">
             <Star size={10} className="text-[#F59E9E]" /> Milestones & Memories
           </div>
           <h2
-            className="text-[40px] md:text-[60px] lg:text-[70px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1] tracking-tighter"
+            className="text-[32px] sm:text-[40px] md:text-[55px] lg:text-[70px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1] tracking-tighter"
             style={{ fontFamily: "'Cormorant Garamond', serif" }}
           >
             A visual archive of my{" "}
@@ -232,9 +232,9 @@ export default function Achievements() {
         </div>
 
         {/* ── Flip Card Grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5 md:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
           {achievements.map((item, i) => (
-            <div key={item.id} className="w-full max-w-[320px] mx-auto">
+            <div key={item.id} className="w-full mx-auto">
               <MilestoneCard item={item} index={i} />
             </div>
           ))}

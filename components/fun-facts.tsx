@@ -14,12 +14,6 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 1 }: 
   const group = useRef<any>(null)
 
   useEffect(() => {
-    scene.traverse((child: any) => {
-      if (child.isMesh) {
-        const originalMap = child.material.map
-        child.material = new THREE.MeshBasicMaterial({ map: originalMap, color: child.material.color })
-      }
-    })
     const box = new THREE.Box3().setFromObject(scene)
     const center = new THREE.Vector3()
     box.getCenter(center)
@@ -56,11 +50,11 @@ export default function FunFacts() {
   if (!mounted) return null
 
   return (
-    <div className="py-24 flex flex-col gap-48">
+    <div className="py-12 sm:py-16 md:py-24 flex flex-col gap-16 sm:gap-24 md:gap-36 lg:gap-48">
 
       {/* ── SECTION 1: Favorite Trio ── */}
       <div className="relative px-4 lg:px-0">
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 lg:gap-16">
           <div className="max-w-md">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-widest uppercase text-[9px] mb-6">
               <Star size={10} fill="currentColor" /> Experimental 3D Interaction
@@ -72,12 +66,15 @@ export default function FunFacts() {
               Pony, Panda, and Penguin. I built this immersive 3D experience to explore real-time UI interactions and because these three perfectly match my approach to life.
             </p>
           </div>
-          <div className="flex-1 w-full grid grid-cols-1 md:grid-cols-3 gap-20 md:gap-8">
+          <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-8 md:gap-8">
             {animals.map((anim) => (
               <div key={anim.name} className="relative w-full aspect-[4/5] overflow-hidden rounded-[4rem] bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f7f7f7_60%,_#ececec_100%)] border border-[#F59E9E]/10 shadow-2xl">
                 <div className="absolute inset-0">
                   <Suspense fallback={null}>
                     <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
+                      {/* Minimal lights needed to render standard materials on light background */}
+                      <ambientLight intensity={2.5} />
+                      <directionalLight position={[5, 5, 5]} intensity={1.2} />
                       <OrbitControls enablePan={false} enableZoom={false} makeDefault minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 1.5} />
                       <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
                     </Canvas>
