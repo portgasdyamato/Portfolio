@@ -50,7 +50,8 @@ function BoutiqueFolder({ color, tabColor, accent, title, icon: Icon, delay, rot
         style={{ backgroundColor: color, transform: "rotateX(-18deg)" }}
       >
         <div className="absolute top-1.5 sm:top-2.5 right-1.5 sm:right-2.5 opacity-90">
-          <Icon size={18} color={accent} strokeWidth={1.5} />
+          <span className="block sm:hidden"><Icon size={14} color={accent} strokeWidth={1.5} /></span>
+          <span className="hidden sm:block"><Icon size={22} color={accent} strokeWidth={1.5} /></span>
         </div>
         <h3 className="text-[10px] sm:text-[14px] font-black italic text-white leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
           {title}
