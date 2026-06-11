@@ -10,8 +10,8 @@ const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
 
 const NAV_ITEMS = [
-  { label: "Work", id: "work", path: "/work", color: "#1E1E1E", icon: <Layers size={8} /> },
   { label: "Home", id: "home", path: "/", color: "#FDE047", icon: <Sparkles size={8} /> },
+  { label: "Work", id: "work", path: "/work", color: "#1E1E1E", icon: <Layers size={8} /> },
   { label: "Skills", id: "skills", path: "/#skills", color: "#F59E9E", icon: <FolderIcon size={8} /> },
   { label: "Contact", id: "contact", path: "/#contact", color: "#A78BFA", icon: <Send size={8} /> },
 ]
