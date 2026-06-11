@@ -1,8 +1,8 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { motion } from "framer-motion"
-import { ZoomIn, ZoomOut, Highlighter, ArrowLeft, Loader2, Eraser } from "lucide-react"
+import { ZoomIn, ZoomOut, Highlighter, ArrowLeft, Loader2, Eraser, ChevronUp, ChevronDown } from "lucide-react"
 import Link from "next/link"
 import CustomCursor from "@/components/custom-cursor"
 
@@ -47,7 +47,6 @@ export default function AiLegalContractResearchPage() {
     currentStrokeRef.current = [newPoint];
     setCurrentStrokeState([newPoint]);
     
-    // Set capture to the element being drawn on
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
   }
 
@@ -111,40 +110,71 @@ export default function AiLegalContractResearchPage() {
     setCurrentPage(activePage);
   };
 
-  const scrollToPage = (pageNumber: number) => {
+  const scrollToPage = useCallback((pageNumber: number) => {
     if (!scrollRef.current) return;
+    const clampedPage = Math.max(1, Math.min(pageNumber, totalPages));
     const canvases = scrollRef.current.querySelectorAll('canvas');
-    if (canvases[pageNumber - 1]) {
-      canvases[pageNumber - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (canvases[clampedPage - 1]) {
+      canvases[clampedPage - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-  };
+  }, [totalPages]);
 
-  // Forward wheel events from the canvas layer AND the drawing overlay to the scrollable parent
-  // This runs regardless of highlight mode so scrolling is never blocked
+  // ── Arrow key navigation (Up/Down) ──
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't interfere with input fields
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+
+      if (e.key === 'ArrowDown' || e.key === 'PageDown') {
+        e.preventDefault();
+        scrollToPage(currentPage + 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+        e.preventDefault();
+        scrollToPage(currentPage - 1);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [currentPage, scrollToPage]);
+
+  // ── Wheel / Touchpad scroll with high sensitivity ──
   useEffect(() => {
     const scrollEl = scrollRef.current;
     if (!scrollEl) return;
 
-    const SCROLL_SENSITIVITY = 2.5; // multiplier for faster scrolling
-
     const forwardWheel = (e: WheelEvent) => {
-      // Only block native scroll forwarding if the user is actively drawing
       if (isDrawing.current) return;
       e.preventDefault();
+
+      // deltaMode: 0 = pixels (mouse wheel/trackpad), 1 = lines, 2 = pages
+      // Touchpads report deltaMode=0 with small deltaY values (~3-10px per tick)
+      // Mouse wheels report deltaMode=0 with larger deltaY (~100px) or deltaMode=1
+      let multiplier: number;
+      if (e.deltaMode === 1) {
+        // Line mode (some mice) — each "line" maps to ~40px
+        multiplier = 40;
+      } else if (e.deltaMode === 2) {
+        // Page mode — each "page" maps to scrollEl height
+        multiplier = scrollEl.clientHeight;
+      } else {
+        // Pixel mode — touchpad gives small values, boost them significantly
+        // Detect touchpad: small absolute deltaY values (< 50px) indicate trackpad
+        const isTouchpad = Math.abs(e.deltaY) < 50 && !e.ctrlKey;
+        multiplier = isTouchpad ? 5 : 2; // 5x boost for touchpad, 2x for mouse wheel
+      }
+
       scrollEl.scrollBy({
-        top: e.deltaY * SCROLL_SENSITIVITY,
-        left: e.deltaX * SCROLL_SENSITIVITY,
+        top: e.deltaY * multiplier,
+        left: e.deltaX * multiplier,
         behavior: 'auto',
       });
     };
 
-    // Listen on the whole page so both the canvas and overlay are covered
     window.addEventListener("wheel", forwardWheel, { passive: false });
     return () => window.removeEventListener("wheel", forwardWheel);
   }, []);
 
   useEffect(() => {
-    // Load PDF.js script dynamically
     const script = document.createElement("script")
     script.src = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"
     script.onload = () => {
@@ -158,7 +188,6 @@ export default function AiLegalContractResearchPage() {
         if (!container) return;
         container.innerHTML = "";
         
-        // Render pages sequentially to ensure order and full loading
         for (let i = 1; i <= pdf.numPages; i++) {
           const page = await pdf.getPage(i);
           const viewport = page.getViewport({ scale: 2.0 });
@@ -191,7 +220,6 @@ export default function AiLegalContractResearchPage() {
         ${isHighlightMode ? 'body * { cursor: none !important; }' : ''}
       `}</style>
 
-      {/* Standard Portfolio Cursor OR Custom Highlighter Cursor */}
       {!isHighlightMode && <CustomCursor />}
       {isHighlightMode && (
         <div 
@@ -208,24 +236,30 @@ export default function AiLegalContractResearchPage() {
       )}
 
       <div className="h-screen bg-white dark:bg-zinc-950 flex flex-col selection:bg-[#F59E9E]/30 relative overflow-hidden font-inter">
-        {/* Smart Branded Toolbar */}
+        
+        {/* ── Smart Branded Toolbar ── */}
         <motion.div 
           initial={false}
           animate={{ y: isVisible ? 0 : -100 }}
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="w-full z-50 fixed top-0 border-b border-[#F59E9E]/20 bg-[#F59E9E] shadow-[0_4px_20px_rgba(245,158,158,0.15)]"
         >
-          <div className="flex items-center justify-between px-6 md:px-10 py-4">
-            {/* Left: Back Button & Context */}
-            <div className="flex items-center gap-6">
-              <Link href="/work" className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center cursor-pointer hover:bg-white hover:text-[#F59E9E] transition-all duration-300 group shadow-sm border border-white/10" title="Back to Work">
-                <ArrowLeft size={18} strokeWidth={3} className="text-white group-hover:text-[#F59E9E] transition-colors" />
+          {/* ── DESKTOP & TABLET (md+) layout ── */}
+          <div className="hidden sm:flex items-center justify-between px-4 md:px-10 py-3 md:py-4">
+            {/* Left: Back + Title */}
+            <div className="flex items-center gap-3 md:gap-6 min-w-0">
+              <Link 
+                href="/work" 
+                className="w-9 h-9 md:w-10 md:h-10 rounded-xl bg-white/20 flex items-center justify-center cursor-pointer hover:bg-white hover:text-[#F59E9E] transition-all duration-300 group shadow-sm border border-white/10 shrink-0" 
+                title="Back to Work"
+              >
+                <ArrowLeft size={16} strokeWidth={3} className="text-white group-hover:text-[#F59E9E] transition-colors" />
               </Link>
-              <div className="h-6 w-px bg-white/20 hidden sm:block" />
-              <div className="flex flex-col hidden sm:flex">
-                <span className="text-[10px] font-bold text-white/70 uppercase tracking-[0.2em] mb-0.5">Research</span>
+              <div className="h-5 w-px bg-white/20 shrink-0" />
+              <div className="flex flex-col min-w-0">
+                <span className="text-[9px] md:text-[10px] font-bold text-white/70 uppercase tracking-[0.2em] mb-0.5">Research</span>
                 <h1 
-                  className="text-xl font-bold text-white tracking-tight"
+                  className="text-sm md:text-xl font-bold text-white tracking-tight leading-tight truncate max-w-[200px] md:max-w-none"
                   style={{ fontFamily: "'Cormorant Garamond', serif" }}
                 >
                   AI Legal Contract Review Feature Design
@@ -233,59 +267,113 @@ export default function AiLegalContractResearchPage() {
               </div>
             </div>
 
-            {/* Right: Controls & Navigation */}
-            <div className="flex items-center gap-3">
+            {/* Right: Controls */}
+            <div className="flex items-center gap-2 md:gap-3 shrink-0">
               {/* Page Navigator */}
-              <div className="flex items-center gap-2 bg-white/10 rounded-2xl p-1 px-3 border border-white/10 shadow-inner">
+              <div className="flex items-center gap-1 bg-white/10 rounded-2xl p-1 px-2 md:px-3 border border-white/10 shadow-inner">
                 <button 
                   onClick={() => scrollToPage(currentPage - 1)}
                   disabled={currentPage <= 1}
-                  className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
-                  title="Previous Page"
+                  className="p-1.5 md:p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
+                  title="Previous Page (↑)"
                 >
-                  <ArrowLeft size={16} strokeWidth={3} className="rotate-90" />
+                  <ChevronUp size={14} strokeWidth={3} />
                 </button>
-                <span className="text-[10px] font-black text-white uppercase tracking-widest min-w-[70px] text-center">
+                <span className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-widest min-w-[50px] md:min-w-[70px] text-center">
                   {currentPage} <span className="opacity-40">/</span> {totalPages}
                 </span>
                 <button 
                   onClick={() => scrollToPage(currentPage + 1)}
                   disabled={currentPage >= totalPages}
-                  className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
-                  title="Next Page"
+                  className="p-1.5 md:p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer disabled:opacity-30 disabled:pointer-events-none"
+                  title="Next Page (↓)"
                 >
-                  <ArrowLeft size={16} strokeWidth={3} className="-rotate-90" />
+                  <ChevronDown size={14} strokeWidth={3} />
                 </button>
               </div>
 
-              {/* Main Controls Group */}
-              <div className="flex items-center gap-2 bg-white/10 rounded-2xl p-1 px-3 border border-white/10 shadow-inner">
-                <button onClick={handleZoomOut} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm" title="Zoom Out">
-                  <ZoomOut size={18} strokeWidth={2.5} />
+              {/* Zoom + Highlight Controls */}
+              <div className="flex items-center gap-1 md:gap-2 bg-white/10 rounded-2xl p-1 px-2 md:px-3 border border-white/10 shadow-inner">
+                <button onClick={handleZoomOut} className="p-1.5 md:p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer" title="Zoom Out">
+                  <ZoomOut size={15} strokeWidth={2.5} />
                 </button>
-                <span className="text-[11px] font-mono font-black w-10 text-center text-white">{Math.round(zoom * 100)}%</span>
-                <button onClick={handleZoomIn} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm" title="Zoom In">
-                  <ZoomIn size={18} strokeWidth={2.5} />
+                <span className="text-[10px] md:text-[11px] font-mono font-black w-8 md:w-10 text-center text-white">{Math.round(zoom * 100)}%</span>
+                <button onClick={handleZoomIn} className="p-1.5 md:p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer" title="Zoom In">
+                  <ZoomIn size={15} strokeWidth={2.5} />
                 </button>
                 
-                <div className="w-px h-4 bg-white/20 mx-1" />
+                <div className="w-px h-4 bg-white/20 mx-0.5 md:mx-1" />
 
                 <button 
                   onClick={() => setIsHighlightMode(!isHighlightMode)}
-                  className={`p-2 rounded-xl transition-all cursor-pointer shadow-none hover:shadow-sm ${
+                  className={`p-1.5 md:p-2 rounded-xl transition-all cursor-pointer ${
                     isHighlightMode ? "bg-white text-[#F59E9E]" : "hover:bg-white/20 text-white"
                   }`}
                   title="Toggle Highlighter"
                 >
-                  <Highlighter size={18} strokeWidth={2.5} />
+                  <Highlighter size={15} strokeWidth={2.5} />
                 </button>
 
                 {strokes.length > 0 && (
-                  <button onClick={() => { setStrokes([]); setCurrentStrokeState([]); }} className="p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer shadow-none hover:shadow-sm ml-1" title="Clear Highlights">
-                    <Eraser size={18} strokeWidth={2.5} />
+                  <button onClick={() => { setStrokes([]); setCurrentStrokeState([]); }} className="p-1.5 md:p-2 hover:bg-white/20 rounded-xl transition-all text-white/80 hover:text-white cursor-pointer ml-0.5" title="Clear Highlights">
+                    <Eraser size={15} strokeWidth={2.5} />
                   </button>
                 )}
               </div>
+            </div>
+          </div>
+
+          {/* ── MOBILE (< sm) layout: 2-row compact ── */}
+          <div className="flex sm:hidden flex-col">
+            {/* Row 1: Back + title + page counter */}
+            <div className="flex items-center justify-between px-3 pt-3 pb-1.5">
+              <div className="flex items-center gap-2 min-w-0">
+                <Link 
+                  href="/work" 
+                  className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center cursor-pointer hover:bg-white transition-all group shrink-0"
+                >
+                  <ArrowLeft size={14} strokeWidth={3} className="text-white group-hover:text-[#F59E9E] transition-colors" />
+                </Link>
+                <div className="flex flex-col min-w-0">
+                  <span className="text-[8px] font-bold text-white/60 uppercase tracking-widest leading-none">Research</span>
+                  <span className="text-[11px] font-bold text-white truncate leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                    AI Legal Contract Review
+                  </span>
+                </div>
+              </div>
+              {/* Page nav on mobile row 1 */}
+              <div className="flex items-center gap-1 bg-white/10 rounded-xl p-0.5 px-2 border border-white/10 shrink-0">
+                <button onClick={() => scrollToPage(currentPage - 1)} disabled={currentPage <= 1} className="p-1 hover:bg-white/20 rounded-lg transition-all text-white/80 disabled:opacity-30 disabled:pointer-events-none">
+                  <ChevronUp size={12} strokeWidth={3} />
+                </button>
+                <span className="text-[9px] font-black text-white min-w-[36px] text-center">{currentPage} / {totalPages}</span>
+                <button onClick={() => scrollToPage(currentPage + 1)} disabled={currentPage >= totalPages} className="p-1 hover:bg-white/20 rounded-lg transition-all text-white/80 disabled:opacity-30 disabled:pointer-events-none">
+                  <ChevronDown size={12} strokeWidth={3} />
+                </button>
+              </div>
+            </div>
+            {/* Row 2: Zoom + Highlight controls */}
+            <div className="flex items-center justify-center gap-2 pb-2.5 px-3">
+              <div className="flex items-center gap-1 bg-white/10 rounded-xl p-0.5 px-2 border border-white/10">
+                <button onClick={handleZoomOut} className="p-1.5 hover:bg-white/20 rounded-lg transition-all text-white/80">
+                  <ZoomOut size={13} strokeWidth={2.5} />
+                </button>
+                <span className="text-[10px] font-mono font-black w-7 text-center text-white">{Math.round(zoom * 100)}%</span>
+                <button onClick={handleZoomIn} className="p-1.5 hover:bg-white/20 rounded-lg transition-all text-white/80">
+                  <ZoomIn size={13} strokeWidth={2.5} />
+                </button>
+              </div>
+              <button 
+                onClick={() => setIsHighlightMode(!isHighlightMode)}
+                className={`p-2 rounded-xl transition-all ${isHighlightMode ? "bg-white text-[#F59E9E]" : "bg-white/10 text-white border border-white/10"}`}
+              >
+                <Highlighter size={13} strokeWidth={2.5} />
+              </button>
+              {strokes.length > 0 && (
+                <button onClick={() => { setStrokes([]); setCurrentStrokeState([]); }} className="p-2 bg-white/10 rounded-xl text-white/80 border border-white/10">
+                  <Eraser size={13} strokeWidth={2.5} />
+                </button>
+              )}
             </div>
           </div>
         </motion.div>
@@ -322,13 +410,11 @@ export default function AiLegalContractResearchPage() {
                 onPointerCancel={handlePointerUp}
                 onPointerLeave={handlePointerUp}
                 onWheel={(e) => {
-                  // Only eat the wheel event if actively drawing; otherwise let it bubble to the window listener
                   if (!isDrawing.current) return;
                   e.stopPropagation();
                 }}
               >
                 <svg className="w-full h-full pointer-events-none overflow-visible">
-                  {/* Render existing strokes */}
                   {strokes.map((stroke, i) => (
                     <path 
                       key={`stroke-${i}`} 
@@ -342,7 +428,6 @@ export default function AiLegalContractResearchPage() {
                       style={{ mixBlendMode: 'multiply' }}
                     />
                   ))}
-                  {/* Render current active stroke */}
                   {currentStrokeState.length > 0 && (
                     <path 
                       d={generateSvgPath(currentStrokeState)} 
