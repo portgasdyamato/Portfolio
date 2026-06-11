@@ -14,6 +14,12 @@ function ModelViewer({ url, scale = 1, rotationSpeed = 1, floatIntensity = 1 }: 
   const group = useRef<any>(null)
 
   useEffect(() => {
+    scene.traverse((child: any) => {
+      if (child.isMesh) {
+        const originalMap = child.material.map
+        child.material = new THREE.MeshBasicMaterial({ map: originalMap, color: child.material.color })
+      }
+    })
     const box = new THREE.Box3().setFromObject(scene)
     const center = new THREE.Vector3()
     box.getCenter(center)
@@ -72,9 +78,6 @@ export default function FunFacts() {
                 <div className="absolute inset-0">
                   <Suspense fallback={null}>
                     <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
-                      {/* Minimal lights needed to render standard materials on light background */}
-                      <ambientLight intensity={2.5} />
-                      <directionalLight position={[5, 5, 5]} intensity={1.2} />
                       <OrbitControls enablePan={false} enableZoom={false} makeDefault minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 1.5} />
                       <ModelViewer url={anim.url} scale={anim.scale} rotationSpeed={1.2} floatIntensity={1.5} />
                     </Canvas>
