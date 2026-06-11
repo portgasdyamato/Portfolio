@@ -190,7 +190,31 @@ export default function WorkCta() {
           </div>
 
           {/* ════════════════════════════════════
-              RIGHT COLUMN — Floating Card Deck
+              MOBILE — Horizontal scrollable card row
+          ════════════════════════════════════ */}
+          <div className="flex lg:hidden w-full overflow-x-auto gap-4 pb-4 pt-2 px-2 snap-x snap-mandatory scrollbar-hide">
+            {CARDS.map((card) => (
+              <motion.div
+                key={card.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", stiffness: 200, damping: 20, delay: card.id * 0.1 }}
+                className="snap-center shrink-0 w-[75vw] max-w-[280px] shadow-xl rounded-[16px]"
+              >
+                <Link href="/work" className="block w-full h-auto">
+                  <img
+                    src={card.image}
+                    alt={`Case Study ${card.id}`}
+                    className="w-full h-auto rounded-[16px] object-contain"
+                  />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* ════════════════════════════════════
+              DESKTOP — Floating Card Deck
           ════════════════════════════════════ */}
           <div className="hidden lg:flex relative items-center justify-center min-h-[500px] w-full pointer-events-none">
             
