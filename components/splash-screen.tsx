@@ -103,14 +103,20 @@ function StickyNote({ text, color, delay }: { text: string, color: string, delay
   )
 }
 
-function FigmaIcon({ size, color }: any) {
+function FigmaIcon({ size }: any) {
+  const s = size ?? 18
   return (
-    <svg viewBox="0 0 38 57" width={size} height={size * 1.5}>
-      <path d="M19 28.5a9.5 9.5 0 1 1 0-19H9.5v19H19z" fill={color}/>
-      <path d="M19 47.5a9.5 9.5 0 1 1 0-19H9.5v19H19z" fill={color}/>
-      <path d="M19 47.5a9.5 9.5 0 1 0 0 19 9.5 9.5 0 0 0 0-19z" fill={color}/>
-      <path d="M28.5 28.5a9.5 9.5 0 1 1 0-19 9.5 9.5 0 0 1 0 19z" fill={color}/>
-      <path d="M28.5 47.5a9.5 9.5 0 1 1 0-19 9.5 9.5 0 0 1 0 19z" fill={color}/>
+    <svg viewBox="0 0 38 57" width={s} height={s * 1.5} fill="none" xmlns="http://www.w3.org/2000/svg">
+      {/* Top-left — BG5636 (pink/red) */}
+      <path d="M9.5 0C4.253 0 0 4.253 0 9.5S4.253 19 9.5 19H19V0H9.5z" fill="#F24E1E"/>
+      {/* Top-right — blue */}
+      <path d="M19 0h9.5C33.747 0 38 4.253 38 9.5S33.747 19 28.5 19H19V0z" fill="#FF7262"/>
+      {/* Mid-left — purple */}
+      <path d="M0 28.5C0 23.253 4.253 19 9.5 19H19v19H9.5C4.253 38 0 33.747 0 28.5z" fill="#A259FF"/>
+      {/* Bottom-left — orange */}
+      <path d="M0 47.5C0 42.253 4.253 38 9.5 38H19v9.5C19 52.747 14.747 57 9.5 57S0 52.747 0 47.5z" fill="#0ACF83"/>
+      {/* Center circle — green */}
+      <path d="M38 28.5a9.5 9.5 0 1 1-19 0 9.5 9.5 0 0 1 19 0z" fill="#1ABCFE"/>
     </svg>
   )
 }

@@ -197,7 +197,7 @@ export default function SkillsShowcase() {
         </div>
 
         {/* Animated Expanding Accordion Grid */}
-        <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 w-full h-auto lg:h-[450px] min-h-[600px] sm:min-h-[700px] lg:min-h-0">
+        <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 w-full h-[850px] lg:h-[450px]">
           {interpersonalSkills.map((skill) => {
             const isActive = activeSoft === skill.id;
             

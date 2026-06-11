@@ -87,7 +87,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="relative w-full aspect-[3/4] cursor-pointer group perspective-[1200px] max-w-[200px] xs:max-w-[220px] sm:max-w-full mx-auto sm:mx-0"
+      className="relative w-full aspect-[3/4] cursor-pointer group perspective-[1200px] max-w-[320px] sm:max-w-full mx-auto sm:mx-0"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={() => setIsHovered(!isHovered)}
@@ -232,7 +232,7 @@ export default function Achievements() {
         </div>
 
         {/* ── Flip Card Grid ── */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-5 md:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5 sm:gap-5 md:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
           {achievements.map((item, i) => (
             <div key={item.id} className="w-full mx-auto">
               <MilestoneCard item={item} index={i} />
