@@ -15,7 +15,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   useEffect(() => setMounted(true), [])
 
   // Morph values
-  const yImage = useTransform(sp, [0, 0.6], [0, -60])
+  const yImage = useTransform(sp, [0, 0.6], [0, 0])
   const nameOpacity = useTransform(sp, [0.1, 0.4], [0, 1])
   const nameY = useTransform(sp, [0.1, 0.4], [15, 0])
 
@@ -52,7 +52,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ y: yImage, transformOrigin: "top right" }}
-        className="flex flex-col items-center justify-center h-full pt-8 sm:pt-16 md:pt-20 lg:pt-28 pb-6 sm:pb-8 md:pb-16 relative w-full gap-6 lg:gap-10"
+        className="flex flex-col items-center justify-center h-full pt-8 sm:pt-16 md:pt-20 lg:pt-28 pb-6 sm:pb-8 md:pb-16 relative w-full gap-2 lg:gap-4"
       >
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -74,7 +74,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           />
         </motion.div>
 
-        <div className="flex flex-col items-center mt-3 text-center">
+        <div className="flex flex-col items-center text-center">
           <span className="text-[24px] sm:text-[32px] md:text-[36px] xl:text-[40px] font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Libre Baskerville', serif" }}>
             Sakshi Agrahari.
           </span>
