@@ -52,7 +52,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ y: yImage, transformOrigin: "top right" }}
-        className="flex flex-col items-center justify-center h-full pt-12 sm:pt-16 md:pt-20 lg:pt-24 pb-6 sm:pb-8 md:pb-10 lg:pb-12 relative w-full gap-4"
+        className="flex flex-col items-center justify-between h-full pt-8 sm:pt-16 md:pt-20 lg:pt-24 pb-6 sm:pb-8 md:pb-12 relative w-full"
       >
         <motion.div
           animate={{ y: [0, -20, 0] }}
@@ -61,8 +61,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
             scale: { duration: 0.5, ease: "easeOut" }
           }}
           whileHover={{ scale: 1.05 }}
-          className="rounded-3xl overflow-hidden transition-all duration-500 ease-out"
-          style={{ width: "clamp(120px, 22vw, 340px)" }}
+          className="rounded-3xl overflow-hidden w-full max-w-[140px] sm:max-w-[200px] md:max-w-[260px] lg:max-w-[310px] xl:max-w-[340px] transition-all duration-500 ease-out"
         >
           <Image
             src={pfp}
@@ -75,8 +74,8 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           />
         </motion.div>
 
-        <div className="flex flex-col items-center text-center">
-          <span className="font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "clamp(22px, 3vw, 40px)" }}>
+        <div className="flex flex-col items-center mt-3 text-center">
+          <span className="text-[24px] sm:text-[32px] md:text-[36px] xl:text-[40px] font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Libre Baskerville', serif" }}>
             Sakshi Agrahari.
           </span>
           <motion.div 

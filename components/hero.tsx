@@ -49,11 +49,11 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   // Business Card Morph Elements
   const contactOpacity = useTransform(sp, [0.3, 0.6], [0, 1])
   const contactY = useTransform(sp, [0.3, 0.6], [10, 0])
-  
+
   // Dynamic Spacing to fit into the card when scaled
   const gapContainer = useTransform(sp, [0.1, 0.6], ["1.5rem", "0.75rem"])
-  const gapTitle = useTransform(sp, [0.1, 0.6], ["1rem", "0.25rem"])
-  const gapInner = useTransform(sp, [0.1, 0.6], ["1.5rem", "0.75rem"])
+  const gapTitle = useTransform(sp, [0.1, 0.6], ["0.5rem", "0.15rem"])
+  const gapInner = useTransform(sp, [0.1, 0.6], ["2rem", "0.75rem"])
 
   useEffect(() => {
     setMounted(true)
@@ -68,7 +68,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   }, [])
 
   return (
-    <div className="col-span-1 lg:col-span-8 relative w-full lg:h-full lg:min-h-0" style={{ minHeight: "clamp(340px, 60vh, 750px)" }}>
+    <div className="col-span-1 lg:col-span-8 relative w-full lg:h-full lg:min-h-0" style={{ minHeight: "clamp(380px, 70vh, 800px)" }}>
       {/* Background dot grid - overflow-hidden stays here to clip the background only */}
       <div
         className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit]"
@@ -81,7 +81,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
 
       {/* ─── MAIN CONTENT: single col, type fills space ─── */}
       <div
-        className="relative z-10 flex flex-col justify-center pt-10 pb-8 px-5 sm:pt-14 sm:pb-10 sm:px-8 md:pt-16 md:pb-12 md:px-12 lg:pt-20 lg:pb-14 lg:px-16 gap-0"
+        className="relative z-10 flex flex-col pt-14 pb-6 px-5 sm:pt-18 sm:pb-8 sm:px-8 md:pt-24 md:pb-12 md:px-12 lg:pt-32 lg:pb-16 lg:px-16 gap-0"
         style={{ minHeight: "inherit" }}
       >
 
@@ -105,20 +105,20 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </div>
 
           {/* Headline */}
-          <motion.div style={{ gap: gapContainer }} className="flex flex-col justify-center py-1 sm:py-2 md:py-3">
+          <motion.div style={{ gap: gapContainer }} className="flex flex-col justify-center py-2 sm:py-3 md:py-4">
             <motion.div style={{ gap: gapTitle }} className="flex flex-col">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(34px, 6.5vw, 95px)" }}>
+                <span className="block text-[36px] sm:text-[55px] md:text-[68px] lg:text-[78px] xl:text-[95px] font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   AI Product
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block font-black tracking-tight leading-[0.88] text-[#F59E9E]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(34px, 6.5vw, 95px)" }}>
+                <span className="block text-[36px] sm:text-[55px] md:text-[68px] lg:text-[78px] xl:text-[95px] font-black tracking-tight leading-[0.88] text-[#F59E9E]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif" }}>
                   Designer &
                 </span>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}>
-                <span className="block font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "clamp(30px, 5.8vw, 85px)" }}>
+                <span className="block text-[32px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[85px] font-light italic tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
                   Design Engineer.
                 </span>
               </motion.div>
@@ -153,7 +153,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               {/* Morph-reveal contact info */}
               <motion.div
                 style={{ opacity: contactOpacity, y: contactY }}
-                className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-3 sm:gap-6 md:gap-12 pt-4 sm:pt-5 border-t border-[#1a0a0a]/[0.08]"
+                className="flex flex-col sm:flex-row flex-wrap items-start sm:items-center gap-4 sm:gap-8 md:gap-14 pt-5 sm:pt-6 border-t border-[#1a0a0a]/[0.08]"
               >
                 <div className="flex flex-col gap-1.5">
                   <span className="text-[9px] tracking-[0.3em] text-[#F59E9E] uppercase font-bold">Contact</span>
