@@ -79,12 +79,12 @@ export default function WorkCta() {
       <div className="w-full max-w-[1100px] relative flex flex-col lg:flex-row">
         <BackgroundPath />
 
-        <div className="flex flex-col w-full relative z-20 gap-10 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 w-full relative z-20 gap-10 lg:gap-0">
           
           {/* ════════════════════════════════════
               LEFT COLUMN — Copy & CTA
           ════════════════════════════════════ */}
-          <div className="flex flex-col items-center text-center justify-center p-5 sm:p-8 md:p-10 lg:p-12 w-full max-w-3xl mx-auto z-20">
+          <div className="flex flex-col items-center lg:items-start text-center lg:text-left justify-center p-5 sm:p-8 md:p-10 lg:p-12 lg:pr-6 h-full z-20 w-full max-w-3xl mx-auto lg:mx-0">
             
             {/* Pill badge */}
             <motion.div
@@ -92,7 +92,7 @@ export default function WorkCta() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF7A8A]/10 rounded-full text-[#FF7A8A] font-black tracking-[0.2em] uppercase text-[9px] mb-6"
+              className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF7A8A]/10 rounded-full text-[#FF7A8A] font-black tracking-[0.2em] uppercase text-[9px] mb-6 self-center lg:self-start"
             >
               <Zap size={11} className="text-[#FF7A8A]" fill="currentColor" strokeWidth={0} />
               <span className="leading-none">
@@ -159,7 +159,7 @@ export default function WorkCta() {
               <p className="text-[9px] font-bold tracking-[0.2em] text-[#FF7A8A] uppercase mb-4">
                 What You'll Find
               </p>
-              <div className="flex items-start justify-center w-full gap-2 sm:gap-6 flex-wrap">
+              <div className="flex items-start justify-center lg:justify-between w-full gap-2 sm:gap-6 lg:gap-4 flex-wrap lg:flex-nowrap">
                 {FEATURES.map(({ icon: Icon, label }, i) => (
                   <div key={label} className="flex items-stretch flex-1">
                     <motion.div
@@ -167,7 +167,7 @@ export default function WorkCta() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-                      className="flex flex-col items-center text-center flex-1"
+                      className="flex flex-col items-center lg:items-start text-center lg:text-left flex-1"
                     >
                       {/* Icon circle - aligned at top */}
                       <div className="w-10 h-10 rounded-full bg-white shadow-[0_5px_10px_rgba(0,0,0,0.16)] flex items-center justify-center mb-3">
@@ -190,9 +190,10 @@ export default function WorkCta() {
           </div>
 
           {/* ════════════════════════════════════
+              RIGHT COLUMN / BOTTOM ROW
               Floating Card Deck (All Screens)
           ════════════════════════════════════ */}
-          <div className="flex relative items-center justify-center min-h-[400px] lg:min-h-[500px] w-full pointer-events-none mt-[-2rem] sm:mt-0 z-10">
+          <div className="flex relative items-center justify-center min-h-[400px] lg:min-h-[500px] w-full pointer-events-none mt-[-2rem] lg:mt-0 z-10">
             
             <QuoteDoodle />
 
