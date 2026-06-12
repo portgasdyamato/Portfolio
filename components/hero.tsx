@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import { motion, useMotionValue, useSpring, AnimatePresence, MotionValue, useTransform } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 const TAGS = ["UI/UX Design", "AI Product Design", "Website Development", "Frontend Engineering", "Interaction Designer"]
 
@@ -37,6 +38,7 @@ function Magnetic({ children, className, onClick }: { children: React.ReactNode;
 }
 
 export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<number> }) {
+  const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [tagIdx, setTagIdx] = useState(0)
 
@@ -136,7 +138,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
               {/* Buttons */}
               <div className="flex items-center gap-3 sm:gap-4 flex-wrap mt-1 sm:mt-2">
                 <Magnetic
-                  onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                  onClick={() => router.push("/work")}
                   className="group flex items-center justify-center gap-2 bg-[#1a0a0a] text-white text-[9.5px] sm:text-[10.5px] tracking-[0.25em] font-black uppercase px-7 sm:px-9 py-3 sm:py-4 rounded-full shadow-[0_8px_30px_rgba(26,10,10,0.1)] hover:bg-white hover:text-[#1a0a0a] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(26,10,10,0.15)] transition-all duration-300 min-w-[140px] sm:min-w-[170px] border border-transparent hover:border-[#1a0a0a]/10"
                 >
                   View Work
