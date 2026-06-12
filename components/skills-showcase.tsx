@@ -88,7 +88,7 @@ export default function SkillsShowcase() {
         <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-16 md:mb-24">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/5 dark:bg-white/10 rounded-full text-foreground font-black tracking-[0.2em] uppercase text-[9px] mb-6">
             <Zap size={12} fill="currentColor" strokeWidth={0} />
-            The Toolkit
+            Skills
           </div>
           <h2 className="text-[32px] sm:text-[40px] md:text-[55px] lg:text-[75px] font-bold italic text-[#1a0a0a] leading-[1.05] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
             My Professional <span className="text-[#F59E9E]">Arsenal.</span>
@@ -189,7 +189,7 @@ export default function SkillsShowcase() {
       <div id="inter-personal-skills" className="mt-20 sm:mt-32 md:mt-40 lg:mt-52 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full scroll-mt-32">
         <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-20">
           <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-            Inter-Personal Capabilities
+            Interpersonal Skills
           </h2>
           <p className="mt-2 md:mt-4 text-muted-foreground font-inter text-base md:text-lg">
             Beyond the pixels and code, I focus on the human side of product development.
