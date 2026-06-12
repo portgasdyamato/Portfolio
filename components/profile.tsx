@@ -75,18 +75,18 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
           />
         </motion.div>
 
-        <motion.div 
-          style={{ opacity: nameOpacity, y: nameY }}
-          className="flex flex-col items-center text-center"
-        >
+        <div className="flex flex-col items-center text-center">
           <span className="font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Libre Baskerville', serif", fontSize: "clamp(22px, 3vw, 40px)" }}>
             Sakshi Agrahari.
           </span>
-          <div className="flex flex-col gap-1">
+          <motion.div 
+            style={{ opacity: nameOpacity, y: nameY }}
+            className="flex flex-col gap-1"
+          >
             <span className="text-[9px] sm:text-[10px] tracking-[0.35em] text-[#F59E9E] uppercase font-bold">UI/UX & AI Product Designer</span>
             <span className="text-[8px] sm:text-[9px] tracking-[0.2em] text-[#1a0a0a]/60 uppercase font-medium">Website Developer • Freelance Specialist</span>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* ─── STATIC ROTATING BADGE (Safe High-Altitude) ─── */}
