@@ -61,7 +61,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
             scale: { duration: 0.5, ease: "easeOut" }
           }}
           whileHover={{ scale: 1.05 }}
-          className="rounded-3xl overflow-hidden w-full max-w-[140px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px] transition-all duration-500 ease-out"
+          className="rounded-3xl overflow-hidden w-full max-w-[180px] sm:max-w-[220px] md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px] transition-all duration-500 ease-out"
         >
           <Image
             src={pfp}
