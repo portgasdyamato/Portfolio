@@ -46,9 +46,9 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
 
-  // Business Card Morph Elements — always visible so they aren't clipped
-  const contactOpacity = useTransform(sp, [0, 0.1], [1, 1])
-  const contactY = useTransform(sp, [0, 0.1], [0, 0])
+  // Business Card Morph Elements — revealed as card shrinks during scroll
+  const contactOpacity = useTransform(sp, [0.3, 0.6], [0, 1])
+  const contactY = useTransform(sp, [0.3, 0.6], [10, 0])
 
   useEffect(() => {
     setMounted(true)
@@ -63,7 +63,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   }, [])
 
   return (
-    <div className="col-span-1 lg:col-span-8 relative w-full lg:h-full lg:min-h-0" style={{ minHeight: "clamp(340px, 60vh, 750px)" }}>
+    <div className="col-span-1 lg:col-span-8 relative w-full lg:h-full lg:min-h-0" style={{ minHeight: "clamp(380px, 70vh, 800px)" }}>
       {/* Background dot grid - overflow-hidden stays here to clip the background only */}
       <div
         className="absolute inset-0 pointer-events-none overflow-hidden rounded-[inherit]"
@@ -76,7 +76,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
 
       {/* ─── MAIN CONTENT: single col, type fills space ─── */}
       <div
-        className="relative z-10 flex flex-col justify-center pt-10 pb-8 px-5 sm:pt-14 sm:pb-10 sm:px-8 md:pt-16 md:pb-12 md:px-12 lg:pt-20 lg:pb-14 lg:px-16 gap-0"
+        className="relative z-10 flex flex-col justify-center pt-14 pb-6 px-5 sm:pt-18 sm:pb-8 sm:px-8 md:pt-24 md:pb-10 md:px-12 lg:pt-28 lg:pb-12 lg:px-16 gap-0"
         style={{ minHeight: "inherit" }}
       >
 
@@ -100,7 +100,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </div>
 
           {/* Headline */}
-          <div className="flex flex-col justify-center py-1 sm:py-2 md:py-3 gap-2 sm:gap-3 md:gap-4">
+          <div className="flex flex-col justify-center py-2 sm:py-3 md:py-4 gap-3 sm:gap-5 md:gap-6">
             <div className="flex flex-col gap-1 md:gap-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}>
                 <span className="block font-black tracking-tight leading-[0.88] text-[#1a0a0a]" style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", fontSize: "clamp(34px, 6.5vw, 95px)" }}>
@@ -121,7 +121,7 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
 
             <motion.div
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.4 }}
-              className="flex flex-col gap-3 sm:gap-4 md:gap-6 max-w-xl"
+              className="flex flex-col gap-4 sm:gap-5 md:gap-7 max-w-xl"
             >
               <p className="text-[#1a0a0a]/80 font-medium text-sm sm:text-base leading-relaxed tracking-wide">
                 I design and build AI-powered digital products, combining UX design, code, and intelligent systems with a human-centric touch to create meaningful, intuitive experiences.
