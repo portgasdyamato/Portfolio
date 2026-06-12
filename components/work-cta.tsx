@@ -79,12 +79,12 @@ export default function WorkCta() {
       <div className="w-full max-w-[1100px] relative flex flex-col lg:flex-row">
         <BackgroundPath />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 w-full relative z-20">
+        <div className="flex flex-col w-full relative z-20 gap-10 lg:gap-16">
           
           {/* ════════════════════════════════════
               LEFT COLUMN — Copy & CTA
           ════════════════════════════════════ */}
-          <div className="flex flex-col justify-center p-5 sm:p-8 md:p-10 lg:p-12 lg:pr-6 h-full">
+          <div className="flex flex-col items-center text-center justify-center p-5 sm:p-8 md:p-10 lg:p-12 w-full max-w-3xl mx-auto z-20">
             
             {/* Pill badge */}
             <motion.div
@@ -92,7 +92,7 @@ export default function WorkCta() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF7A8A]/10 rounded-full text-[#FF7A8A] font-black tracking-[0.2em] uppercase text-[9px] mb-6 self-start"
+              className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF7A8A]/10 rounded-full text-[#FF7A8A] font-black tracking-[0.2em] uppercase text-[9px] mb-6"
             >
               <Zap size={11} className="text-[#FF7A8A]" fill="currentColor" strokeWidth={0} />
               <span className="leading-none">
@@ -120,7 +120,7 @@ export default function WorkCta() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2, ease: "easeOut" }}
-              className="mt-4 lg:mt-5 text-[14px] text-zinc-500 leading-[1.6] max-w-[380px]"
+              className="mt-4 lg:mt-5 text-[14px] text-zinc-500 leading-[1.6] max-w-[480px]"
             >
               Explore case studies, AI-native product experiences, design systems, and frontend builds crafted from research to real-world execution.
             </motion.p>
@@ -159,7 +159,7 @@ export default function WorkCta() {
               <p className="text-[9px] font-bold tracking-[0.2em] text-[#FF7A8A] uppercase mb-4">
                 What You'll Find
               </p>
-              <div className="flex items-start justify-between w-full gap-2 sm:gap-4">
+              <div className="flex items-start justify-center w-full gap-2 sm:gap-6 flex-wrap">
                 {FEATURES.map(({ icon: Icon, label }, i) => (
                   <div key={label} className="flex items-stretch flex-1">
                     <motion.div
@@ -167,7 +167,7 @@ export default function WorkCta() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-                      className="flex flex-col items-start justify-start flex-1"
+                      className="flex flex-col items-center text-center flex-1"
                     >
                       {/* Icon circle - aligned at top */}
                       <div className="w-10 h-10 rounded-full bg-white shadow-[0_5px_10px_rgba(0,0,0,0.16)] flex items-center justify-center mb-3">
@@ -181,7 +181,7 @@ export default function WorkCta() {
                     
                     {/* Vertical Divider centered vertically relative to the icons */}
                     {i < FEATURES.length - 1 && (
-                      <div className="w-[1px] h-8 bg-black/[0.06] self-start mt-1 mx-2 lg:mx-4" />
+                      <div className="hidden sm:block w-[1px] h-8 bg-black/[0.06] self-start mt-1 mx-2 lg:mx-4" />
                     )}
                   </div>
                 ))}
@@ -190,33 +190,9 @@ export default function WorkCta() {
           </div>
 
           {/* ════════════════════════════════════
-              MOBILE — Vertically stacked cards
+              Floating Card Deck (All Screens)
           ════════════════════════════════════ */}
-          <div className="flex lg:hidden flex-col items-center w-full gap-5 pt-2 px-4">
-            {CARDS.map((card) => (
-              <motion.div
-                key={card.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 200, damping: 22, delay: card.id * 0.12 }}
-                className="w-full max-w-[340px] shadow-lg rounded-[16px]"
-              >
-                <Link href="/work" className="block w-full h-auto">
-                  <img
-                    src={card.image}
-                    alt={`Case Study ${card.id}`}
-                    className="w-full h-auto rounded-[16px] object-contain"
-                  />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* ════════════════════════════════════
-              DESKTOP — Floating Card Deck
-          ════════════════════════════════════ */}
-          <div className="hidden lg:flex relative items-center justify-center min-h-[500px] w-full pointer-events-none">
+          <div className="flex relative items-center justify-center min-h-[400px] lg:min-h-[500px] w-full pointer-events-none mt-[-2rem] sm:mt-0 z-10">
             
             <QuoteDoodle />
 
