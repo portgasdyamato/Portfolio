@@ -127,12 +127,12 @@ export default function MorphingHero() {
           }}
           className="w-full h-auto lg:h-full relative overflow-hidden flex items-center"
         >
-          <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-8 xl:px-16 max-w-8xl min-h-full py-12 sm:py-16 lg:py-0 flex items-center relative" style={{ transform: "translateZ(50px)" }}>
+          <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-8 xl:px-16 max-w-8xl min-h-full py-8 sm:py-12 lg:py-0 flex items-center relative" style={{ transform: "translateZ(50px)" }}>
             <div className="hidden lg:flex absolute top-[25vh] bottom-[25vh] left-[65%] w-[2px] pointer-events-none z-0 flex-row">
               <div className="h-full w-[1px] bg-white opacity-80" />
               <div className="h-full w-[1px] bg-[#1a0a0a]/[0.06]" />
             </div>
-            <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] lg:grid-cols-12 flex-1 gap-4 sm:gap-6 md:gap-8 lg:gap-8 w-full min-h-full items-start md:items-center py-2 sm:py-6 md:py-12 pointer-events-auto relative z-10">
+            <section className="grid grid-cols-1 md:grid-cols-[3fr_2fr] lg:grid-cols-12 flex-1 gap-4 sm:gap-6 md:gap-8 lg:gap-8 w-full min-h-full items-center py-2 sm:py-4 md:py-8 pointer-events-auto relative z-10">
               <Hero scrollProgress={sp} />
               <Profile scrollProgress={sp} />
             </section>

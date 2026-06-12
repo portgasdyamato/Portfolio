@@ -190,17 +190,17 @@ export default function WorkCta() {
           </div>
 
           {/* ════════════════════════════════════
-              MOBILE — Horizontal scrollable card row
+              MOBILE — Vertically stacked cards
           ════════════════════════════════════ */}
-          <div className="flex lg:hidden w-full overflow-x-auto gap-4 pb-4 pt-2 px-2 snap-x snap-mandatory scrollbar-hide">
+          <div className="flex lg:hidden flex-col items-center w-full gap-5 pt-2 px-4">
             {CARDS.map((card) => (
               <motion.div
                 key={card.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ type: "spring", stiffness: 200, damping: 20, delay: card.id * 0.1 }}
-                className="snap-center shrink-0 w-[75vw] max-w-[280px] shadow-xl rounded-[16px]"
+                transition={{ type: "spring", stiffness: 200, damping: 22, delay: card.id * 0.12 }}
+                className="w-full max-w-[340px] shadow-lg rounded-[16px]"
               >
                 <Link href="/work" className="block w-full h-auto">
                   <img
