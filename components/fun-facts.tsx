@@ -43,7 +43,7 @@ const animals = [
 
 const driftingIcons = [
   { id: "sketching", icon: PenTool, x: "35%", y: "8%", dur: 5, delay: 0, desc: "Doodling and sketching my ideas." },
-  { id: "singing", icon: Mic2, x: "52%", y: "38%", dur: 6, delay: 1, desc: "Practicing vocals and singing." },
+  { id: "singing", icon: Mic2, x: "52%", y: "38%", dur: 6, delay: 1, desc: "Guitar playing and singing." },
   { id: "philosophy", icon: HelpCircle, x: "42%", y: "62%", dur: 4, delay: 0.5, desc: "Exploring philosophy and new places." },
   { id: "retro", icon: Clock, x: "65%", y: "18%", dur: 7, delay: 0.2, desc: "Collecting antique/retro items." },
 ]
