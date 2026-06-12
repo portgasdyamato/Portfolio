@@ -17,7 +17,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
   // Morph values
   const yImage = useTransform(sp, [0, 0.6], [0, 0])
   const nameOpacity = useTransform(sp, [0.1, 0.4], [0, 1])
-  const nameY = useTransform(sp, [0.1, 0.4], [15, 0])
+  const nameY = useTransform(sp, [0.1, 0.4], [0, 0])
 
   return (
     <div className="col-span-1 lg:col-span-4 relative h-full w-full">
@@ -52,16 +52,16 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3, duration: 0.5 }}
         style={{ y: yImage, transformOrigin: "top right" }}
-        className="flex flex-col items-center justify-center h-full pt-8 sm:pt-20 md:pt-28 lg:pt-36 pb-6 sm:pb-8 md:pb-16 relative w-full gap-2 lg:gap-4"
+        className="flex flex-col items-center justify-center h-full pt-8 sm:pt-16 md:pt-20 lg:pt-24 pb-6 sm:pb-8 md:pb-16 relative w-full gap-1 lg:gap-3"
       >
         <motion.div
-          animate={{ y: [0, -20, 0] }}
+          animate={{ y: [0, -15, 0] }}
           transition={{ 
             y: { repeat: Infinity, duration: 5, ease: "easeInOut" },
             scale: { duration: 0.5, ease: "easeOut" }
           }}
           whileHover={{ scale: 1.05 }}
-          className="rounded-3xl overflow-hidden w-full max-w-[140px] sm:max-w-[200px] md:max-w-[260px] lg:max-w-[310px] xl:max-w-[340px] transition-all duration-500 ease-out"
+          className="rounded-3xl overflow-hidden w-full max-w-[140px] sm:max-w-[200px] md:max-w-[240px] lg:max-w-[280px] xl:max-w-[300px] transition-all duration-500 ease-out"
         >
           <Image
             src={pfp}
