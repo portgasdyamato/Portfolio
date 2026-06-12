@@ -199,7 +199,7 @@ export default function WorkCta() {
 
             {/* Circular Ring around the cards */}
             {/* Circular Ring around the cards */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible z-0 -translate-x-6 sm:-translate-x-10 lg:-translate-x-14 scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-center">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-visible z-0 translate-x-2 sm:-translate-x-10 lg:-translate-x-14 scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-center">
               <svg
                 className="w-[620px] h-[400px] opacity-95"
                 viewBox="0 0 620 400"
@@ -258,7 +258,7 @@ export default function WorkCta() {
             </div>
 
             {/* Wrapper to handle translate-x and translate-y without Framer Motion override */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 -translate-x-6 sm:-translate-x-10 lg:-translate-x-14 -translate-y-4 sm:-translate-y-6 lg:-translate-y-8 scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-center">
+            <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 translate-x-2 sm:-translate-x-10 lg:-translate-x-14 -translate-y-4 sm:-translate-y-6 lg:-translate-y-8 scale-[0.65] sm:scale-[0.8] lg:scale-100 origin-center">
               <motion.div
                 animate={{ y: [-6, 6, -6] }}
                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
