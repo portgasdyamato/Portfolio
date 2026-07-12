@@ -61,8 +61,8 @@ export default function CustomCursor() {
         style={{
           x: smoothX,
           y: smoothY,
-          marginLeft: -10,
-          marginTop: -10,
+          marginLeft: -16,
+          marginTop: -16,
           willChange: "transform",
         }}
         animate={{
@@ -77,7 +77,7 @@ export default function CustomCursor() {
         }}
       >
         {/* Custom Unusual Vector Shape (4-Point Star) */}
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 0C12 0 12 10.5 24 12C12 13.5 12 24 12 24C12 24 12 13.5 0 12C12 10.5 12 0 12 0Z" />
         </svg>
       </motion.div>

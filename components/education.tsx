@@ -133,9 +133,10 @@ export default function Education() {
     if (!containerRef.current) return;
     const observer = new ResizeObserver(entries => {
       for (let entry of entries) {
+        const target = entry.target as HTMLElement;
         setDimensions({
-          width: entry.contentRect.width,
-          height: entry.contentRect.height
+          width: target.offsetWidth,
+          height: target.offsetHeight
         });
       }
     });
@@ -145,9 +146,14 @@ export default function Education() {
 
   const pathPoints = educationJourney.map((_, i) => {
     const isMobile = dimensions.width < 768; // standard md breakpoint
+    // On md and above, padding is px-24 (96px). Folder is 280px wide. Center is 140px.
+    const mdPadding = 96;
+    const folderCenterOffset = 140;
+    const xOffset = mdPadding + folderCenterOffset; // 236
+    
     const x = isMobile 
       ? dimensions.width * 0.5 
-      : (i % 2 === 0 ? dimensions.width * 0.25 : dimensions.width * 0.75);
+      : (i % 2 === 0 ? xOffset : dimensions.width - xOffset);
     const y = (i + 0.5) * (dimensions.height / educationJourney.length);
     return `${x} ${y}`;
   });
