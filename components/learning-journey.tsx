@@ -171,7 +171,7 @@ function JourneyCard({
                      <div className="w-8 h-8 md:w-9 md:h-9 rounded-xl bg-[#1a0a0a] flex items-center justify-center text-white shadow-md">
                         <item.icon size={15} strokeWidth={1.5} />
                      </div>
-                     <span className="text-[9px] md:text-[10px] font-black font-inter text-black/30 dark:text-white/30 uppercase italic">
+                     <span className="text-[9px] md:text-[10px] font-black font-inter text-black/30 dark:text-white/30 uppercase">
                        {item.date}
                      </span>
                   </div>
@@ -181,9 +181,9 @@ function JourneyCard({
                {/* Typography Section */}
                <div className="space-y-4">
                   <div className="space-y-2">
-                     <h3 className="text-xl md:text-3xl lg:text-4xl font-black tracking-tight text-[#1a0a0a] dark:text-white leading-[0.95] group-hover:text-brand-600 transition-colors" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                     <h3 className="text-xl md:text-3xl lg:text-4xl font-black tracking-tight text-[#1a0a0a] dark:text-white leading-[0.95] group-hover:text-brand-600 transition-colors">
                         {item.level.split(' ').map((word, i) => (
-                           <span key={i} className={cn(i % 2 === 1 ? "italic font-light" : "")}>
+                           <span key={i} className={cn(i % 2 === 1 ? " font-light" : "")}>
                              {word}{' '}
                            </span>
                         ))}

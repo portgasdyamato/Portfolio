@@ -53,7 +53,7 @@ function BoutiqueFolder({ color, tabColor, accent, title, icon: Icon, delay, rot
           <span className="block sm:hidden"><Icon size={14} color={accent} strokeWidth={1.5} /></span>
           <span className="hidden sm:block"><Icon size={22} color={accent} strokeWidth={1.5} /></span>
         </div>
-        <h3 className="text-[10px] sm:text-[14px] font-black italic text-white leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+        <h3 className="text-[10px] sm:text-[14px] font-black text-white leading-tight">
           {title}
         </h3>
         <p className="text-[5px] sm:text-[6px] uppercase tracking-widest text-white/50 font-bold">
@@ -71,19 +71,19 @@ function Polaroid({ src, caption, rotate, delay }: { src: string, caption: strin
       initial={{ opacity: 0, scale: 0.8, y: 20 }}
       animate={{ opacity: 1, scale: 1, y: 0, rotate }}
       transition={{ delay, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="p-2 sm:p-3 pb-6 sm:pb-8 bg-white shadow-[0_12px_45px_rgba(0,0,0,0.08)] flex flex-col gap-1.5 sm:gap-2.5 border border-black/[0.03] transform-gpu w-[90px] sm:w-[130px]"
+      className="p-2 sm:p-3 pb-6 sm:pb-8 bg-white shadow-[0_15px_35px_rgba(0,0,0,0.12)] rounded-2xl flex flex-col gap-1.5 sm:gap-2.5 border-none transform-gpu w-[90px] sm:w-[130px]"
     >
-      <div className="aspect-square bg-[#f8f8f8] overflow-hidden relative border border-black/[0.02] rounded-sm">
+      <div className="aspect-square bg-[#f8f8f8] overflow-hidden relative border border-black/10 rounded-xl">
          <Image 
            src={src} 
            alt={caption}
            fill
-           className="object-cover mix-blend-multiply opacity-90"
+           className="object-cover mix-blend-multiply opacity-95"
            unoptimized
            priority
          />
       </div>
-      <span className="text-[7px] sm:text-[9px] font-bold text-black/25 text-center uppercase tracking-[0.2em]">{caption}</span>
+      <span className="text-[7px] sm:text-[9px] font-bold text-black/80 text-center uppercase tracking-[0.2em]">{caption}</span>
     </motion.div>
   )
 }
@@ -237,14 +237,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       <motion.div 
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 4.5, ease: "easeInOut" }}
-        className="absolute bottom-[12%] sm:bottom-[28%] right-[8%] sm:right-[22%] z-20"
+        className="absolute bottom-[5%] sm:bottom-[15%] right-[2%] sm:right-[12%] z-20"
       >
         <Image 
           src="/deer.gif" 
           alt="deer"
-          width={144} 
-          height={144} 
-          className="w-24 sm:w-36 drop-shadow-2xl opacity-90" 
+          width={200} 
+          height={200} 
+          className="w-32 sm:w-48 drop-shadow-2xl opacity-90" 
           unoptimized
           priority
         />
@@ -272,8 +272,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                   initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                   animate={{ opacity: progress > 10 + i * 5 ? 1 : 0, y: progress > 10 + i * 5 ? 0 : 30, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-bold italic text-[#1a0a0a] tracking-tight sm:tracking-tighter leading-[0.8]"
-                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  className="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-bold text-[#1a0a0a] tracking-tight sm:tracking-tighter leading-[0.8]"
                 >
                   {char}
                 </motion.span>
@@ -287,8 +286,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                   initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                   animate={{ opacity: progress > 40 + i * 4 ? 1 : 0, y: progress > 40 + i * 4 ? 0 : 30, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-light italic text-[#F59E9E] tracking-tight sm:tracking-tighter leading-[0.8]"
-                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  className="text-[60px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-light text-[#F59E9E] tracking-tight sm:tracking-tighter leading-[0.8]"
                 >
                   {char}
                 </motion.span>

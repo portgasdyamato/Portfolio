@@ -41,7 +41,7 @@ const CARDS = [
 function QuoteDoodle() {
   return (
     <div className="absolute bottom-6 right-6 lg:bottom-12 lg:right-12 flex items-center gap-2 pointer-events-none rotate-[-4deg] z-50">
-      <p className="text-right text-[12px] md:text-[14px] italic text-[#FF7A8A] leading-tight font-semibold tracking-wide" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+      <p className="text-right text-[12px] md:text-[14px] text-[#FF7A8A] leading-tight font-semibold tracking-wide">
         Design that solves.<br/>
         Experiences that scale.<span className="inline-block ml-0.5 text-[#FF7A8A] text-[10px]">✦</span>
       </p>
@@ -106,7 +106,7 @@ export default function WorkCta() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
-              className="text-[34px] sm:text-[40px] lg:text-[50px] font-bold italic leading-[1.1] tracking-tight text-[#111111]"
+              className="text-[34px] sm:text-[40px] lg:text-[50px] font-bold leading-[1.1] tracking-tight text-[#111111]"
               style={{ fontFamily: "'Libre Baskerville', serif" }}
             >
               See Ideas <span className="font-medium text-[#FF7A8A]">Turn</span>

@@ -65,7 +65,7 @@ export default function FunFacts() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-widest uppercase text-[9px] mb-6">
               <Star size={10} fill="currentColor" /> Experimental 3D Interaction
             </div>
-            <h3 className="text-[45px] sm:text-[65px] font-bold italic text-[#1a0a0a] leading-tight mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h3 className="text-[45px] sm:text-[65px] font-bold text-[#1a0a0a] leading-tight mb-6">
               My Favorite Trio.
             </h3>
             <p className="text-[#1a0a0a]/80 text-lg leading-relaxed font-inter">
@@ -74,7 +74,7 @@ export default function FunFacts() {
           </div>
           <div className="flex-1 w-full grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-8 md:gap-8">
             {animals.map((anim) => (
-              <div key={anim.name} className="relative w-full aspect-[4/5] overflow-hidden rounded-[4rem] bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f7f7f7_60%,_#ececec_100%)] border border-[#F59E9E]/10 shadow-2xl">
+              <div key={anim.name} className="relative w-full aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-[radial-gradient(circle_at_center,_#ffffff_0%,_#f7f7f7_60%,_#ececec_100%)] border border-[#F59E9E]/10 shadow-2xl">
                 <div className="absolute inset-0">
                   <Suspense fallback={null}>
                     <Canvas camera={{ position: [0, 0, 7], fov: 45 }} dpr={[1, 2]}>
@@ -112,7 +112,7 @@ export default function FunFacts() {
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
             <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
           </div>
-          <h3 className="text-[40px] font-bold italic text-white leading-[0.85]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h3 className="text-[40px] font-bold text-white leading-[0.85]">
             My Night Window <span className="text-[#F59E9E]">Hobbies.</span>
           </h3>
           <p className="text-white/40 text-[14px] font-inter leading-relaxed">
@@ -203,7 +203,7 @@ export default function FunFacts() {
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[8px] border border-white/5 w-fit">
               <Heart size={8} fill="currentColor" strokeWidth={0} /> The Internal Balance
             </div>
-            <h3 className="text-[70px] font-bold italic text-white leading-[0.8]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h3 className="text-[70px] font-bold text-white leading-[0.8]">
               My Night Window <span className="text-[#F59E9E]">Hobbies.</span>
             </h3>
             <p className="text-white/30 text-lg font-inter leading-relaxed max-w-xl">

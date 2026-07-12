@@ -261,7 +261,6 @@ export default function AiLegalContractResearchPage() {
                 <span className="text-[9px] md:text-[10px] font-bold text-white/70 uppercase tracking-[0.2em] mb-0.5">Research</span>
                 <h1 
                   className="text-sm md:text-xl font-bold text-white tracking-tight leading-tight truncate max-w-[200px] md:max-w-none"
-                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
                 >
                   AI Legal Contract Review Feature Design
                 </h1>
@@ -337,7 +336,7 @@ export default function AiLegalContractResearchPage() {
                 </Link>
                 <div className="flex flex-col min-w-0">
                   <span className="text-[8px] font-bold text-white/60 uppercase tracking-widest leading-none">Research</span>
-                  <span className="text-[11px] font-bold text-white truncate leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <span className="text-[11px] font-bold text-white truncate leading-tight">
                     AI Legal Contract Review
                   </span>
                 </div>

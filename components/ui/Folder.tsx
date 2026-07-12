@@ -30,6 +30,7 @@ interface FolderProps {
   label?: string;
   onClick?: () => void;
   active?: boolean;
+  style?: React.CSSProperties;
 }
 
 const Folder: React.FC<FolderProps> = ({ 
@@ -39,7 +40,8 @@ const Folder: React.FC<FolderProps> = ({
   className = '', 
   label,
   onClick,
-  active
+  active,
+  style
 }) => {
   const [hovered, setHovered] = useState(false);
   const maxItems = 3;
@@ -63,13 +65,13 @@ const Folder: React.FC<FolderProps> = ({
 
   return (
     <div 
-      className={`flex flex-col items-center justify-center group cursor-pointer relative ${className}`}
+      className={`flex flex-col items-center justify-center group cursor-pointer relative ${className} w-full h-full`}
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{ minWidth: 65, height: 60 }}
+      style={style}
     >
-      <div style={{ transform: `scale(${size})`, transformOrigin: 'center' }}>
+      <div className="w-full flex items-center justify-center">
         <div className={`folder ${active ? 'open' : ''}`} style={folderStyle}>
           <div className="folder__back">
             {papers.map((item, i) => (
@@ -82,26 +84,18 @@ const Folder: React.FC<FolderProps> = ({
             ))}
             <div className="folder__front"></div>
             <div className="folder__front right"></div>
+            <div className="folder__label">
+              {label && (
+                <span className={`text-[7px] sm:text-[7.5px] font-black uppercase tracking-[0.1em] transition-all duration-300 ${hovered || active ? 'opacity-90 scale-110' : 'opacity-40'} text-white/90`}>
+                  {label}
+                </span>
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* ── Floating Label BELOW the container ── */}
-      <AnimatePresence>
-        {hovered && label && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 25 }} // Push it outside the main bar
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute left-1/2 -translate-x-1/2 z-[110] px-3 py-1 bg-white/60 backdrop-blur-md rounded-full border border-black/5 shadow-sm whitespace-nowrap"
-          >
-            <span className={`text-[9px] font-black uppercase tracking-[0.25em] ${active ? 'text-[#F59E9E]' : 'text-black/40'}`}>
-              {label}
-            </span>
-          </motion.div>
-        )}
-      </AnimatePresence>
+
 
       {active && (
         <motion.div 

@@ -69,11 +69,8 @@
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Cormorant Garamond', 'Outfit', Georgia, serif;
-    @apply font-bold tracking-tight;
+    @apply font-bold tracking-tight italic;
     line-height: 1.15;
-  }
-  p, span, a, li, label, input, textarea, button {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   }
 }
 
@@ -241,7 +238,7 @@
 }
 
 .animate-scroll-left {
-  animation: scroll-left 40s linear infinite;
+  animation: scroll-left 60s linear infinite;
 }
 
 .animate-scroll-right {

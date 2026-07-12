@@ -1,33 +1,33 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { motion, useSpring } from "framer-motion"
+import { motion, useMotionValue, useSpring } from "framer-motion"
 import { createPortal } from "react-dom"
 
 export default function CustomCursor() {
   const [isMounted, setIsMounted] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
 
-  // Ring follows with gentle lag
-  const ringX = useSpring(0, { damping: 25, stiffness: 250 })
-  const ringY = useSpring(0, { damping: 25, stiffness: 250 })
+  // Direct tracking for the cursor for zero lag
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
 
-  // Dot follows faster — trails inside the ring
-  const dotX = useSpring(0, { damping: 15, stiffness: 450 })
-  const dotY = useSpring(0, { damping: 15, stiffness: 450 })
+  // Smooth springs for a buttery hover transition
+  const smoothX = useSpring(mouseX, { damping: 30, stiffness: 400, mass: 0.1 })
+  const smoothY = useSpring(mouseY, { damping: 30, stiffness: 400, mass: 0.1 })
 
   useEffect(() => {
     setIsMounted(true)
 
     const moveCursor = (e: MouseEvent) => {
-      ringX.set(e.clientX)
-      ringY.set(e.clientY)
-      dotX.set(e.clientX)
-      dotY.set(e.clientY)
+      mouseX.set(e.clientX)
+      mouseY.set(e.clientY)
     }
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement
+      let isHover = false
+
       if (
         target.tagName === "BUTTON" ||
         target.tagName === "A" ||
@@ -36,10 +36,10 @@ export default function CustomCursor() {
         target.getAttribute("role") === "button" ||
         window.getComputedStyle(target).cursor === "pointer"
       ) {
-        setIsHovering(true)
-      } else {
-        setIsHovering(false)
+        isHover = true
       }
+
+      setIsHovering(isHover)
     }
 
     window.addEventListener("mousemove", moveCursor, { passive: true })
@@ -49,35 +49,38 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", moveCursor)
       window.removeEventListener("mouseover", handleMouseOver)
     }
-  }, [ringX, ringY, dotX, dotY])
+  }, [mouseX, mouseY])
 
   if (!isMounted) return null
 
-  // We use a Portal to ensure the cursor is always at the body root, 
-  // bypassing any parent overflow:hidden or transform constraints.
   return createPortal(
-    <div className="fixed inset-0 pointer-events-none z-[999999999] overflow-visible">
-      {/* Outer ring — gentle lag, expands on hover */}
+    <div className="fixed inset-0 pointer-events-none z-[999999999] overflow-visible hidden md:block mix-blend-difference">
+      
       <motion.div
-        className="fixed top-0 left-0 w-10 h-10 -ml-5 -mt-5 rounded-full border border-brand-500/50 pointer-events-none hidden md:block"
+        className="fixed top-0 left-0 pointer-events-none flex items-center justify-center text-white"
         style={{
-          x: ringX,
-          y: ringY,
+          x: smoothX,
+          y: smoothY,
+          marginLeft: -10,
+          marginTop: -10,
+          willChange: "transform",
+        }}
+        animate={{
           scale: isHovering ? 1.8 : 1,
-          backgroundColor: isHovering ? "rgba(245, 158, 158, 0.1)" : "transparent",
-          willChange: "transform",
+          rotate: isHovering ? 45 : 0, // Spins from a + star into an X star on hover!
         }}
-      />
-      {/* Inner dot — faster spring */}
-      <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 -ml-[3px] -mt-[3px] bg-brand-500 rounded-full pointer-events-none hidden md:block"
-        style={{
-          x: dotX,
-          y: dotY,
-          scale: isHovering ? 0.5 : 1,
-          willChange: "transform",
+        transition={{ 
+          type: "spring",
+          damping: 20,
+          stiffness: 300,
+          mass: 0.3
         }}
-      />
+      >
+        {/* Custom Unusual Vector Shape (4-Point Star) */}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C12 0 12 10.5 24 12C12 13.5 12 24 12 24C12 24 12 13.5 0 12C12 10.5 12 0 12 0Z" />
+        </svg>
+      </motion.div>
     </div>,
     document.body
   )

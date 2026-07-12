@@ -1,9 +1,9 @@
 "use client"
 
-import { motion, AnimatePresence } from "framer-motion"
-import { useState, useEffect } from "react"
+import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion"
+import { useState, useEffect, useRef } from "react"
 import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X, Briefcase } from "lucide-react"
-import LearningJourney from "./learning-journey"
+import { FolderCard } from "./folder-card"
 
 const educationJourney = [
   {
@@ -15,7 +15,8 @@ const educationJourney = [
     color: "from-brand-400 to-brand-600",
     gpa: "87%",
     description: "Built strong fundamentals in science and computers. Participated in various competitions and coding camps where my adventurous journey started to unfold.",
-    achievements: ["Top Student", "Science Exhibition Winner", "Dell Code Camp", "Debate Finalist"]
+    achievements: ["Skit Competition (2nd Prize)", "Science Exhibition Winner", "Dell Code Camp", "Singing & Choir"],
+    coverImage: "/mid.png"
   },
   {
     level: "Secondary Education",
@@ -23,10 +24,11 @@ const educationJourney = [
     duration: "2018-2020",
     date: "March 2018-20",
     icon: BookOpen,
-    color: "from-brand-300 to-brand-500",
+    color: "from-brand-500 to-brand-700",
     gpa: "86%",
-    description: "Strong academic foundation with focus on science and early programming.",
-    achievements: ["Top 10% Entrance", "Science Club Member", "Music Choir"]
+    description: "Strong academic foundation with focus on science. Actively participated in international cultural exchange programs.",
+    achievements: ["Learning Buddy (US-India Exchange)", "Lead of Music Choir Group", "Classical Music Competition", "Science Club Member"],
+    coverImage: "/sec.png"
   },
   {
     level: "High School Graduation",
@@ -34,10 +36,11 @@ const educationJourney = [
     duration: "2021-2022",
     date: "2020-22",
     icon: Star,
-    color: "from-brand-400 to-indigo-400",
+    color: "from-brand-400 to-brand-600",
     gpa: "82%",
     description: "Specialized in Computer Science, Physics, Chemistry, and Mathematics.",
-    achievements: ["94% in Computer Science", "Club Leader", "Project Contributor"]
+    achievements: ["Punctuality & Discipline Award", "Library Management System Project", "94% in Computer Science", "Club Leader"],
+    coverImage: "/high.png"
   },
   {
     level: "B.Tech in Computer Science",
@@ -46,9 +49,10 @@ const educationJourney = [
     date: "Expected 2026",
     icon: GraduationCap,
     color: "from-brand-500 to-brand-700",
-    gpa: "8.7 CGPA",
+    gpa: "8.7 CGPA (First Class)",
     description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
-    achievements: ["UI UX Solvathon Winner", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"]
+    achievements: ["UI/UX Solvathon Winner", "State TechFest (2nd Runner-Up)", "Hackathon (2nd Runner-Up)", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"],
+    coverImage: "/btech.png"
   },
   {
     level: "Continuous Professional Growth",
@@ -60,135 +64,174 @@ const educationJourney = [
     gpa: "Pro",
     description: "Expanding horizons through global exposure, internships, open source contributions, leadership fellowships and driving social impact.",
     achievements: [
+        "BrightChamps - Creative Technology Instructor",
         "OpenSphere & LegalBridge - UI/UX Designer & Dev",
-        "Cubble - FullStack Intern",
-        "Harvard Aspire - Leadership Fellow",
+        "Cubble - UI/UX and Web Dev",
         "SheFi - Scholar (Web3)",
-        "GSSoC - Campus Ambassador",
         "Pledge A Smile - Volunteer",
         "Freelance - Digital Product Designer"
-    ]
+    ],
+    coverImage: "/grow.png"
   }
 ]
 
-export default function Education() {
-  const [selected, setSelected] = useState<number | null>(null)
-
-  // Body Scroll Lock
-  useEffect(() => {
-    if (selected !== null) {
-      document.body.style.overflow = "hidden"
-      document.documentElement.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = "unset"
-      document.documentElement.style.overflow = "unset"
-    }
-    return () => {
-      document.body.style.overflow = "unset"
-      document.documentElement.style.overflow = "unset"
-    }
-  }, [selected])
+function FolderTimelineItem({ item, index }: { item: typeof educationJourney[0], index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { amount: 0.2, once: false });
+  
+  const isEven = index % 2 === 0;
+  const direction = isEven ? 'ltr' : 'rtl';
+  const coverImg = item.coverImage || '/cover.png';
 
   return (
-    <div className="py-10 sm:py-16 md:py-20">
-      <div className="w-full">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="mb-8 sm:mb-12 md:mb-16 flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6"
-        >
-          <div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-outfit uppercase tracking-tighter">
-              Learning Trajectory
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-xl font-inter mt-4">
-              My academic journey has been a continuous quest for knowledge and excellence.
-            </p>
-          </div>
-        </motion.div>
+    <div ref={ref} className={`relative z-10 w-full max-w-sm mx-auto ${isEven ? 'md:ml-0 md:mr-auto' : 'md:mr-0 md:ml-auto'}`}>
+      <motion.div
+        initial="hidden"
+        animate={isInView ? "visible" : "hidden"}
+        variants={{
+          hidden: { opacity: 0, x: isEven ? -30 : 30, rotateZ: isEven ? -10 : 15 },
+          visible: { opacity: 1, x: 0, rotateZ: isEven ? -4 : 8 }
+        }}
+        transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
+        className={isEven ? 'origin-bottom-left flex justify-center md:justify-start' : 'origin-bottom-right flex justify-center md:justify-end'}
+      >
+        <FolderCard 
+          items={[item]} 
+          currentIndex={0}
+          onNext={() => {}}
+          onPrev={() => {}}
+          direction={direction}
+          coverImage={coverImg}
+        />
+      </motion.div>
+    </div>
+  );
+}
 
-        <LearningJourney items={educationJourney} onCardClick={setSelected} />
+export default function Education() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
-      </div>
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"]
+  });
 
-      {/* Modal */}
-      <AnimatePresence>
-        {selected !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/99 backdrop-blur-3xl z-[2000] flex items-center justify-center p-4 md:p-8"
-            onClick={() => setSelected(null)}
+  // Calculate the exact Y fractions where the first and last folders are placed.
+  const firstFolderY = 0.5 / educationJourney.length;
+  const lastFolderY = (educationJourney.length - 0.5) / educationJourney.length;
+
+  // Map scroll progress so the line starts drawing EXACTLY when the first folder hits the center,
+  // and finishes EXACTLY when the last folder hits the center.
+  const drawProgress = useTransform(
+    scrollYProgress,
+    [firstFolderY, lastFolderY],
+    [0, 1]
+  );
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        setDimensions({
+          width: entry.contentRect.width,
+          height: entry.contentRect.height
+        });
+      }
+    });
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const pathPoints = educationJourney.map((_, i) => {
+    const isMobile = dimensions.width < 768; // standard md breakpoint
+    const x = isMobile 
+      ? dimensions.width * 0.5 
+      : (i % 2 === 0 ? dimensions.width * 0.25 : dimensions.width * 0.75);
+    const y = (i + 0.5) * (dimensions.height / educationJourney.length);
+    return `${x} ${y}`;
+  });
+  
+  const pathD = dimensions.width > 0 
+    ? `M ${pathPoints[0]} ` + pathPoints.slice(1).map(p => `L ${p}`).join(' ') 
+    : "";
+
+  return (
+    <div className="py-16 sm:py-20 md:py-28 relative">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div className="text-center mb-16 md:mb-24 relative z-10">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="text-[40px] md:text-[60px] lg:text-[70px] font-bold italic text-[#1a0a0a] leading-[1] tracking-tighter"
           >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 30 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 30 }}
-              data-lenis-prevent
-              className="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-background rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-16 relative border border-white/10 shadow-[0_1px_2px_rgba(0,0,0,0.1),0_32px_64px_-16px_rgba(0,0,0,0.5)] scrollbar-hide"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button 
-                className="absolute top-4 right-4 md:top-10 md:right-10 w-10 h-10 md:w-12 md:h-12 glass rounded-full flex items-center justify-center hover:bg-white/10 transition-colors z-[160]"
-                onClick={() => setSelected(null)}
-              >
-                <X size={20} />
-              </button>
+            Some clues about <span className="text-[#F59E9E]">me.</span>
+          </motion.h2>
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: false, margin: "-50px" }}
+            transition={{ duration: 0.8, ease: "circOut", delay: 0.2 }}
+            className="h-[3px] w-32 bg-[#F59E9E] mx-auto mt-6 origin-center shadow-[0_0_8px_rgba(245,158,158,0.8)]"
+          />
+        </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                <div>
-                  <div className={`w-20 h-20 rounded-3xl mb-10 flex items-center justify-center bg-gradient-to-br ${educationJourney[selected].color}`}>
-                    {(() => {
-                      const Icon = educationJourney[selected].icon
-                      return <Icon className="w-10 h-10 text-white" />
-                    })()}
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-bold font-outfit mb-6 uppercase leading-[1.1]">
-                    {educationJourney[selected].level}
-                  </h2>
-                  <div className="flex flex-col gap-4">
-                    <div className="flex items-center gap-3 text-lg font-inter text-muted-foreground">
-                      <MapPin size={20} className="text-brand-500" />
-                      {educationJourney[selected].institution}
-                    </div>
-                    <div className="flex items-center gap-3 text-lg font-inter text-muted-foreground">
-                      <Calendar size={20} className="text-brand-500" />
-                      {educationJourney[selected].duration}
-                    </div>
-                  </div>
+        <div ref={containerRef} className="relative flex flex-col gap-20 sm:gap-24 md:gap-40 py-10 px-0 sm:px-4 md:px-24">
+          <div className="absolute inset-0 z-0 pointer-events-none">
+            {dimensions.width > 0 && (
+              <>
+                {/* Background faint rope - dashed map trail */}
+                <svg className="absolute inset-0 w-full h-full opacity-40">
+                  <path 
+                    d={pathD}
+                    fill="none"
+                    stroke="#000000"
+                    strokeOpacity="0.15"
+                    strokeWidth="4"
+                    strokeDasharray="8 12"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+                
+                {/* Animated fill rope - Glowing string */}
+                <div className="absolute inset-0">
+                  <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(245,158,158,0.8)]">
+                    {/* Outer Glow */}
+                    <motion.path 
+                      d={pathD}
+                      fill="none"
+                      stroke="#F59E9E"
+                      strokeOpacity="0.4"
+                      strokeWidth="10"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ pathLength: drawProgress }}
+                    />
+                    {/* Solid Pink Core */}
+                    <motion.path 
+                      d={pathD}
+                      fill="none"
+                      stroke="#F59E9E"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      style={{ pathLength: drawProgress }}
+                    />
+                  </svg>
                 </div>
+              </>
+            )}
+          </div>
 
-                <div className="flex flex-col">
-                  <div className="px-8 py-6 glass rounded-[2rem] border-brand-500/20 mb-10">
-                    <span className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2 block">Performance</span>
-                    <span className="text-4xl font-black font-outfit text-brand-600">
-                      {educationJourney[selected].gpa}
-                    </span>
-                  </div>
-
-                  <h4 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-6">Distinctions</h4>
-                  <div className="space-y-4">
-                    {educationJourney[selected].achievements.map((ach, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ opacity: 0, x: -10 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-4 p-5 glass rounded-2xl hover:bg-brand-500/5 transition-colors border-white/5"
-                      >
-                        <div className={`w-2 h-2 rounded-full bg-gradient-to-br ${educationJourney[selected].color}`} />
-                        <span className="text-sm font-semibold font-inter">{ach}</span>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          {educationJourney.map((item, index) => (
+            <FolderTimelineItem key={index} item={item} index={index} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }

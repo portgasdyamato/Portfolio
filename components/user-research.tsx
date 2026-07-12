@@ -27,8 +27,7 @@ export default function UserResearch() {
           className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-medium tracking-tight leading-[0.85] flex flex-wrap justify-center items-center gap-x-6 gap-y-2"
         >
           <span 
-            className="text-black/90 dark:text-white/95 italic font-light"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-black/90 dark:text-white/95 font-light"
           >
             Product Design
           </span>
@@ -69,7 +68,6 @@ export default function UserResearch() {
                   
                   <h3 
                     className="text-4xl md:text-5xl font-bold mb-6 text-black/90 dark:text-white/95 leading-tight tracking-tight group-hover:text-[#F59E9E] transition-colors"
-                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
                   >
                     {study.title}
                   </h3>

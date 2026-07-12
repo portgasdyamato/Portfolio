@@ -63,7 +63,7 @@ export default function BookingCall() {
           </div>
 
           <div className="space-y-4 mb-10">
-            <h3 className="text-3xl md:text-4xl font-black text-white leading-[1.05] tracking-tight italic" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h3 className="text-3xl md:text-4xl font-black text-white leading-[1.05] tracking-tight">
               Ready to create <br />
               <span className="opacity-70">something magic?</span>
             </h3>

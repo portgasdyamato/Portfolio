@@ -105,8 +105,7 @@ export default function Contact() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.05] tracking-tight italic mb-3"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-[1.05] tracking-tight mb-3"
           >
             Let's connect and <br />
             <span className="opacity-70">create magic together!</span>
@@ -185,7 +184,7 @@ export default function Contact() {
           transition={{ delay: 1.5 }}
           className="mt-10 md:mt-12 text-center"
         >
-          <p className="text-white/60 italic text-sm font-medium tracking-wide">
+          <p className="text-white/60 text-sm font-medium tracking-wide">
             "Great things happen when creative minds connect!" 🚀
           </p>
         </motion.div>

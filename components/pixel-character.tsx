@@ -106,8 +106,8 @@ const PixelCharacter = () => {
       return "/hah.gif"
     }
     
-    // If user is interacting or showing message, use heh.gif
-    if (isInteracting || showMessage) {
+    // If user is interacting (while locked) or showing message, use heh.gif
+    if ((isInteracting && !isFollowing) || showMessage) {
       return "/heh.gif"
     }
     
@@ -274,7 +274,7 @@ const PixelCharacter = () => {
               }}
               onMouseEnter={() => {
                 setIsInteracting(true)
-                if (!showMessage) setExpression("excited")
+                if (!showMessage && !isFollowing) setExpression("excited")
               }}
               onMouseLeave={() => {
                 setIsInteracting(false)

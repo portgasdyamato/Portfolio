@@ -260,7 +260,7 @@ export default function Scrapbook() {
             <Camera size={12} fill="currentColor" strokeWidth={0} />
             The Scrapbook
           </motion.div>
-          <h2 className="text-[22px] sm:text-[32px] md:text-[45px] lg:text-[55px] font-bold italic text-[#1a0a0a] leading-[1.2] tracking-tight" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+          <h2 className="text-[22px] sm:text-[32px] md:text-[45px] lg:text-[55px] font-bold text-[#1a0a0a] leading-[1.2] tracking-tight" style={{ fontFamily: "'Libre Baskerville', serif" }}>
             Fragments of <span className="text-[#F59E9E]">Caffeine</span> <br className="hidden md:block" /> & Pure <span className="text-black/30">Imagination.</span>
           </h2>
         </div>
@@ -377,7 +377,7 @@ function ScrapWrapper({
             />
           </div>
           {item.caption && (
-            <p className="mt-3 text-center font-handwriting text-[#1a0a0a]/50 text-[9px] md:text-[10px] italic" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+            <p className="mt-3 text-center font-handwriting text-[#1a0a0a]/50 text-[9px] md:text-[10px]" style={{ fontFamily: "'Libre Baskerville', serif" }}>
               {item.caption}
             </p>
           )}
@@ -423,7 +423,7 @@ function ScrapWrapper({
           
           {/* Content with Elegant Serif */}
           <p 
-            className="text-[#1a0a0a]/80 font-medium leading-relaxed tracking-tight text-[12px] md:text-[14px] relative z-10 italic"
+            className="text-[#1a0a0a]/80 font-medium leading-relaxed tracking-tight text-[12px] md:text-[14px] relative z-10"
             style={{ 
               fontFamily: "'Libre Baskerville', serif",
               lineHeight: "1.8"

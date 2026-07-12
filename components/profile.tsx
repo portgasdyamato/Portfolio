@@ -75,7 +75,7 @@ export default function Profile({ scrollProgress }: { scrollProgress?: MotionVal
         </motion.div>
 
         <div className="flex flex-col items-center text-center">
-          <span className="text-[24px] sm:text-[32px] md:text-[36px] xl:text-[40px] font-medium italic text-[#1a0a0a] leading-tight mb-1" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+          <span className="text-[24px] sm:text-[32px] md:text-[36px] xl:text-[40px] font-medium text-[#1a0a0a] leading-tight mb-1 italic" style={{ fontFamily: "'Libre Baskerville', serif" }}>
             Sakshi Agrahari.
           </span>
           <motion.div 

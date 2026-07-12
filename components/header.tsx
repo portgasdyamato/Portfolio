@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Sparkles, Layers, Folder as FolderIcon, Send } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import Folder from './ui/Folder'
+import Dock from './ui/dock'
 
 const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
@@ -64,22 +65,30 @@ export default function Header() {
         className="pointer-events-auto relative"
       >
         {/* ── UNIFIED BOUTIQUE NAV PILL ── */}
-        <div className="flex items-center bg-white/60 backdrop-blur-3xl border border-black/[0.04] p-1.5 sm:p-2 rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.06)] gap-1 sm:gap-2 max-w-fit">
+        <div className="flex items-center bg-white/[0.15] backdrop-blur-2xl border border-white/30 p-1.5 sm:p-2 rounded-full shadow-[inset_0_1px_1px_rgba(255,255,255,0.3),inset_0_-1px_1px_rgba(0,0,0,0.05),0_8px_32px_rgba(0,0,0,0.08)] gap-1 sm:gap-2 max-w-fit">
           
           {/* Main Navigation Folders (Desktop & Tablet) */}
           <nav className="hidden md:flex items-center gap-0">
-            {NAV_ITEMS.map((item) => (
-              <Folder 
-                key={item.id}
-                color={item.color}
-                size={0.65}
-                label={item.label}
-                active={pathname === item.path || (pathname === "/" && item.path === "/#index" && false)}
-                items={[item.icon, item.icon, item.icon]}
-                onClick={() => handleNavClick(item.id, item.path)}
-                className="hover:scale-105 transition-transform"
-              />
-            ))}
+            <Dock 
+              items={NAV_ITEMS.map((item) => ({
+                icon: (
+                  <Folder 
+                    color={item.color}
+                    size={0.7}
+                    active={pathname === item.path}
+                    items={[item.icon, item.icon, item.icon]}
+                    label={item.label}
+                    style={{ minWidth: '100%', height: '100%' }}
+                  />
+                ),
+                label: item.label,
+                onClick: () => handleNavClick(item.id, item.path)
+              }))}
+              panelHeight={48}
+              baseItemSize={52}
+              magnification={76}
+              distance={150}
+            />
           </nav>
 
           {/* Mobile Display Indicator (Tablets/Mid-size) */}

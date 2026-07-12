@@ -125,8 +125,7 @@ export default function FigmaShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight" 
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-[40px] md:text-[60px] lg:text-[75px] font-bold text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight"
           >
             Figma Design <span className="text-[#F59E9E]">Artifacts.</span>
           </motion.h2>
@@ -172,7 +171,7 @@ export default function FigmaShowcase() {
                      {ARTIFACTS[index].name}
                    </h3>
                    <div className="w-20 h-[2px] rounded-full bg-gradient-to-r from-transparent via-brand-500/60 to-transparent mb-8" />
-                   <p className="text-sm md:text-lg font-medium text-foreground/50 max-w-4xl leading-relaxed italic px-6 md:px-12 font-serif opacity-80 decoration-brand-500/10 underline underline-offset-8">
+                   <p className="text-sm md:text-lg font-medium text-foreground/50 max-w-4xl leading-relaxed px-6 md:px-12 font-serif opacity-80 decoration-brand-500/10 underline underline-offset-8">
                      "{ARTIFACTS[index].description}"
                    </p>
                 </div>

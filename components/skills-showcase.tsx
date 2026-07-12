@@ -90,7 +90,7 @@ export default function SkillsShowcase() {
             <Zap size={12} fill="currentColor" strokeWidth={0} />
             Skills
           </div>
-          <h2 className="text-[32px] sm:text-[40px] md:text-[55px] lg:text-[75px] font-bold italic text-[#1a0a0a] leading-[1.05] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="text-[32px] sm:text-[40px] md:text-[55px] lg:text-[75px] font-bold text-[#1a0a0a] leading-[1.05] tracking-tight">
             My Professional <span className="text-[#F59E9E]">Arsenal.</span>
           </h2>
           <p className="max-w-2xl text-muted-foreground mt-4 font-inter text-lg">
@@ -171,7 +171,7 @@ export default function SkillsShowcase() {
                   <div className="absolute top-4 right-4 opacity-20 transition-opacity group-hover:opacity-100">
                     <Icon size={48} color={folder.accent} strokeWidth={1} />
                   </div>
-                  <h3 className={`text-2xl font-black italic tracking-wide mb-1 ${textColor}`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                  <h3 className={`text-2xl font-black  tracking-wide mb-1 ${textColor}`}>
                     {folder.title}
                   </h3>
                   <p className={`text-xs font-inter uppercase tracking-widest opacity-60 font-medium ${textColor}`}>
@@ -188,7 +188,7 @@ export default function SkillsShowcase() {
       {/* 2. Inter-Personal Capabilities Section */}
       <div id="inter-personal-skills" className="mt-20 sm:mt-32 md:mt-40 lg:mt-52 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full scroll-mt-32">
         <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-20">
-          <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white">
             Interpersonal Skills
           </h2>
           <p className="mt-2 md:mt-4 text-muted-foreground font-inter text-base md:text-lg">
@@ -213,12 +213,11 @@ export default function SkillsShowcase() {
               >
                 {/* Large Background Number */}
                 <div 
-                  className={`absolute leading-none font-black italic text-black/[0.03] select-none pointer-events-none transition-all duration-700 ease-in-out ${
+                  className={`absolute leading-none font-black  text-black/[0.03] select-none pointer-events-none transition-all duration-700 ease-in-out ${
                     isActive 
                       ? 'bottom-2 right-4 lg:bottom-4 lg:right-6 text-[80px] lg:text-[140px]' 
                       : 'top-1/2 right-6 -translate-y-1/2 lg:top-auto lg:-translate-y-0 lg:bottom-6 lg:right-1/2 lg:translate-x-1/2 text-[45px] lg:text-[70px]'
-                  }`} 
-                  style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  }`}
                 >
                   {skill.id}
                 </div>
@@ -306,7 +305,7 @@ export default function SkillsShowcase() {
                         <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-8 bg-black/5 border border-white/10`}>
                           <Icon size={32} color={folder.accent} strokeWidth={1.5} />
                         </div>
-                        <h3 className={`text-4xl sm:text-5xl font-black italic tracking-wide mb-4 ${textColor} leading-tight`} style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+                        <h3 className={`text-4xl sm:text-5xl font-black  tracking-wide mb-4 ${textColor} leading-tight`}>
                           {folder.title}
                         </h3>
                         <p className={`text-sm sm:text-base font-inter ${descColor} leading-relaxed`}>

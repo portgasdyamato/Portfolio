@@ -119,7 +119,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             
             {/* Elegant Year Tag (Architectural Detail) */}
             <div className="absolute top-4 right-5 text-right z-10">
-               <span className="text-[14px] font-bold italic text-[#F59E9E] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{item.year}</span>
+               <span className="text-[14px] font-bold text-[#F59E9E] tracking-tight">{item.year}</span>
                <div className="w-8 h-[1px] bg-[#F59E9E]/30 mt-1 ml-auto" />
             </div>
 
@@ -140,7 +140,7 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
                <span className="text-[8px] font-black uppercase tracking-[0.3em] text-[#F59E9E] bg-[#F59E9E]/10 px-2 py-0.5 rounded-sm mb-1">
                  {item.label}
                </span>
-               <h4 className="text-[20px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.1]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+               <h4 className="text-[20px] font-bold text-[#1a0a0a] dark:text-white leading-[1.1]">
                  {item.title}
                </h4>
             </div>
@@ -179,14 +179,14 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             The Story
           </span>
           
-          <h4 className="text-[22px] font-bold italic text-[#1a0a0a] dark:text-white leading-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h4 className="text-[22px] font-bold text-[#1a0a0a] dark:text-white leading-tight">
             {item.title}
           </h4>
 
           {/* Separator Line */}
           <div className="w-10 h-[1.5px] bg-[#F59E9E]/80 mx-auto my-2" />
 
-          <p className="text-[12px] sm:text-[13px] text-[#1a0a0a]/70 dark:text-white/70 font-inter leading-relaxed px-2 italic mb-3">
+          <p className="text-[12px] sm:text-[13px] text-[#1a0a0a]/70 dark:text-white/70 font-inter leading-relaxed px-2 mb-3">
             "{item.detail}"
           </p>
 
@@ -220,8 +220,7 @@ export default function Achievements() {
             <Star size={10} className="text-[#F59E9E]" /> Milestones & Memories
           </div>
           <h2
-            className="text-[40px] md:text-[60px] lg:text-[70px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1] tracking-tighter"
-            style={{ fontFamily: "'Cormorant Garamond', serif" }}
+            className="text-[40px] md:text-[60px] lg:text-[70px] font-bold text-[#1a0a0a] dark:text-white leading-[1] tracking-tighter"
           >
             A visual archive of my{" "}
             <span className="text-[#F59E9E]">Awards.</span>

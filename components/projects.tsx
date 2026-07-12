@@ -60,7 +60,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[40px] md:text-[60px] lg:text-[75px] font-bold italic text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight mb-4" 
+            className="text-[40px] md:text-[60px] lg:text-[75px] font-bold text-[#1a0a0a] dark:text-white leading-[1.05] tracking-tight mb-4" 
             style={{ fontFamily: "'Libre Baskerville', serif" }}
           >
             Featured <span className="text-[#F59E9E]">Projects.</span>
@@ -153,7 +153,7 @@ export default function Projects() {
                               <div className="absolute inset-0 bg-background translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                             </a>
                           )}
-                          {projectsData[selectedProject].githubUrl && (
+                          {projectsData[selectedProject].githubUrl && !projectsData[selectedProject].liveUrl?.includes("figma.com") && (
                             <a
                               href={projectsData[selectedProject].githubUrl}
                               target="_blank"
@@ -422,7 +422,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
           ))}
         </motion.div>
         
-        <h3 className="text-3xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-5 md:mb-8 italic text-center" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+        <h3 className="text-3xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-5 md:mb-8 text-center" style={{ fontFamily: "'Libre Baskerville', serif" }}>
           {project.title}
         </h3>
         
