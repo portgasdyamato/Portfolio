@@ -65,7 +65,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
           className={`absolute inset-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm' : 'rounded-r-2xl rounded-l-sm'} shadow-2xl pointer-events-none border border-black/40 overflow-hidden bg-[#3d2616]`}
           style={{ transform: "translateZ(-10px)" }} 
         >
-          <img src={coverImage || "/cover.png"} alt="Cover" className="absolute inset-0 w-full h-full object-cover scale-[1.05] opacity-80" />
+          <img src={coverImage || "/cover.png"} alt="Cover" className="absolute inset-0 w-full h-full object-fill opacity-80" />
           {/* Back cover vignette */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.8)_120%)] pointer-events-none" />
         </div>
@@ -203,7 +203,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
              className={`absolute inset-0 bg-[#3d2616] ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[-5px_0_20px_rgba(0,0,0,0.6)] border-y border-l border-black/30 border-r-0' : 'rounded-r-2xl rounded-l-sm shadow-[5px_0_20px_rgba(0,0,0,0.6)] border-y border-r border-black/30 border-l-0'} flex flex-col overflow-hidden`}
              style={{ backfaceVisibility: "hidden" }}
            >
-             <img src={coverImage || "/cover.png"} alt="Cover" className="absolute inset-0 w-full h-full object-cover scale-[1.05] z-0" />
+             <img src={coverImage || "/cover.png"} alt="Cover" className="absolute inset-0 w-full h-full object-fill z-0" />
              
              {/* Vintage Vignette */}
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.6)_120%)] pointer-events-none z-0" />
@@ -217,7 +217,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
              className={`absolute inset-0 bg-[#3d2616] ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[inset_-10px_0_20px_rgba(0,0,0,0.8)] border-y border-l border-black/40 border-r-0' : 'rounded-r-2xl rounded-l-sm shadow-[inset_10px_0_20px_rgba(0,0,0,0.8)] border-y border-r border-black/40 border-l-0'} overflow-hidden`}
              style={{ backfaceVisibility: "hidden", transform: `rotateY(180deg) translateZ(1px)` }}
            >
-             <img src={coverImage || "/cover.png"} alt="Cover Inside" className="absolute inset-0 w-full h-full object-cover scale-[1.05] opacity-60 z-0" />
+             <img src={coverImage || "/cover.png"} alt="Cover Inside" className="absolute inset-0 w-full h-full object-fill opacity-60 z-0" />
              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.8)_120%)] pointer-events-none z-0" />
              {/* Spine/Crease detail on the inside */}
              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/80 to-transparent pointer-events-none z-0" />
