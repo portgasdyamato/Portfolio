@@ -32,7 +32,7 @@ export default function NewsTicker() {
               {[...Array(12)].map((_, i) => (
                 <div key={`${setIndex}-${i}`} className="flex items-center mx-6 gap-6 whitespace-nowrap">
                   <span className="text-black font-serif font-bold text-2xl sm:text-4xl tracking-wide uppercase">
-                    Sakshi (Pippo) • UI UX Designer • Website Developer
+                    Sakshi (Pippo) • AI Product Designer • Design Engineering
                   </span>
                   <Minus className="w-8 h-8 sm:w-10 sm:h-10 text-black stroke-[4px]" />
                 </div>

@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect, useMemo } from "react"
 import { createPortal } from "react-dom"
-import { ExternalLink, Github, X, ArrowUpRight, CheckCircle2 } from "lucide-react"
+import { ExternalLink, Github, X, ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { projectsData } from "@/lib/projects-data"
@@ -50,9 +50,8 @@ export default function Projects() {
           viewport={{ once: true }}
           className="flex flex-col items-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-6">
-            <ArrowUpRight size={12} strokeWidth={2.5} />
-            The Portfolio
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm">
+            <Sparkles size={10} className="text-[#F59E9E]" /> Featured Work
           </div>
           
           <motion.h2 

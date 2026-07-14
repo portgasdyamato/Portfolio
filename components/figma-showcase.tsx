@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
-import { Figma, ChevronLeft, ChevronRight, Zap, Play, Info, ExternalLink, ArrowUpRight } from "lucide-react"
+import { Figma, ChevronLeft, ChevronRight, Zap, Play, Info, ExternalLink, ArrowUpRight, Wand2 } from "lucide-react"
 
 const ARTIFACTS = [
   {
@@ -114,10 +114,9 @@ export default function FigmaShowcase() {
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-6"
+             className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm"
           >
-            <Figma size={12} fill="currentColor" strokeWidth={0} />
-            Creative Laboratory
+            <Wand2 size={10} className="text-[#F59E9E]" /> Figma Playground
           </motion.div>
           
           <motion.h2 

@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react"
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Sparkles, Heart, Camera, Coffee, MapPin, Send, AlertCircle } from "lucide-react"
+import { Sparkles, Heart, Camera, Coffee, MapPin, Send, AlertCircle, BookOpen } from "lucide-react"
 
 // ── Types for our scrap items ──
 type ScrapItem = {
@@ -237,7 +237,7 @@ export default function Scrapbook() {
   }
 
   return (
-    <section id="scrapbook" ref={containerRef} className="relative w-full h-[90vh] sm:h-[110vh] md:h-[130vh] py-12 sm:py-16 md:py-20 overflow-hidden bg-transparent select-none scroll-mt-32">
+    <section id="scrapbook" className="w-full relative scroll-mt-32 h-[90vh] sm:h-[110vh] md:h-[130vh] overflow-hidden bg-transparent select-none scroll-mt-32">
       {/* Ambient Audio Element */}
       <audio ref={audioRef} src="/pippo.mpeg" loop />
 
@@ -255,10 +255,9 @@ export default function Scrapbook() {
             initial={{ opacity: 0, scale: 0.8 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-4"
+            className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm"
           >
-            <Camera size={12} fill="currentColor" strokeWidth={0} />
-            The Scrapbook
+            <BookOpen size={10} className="text-[#F59E9E]" /> Design Journals
           </motion.div>
           <h2 className="text-[22px] sm:text-[32px] md:text-[45px] lg:text-[55px] font-bold text-[#1a0a0a] leading-[1.2] tracking-tight" style={{ fontFamily: "'Libre Baskerville', serif" }}>
             Fragments of <span className="text-[#F59E9E]">Caffeine</span> <br className="hidden md:block" /> & Pure <span className="text-black/30">Imagination.</span>

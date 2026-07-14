@@ -9,7 +9,7 @@ import Footer from "@/components/footer"
 import FunFacts from "@/components/fun-facts"
 import Education from "@/components/education"
 import Achievements from "@/components/achievements"
-import SkillsShowcase from "@/components/skills-showcase"
+import SkillsShowcase, { InterpersonalSkills } from "@/components/skills-showcase"
 import Scrapbook from "@/components/scrapbook"
 import NewsTicker from "@/components/news-ticker"
 import CustomCursor from "@/components/custom-cursor"
@@ -87,16 +87,16 @@ export default function Home() {
             <MorphingHero />
 
             {/* ─── REST OF PAGE ─── */}
-            <main className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-8 sm:space-y-12 md:space-y-24 lg:space-y-32">
+            <main className="container mx-auto px-3 sm:px-6 md:px-12 lg:px-16 max-w-8xl space-y-16 sm:space-y-20 md:space-y-32 lg:space-y-32">
                 <div className="w-screen relative left-1/2 -translate-x-1/2">
                   <NewsTicker />
                 </div>
 
                 {/* ── ABOUT SECTION ── */}
-                <section id="about" className="scroll-mt-32 flex flex-col gap-8 sm:gap-12 md:gap-20 lg:gap-32">
+                <section id="about" className="scroll-mt-32 flex flex-col gap-16 sm:gap-20 md:gap-32 lg:gap-32">
                   <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto px-4 mt-10 md:mt-20">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-[0.2em] uppercase text-[9px] mb-6">
-                      <Sparkles size={12} fill="currentColor" strokeWidth={0} />
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm">
+                      <Sparkles size={10} className="text-[#F59E9E]" />
                       Beyond The Resume
                     </div>
                     <h2 className="text-[28px] sm:text-[38px] md:text-[55px] lg:text-[75px] font-bold italic text-[#1a0a0a] leading-[1.05] tracking-tight">
@@ -111,12 +111,14 @@ export default function Home() {
                 {/* ── SELECTED WORKS CTA ── */}
                 <WorkCta />
 
-                <Achievements />
-
                 {/* ── SKILLS SECTION ── */}
                 <section id="skills" className="scroll-mt-32">
                   <SkillsShowcase />
                 </section>
+
+                <Achievements />
+
+                <InterpersonalSkills />
 
                 {/* ── PERSONAL SCRAPBOOK ── */}
                 <Scrapbook />

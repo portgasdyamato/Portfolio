@@ -92,9 +92,9 @@ export default function WorkCta() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="inline-flex items-center gap-2 px-3 py-1 bg-[#FF7A8A]/10 rounded-full text-[#FF7A8A] font-black tracking-[0.2em] uppercase text-[9px] mb-6 self-center lg:self-start"
+              className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm self-center lg:self-start"
             >
-              <Zap size={11} className="text-[#FF7A8A]" fill="currentColor" strokeWidth={0} />
+              <Zap size={10} className="text-[#F59E9E]" />
               <span className="leading-none">
                 Explore My Work
               </span>

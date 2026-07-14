@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Code, Users, Lightbulb, PenTool, Database, X, ChevronRight, Zap, Target, MessageSquare, Palette } from "lucide-react"
+import { Code, Users, Lightbulb, PenTool, Database, X, ChevronRight, Zap, Target, MessageSquare, Palette, Sparkles } from "lucide-react"
 
 const skillCategories = [
   {
@@ -78,17 +78,15 @@ const interpersonalSkills = [
 
 export default function SkillsShowcase() {
   const [activeFolder, setActiveFolder] = useState<string | null>(null)
-  const [activeSoft, setActiveSoft] = useState<string>("01")
 
   return (
-    <div className="py-12 sm:py-16 md:py-24 w-full relative">
+    <section id="skills" className="w-full relative scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
         <div className="flex flex-col items-center justify-center text-center mb-10 sm:mb-16 md:mb-24">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-black/5 dark:bg-white/10 rounded-full text-foreground font-black tracking-[0.2em] uppercase text-[9px] mb-6">
-            <Zap size={12} fill="currentColor" strokeWidth={0} />
-            Skills
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm">
+            <Sparkles size={10} className="text-[#F59E9E]" /> My Arsenal
           </div>
           <h2 className="text-[32px] sm:text-[40px] md:text-[55px] lg:text-[75px] font-bold text-[#1a0a0a] leading-[1.05] tracking-tight">
             My Professional <span className="text-[#F59E9E]">Arsenal.</span>
@@ -185,78 +183,7 @@ export default function SkillsShowcase() {
         </div>
       </div>
 
-      {/* 2. Inter-Personal Capabilities Section */}
-      <div id="inter-personal-skills" className="mt-20 sm:mt-32 md:mt-40 lg:mt-52 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full scroll-mt-32">
-        <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-20">
-          <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white">
-            Interpersonal Skills
-          </h2>
-          <p className="mt-2 md:mt-4 text-muted-foreground font-inter text-base md:text-lg">
-            Beyond the pixels and code, I focus on the human side of product development.
-          </p>
-        </div>
 
-        {/* Animated Expanding Accordion Grid */}
-        <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 w-full h-[850px] lg:h-[450px]">
-          {interpersonalSkills.map((skill) => {
-            const isActive = activeSoft === skill.id;
-            
-            return (
-              <motion.div
-                layout
-                key={skill.id}
-                onClick={() => setActiveSoft(skill.id)}
-                onMouseEnter={() => setActiveSoft(skill.id)}
-                className={`relative rounded-[2.2rem] lg:rounded-[3rem] overflow-hidden cursor-pointer group flex ${
-                  isActive ? 'flex-[6] lg:flex-[3] bg-white shadow-2xl border-black/5' : 'flex-[1] lg:flex-[1] bg-black/[0.02] border-black/5 hover:bg-black/[0.05]'
-                } border transition-all duration-300 ease-in-out`}
-              >
-                {/* Large Background Number */}
-                <div 
-                  className={`absolute leading-none font-black  text-black/[0.03] select-none pointer-events-none transition-all duration-700 ease-in-out ${
-                    isActive 
-                      ? 'bottom-2 right-4 lg:bottom-4 lg:right-6 text-[80px] lg:text-[140px]' 
-                      : 'top-1/2 right-6 -translate-y-1/2 lg:top-auto lg:-translate-y-0 lg:bottom-6 lg:right-1/2 lg:translate-x-1/2 text-[45px] lg:text-[70px]'
-                  }`}
-                >
-                  {skill.id}
-                </div>
-                
-                <div className={`absolute inset-0 p-5 lg:p-8 flex ${isActive ? 'flex-col justify-between' : 'flex-row lg:flex-col items-center lg:items-center justify-start lg:justify-between'} gap-4`}>
-                  
-                  {/* Icon */}
-                  <motion.div layout="position" className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-sm transition-colors duration-500 ${isActive ? 'bg-[#1a0a0a]' : 'bg-white'}`}>
-                    <skill.icon size={22} className={isActive ? "text-white" : "text-[#1a0a0a]/40"} />
-                  </motion.div>
-
-                  {/* Title & Desc Wrapper */}
-                  <div className="relative flex flex-col justify-end w-full h-full">
-                    
-                    {/* INACTIVE STATE TEXT */}
-                    <div className={`absolute inset-0 flex items-center lg:items-center justify-start lg:justify-center transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-300'}`}>
-                      <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a]/50 text-[10px] sm:text-xs lg:text-lg lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap px-1">
-                        {skill.title}
-                      </h4>
-                    </div>
-
-                    {/* ACTIVE STATE TEXT */}
-                    <div className={`flex flex-col justify-end w-full transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-6 pointer-events-none absolute bottom-0'}`}>
-                       <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a] text-xl lg:text-3xl mb-3 lg:mb-4 pt-4">
-                         {skill.title}
-                       </h4>
-                       <p className="text-sm lg:text-base text-muted-foreground font-inter leading-relaxed max-w-sm lg:max-w-md pb-1">
-                         {skill.desc}
-                       </p>
-                    </div>
-
-                  </div>
-
-                </div>
-              </motion.div>
-            )
-          })}
-        </div>
-      </div>
 
       {/* EXPANDED OVERLAY */}
       <AnimatePresence>
@@ -372,6 +299,84 @@ export default function SkillsShowcase() {
           </>
         )}
       </AnimatePresence>
-    </div>
+    </section>
+  )
+}
+
+export function InterpersonalSkills() {
+  const [activeSoft, setActiveSoft] = useState<string>("01")
+
+  return (
+    <section id="inter-personal-skills" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full scroll-mt-32">
+      <div className="flex flex-col items-center justify-center text-center mb-16 md:mb-20">
+        <h2 className="text-[32px] md:text-[50px] font-bold uppercase tracking-wider text-[#1a0a0a] dark:text-white">
+          Interpersonal Skills
+        </h2>
+        <p className="mt-2 md:mt-4 text-muted-foreground font-inter text-base md:text-lg">
+          Beyond the pixels and code, I focus on the human side of product development.
+        </p>
+      </div>
+
+      {/* Animated Expanding Accordion Grid */}
+      <div className="flex flex-col lg:flex-row gap-3 sm:gap-4 w-full h-[850px] lg:h-[450px]">
+        {interpersonalSkills.map((skill) => {
+          const isActive = activeSoft === skill.id;
+          
+          return (
+            <motion.div
+              layout
+              key={skill.id}
+              onClick={() => setActiveSoft(skill.id)}
+              onMouseEnter={() => setActiveSoft(skill.id)}
+              className={`relative rounded-[2.2rem] lg:rounded-[3rem] overflow-hidden cursor-pointer group flex ${
+                isActive ? 'flex-[6] lg:flex-[3] bg-white shadow-2xl border-black/5' : 'flex-[1] lg:flex-[1] bg-black/[0.02] border-black/5 hover:bg-black/[0.05]'
+              } border transition-all duration-300 ease-in-out`}
+            >
+              {/* Large Background Number */}
+              <div 
+                className={`absolute leading-none font-black  text-black/[0.03] select-none pointer-events-none transition-all duration-700 ease-in-out ${
+                  isActive 
+                    ? 'bottom-2 right-4 lg:bottom-4 lg:right-6 text-[80px] lg:text-[140px]' 
+                    : 'top-1/2 right-6 -translate-y-1/2 lg:top-auto lg:-translate-y-0 lg:bottom-6 lg:right-1/2 lg:translate-x-1/2 text-[45px] lg:text-[70px]'
+                }`}
+              >
+                {skill.id}
+              </div>
+              
+              <div className={`absolute inset-0 p-5 lg:p-8 flex ${isActive ? 'flex-col justify-between' : 'flex-row lg:flex-col items-center lg:items-center justify-start lg:justify-between'} gap-4`}>
+                
+                {/* Icon */}
+                <motion.div layout="position" className={`shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full flex items-center justify-center shadow-sm transition-colors duration-500 ${isActive ? 'bg-[#1a0a0a]' : 'bg-white'}`}>
+                  <skill.icon size={22} className={isActive ? "text-white" : "text-[#1a0a0a]/40"} />
+                </motion.div>
+
+                {/* Title & Desc Wrapper */}
+                <div className="relative flex flex-col justify-end w-full h-full">
+                  
+                  {/* INACTIVE STATE TEXT */}
+                  <div className={`absolute inset-0 flex items-center lg:items-center justify-start lg:justify-center transition-opacity duration-300 ${isActive ? 'opacity-0 pointer-events-none' : 'opacity-100 delay-300'}`}>
+                    <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a]/50 text-[10px] sm:text-xs lg:text-lg lg:[writing-mode:vertical-lr] lg:rotate-180 whitespace-nowrap px-1">
+                      {skill.title}
+                    </h4>
+                  </div>
+
+                  {/* ACTIVE STATE TEXT */}
+                  <div className={`flex flex-col justify-end w-full transition-all duration-500 ${isActive ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-6 pointer-events-none absolute bottom-0'}`}>
+                     <h4 className="font-black uppercase tracking-[0.2em] text-[#1a0a0a] text-xl lg:text-3xl mb-3 lg:mb-4 pt-4">
+                       {skill.title}
+                     </h4>
+                     <p className="text-sm lg:text-base text-muted-foreground font-inter leading-relaxed max-w-sm lg:max-w-md pb-1">
+                       {skill.desc}
+                     </p>
+                  </div>
+
+                </div>
+
+              </div>
+            </motion.div>
+          )
+        })}
+      </div>
+    </section>
   )
 }

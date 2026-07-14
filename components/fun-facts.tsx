@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { Camera, Heart, Star, Mic2, Palette as PenTool, HelpCircle, Clock } from "lucide-react"
+import { Camera, Heart, Star, Mic2, Palette as PenTool, HelpCircle, Clock, Sparkles } from "lucide-react"
 import { Suspense, useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { useGLTF, OrbitControls } from "@react-three/drei"
@@ -62,8 +62,8 @@ export default function FunFacts() {
       <div className="relative px-4 lg:px-0">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 sm:gap-12 lg:gap-16">
           <div className="max-w-md">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F59E9E]/10 rounded-full text-[#F59E9E] font-black tracking-widest uppercase text-[9px] mb-6">
-              <Star size={10} fill="currentColor" /> Experimental 3D Interaction
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#FFFDF9] dark:bg-white/5 border border-black/5 dark:border-white/5 rounded-full text-[#1a0a0a]/50 dark:text-white/50 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm">
+              <Sparkles size={10} className="text-[#F59E9E]" /> Little Secrets
             </div>
             <h3 className="text-[45px] sm:text-[65px] font-bold text-[#1a0a0a] leading-tight mb-6">
               My Favorite Trio.
