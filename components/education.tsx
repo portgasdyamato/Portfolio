@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, AnimatePresence, useScroll, useTransform, useInView } from "framer-motion"
+import { motion, AnimatePresence, useScroll, useTransform, useInView, useMotionValueEvent, MotionValue } from "framer-motion"
 import { useState, useEffect, useRef } from "react"
 import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X, Briefcase } from "lucide-react"
 import { FolderCard } from "./folder-card"
@@ -75,9 +75,20 @@ const educationJourney = [
   }
 ]
 
-function FolderTimelineItem({ item, index }: { item: typeof educationJourney[0], index: number }) {
+function FolderTimelineItem({ item, index, drawProgress, totalItems }: { item: typeof educationJourney[0], index: number, drawProgress: MotionValue<number>, totalItems: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.2, once: false });
+  const [hasReached, setHasReached] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  useMotionValueEvent(drawProgress, "change", (latest) => {
+    const triggerPoint = totalItems > 1 ? index / (totalItems - 1) : 0;
+    if (latest >= triggerPoint && !hasReached) {
+      setHasReached(true);
+    } else if (latest < triggerPoint && hasReached) {
+      setHasReached(false);
+    }
+  });
   
   const isEven = index % 2 === 0;
   const direction = isEven ? 'ltr' : 'rtl';
@@ -95,14 +106,52 @@ function FolderTimelineItem({ item, index }: { item: typeof educationJourney[0],
         transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
         className={isEven ? 'origin-bottom-left flex justify-center md:justify-start' : 'origin-bottom-right flex justify-center md:justify-end'}
       >
-        <FolderCard 
-          items={[item]} 
-          currentIndex={0}
-          onNext={() => {}}
-          onPrev={() => {}}
-          direction={direction}
-          coverImage={coverImg}
-        />
+        <div 
+          className="relative w-[280px] h-[380px]"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <AnimatePresence>
+            {hasReached && !isHovered && (
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center"
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0.8 }}
+                  animate={{ scale: 1.35, opacity: 0 }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
+                  className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
+                />
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0.8 }}
+                  animate={{ scale: 1.35, opacity: 0 }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 0.8 }}
+                  className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
+                />
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0.8 }}
+                  animate={{ scale: 1.35, opacity: 0 }}
+                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 1.6 }}
+                  className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <div className="relative z-10 w-full h-full">
+            <FolderCard 
+              items={[item]} 
+              currentIndex={0}
+              onNext={() => {}}
+              onPrev={() => {}}
+              direction={direction}
+              coverImage={coverImg}
+            />
+          </div>
+        </div>
       </motion.div>
     </div>
   );
@@ -234,7 +283,7 @@ export default function Education() {
           </div>
 
           {educationJourney.map((item, index) => (
-            <FolderTimelineItem key={index} item={item} index={index} />
+            <FolderTimelineItem key={index} item={item} index={index} drawProgress={drawProgress} totalItems={educationJourney.length} />
           ))}
         </div>
       </div>

@@ -151,9 +151,9 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
             })}
         </div>
 
-        {/* Navigation Controls (Only visible when hovered to not clutter the resting state) */}
+        {/* Navigation Controls (Only visible when hovered to not clutter the resting state, and only if multiple pages exist) */}
         <AnimatePresence>
-          {isHovered && (
+          {isHovered && items.length > 1 && (
             <motion.div 
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
