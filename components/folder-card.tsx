@@ -62,11 +62,12 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
         
         {/* Back Cover of the Folder */}
         <div 
-          className={`absolute inset-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm' : 'rounded-r-2xl rounded-l-sm'} shadow-2xl pointer-events-none overflow-hidden bg-[#1e1e1e]`}
+          className={`absolute inset-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm' : 'rounded-r-2xl rounded-l-sm'} shadow-2xl pointer-events-none bg-[#1e1e1e] overflow-hidden`}
           style={{ transform: "translateZ(-10px)" }} 
         >
+          <img src={coverImage || "/cover.png"} alt="Cover" className={`absolute inset-0 w-full h-full object-fill ${direction === 'ltr' ? 'scale-[1.12]' : 'scale-[1.10]'} opacity-80 z-0`} />
           {/* Back cover vignette */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.8)_120%)] pointer-events-none" />
+          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.15)_120%)] pointer-events-none ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
         </div>
         
         {/* The Internal Files / Documents Stack */}
@@ -97,7 +98,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
                   style={{ transformStyle: "preserve-3d", zIndex: items.length - idx, transformOrigin: direction === 'rtl' ? "100% 50%" : "0% 50%" }}
                 >
                   {/* Physical Manila Tab */}
-                  <div className={`absolute ${direction === 'rtl' ? '-left-[26px] border-r-0 rounded-l-md' : '-right-[26px] border-l-0 rounded-r-md'} top-10 w-[26px] py-4 bg-[#f8f9fa] shadow-[-2px_0_5px_rgba(0,0,0,0.05)_inset,2px_2px_5px_rgba(0,0,0,0.15)] flex items-center justify-center border border-black/10 z-0`}>
+                  <div className={`absolute ${direction === 'rtl' ? '-left-[40px] w-[40px] pr-[14px] border-r-0 rounded-l-md' : '-right-[26px] w-[26px] border-l-0 rounded-r-md'} top-10 py-4 bg-[#f8f9fa] shadow-[-2px_0_5px_rgba(0,0,0,0.05)_inset,2px_2px_5px_rgba(0,0,0,0.15)] flex items-center justify-center border border-black/10 z-0`}>
                     <span style={{ writingMode: 'vertical-rl' }} className="text-[9px] font-black tracking-[0.2em] text-gray-500 uppercase rotate-180 drop-shadow-sm">
                       DO NOT OPEN
                     </span>
@@ -199,13 +200,13 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
         >
              {/* Outside of the Front Cover */}
            <div 
-             className={`absolute inset-0 bg-transparent ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[-5px_0_20px_rgba(0,0,0,0.6)]' : 'rounded-r-2xl rounded-l-sm shadow-[5px_0_20px_rgba(0,0,0,0.6)]'} flex flex-col overflow-hidden`}
+             className={`absolute inset-0 bg-transparent ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[-5px_0_20px_rgba(0,0,0,0.6)]' : 'rounded-r-2xl rounded-l-sm shadow-[5px_0_20px_rgba(0,0,0,0.6)]'} flex flex-col ${direction === 'ltr' ? 'overflow-hidden' : ''}`}
              style={{ backfaceVisibility: "hidden" }}
            >
-             <img src={coverImage || "/cover.png"} alt="Cover" className="absolute inset-0 w-full h-full object-cover object-center z-0" />
+             <img src={coverImage || "/cover.png"} alt="Cover" className={`absolute inset-0 w-full h-full object-fill ${direction === 'ltr' ? 'scale-[1.12]' : 'scale-[1.10]'} z-0`} />
              
              {/* Vintage Vignette */}
-             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.6)_120%)] pointer-events-none z-0" />
+             <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.1)_120%)] pointer-events-none z-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
 
              {/* Subtle paper edge shadow */}
              <div className="absolute inset-0 shadow-[inset_-2px_0_12px_rgba(255,255,255,0.03)] pointer-events-none rounded-r-2xl rounded-l-sm z-0" />
