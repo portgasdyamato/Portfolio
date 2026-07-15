@@ -219,14 +219,14 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
              <div className="absolute inset-0 shadow-[inset_-2px_0_12px_rgba(255,255,255,0.03)] pointer-events-none rounded-r-2xl rounded-l-sm z-0" />
            </div>
 
-           {/* Inside of the Front Cover (Manila Interior) */}
+           {/* Inside of the Front Cover (Manila Interior - Softened Clean Shadows) */}
            <div 
-             className={`absolute inset-0 bg-[#f3ebd4] dark:bg-[#2d2a22] ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[inset_-10px_0_20px_rgba(0,0,0,0.25)]' : 'rounded-r-2xl rounded-l-sm shadow-[inset_10px_0_20px_rgba(0,0,0,0.25)]'} overflow-hidden`}
+             className={`absolute inset-0 bg-[#f3ebd4] dark:bg-[#2d2a22] ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[inset_-3px_0_8px_rgba(0,0,0,0.06)]' : 'rounded-r-2xl rounded-l-sm shadow-[inset_3px_0_8px_rgba(0,0,0,0.06)]'} overflow-hidden`}
              style={{ backfaceVisibility: "hidden", transform: `rotateY(180deg) translateZ(1px)` }}
            >
-             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.25)_120%)] pointer-events-none z-0" />
-             {/* Spine/Crease detail on the inside */}
-             <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/15 to-transparent pointer-events-none z-0" />
+             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.06)_120%)] pointer-events-none z-0" />
+             {/* Spine/Crease detail on the inside - Softened */}
+             <div className="absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-black/5 to-transparent pointer-events-none z-0" />
            </div>
         </motion.div>
 
