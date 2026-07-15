@@ -118,7 +118,7 @@ function FolderTimelineItem({ item, index, drawProgress, totalItems }: { item: t
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center"
+                className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center -translate-x-6"
               >
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0.8 }}

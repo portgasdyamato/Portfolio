@@ -54,34 +54,26 @@ const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
   },
 }
 
-// Custom high-fidelity vintage/woodblock vector illustrations for the folder covers
+// Custom high-fidelity vintage/woodblock vector stamp designs for each folder stage
 const FOLDER_ARTWORKS = {
   middle: (accent: string, bg: string) => (
     <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      {/* Open Book Pages */}
-      <path d="M6,34 C12,30 18,30 22,34 C26,30 32,30 38,34" strokeWidth="1.6" />
-      <path d="M6,14 C12,10 18,10 22,14 C26,10 32,10 38,14" strokeWidth="1.6" />
-      <line x1="22" y1="14" x2="22" y2="34" strokeWidth="1.6" />
-      <path d="M6,14 L6,34" strokeWidth="1.4" />
-      <path d="M38,14 L38,34" strokeWidth="1.4" />
+      <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
+      <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
-      {/* Detail Text Lines on pages */}
-      <line x1="10" y1="18" x2="18" y2="18" strokeWidth="0.8" opacity="0.8" />
-      <line x1="10" y1="22" x2="18" y2="22" strokeWidth="0.8" opacity="0.8" />
-      <line x1="10" y1="26" x2="18" y2="26" strokeWidth="0.8" opacity="0.8" />
-      <line x1="26" y1="18" x2="34" y2="18" strokeWidth="0.8" opacity="0.8" />
-      <line x1="26" y1="22" x2="34" y2="22" strokeWidth="0.8" opacity="0.8" />
-      <line x1="26" y1="26" x2="34" y2="26" strokeWidth="0.8" opacity="0.8" />
+      {/* Open Book */}
+      <path d="M12,28 C16,25 20,25 22,28 C24,25 28,25 32,28" strokeWidth="1.5" />
+      <path d="M12,17 C16,14 20,14 22,17 C24,14 28,14 32,17" strokeWidth="1.5" />
+      <line x1="22" y1="17" x2="22" y2="28" strokeWidth="1.5" />
+      <path d="M12,17 L12,28" strokeWidth="1.2" />
+      <path d="M32,17 L32,28" strokeWidth="1.2" />
       
-      {/* Sparkles / Stars above book */}
-      <path d="M22,4 L23,6 L25,7 L23,8 L22,10 L21,8 L19,7 L21,6 Z" fill={accent} stroke="none" />
-      <circle cx="12" cy="6" r="1" fill={accent} stroke="none" />
-      <circle cx="32" cy="7" r="1.2" fill={accent} stroke="none" />
+      {/* Sparkle star */}
+      <path d="M22,9 L23,11 L25,11 L23,12 L22,14 L21,12 L19,11 L21,11 Z" fill={accent} stroke="none" />
     </svg>
   ),
   secondary: (accent: string, bg: string) => (
     <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      {/* Compass Outer Ring and dotted inner guide */}
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
@@ -104,64 +96,49 @@ const FOLDER_ARTWORKS = {
   ),
   highschool: (accent: string, bg: string) => (
     <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      {/* Cap Diamond Top */}
-      <path d="M22,6 L39,13 L22,20 L5,13 Z" fill={accent} strokeWidth="1.6" stroke={accent} />
+      <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
+      <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
-      {/* Under cap base skull */}
-      <path d="M12,17.5 L12,24 C12,27 22,29 22,24 L22,17.5" strokeWidth="1.6" />
-      <path d="M32,17.5 L32,24 C32,27 22,29 22,24" strokeWidth="1.6" />
+      {/* Mortarboard Diamond */}
+      <path d="M22,10 L31,14 L22,18 L13,14 Z" fill={accent} strokeWidth="1.4" />
+      <path d="M17,16.5 L17,21 C17,23 27,23 27,21 L27,16.5" strokeWidth="1.4" />
+      <path d="M22,14 C18,15.5 18,20 18,22" strokeWidth="0.8" />
+      <circle cx="18" cy="22.5" r="1" fill={accent} stroke="none" />
       
-      {/* Tassel cord and fringe */}
-      <path d="M22,13 C16,15 15,22 15,25" strokeWidth="1" />
-      <rect x="13.5" y="25" width="3" height="5" rx="0.5" fill={accent} stroke="none" />
-      
-      {/* Rolled Diploma Scroll at bottom */}
-      <path d="M11,33 L33,33 C34.5,33 34.5,37 33,37 L11,37 C9.5,37 9.5,33 11,33 Z" fill={bg} strokeWidth="1.4" />
-      {/* Ribbon tie */}
-      <circle cx="22" cy="35" r="2.2" fill={accent} stroke="none" />
-      <path d="M22,35 L19,39 M22,35 L25,39" strokeWidth="1.2" />
+      {/* Scroll at bottom */}
+      <path d="M15,27 L29,27 C30,27 30,30 29,30 L15,30 C14,30 14,27 15,27 Z" fill={bg} strokeWidth="1.2" />
     </svg>
   ),
   btech: (accent: string, bg: string) => (
     <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      {/* Vintage CRT Computer Monitor Box */}
-      <rect x="6" y="6" width="32" height="24" rx="3.5" strokeWidth="1.8" />
-      {/* Inner Screen */}
-      <rect x="9" y="9" width="26" height="18" rx="1.5" fill={bg} strokeWidth="1.2" />
+      <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
+      <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
-      {/* Code Text lines */}
-      <path d="M12,13.5 L18,13.5" strokeWidth="1.5" />
-      <path d="M12,17.5 L28,17.5" strokeWidth="1.5" />
-      <path d="M12,21.5 L22,21.5" strokeWidth="1.5" />
+      {/* Monitor screen box */}
+      <rect x="12" y="11" width="20" height="15" rx="2" strokeWidth="1.6" />
+      <rect x="14" y="13" width="16" height="11" rx="0.5" fill={bg} strokeWidth="0.8" />
+      
+      {/* Screen code lines */}
+      <line x1="16" y1="16" x2="22" y2="16" strokeWidth="1" />
+      <line x1="16" y1="19" x2="26" y2="19" strokeWidth="1" />
+      <line x1="16" y1="22" x2="20" y2="22" strokeWidth="1" />
       
       {/* Pedestal stand */}
-      <path d="M18,30 L16,36 L28,36 L26,30" fill={bg} strokeWidth="1.4" />
-      <line x1="11" y1="38" x2="33" y2="38" strokeWidth="2.2" />
-      
-      {/* Small design code brackets */}
-      <path d="M3,12 L1,14 L3,16" strokeWidth="1" />
-      <path d="M41,12 L43,14 L41,16" strokeWidth="1" />
+      <path d="M20,26 L19,30 L25,30 L24,26" fill={bg} strokeWidth="1" />
+      <line x1="16" y1="31" x2="28" y2="31" strokeWidth="1.8" />
     </svg>
   ),
   growth: (accent: string, bg: string) => (
     <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
-      {/* Hot Air Balloon Envelope */}
-      <path d="M22,4 C31,4 35,12 33,19 C31,23 27,27 26,29 L18,29 C17,27 13,23 11,19 C9,12 13,4 22,4 Z" fill={accent} strokeWidth="1.8" />
+      <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
+      <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
-      {/* Curved Stripe accents inside envelope */}
-      <path d="M22,4 C25.5,4 27.5,14 26,29 M22,4 C18.5,4 16.5,14 18,29" stroke={bg} strokeWidth="1.2" />
-      <path d="M13,13 C18,15 26,15 31,13" stroke={bg} strokeWidth="1" opacity="0.8" />
-      
-      {/* Basket hanging ropes */}
-      <line x1="19.5" y1="29" x2="19.5" y2="34" strokeWidth="0.9" />
-      <line x1="24.5" y1="29" x2="24.5" y2="34" strokeWidth="0.9" />
-      
-      {/* Basket */}
-      <rect x="18" y="34" width="8" height="5" rx="1" fill={bg} strokeWidth="1.4" />
-      
-      {/* Fluffy clouds below balloon */}
-      <path d="M4,34 C6,34 7,32 8.5,32 C10,32 11,34 13,34" strokeWidth="1" opacity="0.8" />
-      <path d="M31,34 C33,34 34,32 35.5,32 C37,32 38,34 40,34" strokeWidth="1" opacity="0.8" />
+      {/* Hot Air Balloon */}
+      <path d="M22,9 C27.5,9 30,14 29,18 C28,21 25.5,23 25,25 L19,25 C18.5,23 16,21 15,18 C14,14 16.5,9 22,9 Z" fill={accent} strokeWidth="1.4" />
+      <path d="M22,9 C24,9 25,15 25,25 M22,9 C20,9 19,15 19,25" stroke={bg} strokeWidth="0.8" />
+      <line x1="20" y1="25" x2="20" y2="28" strokeWidth="0.8" />
+      <line x1="24" y1="25" x2="24" y2="28" strokeWidth="0.8" />
+      <rect x="19.5" y="28" width="5" height="3" rx="0.5" fill={bg} strokeWidth="1" />
     </svg>
   ),
 }
