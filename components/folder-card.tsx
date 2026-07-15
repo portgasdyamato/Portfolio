@@ -104,12 +104,20 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
                   {/* Physical Manila Tab */}
                   <div className={`absolute ${direction === 'rtl' ? '-left-[26px] w-[26px] border-r-0 rounded-l-md' : '-right-[26px] w-[26px] border-l-0 rounded-r-md'} top-10 py-4 bg-[#f8f9fa] shadow-[-2px_0_5px_rgba(0,0,0,0.05)_inset,2px_2px_5px_rgba(0,0,0,0.15)] flex items-center justify-center border border-black/10 z-0`}>
                     <span style={{ writingMode: 'vertical-rl' }} className="text-[9px] font-black tracking-[0.2em] text-gray-500 uppercase rotate-180 drop-shadow-sm">
-                      DO NOT OPEN
+                      RECORD 0{idx + 1}
                     </span>
                   </div>
                   
                   {/* Subtle lined paper texture */}
                   <div className="absolute inset-0 bg-[linear-gradient(transparent_95%,#00000005_100%)] bg-[size:100%_24px] pointer-events-none rounded-r-xl" />
+
+                  {/* Vertical Legal Red Margin Line */}
+                  <div className={`absolute top-0 bottom-0 ${direction === 'rtl' ? 'right-[28px]' : 'left-[28px]'} w-[1px] bg-red-200 dark:bg-red-950/40 pointer-events-none`} />
+
+                  {/* Binding Eyelet Grommet at binder margin */}
+                  <div className={`absolute top-3.5 ${direction === 'rtl' ? 'right-2.5' : 'left-2.5'} w-3 h-3 rounded-full bg-[#f3ebd4] dark:bg-[#2d2a22] border border-black/10 flex items-center justify-center pointer-events-none z-10`}>
+                    <div className="w-1.5 h-1.5 rounded-full bg-white dark:bg-[#121212] shadow-inner" />
+                  </div>
 
                   <div className="flex flex-col relative z-10 h-full">
                      <div className="flex justify-between items-start mb-2">

@@ -274,9 +274,25 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
               <span className="text-[7px] font-bold tracking-widest leading-none mt-1 uppercase">Postage</span>
             </div>
 
-            {/* Center Graphic: The Woodblock Print Artwork centerpiece */}
-            <div className="flex-1 flex items-center justify-center py-2 z-10">
-              {item.art(item.accent, item.paperColor)}
+            {/* Center Graphic: The Woodblock Print Artwork centerpiece with security watermark */}
+            <div className="flex-1 flex items-center justify-center py-2 z-10 relative w-full h-full">
+              {/* Detailed Banknote-style Security Guilloche Wave background */}
+              <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.08] select-none" viewBox="0 0 100 100" fill="none" stroke={item.accent} strokeWidth="0.4">
+                <circle cx="50" cy="50" r="10" strokeDasharray="1 1" />
+                <circle cx="50" cy="50" r="18" />
+                <circle cx="50" cy="50" r="26" strokeDasharray="2 1" />
+                <circle cx="50" cy="50" r="34" />
+                <circle cx="50" cy="50" r="42" strokeDasharray="3 1" />
+                <path d="M 10,50 Q 30,30 50,50 T 90,50" />
+                <path d="M 10,35 Q 30,15 50,35 T 90,35" />
+                <path d="M 10,65 Q 30,45 50,65 T 90,65" />
+                <path d="M 50,10 Q 30,30 50,50 T 50,90" />
+                <path d="M 35,10 Q 15,30 35,50 T 35,90" />
+                <path d="M 65,10 Q 45,30 65,50 T 65,90" />
+              </svg>
+              <div className="relative z-10 flex items-center justify-center">
+                {item.art(item.accent, item.paperColor)}
+              </div>
             </div>
 
             {/* Bottom Title & Metadata */}
