@@ -57,7 +57,7 @@ const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
 // Custom high-fidelity vintage/woodblock vector stamp designs for each folder stage
 const FOLDER_ARTWORKS = {
   middle: (accent: string, bg: string) => (
-    <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 44 44" className="w-[50px] h-[50px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
@@ -73,7 +73,7 @@ const FOLDER_ARTWORKS = {
     </svg>
   ),
   secondary: (accent: string, bg: string) => (
-    <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 44 44" className="w-[50px] h-[50px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
@@ -95,7 +95,7 @@ const FOLDER_ARTWORKS = {
     </svg>
   ),
   highschool: (accent: string, bg: string) => (
-    <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 44 44" className="w-[50px] h-[50px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
@@ -110,7 +110,7 @@ const FOLDER_ARTWORKS = {
     </svg>
   ),
   btech: (accent: string, bg: string) => (
-    <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 44 44" className="w-[50px] h-[50px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
@@ -129,7 +129,7 @@ const FOLDER_ARTWORKS = {
     </svg>
   ),
   growth: (accent: string, bg: string) => (
-    <svg viewBox="0 0 44 44" className="w-[42px] h-[42px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+    <svg viewBox="0 0 44 44" className="w-[50px] h-[50px]" fill="none" stroke={accent} strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
@@ -258,7 +258,7 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
       {/* ── Custom High-Detail Icon ── */}
       <div
         className="absolute"
-        style={{ top: 96, left: 30 }}
+        style={{ top: 92, left: 30 }}
       >
         {FOLDER_ARTWORKS[stage](accent, bg)}
       </div>
