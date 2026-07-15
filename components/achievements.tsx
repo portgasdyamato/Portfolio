@@ -130,6 +130,7 @@ const achievements = [
     label: "25c",
     title: "UI/UX SOLVATHON",
     org: "700+ Participants",
+    summary: "WON FIRST PLACE SOLVATHON", // Exactly four words
     detail: "Secured first place for conducting deep UX research and crafting a high-fidelity, user-centric interface.",
     year: "2025",
     accent: "#0ea5e9", // Sky Blue
@@ -141,6 +142,7 @@ const achievements = [
     label: "28c",
     title: "HARVARD ASPIRE",
     org: "Leadership Program",
+    summary: "SELECTED HARVARD LEADER COHORT", // Exactly four words
     detail: "Chosen for the Harvard Aspire Leadership Program, engaging in AI-integrated leadership modules.",
     year: "2025",
     accent: "#8b5cf6", // Purple
@@ -152,6 +154,7 @@ const achievements = [
     label: "10c",
     title: "STATE TECHFEST",
     org: "State Level Competition",
+    summary: "THIRD PLACE STATE TECHFEST", // Exactly four words
     detail: "Won 3rd place in the state-level TechFest for developing a culinary platform with an AI chatbot.",
     year: "2024",
     accent: "#10b981", // Green
@@ -163,6 +166,7 @@ const achievements = [
     label: "30c",
     title: "SHEFI 14 SCHOLAR",
     org: "Web3 & Blockchain",
+    summary: "SELECTED GLOBAL SHEFI SCHOLAR", // Exactly four words
     detail: "Selected for a prestigious US-based cohort empowering women in Web3 and decentralized technologies.",
     year: "2025",
     accent: "#f43f5e", // Rose
@@ -174,6 +178,7 @@ const achievements = [
     label: "15c",
     title: "AI HACKATHON",
     org: "Design-to-Code",
+    summary: "SECURED HACKATHON RUNNER UP", // Exactly four words
     detail: "Secured the runner-up position in an intense hackathon bridging UI design and AI code generation.",
     year: "2025",
     accent: "#f97316", // Orange
@@ -185,6 +190,7 @@ const achievements = [
     label: "5c",
     title: "GSSOC OPEN SOURCE",
     org: "Event Organiser",
+    summary: "GSSOC CAMPUS EVENT ORGANISER", // Exactly four words
     detail: "Led and organized campus events while making significant contributions to global open-source projects.",
     year: "2025",
     accent: "#eab308", // Yellow
@@ -196,6 +202,7 @@ const achievements = [
     label: "50c",
     title: "GEN AI EXCHANGE",
     org: "Google Cloud",
+    summary: "GOOGLE CLOUD AI BUILDER", // Exactly four words
     detail: "Architected and built practical AI solutions utilizing Google Cloud's Generative AI infrastructure.",
     year: "2025",
     accent: "#14b8a6", // Teal
@@ -304,13 +311,13 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
               </div>
             </div>
 
-            {/* Bottom Title & Metadata */}
+            {/* Bottom Title & 4-Word Summary */}
             <div className="text-center mt-auto mb-1 z-10">
-              <h4 className="text-[17px] font-outfit font-bold italic leading-tight px-0.5" style={{ color: item.accent }}>
+              <h4 className="text-[16px] font-outfit font-bold italic leading-tight px-0.5" style={{ color: item.accent }}>
                 {item.title}
               </h4>
-              <span className="text-[7.5px] font-mono block mt-1 uppercase tracking-wider opacity-60" style={{ color: item.accent }}>
-                {item.org}
+              <span className="text-[6.5px] font-mono block mt-1.5 uppercase tracking-widest font-black leading-none opacity-70" style={{ color: item.accent }}>
+                {item.summary}
               </span>
             </div>
 
