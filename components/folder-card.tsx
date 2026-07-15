@@ -61,9 +61,9 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
         style={{ transformStyle: "preserve-3d" }}
       >
         
-        {/* Back Cover of the Folder */}
+        {/* Back Cover of the Folder (Manila Interior) */}
         <div 
-          className={`absolute inset-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm' : 'rounded-r-2xl rounded-l-sm'} shadow-2xl pointer-events-none bg-[#1e1e1e] overflow-hidden`}
+          className={`absolute inset-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm' : 'rounded-r-2xl rounded-l-sm'} shadow-2xl pointer-events-none bg-[#f3ebd4] dark:bg-[#2d2a22] overflow-hidden`}
           style={{ transform: "translateZ(-10px)" }} 
         >
           {coverNode
@@ -71,7 +71,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
             : <img src={coverImage || "/cover.png"} alt="Cover" className={`absolute inset-0 w-full h-full object-fill ${direction === 'ltr' ? 'scale-[1.12]' : 'scale-[1.10]'} opacity-80 z-0`} />
           }
           {/* Back cover vignette */}
-          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.15)_120%)] pointer-events-none ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
+          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.1)_120%)] pointer-events-none ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
         </div>
         
         {/* The Internal Files / Documents Stack */}
@@ -219,14 +219,14 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
              <div className="absolute inset-0 shadow-[inset_-2px_0_12px_rgba(255,255,255,0.03)] pointer-events-none rounded-r-2xl rounded-l-sm z-0" />
            </div>
 
-           {/* Inside of the Front Cover */}
+           {/* Inside of the Front Cover (Manila Interior) */}
            <div 
-             className={`absolute inset-0 bg-[#1e1e1e] ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[inset_-10px_0_20px_rgba(0,0,0,0.8)]' : 'rounded-r-2xl rounded-l-sm shadow-[inset_10px_0_20px_rgba(0,0,0,0.8)]'} overflow-hidden`}
+             className={`absolute inset-0 bg-[#f3ebd4] dark:bg-[#2d2a22] ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[inset_-10px_0_20px_rgba(0,0,0,0.25)]' : 'rounded-r-2xl rounded-l-sm shadow-[inset_10px_0_20px_rgba(0,0,0,0.25)]'} overflow-hidden`}
              style={{ backfaceVisibility: "hidden", transform: `rotateY(180deg) translateZ(1px)` }}
            >
-             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.8)_120%)] pointer-events-none z-0" />
+             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.25)_120%)] pointer-events-none z-0" />
              {/* Spine/Crease detail on the inside */}
-             <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/80 to-transparent pointer-events-none z-0" />
+             <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black/15 to-transparent pointer-events-none z-0" />
            </div>
         </motion.div>
 

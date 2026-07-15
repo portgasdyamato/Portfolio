@@ -1,14 +1,14 @@
 "use client"
 
 import type { LucideIcon } from "lucide-react"
-import { BookOpen, GraduationCap, Briefcase, Monitor, Compass, Award, Book } from "lucide-react"
+import { BookOpen, GraduationCap, Briefcase, Monitor, Book } from "lucide-react"
 
 export type FolderStage = 'middle' | 'secondary' | 'highschool' | 'btech' | 'growth'
 
 interface StageConfig {
-  bg: string           // dark background
-  accent: string       // single accent colour (rose)
-  label: string        // index label  e.g. "01"
+  bg: string           // light background paper color
+  accent: string       // stage accent color
+  label: string        // index label
   title: string[]      // lines of the title
   subtitle: string
   year: string
@@ -17,7 +17,7 @@ interface StageConfig {
 
 const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
   middle: {
-    bg: '#111111',        // Premium Charcoal Black
+    bg: '#FCFAF6',        // Clean Light Cream
     accent: '#7dd3fc',    // Sky Blue
     label: '01',
     title: ['MIDDLE', 'SCHOOL'],
@@ -26,7 +26,7 @@ const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
     Icon: Book,
   },
   secondary: {
-    bg: '#111111',        // Premium Charcoal Black
+    bg: '#FCFAF6',        // Clean Light Cream
     accent: '#86efac',    // Light Green
     label: '02',
     title: ['SECONDARY', 'SCHOOL'],
@@ -35,7 +35,7 @@ const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
     Icon: BookOpen,
   },
   highschool: {
-    bg: '#111111',        // Premium Charcoal Black
+    bg: '#FCFAF6',        // Clean Light Cream
     accent: '#d8b4fe',    // Light Purple
     label: '03',
     title: ['HIGH SCHOOL', 'GRADUATION'],
@@ -44,8 +44,8 @@ const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
     Icon: GraduationCap,
   },
   btech: {
-    bg: '#111111',        // Premium Charcoal Black
-    accent: '#F59E9E',    // Elegant Brand Rose
+    bg: '#FCFAF6',        // Clean Light Cream
+    accent: '#F59E9E',    // Brand Rose Pink
     label: '04',
     title: ['B.TECH', 'COMP. SCI.'],
     subtitle: 'Engineering — AKTU',
@@ -53,7 +53,7 @@ const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
     Icon: Monitor,
   },
   growth: {
-    bg: '#111111',        // Premium Charcoal Black
+    bg: '#FCFAF6',        // Clean Light Cream
     accent: '#fde047',    // Yellow
     label: '05',
     title: ['PROFESSIONAL', 'GROWTH'],
@@ -68,29 +68,29 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
 
   return (
     <div
-      className="absolute inset-0 w-full h-full overflow-hidden"
+      className="absolute inset-0 w-full h-full overflow-hidden border border-black/5 rounded-none"
       style={{ backgroundColor: bg }}
     >
-      {/* ── Background SVG structure ── */}
+      {/* ── Background SVG structure (Light Theme Manila Rules with visible Grid) ── */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
         viewBox="0 0 280 380"
         preserveAspectRatio="xMidYMid slice"
         aria-hidden="true"
       >
-        {/* Fine grid overlay */}
+        {/* Fine grid overlay - soft but defined lines */}
         {Array.from({ length: 15 }).map((_, i) => (
           <line
             key={`vl-${i}`}
             x1={i * 20} y1="0" x2={i * 20} y2="380"
-            stroke="rgba(255,255,255,0.03)" strokeWidth="0.5"
+            stroke="rgba(0,0,0,0.035)" strokeWidth="0.6"
           />
         ))}
         {Array.from({ length: 20 }).map((_, i) => (
           <line
             key={`hl-${i}`}
             x1="0" y1={i * 20} x2="280" y2={i * 20}
-            stroke="rgba(255,255,255,0.03)" strokeWidth="0.5"
+            stroke="rgba(0,0,0,0.035)" strokeWidth="0.6"
           />
         ))}
 
@@ -100,7 +100,7 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
           fontSize="220"
           fontWeight="900"
           fontFamily="'Inter', sans-serif"
-          fill="rgba(255,255,255,0.03)"
+          fill="rgba(0,0,0,0.038)"
           letterSpacing="-10"
         >
           {label}
@@ -108,11 +108,11 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
 
         {/* Left structural rule */}
         <line x1="30" y1="24" x2="30" y2="356"
-          stroke="rgba(255,255,255,0.08)" strokeWidth="0.8"/>
+          stroke="rgba(0,0,0,0.09)" strokeWidth="1"/>
 
         {/* Thin horizontal rule separating header from body */}
         <line x1="30" y1="80" x2="260" y2="80"
-          stroke="rgba(255,255,255,0.1)" strokeWidth="0.8"/>
+          stroke="rgba(0,0,0,0.08)" strokeWidth="1"/>
 
         {/* Label / index block at top-left */}
         <rect x="30" y="24" width="36" height="20" rx="0"
@@ -120,21 +120,21 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
 
         {/* Divider before subtitle */}
         <line x1="30" y1="280" x2="260" y2="280"
-          stroke="rgba(255,255,255,0.1)" strokeWidth="0.8"/>
+          stroke="rgba(0,0,0,0.08)" strokeWidth="1"/>
 
         {/* Bottom rule */}
         <line x1="0" y1="356" x2="280" y2="356"
-          stroke="rgba(255,255,255,0.06)" strokeWidth="0.8"/>
+          stroke="rgba(0,0,0,0.06)" strokeWidth="1"/>
 
         {/* Corner tick marks — bottom right */}
         <line x1="248" y1="356" x2="260" y2="356"
-          stroke={accent} strokeWidth="1.5" opacity="0.7"/>
+          stroke={accent} strokeWidth="2" opacity="0.8"/>
         <line x1="260" y1="344" x2="260" y2="356"
-          stroke={accent} strokeWidth="1.5" opacity="0.7"/>
+          stroke={accent} strokeWidth="2" opacity="0.8"/>
 
-        {/* Corner tick marks — top left (below accent bar) */}
+        {/* Corner tick marks — top left */}
         <line x1="30" y1="8" x2="42" y2="8"
-          stroke="rgba(255,255,255,0.2)" strokeWidth="1"/>
+          stroke="rgba(0,0,0,0.12)" strokeWidth="1"/>
       </svg>
 
       {/* ── Index label text ── */}
@@ -147,8 +147,8 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: '9px',
-            fontWeight: 700,
-            color: '#111',
+            fontWeight: 750,
+            color: '#ffffff', // White text on color accent tabs
             letterSpacing: '0.05em',
           }}
         >
@@ -166,7 +166,7 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
             fontFamily: "'Inter', sans-serif",
             fontSize: '7px',
             fontWeight: 600,
-            color: 'rgba(255,255,255,0.3)',
+            color: 'rgba(0,0,0,0.4)',
             letterSpacing: '0.2em',
             textTransform: 'uppercase',
           }}
@@ -175,20 +175,21 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
         </span>
       </div>
 
-      {/* ── Icon — left-aligned below header rule ── */}
+      {/* ── Icon ── */}
       <div
         className="absolute"
         style={{ top: 100, left: 30, lineHeight: 0 }}
       >
         <Icon
           size={28}
-          strokeWidth={1.2}
+          strokeWidth={1.6}
           fill={accent}
-          style={{ color: accent, opacity: 0.9 }}
+          stroke={bg}
+          style={{ opacity: 0.95 }}
         />
       </div>
 
-      {/* ── Year — right-aligned, same row as icon ── */}
+      {/* ── Year ── */}
       <div
         className="absolute"
         style={{ top: 106, right: 24 }}
@@ -197,8 +198,8 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: '8px',
-            fontWeight: 500,
-            color: 'rgba(255,255,255,0.35)',
+            fontWeight: 600,
+            color: 'rgba(0,0,0,0.45)',
             letterSpacing: '0.12em',
           }}
         >
@@ -218,7 +219,7 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
               fontFamily: "'Inter', -apple-system, sans-serif",
               fontSize: title.some(t => t.length > 9) ? '30px' : '38px',
               fontWeight: 800,
-              color: 'rgba(255,255,255,0.92)',
+              color: 'rgba(26,26,26,0.92)',
               lineHeight: 1.05,
               letterSpacing: '-0.02em',
               margin: 0,
@@ -245,8 +246,8 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: '8px',
-            fontWeight: 500,
-            color: 'rgba(255,255,255,0.4)',
+            fontWeight: 600,
+            color: 'rgba(0,0,0,0.5)',
             letterSpacing: '0.16em',
             textTransform: 'uppercase',
           }}
@@ -264,8 +265,8 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
           style={{
             fontFamily: "'Inter', sans-serif",
             fontSize: '6.5px',
-            fontWeight: 400,
-            color: 'rgba(255,255,255,0.2)',
+            fontWeight: 500,
+            color: 'rgba(0,0,0,0.35)',
             letterSpacing: '0.1em',
             textTransform: 'uppercase',
           }}
