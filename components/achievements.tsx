@@ -4,81 +4,130 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import { Award, Star } from "lucide-react"
 
-// Clean, high-fidelity woodblock botanical print SVG components to serve as the stamp centerpieces
+// Clean, high-fidelity woodblock botanical print SVG components framed inside circular travel stamp borders
 const WOODBLOCK_ARTWORKS = {
   ginkgo: (ink: string, paper: string) => (
     <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-20 h-20">
-      <path d="M50,85 C48,70 47,55 46,45" strokeWidth="2.5" />
-      <path d="M46,45 C30,42 16,30 22,18 C28,6 45,14 49,20 C50,20 50,20 51,20 C55,14 72,6 78,18 C84,30 70,42 54,45 Z" fill={ink} />
-      <path d="M49,23 C42,28 32,35 28,37" stroke={paper} strokeWidth="1" opacity="0.8" />
-      <path d="M50,24 C45,34 38,40 34,42" stroke={paper} strokeWidth="1" opacity="0.8" />
-      <path d="M51,23 C58,28 68,35 72,37" stroke={paper} strokeWidth="1" opacity="0.8" />
-      <path d="M50,24 C55,34 62,40 66,42" stroke={paper} strokeWidth="1" opacity="0.8" />
+      {/* Concentric Stamp Frame */}
+      <circle cx="50" cy="50" r="42" strokeWidth="3.2" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.5" strokeDasharray="3 3" />
+      
+      {/* Ginkgo centerpiece */}
+      <g transform="translate(0, -2) scale(0.68)" style={{ transformOrigin: '50px 50px' }}>
+        <path d="M50,85 C48,70 47,55 46,45" strokeWidth="2.5" />
+        <path d="M46,45 C30,42 16,30 22,18 C28,6 45,14 49,20 C50,20 50,20 51,20 C55,14 72,6 78,18 C84,30 70,42 54,45 Z" fill={ink} />
+        <path d="M49,23 C42,28 32,35 28,37" stroke={paper} strokeWidth="1" opacity="0.8" />
+        <path d="M50,24 C45,34 38,40 34,42" stroke={paper} strokeWidth="1" opacity="0.8" />
+        <path d="M51,23 C58,28 68,35 72,37" stroke={paper} strokeWidth="1" opacity="0.8" />
+        <path d="M50,24 C55,34 62,40 66,42" stroke={paper} strokeWidth="1" opacity="0.8" />
+      </g>
     </svg>
   ),
-  laurel: (ink: string) => (
+  laurel: (ink: string, paper: string) => (
     <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" strokeLinecap="round" className="w-20 h-20">
-      <path d="M50,82 C42,75 34,60 34,42 C34,26 44,18 47,15" strokeWidth="2.2" />
-      <path d="M50,82 C58,75 66,60 66,42 C66,26 56,18 53,15" strokeWidth="2.2" />
-      <path d="M34,70 C28,68 25,62 30,60 C35,58 37,64 34,70 Z" fill={ink} />
-      <path d="M32,54 C26,52 23,46 28,44 C33,42 35,48 32,54 Z" fill={ink} />
-      <path d="M32,38 C26,36 23,30 28,28 C33,26 35,32 32,38 Z" fill={ink} />
-      <path d="M66,70 C72,68 75,62 70,60 C65,58 63,64 66,70 Z" fill={ink} />
-      <path d="M68,54 C74,52 77,46 72,44 C67,42 65,48 68,54 Z" fill={ink} />
-      <path d="M68,38 C74,36 77,30 72,28 C67,26 65,32 68,38 Z" fill={ink} />
+      {/* Concentric Stamp Frame */}
+      <circle cx="50" cy="50" r="42" strokeWidth="3.2" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.5" strokeDasharray="3 3" />
+      
+      {/* Laurel centerpiece */}
+      <g transform="translate(0, 0) scale(0.7)" style={{ transformOrigin: '50px 50px' }}>
+        <path d="M50,82 C42,75 34,60 34,42 C34,26 44,18 47,15" strokeWidth="2.2" />
+        <path d="M50,82 C58,75 66,60 66,42 C66,26 56,18 53,15" strokeWidth="2.2" />
+        <path d="M34,70 C28,68 25,62 30,60 C35,58 37,64 34,70 Z" fill={ink} />
+        <path d="M32,54 C26,52 23,46 28,44 C33,42 35,48 32,54 Z" fill={ink} />
+        <path d="M32,38 C26,36 23,30 28,28 C33,26 35,32 32,38 Z" fill={ink} />
+        <path d="M66,70 C72,68 75,62 70,60 C65,58 63,64 66,70 Z" fill={ink} />
+        <path d="M68,54 C74,52 77,46 72,44 C67,42 65,48 68,54 Z" fill={ink} />
+        <path d="M68,38 C74,36 77,30 72,28 C67,26 65,32 68,38 Z" fill={ink} />
+      </g>
     </svg>
   ),
-  fern: (ink: string) => (
+  fern: (ink: string, paper: string) => (
     <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" strokeLinecap="round" className="w-20 h-20">
-      <path d="M35,85 C45,70 52,48 62,15" strokeWidth="2.5" />
-      <path d="M42,72 C30,70 24,67 22,69 C32,64 43,66 42,72 Z" fill={ink} />
-      <path d="M46,58 C34,56 28,53 26,55 C36,50 47,52 46,58 Z" fill={ink} />
-      <path d="M50,44 C38,42 32,39 30,41 C40,36 51,38 50,44 Z" fill={ink} />
-      <path d="M45,69 C57,63 63,60 65,62 C55,57 48,63 45,69 Z" fill={ink} />
-      <path d="M49,55 C61,49 67,46 69,48 C59,43 52,49 49,55 Z" fill={ink} />
-      <path d="M53,41 C65,35 71,32 73,34 Q63,29 53,41 Z" fill={ink} />
+      {/* Concentric Stamp Frame */}
+      <circle cx="50" cy="50" r="42" strokeWidth="3.2" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.5" strokeDasharray="3 3" />
+      
+      {/* Fern centerpiece */}
+      <g transform="translate(0, 0) scale(0.7)" style={{ transformOrigin: '50px 50px' }}>
+        <path d="M35,85 C45,70 52,48 62,15" strokeWidth="2.5" />
+        <path d="M42,72 C30,70 24,67 22,69 C32,64 43,66 42,72 Z" fill={ink} />
+        <path d="M46,58 C34,56 28,53 26,55 C36,50 47,52 46,58 Z" fill={ink} />
+        <path d="M50,44 C38,42 32,39 30,41 C40,36 51,38 50,44 Z" fill={ink} />
+        <path d="M45,69 C57,63 63,60 65,62 C55,57 48,63 45,69 Z" fill={ink} />
+        <path d="M49,55 C61,49 67,46 69,48 C59,43 52,49 49,55 Z" fill={ink} />
+        <path d="M53,41 C65,35 71,32 73,34 Q63,29 53,41 Z" fill={ink} />
+      </g>
     </svg>
   ),
   rose: (ink: string, paper: string) => (
     <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" strokeLinecap="round" className="w-20 h-20">
-      <path d="M50,85 C50,60 50,45 50,32" strokeWidth="2" />
-      <path d="M50,68 L45,65 L50,62 Z" fill={ink} strokeWidth="0.5" />
-      <path d="M50,52 L55,49 L50,46 Z" fill={ink} strokeWidth="0.5" />
-      <path d="M50,60 C40,60 35,53 38,47 C41,45 47,49 50,54 Z" fill={ink} />
-      <path d="M50,46 C60,46 65,39 62,33 C59,31 53,35 50,40 Z" fill={ink} />
-      <path d="M50,32 C38,32 34,14 50,8 C66,14 62,32 50,32 Z" fill={ink} />
-      <path d="M46,20 C42,12 48,10 50,12 C52,10 58,12 54,20" stroke={paper} strokeWidth="1" opacity="0.8" />
+      {/* Concentric Stamp Frame */}
+      <circle cx="50" cy="50" r="42" strokeWidth="3.2" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.5" strokeDasharray="3 3" />
+      
+      {/* Rose centerpiece */}
+      <g transform="translate(0, 0) scale(0.7)" style={{ transformOrigin: '50px 50px' }}>
+        <path d="M50,85 C50,60 50,45 50,32" strokeWidth="2" />
+        <path d="M50,68 L45,65 L50,62 Z" fill={ink} strokeWidth="0.5" />
+        <path d="M50,52 L55,49 L50,46 Z" fill={ink} strokeWidth="0.5" />
+        <path d="M50,60 C40,60 35,53 38,47 C41,45 47,49 50,54 Z" fill={ink} />
+        <path d="M50,46 C60,46 65,39 62,33 C59,31 53,35 50,40 Z" fill={ink} />
+        <path d="M50,32 C38,32 34,14 50,8 C66,14 62,32 50,32 Z" fill={ink} />
+        <path d="M46,20 C42,12 48,10 50,12 C52,10 58,12 54,20" stroke={paper} strokeWidth="1" opacity="0.8" />
+      </g>
     </svg>
   ),
-  clover: (ink: string) => (
+  clover: (ink: string, paper: string) => (
     <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" className="w-20 h-20">
-      <path d="M50,85 C50,65 47,50 45,38" strokeWidth="2" strokeLinecap="round" />
-      <path d="M45,38 C32,38 25,25 40,20 C48,22 46,32 45,38 Z" fill={ink} />
-      <path d="M45,38 C58,38 65,25 50,20 C42,22 44,32 45,38 Z" fill={ink} />
-      <path d="M45,38 C45,50 35,58 35,42 C38,36 42,37 45,38 Z" fill={ink} />
-      <path d="M45,38 C45,50 55,58 55,42 C52,36 48,37 45,38 Z" fill={ink} />
+      {/* Concentric Stamp Frame */}
+      <circle cx="50" cy="50" r="42" strokeWidth="3.2" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.5" strokeDasharray="3 3" />
+      
+      {/* Clover centerpiece */}
+      <g transform="translate(0, 0) scale(0.7)" style={{ transformOrigin: '50px 50px' }}>
+        <path d="M50,85 C50,65 47,50 45,38" strokeWidth="2" strokeLinecap="round" />
+        <path d="M45,38 C32,38 25,25 40,20 C48,22 46,32 45,38 Z" fill={ink} />
+        <path d="M45,38 C58,38 65,25 50,20 C42,22 44,32 45,38 Z" fill={ink} />
+        <path d="M45,38 C45,50 35,58 35,42 C38,36 42,37 45,38 Z" fill={ink} />
+        <path d="M45,38 C45,50 55,58 55,42 C52,36 48,37 45,38 Z" fill={ink} />
+      </g>
     </svg>
   ),
   butterfly: (ink: string, paper: string) => (
     <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" strokeLinecap="round" className="w-20 h-20">
-      <line x1="50" y1="20" x2="50" y2="70" strokeWidth="3" />
-      <circle cx="50" cy="15" r="2.5" fill={ink} />
-      <path d="M49,25 C30,10 12,20 18,44 C22,54 36,49 49,45 Z" fill={ink} />
-      <path d="M49,46 C32,50 20,60 23,73 C26,80 39,73 49,63 Z" fill={ink} />
-      <path d="M51,25 C70,10 88,20 82,44 C78,54 64,49 51,45 Z" fill={ink} />
-      <path d="M51,46 C68,50 80,60 77,73 C74,80 61,73 51,63 Z" fill={ink} />
-      <path d="M28,32 Q38,34 44,36" stroke={paper} strokeWidth="1" opacity="0.8" />
-      <path d="M72,32 Q62,34 56,36" stroke={paper} strokeWidth="1" opacity="0.8" />
+      {/* Concentric Stamp Frame */}
+      <circle cx="50" cy="50" r="42" strokeWidth="3.2" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.5" strokeDasharray="3 3" />
+      
+      {/* Butterfly centerpiece */}
+      <g transform="translate(0, -2) scale(0.68)" style={{ transformOrigin: '50px 50px' }}>
+        <line x1="50" y1="20" x2="50" y2="70" strokeWidth="3" />
+        <circle cx="50" cy="15" r="2.5" fill={ink} />
+        <path d="M49,25 C30,10 12,20 18,44 C22,54 36,49 49,45 Z" fill={ink} />
+        <path d="M49,46 C32,50 20,60 23,73 C26,80 39,73 49,63 Z" fill={ink} />
+        <path d="M51,25 C70,10 88,20 82,44 C78,54 64,49 51,45 Z" fill={ink} />
+        <path d="M51,46 C68,50 80,60 77,73 C74,80 61,73 51,63 Z" fill={ink} />
+        <path d="M28,32 Q38,34 44,36" stroke={paper} strokeWidth="1" opacity="0.8" />
+        <path d="M72,32 Q62,34 56,36" stroke={paper} strokeWidth="1" opacity="0.8" />
+      </g>
     </svg>
   ),
   wildflower: (ink: string, paper: string) => (
     <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" className="w-20 h-20">
-      <path d="M50,85 C47,60 44,45 42,28" strokeWidth="2" strokeLinecap="round" />
-      <path d="M50,85 C53,68 56,53 60,36" strokeWidth="2.2" strokeLinecap="round" />
-      <circle cx="42" cy="28" r="7.5" fill={ink} />
-      <circle cx="42" cy="28" r="2" fill={paper} />
-      <circle cx="60" cy="36" r="6" fill={ink} />
-      <circle cx="60" cy="36" r="1.5" fill={paper} />
+      {/* Concentric Stamp Frame */}
+      <circle cx="50" cy="50" r="42" strokeWidth="3.2" />
+      <circle cx="50" cy="50" r="35" strokeWidth="1.5" strokeDasharray="3 3" />
+      
+      {/* Wildflower centerpiece */}
+      <g transform="translate(0, 0) scale(0.7)" style={{ transformOrigin: '50px 50px' }}>
+        <path d="M50,85 C47,60 44,45 42,28" strokeWidth="2" strokeLinecap="round" />
+        <path d="M50,85 C53,68 56,53 60,36" strokeWidth="2.2" strokeLinecap="round" />
+        <circle cx="42" cy="28" r="7.5" fill={ink} />
+        <circle cx="42" cy="28" r="2" fill={paper} />
+        <circle cx="60" cy="36" r="6" fill={ink} />
+        <circle cx="60" cy="36" r="1.5" fill={paper} />
+      </g>
     </svg>
   ),
 }
@@ -227,7 +276,6 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
               <div key={`r-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
-
 
           {/* Inner Stamp Canvas */}
           <div 
@@ -392,7 +440,7 @@ export default function Achievements() {
         {/* ── Flip Card Grid ── */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
           {achievements.map((item, i) => (
-            <div key={item.id} className="w-full max-w-[320px] mx-auto" style={{ transform: "scale(0.96)", transformOrigin: "center center" }}>
+            <div key={item.id} className="w-full max-w-[320px] mx-auto">
               <MilestoneCard item={item} index={i} />
             </div>
           ))}
