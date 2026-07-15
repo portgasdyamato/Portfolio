@@ -4,9 +4,11 @@ import { motion, AnimatePresence, useScroll, useTransform, useInView, useMotionV
 import { useState, useEffect, useRef } from "react"
 import { BookOpen, GraduationCap, Star, Award, MapPin, Calendar, X, Briefcase } from "lucide-react"
 import { FolderCard } from "./folder-card"
+import { FolderCoverDesign, type FolderStage } from "./folder-cover"
 
 const educationJourney = [
   {
+    stage: 'middle' as FolderStage,
     level: "Middle School",
     institution: "Govt Co-ed Sr. Sec. School",
     duration: "2015-2018",
@@ -16,9 +18,9 @@ const educationJourney = [
     gpa: "87%",
     description: "Built strong fundamentals in science and computers. Participated in various competitions and coding camps where my adventurous journey started to unfold.",
     achievements: ["Skit Competition (2nd Prize)", "Science Exhibition Winner", "Dell Code Camp", "Singing & Choir"],
-    coverImage: "/mid.png"
   },
   {
+    stage: 'secondary' as FolderStage,
     level: "Secondary Education",
     institution: "School of Excellence",
     duration: "2018-2020",
@@ -28,9 +30,9 @@ const educationJourney = [
     gpa: "86%",
     description: "Strong academic foundation with focus on science. Actively participated in international cultural exchange programs.",
     achievements: ["Learning Buddy (US-India Exchange)", "Lead of Music Choir Group", "Classical Music Competition", "Science Club Member"],
-    coverImage: "/sec.png"
   },
   {
+    stage: 'highschool' as FolderStage,
     level: "High School Graduation",
     institution: "School of Excellence, Delhi",
     duration: "2021-2022",
@@ -40,9 +42,9 @@ const educationJourney = [
     gpa: "82%",
     description: "Specialized in Computer Science, Physics, Chemistry, and Mathematics.",
     achievements: ["Punctuality & Discipline Award", "Library Management System Project", "94% in Computer Science", "Club Leader"],
-    coverImage: "/high.png"
   },
   {
+    stage: 'btech' as FolderStage,
     level: "B.Tech in Computer Science",
     institution: "AKTU, Lucknow",
     duration: "2022-2026",
@@ -52,12 +54,12 @@ const educationJourney = [
     gpa: "8.7 CGPA (First Class)",
     description: "Focusing on DBMS, Web Technology, Algorithms, AI, and Software Engineering.",
     achievements: ["UI/UX Solvathon Winner", "State TechFest (2nd Runner-Up)", "Hackathon (2nd Runner-Up)", "Harvard Aspire Scholar", "SheFi Scholar", "GSSoC Contributor"],
-    coverImage: "/btech.png"
   },
   {
+    stage: 'growth' as FolderStage,
     level: "Continuous Professional Growth",
     institution: "Global & Remote",
-    duration: "2023 - Present",
+    duration: "2024 - Present",
     date: "Ongoing",
     icon: Briefcase,
     color: "from-brand-400 to-brand-600",
@@ -71,7 +73,6 @@ const educationJourney = [
         "Pledge A Smile - Volunteer",
         "Freelance - Digital Product Designer"
     ],
-    coverImage: "/grow.png"
   }
 ]
 
@@ -92,7 +93,6 @@ function FolderTimelineItem({ item, index, drawProgress, totalItems }: { item: t
   
   const isEven = index % 2 === 0;
   const direction = isEven ? 'ltr' : 'rtl';
-  const coverImg = item.coverImage || '/cover.png';
 
   return (
     <div ref={ref} className={`relative z-10 w-full max-w-sm mx-auto ${isEven ? 'md:ml-0 md:mr-auto' : 'md:mr-0 md:ml-auto'}`}>
@@ -148,7 +148,7 @@ function FolderTimelineItem({ item, index, drawProgress, totalItems }: { item: t
               onNext={() => {}}
               onPrev={() => {}}
               direction={direction}
-              coverImage={coverImg}
+              coverNode={<FolderCoverDesign stage={item.stage} direction={direction} />}
             />
           </div>
         </div>
