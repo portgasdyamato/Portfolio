@@ -197,9 +197,8 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
       >
         {/* ── 1. FRONT FACE (Postage Stamp with Botanical Centerpiece & Detailed Print Margins) ── */}
         <div 
-          className="absolute inset-0 p-3 rounded-none shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
+          className="absolute inset-0 bg-white dark:bg-[#151515] p-3 rounded-none shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
           style={{ 
-            backgroundColor: item.paperColor, 
             backfaceVisibility: "hidden", 
             WebkitBackfaceVisibility: "hidden" 
           }}
@@ -248,22 +247,10 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             <path d="M 0,62 Q 20,65 35,62 T 75,62" />
           </svg>
 
-          {/* Detailed Outer Stamp Border Frameline (Dashed margin) */}
-          <div 
-            className="absolute inset-[6px] border border-dashed opacity-25 pointer-events-none rounded-[1px] z-10"
-            style={{ borderColor: item.accent, borderWidth: '1px', strokeDasharray: '3 2' }}
-          />
-
-          {/* Micro Corner Printer Marks (+) */}
-          <div className="absolute top-[5px] left-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
-          <div className="absolute top-[5px] right-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
-          <div className="absolute bottom-[5px] left-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
-          <div className="absolute bottom-[5px] right-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
-
           {/* Inner Stamp Canvas */}
           <div 
-            className="w-full h-full border flex flex-col justify-between p-3 relative overflow-hidden bg-transparent z-10"
-            style={{ borderColor: `${item.accent}20` }}
+            className="w-full h-full border flex flex-col justify-between p-3 relative overflow-hidden z-10"
+            style={{ backgroundColor: item.paperColor, borderColor: `${item.accent}20` }}
           >
             {/* Fine Inner Accent Border Frame */}
             <div className="absolute inset-[3px] border border-solid opacity-20 rounded-sm pointer-events-none" style={{ borderColor: item.accent }} />
