@@ -217,13 +217,6 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
           stroke="rgba(0,0,0,0.12)" strokeWidth="1"/>
       </svg>
 
-      {/* ── Realistic Vertical Spine Crease ── */}
-      <div 
-        className={`absolute top-0 bottom-0 w-4 bg-gradient-to-r from-black/[0.04] to-transparent pointer-events-none z-20 ${
-          direction === 'rtl' ? 'right-0 border-l border-black/[0.03]' : 'left-0 border-r border-black/[0.03]'
-        }`} 
-      />
-
       {/* ── Index label text ── */}
       <div
         className="absolute"
@@ -243,6 +236,25 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
         </span>
       </div>
 
+      {/* ── Section label top-right ── */}
+      <div
+        className="absolute"
+        style={{ top: 28, right: 24 }}
+      >
+        <span
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '7px',
+            fontWeight: 600,
+            color: 'rgba(0,0,0,0.4)',
+            letterSpacing: '0.2em',
+            textTransform: 'uppercase',
+          }}
+        >
+          EDUCATION
+        </span>
+      </div>
+
       {/* ── Custom High-Detail Icon ── */}
       <div
         className="absolute"
@@ -251,37 +263,71 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
         {FOLDER_ARTWORKS[stage](accent, bg)}
       </div>
 
-      {/* ── Detailed Central Archival Label Plate (Archival Folder design) ── */}
-      <div 
-        className="absolute top-[162px] left-[30px] right-[24px] bg-white/60 dark:bg-black/20 border border-black/10 dark:border-white/10 p-3.5 shadow-[0_2px_8px_rgba(0,0,0,0.015)] rounded-sm z-10 flex flex-col justify-between"
-        style={{ height: '110px' }}
+      {/* ── Year ── */}
+      <div
+        className="absolute"
+        style={{ top: 106, right: 24 }}
       >
-        {/* Double Frame inside Label Plate */}
-        <div className="absolute inset-[2.5px] border border-solid border-black/[0.04] dark:border-white/[0.04] pointer-events-none" />
-        
-        {/* Top classification */}
-        <div className="flex justify-between items-center text-[6.5px] font-mono text-slate-400 dark:text-slate-500 uppercase tracking-widest leading-none">
-          <span>{subtitle}</span>
-          <span className="font-bold opacity-80" style={{ color: accent }}>RECORD FILE</span>
-        </div>
+        <span
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '8px',
+            fontWeight: 600,
+            color: 'rgba(0,0,0,0.45)',
+            letterSpacing: '0.12em',
+          }}
+        >
+          {year}
+        </span>
+      </div>
 
-        {/* Dossier Title */}
-        <div className="my-auto py-1">
-          {title.map((line, i) => (
-            <h4 
-              key={i} 
-              className="text-[16px] font-bold text-slate-800 dark:text-slate-100 font-mono tracking-wider leading-[1.1] uppercase m-0"
-            >
-              {line}
-            </h4>
-          ))}
-        </div>
+      {/* ── Main title — large, bold, left-aligned ── */}
+      <div
+        className="absolute"
+        style={{ top: 148, left: 30, right: 20 }}
+      >
+        {title.map((line, i) => (
+          <p
+            key={i}
+            style={{
+              fontFamily: "'Inter', -apple-system, sans-serif",
+              fontSize: title.some(t => t.length > 9) ? '30px' : '38px',
+              fontWeight: 800,
+              color: 'rgba(26,26,26,0.92)',
+              lineHeight: 1.05,
+              letterSpacing: '-0.02em',
+              margin: 0,
+              textTransform: 'uppercase',
+            }}
+          >
+            {line}
+          </p>
+        ))}
+      </div>
 
-        {/* Bottom parameters */}
-        <div className="flex justify-between items-end border-t border-black/[0.08] dark:border-white/[0.08] pt-1.5 mt-0.5 text-[6.5px] font-mono text-slate-400 dark:text-slate-500 tracking-wider">
-          <span>CLASSIFICATION: 0{label}</span>
-          <span className="font-bold">{year}</span>
-        </div>
+      {/* ── Accent rule under title ── */}
+      <div
+        className="absolute"
+        style={{ top: 268, left: 30, width: 48, height: 3, backgroundColor: accent }}
+      />
+
+      {/* ── Subtitle ── */}
+      <div
+        className="absolute"
+        style={{ top: 286, left: 30 }}
+      >
+        <span
+          style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '8px',
+            fontWeight: 600,
+            color: 'rgba(0,0,0,0.5)',
+            letterSpacing: '0.16em',
+            textTransform: 'uppercase',
+          }}
+        >
+          {subtitle}
+        </span>
       </div>
 
       {/* ── Bottom label ── */}
