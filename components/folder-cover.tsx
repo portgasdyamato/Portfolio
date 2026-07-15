@@ -290,14 +290,14 @@ export function FolderCoverDesign({ stage, direction = 'ltr' }: { stage: FolderS
           <p
             key={i}
             style={{
-              fontFamily: "'Inter', -apple-system, sans-serif",
-              fontSize: title.some(t => t.length > 9) ? '30px' : '38px',
-              fontWeight: 800,
+              fontFamily: "'Libre Baskerville', serif",
+              fontSize: title.some(t => t.length > 9) ? '24px' : '30px',
+              fontWeight: 700,
+              fontStyle: "italic",
               color: 'rgba(26,26,26,0.92)',
-              lineHeight: 1.05,
-              letterSpacing: '-0.02em',
+              lineHeight: 1.15,
+              letterSpacing: '-0.01em',
               margin: 0,
-              textTransform: 'uppercase',
             }}
           >
             {line}
