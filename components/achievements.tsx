@@ -195,10 +195,14 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
         className="relative w-full h-full preserve-3d"
         style={{ transformStyle: "preserve-3d" }}
       >
-        {/* ── 1. FRONT FACE (Clean Postage Stamp with Botanical Print Centerpiece) ── */}
+        {/* ── 1. FRONT FACE (Postage Stamp with Botanical Centerpiece & Detailed Print Margins) ── */}
         <div 
-          className="absolute inset-0 bg-white dark:bg-[#151515] p-3 rounded-none shadow-[0_6px_16px_rgba(0,0,0,0.03)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
-          style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+          className="absolute inset-0 p-3 rounded-none shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
+          style={{ 
+            backgroundColor: item.paperColor, 
+            backfaceVisibility: "hidden", 
+            WebkitBackfaceVisibility: "hidden" 
+          }}
         >
           {/* Perforations - Top Edge */}
           <div className="absolute top-[-5px] left-0 right-0 flex justify-between px-[4px] pointer-events-none z-20">
@@ -225,13 +229,44 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             ))}
           </div>
 
+          {/* Faint Vintage Postmark Cancellation Waves (Center shifted leftwards) */}
+          <svg 
+            className="absolute top-2 -right-6 w-28 h-28 pointer-events-none opacity-[0.06] select-none z-20" 
+            viewBox="0 0 100 100" 
+            fill="none" 
+            stroke={item.accent} 
+            strokeWidth="1.2"
+          >
+            {/* Concentric rings with center shifted to the left (cx=35) */}
+            <circle cx="35" cy="50" r="26" strokeDasharray="3 3" />
+            <circle cx="35" cy="50" r="34" />
+            <circle cx="35" cy="50" r="42" />
+            
+            {/* Soft wave lines running horizontally */}
+            <path d="M 0,38 Q 20,41 35,38 T 75,38" />
+            <path d="M 0,50 Q 20,53 35,50 T 75,50" />
+            <path d="M 0,62 Q 20,65 35,62 T 75,62" />
+          </svg>
+
+          {/* Detailed Outer Stamp Border Frameline (Dashed margin) */}
+          <div 
+            className="absolute inset-[6px] border border-dashed opacity-25 pointer-events-none rounded-[1px] z-10"
+            style={{ borderColor: item.accent, borderWidth: '1px', strokeDasharray: '3 2' }}
+          />
+
+          {/* Micro Corner Printer Marks (+) */}
+          <div className="absolute top-[5px] left-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
+          <div className="absolute top-[5px] right-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
+          <div className="absolute bottom-[5px] left-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
+          <div className="absolute bottom-[5px] right-[7px] text-[7px] font-mono opacity-25 select-none pointer-events-none" style={{ color: item.accent }}>+</div>
+
           {/* Inner Stamp Canvas */}
           <div 
-            className="w-full h-full border flex flex-col justify-between p-3 relative overflow-hidden"
-            style={{ backgroundColor: item.paperColor, borderColor: `${item.accent}15` }}
+            className="w-full h-full border flex flex-col justify-between p-3 relative overflow-hidden bg-transparent z-10"
+            style={{ borderColor: `${item.accent}20` }}
           >
             {/* Fine Inner Accent Border Frame */}
-            <div className="absolute inset-[3px] border border-solid opacity-15 rounded-sm pointer-events-none" style={{ borderColor: item.accent }} />
+            <div className="absolute inset-[3px] border border-solid opacity-20 rounded-sm pointer-events-none" style={{ borderColor: item.accent }} />
 
             {/* Header: Denomination & Year */}
             <div className="w-full flex justify-between items-start font-mono z-10" style={{ color: `${item.accent}70` }}>
