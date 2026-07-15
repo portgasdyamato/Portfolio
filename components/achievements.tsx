@@ -228,24 +228,6 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             ))}
           </div>
 
-          {/* Faint Vintage Postmark Cancellation Waves (Center shifted leftwards) */}
-          <svg 
-            className="absolute top-2 -right-6 w-28 h-28 pointer-events-none opacity-[0.06] select-none z-20" 
-            viewBox="0 0 100 100" 
-            fill="none" 
-            stroke={item.accent} 
-            strokeWidth="1.2"
-          >
-            {/* Concentric rings with center shifted to the left (cx=35) */}
-            <circle cx="35" cy="50" r="26" strokeDasharray="3 3" />
-            <circle cx="35" cy="50" r="34" />
-            <circle cx="35" cy="50" r="42" />
-            
-            {/* Soft wave lines running horizontally */}
-            <path d="M 0,38 Q 20,41 35,38 T 75,38" />
-            <path d="M 0,50 Q 20,53 35,50 T 75,50" />
-            <path d="M 0,62 Q 20,65 35,62 T 75,62" />
-          </svg>
 
           {/* Inner Stamp Canvas */}
           <div 
