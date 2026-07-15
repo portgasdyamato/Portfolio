@@ -99,14 +99,27 @@ const FOLDER_ARTWORKS = {
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
-      {/* Mortarboard Diamond */}
-      <path d="M22,10 L31,14 L22,18 L13,14 Z" fill={accent} strokeWidth="1.4" />
-      <path d="M17,16.5 L17,21 C17,23 27,23 27,21 L27,16.5" strokeWidth="1.4" />
-      <path d="M22,14 C18,15.5 18,20 18,22" strokeWidth="0.8" />
-      <circle cx="18" cy="22.5" r="1" fill={accent} stroke="none" />
-      
-      {/* Scroll at bottom */}
-      <path d="M15,27 L29,27 C30,27 30,30 29,30 L15,30 C14,30 14,27 15,27 Z" fill={bg} strokeWidth="1.2" />
+      {/* Intricate Academic Ribbon Scroll & Laurel Seal */}
+      <g transform="translate(0, 0)">
+        {/* Scroll rolled edges */}
+        <path d="M12,25 C12,21 14,21 14,25 C14,29 12,29 12,25 Z" fill={accent} />
+        <path d="M32,25 C32,21 30,21 30,25 C30,29 32,29 32,25 Z" fill={accent} />
+        
+        {/* Main scroll body lines */}
+        <path d="M13,22 L31,22" strokeWidth="1.5" />
+        <path d="M13,28 L31,28" strokeWidth="1.5" />
+        
+        {/* Rolled document curves */}
+        <path d="M14,22 C14,14 30,14 30,22" strokeWidth="1" strokeDasharray="2 1" />
+        
+        {/* Ribbon bow in the middle */}
+        <path d="M22,22 L22,32" strokeWidth="1.5" />
+        <path d="M20,24 C18,22 18,20 22,22 C26,20 26,22 24,24" strokeWidth="1.2" />
+        <path d="M20,28 L19,32 M24,28 L25,32" strokeWidth="1" />
+        
+        {/* Sparkle star at top */}
+        <path d="M22,9 L23.5,12 L26.5,12 L24,13.5 L25,16.5 L22,14.5 L19,16.5 L20,13.5 L17.5,12 L20.5,12 Z" fill={accent} stroke="none" />
+      </g>
     </svg>
   ),
   btech: (accent: string, bg: string) => (
@@ -114,18 +127,32 @@ const FOLDER_ARTWORKS = {
       <circle cx="22" cy="22" r="18" strokeWidth="1.6" />
       <circle cx="22" cy="22" r="15" strokeDasharray="2 2" strokeWidth="0.8" />
       
-      {/* Monitor screen box */}
-      <rect x="12" y="11" width="20" height="15" rx="2" strokeWidth="1.6" />
-      <rect x="14" y="13" width="16" height="11" rx="0.5" fill={bg} strokeWidth="0.8" />
-      
-      {/* Screen code lines */}
-      <line x1="16" y1="16" x2="22" y2="16" strokeWidth="1" />
-      <line x1="16" y1="19" x2="26" y2="19" strokeWidth="1" />
-      <line x1="16" y1="22" x2="20" y2="22" strokeWidth="1" />
-      
-      {/* Pedestal stand */}
-      <path d="M20,26 L19,30 L25,30 L24,26" fill={bg} strokeWidth="1" />
-      <line x1="16" y1="31" x2="28" y2="31" strokeWidth="1.8" />
+      {/* Intricate Engineering Gear & Compute Matrix nodes */}
+      <g transform="translate(22, 22)">
+        {/* Gear outer body */}
+        <circle cx="0" cy="0" r="9" strokeWidth="1.5" />
+        <circle cx="0" cy="0" r="5" strokeWidth="1" strokeDasharray="1.5 1.5" />
+        
+        {/* Gear Teeth (8 points) */}
+        <line x1="9" y1="0" x2="12" y2="0" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        <line x1="-9" y1="0" x2="-12" y2="0" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        <line x1="0" y1="9" x2="0" y2="12" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        <line x1="0" y1="-9" x2="0" y2="-12" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        <line x1="6.36" y1="6.36" x2="8.48" y2="8.48" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        <line x1="-6.36" y1="6.36" x2="-8.48" y2="8.48" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        <line x1="6.36" y1="-6.36" x2="8.48" y2="-8.48" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        <line x1="-6.36" y1="-6.36" x2="-8.48" y2="-8.48" stroke={accent} strokeWidth="2.2" strokeLinecap="square" />
+        
+        {/* Center Node Star/Spark (Computer/Tech light) */}
+        <circle cx="0" cy="0" r="2" fill={accent} stroke="none" />
+        
+        {/* Orbiting Tech satellite links */}
+        <path d="M-13,-13 L-6,-6 M13,-13 L6,-6 M-13,13 L-6,6 M13,13 L6,6" strokeWidth="1" />
+        <circle cx="-13" cy="-13" r="1.5" fill={accent} stroke="none" />
+        <circle cx="13" cy="-13" r="1.5" fill={accent} stroke="none" />
+        <circle cx="-13" cy="13" r="1.5" fill={bg} stroke={accent} strokeWidth="1" />
+        <circle cx="13" cy="13" r="1.5" fill={bg} stroke={accent} strokeWidth="1" />
+      </g>
     </svg>
   ),
   growth: (accent: string, bg: string) => (
