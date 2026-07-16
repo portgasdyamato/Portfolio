@@ -76,7 +76,7 @@ const educationJourney = [
   }
 ]
 
-function FolderTimelineItem({ item, index, drawProgress, totalItems }: { item: typeof educationJourney[0], index: number, drawProgress: MotionValue<number>, totalItems: number }) {
+function FolderTimelineItem({ item, index, drawProgress, totalItems, isMobile }: { item: typeof educationJourney[0], index: number, drawProgress: MotionValue<number>, totalItems: number, isMobile: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.2, once: false });
   const [hasReached, setHasReached] = useState(false);
@@ -111,7 +111,10 @@ function FolderTimelineItem({ item, index, drawProgress, totalItems }: { item: t
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div className="absolute w-[280px] h-[380px] scale-[0.78] sm:scale-100 origin-center z-10">
+          <div 
+            className="absolute w-[280px] h-[380px] origin-center z-10"
+            style={{ transform: isMobile ? "scale(0.78)" : "scale(1)" }}
+          >
             <AnimatePresence>
               {hasReached && !isHovered && (
                 <motion.div 
@@ -285,7 +288,7 @@ export default function Education() {
           </div>
 
           {educationJourney.map((item, index) => (
-            <FolderTimelineItem key={index} item={item} index={index} drawProgress={drawProgress} totalItems={educationJourney.length} />
+            <FolderTimelineItem key={index} item={item} index={index} drawProgress={drawProgress} totalItems={educationJourney.length} isMobile={dimensions.width > 0 && dimensions.width < 768} />
           ))}
         </div>
       </div>

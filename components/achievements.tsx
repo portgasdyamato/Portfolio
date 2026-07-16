@@ -6,7 +6,7 @@ import { Award, Star } from "lucide-react"
 
 // Maritime compass star background template to wrap each botanical centerpiece with a vintage map vibe
 const renderMaritimeStamp = (ink: string, paper: string, children: React.ReactNode, scaleVal = 0.55) => (
-  <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-20 h-20">
+  <svg viewBox="0 0 100 100" fill="none" stroke={ink} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-12 h-12 sm:w-20 sm:h-20">
     {/* Concentric Maritime Map Frame */}
     <circle cx="50" cy="50" r="42" strokeWidth="2.2" />
     <circle cx="50" cy="50" r="39" strokeWidth="0.8" strokeDasharray="2.5 1.5" />
@@ -245,53 +245,53 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
       >
         {/* ── 1. FRONT FACE (Postage Stamp with Botanical Centerpiece & Detailed Print Margins) ── */}
         <div 
-          className="absolute inset-0 bg-white dark:bg-[#151515] p-3 rounded-none shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
+          className="absolute inset-0 bg-white dark:bg-[#151515] p-1.5 sm:p-3 rounded-none shadow-[0_6px_20px_rgba(0,0,0,0.05)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
           style={{ 
             backfaceVisibility: "hidden", 
             WebkitBackfaceVisibility: "hidden" 
           }}
         >
           {/* Perforations - Top Edge */}
-          <div className="absolute top-[-5px] left-0 right-0 flex justify-between px-[4px] pointer-events-none z-20">
+          <div className="absolute top-[-3px] sm:top-[-5px] left-0 right-0 flex justify-between px-[3px] sm:px-[4px] pointer-events-none z-20">
             {horizHoles.map((_, i) => (
-              <div key={`t-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`t-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
           {/* Perforations - Bottom Edge */}
-          <div className="absolute bottom-[-5px] left-0 right-0 flex justify-between px-[4px] pointer-events-none z-20">
+          <div className="absolute bottom-[-3px] sm:bottom-[-5px] left-0 right-0 flex justify-between px-[3px] sm:px-[4px] pointer-events-none z-20">
             {horizHoles.map((_, i) => (
-              <div key={`b-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`b-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
           {/* Perforations - Left Edge */}
-          <div className="absolute left-[-5px] top-0 bottom-0 flex flex-col justify-between py-[4px] pointer-events-none z-20">
+          <div className="absolute left-[-3px] sm:left-[-5px] top-0 bottom-0 flex flex-col justify-between py-[3px] sm:py-[4px] pointer-events-none z-20">
             {vertHoles.map((_, i) => (
-              <div key={`l-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`l-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
           {/* Perforations - Right Edge */}
-          <div className="absolute right-[-5px] top-0 bottom-0 flex flex-col justify-between py-[4px] pointer-events-none z-20">
+          <div className="absolute right-[-3px] sm:right-[-5px] top-0 bottom-0 flex flex-col justify-between py-[3px] sm:py-[4px] pointer-events-none z-20">
             {vertHoles.map((_, i) => (
-              <div key={`r-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`r-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
 
           {/* Inner Stamp Canvas */}
           <div 
-            className="w-full h-full border flex flex-col justify-between p-3 relative overflow-hidden z-10"
+            className="w-full h-full border flex flex-col justify-between p-1.5 sm:p-3 relative overflow-hidden z-10"
             style={{ backgroundColor: item.paperColor, borderColor: `${item.accent}20` }}
           >
             {/* Fine Inner Accent Border Frame */}
-            <div className="absolute inset-[3px] border border-solid opacity-20 rounded-sm pointer-events-none" style={{ borderColor: item.accent }} />
+            <div className="absolute inset-[2px] sm:inset-[3px] border border-solid opacity-20 rounded-sm pointer-events-none" style={{ borderColor: item.accent }} />
 
             {/* Header: Denomination & Year */}
             <div className="w-full flex justify-between items-start font-mono z-10" style={{ color: `${item.accent}70` }}>
-              <span className="text-[12px] font-black leading-none">{item.label}</span>
-              <span className="text-[7px] font-bold tracking-widest leading-none mt-1 uppercase">Postage</span>
+              <span className="text-[8px] sm:text-[12px] font-black leading-none">{item.label}</span>
+              <span className="text-[5px] sm:text-[7px] font-bold tracking-widest leading-none mt-0.5 sm:mt-1 uppercase">Postage</span>
             </div>
 
             {/* Center Graphic: The Woodblock Print Artwork centerpiece with security watermark */}
-            <div className="flex-1 flex items-center justify-center py-2 z-10 relative w-full h-full">
+            <div className="flex-1 flex items-center justify-center py-1 sm:py-2 z-10 relative w-full h-full">
               {/* Detailed Banknote-style Security Guilloche Wave background */}
               <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.08] select-none" viewBox="0 0 100 100" fill="none" stroke={item.accent} strokeWidth="0.4">
                 <circle cx="50" cy="50" r="10" strokeDasharray="1 1" />
@@ -312,17 +312,17 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
             </div>
 
             {/* Bottom Title & 4-Word Summary */}
-            <div className="text-center mt-auto mb-1 z-10">
-              <h4 className="text-[16px] font-outfit font-bold italic leading-tight px-0.5" style={{ color: item.accent }}>
+            <div className="text-center mt-auto mb-0.5 sm:mb-1 z-10">
+              <h4 className="text-[10px] sm:text-[16px] font-outfit font-bold italic leading-tight px-0.5" style={{ color: item.accent }}>
                 {item.title}
               </h4>
-              <span className="text-[6.5px] font-mono block mt-1.5 uppercase tracking-widest font-black leading-none opacity-70" style={{ color: item.accent }}>
+              <span className="text-[4.5px] sm:text-[6.5px] font-mono block mt-1 uppercase tracking-widest font-black leading-none opacity-70" style={{ color: item.accent }}>
                 {item.summary}
               </span>
             </div>
 
             {/* Bottom metadata */}
-            <div className="w-full flex justify-between items-center text-[6px] font-mono tracking-widest z-10" style={{ color: `${item.accent}60` }}>
+            <div className="w-full flex justify-between items-center text-[4.5px] sm:text-[6px] font-mono tracking-widest z-10" style={{ color: `${item.accent}60` }}>
               <span>DELHI G.P.O.</span>
               <span>{item.year}</span>
             </div>
@@ -332,73 +332,73 @@ function MilestoneCard({ item, index }: { item: typeof achievements[0]; index: n
 
         {/* ── 2. BACK FACE (Vintage Postcard Back - Also Perforated) ── */}
         <div 
-          className="absolute inset-0 bg-white dark:bg-[#151515] p-3 rounded-none shadow-[0_6px_16px_rgba(0,0,0,0.03)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
+          className="absolute inset-0 bg-white dark:bg-[#151515] p-1.5 sm:p-3 rounded-none shadow-[0_6px_16px_rgba(0,0,0,0.03)] border border-black/[0.04] dark:border-white/[0.04] flex flex-col justify-between overflow-hidden"
           style={{ transform: "rotateY(180deg)", backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
         >
           {/* Perforations - Top Edge */}
-          <div className="absolute top-[-5px] left-0 right-0 flex justify-between px-[4px] pointer-events-none z-20">
+          <div className="absolute top-[-3px] sm:top-[-5px] left-0 right-0 flex justify-between px-[3px] sm:px-[4px] pointer-events-none z-20">
             {horizHoles.map((_, i) => (
-              <div key={`bt-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`bt-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_1px_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
           {/* Perforations - Bottom Edge */}
-          <div className="absolute bottom-[-5px] left-0 right-0 flex justify-between px-[4px] pointer-events-none z-20">
+          <div className="absolute bottom-[-3px] sm:bottom-[-5px] left-0 right-0 flex justify-between px-[3px] sm:px-[4px] pointer-events-none z-20">
             {horizHoles.map((_, i) => (
-              <div key={`bb-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`bb-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_0_-1px_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
           {/* Perforations - Left Edge */}
-          <div className="absolute left-[-5px] top-0 bottom-0 flex flex-col justify-between py-[4px] pointer-events-none z-20">
+          <div className="absolute left-[-3px] sm:left-[-5px] top-0 bottom-0 flex flex-col justify-between py-[3px] sm:py-[4px] pointer-events-none z-20">
             {vertHoles.map((_, i) => (
-              <div key={`bl-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`bl-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_1px_0_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
           {/* Perforations - Right Edge */}
-          <div className="absolute right-[-5px] top-0 bottom-0 flex flex-col justify-between py-[4px] pointer-events-none z-20">
+          <div className="absolute right-[-3px] sm:right-[-5px] top-0 bottom-0 flex flex-col justify-between py-[3px] sm:py-[4px] pointer-events-none z-20">
             {vertHoles.map((_, i) => (
-              <div key={`br-${i}`} className="w-2.5 h-2.5 rounded-full bg-background shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.4)]" />
+              <div key={`br-${i}`} className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rounded-full bg-background shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.03)] dark:shadow-[inset_-1px_0_1.5px_rgba(0,0,0,0.4)]" />
             ))}
           </div>
 
           {/* Inner Content Box Frame */}
           <div 
-            className="w-full h-full border flex flex-col justify-between p-3 relative overflow-hidden"
+            className="w-full h-full border flex flex-col justify-between p-1.5 sm:p-3 relative overflow-hidden"
             style={{ backgroundColor: item.paperColor, borderColor: `${item.accent}20` }}
           >
             {/* Fine Inner Accent Border Frame */}
-            <div className="absolute inset-[3px] border border-solid opacity-20 rounded-sm pointer-events-none" style={{ borderColor: item.accent }} />
+            <div className="absolute inset-[2px] sm:inset-[3px] border border-solid opacity-20 rounded-sm pointer-events-none" style={{ borderColor: item.accent }} />
 
             <div className="flex-1 flex flex-col justify-between z-10 h-full">
               
               {/* Postcard divider top */}
-              <div className="w-full border-b border-black/[0.04] dark:border-white/[0.04] pb-1 flex justify-between items-center text-[7px] font-mono" style={{ color: `${item.accent}80` }}>
+              <div className="w-full border-b border-black/[0.04] dark:border-white/[0.04] pb-0.5 sm:pb-1 flex justify-between items-center text-[5px] sm:text-[7px] font-mono" style={{ color: `${item.accent}80` }}>
                 <span>POST CARD</span>
                 <span>REC_ID: 0{index + 1}</span>
               </div>
 
               {/* Detailed narrative */}
-              <div className="flex-1 flex flex-col items-center justify-center py-2">
+              <div className="flex-1 flex flex-col items-center justify-center py-1">
                 <div 
-                  className="w-7 h-7 rounded-full flex items-center justify-center mb-1.5"
+                  className="w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center mb-1"
                   style={{ backgroundColor: `${item.accent}12`, color: item.accent }}
                 >
-                  <Award size={14} fill={item.accent} style={{ color: item.accent }} />
+                  <Award className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5" fill={item.accent} style={{ color: item.accent }} />
                 </div>
                 
-                <h4 className="text-[15px] font-outfit font-bold italic text-center px-1 leading-tight text-slate-800 dark:text-white">
+                <h4 className="text-[9px] sm:text-[15px] font-outfit font-bold italic text-center px-1 leading-tight text-slate-800 dark:text-white">
                   {item.title}
                 </h4>
-                <span className="text-[7.5px] font-mono uppercase tracking-widest mt-0.5 block text-slate-400 dark:text-slate-500">
+                <span className="text-[5px] sm:text-[7.5px] font-mono uppercase tracking-widest mt-0.5 block text-slate-400 dark:text-slate-500">
                   {item.org}
                 </span>
                 
-                <p className="text-[11px] font-inter leading-relaxed px-1 mt-2.5 text-center text-slate-600 dark:text-slate-350">
+                <p className="text-[7px] sm:text-[11px] font-inter leading-relaxed px-1 mt-1.5 text-center text-slate-600 dark:text-slate-350">
                   "{item.detail}"
                 </p>
               </div>
 
               {/* Footer details */}
-              <div className="w-full border-t border-black/[0.04] dark:border-white/[0.04] pt-1 flex justify-between items-center text-[6.5px] font-mono mt-1" style={{ color: `${item.accent}80` }}>
+              <div className="w-full border-t border-black/[0.04] dark:border-white/[0.04] pt-0.5 sm:pt-1 flex justify-between items-center text-[4.5px] sm:text-[6.5px] font-mono mt-0.5 sm:mt-1" style={{ color: `${item.accent}80` }}>
                 <span>ARCHIVAL POSTCARD</span>
                 <span>{item.year}</span>
               </div>
@@ -436,10 +436,9 @@ export default function Achievements() {
           </p>
         </div>
 
-        {/* ── Flip Card Grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
           {achievements.map((item, i) => (
-            <div key={item.id} className="w-full max-w-[240px] sm:max-w-[320px] mx-auto">
+            <div key={item.id} className="w-full max-w-[145px] sm:max-w-[320px] mx-auto">
               <MilestoneCard item={item} index={i} />
             </div>
           ))}

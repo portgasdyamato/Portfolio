@@ -71,7 +71,7 @@ const Folder: React.FC<FolderProps> = ({
       onMouseLeave={() => setHovered(false)}
       style={style}
     >
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full h-full flex items-center justify-center">
         <div className={`folder ${active ? 'open' : ''}`} style={folderStyle}>
           <div className="folder__back">
             {papers.map((item, i) => (
