@@ -29,13 +29,13 @@ const folderWrapperVariants = {
     rotateX: 0, 
     rotateY: 0, 
     y: 0, 
-    transition: { type: "spring", stiffness: 300, damping: 30 } 
+    transition: { type: "spring" as const, stiffness: 300, damping: 30 } 
   },
   hover: { 
     rotateX: 4, 
     rotateY: -4, 
     y: -8, 
-    transition: { type: "spring", stiffness: 300, damping: 20 } 
+    transition: { type: "spring" as const, stiffness: 300, damping: 20 } 
   }
 };
 

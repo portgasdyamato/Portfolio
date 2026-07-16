@@ -1,1 +1,540 @@
-產敳挠楬湥≴਍਍浩潰瑲笠甠敳潒瑵牥素映潲⁭渢硥⽴慮楶慧楴湯ഢ椊灭牯⁴⁻潭楴湯‬獵卥牣汯ⱬ甠敳牔湡晳牯Ɑ甠敳灓楲杮‬湁浩瑡健敲敳据⁥⁽牦浯∠牦浡牥洭瑯潩≮਍浩潰瑲笠䄠牲睯敌瑦‬楇桴扵‬牁潲啷剰杩瑨‬桃捥䍫物汣㉥‬慚Ɒ倠污瑥整‬潃敤ⰲ匠慰歲敬ⱳ䰠祡牥ⱳ䴠畯敳潐湩整㉲‬敂歡牥‬楇䉴慲据ⱨ吠牥業慮⁬⁽牦浯∠畬楣敤爭慥瑣ഢ椊灭牯⁴浉条⁥牦浯∠敮瑸椯慭敧ഢ椊灭牯⁴⁻獵剥晥‬獵卥慴整‬獵䕥晦捥ⱴ删慥瑣潎敤素映潲⁭爢慥瑣ഢഊ⼊‪铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢榔瑮牥慦散倠潲敪瑣笠਍†楴汴㩥猠牴湩൧ 猠畬㩧猠牴湩൧ 搠牵瑡潩㩮猠牴湩൧ 椠慭敧›瑳楲杮਍†潣潬㩲猠牴湩൧ 琠捥湨汯杯敩㩳猠牴湩孧൝ 搠獥牣灩楴湯›瑳楲杮਍†敦瑡牵獥›瑳楲杮嵛਍†捡楨癥浥湥獴›瑳楲杮嵛਍†楬敶牕㽬›瑳楲杮਍†楧桴扵牕㽬›瑳楲杮਍†瑳瑡獵›瑳楲杮਍†敤慴汩摥潃瑮湥㩴笠਍††牰扯敬卭慴整敭瑮›瑳楲杮਍††潳畬楴湯›瑳楲杮਍††敤楳湧›瑳楲杮਍††潣楤杮›瑳楲杮਍††整瑳湩㩧猠牴湩൧ †瀠潲散獳›瑳楲杮਍††敲敳牡档㨿笠਍†††畳浭牡㩹猠牴湩൧ ††洠瑥潨獤›瑳楲杮嵛਍†††湩楳桧獴›瑳楲杮嵛਍††ൽ †瘠獩慵䥬敤瑮瑩㽹›ൻ ††挠汯牯㩳猠牴湩孧൝ ††琠灹杯慲桰㩹猠牴湩൧ ††挠浯潰敮瑮㽳›瑳楲杮嵛਍††ൽ †琠潯獬㨿猠牴湩孧൝ 素਍ൽഊ⼊‪铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢඀ †䅍乇呅䍉䈠呕佔ൎ 铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢₀⼪਍畦据楴湯䴠条敮楴䉣瑵潴⡮⁻档汩牤湥‬汣獡乳浡ⱥ漠䍮楬正‬祴数㴠∠敤慦汵≴素›⁻਍†档汩牤湥›敒捡乴摯㭥ഠ 挠慬獳慎敭㨿猠牴湩㭧ഠ 漠䍮楬正㨿⠠ 㸽瘠楯㭤਍†祴数㨿∠敤慦汵≴簠∠畯汴湩≥簠∠桧獯≴਍⥽笠਍†潣獮⁴灛獯瑩潩Ɱ猠瑥潐楳楴湯⁝‽獵卥慴整笨砠›ⰰ礠›‰⥽਍†潣獮⁴敲⁦‽獵剥晥䠼䵔䑌癩汅浥湥㹴渨汵⥬਍਍†潣獮⁴慨摮敬潍獵䵥癯⁥‽攨›敒捡⹴潍獵䕥敶瑮 㸽笠਍††晩⠠爡晥挮牵敲瑮 敲畴湲਍††潣獮⁴⁻汣敩瑮ⱘ挠楬湥奴素㴠攠਍††潣獮⁴⁻敬瑦‬潴Ɒ眠摩桴‬敨杩瑨素㴠爠晥挮牵敲瑮朮瑥潂湵楤杮汃敩瑮敒瑣⤨਍††潣獮⁴⁸‽汣敩瑮⁘‭氨晥⁴‫楷瑤⁨ ⤲਍††潣獮⁴⁹‽汣敩瑮⁙‭琨灯⬠栠楥桧⁴ ⤲਍††敳側獯瑩潩⡮⁻㩸砠⨠〠㌮ⰵ礠›⁹‪⸰㔳素ഩ 素਍਍†潣獮⁴慨摮敬潍獵䱥慥敶㴠⠠ 㸽笠਍††敳側獯瑩潩⡮⁻㩸〠‬㩹〠素ഩ 素਍਍†潣獮⁴慢敳瑓汹獥㴠∠敲慬楴敶映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整⁲潲湵敤ⵤ畦汬琠慲獮瑩潩⵮污⁬畤慲楴湯㌭〰漠敶晲潬⵷楨摤湥朠潲灵ഢ 挠湯瑳琠灹卥祴敬⁳‽ൻ †搠晥畡瑬›戢ⵧ牢湡ⵤ〵‰整瑸戭慬正栠癯牥戺ⵧ桷瑩≥ബ †漠瑵楬敮›戢牯敤⁲潢摲牥眭楨整㈯‰整瑸眭楨整栠癯牥戺牯敤⵲牢湡ⵤ〵‰潨敶㩲整瑸戭慲摮㔭〰Ⱒ਍††桧獯㩴∠整瑸眭楨整㐯‰潨敶㩲整瑸眭楨整ഢ 素਍਍†敲畴湲⠠਍††搼癩਍†††汣獡乳浡㵥昢敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整≲਍†††湯潍獵䵥癯㵥桻湡汤䵥畯敳潍敶ൽ ††漠䵮畯敳敌癡㵥桻湡汤䵥畯敳敌癡絥਍†††敲㵦牻晥ൽ †㸠਍†††洼瑯潩⹮畢瑴湯਍††††湯汃捩㵫潻䍮楬正ൽ †††愠楮慭整笽⁻㩸瀠獯瑩潩⹮ⱸ礠›潰楳楴湯礮素ൽ †††琠慲獮瑩潩㵮筻琠灹㩥∠灳楲杮Ⱒ猠楴晦敮獳›㔱ⰰ搠浡楰杮›〲‬慭獳›⸰‱絽਍††††汣獡乳浡㵥恻笤慢敳瑓汹獥⁽笤祴数瑓汹獥瑛灹嵥⁽笤汣獡乳浡絥絠਍†††ാ †††㰠楤⁶汣獡乳浡㵥愢獢汯瑵⁥湩敳⵴‰杢眭楨整ㄯ‰牴湡汳瑡ⵥ⵹畦汬朠潲灵栭癯牥琺慲獮慬整礭〭琠慲獮瑩潩⵮牴湡晳牯⁭畤慲楴湯㔭〰•㸯਍††††猼慰⁮汣獡乳浡㵥爢汥瑡癩⁥⵺〱映敬⁸瑩浥⵳散瑮牥朠灡㈭映湯⵴潢摬㸢捻楨摬敲絮⼼灳湡ാ ††㰠洯瑯潩⹮畢瑴湯ാ †㰠搯癩ാ ⤠਍ൽഊ⼊‪铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢඀ †䍓佒䱌删噅䅅⁌剗偁䕐൒ 铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢₀⼪਍畦据楴湯删癥慥⡬⁻档汩牤湥‬敤慬⁹‽ⰰ礠㴠㐠‰㩽笠挠楨摬敲㩮删慥瑣潎敤※敤慬㽹›畮扭牥※㽹›畮扭牥素 ൻ 爠瑥牵⁮ന †㰠楤⁶汣獡乳浡㵥漢敶晲潬⵷楨摤湥爠汥瑡癩≥ാ ††㰠潭楴湯搮癩਍††††湩瑩慩㵬筻礠›ⱹ漠慰楣祴›‰絽਍††††桷汩䥥噮敩㵷筻礠›ⰰ漠慰楣祴›‱絽਍††††楶睥潰瑲笽⁻湯散›牴敵‬慭杲湩›ⴢ〱∥素ൽ †††琠慲獮瑩潩㵮筻搠牵瑡潩㩮ㄠ‬慥敳›せㄮⰶㄠ‬⸰ⰳㄠⱝ搠汥祡素ൽ ††㸠਍††††捻楨摬敲絮਍†††⼼潭楴湯搮癩ാ †㰠搯癩ാ ⤠਍ൽഊ⼊‪铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢඀ †䅍义䌠䵏佐䕎呎›剐䩏䍅⁔䕄䅔䱉䌠䥌久ൔ 铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢₀⼪਍硥潰瑲搠晥畡瑬映湵瑣潩⁮牐橯捥䑴瑥楡䍬楬湥⡴⁻牰橯捥⁴㩽笠瀠潲敪瑣›牐橯捥⁴⥽笠਍†潣獮⁴潲瑵牥㴠甠敳潒瑵牥⤨਍†潣獮⁴楛䱳慯敤Ɽ猠瑥獉潌摡摥⁝‽獵卥慴整昨污敳ഩ 挠湯瑳挠湯慴湩牥敒⁦‽獵剥晥䠼䵔䑌癩汅浥湥㹴渨汵⥬਍†潣獮⁴浛畯敳潐ⱳ猠瑥潍獵健獯⁝‽獵卥慴整笨砠›ⰰ礠›‰⥽਍਍†獵䕥晦捥⡴⤨㴠‾ൻ †猠瑥獉潌摡摥琨畲⥥਍††潣獮⁴慨摮敬潍敶㴠⠠㩥䴠畯敳癅湥⥴㴠‾敳䵴畯敳潐⡳⁻㩸攠挮楬湥塴‬㩹攠挮楬湥奴素ഩ †眠湩潤⹷摡䕤敶瑮楌瑳湥牥∨潭獵浥癯≥‬慨摮敬潍敶ഩ †爠瑥牵⁮⤨㴠‾楷摮睯爮浥癯䕥敶瑮楌瑳湥牥∨潭獵浥癯≥‬慨摮敬潍敶ഩ 素‬嵛ഩഊ 挠湯瑳笠猠牣汯奬牐杯敲獳素㴠甠敳捓潲汬⤨਍†潣獮⁴牰杯敲獳楗瑤⁨‽獵卥牰湩⡧捳潲汬偙潲牧獥ⱳ笠猠楴晦敮獳›〱ⰰ搠浡楰杮›〳‬敲瑳敄瑬㩡〠〮㄰素ഩഊ 爠瑥牵⁮ന †㰠楤⁶敲㵦捻湯慴湩牥敒給挠慬獳慎敭∽杢嬭〣〵〵崵琠硥⵴⍛㕦㕦㕦⁝業⵮⵨捳敲湥猠汥捥楴湯戺ⵧ牢湡ⵤ〵‰敳敬瑣潩㩮整瑸戭慬正映湯⵴湩整⁲敲慬楴敶漠敶晲潬⵷⵸楨摤湥㸢਍†††਍†††⽻‪铢肔䄠䉍䕉呎䜠佌⁗铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔⨠累਍†††搼癩ഠ †††挠慬獳慎敭∽楦數⁤湩敳⵴‰潰湩整⵲癥湥獴渭湯⁥⵺‰灯捡瑩⵹〱戠畬⵲ㅛ〵硰⁝牴湡楳楴湯琭慲獮潦浲搠牵瑡潩⵮〵∰਍††††瑳汹㵥筻਍†††††慢正牧畯摮›牠摡慩⵬牧摡敩瑮ㄨ〲瀰⁸楣捲敬愠⁴笤潭獵健獯砮災⁸笤潭獵健獯礮災ⱸ␠灻潲敪瑣挮汯牯㕽ⰰ琠慲獮慰敲瑮㠠┰怩਍††††絽਍†††㸯਍਍†††⽻‪铢肔倠佒則卅⁓义䥄䅃佔⁒铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢₀⼪ൽ ††㰠潭楴湯搮癩ഠ †††挠慬獳慎敭∽楦數⁤潴⵰‰敬瑦〭爠杩瑨〭栠嬭瀲嵸戠ⵧ牢湡ⵤ〵‰⵺ㅛ〱崰漠楲楧⵮敬瑦ഢ †††猠祴敬笽⁻捳污塥›牰杯敲獳楗瑤⁨絽਍†††㸯਍਍†††⽻‪铢肔吠偏丠噁䝉呁佉⁎铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔⨠累਍†††渼癡挠慬獳慎敭∽楦數⁤潴⵰‰敬瑦〭眠昭汵⁬⵺ㅛ〰崰瀠㘭氠㩧⵰〱瀠楯瑮牥攭敶瑮⵳潮敮㸢਍††††搼癩挠慬獳慎敭∽慭⵸⵷ㅛ〸瀰嵸洠⵸畡潴映敬⁸番瑳晩⵹敢睴敥⁮瑩浥⵳散瑮牥㸢਍†††††搼癩挠慬獳慎敭∽潰湩整⵲癥湥獴愭瑵≯ാ †††††㰠慍湧瑥捩畂瑴湯ഠ ††††††琠灹㵥朢潨瑳•਍†††††††汣獡乳浡㵥眢ㄭ‴⵨㐱戠牯敤⁲潢摲牥眭楨整㔯戠ⵧ汢捡⽫〴戠捡摫潲⵰汢牵砭≬਍†††††††湯汃捩㵫⡻ 㸽爠畯整⹲異桳✨✯紩਍††††††ാ ††††††㰠牁潲䱷晥⁴楳敺笽㈲⁽㸯਍††††††⼼慍湧瑥捩畂瑴湯ാ ††††㰠搯癩ാഊ ††††㰠楤⁶汣獡乳浡㵥昢敬⁸慧⵰‴潰湩整⵲癥湥獴愭瑵≯ാ †††††笠牰橯捥⹴楧桴扵牕⁬☦⠠਍†††††††䴼条敮楴䉣瑵潴⁮਍††††††††祴数∽畯汴湩≥ഠ †††††††挠慬獳慎敭∽⵷㐱栠ㄭ‴杢戭慬正㈯‰慢正牤灯戭畬⵲摭ഢ †††††††漠䍮楬正笽⤨㴠‾楷摮睯漮数⡮牰橯捥⹴楧桴扵牕ⱬ✠扟慬歮⤧ൽ ††††††㸠਍††††††††䜼瑩畨⁢楳敺笽㠱⁽㸯਍†††††††⼼慍湧瑥捩畂瑴湯ാ †††††⤠ൽ †††††笠牰橯捥⹴楬敶牕⁬☦⠠਍†††††††䴼条敮楴䉣瑵潴⁮਍††††††††祴数∽敤慦汵≴ഠ †††††††挠慬獳慎敭∽硰㠭栠ㄭ‴整瑸嬭〱硰⁝灵数捲獡⁥牴捡楫杮嬭⸰攲嵭猠慨潤⵷杬猠慨潤⵷牢湡ⵤ〵⼰〲ഢ †††††††漠䍮楬正笽⤨㴠‾楷摮睯漮数⡮牰橯捥⹴楬敶牕ⱬ✠扟慬歮⤧ൽ ††††††㸠਍††††††††慌湵档倠潲潴潣⁬匼慰歲敬⁳楳敺笽㐱⁽㸯਍†††††††⼼慍湧瑥捩畂瑴湯ാ †††††⤠ൽ ††††㰠搯癩ാ †††㰠搯癩ാ ††㰠港癡ാഊ ††笠⨯肔铢₀䕈佒匠䍅䥔乏肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔⨠累਍†††猼捥楴湯挠慬獳慎敭∽敲慬楴敶洠湩栭猭牣敥⁮汦硥椠整獭挭湥整⁲番瑳晩⵹散瑮牥瀠⵴㈳瀠ⵢ〲漠敶晲潬⵷楨摤湥瀠⵸‶杬瀺⵸〲㸢਍††††搼癩挠慬獳慎敭∽慭⵸⵷ㅛ〶瀰嵸眠昭汵⁬牧摩朠楲ⵤ潣獬ㄭ氠㩧牧摩挭汯⵳′慧⵰㘱氠㩧慧⵰㈳椠整獭挭湥整≲ാ ††††ഠ ††††笠⨯䰠晥㩴䴠瑥摡瑡⁡…楔汴⁥⼪ൽ ††††㰠楤⁶汣獡乳浡㵥猢慰散礭ㄭ‶⵺〱爠汥瑡癩⁥牯敤⵲′杬漺摲牥ㄭ㸢਍††††††洼瑯潩⹮楤൶ ††††††椠楮楴污笽⁻灯捡瑩㩹〠‬㩸ⴠ〳素ൽ ††††††愠楮慭整笽⁻灯捡瑩㩹ㄠ‬㩸〠素ൽ ††††††挠慬獳慎敭∽汦硥椠整獭挭湥整⁲慧⵰∶਍††††††ാ ††††††㰠楤⁶汣獡乳浡㵥瀢⵸‵祰㈭戠ⵧ牢湡ⵤ〵⼰〱戠牯敤⁲潢摲牥戭慲摮㔭〰㈯‰潲湵敤ⵤ畦汬映敬⁸瑩浥⵳散瑮牥朠灡㌭㸢਍††††††††㰠楤⁶汣獡乳浡㵥眢ㄭ㔮栠ㄭ㔮爠畯摮摥昭汵⁬杢戭慲摮㔭〰愠楮慭整瀭汵敳•㸯਍††††††††㰠灳湡挠慬獳慎敭∽整瑸嬭〱硰⁝潦瑮戭慬正琠慲正湩ⵧせ㐮浥⁝整瑸戭慲摮㔭〰甠灰牥慣敳㸢灻潲敪瑣献慴畴絳⼠ 灻潲敪瑣搮牵瑡潩絮⼼灳湡ാ ††††††㰠搯癩ാ †††††㰠洯瑯潩⹮楤㹶਍਍††††††搼癩挠慬獳慎敭∽灳捡ⵥ⵹〱㸢਍†††††††格‱汣獡乳浡㵥琢硥⵴砵⁬摭琺硥⵴砷⁬杬琺硥⵴㝛敲嵭砠㩬整瑸嬭爹浥⁝潦瑮戭汯⁤潦瑮漭瑵楦⁴灵数捲獡⁥牴捡楫杮嬭瀲嵸氠慥楤杮嬭⸰崸琠硥⵴桷瑩⁥敳敬瑣潩㩮杢戭慲摮㔭〰猠汥捥楴湯琺硥⵴汢捡≫ാ †††††††笠牰橯捥⹴楴汴⹥灳楬⡴‧⤧洮灡⠨潷摲‬⥩㴠‾ന ††††††††㰠灳湡欠祥笽絩挠慬獳慎敭∽汢捯⁫癯牥汦睯栭摩敤⁮扰㐭洠㩤扰㘭㸢਍††††††††††洼瑯潩⹮灳湡਍†††††††††††湩瑩慩㵬筻礠›ㄢ〰∥素ൽ ††††††††††愠楮慭整笽⁻㩹〠素ൽ ††††††††††琠慲獮瑩潩㵮筻搠汥祡›⸰″‫⁩‪⸰ⰱ搠牵瑡潩㩮ㄠ㈮‬慥敳›せㄮⰶㄠ‬⸰ⰳㄠ⁝絽਍†††††††††††汣獡乳浡㵥戢潬正ഢ †††††††††㸠਍†††††††††††睻牯絤਍††††††††††⼼潭楴湯献慰㹮਍†††††††††⼼灳湡ാ †††††††⤠紩਍†††††††⼼ㅨാ ††††††ഠ ††††††㰠潭楴湯搮癩਍††††††††湩瑩慩㵬筻漠慰楣祴›ⰰ礠›〳素ൽ †††††††愠楮慭整笽⁻灯捡瑩㩹ㄠ‬㩹〠素ൽ †††††††琠慲獮瑩潩㵮筻搠汥祡›⸰ⰸ搠牵瑡潩㩮ㄠ素ൽ †††††††挠慬獳慎敭∽慭⵸⵷汸ഢ ††††††㸠਍††††††††瀼挠慬獳慎敭∽整瑸砭⁬杬琺硥⵴砳⁬潦瑮猭牥晩椠慴楬⁣整瑸眭楨整㐯‰敬摡湩ⵧ楴桧⁴扭㠭㸢਍†††††††††灻潲敪瑣搮獥牣灩楴湯ൽ †††††††㰠瀯ാ †††††††㰠楤⁶汣獡乳浡㵥昢敬⁸汦硥眭慲⁰慧⵰∳ാ ††††††††笠牰橯捥⹴整档潮潬楧獥献楬散〨‬⤵洮灡⠨整档 㸽⠠਍††††††††††猼慰⁮敫㵹瑻捥絨挠慬獳慎敭∽整瑸嬭瀹嵸映湯⵴汢捡⁫灵数捲獡⁥牴捡楫杮嬭⸰攳嵭琠硥⵴桷瑩⽥〲戠牯敤⵲⁢潢摲牥眭楨整ㄯ‰扰ㄭ洠⵲∴ാ ††††††††††笠整档ൽ †††††††††㰠猯慰㹮਍†††††††††⤩ൽ †††††††㰠搯癩ാ ††††††㰠洯瑯潩⹮楤㹶਍††††††⼼楤㹶਍†††††⼼楤㹶਍਍†††††⽻‪楒桧㩴䤠浭牥楳敶䤠慭敧䰠祡牥⨠累਍†††††洼瑯潩⹮楤൶ †††††椠楮楴污笽⁻灯捡瑩㩹〠‬捳污㩥〠㠮素ൽ †††††愠楮慭整笽⁻灯捡瑩㩹ㄠ‬捳污㩥ㄠ素ൽ †††††琠慲獮瑩潩㵮筻搠牵瑡潩㩮ㄠ㠮‬慥敳›せㄮⰶㄠ‬⸰ⰳㄠⱝ搠汥祡›⸰′絽਍††††††汣獡乳浡㵥爢汥瑡癩⁥牯敤⵲‱杬漺摲牥㈭ഢ ††††㸠਍††††††搼癩挠慬獳慎敭∽敲慬楴敶眠昭汵⁬獡数瑣嬭⼴⸴崵氠㩧獡数瑣嬭⼴崵爠畯摮摥嬭爴浥⁝杬爺畯摮摥嬭父浥⁝癯牥汦睯栭摩敤⁮潢摲牥戠牯敤⵲桷瑩⽥〱猠慨潤⵷せ㕟瀰彸〱瀰彸㈭瀰彸杲慢〨〬〬ㄬ崩朠潲灵㸢਍†††††††㰠潭楴湯搮癩਍††††††††眠楨敬潈敶㵲筻猠慣敬›⸱㔰素ൽ ††††††††牴湡楳楴湯笽⁻畤慲楴湯›′絽਍††††††††挠慬獳慎敭∽⵷畦汬栠昭汵⁬敲慬楴敶ഢ †††††††ാ ††††††††䤼慭敧ഠ †††††††††牳㵣灻潲敪瑣椮慭敧⁽਍†††††††††愠瑬笽牰橯捥⹴楴汴絥ഠ †††††††††楦汬ഠ †††††††††牰潩楲祴ഠ †††††††††汣獡乳浡㵥漢橢捥⵴潣敶⁲潣瑮慲瑳嬭⸱㔰⁝牢杩瑨敮獳嬭⸰崸朠慲獹慣敬嬭⸰崲琠慲獮瑩潩⵮污⁬畤慲楴湯嬭猳⁝牧畯⵰潨敶㩲牧祡捳污ⵥ‰牧畯⵰潨敶㩲牢杩瑨敮獳ㄭ〰•਍††††††††⼠ാ ††††††††搼癩挠慬獳慎敭∽扡潳畬整椠獮瑥〭戠ⵧ牧摡敩瑮琭ⵯ⁴牦浯戭慬正㠯‰楶ⵡ牴湡灳牡湥⁴潴戭慬正㈯∰⼠ാ †††††††⼼潭楴湯搮癩ാ †††††††਍†††††††㰠楤⁶汣獡乳浡㵥愢獢汯瑵⁥潢瑴浯ㄭ‶敬瑦ㄭ‶楲桧⵴㘱映敬⁸番瑳晩⵹敢睴敥⁮瑩浥⵳湥≤ാ ††††††††㰠楤⁶汣獡乳浡㵥猢慰散礭㈭㸢਍††††††††††㰠灳湡挠慬獳慎敭∽整瑸嬭瀸嵸映湯⵴潭潮琠慲正湩ⵧせ㘮浥⁝整瑸戭慲摮㔭〰甠灰牥慣敳㸢慃敳卟畴祤た㰱猯慰㹮਍††††††††††㰠㍨挠慬獳慎敭∽整瑸㌭汸映湯⵴汢捡⁫瑩污捩映湯⵴敳楲⁦整瑸眭楨整甠灰牥慣敳㸢灻潲敪瑣献畬⹧敲汰捡⡥ⴧⰧ✠❟紩⼼㍨ാ ††††††††㰠搯癩ാ ††††††††㰠楤⁶汣獡乳浡㵥眢ㄭ‶⵨㘱爠畯摮摥昭汵⁬潢摲牥戠牯敤⵲桷瑩⽥〲映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整⁲整瑸眭楨整戠捡摫潲⵰汢牵砭≬ാ ††††††††††䄼牲睯灕楒桧⁴楳敺笽㐲⁽㸯਍†††††††††⼼楤㹶਍†††††††㰠搯癩ാ †††††㰠搯癩ാ ††††㰠洯瑯潩⹮楤㹶਍††††⼼楤㹶਍†††⼼敳瑣潩㹮਍਍†††⽻‪铢肔匠䍅䥔乏〠㨱吠䕈䄠䍒䥈䕔呃剕⁅铢肔铢肔铢肔铢肔铢肔铢肔⨠累਍†††猼捥楴湯挠慬獳慎敭∽慭⵸⵷ㅛ〴瀰嵸洠⵸畡潴瀠⵸‶祰㘭‴杬瀺⵹㘹猠慰散礭㐭‸杬猺慰散礭㜭∲ാ †††ഠ †††笠⨯䤠瑮潲☠倠潲汢浥匠慴整敭瑮⨠累਍††††搼癩挠慬獳慎敭∽牧摩朠楲ⵤ潣獬ㄭ氠㩧牧摩挭汯⵳㈱朠灡ㄭ‶杬机灡㌭∲ാ ††††㰠楤⁶汣獡乳浡㵥氢㩧潣⵬灳湡㔭猠慰散礭㈭∴ാ †††††㰠敒敶污ാ ††††††㰠敓瑣潩呮条渠浵敢㵲〢∱氠扡汥∽桔⁥潆湵慤楴湯•㸯਍†††††††格′汣獡乳浡㵥琢硥⵴砶⁬杬琺硥⵴㡛敲嵭映湯⵴潢摬映湯⵴畯晴瑩甠灰牥慣敳琠慲正湩ⵧ楴桧整⁲敬摡湩ⵧせ㠮崵琠硥⵴桷瑩≥ാ †††††††吠敨戼⽲嘾獩潩⹮਍†††††††⼼㉨ാ ††††††㰠楤⁶汣獡乳浡㵥猢慰散礭ㄭ′瑭ㄭ‶瑰ㄭ‶潢摲牥琭戠牯敤⵲桷瑩⽥∵ാ †††††††㰠楤⁶汣獡乳浡㵥猢慰散礭㘭㸢਍†††††††††格‴汣獡乳浡㵥琢硥⵴牢湡ⵤ〵‰整瑸嬭〱硰⁝灵数捲獡⁥潦瑮戭慬正琠慲正湩ⵧせ㐮浥≝伾楲楧⁮瑓牯㱹栯㸴਍†††††††††瀼挠慬獳慎敭∽整瑸砭⁬杬琺硥⵴砳⁬潦瑮氭杩瑨琠硥⵴桷瑩⽥〵氠慥楤杮爭汥硡摥椠慴楬≣ാ †††††††††䤠獮楰敲⁤祢琠敨氠浩瑩瑡潩獮漠⁦牴摡瑩潩慮⁬楤楧慴⁬潷歲汦睯ⱳ琠楨⁳牰橯捥⁴慷⁳潢湲映潲⁭⁡敤楳敲琠⁯敭杲⁥楨桧氭癥汥愠獥桴瑥捩椠瑮極楴湯眠瑩⁨潣灭敬⁸畦据楴湯污氠杯捩മ ††††††††㰠瀯ാ †††††††㰠搯癩ാ †††††††㰠楤⁶汣獡乳浡㵥猢慰散礭㘭㸢਍†††††††††格‴汣獡乳浡㵥琢硥⵴牢湡ⵤ〵‰整瑸嬭〱硰⁝灵数捲獡⁥潦瑮戭慬正琠慲正湩ⵧせ㐮浥≝倾潲汢浥匠慴整敭瑮⼼㑨ാ ††††††††㰠⁰汣獡乳浡㵥琢硥⵴汸氠㩧整瑸㈭汸映湯⵴楬桧⁴整瑸眭楨整㠯‰敬摡湩ⵧ敲慬數≤ാ †††††††††笠牰橯捥⹴敤慴汩摥潃瑮湥⹴牰扯敬卭慴整敭瑮ൽ ††††††††㰠瀯ാ †††††††㰠搯癩ാ ††††††㰠搯癩ാ †††††㰠刯癥慥㹬਍†††††⼼楤㹶਍਍†††††搼癩挠慬獳慎敭∽杬挺汯猭慰⵮∷ാ †††††㰠敒敶污搠汥祡笽⸰紳ാ ††††††㰠楤⁶汣獡乳浡㵥爢汥瑡癩⁥獡数瑣嬭⼴崵爠畯摮摥嬭爵浥⁝癯牥汦睯栭摩敤⁮潢摲牥戠牯敤⵲桷瑩⽥∵ാ ††††††††䤼慭敧猠捲笽牰橯捥⹴浩条絥愠瑬∽潃瑮硥≴映汩⁬汣獡乳浡㵥漢橢捥⵴潣敶⁲灯捡瑩⵹〶•㸯਍††††††††㰠楤⁶汣獡乳浡㵥愢獢汯瑵⁥湩敳⵴‰杢札慲楤湥⵴潴琭⁲牦浯戭慲摮㔭〰㈯‰楶ⵡ牴湡灳牡湥⁴潴琭慲獮慰敲瑮•㸯਍††††††††ഠ ††††††††搼癩挠慬獳慎敭∽扡潳畬整椠獮瑥ㄭ‶汦硥映敬⵸潣⁬番瑳晩⵹湥≤ാ †††††††††㰠楤⁶汣獡乳浡㵥瀢ㄭ‰杬瀺ㄭ‴杢戭慬正㘯‰慢正牤灯戭畬⵲砳⁬潢摲牥戠牯敤⵲桷瑩⽥〱爠畯摮摥嬭爳浥⁝灳捡ⵥ⵹∸ാ †††††††††††搼癩挠慬獳慎敭∽⵷㈱栠嬭瀲嵸戠ⵧ牢湡ⵤ〵∰⼠ാ †††††††††††格″汣獡乳浡㵥琢硥⵴砳⁬潦瑮戭慬正甠灰牥慣敳琠硥⵴桷瑩⁥牴捡楫杮眭摩獥⁴敬摡湩ⵧ潮敮㸢桔⁥潓畬楴湯⼼㍨ാ †††††††††††瀼挠慬獳慎敭∽整瑸砭⁬潦瑮氭杩瑨琠硥⵴桷瑩⽥〵氠慥楤杮爭汥硡摥㸢਍††††††††††††笠牰橯捥⹴敤慴汩摥潃瑮湥⹴潳畬楴湯ൽ †††††††††††⼼㹰਍††††††††††⼼楤㹶਍††††††††㰠搯癩ാ ††††††㰠搯癩ാ †††††㰠刯癥慥㹬਍†††††⼼楤㹶਍††††⼼楤㹶਍਍††††⽻‪铢肔匠䍅䥔乏〠㨲删卅䅅䍒⁈…䥄䍓噏剅⁙铢肔铢肔铢肔铢肔铢肔⨠累਍††††灻潲敪瑣搮瑥楡敬䍤湯整瑮爮獥慥捲⁨☦⠠਍†††††搼癩挠慬獳慎敭∽灳捡ⵥ⵹㈳㸢਍††††††搼癩挠慬獳慎敭∽牧摩朠楲ⵤ潣獬ㄭ氠㩧牧摩挭汯⵳′慧⵰㐲椠整獭攭摮㸢਍†††††††㰠敒敶污ാ ††††††††匼捥楴湯慔⁧畮扭牥∽㈰•慬敢㵬䐢獩潣敶祲倠潲潴潣≬⼠ാ ††††††††格′汣獡乳浡㵥琢硥⵴砶⁬杬琺硥⵴㡛敲嵭映湯⵴潢摬映湯⵴畯晴瑩甠灰牥慣敳琠慲正湩ⵧ楴桧整⁲敬摡湩ⵧせ㠮崵琠硥⵴桷瑩≥ാ †††††††††獕牥戼⽲䤾獮杩瑨മ ††††††††⼼㉨ാ †††††††⼼敒敶污ാ †††††††刼癥慥⁬敤慬㵹ほ㈮㹽਍††††††††㰠⁰汣獡乳浡㵥琢硥⵴汸氠㩧整瑸㈭汸琠硥⵴桷瑩⽥〴氠慥楤杮爭汥硡摥映湯⵴楬桧≴ാ †††††††††灻潲敪瑣搮瑥楡敬䍤湯整瑮爮獥慥捲⹨畳浭牡絹਍††††††††㰠瀯ാ †††††††⼼敒敶污ാ †††††㰠搯癩ാഊ †††††㰠楤⁶汣獡乳浡㵥朢楲⁤牧摩挭汯⵳‱摭机楲ⵤ潣獬㌭朠灡㠭㸢਍†††††††笠⨯䤠獮杩瑨䌠牡獤⨠累਍†††††††笠牰橯捥⹴敤慴汩摥潃瑮湥⹴敲敳牡档椮獮杩瑨⹳慭⡰椨獮杩瑨‬⥩㴠‾ന ††††††††搼癩欠祥笽絩挠慬獳慎敭∽⵰㈱戠ⵧ桷瑩⽥せ〮崲戠牯敤⁲潢摲牥眭楨整㔯爠畯摮摥嬭爳浥⁝灳捡ⵥ⵹㈱栠癯牥戺ⵧ桷瑩⽥せ〮崵琠慲獮瑩潩⵮潣潬獲㸢਍††††††††††搼癩挠慬獳慎敭∽⵷㈱栠ㄭ′潲湵敤ⵤ砲⁬杢戭慲摮㔭〰ㄯ‰汦硥椠整獭挭湥整⁲番瑳晩⵹散瑮牥琠硥⵴牢湡ⵤ〵‰潦瑮洭湯⁯整瑸砭≳ാ †††††††††††笰⭩紱਍††††††††††⼼楤㹶਍††††††††††瀼挠慬獳慎敭∽整瑸砭⁬潦瑮戭汯⁤灵数捲獡⁥牴捡楫杮琭杩瑨琠硥⵴桷瑩⁥敬摡湩ⵧ楴桧≴笾湩楳桧絴⼼㹰਍††††††††㰠搯癩ാ †††††††⤩ൽ †††††㰠搯癩ാ †††††ഠ †††††㰠楤⁶汣獡乳浡㵥朢楲⁤牧摩挭汯⵳‱杬机楲ⵤ潣獬㈭朠灡㠭㸢਍†††††††㰠楤⁶汣獡乳浡㵥瀢ㄭ′杢戭慲摮㔭〰琠硥⵴汢捡⁫潲湵敤ⵤ㑛敲嵭映敬⁸汦硥挭汯樠獵楴祦戭瑥敷湥洠湩栭嬭〴瀰嵸㸢਍†††††††††格″汣獡乳浡㵥琢硥⵴破⁬潦瑮戭慬正甠灰牥慣敳琠慲正湩ⵧ楴桧整⁲瑩污捩映湯⵴敳楲≦刾獥慥捲⁨敍桴摯㱳栯㸳਍†††††††††搼癩挠慬獳慎敭∽汦硥映敬⵸牷灡朠灡㐭㸢਍††††††††††笠牰橯捥⹴敤慴汩摥潃瑮湥⹴敲敳牡档洮瑥潨獤洮灡洨㴠‾ന †††††††††††猼慰⁮敫㵹浻⁽汣獡乳浡㵥瀢⵸‶祰㈭戠牯敤⵲′潢摲牥戭慬正ㄯ‰潲湵敤ⵤ畦汬映湯⵴汢捡⁫整瑸砭⁳灵数捲獡⁥牴捡楫杮眭摩獥≴笾絭⼼灳湡ാ ††††††††††⤩ൽ ††††††††㰠搯癩ാ †††††††⼼楤㹶਍†††††††㰠楤⁶汣獡乳浡㵥瀢ㄭ′杢眭楨整㔯戠牯敤⁲潢摲牥眭楨整ㄯ‰潲湵敤ⵤ㑛敲嵭映敬⁸汦硥挭汯樠獵楴祦挭湥整⁲敲慬楴敶漠敶晲潬⵷楨摤湥㸢਍†††††††††搼癩挠慬獳慎敭∽扡潳畬整琠灯ㄭ‰楲桧⵴〱映敬⁸汦硥挭汯椠整獭攭摮㸢਍††††††††††㰠灳湡挠慬獳慎敭∽整瑸嬭瀸嵸映湯⵴潭潮琠慲正湩ⵧ楷敤瑳琠硥⵴桷瑩⽥〲甠灰牥慣敳㸢畁桴噟污摩瑡潩㱮猯慰㹮਍††††††††††㰠楤⁶汣獡乳浡㵥眢㈭‴⵨ㅛ硰⁝杢眭楨整ㄯ‰瑭㈭•㸯਍†††††††††⼼楤㹶਍†††††††††䈼慥敫⁲汣獡乳浡㵥琢硥⵴牢湡ⵤ〵‰扭㠭•楳敺笽㐶⁽㸯਍†††††††††瀼挠慬獳慎敭∽整瑸㐭汸映湯⵴汢捡⁫整瑸眭楨整椠慴楬⁣潦瑮猭牥晩氠慥楤杮渭湯⁥牴捡楫杮琭杩瑨㸢਍††††††††††䐢瑡ⵡ牤癩湥搠捥獩潩獮氠慥楤杮琠⁯⁡〴‥湩牣慥敳椠⁮潷歲汦睯攠晦捩敩据⹹ഢ ††††††††㰠瀯ാ †††††††⼼楤㹶਍††††††⼼楤㹶਍†††††⼼楤㹶਍††††紩਍਍††††⽻‪铢肔匠䍅䥔乏〠㨳嘠卉䅕⁌䑉久䥔奔肔铢肔铢肔铢肔铢肔铢肔铢肔铢₀⼪ൽ †††笠牰橯捥⹴敤慴汩摥潃瑮湥⹴楶畳污摉湥楴祴☠…ന ††††㰠楤⁶汣獡乳浡㵥猢慰散礭㐭‸瑰㈭∴ാ ††††††搼癩挠慬獳慎敭∽汦硥映敬⵸潣⁬瑩浥⵳散瑮牥樠獵楴祦挭湥整⁲整瑸挭湥整⁲灳捡ⵥ⵹㈱㸢਍††††††††刼癥慥㹬਍†††††††††匼捥楴湯慔⁧畮扭牥∽㌰•慬敢㵬䄢獥桴瑥捩匠獹整≭⼠ാ ††††††††㰠㉨挠慬獳慎敭∽整瑸㜭汸氠㩧整瑸嬭〱敲嵭映湯⵴潢摬映湯⵴畯晴瑩甠灰牥慣敳琠慲正湩ⵧ楴桧整⁲敬摡湩ⵧ潮敮琠硥⵴桷瑩⁥敳敬瑣潩㩮杢戭慲摮㔭〰㸢਍††††††††††楖畳污䌠慲瑦മ ††††††††㰠栯㸲਍††††††††⼼敒敶污ാ ††††††⼼楤㹶਍਍††††††㰠楤⁶汣獡乳浡㵥朢楲⁤牧摩挭汯⵳‱杬机楲ⵤ潣獬ㄭ′慧⵰㘱椠整獭猭慴瑲㸢਍††††††††⽻‪潃潬⁲慐敬瑴⁥桓睯⨠累਍††††††††搼癩挠慬獳慎敭∽杬挺汯猭慰⵮‴灳捡ⵥ⵹〱㸢਍†††††††††㰠㑨挠慬獳慎敭∽整瑸嬭〱硰⁝潦瑮戭慬正甠灰牥慣敳琠慲正湩ⵧせ㐮浥⁝整瑸戭慲摮㔭〰㸢桃潲慭楴⁣灓捥牴浵⼼㑨ാ †††††††††搼癩挠慬獳慎敭∽牧摩朠楲ⵤ潣獬㈭朠灡㐭㸢਍†††††††††††灻潲敪瑣搮瑥楡敬䍤湯整瑮瘮獩慵䥬敤瑮瑩⹹潣潬獲洮灡⠨Ᵽ椠 㸽⠠਍††††††††††††搼癩欠祥笽絩挠慬獳慎敭∽牧畯⁰敲慬楴敶㸢਍†††††††††††††㰠楤⁶汣獡乳浡㵥眢昭汵⁬獡数瑣猭畱牡⁥潲湵敤ⵤ㉛敲嵭戠牯敤⁲潢摲牥眭楨整㔯•瑳汹㵥筻戠捡杫潲湵䍤汯牯›⁣絽⼠ാ †††††††††††††搼癩挠慬獳慎敭∽扡潳畬整椠獮瑥〭映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整⁲灯捡瑩⵹‰牧畯⵰潨敶㩲灯捡瑩⵹〱‰牴湡楳楴湯漭慰楣祴㸢਍†††††††††††††††猼慰⁮汣獡乳浡㵥戢ⵧ汢捡⽫〸戠捡摫潲⵰汢牵洭⁤硰㐭瀠⵹′潲湵敤ⵤ畦汬映湯⵴潭潮琠硥⵴ㅛ瀰嵸琠硥⵴桷瑩⽥〶㸢捻㱽猯慰㹮਍†††††††††††††㰠搯癩ാ †††††††††††㰠搯癩ാ ††††††††††⤠紩਍†††††††††㰠搯癩ാ †††††††㰠搯癩ാഊ †††††††笠⨯吠灹杯慲桰⁹桓睯⨠累਍††††††††搼癩挠慬獳慎敭∽杬挺汯猭慰⵮‸⵰㘱氠㩧⵰㐲戠ⵧ桷瑩⽥せ〮崲戠牯敤⁲潢摲牥眭楨整㔯爠畯摮摥嬭爵浥⁝灳捡ⵥ⵹㘱㸢਍†††††††††㰠楤⁶汣獡乳浡㵥猢慰散礭㘭㸢਍†††††††††††格‴汣獡乳浡㵥琢硥⵴ㅛ瀰嵸映湯⵴汢捡⁫灵数捲獡⁥牴捡楫杮嬭⸰攴嵭琠硥⵴牢湡ⵤ〵∰吾灹杯慲桰⁹畓瑩㱥栯㸴਍†††††††††††瀼挠慬獳慎敭∽整瑸㔭汸氠㩧整瑸㜭汸映湯⵴楬桧⁴整瑸眭楨整氠慥楤杮渭湯≥䄾⁡扂䌠⁣摄䔠⁥晆⼼㹰਍†††††††††††瀼挠慬獳慎敭∽整瑸㈭汸氠㩧整瑸㌭汸映湯⵴敳楲⁦瑩污捩琠硥⵴桷瑩⽥〳㸢灻潲敪瑣搮瑥楡敬䍤湯整瑮瘮獩慵䥬敤瑮瑩⹹祴潰牧灡票㱽瀯ാ †††††††††⼼楤㹶਍†††††††††㰠楤⁶汣獡乳浡㵥栢嬭瀱嵸眠昭汵⁬杢眭楨整㔯•㸯਍†††††††††㰠楤⁶汣獡乳浡㵥猢慰散礭㠭㸢਍††††††††††㰠㑨挠慬獳慎敭∽整瑸嬭〱硰⁝潦瑮戭慬正甠灰牥慣敳琠慲正湩ⵧせ㐮浥⁝整瑸戭慲摮㔭〰㸢祓瑳浥䄠瑲晩捡獴⼼㑨ാ ††††††††††搼癩挠慬獳慎敭∽汦硥映敬⵸牷灡朠灡㐭㸢਍††††††††††††灻潲敪瑣搮瑥楡敬䍤湯整瑮瘮獩慵䥬敤瑮瑩⹹潣灭湯湥獴⸿慭⡰潣灭㴠‾ന ††††††††††††㰠楤⁶敫㵹捻浯絰挠慬獳慎敭∽硰㠭瀠⵹‴杢眭楨整㔯戠牯敤⁲潢摲牥眭楨整ㄯ‰潲湵敤ⵤ砲⁬汦硥椠整獭挭湥整⁲慧⵰‴牧畯⁰潨敶㩲杢眭楨整ㄯ‰牴湡楳楴湯挭汯牯≳ാ ††††††††††††††搼癩挠慬獳慎敭∽⵷′⵨′潲湵敤ⵤ畦汬戠ⵧ牢湡ⵤ〵∰⼠ാ ††††††††††††††猼慰⁮汣獡乳浡㵥琢硥⵴獸映湯⵴潢摬甠灰牥慣敳琠慲正湩ⵧ楷敤瑳琠硥⵴桷瑩⽥〶朠潲灵栭癯牥琺硥⵴桷瑩⁥牴湡楳楴湯挭汯牯≳笾潣灭㱽猯慰㹮਍†††††††††††††⼼楤㹶਍††††††††††††⤩ൽ ††††††††††⼼楤㹶਍†††††††††㰠搯癩ാ †††††††㰠搯癩ാ ††††††⼼楤㹶਍†††††⼼楤㹶਍††††紩਍਍††††⽻‪铢肔匠䍅䥔乏〠㨴䌠剏⁅䕆呁剕卅肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢₀⼪ൽ †††㰠楤⁶汣獡乳浡㵥猢慰散礭㌭∲ാ †††††搼癩挠慬獳慎敭∽慭⵸⵷破≬ാ ††††††㰠敒敶污ാ †††††††㰠敓瑣潩呮条渠浵敢㵲〢∴氠扡汥∽畆据楴湯污䴠瑡楲≸⼠ാ †††††††㰠㉨挠慬獳慎敭∽整瑸㘭汸氠㩧整瑸嬭爸浥⁝潦瑮戭汯⁤潦瑮漭瑵楦⁴灵数捲獡⁥牴捡楫杮琭杩瑨牥氠慥楤杮嬭⸰㔸⁝整瑸眭楨整㸢਍†††††††††敋㱹牢㸯牁楴慦瑣⹳਍††††††††⼼㉨ാ ††††††㰠刯癥慥㹬਍†††††㰠搯癩ാ †††††਍†††††㰠楤⁶汣獡乳浡㵥朢楲⁤牧摩挭汯⵳‱摭机楲ⵤ潣獬㈭氠㩧牧摩挭汯⵳″慧⵰〱㸢਍††††††笠牰橯捥⹴敦瑡牵獥洮灡⠨敦瑡牵ⱥ椠 㸽⠠਍†††††††㰠潭楴湯搮癩਍††††††††欠祥笽絩਍††††††††椠楮楴污笽⁻灯捡瑩㩹〠‬㩹㌠‰絽਍††††††††眠楨敬湉楖睥笽⁻灯捡瑩㩹ㄠ‬㩹〠素ൽ ††††††††楶睥潰瑲笽⁻湯散›牴敵素ൽ ††††††††牴湡楳楴湯笽⁻敤慬㩹椠⨠〠ㄮ‬畤慲楴湯›⸰‸絽਍††††††††挠慬獳慎敭∽牧畯⁰敲慬楴敶栠嬭㔴瀰嵸瀠ㄭ′杢眭楨整嬯⸰㈰⁝潢摲牥戠牯敤⵲桷瑩⽥‵潲湵敤ⵤ㑛敲嵭映敬⁸汦硥挭汯樠獵楴祦戭瑥敷湥漠敶晲潬⵷楨摤湥栠癯牥戺ⵧ桷瑩⽥せ〮崵琠慲獮瑩潩⵮污⁬畤慲楴湯㜭〰ഢ †††††††ാ ††††††††搼癩挠慬獳慎敭∽⵷㘱栠ㄭ‶潲湵敤ⵤㅛ㠮敲嵭戠ⵧ牢湡ⵤ〵⼰〱映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整⁲整瑸戭慲摮㔭〰猠慨潤⵷杬猠慨潤⵷牢湡ⵤ〵⼰‵牧畯⵰潨敶㩲杢戭慲摮㔭〰朠潲灵栭癯牥琺硥⵴汢捡⁫牴湡楳楴湯愭汬搠牵瑡潩⵮〵∰ാ †††††††††㰠慚⁰楳敺笽㈳⁽㸯਍††††††††㰠搯癩ാ ††††††††搼癩挠慬獳慎敭∽灳捡ⵥ⵹∶ാ †††††††††㰠灳湡挠慬獳慎敭∽整瑸嬭瀹嵸映湯⵴潭潮琠慲正湩ⵧせ㐮浥⁝整瑸眭楨整㈯‰灵数捲獡≥䴾䑏䱕彅笰⁩‫紱⼼灳湡ാ †††††††††㰠㑨挠慬獳慎敭∽整瑸㌭汸映湯⵴畯晴瑩映湯⵴汢捡⁫灵数捲獡⁥整瑸眭楨整氠慥楤杮渭湯⁥牴捡楫杮琭杩瑨牥朠潲灵栭癯牥琺硥⵴牢湡ⵤ〵‰牴湡楳楴湯挭汯牯≳ാ ††††††††††笠敦瑡牵絥਍††††††††††⼼㑨ാ ††††††††⼼楤㹶਍††††††††㰠楤⁶汣獡乳浡㵥愢獢汯瑵⁥戭瑯潴⵭〱ⴠ楲桧⵴〱漠慰楣祴嬭⸰㌰⁝潲慴整ㄭ′牧畯⵰潨敶㩲潲慴整〭琠慲獮瑩潩⵮牴湡晳牯⁭畤慲楴湯ㄭ〰∰ാ †††††††††㰠慌敹獲猠穩㵥㉻〴⁽㸯਍††††††††㰠搯癩ാ †††††††⼼潭楴湯搮癩ാ ††††††⤩ൽ †††††⼼楤㹶਍††††⼼楤㹶਍਍††††⽻‪铢肔匠䍅䥔乏〠㨵吠䍅么䍉䱁匠䅔䭃肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔⨠累਍††††搼癩挠慬獳慎敭∽灳捡ⵥ⵹㈳瀠⵴㐲㸢਍†††††㰠敓瑣潩呮条渠浵敢㵲〢∵氠扡汥∽敔档楮慣⁬牃晡≴⼠ാ †††††搼癩挠慬獳慎敭∽牧摩朠楲ⵤ潣獬ㄭ氠㩧牧摩挭汯⵳′慧⵰㐲椠整獭挭湥整≲ാ ††††††㰠楤⁶汣獡乳浡㵥猢慰散礭ㄭ∲ാ ††††††††刼癥慥㹬਍††††††††††格′汣獡乳浡㵥琢硥⵴砶⁬杬琺硥⵴㝛敲嵭映湯⵴潢摬映湯⵴畯晴瑩甠灰牥慣敳琠慲正湩ⵧ楴桧整⁲敬摡湩ⵧせ㠮崵琠硥⵴桷瑩⁥扭ㄭ∰ാ ††††††††††吠敨戼⽲䄾獲湥污മ †††††††††㰠栯㸲਍††††††††††瀼挠慬獳慎敭∽整瑸㈭汸映湯⵴楬桧⁴整瑸眭楨整㐯‰敬摡湩ⵧ敲慬數⁤瑩污捩㸢਍†††††††††††灻潲敪瑣搮瑥楡敬䍤湯整瑮挮摯湩絧਍††††††††††⼼㹰਍††††††††㰠刯癥慥㹬਍††††††††㰠楤⁶汣獡乳浡㵥朢楲⁤牧摩挭汯⵳′慧⵰‶瑰ㄭ∰ാ †††††††††笠牰橯捥⹴敤慴汩摥潃瑮湥⹴潴汯㽳洮灡琨潯⁬㸽⠠਍†††††††††††搼癩欠祥笽潴汯⁽汣獡乳浡㵥昢敬⁸瑩浥⵳散瑮牥朠灡㐭戠ⵧ桷瑩⽥‵⵰‶潲湵敤ⵤ砳⁬潢摲牥戠牯敤⵲桷瑩⽥∵ാ ††††††††††††吼牥業慮⁬汣獡乳浡㵥琢硥⵴牢湡ⵤ〵∰猠穩㵥㉻細⼠ാ ††††††††††††猼慰⁮汣獡乳浡㵥琢硥⵴獸映湯⵴汢捡⁫灵数捲獡⁥牴捡楫杮眭摩獥⁴整瑸眭楨整㸢瑻潯絬⼼灳湡ാ ††††††††††㰠搯癩ാ †††††††††⤠紩਍††††††††㰠搯癩ാ ††††††㰠搯癩ാഊ ††††††㰠楤⁶汣獡乳浡㵥爢汥瑡癩⁥⵨㙛〵硰⁝⵷畦汬映敬⁸瑩浥⵳散瑮牥樠獵楴祦挭湥整≲ാ ††††††††搼癩挠慬獳慎敭∽扡潳畬整椠獮瑥〭戠ⵧ牧摡敩瑮琭ⵯ牢映潲⵭牢湡ⵤ〵⼰〱琠ⵯ牴湡灳牡湥⁴汢牵嬭㈱瀰嵸爠畯摮摥昭汵≬⼠ാ ††††††††搼癩挠慬獳慎敭∽⵷畦汬栠昭汵⁬杢戭慬正㐯‰慢正牤灯戭畬⵲砳⁬潢摲牥戠牯敤⵲桷瑩⽥〱爠畯摮摥嬭爵浥⁝癯牥汦睯栭摩敤⁮⵰㘱映敬⁸汦硥挭汯樠獵楴祦挭湥整⁲敲慬楴敶猠慨潤⵷砳≬ാ †††††††††㰠楤⁶汣獡乳浡㵥昢湯⵴潭潮琠硥⵴ㅛ瀰嵸琠硥⵴桷瑩⽥〳猠慰散礭㠭㸢਍†††††††††††㰠⁰汣獡乳浡㵥昢敬⁸瑩浥⵳散瑮牥朠灡㐭㸢猼慰⁮汣獡乳浡㵥琢硥⵴牢湡ⵤ〵∰␾⼼灳湡‾奓呓䵅䉟住䥔䝎⸮㰮瀯ാ †††††††††††瀼挠慬獳慎敭∽汦硥椠整獭挭湥整⁲慧⵰∴㰾灳湡挠慬獳慎敭∽整瑸戭慲摮㔭〰㸢㰤猯慰㹮䤠䥎䥔䱁婉义彇灻潲敪瑣献畬⹧潴灕数䍲獡⡥紩⼼㹰਍†††††††††††㰠楤⁶汣獡乳浡㵥栢嬭瀱嵸眠昭汵⁬杢眭楨整ㄯ‰祭ㄭ∰⼠ാ †††††††††††搼癩挠慬獳慎敭∽灳捡ⵥ⵹∶ാ ††††††††††††㰠楤⁶汣獡乳浡㵥昢敬⁸番瑳晩⵹敢睴敥⁮瑩浥⵳湥≤ാ ††††††††††††††猼慰⁮汣獡乳浡㵥產灰牥慣敳琠慲正湩ⵧせ㌮浥≝䈾極摬匠慴楢楬祴⼼灳湡ാ ††††††††††††††猼慰⁮汣獡乳浡㵥琢硥⵴汸映湯⵴潢摬琠硥⵴桷瑩⁥牴捡楫杮琭杩瑨牥㸢㤹㠮‥䭏⼼灳湡ാ ††††††††††††㰠搯癩ാ ††††††††††††㰠楤⁶汣獡乳浡㵥栢㈭眠昭汵⁬杢眭楨整㔯爠畯摮摥昭汵⁬癯牥汦睯栭摩敤≮ാ ††††††††††††††搼癩挠慬獳慎敭∽⵨畦汬眠嬭㤹㠮崥戠ⵧ牢湡ⵤ〵∰⼠ാ ††††††††††††㰠搯癩ാ †††††††††††⼼楤㹶਍†††††††††††㰠楤⁶汣獡乳浡㵥猢慰散礭㘭㸢਍†††††††††††††搼癩挠慬獳慎敭∽汦硥樠獵楴祦戭瑥敷湥椠整獭攭摮㸢਍††††††††††††††㰠灳湡挠慬獳慎敭∽灵数捲獡⁥牴捡楫杮嬭⸰攳嵭㸢湉整慲瑣潩⁮慌整据㱹猯慰㹮਍††††††††††††††㰠灳湡挠慬獳慎敭∽整瑸砭⁬潦瑮戭汯⁤整瑸戭慲摮㔭〰琠慲正湩ⵧ楴桧整≲䔾䥌䕔䱟噅䱅⼼灳湡ാ ††††††††††††㰠搯癩ാ ††††††††††††㰠楤⁶汣獡乳浡㵥栢㈭眠昭汵⁬杢眭楨整㔯爠畯摮摥昭汵⁬癯牥汦睯栭摩敤≮ാ ††††††††††††††搼癩挠慬獳慎敭∽⵨畦汬眠嬭〱┰⁝杢眭楨整㈯∰⼠ാ ††††††††††††㰠搯癩ാ †††††††††††⼼楤㹶਍††††††††††⼼楤㹶਍††††††††††䜼瑩牂湡档挠慬獳慎敭∽扡潳畬整ⴠ潢瑴浯ㄭ‶爭杩瑨ㄭ‶整瑸眭楨整嬯⸰㌰≝猠穩㵥㑻〰⁽㸯਍††††††††㰠搯癩ാ ††††††㰠搯癩ാ †††††⼼楤㹶਍††††⼼楤㹶਍਍†††⼼敳瑣潩㹮਍਍†††⽻‪铢肔䘠住䕔⁒佃䱌䉁剏呁佉⁎铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔铢肔⨠累਍†††猼捥楴湯挠慬獳慎敭∽敲慬楴敶洠湩栭猭牣敥⁮⵷畦汬映敬⁸汦硥挭汯椠整獭挭湥整⁲番瑳晩⵹散瑮牥戠牯敤⵲⁴潢摲牥眭楨整㔯漠敶晲潬⵷楨摤湥瀠⵹㈳㸢਍††††搼癩挠慬獳慎敭∽扡潳畬整椠獮瑥砭〭琠灯〭栠嬭瀱嵸戠ⵧ牧摡敩瑮琭ⵯ⁲牦浯琭慲獮慰敲瑮瘠慩戭慲摮㔭〰㈯‰潴琭慲獮慰敲瑮•㸯਍††††਍††††洼瑯潩⹮楤൶ ††††椠楮楴污笽⁻灯捡瑩㩹〠‬㩹㔠‰絽਍†††††桷汩䥥噮敩㵷筻漠慰楣祴›ⰱ礠›‰絽਍†††††楶睥潰瑲笽⁻湯散›牴敵素ൽ ††††挠慬獳慎敭∽整瑸挭湥整⁲灳捡ⵥ⵹㐲爠汥瑡癩⁥⵺〱瀠⵸‶慭⵸⵷ㅛ〴瀰嵸ഢ †††㸠਍†††††搼癩挠慬獳慎敭∽灳捡ⵥ⵹∸ാ ††††††匼捥楴湯慔⁧畮扭牥∽久≄氠扡汥∽灅汩杯敵•㸯਍††††††㰠㉨挠慬獳慎敭∽整瑸㜭汸洠㩤整瑸嬭㈱敲嵭氠㩧整瑸嬭㘱敲嵭映湯⵴潢摬映湯⵴畯晴瑩甠灰牥慣敳琠慲正湩ⵧⵛ⸰㐰浥⁝敬摡湩ⵧせ㠮⁝整瑸眭楨整琠硥⵴散瑮牥㸢਍†††††††䈠祥湯⁤猼慰⁮汣獡乳浡㵥琢硥⵴桷瑩⽥〱椠慴楬⁣潦瑮猭牥晩㸢楐數獬㰮猯慰㹮਍††††††㰠栯㸲਍†††††⼼楤㹶਍†††††਍†††††搼癩挠慬獳慎敭∽汦硥映敬⵸潣⁬浳昺敬⵸潲⁷慧⵰‸瑩浥⵳散瑮牥樠獵楴祦挭湥整≲ാ †††††㰠慍湧瑥捩畂瑴湯ഠ ††††††琠灹㵥漢瑵楬敮•਍†††††††汣獡乳浡㵥瀢⵸㘱瀠⵹〱琠硥⵴ㅛ瀱嵸映湯⵴汢捡⁫灵数捲獡⁥牴捡楫杮嬭⸰攴嵭ഢ ††††††漠䍮楬正笽⤨㴠‾潲瑵牥瀮獵⡨⼧⤧ൽ †††††㸠਍†††††††桔⁥牁档癩൥ †††††㰠䴯条敮楴䉣瑵潴㹮਍††††††䴼条敮楴䉣瑵潴⁮਍†††††††祴数∽敤慦汵≴ഠ ††††††挠慬獳慎敭∽硰ㄭ‶祰ㄭ‰整瑸嬭ㄱ硰⁝潦瑮戭慬正甠灰牥慣敳琠慲正湩ⵧせ㐮浥⁝桳摡睯㌭汸猠慨潤⵷牢湡ⵤ〵⼰〳ഢ ††††††漠䍮楬正笽⤨㴠‾楷摮睯漮数⡮洧楡瑬㩯慳獫楨条慲㈲杀慭汩挮浯⤧ൽ †††††㸠਍†††††††潃汬扡牯瑡⁥䄼牲睯灕楒桧⁴楳敺笽〲⁽㸯਍††††††⼼慍湧瑥捩畂瑴湯ാ ††††㰠搯癩ാ †††㰠洯瑯潩⹮楤㹶਍਍††††⽻‪浉敭獲癩⁥潆瑯牥䐠捥牯瑡潩⁮⼪ൽ †††㰠楤⁶汣獡乳浡㵥愢獢汯瑵⁥潢瑴浯㈭‰敬瑦ㄭ㈯ⴠ牴湡汳瑡ⵥ⵸⼱′汦硥椠整獭挭湥整⁲慧⵰㈱琠硥⵴㥛硰⁝潦瑮洭湯⁯牴捡楫杮嬭⸰攵嵭琠硥⵴桷瑩⽥‵灵数捲獡≥ാ †††††猼慰⁮汣獡乳浡㵥眢㈭‰⵨ㅛ硰⁝杢眭楨整㔯•㸯਍†††††匠歡桳⁩杁慲慨楲⼠ 楈桧䘭摩汥瑩⁹牁档癩⁥⼯㈠㈰ശ †††††猼慰⁮汣獡乳浡㵥眢㈭‰⵨ㅛ硰⁝杢眭楨整㔯•㸯਍††††⼼楤㹶਍†††⼼敳瑣潩㹮਍਍††⼼楤㹶਍†ഩ紊਍਍畦据楴湯匠捥楴湯慔⡧⁻畮扭牥‬慬敢⁬㩽笠渠浵敢㩲猠牴湩㭧氠扡汥›瑳楲杮素 ൻ 爠瑥牵⁮ന †㰠楤⁶汣獡乳浡㵥昢敬⁸瑩浥⵳散瑮牥朠灡㘭洠ⵢ〱漠敶晲潬⵷楨摤湥㸢਍†††搼癩挠慬獳慎敭∽汦硥椠整獭挭湥整⁲慧⵰∳ാ ††††猼慰⁮汣獡乳浡㵥琢硥⵴ㅛ瀰嵸映湯⵴潭潮琠硥⵴牢湡ⵤ〵‰灵数捲獡⁥牴捡楫杮嬭⸰攳嵭㸢湻浵敢絲⼼灳湡ാ ††††搼癩挠慬獳慎敭∽⵨ㅛ硰⁝⵷‸杢戭慲摮㔭〰㐯∰⼠ാ ††㰠搯癩ാ ††㰠灳湡挠慬獳慎敭∽整瑸嬭〱硰⁝潦瑮戭慬正琠硥⵴桷瑩⽥〲甠灰牥慣敳琠慲正湩ⵧせ㐮浥≝笾慬敢絬⼼灳湡ാ †㰠搯癩ാ ⤠਍ൽഊ †††㰠楤⁶汣獡乳浡㵥愢獢汯瑵⁥潢瑴浯ㄭ‰湩敳⵴⵸〱映敬⁸番瑳晩⵹敢睴敥⁮瑩浥⵳散瑮牥琠硥⵴㡛硰⁝潦瑮洭湯⁯牴捡楫杮嬭⸰攵嵭琠硥⵴桷瑩⽥〱甠灰牥慣敳㸢਍†††††㰠灳湡䌾敲瑡摥戠⁹慓獫楨䄠牧桡牡㱩猯慰㹮਍†††††㰠灳湡挠慬獳慎敭∽楨摤湥洠㩤汢捯≫匾獹整㩭瘠⸷㐰⼠ 楈桧楆敤楬祴卟牥敩㱳猯慰㹮਍†††††㰠灳湡䔾呓›〲㘲⼼灳湡ാ †††㰠搯癩ാ ††㰠猯捥楴湯ാഊ †㰠搯癩ാ ⤠਍ൽഊ昊湵瑣潩⁮敓瑣潩呮瑩敬笨渠浵‬楴汴ⱥ猠扵楴汴⁥㩽笠渠浵›瑳楲杮※楴汴㩥猠牴湩㭧猠扵楴汴㽥›瑳楲杮素 ൻ 爠瑥牵⁮ന †㰠楤⁶汣獡乳浡㵥猢慰散礭㘭洠ⵢ㘱㸢਍†††搼癩挠慬獳慎敭∽汦硥椠整獭挭湥整⁲慧⵰‴整瑸戭慲摮㔭〰㸢਍††††猼慰⁮汣獡乳浡㵥琢硥⵴ㅛ瀰嵸映湯⵴潭潮甠灰牥慣敳琠慲正湩ⵧ楷敤瑳㸢湻浵⁽⼯笠畳瑢瑩敬㱽猯慰㹮਍††††搼癩挠慬獳慎敭∽⵨ㅛ硰⁝⵷㘱戠ⵧ牢湡ⵤ〵⼰〳•㸯਍†††⼼楤㹶਍†††格′汣獡乳浡㵥琢硥⵴砶⁬摭琺硥⵴砸⁬杬琺硥⵴ㅛ爰浥⁝潦瑮漭瑵楦⁴潦瑮戭慬正甠灰牥慣敳琠慲正湩ⵧ楴桧整⁲整瑸眭楨整氠慥楤杮嬭⸰崸㸢਍††††瑻瑩敬⹽਍†††⼼㉨ാ †㰠搯癩ാ ⤠਍ൽ
+"use client"
+
+import { useRouter } from "next/navigation"
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from "framer-motion"
+import { ArrowLeft, Github, ArrowUpRight, CheckCircle2, Zap, Palette, Code2, Sparkles, Layers, MousePointer2, Beaker, GitBranch, Terminal } from "lucide-react"
+import Image from "next/image"
+import { useRef, useState, useEffect, ReactNode } from "react"
+
+/* ─────────────────────────────────────────────
+   TYPES
+───────────────────────────────────────────── */
+interface Project {
+  title: string
+  slug: string
+  duration: string
+  image: string
+  color: string
+  technologies: string[]
+  description: string
+  features: string[]
+  achievements: string[]
+  liveUrl?: string
+  githubUrl?: string
+  status: string
+  detailedContent: {
+    problemStatement: string
+    solution: string
+    design: string
+    coding: string
+    testing: string
+    process: string
+  }
+}
+
+/* ─────────────────────────────────────────────
+   MAGNETIC BUTTON
+───────────────────────────────────────────── */
+function MagneticButton({ children, className, onClick, type = "default" }: { 
+  children: ReactNode; 
+  className?: string; 
+  onClick?: () => void;
+  type?: "default" | "outline" | "ghost"
+}) {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const ref = useRef<HTMLDivElement>(null)
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e
+    const { left, top, width, height } = ref.current!.getBoundingClientRect()
+    const x = clientX - (left + width / 2)
+    const y = clientY - (top + height / 2)
+    setPosition({ x: x * 0.4, y: y * 0.4 })
+  }
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 })
+  }
+
+  const baseStyles = "relative flex items-center justify-center rounded-full transition-all duration-300 overflow-hidden group"
+  const typeStyles = {
+    default: "bg-brand-500 text-black hover:bg-white",
+    outline: "border border-white/10 text-white hover:border-brand-500 hover:text-brand-500",
+    ghost: "text-white/40 hover:text-white"
+  }
+
+  return (
+    <div
+      className="flex items-center justify-center"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      ref={ref}
+    >
+      <motion.button
+        onClick={onClick}
+        animate={{ x: position.x, y: position.y }}
+        transition={{ type: "spring", stiffness: 150, damping: 20, mass: 0.2 }}
+        className={`${baseStyles} ${typeStyles[type]} ${className}`}
+      >
+        <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+        <span className="relative z-10 flex items-center gap-2 font-bold">{children}</span>
+      </motion.button>
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────
+   SCROLL REVEAL WRAPPER
+───────────────────────────────────────────── */
+function Reveal({ children, delay = 0, y = 40 }: { children: ReactNode; delay?: number; y?: number }) {
+  return (
+    <div className="overflow-hidden relative">
+      <motion.div
+        initial={{ y: y, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
+      >
+        {children}
+      </motion.div>
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────────
+   MAIN COMPONENT: PROJECT DETAIL CLIENT
+───────────────────────────────────────────── */
+export default function ProjectDetailClient({ project }: { project: Project }) {
+  const router = useRouter()
+  const [isLoaded, setIsLoaded] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    setIsLoaded(true)
+    const handleMove = (e: MouseEvent) => setMousePos({ x: e.clientX, y: e.clientY })
+    window.addEventListener("mousemove", handleMove)
+    return () => window.removeEventListener("mousemove", handleMove)
+  }, [])
+
+  const { scrollYProgress } = useScroll()
+  const progressWidth = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
+
+  return (
+    <div ref={containerRef} className="bg-[#050505] text-[#f5f5f5] min-h-screen selection:bg-brand-500 selection:text-black font-inter relative overflow-x-hidden">
+      
+      {/* ── AMBIENT GLOW ──────────────────────────── */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-0 opacity-10 blur-[150px] transition-transform duration-500"
+        style={{
+          background: `radial-gradient(1000px circle at ${mousePos.x}px ${mousePos.y}px, ${project.color}40, transparent 80%)`
+        }}
+      />
+
+      {/* ── PROGRESS INDICATOR ───────────────────── */}
+      <motion.div 
+        className="fixed top-0 left-0 right-0 h-[2px] bg-brand-500 z-[1100] origin-left"
+        style={{ scaleX: progressWidth }}
+      />
+
+      {/* ── TOP NAVIGATION ────────────────────────── */}
+      <nav className="fixed top-0 left-0 w-full z-[1000] p-6 lg:p-10 pointer-events-none">
+        <div className="max-w-[1800px] mx-auto flex justify-between items-center">
+          <div className="pointer-events-auto">
+            <MagneticButton 
+              type="ghost" 
+              className="w-14 h-14 border border-white/5 bg-black/40 backdrop-blur-xl"
+              onClick={() => router.push('/')}
+            >
+              <ArrowLeft size={22} />
+            </MagneticButton>
+          </div>
+
+          <div className="flex gap-4 pointer-events-auto">
+            {project.githubUrl && (
+              <MagneticButton 
+                type="outline" 
+                className="w-14 h-14 bg-black/20 backdrop-blur-md"
+                onClick={() => window.open(project.githubUrl, '_blank')}
+              >
+                <Github size={18} />
+              </MagneticButton>
+            )}
+            {project.liveUrl && (
+              <MagneticButton 
+                type="default" 
+                className="px-8 h-14 text-[10px] uppercase tracking-[0.2em] shadow-lg shadow-brand-500/20"
+                onClick={() => window.open(project.liveUrl, '_blank')}
+              >
+                Launch <Sparkles size={14} />
+              </MagneticButton>
+            )}
+          </div>
+        </div>
+      </nav>
+
+      {/* ── WORLD-CLASS HERO (SIDE-BY-SIDE) ────────── */}
+      <section className="relative min-h-[90vh] flex items-center justify-center pt-32 lg:pt-0 overflow-hidden px-6 lg:px-20">
+        <div className="max-w-[1600px] w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+          
+          {/* Left: Text Content */}
+          <div className="space-y-12 z-10 relative order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex items-center gap-4"
+            >
+              <span className="h-[1px] w-12 bg-brand-500" />
+              <span className="text-[10px] font-mono tracking-[0.5em] text-brand-500 uppercase">
+                {project.status} // {project.duration}
+              </span>
+            </motion.div>
+
+            <div className="space-y-8">
+              <h1 className="text-3xl md:text-5xl lg:text-[5rem] xl:text-[6.5rem] font-bold font-outfit uppercase tracking-tighter leading-[0.85] text-white">
+                {project.title.split(' ').map((word, i) => (
+                  <span key={i} className="block overflow-hidden py-1">
+                    <motion.span
+                      initial={{ y: "100%" }}
+                      animate={{ y: 0 }}
+                      transition={{ delay: 0.2 + i * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                      className="block"
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                ))}
+              </h1>
+              
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6, duration: 1 }}
+                className="text-lg lg:text-2xl font-inter font-light text-white/50 max-w-xl leading-relaxed"
+              >
+                {project.description}
+              </motion.p>
+            </div>
+
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.8 }}
+              className="flex flex-wrap gap-3 pt-4"
+            >
+              {project.technologies.map((tech) => (
+                <span key={tech} className="px-5 py-2 rounded-full border border-white/10 bg-white/[0.03] text-[9px] uppercase tracking-widest text-white/40 backdrop-blur-sm transition-all hover:bg-white/10 hover:border-brand-500/50">
+                  {tech}
+                </span>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Right: Signature Project Image (Interactive) */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 50 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+            className="relative order-1 lg:order-2"
+          >
+            <div className="relative w-full aspect-[4/3] rounded-[3rem] overflow-hidden border border-white/10 shadow-3xl shadow-black/90 group perspective-[2000px]">
+              <motion.div
+                whileHover={{ rotateX: 2, rotateY: -8, scale: 1.05 }}
+                transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                className="relative w-full h-full"
+              >
+                <Image 
+                  src={project.image} 
+                  alt={project.title} 
+                  fill 
+                  priority 
+                  className="object-cover contrast-[1.05] brightness-[0.9] transition-transform duration-[2s]" 
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              </motion.div>
+              
+              {/* Overlay HUD on image */}
+              <div className="absolute top-8 left-8 flex flex-col gap-1 opacity-40 group-hover:opacity-100 transition-opacity">
+                 <div className="w-12 h-[1px] bg-white" />
+                 <span className="text-[8px] font-mono uppercase tracking-widest">Digital Archive // {project.slug}</span>
+              </div>
+            </div>
+
+            {/* Float Element */}
+            <motion.div 
+              animate={{ y: [0, -15, 0], x: [0, 5, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-8 -left-8 bg-black/80 backdrop-blur-3xl border border-white/10 p-6 rounded-[2rem] hidden md:flex items-center gap-4 shadow-2xl z-20"
+            >
+              <div className="w-12 h-12 rounded-full bg-brand-500 flex items-center justify-center text-black">
+                <Layers size={22} />
+              </div>
+              <div>
+                <p className="text-[10px] font-mono tracking-widest text-white/40 uppercase">Architecture</p>
+                <p className="text-sm font-bold text-white uppercase tracking-tighter">Premium Stack</p>
+              </div>
+            </motion.div>
+          </motion.div>
+
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div 
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-4"
+        >
+          <div className="w-[1px] h-20 bg-gradient-to-b from-brand-500 to-transparent" />
+          <span className="text-[8px] font-mono tracking-[0.5em] uppercase text-white/30">Scroll Down</span>
+        </motion.div>
+      </section>
+
+      {/* ── CASE STUDY CONTENT: THE FOUNDATION ────────── */}
+      <section className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-40 space-y-64 lg:space-y-96">
+        
+        {/* THE CHALLENGE SECTION */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 border-t border-white/5 pt-32">
+          <div className="lg:col-span-5">
+            <Reveal>
+              <div className="flex items-center gap-3 mb-10">
+                <span className="text-[10px] font-mono text-brand-500 uppercase tracking-[0.3em]">01_The Vision</span>
+              </div>
+              <h2 className="text-5xl lg:text-7xl font-outfit font-black uppercase tracking-tighter text-white mb-10 leading-[0.9]">
+                The problem<br/>Statement.
+              </h2>
+              <p className="text-xl lg:text-3xl font-inter font-light text-white/70 leading-relaxed italic">
+                {project.detailedContent.problemStatement}
+              </p>
+            </Reveal>
+          </div>
+          <div className="lg:col-span-7 space-y-20">
+            <Reveal delay={0.2}>
+              <div className="relative rounded-[3rem] overflow-hidden aspect-video border border-white/10">
+                 <Image src={project.image} alt="Context" fill className="object-cover opacity-60" />
+                 <div className="absolute inset-0 bg-gradient-to-tr from-brand-500/10 via-transparent to-transparent" />
+              </div>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <div className="p-12 lg:p-16 bg-white/[0.03] border border-white/5 rounded-[4rem] relative overflow-hidden group">
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 blur-[60px] rounded-full translate-x-1/2 -translate-y-1/2" />
+                 <h3 className="text-2xl font-bold font-outfit uppercase tracking-widest text-brand-500 mb-6">The Solution</h3>
+                 <p className="text-xl lg:text-2xl font-light text-white/50 leading-relaxed">
+                   {project.detailedContent.solution}
+                 </p>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        {/* CORE MATRIX (BENTO GRID) */}
+        <div className="space-y-20">
+           <div className="flex items-center justify-between mb-1">
+              <div className="flex items-center gap-3">
+                 <span className="text-[10px] font-mono text-brand-500 uppercase tracking-[0.3em]">02_Features</span>
+              </div>
+
+           </div>
+                         <div className="flex flex-col gap-4">
+                  <h3 className="text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Amazing Features</h3>
+                </div>
+           
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+             {project.features.map((feature, i) => (
+               <motion.div
+                 key={i}
+                 initial={{ opacity: 0, y: 30 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: i * 0.1, duration: 0.8 }}
+                 className="group relative h-[380px] p-12 bg-white/[0.02] border border-white/5 rounded-[3.5rem] overflow-hidden hover:border-brand-500/30 transition-all duration-500"
+               >
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/[0.04] rounded-full blur-[80px] translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-500/10 transition-colors" />
+                 <div className="relative z-10 flex flex-col h-full justify-between">
+                   <div className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-black transition-all">
+                     <Zap size={28} />
+                   </div>
+                   <div>
+                     <span className="text-[9px] font-mono tracking-[0.4em] text-white/20 uppercase mb-4 block">FUNCTION_MTRX_{i + 1}</span>
+                     <h4 className="text-2xl lg:text-3xl font-outfit font-bold uppercase tracking-tight text-white group-hover:text-brand-500 transition-colors leading-[1.1]">
+                       {feature}
+                     </h4>
+                   </div>
+                 </div>
+               </motion.div>
+             ))}
+           </div>
+        </div>
+
+        {/* DESIGN & PROCESS SECTION */}
+        <div className="space-y-48">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div className="space-y-10 pl-8 lg:pl-16 border-l border-brand-500/30">
+              <Reveal>
+                <div className="flex flex-col gap-4">
+                  <Palette className="text-brand-500 mb-4" size={40} />
+                  <h3 className="text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Creative<br/>Process.</h3>
+                </div>
+                <p className="text-xl lg:text-2xl font-light text-white/50 leading-relaxed mt-8">
+                  {project.detailedContent.process}
+                </p>
+              </Reveal>
+            </div>
+            <div className="relative aspect-square rounded-[5rem] overflow-hidden bg-white/5">
+               <Image src={project.image} alt="Process visual" fill className="object-cover grayscale brightness-[0.7] hover:grayscale-0 transition-all duration-[1.5s]" />
+               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div className="order-2 lg:order-1 relative h-[600px] flex items-center justify-center">
+               <div className="w-full h-full bg-gradient-to-br from-[#111] to-black rounded-[5rem] border border-white/5 p-12 lg:p-20 flex flex-col justify-center relative shadow-2xl overflow-hidden">
+                  <div className="font-mono text-[10px] text-brand-500/40 space-y-6">
+                    <p className="flex gap-4"><span>DEPLOY_ID:</span> {project.slug.toUpperCase()}_v1.0</p>
+                    <p className="flex gap-4 text-white/60"><span>LATENCY:</span> 24MS_STABLE</p>
+                    <div className="h-[1px] w-full bg-white/5 my-10" />
+                    <div className="grid grid-cols-2 gap-10 uppercase">
+                       <div>
+                          <p className="text-white/20 mb-2">Build Integrity</p>
+                          <p className="text-2xl font-bold text-white">99%</p>
+                       </div>
+                       <div>
+                          <p className="text-white/20 mb-2">Performance</p>
+                          <p className="text-2xl font-bold text-brand-500 tracking-tighter">ELITE</p>
+                       </div>
+                    </div>
+                  </div>
+                  <Terminal className="absolute -bottom-10 -right-10 text-white/5" size={300} strokeWidth={0.5} />
+               </div>
+            </div>
+            <div className="order-1 lg:order-2 space-y-10 pr-8 lg:pr-16 lg:text-right border-r border-brand-500/30">
+              <Reveal>
+                <div className="flex flex-col lg:items-end gap-4">
+                  <Code2 className="text-brand-500 mb-4" size={40} />
+                  <h3 className="text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Technical<br/>Craft.</h3>
+                </div>
+                <p className="text-xl lg:text-2xl font-light text-white/50 leading-relaxed mt-8">
+                  {project.detailedContent.coding}
+                </p>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+
+        {/* TESTING & RESEARCH SECTION */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 border-t border-white/5 pt-32 items-center">
+           <div className="lg:col-span-5">
+              <SectionTitle num="03" title="Testing" subtitle="Research & Validation" />
+              <p className="text-xl lg:text-2xl font-light text-white/40 leading-relaxed">
+                {project.detailedContent.testing}
+              </p>
+           </div>
+           <div className="lg:col-span-7 flex justify-end">
+              <div className="w-full lg:max-w-xl h-[400px] bg-white/[0.02] border border-white/5 rounded-[4rem] p-12 flex flex-col justify-center relative overflow-hidden group">
+                 <div className="absolute top-0 left-0 w-32 h-32 bg-brand-500/5 blur-[80px] rounded-full" />
+                 <Beaker className="text-brand-500 mb-8" size={48} />
+                 <h4 className="text-3xl font-outfit font-black uppercase text-white mb-6">Validation Phase</h4>
+                 <div className="space-y-4">
+                    <div className="flex justify-between text-[10px] font-mono text-white/30 uppercase">
+                       <span>User Sat Score</span>
+                       <span>94%</span>
+                    </div>
+                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                       <motion.div 
+                          initial={{ width: 0 }}
+                          whileInView={{ width: "94%" }}
+                          transition={{ duration: 1.5, ease: "easeOut" }}
+                          className="h-full bg-brand-500 shadow-[0_0_10px_rgba(255,181,181,0.5)]" 
+                       />
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </div>
+
+        {/* KEY ACHIEVEMENTS */}
+        <div className="pt-20 space-y-32">
+           <SectionTitle num="04" title="Outcome" subtitle="Measurable Impact" />
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+             {project.achievements.map((achievement, i) => (
+               <motion.div
+                 key={i}
+                 initial={{ scale: 0.9, opacity: 0 }}
+                 whileInView={{ scale: 1, opacity: 1 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: i * 0.1 }}
+                 className="group p-12 bg-white/[0.01] border border-white/5 rounded-[4rem] hover:bg-brand-500 transition-all duration-700 h-full flex flex-col justify-between"
+               >
+                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-500 group-hover:bg-black group-hover:text-brand-500 transition-all mb-12">
+                   <CheckCircle2 size={32} />
+                 </div>
+                 <p className="text-2xl font-outfit font-black uppercase tracking-tight text-white group-hover:text-black transition-colors">
+                   {achievement}
+                 </p>
+               </motion.div>
+             ))}
+           </div>
+        </div>
+
+      </section>
+
+      {/* ── FOOTER: CALL TO ARCHIVE ───────────────── */}
+      <section className="relative h-screen w-full flex flex-col items-center justify-center border-t border-white/5 overflow-hidden">
+        <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-brand-500/20 to-transparent" />
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="text-center space-y-16 relative z-10 px-6"
+        >
+          <div className="space-y-4">
+             <span className="text-[10px] font-mono tracking-[0.4em] text-brand-500 uppercase font-black">Archive_Index</span>
+             <h2 className="text-7xl md:text-[10rem] lg:text-[13rem] font-bold font-outfit uppercase tracking-tighter leading-none text-white selection:bg-white selection:text-black">
+               The Beyond
+             </h2>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-8 items-center justify-center">
+            <MagneticButton 
+              type="outline" 
+              className="px-12 py-8 text-[10px] font-black uppercase tracking-[0.4em]"
+              onClick={() => router.push('/')}
+            >
+              Back to Archive
+            </MagneticButton>
+            <MagneticButton 
+              type="default" 
+              className="px-12 py-8 text-[10px] font-black uppercase tracking-[0.4em] shadow-2xl shadow-brand-500/30"
+              onClick={() => window.open('mailto:sakshiagra22@gmail.com')}
+            >
+              Collaborate <ArrowUpRight size={20} />
+            </MagneticButton>
+          </div>
+        </motion.div>
+
+        {/* Micro-Footer Info */}
+        <div className="absolute bottom-10 inset-x-10 flex justify-between items-center text-[8px] font-mono tracking-[0.5em] text-white/10 uppercase">
+           <span>Created by Sakshi Agrahari</span>
+           <span className="hidden md:block">System: v7.04 // HighFidelity_Series</span>
+           <span>EST: 2026</span>
+        </div>
+      </section>
+
+    </div>
+  )
+}
+
+function SectionTitle({ num, title, subtitle }: { num: string; title: string; subtitle?: string }) {
+  return (
+    <div className="space-y-6 mb-16">
+      <div className="flex items-center gap-4 text-brand-500">
+        <span className="text-[10px] font-mono uppercase tracking-widest">{num} // {subtitle}</span>
+        <div className="h-[1px] w-16 bg-brand-500/30" />
+      </div>
+      <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-outfit font-black uppercase tracking-tighter text-white leading-[0.8]">
+        {title}.
+      </h2>
+    </div>
+  )
+}

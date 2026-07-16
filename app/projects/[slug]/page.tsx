@@ -375,7 +375,7 @@ export default function ProjectCaseStudy() {
               </div>
 
               <div className="space-y-10">
-                {(research.insights.length > 0 ? research.insights : ["Users feel overwhelmed by data complexity", "Mobile-first interaction is non-negotiable", "Speed-to-value determines long-term retention"]).map((insight, i) => (
+                {(research.insights.length > 0 ? research.insights : ["Users feel overwhelmed by data complexity", "Mobile-first interaction is non-negotiable", "Speed-to-value determines long-term retention"]).map((insight: string, i: number) => (
                   <motion.div 
                     key={i} 
                     initial={{ opacity: 0, y: 10 }}
@@ -408,7 +408,7 @@ export default function ProjectCaseStudy() {
                </div>
 
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                  {(research.methods.length > 0 ? research.methods : ["User Surveys", "Hotjar Analysis", "A/B Testing", "Focus Groups"]).map((method, i) => (
+                  {(research.methods.length > 0 ? research.methods : ["User Surveys", "Hotjar Analysis", "A/B Testing", "Focus Groups"]).map((method: string, i: number) => (
                     <motion.div 
                       key={i}
                       initial={{ opacity: 0, scale: 0.95 }}
