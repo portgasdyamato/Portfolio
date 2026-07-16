@@ -151,7 +151,7 @@ export default function Header() {
                      onClick={() => handleNavClick(item.id, item.path)}
                      className={`flex flex-col items-center justify-center p-4 rounded-[24px] border border-black/0.03 transition-all relative overflow-hidden ${pathname === item.path ? 'bg-black/[0.02]' : 'hover:bg-black/[0.02]'}`}
                    >
-                       <div className="scale-[0.8] mb-3 transform-gpu">
+                       <div className="w-[52px] h-[32px] mb-2 relative flex items-center justify-center">
                           <Folder 
                             color={item.color} 
                             items={[item.icon, item.icon, item.icon]}
@@ -163,19 +163,6 @@ export default function Header() {
                        </span>
                    </motion.button>
                  ))}
-                 
-                 <motion.button
-                   initial={{ opacity: 0, y: 10 }}
-                   animate={{ opacity: 1, y: 0, transition: { delay: 0.25 } }}
-                   onClick={() => handleNavClick("scrapbook", "/#scrapbook")}
-                   className="col-span-2 flex items-center justify-center gap-3 p-4 rounded-[24px] bg-[#1a0a0a] text-white mt-1 shadow-lg"
-                 >
-                    <span className="text-[10px] font-black uppercase tracking-[0.3em]">Scrapbook</span>
-                    <div className="flex gap-1.5 opacity-40">
-                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                      <div className="w-1.5 h-1.5 rounded-full bg-white" />
-                    </div>
-                 </motion.button>
               </div>
             </motion.div>
           )}

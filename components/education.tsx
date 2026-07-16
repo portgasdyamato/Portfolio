@@ -107,49 +107,51 @@ function FolderTimelineItem({ item, index, drawProgress, totalItems }: { item: t
         className={isEven ? 'origin-bottom-left flex justify-center md:justify-start' : 'origin-bottom-right flex justify-center md:justify-end'}
       >
         <div 
-          className="relative w-[280px] h-[380px]"
+          className="relative w-[220px] h-[298px] sm:w-[280px] sm:h-[380px] flex items-center justify-center shrink-0"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <AnimatePresence>
-            {hasReached && !isHovered && (
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center -translate-x-6"
-              >
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0.8 }}
-                  animate={{ scale: 1.35, opacity: 0 }}
-                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
-                  className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
-                />
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0.8 }}
-                  animate={{ scale: 1.35, opacity: 0 }}
-                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 0.8 }}
-                  className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
-                />
-                <motion.div
-                  initial={{ scale: 0.9, opacity: 0.8 }}
-                  animate={{ scale: 1.35, opacity: 0 }}
-                  transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 1.6 }}
-                  className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-          <div className="relative z-10 w-full h-full">
-            <FolderCard 
-              items={[item]} 
-              currentIndex={0}
-              onNext={() => {}}
-              onPrev={() => {}}
-              direction={direction}
-              coverNode={<FolderCoverDesign stage={item.stage} direction={direction} />}
-            />
+          <div className="absolute w-[280px] h-[380px] scale-[0.78] sm:scale-100 origin-center z-10">
+            <AnimatePresence>
+              {hasReached && !isHovered && (
+                <motion.div 
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center -translate-x-6"
+                >
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0.8 }}
+                    animate={{ scale: 1.35, opacity: 0 }}
+                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
+                    className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
+                  />
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0.8 }}
+                    animate={{ scale: 1.35, opacity: 0 }}
+                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 0.8 }}
+                    className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
+                  />
+                  <motion.div
+                    initial={{ scale: 0.9, opacity: 0.8 }}
+                    animate={{ scale: 1.35, opacity: 0 }}
+                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 1.6 }}
+                    className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            <div className="relative z-10 w-full h-full">
+              <FolderCard 
+                items={[item]} 
+                currentIndex={0}
+                onNext={() => {}}
+                onPrev={() => {}}
+                direction={direction}
+                coverNode={<FolderCoverDesign stage={item.stage} direction={direction} />}
+              />
+            </div>
           </div>
         </div>
       </motion.div>

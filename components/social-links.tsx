@@ -1,261 +1,175 @@
-"use client"
 import { motion } from "framer-motion"
-import { Github, Mail, Linkedin } from "lucide-react"
+import { Github, Mail, Linkedin, Plane } from "lucide-react"
 
 const socialLinks = [
-  { name: "Github",   url: "https://github.com/portgasdyamato",        icon: Github,   code: "GH",   accent: "#7dd3fc" },
-  { name: "Email",    url: "mailto:sakshiagrahari2004@gmail.com",       icon: Mail,     code: "ML",   accent: "#86efac" },
-  { name: "LinkedIn", url: "https://www.linkedin.com/in/ethsakshi",     icon: Linkedin, code: "LI",   accent: "#F59E9E" },
+  { name: "Github", url: "https://github.com/portgasdyamato", icon: Github },
+  { name: "Email", url: "mailto:sakshiagrahari2004@gmail.com", icon: Mail },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/ethsakshi", icon: Linkedin },
 ]
 
-/** Perforated circle row – top/bottom stamp edge */
-const PerfRow = ({ count = 28 }: { count?: number }) => (
-  <div className="flex justify-center gap-[3px] px-2">
-    {Array.from({ length: count }).map((_, i) => (
-      <div
-        key={i}
-        style={{ width: 7, height: 7, borderRadius: "50%", background: "#e8dfc5", flexShrink: 0 }}
-      />
-    ))}
-  </div>
-)
-
-/** Mini windrose compass — same vibe as the stamp artwork icons */
-const Windrose = ({ size = 64, color = "#5c4a1e", opacity = 0.12 }: { size?: number; color?: string; opacity?: number }) => (
-  <svg viewBox="0 0 80 80" width={size} height={size} fill="none" style={{ opacity }}>
-    <circle cx="40" cy="40" r="36" stroke={color} strokeWidth="1.2" />
-    <circle cx="40" cy="40" r="29" stroke={color} strokeWidth="0.7" strokeDasharray="2 3" />
-    <path d="M40,40 L40,5  L43,34 Z" fill={color} />
-    <path d="M40,40 L40,5  L37,34 Z" fill={color} opacity="0.5" />
-    <path d="M40,40 L40,75 L37,46 Z" fill={color} />
-    <path d="M40,40 L40,75 L43,46 Z" fill={color} opacity="0.5" />
-    <path d="M40,40 L75,40 L46,43 Z" fill={color} />
-    <path d="M40,40 L75,40 L46,37 Z" fill={color} opacity="0.5" />
-    <path d="M40,40 L5,40  L34,37 Z" fill={color} />
-    <path d="M40,40 L5,40  L34,43 Z" fill={color} opacity="0.5" />
-    <line x1="40" y1="40" x2="66" y2="14" stroke={color} strokeWidth="0.5" opacity="0.35" />
-    <line x1="40" y1="40" x2="14" y2="14" stroke={color} strokeWidth="0.5" opacity="0.35" />
-    <line x1="40" y1="40" x2="66" y2="66" stroke={color} strokeWidth="0.5" opacity="0.35" />
-    <line x1="40" y1="40" x2="14" y2="66" stroke={color} strokeWidth="0.5" opacity="0.35" />
-    <circle cx="40" cy="40" r="4.5" fill={color} />
-    <circle cx="40" cy="40" r="2"   fill="#f5edcf" />
-  </svg>
-)
+// Extended barcode pattern for realistic look
+const barcodeWidths = [3, 1, 4, 2, 5, 1, 2, 1, 4, 3, 6, 1, 2, 4, 2, 1, 3, 5, 2, 1, 4, 2, 3, 1, 2, 4, 1, 3, 2]
 
 export default function SocialLinks() {
   return (
-    <div
-      className="w-full pt-2 pb-0 overflow-hidden"
-      style={{ background: "#f5edcf" }}  // same manila cream as folder interior
-    >
-      {/* ── Top perforation strip mimicking a stamp tear ── */}
-      <div className="w-full py-1" style={{ background: "#eadbb0" }}>
-        <PerfRow count={32} />
-      </div>
-
-      {/* ── Main footer body ── */}
+    <div className="w-full flex justify-center pb-8 pt-16 px-6 md:px-4 overflow-hidden md:overflow-visible perspective-1000">
       <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 50, rotateX: 20 }}
+        whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
         viewport={{ once: true }}
-        transition={{ type: "spring", stiffness: 80, damping: 20 }}
-        className="w-full max-w-5xl mx-auto px-6 sm:px-10 py-8"
+        whileHover={{ x: -6, y: -6, boxShadow: "18px 18px 0px 0px #E58585" }}
+        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+        className="w-full max-w-6xl flex flex-col md:flex-row shadow-[12px_12px_0px_0px_#E58585] relative group rounded-xl md:rounded-l-xl md:rounded-r-[2rem]"
       >
+        {/* Left Side: Main Ticket Body */}
+        <div className="flex-[3] bg-[#FFFDF9] dark:bg-[#1a0a0a] text-[#1a0a0a] dark:text-white relative flex flex-col rounded-t-xl md:rounded-tr-none md:rounded-l-xl">
+          
+          {/* Authentic Top/Bottom Cutouts (Notches) using global background color */}
+          <div className="hidden md:block absolute right-0 top-0 w-8 h-4 bg-background rounded-b-full translate-x-1/2 z-20" />
+          <div className="hidden md:block absolute right-0 bottom-0 w-8 h-4 bg-background rounded-t-full translate-x-1/2 z-20" />
 
-        {/* ──────── STAMP SHEET ROW ──────── */}
-        <div className="flex flex-wrap justify-center gap-4 mb-8">
-          {socialLinks.map((link, idx) => {
-            const Icon = link.icon
-            return (
-              <motion.a
-                key={link.name}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ y: -4, rotate: idx % 2 === 0 ? -2 : 2 }}
-                whileTap={{ scale: 0.94 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                title={link.name}
-                className="relative flex flex-col items-center"
-                style={{ width: 100 }}
+          {/* Background Watermark Pattern */}
+          <div className="absolute inset-0 opacity-[0.02] dark:opacity-[0.03] pointer-events-none select-none z-0 overflow-hidden flex items-center justify-center">
+             <div className="text-[200px] font-black italic -rotate-12 leading-none whitespace-nowrap font-outfit">FIRST CLASS</div>
+          </div>
+
+          {/* Ticket Header */}
+          <div className="flex justify-between items-center px-6 sm:px-8 py-2 bg-[#1a0a0a] text-[#FFFDF9] dark:bg-white dark:text-[#1a0a0a] relative z-10 rounded-tl-xl md:rounded-tr-none">
+            <div className="flex items-center gap-3">
+              <Plane size={16} className="-rotate-45 text-[#F59E9E]" />
+              <span className="font-bold tracking-[0.3em] text-[10px] sm:text-xs">BOARDING PASS</span>
+            </div>
+            <div className="font-mono text-[9px] sm:text-[10px] opacity-90 tracking-widest">
+              CLASS: FIRST CLASS
+            </div>
+          </div>
+
+          {/* Main Passenger Grid */}
+          <div className="grid grid-cols-4 px-6 sm:px-8 py-3 relative z-10 border-b border-[#1a0a0a]/10 dark:border-white/10">
+            <div className="col-span-4">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] opacity-60 font-outfit">Name of Passenger</span>
+              <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tighter mt-1 leading-none">Sakshi Agrahari</h2>
+            </div>
+          </div>
+
+          {/* Flight Path & VIP Stamp Grid */}
+          <div className="grid grid-cols-4 px-6 sm:px-8 py-3 relative z-10 border-b border-[#1a0a0a]/10 dark:border-white/10">
+            <div className="col-span-2 sm:col-span-1 flex flex-col border-r border-[#1a0a0a]/10 dark:border-white/10 pr-4">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] opacity-60 font-outfit">From</span>
+              <span className="text-xl font-black font-mono mt-1 text-[#F59E9E]">AI PRODUCT</span>
+              <span className="text-[10px] opacity-60 mt-1 font-bold tracking-widest leading-none">DESIGN ENGINEER</span>
+            </div>
+            
+            <div className="col-span-2 sm:col-span-2 flex flex-col px-4 sm:border-r border-[#1a0a0a]/10 dark:border-white/10">
+              <span className="text-[9px] font-bold uppercase tracking-[0.2em] opacity-60 font-outfit">To</span>
+              <span className="text-xl font-black font-mono mt-1 text-[#F59E9E]">YOUR TEAM</span>
+              <span className="text-[10px] opacity-60 mt-1 font-bold tracking-widest leading-none">COLLABORATION</span>
+            </div>
+
+            <div className="hidden sm:flex col-span-1 flex-col pl-4 justify-center items-center">
+              <motion.div 
+                whileHover={{ rotate: 15, scale: 1.1 }}
+                className="w-12 h-12 border-[3px] border-[#F59E9E] rounded-full flex items-center justify-center -rotate-12 shrink-0 shadow-sm"
               >
-                {/* Top perf edge of individual stamp */}
-                <div className="flex gap-[2.5px] justify-center">
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <div key={i} style={{ width: 5, height: 5, borderRadius: "50%", background: "#eadbb0" }} />
-                  ))}
+                <div className="w-[85%] h-[85%] border-[1.5px] border-dashed border-[#F59E9E] rounded-full flex items-center justify-center">
+                  <span className="text-[#F59E9E] text-[7px] font-black uppercase text-center leading-none tracking-widest">
+                    V.I.P.<br/><br/>CLASS
+                  </span>
                 </div>
+              </motion.div>
+            </div>
+          </div>
 
-                {/* Stamp body */}
-                <div
-                  className="relative flex flex-col items-center justify-between overflow-hidden"
-                  style={{
-                    width: 100,
-                    height: 120,
-                    background: "#FCFAF6",
-                    border: "1.5px solid rgba(92,74,30,0.2)",
-                    boxShadow: "0 3px 10px rgba(0,0,0,0.10), inset 0 0 0 4px rgba(255,255,255,0.6)",
-                    padding: "8px 8px 6px",
-                  }}
-                >
-                  {/* Stamp paper background color band */}
-                  <div
-                    className="absolute inset-x-0 top-0 h-[60%]"
-                    style={{ background: link.accent, opacity: 0.18 }}
+          {/* Meta Data Grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 px-6 sm:px-8 py-3 gap-3 sm:gap-4 relative z-10 border-b border-[#1a0a0a]/10 dark:border-white/10">
+            <div className="flex flex-col">
+              <span className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 font-outfit">Flight</span>
+              <span className="text-sm sm:text-lg font-bold font-mono mt-1 leading-none">SA-2026</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 font-outfit">Date</span>
+              <span className="text-sm sm:text-lg font-bold font-mono mt-1 leading-none">ANYTIME</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 font-outfit">Gate</span>
+              <span className="text-sm sm:text-lg font-bold font-mono mt-1 leading-none">W.W.W</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="text-[8px] font-bold uppercase tracking-[0.2em] opacity-60 font-outfit">Seat</span>
+              <span className="text-sm sm:text-lg font-black font-mono mt-1 leading-none">01A</span>
+            </div>
+          </div>
+
+          {/* Social Links Footer */}
+          <div className="px-6 sm:px-8 py-3 bg-[#1a0a0a]/5 dark:bg-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-bl-xl relative z-10 flex-1">
+            <span className="text-[10px] font-mono font-bold tracking-widest opacity-70">CONNECT WITH ME // SOCIALS</span>
+            <div className="flex gap-4">
+              {socialLinks.map((link) => {
+                const Icon = link.icon
+                return (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-9 h-9 transition-transform hover:-translate-y-1 hover:rotate-6 bg-[#1a0a0a] text-white rounded-xl shadow-md"
+                  >
+                    <Icon size={16} strokeWidth={2.5} />
+                  </a>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side: Ticket Stub */}
+        <div className="w-full md:w-[320px] bg-[#221f1e] text-[#f5f5f4] relative flex flex-col justify-center items-center rounded-b-xl md:rounded-bl-none md:rounded-r-[2rem] overflow-hidden">
+          
+          {/* Perforated Edge overlay (left side) */}
+          <div className="hidden md:flex absolute -left-[5px] top-0 bottom-0 w-2 flex-col justify-evenly py-2 z-10">
+            {[...Array(14)].map((_, i) => (
+              <div key={i} className="w-[10px] h-[10px] bg-[#FFFDF9] dark:bg-[#1a0a0a] rounded-full" />
+            ))}
+          </div>
+
+          <div className="flex flex-col items-center w-full px-10 py-6 h-full justify-center gap-5">
+            
+            {/* Header */}
+            <div className="flex items-center gap-2">
+              <Plane size={20} className="-rotate-45" />
+              <span className="font-bold tracking-[0.2em] text-[11px] sm:text-xs">BOARDING PASS</span>
+            </div>
+
+            {/* Dashed Line */}
+            <div className="w-full border-t border-dashed border-white/20"></div>
+
+            {/* Barcode Block */}
+            <div className="flex flex-col items-center gap-3 w-full">
+              <div className="flex gap-[2px] h-14 w-full justify-center bg-[#f5f5f4] p-2 rounded-sm mix-blend-screen">
+                {barcodeWidths.map((width, i) => (
+                  <div 
+                    key={i} 
+                    className="h-full bg-[#221f1e]" 
+                    style={{ width: `${width}px` }}
                   />
-
-                  {/* POSTAGE label */}
-                  <div
-                    className="relative z-10 text-[6.5px] font-black tracking-[0.35em] uppercase w-full text-center pt-[2px]"
-                    style={{ color: "#5c4a1e", fontFamily: "'Libre Baskerville', serif" }}
-                  >
-                    POSTAGE
-                  </div>
-
-                  {/* Icon circle — styled like a stamp vignette */}
-                  <div
-                    className="relative z-10 flex items-center justify-center rounded-full"
-                    style={{
-                      width: 40,
-                      height: 40,
-                      background: link.accent,
-                      boxShadow: `0 0 0 2px rgba(92,74,30,0.15), 0 2px 6px rgba(0,0,0,0.12)`,
-                    }}
-                  >
-                    <Icon size={18} strokeWidth={2} style={{ color: "#2c1f0e" }} />
-                  </div>
-
-                  {/* Code label */}
-                  <div
-                    className="relative z-10 text-[7px] font-black tracking-[0.22em] uppercase"
-                    style={{ color: "#5c4a1e", fontFamily: "monospace" }}
-                  >
-                    {link.name.toUpperCase()}
-                  </div>
-
-                  {/* Cancellation lines diagonal */}
-                  <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
-                    {[0,1,2,3].map(i => (
-                      <div
-                        key={i}
-                        className="absolute top-0"
-                        style={{
-                          left: `${15 + i * 18}%`,
-                          width: "1px",
-                          height: "100%",
-                          background: "#5c4a1e",
-                          transform: "rotate(25deg)",
-                          transformOrigin: "top center",
-                        }}
-                      />
-                    ))}
-                  </div>
-                </div>
-
-                {/* Bottom perf edge */}
-                <div className="flex gap-[2.5px] justify-center">
-                  {Array.from({ length: 12 }).map((_, i) => (
-                    <div key={i} style={{ width: 5, height: 5, borderRadius: "50%", background: "#eadbb0" }} />
-                  ))}
-                </div>
-              </motion.a>
-            )
-          })}
-        </div>
-
-        {/* ──────── DOSSIER RECORD BLOCK ──────── */}
-        <div
-          className="relative w-full overflow-hidden"
-          style={{
-            background: "#FCFAF6",
-            border: "1.5px solid rgba(92,74,30,0.18)",
-            boxShadow: "0 2px 12px rgba(0,0,0,0.07)",
-          }}
-        >
-          {/* Ruled lines ghost */}
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage: `repeating-linear-gradient(0deg, transparent, transparent 23px, rgba(92,74,30,0.06) 24px)`,
-              opacity: 1,
-            }}
-          />
-          {/* Red margin vertical line */}
-          <div className="absolute top-0 bottom-0 left-14 w-px" style={{ background: "rgba(192,57,43,0.22)" }} />
-
-          {/* Windrose watermark center */}
-          <div className="absolute inset-0 flex items-center justify-end pr-8 pointer-events-none">
-            <Windrose size={120} color="#5c4a1e" opacity={0.06} />
-          </div>
-
-          <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between px-7 py-5 gap-4">
-            {/* Left: Folder tab + Name */}
-            <div className="flex items-center gap-4">
-              {/* Folder icon */}
-              <svg width="30" height="24" viewBox="0 0 30 24" fill="none" className="shrink-0 opacity-60">
-                <path d="M0,5 L7,5 L9,1 L15,1 L15,5 L30,5 L30,23 L0,23 Z" fill="#c9a84c" opacity="0.25" />
-                <path d="M0,5 L7,5 L9,1 L15,1 L15,5" stroke="#5c4a1e" strokeWidth="1" fill="none" />
-                <rect x="0" y="5" width="30" height="18" stroke="#5c4a1e" strokeWidth="1" fill="none" />
-                <line x1="2" y1="9"  x2="28" y2="9"  stroke="#5c4a1e" strokeWidth="0.5" opacity="0.4" />
-                <line x1="2" y1="13" x2="28" y2="13" stroke="#5c4a1e" strokeWidth="0.5" opacity="0.4" />
-              </svg>
-              <div>
-                <div className="text-[8px] font-bold tracking-[0.28em] uppercase mb-0.5" style={{ color: "#8a6e3a", fontFamily: "'Libre Baskerville', serif" }}>
-                  PERSONAL DOSSIER · RECORD FILE
-                </div>
-                <div
-                  className="text-xl sm:text-2xl font-bold italic leading-tight"
-                  style={{ fontFamily: "'Libre Baskerville', serif", color: "#2c1f0e" }}
-                >
-                  Sakshi Agrahari
-                </div>
-                <div className="text-[9px] font-bold tracking-[0.18em] uppercase mt-0.5" style={{ color: "#7a5c2a" }}>
-                  AI Product · Design Engineer
-                </div>
+                ))}
               </div>
+              <span className="text-sm font-bold tracking-[0.15em]">
+                TKT-82930-SA
+              </span>
             </div>
 
-            {/* Right: Record details */}
-            <div className="flex gap-5 sm:gap-8 pl-1 sm:pl-0">
-              {[
-                { label: "Status",   value: "Available" },
-                { label: "Year",     value: "2026"      },
-                { label: "Ref",      value: "SA-2026"   },
-              ].map((f) => (
-                <div key={f.label} className="flex flex-col">
-                  <span className="text-[7px] font-bold tracking-[0.22em] uppercase mb-1" style={{ color: "#8a6e3a", fontFamily: "'Libre Baskerville', serif" }}>
-                    {f.label}
-                  </span>
-                  <span className="text-xs font-black leading-none" style={{ color: "#2c1f0e", fontFamily: "monospace" }}>
-                    {f.value}
-                  </span>
-                </div>
-              ))}
-            </div>
+            {/* Dashed Line */}
+            <div className="w-full border-t border-dashed border-white/20"></div>
 
-            {/* Far right: rubber stamp */}
-            <div
-              className="shrink-0 px-3 py-1.5 border-2 rounded-sm -rotate-2 opacity-40"
-              style={{ borderColor: "#8b1a1a", color: "#8b1a1a", fontFamily: "monospace", fontSize: "9px", fontWeight: 900, letterSpacing: "0.2em" }}
-            >
-              ON FILE
-            </div>
+            {/* Footer */}
+            <span className="text-[9px] font-medium tracking-widest opacity-80 mt-1">
+              © 2026 BUILT FOR IMPACT
+            </span>
+
           </div>
         </div>
-
-        {/* ──────── Copyright footnote ──────── */}
-        <div className="text-center mt-5">
-          <span className="text-[8px] font-bold tracking-[0.28em] uppercase" style={{ color: "#8a6e3a", fontFamily: "'Libre Baskerville', serif" }}>
-            © 2026 Sakshi Agrahari · Built for Impact
-          </span>
-        </div>
-
       </motion.div>
-
-      {/* ── Bottom perforation strip ── */}
-      <div className="w-full py-1" style={{ background: "#eadbb0" }}>
-        <PerfRow count={32} />
-      </div>
     </div>
   )
 }
