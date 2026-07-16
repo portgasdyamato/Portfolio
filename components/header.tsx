@@ -156,6 +156,7 @@ export default function Header() {
                             color={item.color} 
                             items={[item.icon, item.icon, item.icon]}
                             active={pathname === item.path}
+                            style={{ minWidth: '100%', height: '100%' }}
                           />
                        </div>
                        <span className={`text-[10px] font-black uppercase tracking-[0.2em] ${pathname === item.path ? 'text-[#F59E9E]' : 'text-black/40'}`}>

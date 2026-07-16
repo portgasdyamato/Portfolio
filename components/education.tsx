@@ -111,10 +111,7 @@ function FolderTimelineItem({ item, index, drawProgress, totalItems, isMobile }:
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
-          <div 
-            className="absolute w-[280px] h-[380px] origin-center z-10"
-            style={{ transform: isMobile ? "scale(0.78)" : "scale(1)" }}
-          >
+          <div className="absolute w-[280px] h-[380px] origin-center z-10 education-folder-scale">
             <AnimatePresence>
               {hasReached && !isHovered && (
                 <motion.div 
