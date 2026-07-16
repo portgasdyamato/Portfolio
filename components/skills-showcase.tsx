@@ -108,12 +108,12 @@ export default function SkillsShowcase() {
                 key={folder.id}
                 layoutId={`folder-${folder.id}`}
                 onClick={() => setActiveFolder(folder.id)}
-                className="relative h-[220px] w-full cursor-pointer group perspective-[1000px]"
+                className="relative h-[220px] w-full max-w-[220px] md:max-w-none mx-auto cursor-pointer group perspective-[1000px]"
                 whileHover="hover"
                 // ── MOBILE ONLY OVERRIDE ──
                 // Slide up automatically on phone as cards enter view
                 whileInView={(typeof window !== 'undefined' && window.innerWidth < 1024) ? "hover" : ""}
-                viewport={{ amount: 0.9, once: true }}
+                viewport={{ amount: 0.5, once: false }}
                 initial="initial"
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
