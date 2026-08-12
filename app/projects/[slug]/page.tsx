@@ -30,6 +30,7 @@ import {
 import Header from "@/components/header"
 import CustomCursor from "@/components/custom-cursor"
 import Footer from "@/components/footer"
+import ProjectBespokeDiagram from "@/components/project-bespoke-diagram"
 
 export default function ProjectCaseStudy() {
   const { slug } = useParams()
@@ -448,121 +449,8 @@ export default function ProjectCaseStudy() {
         </div>
       </section>
 
-      {/* ── DESIGN PROCESS & SYSTEM FLOWCHART ── */}
-      <section className="py-24 md:py-36 bg-[#0a0a0c] text-white border-y border-white/10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(245,158,158,0.06),transparent_70%)] pointer-events-none" />
-        
-        <div className="max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 relative z-10">
-          <div className="flex flex-col items-center text-center mb-16 md:mb-24">
-             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/10 border border-white/15 rounded-full text-white/70 font-black tracking-[0.2em] uppercase text-[9px] mb-6 shadow-sm">
-               <GitBranch size={12} className="text-[#F59E9E]" /> Interactive System Architecture
-             </div>
-             <h2 className="text-[36px] sm:text-[50px] md:text-[68px] font-bold italic tracking-tighter leading-[0.95] text-white">
-               Design <span className="text-[#F59E9E]">Process & Flowchart.</span>
-             </h2>
-             <p className="max-w-2xl text-white/60 mt-6 text-base md:text-lg font-inter leading-relaxed">
-               Visual node-based architecture displaying the step-by-step logic, decision gates, and interface transitions.
-             </p>
-          </div>
-
-          {/* 4-PHASE DESIGN PROCESS OVERVIEW */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-            {[
-              { phase: "01", title: "Discovery", desc: "User research, pain points & empathy mapping", icon: Search },
-              { phase: "02", title: "Architecture", desc: "User flows, decision nodes & data logic", icon: GitBranch },
-              { phase: "03", title: "UI Prototyping", desc: "Design system, glassmorphic UI & micro-physics", icon: Palette },
-              { phase: "04", title: "Validation", desc: "Usability testing, benchmarks & production launch", icon: CheckCircle2 }
-            ].map((item, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="p-6 md:p-8 bg-white/5 border border-white/10 rounded-[2rem] hover:border-[#F59E9E]/40 transition-all duration-300 flex flex-col justify-between group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="text-[10px] font-mono text-[#F59E9E] font-black tracking-widest uppercase bg-[#F59E9E]/10 px-3 py-1 rounded-full border border-[#F59E9E]/20">Phase {item.phase}</span>
-                    <item.icon size={18} className="text-white/40 group-hover:text-[#F59E9E] transition-colors" />
-                  </div>
-                  <h4 className="text-xl font-bold uppercase tracking-tight text-white mb-2 font-outfit">{item.title}</h4>
-                  <p className="text-xs text-white/50 font-inter leading-relaxed">{item.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* FLOWCHART DIAGRAM NODES */}
-          <div className="p-6 sm:p-10 md:p-14 bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2.5rem] md:rounded-[3.5rem] shadow-2xl relative">
-             <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-10">
-                <div className="flex items-center gap-3">
-                   <div className="w-3 h-3 rounded-full bg-[#F59E9E] animate-pulse" />
-                   <span className="text-xs font-mono font-bold tracking-[0.25em] text-white/70 uppercase">
-                     {dc.flowchart?.title?.toUpperCase() || "SYSTEM_INTERACTION_FLOWCHART // V2.4"}
-                   </span>
-                </div>
-                <span className="hidden sm:inline-block text-[9px] font-mono tracking-widest text-white/40 uppercase bg-white/5 px-3 py-1 rounded-full">Low-Text Logic Nodes</span>
-             </div>
-
-             {/* Horizontal / Stacked Responsive Nodes */}
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-                {(dc.flowchart?.nodes || [
-                  { id: "01", label: "User Intent Input", subtext: "Context & Media Ingestion", type: "input" },
-                  { id: "02", label: "Decision Guard", subtext: "Identity & Safety Logic Validation", type: "decision" },
-                  { id: "03", label: "AI Processing Engine", subtext: "Multimodal Transformation", type: "engine" },
-                  { id: "04", label: "Interactive UI Result", subtext: "High-Fidelity UI State", type: "output" }
-                ]).map((node: any, i: number, arr: any[]) => {
-                  const isLast = i === arr.length - 1
-                  return (
-                    <div key={i} className="flex flex-col md:flex-row items-center gap-4 relative">
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1 }}
-                        className={`w-full p-6 sm:p-8 rounded-[2rem] border transition-all duration-300 flex flex-col gap-4 relative z-10 ${
-                          node.type === 'input' 
-                            ? 'bg-cyan-950/30 border-cyan-500/30 shadow-[0_0_30px_rgba(6,182,212,0.1)]'
-                            : node.type === 'decision'
-                            ? 'bg-amber-950/30 border-amber-500/40 shadow-[0_0_30px_rgba(245,158,11,0.1)]'
-                            : node.type === 'engine'
-                            ? 'bg-pink-950/30 border-[#F59E9E]/40 shadow-[0_0_30px_rgba(245,158,158,0.15)]'
-                            : 'bg-emerald-950/30 border-emerald-500/40 shadow-[0_0_30px_rgba(16,185,129,0.1)]'
-                        }`}
-                      >
-                        <div className="flex items-center justify-between">
-                           <span className={`text-[9px] font-black font-mono tracking-widest px-2.5 py-0.5 rounded-full uppercase ${
-                              node.type === 'input' ? 'bg-cyan-500/20 text-cyan-300' :
-                              node.type === 'decision' ? 'bg-amber-500/20 text-amber-300' :
-                              node.type === 'engine' ? 'bg-[#F59E9E]/20 text-[#F59E9E]' :
-                              'bg-emerald-500/20 text-emerald-300'
-                           }`}>
-                              {node.type || 'NODE'} 0{i+1}
-                           </span>
-                           <div className="w-2 h-2 rounded-full bg-white/30" />
-                        </div>
-
-                        <div>
-                           <h5 className="text-base md:text-lg font-bold text-white font-outfit uppercase tracking-tight mb-1">{node.label}</h5>
-                           <p className="text-xs text-white/50 font-inter leading-relaxed">{node.subtext}</p>
-                        </div>
-                      </motion.div>
-
-                      {!isLast && (
-                        <div className="hidden lg:flex items-center justify-center text-white/30 shrink-0 -mx-2 z-20">
-                           <motion.div animate={{ x: [0, 4, 0] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                              <ArrowRight size={20} className="text-[#F59E9E]" />
-                           </motion.div>
-                        </div>
-                      )}
-                    </div>
-                  )
-                })}
-             </div>
-          </div>
-        </div>
-      </section>
+      {/* ── BESPOKE PROJECT SYSTEM ARCHITECTURE & DIAGRAM ── */}
+      <ProjectBespokeDiagram slug={project.slug} color={project.color} title={project.title} />
 
       {/* ── WORKFLOW EVOLUTION ── */}
       {dc.workflow && (
