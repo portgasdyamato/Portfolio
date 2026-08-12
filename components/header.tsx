@@ -42,7 +42,7 @@ export default function Header() {
   const handleNavClick = (id: string, path?: string) => {
     if (id === "resume") {
       if (typeof window !== "undefined" && sessionStorage.getItem("cv_unlocked") === "true") {
-        window.open(encodeURI("/Sakshi Agrahari 1CV.pdf"), "_blank")
+        router.push("/resume")
       } else {
         setIsResumeModalOpen(true)
       }
