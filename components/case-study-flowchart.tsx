@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { GitBranch, Sparkles, CheckCircle2, ArrowRight } from "lucide-react"
 
 interface FlowchartNode {
@@ -21,7 +20,10 @@ interface CaseStudyFlowchartProps {
   }
 }
 
-// Project Flowchart Data
+// Portfolio Theme Color Token (Strictly Rose Pink / Dark Charcoal - NO PURPLE)
+const PORTFOLIO_PINK = "#F59E9E"
+const PORTFOLIO_DARK = "#1a0a0a"
+
 const PROJECT_FLOWCHARTS: Record<string, { title: string; subtitle: string; style: "bezier" | "concentric" | "sacred" | "arc" | "radar"; nodes: FlowchartNode[] }> = {
   "yonder-wonder": {
     title: "Dual Identity Bezier Flow",
@@ -102,7 +104,7 @@ const PROJECT_FLOWCHARTS: Record<string, { title: string; subtitle: string; styl
   }
 }
 
-export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart }: CaseStudyFlowchartProps) {
+export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowchartProps) {
   const projectConfig = PROJECT_FLOWCHARTS[slug] || {
     title: "System Architecture Flowchart",
     subtitle: "Visual node-based architecture displaying system logic",
@@ -119,26 +121,27 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
   const title = flowchart?.title || projectConfig.title
   const subtitle = flowchart?.subtitle || projectConfig.subtitle
   const style = projectConfig.style
+  const themeColor = PORTFOLIO_PINK
 
   return (
-    <section className="py-24 md:py-36 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/10 dark:border-white/10 relative overflow-hidden">
+    <section className="py-24 md:py-36 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/15 dark:border-white/10 relative overflow-hidden">
       
       {/* Portfolio Volumetric Ambient Glow */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] opacity-20 blur-[180px] pointer-events-none rounded-full"
-        style={{ background: `radial-gradient(circle, ${color}, transparent 70%)` }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] opacity-20 blur-[170px] pointer-events-none rounded-full"
+        style={{ background: `radial-gradient(circle, ${themeColor}, transparent 70%)` }}
       />
 
       <div className="max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[10px] font-mono font-bold tracking-[0.25em] uppercase shadow-sm bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] mb-6">
-            <GitBranch size={13} style={{ color }} /> Personalized System Architecture
+          <div className="inline-flex items-center gap-2.5 px-4.5 py-1.5 rounded-full text-[10px] font-mono font-bold tracking-[0.25em] uppercase shadow-md bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] mb-6">
+            <GitBranch size={13} className="text-[#F59E9E]" /> Architectural Flow Geometry
           </div>
           
           <h2 className="text-[36px] sm:text-[48px] md:text-[62px] font-bold italic tracking-tight leading-[1.05] text-[#1a0a0a] dark:text-white font-outfit">
-            {title.split(" Flow")[0]} <span style={{ color }}>Architecture.</span>
+            {title.split(" Flow")[0]} <span className="text-[#F59E9E]">Architecture.</span>
           </h2>
           
           <p className="max-w-xl text-[#4a5568] dark:text-zinc-400 mt-4 text-base font-inter leading-relaxed">
@@ -146,30 +149,30 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
           </p>
         </div>
 
-        {/* Outer Architectural Container Card */}
+        {/* Outer Glassmorphic Container Card */}
         <div className="p-6 sm:p-10 md:p-14 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-3xl border-2 border-black/10 dark:border-white/15 rounded-[2.5rem] md:rounded-[3.5rem] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.12)]">
           
           {/* Header Status Bar */}
           <div className="flex items-center justify-between border-b-2 border-black/10 dark:border-white/10 pb-6 mb-12">
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full animate-pulse shadow-sm" style={{ backgroundColor: color }} />
+              <div className="w-3 h-3 rounded-full bg-[#F59E9E] animate-pulse shadow-sm" />
               <span className="text-xs font-mono font-black tracking-[0.2em] uppercase text-[#1a0a0a] dark:text-white">
                 {title.toUpperCase()}
               </span>
             </div>
             
             <span className="hidden sm:inline-flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest uppercase px-4 py-1.5 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] shadow-sm">
-              <Sparkles size={11} style={{ color }} /> Architectural Geometry
+              <Sparkles size={11} className="text-[#F59E9E]" /> Architectural Geometry
             </span>
           </div>
 
-          {/* RENDER BESPOKE GEOMETRIC DIAGRAM BASED ON PROJECT STYLE */}
+          {/* RENDER PROMINENT GEOMETRIC DIAGRAM (100% UNCOVERED LINES & NO PURPLE) */}
           <div className="py-6">
-            {style === "bezier" && <BezierFlowNetworkDiagram nodes={nodes} color={color} />}
-            {style === "concentric" && <OrbitalConcentricSpheresDiagram nodes={nodes} color={color} />}
-            {style === "sacred" && <SacredGeometryDiagram nodes={nodes} color={color} />}
-            {style === "arc" && <ConcentricArcWaveDiagram nodes={nodes} color={color} />}
-            {style === "radar" && <MinimalistRadarScopeDiagram nodes={nodes} color={color} title={title} subtitle={subtitle} />}
+            {style === "bezier" && <BezierFlowNetworkDiagram nodes={nodes} color={themeColor} />}
+            {style === "concentric" && <OrbitalConcentricSpheresDiagram nodes={nodes} color={themeColor} />}
+            {style === "sacred" && <SacredGeometryDiagram nodes={nodes} color={themeColor} />}
+            {style === "arc" && <ConcentricArcWaveDiagram nodes={nodes} color={themeColor} />}
+            {style === "radar" && <MinimalistRadarScopeDiagram nodes={nodes} color={themeColor} />}
           </div>
 
           {/* Bottom Summary Bar */}
@@ -191,57 +194,64 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
 
 /* =========================================================================
    STYLE 5: BEZIER FLOW NETWORK DIAGRAM (Reference Image 5)
-   S-Curve bezier paths connecting circular decision nodes
+   Crisp, fully-unobscured Bezier curves with compact node badges & text below
    ========================================================================= */
 function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
     <div className="relative py-8 overflow-x-auto">
-      <div className="min-w-[700px] flex flex-col items-center">
+      <div className="min-w-[800px] flex flex-col items-center">
         
-        {/* SVG Bezier Lines Overlay */}
-        <div className="relative w-full h-[220px] mb-8">
-          <svg className="w-full h-full overflow-visible" viewBox="0 0 800 200" fill="none">
-            {/* Background hairline curves */}
-            <path d="M 50 100 C 150 20, 250 20, 350 100" stroke={color} strokeWidth="1.5" strokeOpacity="0.4" fill="none" />
-            <path d="M 50 100 C 150 180, 250 180, 350 100" stroke={color} strokeWidth="1.5" strokeOpacity="0.4" fill="none" />
-            <path d="M 350 100 C 450 20, 550 20, 650 100" stroke={color} strokeWidth="1.5" strokeOpacity="0.4" fill="none" />
-            <path d="M 350 100 C 450 180, 550 180, 650 100" stroke={color} strokeWidth="1.5" strokeOpacity="0.4" fill="none" />
+        {/* SVG Bezier Lines Canvas - FULLY VISIBLE & CRISP */}
+        <div className="relative w-full h-[260px] mb-6">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 800 240" fill="none">
+            {/* Primary High-Contrast Bezier Curves */}
+            <path d="M 100 120 C 200 30, 300 30, 400 120" stroke="#1a0a0a" strokeWidth="2.5" strokeDasharray="6 4" strokeOpacity="0.3" fill="none" className="dark:stroke-white/40" />
+            <path d="M 100 120 C 200 210, 300 210, 400 120" stroke="#1a0a0a" strokeWidth="2.5" strokeDasharray="6 4" strokeOpacity="0.3" fill="none" className="dark:stroke-white/40" />
             
-            {/* Center main trunk line */}
-            <line x1="50" y1="100" x2="750" y2="100" stroke={color} strokeWidth="2" strokeDasharray="4 4" strokeOpacity="0.6" />
+            <path d="M 400 120 C 500 30, 600 30, 700 120" stroke="#1a0a0a" strokeWidth="2.5" strokeDasharray="6 4" strokeOpacity="0.3" fill="none" className="dark:stroke-white/40" />
+            <path d="M 400 120 C 500 210, 600 210, 700 120" stroke="#1a0a0a" strokeWidth="2.5" strokeDasharray="6 4" strokeOpacity="0.3" fill="none" className="dark:stroke-white/40" />
 
-            {/* Glowing animated dots on paths */}
+            {/* Glowing Main Center Flow Line */}
+            <line x1="80" y1="120" x2="720" y2="120" stroke={color} strokeWidth="3" />
+
+            {/* Animated Glowing Pulse Dot travelling along the flow path */}
             <motion.circle 
-              r="4" 
+              r="6" 
               fill={color}
-              animate={{ cx: [50, 350, 650, 750], cy: [100, 100, 100, 100] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+              className="shadow-lg"
+              animate={{ cx: [80, 400, 720], cy: [120, 120, 120] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
             />
           </svg>
 
-          {/* Floating Nodes positioned along the bezier curve */}
-          <div className="absolute inset-0 grid grid-cols-4 items-center gap-4">
+          {/* Node Circles & Text Labels Positioned Cleanly along the Bezier Axis */}
+          <div className="absolute inset-0 grid grid-cols-4 items-center justify-items-center px-6">
             {nodes.map((node, i) => (
               <motion.div
                 key={node.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.15 }}
-                className="flex flex-col items-center text-center p-5 bg-[#FFF9FA] dark:bg-zinc-950/90 rounded-[2rem] border-2 border-black/10 dark:border-white/15 shadow-xl hover:scale-105 transition-transform"
+                className="flex flex-col items-center text-center max-w-[170px] z-10"
               >
+                {/* Node Circle Badge - Compact so it never masks the lines */}
                 <div 
-                  className="w-12 h-12 rounded-full border-2 flex items-center justify-center font-mono font-bold text-xs mb-3 shadow-md bg-white dark:bg-zinc-900 text-[#1a0a0a] dark:text-white"
+                  className="w-14 h-14 rounded-full border-3 flex items-center justify-center font-mono font-black text-sm mb-4 shadow-xl bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] transition-transform hover:scale-110"
                   style={{ borderColor: color }}
                 >
-                  {node.id}
+                  0{i + 1}
                 </div>
-                <h5 className="text-sm font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit mb-1">
-                  {node.label}
-                </h5>
-                <p className="text-[11px] text-[#4a5568] dark:text-zinc-400 font-inter leading-tight">
-                  {node.subtext}
-                </p>
+
+                {/* Text Label Below Circle */}
+                <div className="p-3 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-md w-full">
+                  <h5 className="text-xs font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit mb-1">
+                    {node.label}
+                  </h5>
+                  <p className="text-[10px] text-[#4a5568] dark:text-zinc-400 font-inter leading-tight">
+                    {node.subtext}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -254,16 +264,14 @@ function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
 
 /* =========================================================================
    STYLE 3: ORBITAL CONCENTRIC SPHERES DIAGRAM (Reference Image 3)
-   Expanding concentric hairline circles with orbital stage labels
    ========================================================================= */
 function OrbitalConcentricSpheresDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
     <div className="relative py-10 flex flex-col lg:flex-row items-center justify-between gap-12">
       
       {/* Concentric Circle Orbital Graphic */}
-      <div className="relative w-[320px] sm:w-[380px] h-[320px] sm:h-[380px] shrink-0 flex items-center justify-center">
-        {/* Concentric Spheres */}
-        {[340, 260, 180, 100].map((size, idx) => (
+      <div className="relative w-[340px] sm:w-[400px] h-[340px] sm:h-[400px] shrink-0 flex items-center justify-center">
+        {[360, 280, 200, 120].map((size, idx) => (
           <motion.div
             key={idx}
             initial={{ scale: 0.8, opacity: 0 }}
@@ -274,23 +282,21 @@ function OrbitalConcentricSpheresDiagram({ nodes, color }: { nodes: FlowchartNod
             style={{ 
               width: `${size}px`, 
               height: `${size}px`, 
-              borderColor: idx === 0 ? color : "rgba(100,100,100,0.25)" 
+              borderColor: idx === 0 ? color : "rgba(26, 10, 10, 0.25)" 
             }}
           />
         ))}
 
-        {/* Core Center Pulse */}
-        <div className="w-16 h-16 rounded-full bg-[#1a0a0a] dark:bg-white text-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-black text-xs shadow-2xl z-10">
+        <div className="w-16 h-16 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-black text-xs shadow-2xl z-10">
           CORE
         </div>
 
-        {/* Orbiting Satellite Dot */}
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
         >
-          <div className="w-4 h-4 rounded-full shadow-lg" style={{ backgroundColor: color, transform: "translate(130px, 0)" }} />
+          <div className="w-5 h-5 rounded-full shadow-xl" style={{ backgroundColor: color, transform: "translate(140px, 0)" }} />
         </motion.div>
       </div>
 
@@ -303,10 +309,10 @@ function OrbitalConcentricSpheresDiagram({ nodes, color }: { nodes: FlowchartNod
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="p-5 bg-[#FFF9FA] dark:bg-zinc-950/80 rounded-[1.75rem] border-2 border-black/10 dark:border-white/15 flex items-center justify-between gap-6 hover:shadow-lg transition-all"
+            className="p-5 bg-white dark:bg-zinc-950 rounded-[1.75rem] border-2 border-black/10 dark:border-white/15 flex items-center justify-between gap-6 hover:shadow-xl transition-all"
           >
             <div className="flex items-center gap-4">
-              <span className="w-9 h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-bold text-xs shrink-0">
+              <span className="w-10 h-10 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-md">
                 0{i + 1}
               </span>
               <div>
@@ -318,7 +324,7 @@ function OrbitalConcentricSpheresDiagram({ nodes, color }: { nodes: FlowchartNod
                 </p>
               </div>
             </div>
-            <div className="w-3 h-3 rounded-full shrink-0" style={{ backgroundColor: color }} />
+            <div className="w-3.5 h-3.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
           </motion.div>
         ))}
       </div>
@@ -329,17 +335,13 @@ function OrbitalConcentricSpheresDiagram({ nodes, color }: { nodes: FlowchartNod
 
 /* =========================================================================
    STYLE 1: SACRED GEOMETRY HOURGLASS DIAGRAM (Reference Image 1)
-   Overlapping Fibonacci/Venn hairline circles with central vertical axis
    ========================================================================= */
 function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
     <div className="relative py-12 flex flex-col items-center">
-      
-      {/* Central Overlapping Sacred Circles */}
       <div className="relative w-full max-w-xl flex flex-col items-center">
         
-        {/* Central Vertical Axis Line */}
-        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-0.5 bg-black/20 dark:bg-white/20 z-0" />
+        <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-1 bg-[#1a0a0a]/20 dark:bg-white/20 z-0" />
 
         <div className="space-y-6 relative z-10 w-full">
           {nodes.map((node, i) => (
@@ -349,12 +351,10 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className="relative mx-auto w-full max-w-md p-6 bg-white dark:bg-zinc-950 border-2 rounded-[2.5rem] shadow-xl text-center flex flex-col items-center"
-              style={{ borderColor: i === 1 || i === 2 ? color : "rgba(0,0,0,0.12)" }}
+              className="relative mx-auto w-full max-w-md p-6 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-[2.5rem] shadow-xl text-center flex flex-col items-center"
             >
-              {/* Sacred Geometry Circle Outer Frame */}
               <div 
-                className="absolute -inset-2 rounded-[3rem] border border-dashed pointer-events-none opacity-40"
+                className="absolute -inset-2 rounded-[3rem] border-2 border-dashed pointer-events-none opacity-50"
                 style={{ borderColor: color }}
               />
 
@@ -378,12 +378,11 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
 
 /* =========================================================================
    STYLE 4: CONCENTRIC ARC WAVE DIAGRAM (Reference Image 4)
-   Vertical axis line with expanding concentric arc curves bowing outward
    ========================================================================= */
 function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
     <div className="relative py-8">
-      <div className="relative max-w-2xl mx-auto pl-8 sm:pl-16 border-l-4 border-black/10 dark:border-white/15 space-y-10">
+      <div className="relative max-w-2xl mx-auto pl-8 sm:pl-16 border-l-4 border-[#1a0a0a]/20 dark:border-white/20 space-y-10">
         
         {nodes.map((node, i) => (
           <motion.div
@@ -392,23 +391,16 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.15 }}
-            className="relative p-6 bg-[#FFF9FA] dark:bg-zinc-950/90 rounded-[2rem] border-2 border-black/10 dark:border-white/15 shadow-xl"
+            className="relative p-6 bg-white dark:bg-zinc-950 rounded-[2rem] border-2 border-black/10 dark:border-white/15 shadow-xl"
           >
-            {/* Axis Node Dot Connector */}
             <div 
-              className="absolute -left-[43px] sm:-left-[75px] top-1/2 -translate-y-1/2 w-6 h-6 rounded-full border-4 border-white dark:border-zinc-900 shadow-md flex items-center justify-center text-white"
+              className="absolute -left-[43px] sm:-left-[75px] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full border-4 border-white dark:border-zinc-900 shadow-md flex items-center justify-center text-white"
               style={{ backgroundColor: color }}
-            />
-
-            {/* Arc Curve graphic overlay */}
-            <div 
-              className="absolute right-0 top-0 bottom-0 w-24 border-r-2 border-dashed rounded-r-[2rem] pointer-events-none opacity-30"
-              style={{ borderColor: color }}
             />
 
             <div className="flex items-center gap-3 mb-2">
               <span className="text-[10px] font-mono font-black tracking-widest px-3 py-1 rounded-full uppercase bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] shadow-sm">
-                0{i + 1} // {node.type ? node.type.toUpperCase() : "STAGE"}
+                0{i + 1} // STAGE
               </span>
             </div>
 
@@ -428,35 +420,29 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
 
 /* =========================================================================
    STYLE 2: MINIMALIST TARGET RADAR SCOPE DIAGRAM (Reference Image 2)
-   Large central hairline circle with target scope grid & 4 cardinal dot nodes
    ========================================================================= */
-function MinimalistRadarScopeDiagram({ nodes, color, title, subtitle }: { nodes: FlowchartNode[]; color: string; title: string; subtitle: string }) {
+function MinimalistRadarScopeDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
     <div className="relative py-8 flex flex-col items-center text-center">
-      
-      {/* Central Radar Target Scope */}
-      <div className="relative w-[340px] sm:w-[420px] h-[340px] sm:h-[420px] rounded-full border-2 border-black/10 dark:border-white/15 flex items-center justify-center p-8 shadow-inner my-6">
+      <div className="relative w-[340px] sm:w-[420px] h-[340px] sm:h-[420px] rounded-full border-2 border-black/15 dark:border-white/20 flex items-center justify-center p-8 shadow-inner my-6">
         
-        {/* Inner Target Crosshair Lines */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-full h-0.5 bg-black/10 dark:bg-white/10" />
-          <div className="h-full w-0.5 bg-black/10 dark:bg-white/10 absolute" />
+          <div className="w-full h-0.5 bg-black/15 dark:bg-white/15" />
+          <div className="h-full w-0.5 bg-black/15 dark:bg-white/15 absolute" />
         </div>
 
-        {/* Inner Target Grid Rings */}
-        <div className="w-3/4 h-3/4 rounded-full border border-dashed border-black/20 dark:border-white/20 flex items-center justify-center">
-          <div className="w-1/2 h-1/2 rounded-full border border-black/30 dark:border-white/30 flex items-center justify-center">
-            <div className="w-8 h-8 rounded-full shadow-lg" style={{ backgroundColor: color }} />
+        <div className="w-3/4 h-3/4 rounded-full border-2 border-dashed border-black/20 dark:border-white/20 flex items-center justify-center">
+          <div className="w-1/2 h-1/2 rounded-full border-2 border-black/30 dark:border-white/30 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full shadow-lg" style={{ backgroundColor: color }} />
           </div>
         </div>
 
-        {/* 4 Cardinal Dot Nodes along Scope Border */}
         {nodes.map((node, i) => {
           const positions = [
-            "top-0 -translate-y-1/2 left-1/2 -translate-x-1/2", // Top
-            "right-0 translate-x-1/2 top-1/2 -translate-y-1/2", // Right
-            "bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2", // Bottom
-            "left-0 -translate-x-1/2 top-1/2 -translate-y-1/2" // Left
+            "top-0 -translate-y-1/2 left-1/2 -translate-x-1/2",
+            "right-0 translate-x-1/2 top-1/2 -translate-y-1/2",
+            "bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2",
+            "left-0 -translate-x-1/2 top-1/2 -translate-y-1/2"
           ]
 
           return (
@@ -466,10 +452,9 @@ function MinimalistRadarScopeDiagram({ nodes, color, title, subtitle }: { nodes:
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className={`absolute ${positions[i % 4]} p-4 bg-white dark:bg-zinc-950 border-2 rounded-2xl shadow-xl max-w-[160px] text-center z-20`}
-              style={{ borderColor: color }}
+              className={`absolute ${positions[i % 4]} p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-xl max-w-[170px] text-center z-20`}
             >
-              <span className="text-[9px] font-mono font-black uppercase tracking-widest text-[#1a0a0a] dark:text-white block mb-0.5">
+              <span className="text-[10px] font-mono font-black uppercase tracking-widest text-[#1a0a0a] dark:text-white block mb-0.5">
                 0{i + 1} {node.label}
               </span>
               <p className="text-[10px] text-[#4a5568] dark:text-zinc-400 font-inter leading-tight">
