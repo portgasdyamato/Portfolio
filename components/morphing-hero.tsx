@@ -148,7 +148,7 @@ export default function MorphingHero() {
       {/* ── SCROLL DOWN INDICATOR (Appears when Hero shrinks) ── */}
       <motion.div 
         style={{ opacity: scrollPromptOpacity, y: scrollPromptY }}
-        className="absolute bottom-6 sm:bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-30 pointer-events-auto flex flex-col items-center gap-2"
+        className="absolute inset-x-0 bottom-6 sm:bottom-10 z-40 flex items-center justify-center pointer-events-none"
       >
         <button
           onClick={() => {
@@ -159,26 +159,20 @@ export default function MorphingHero() {
               window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
             }
           }}
-          className="group flex items-center gap-3 px-6 py-3 bg-[#1a0a0a] dark:bg-white text-white dark:text-[#1a0a0a] rounded-full border border-black/10 dark:border-white/20 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+          className="pointer-events-auto group flex items-center justify-center gap-3 px-6 sm:px-7 py-3 bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] rounded-full border border-black/10 dark:border-white/20 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
         >
           <motion.div
             animate={{ y: [0, 4, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-6 h-6 rounded-full bg-[#F59E9E]/20 text-[#F59E9E] flex items-center justify-center shrink-0"
+            className="w-5 h-5 rounded-full bg-[#F59E9E]/20 text-[#F59E9E] flex items-center justify-center shrink-0"
           >
             <ChevronDown size={14} strokeWidth={3} />
           </motion.div>
           
           <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em]">
-            Scroll Down To Explore
+            Scroll Down
           </span>
-          
-          <Mouse size={14} className="text-[#F59E9E] hidden sm:block" />
         </button>
-
-        <span className="text-[9px] font-bold text-[#1a0a0a]/60 dark:text-white/60 tracking-[0.2em] uppercase bg-[#FFE0EA]/80 dark:bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
-          Keep scrolling down
-        </span>
       </motion.div>
 
       {/* Fixed Circular Badge */}
