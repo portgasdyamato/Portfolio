@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Lock, X, Check, KeyRound, ArrowRight, AlertCircle, FileText } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 interface ResumeModalProps {
   isOpen: boolean
@@ -10,6 +11,7 @@ interface ResumeModalProps {
 }
 
 export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  const router = useRouter()
   const [passcode, setPasscode] = useState("")
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
@@ -31,11 +33,11 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
         sessionStorage.setItem("cv_unlocked", "true")
       }
       setTimeout(() => {
-        window.open(encodeURI("/Sakshi Agrahari 1CV.pdf"), "_blank")
         onClose()
-      }, 500)
+        router.push("/resume")
+      }, 400)
     } else {
-      setError("Incorrect passcode. Try 'SAKS'.")
+      setError("Incorrect passcode. Access denied.")
       setSuccess(false)
     }
   }
@@ -82,13 +84,13 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
               <div className="relative">
                 <input
-                  type="text"
+                  type="password"
                   value={passcode}
                   onChange={(e) => {
                     setPasscode(e.target.value)
                     if (error) setError("")
                   }}
-                  placeholder="ENTER PASSCODE (SAKS)"
+                  placeholder="ENTER PASSCODE"
                   autoFocus
                   className="w-full h-14 px-5 pl-12 rounded-2xl bg-black/[0.03] dark:bg-white/[0.04] border border-black/10 dark:border-white/10 text-foreground font-mono text-sm tracking-widest placeholder:text-muted-foreground/40 focus:outline-none focus:border-[#F59E9E] focus:ring-2 focus:ring-[#F59E9E]/20 transition-all uppercase"
                 />
