@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { GitBranch, Search } from "lucide-react"
+import { GitBranch, Sparkles, Terminal } from "lucide-react"
 
 interface FlowchartNode {
   id: string
@@ -134,7 +134,7 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
   const explanationParagraph = EXPLANATION_PARAGRAPHS[slug] || "This system architecture decouples complex data inputs into clean, type-safe decision gates and high-performance UI states."
 
   return (
-    <section className="py-12 sm:py-16 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/15 dark:border-white/10 relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/15 dark:border-white/10 relative overflow-hidden">
       
       {/* Volumetric Ambient Glow */}
       <div 
@@ -147,9 +147,10 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-10">
           
-          {/* Centered Soft Rose Pill Tag (Matching Portfolio Design System) */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-mono font-bold tracking-[0.2em] uppercase bg-[#FFF0F3] text-[#FF4D7A] dark:bg-pink-500/10 dark:text-[#F59E9E] border border-pink-500/20 mb-4 shadow-sm">
-            <GitBranch size={13} className="text-[#FF4D7A] dark:text-[#F59E9E]" /> SYSTEM ARCHITECTURE
+          {/* EXACT SIGNATURE PORTFOLIO SECTION TAG (MATCHING ALL OTHER SECTIONS) */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#F59E9E]/10 rounded-full border border-[#F59E9E]/20 mb-5 shadow-sm">
+            <GitBranch size={12} className="text-[#F59E9E]" />
+            <span className="text-[10px] font-black text-[#F59E9E] uppercase tracking-[0.3em]">System Architecture</span>
           </div>
           
           <h2 className="text-[32px] sm:text-[44px] md:text-[56px] font-bold italic tracking-tight leading-[1.05] text-[#1a0a0a] dark:text-white font-outfit">
@@ -170,12 +171,47 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
           {style === "radar" && <MinimalistRadarScopeDiagram nodes={nodes} color={themeColor} />}
         </div>
 
-        {/* CLEAN SHORT EXPLANATORY PARAGRAPH DIRECTLY BELOW FLOWCHART */}
-        <div className="mt-8 max-w-3xl mx-auto text-center">
-          <p className="text-base sm:text-lg text-[#2d3748] dark:text-zinc-200 font-inter leading-relaxed italic font-medium px-4">
+        {/* CREATIVE ARCHITECTURAL COMMENTARY CONTAINER */}
+        <motion.div 
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="mt-10 max-w-3xl mx-auto relative rounded-[2rem] bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border border-[#F59E9E]/20 dark:border-white/10 p-6 sm:p-8 shadow-[0_15px_40px_rgba(245,158,158,0.08)] overflow-hidden"
+        >
+          {/* Subtle Decorative Watermark Quote Mark */}
+          <span className="absolute right-6 top-2 text-7xl font-serif text-[#F59E9E]/10 select-none pointer-events-none">
+            “
+          </span>
+
+          {/* Header Metadata Tag inside Container */}
+          <div className="flex items-center justify-between border-b border-black/5 dark:border-white/10 pb-4 mb-4">
+            <div className="flex items-center gap-2">
+              <Terminal size={12} className="text-[#F59E9E]" />
+              <span className="text-[9px] font-mono font-bold text-[#F59E9E] uppercase tracking-widest">
+                ARCHITECTURAL NOTE // {slug.toUpperCase()}
+              </span>
+            </div>
+            
+            <div className="flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F59E9E] animate-pulse" />
+              <span className="text-[9px] font-mono text-black/40 dark:text-white/40 uppercase tracking-widest">
+                LOGIC BOUNDARY
+              </span>
+            </div>
+          </div>
+
+          {/* Explanation Paragraph Text */}
+          <p className="text-sm sm:text-base text-[#2d3748] dark:text-zinc-200 font-inter leading-relaxed italic font-medium relative z-10">
             "{explanationParagraph}"
           </p>
-        </div>
+
+          {/* Footer Metadata */}
+          <div className="mt-4 pt-3 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] font-mono text-black/40 dark:text-white/40">
+            <span>PIPELINE DECOUPLING ENGINE</span>
+            <span>SYSTEM VERIFIED</span>
+          </div>
+        </motion.div>
 
       </div>
     </section>
