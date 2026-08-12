@@ -1,7 +1,6 @@
 "use client"
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion } from "framer-motion"
 import { 
   GitBranch, 
   ArrowRight, 
@@ -9,18 +8,16 @@ import {
   CheckCircle2, 
   Shield, 
   Mic, 
-  Volume2, 
   Eye, 
   Activity, 
   Disc, 
   Layout, 
-  MessageSquare, 
-  Compass, 
-  Brain,
-  RefreshCw,
-  Zap,
+  Code2,
   Lock,
-  Code2
+  Layers,
+  Cpu,
+  Zap,
+  Sliders
 } from "lucide-react"
 
 interface FlowchartNode {
@@ -129,11 +126,11 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
       }
 
   return (
-    <section className="py-24 md:py-36 bg-[#FFE0EA]/20 dark:bg-[#0d080a]/90 border-y border-pink-500/10 dark:border-white/5 relative overflow-hidden">
+    <section className="py-24 md:py-36 bg-[#FFF5F7] dark:bg-[#0c0709] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1f1519_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/10 dark:border-white/10 relative overflow-hidden">
       
-      {/* Portfolio Volumetric Ambient Radial Glow */}
+      {/* Portfolio Volumetric Ambient Glow */}
       <div 
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[450px] opacity-15 blur-[140px] pointer-events-none rounded-full"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] opacity-25 blur-[160px] pointer-events-none rounded-full"
         style={{ background: `radial-gradient(circle, ${color}, transparent 70%)` }}
       />
 
@@ -141,42 +138,33 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-20">
-          <div 
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[9px] font-mono tracking-[0.25em] uppercase shadow-sm border mb-6"
-            style={{ 
-              backgroundColor: `${color}15`, 
-              borderColor: `${color}30`, 
-              color: color 
-            }}
-          >
-            <GitBranch size={12} /> System Architecture & Flowchart
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[10px] font-mono font-bold tracking-[0.25em] uppercase shadow-sm bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] mb-6">
+            <GitBranch size={13} style={{ color }} /> System Architecture & Flowchart
           </div>
           
-          <h2 className="text-[32px] sm:text-[44px] md:text-[56px] font-bold italic tracking-tight leading-[1.05] text-foreground font-outfit">
+          <h2 className="text-[36px] sm:text-[48px] md:text-[62px] font-bold italic tracking-tight leading-[1.05] text-[#1a0a0a] dark:text-white font-outfit">
             {data.title.split(" Flowchart")[0]} <span style={{ color }}>Flowchart.</span>
           </h2>
           
-          <p className="max-w-xl text-muted-foreground mt-4 text-sm md:text-base font-inter leading-relaxed">
+          <p className="max-w-xl text-[#4a5568] dark:text-zinc-400 mt-4 text-base font-inter leading-relaxed">
             {data.subtitle}
           </p>
         </div>
 
-        {/* Minimal Glassmorphic Flowchart Diagram Card */}
-        <div className="p-6 sm:p-10 md:p-12 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-2xl border border-black/5 dark:border-white/10 rounded-[2.5rem] md:rounded-[3rem] shadow-2xl">
+        {/* High-Contrast Glassmorphic Container Card */}
+        <div className="p-6 sm:p-10 md:p-12 bg-white/95 dark:bg-zinc-900/95 backdrop-blur-3xl border-2 border-black/10 dark:border-white/15 rounded-[2.5rem] md:rounded-[3rem] shadow-[0_25px_60px_-15px_rgba(0,0,0,0.12)]">
           
           {/* Header Status Line */}
-          <div className="flex items-center justify-between border-b border-black/5 dark:border-white/10 pb-6 mb-10">
+          <div className="flex items-center justify-between border-b-2 border-black/10 dark:border-white/10 pb-6 mb-10">
             <div className="flex items-center gap-3">
-              <div className="w-2.5 h-2.5 rounded-full animate-pulse" style={{ backgroundColor: color }} />
-              <span className="text-[11px] font-mono font-bold tracking-[0.2em] uppercase text-foreground/80">
+              <div className="w-3 h-3 rounded-full animate-pulse shadow-sm" style={{ backgroundColor: color }} />
+              <span className="text-xs font-mono font-black tracking-[0.2em] uppercase text-[#1a0a0a] dark:text-white">
                 {data.title.toUpperCase()}
               </span>
             </div>
-            <span 
-              className="hidden sm:inline-flex items-center gap-1.5 text-[9px] font-mono tracking-widest uppercase px-3 py-1 rounded-full border"
-              style={{ backgroundColor: `${color}10`, borderColor: `${color}25`, color }}
-            >
-              <Sparkles size={10} /> Low-Text System Logic
+            
+            <span className="hidden sm:inline-flex items-center gap-2 text-[10px] font-mono font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] shadow-sm">
+              <Sparkles size={11} style={{ color }} /> Low-Text System Logic
             </span>
           </div>
 
@@ -194,26 +182,23 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1, duration: 0.5 }}
-                    className="w-full p-6 md:p-7 rounded-[1.75rem] border border-black/5 dark:border-white/10 bg-black/[0.02] dark:bg-white/[0.02] transition-all duration-300 flex flex-col justify-between gap-6 group hover:shadow-xl"
+                    className="w-full p-6 md:p-7 rounded-[2rem] border-2 border-black/10 dark:border-white/15 bg-[#FFF9FA] dark:bg-zinc-950/80 transition-all duration-300 flex flex-col justify-between gap-6 group hover:shadow-2xl hover:-translate-y-1"
                     style={{
-                      borderColor: "rgba(0,0,0,0.06)"
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.04)"
                     }}
                   >
                     <div className="flex items-center justify-between">
-                      <span 
-                        className="text-[9px] font-mono font-bold tracking-widest px-3 py-1 rounded-full uppercase border"
-                        style={{ backgroundColor: `${color}12`, borderColor: `${color}25`, color }}
-                      >
+                      <span className="text-[10px] font-mono font-black tracking-widest px-3 py-1 rounded-full uppercase bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] shadow-sm flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: color }} />
                         {node.type ? node.type.toUpperCase() : "STAGE"} 0{i + 1}
                       </span>
-                      <div className="w-2 h-2 rounded-full group-hover:scale-125 transition-transform" style={{ backgroundColor: color }} />
                     </div>
 
                     <div className="space-y-2">
-                      <h4 className="text-base md:text-lg font-bold uppercase tracking-tight text-foreground font-outfit">
+                      <h4 className="text-base md:text-lg font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
                         {node.label}
                       </h4>
-                      <p className="text-xs text-muted-foreground font-inter leading-relaxed">
+                      <p className="text-xs text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
                         {node.subtext}
                       </p>
                     </div>
@@ -223,10 +208,11 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
                   {!isLast && (
                     <div className="hidden lg:flex items-center justify-center shrink-0 -mx-2 z-20">
                       <motion.div 
-                        animate={{ x: [0, 3, 0] }} 
-                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                        animate={{ x: [0, 4, 0] }} 
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-9 h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center shadow-md"
                       >
-                        <ArrowRight size={18} style={{ color }} />
+                        <ArrowRight size={16} style={{ color }} />
                       </motion.div>
                     </div>
                   )}
@@ -240,12 +226,12 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
           <PersonalizedProjectCanvas slug={slug} color={color} />
 
           {/* Bottom Summary Bar */}
-          <div className="mt-10 pt-6 border-t border-black/5 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-muted-foreground">
+          <div className="mt-10 pt-6 border-t-2 border-black/10 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono font-bold text-[#1a0a0a] dark:text-white">
             <div className="flex items-center gap-2">
-              <CheckCircle2 size={14} className="text-emerald-500" />
+              <CheckCircle2 size={16} className="text-emerald-500" />
               <span>Pipeline Verified • AA/AAA Compliant Architecture</span>
             </div>
-            <span className="text-[10px] tracking-widest uppercase opacity-60">
+            <span className="text-[10px] tracking-widest uppercase opacity-70 bg-black/5 dark:bg-white/10 px-3 py-1 rounded-full">
               Interactive Logic Boundary // V2.4
             </span>
           </div>
@@ -257,132 +243,132 @@ export default function CaseStudyFlowchart({ slug, color = "#F59E9E", flowchart 
 }
 
 /* ─────────────────────────────────────────────────────────────
-   PERSONALIZED PROJECT GRAPHIC CANVAS
+   HIGH-CONTRAST PERSONALIZED PROJECT GRAPHIC CANVAS
 ───────────────────────────────────────────────────────────── */
 function PersonalizedProjectCanvas({ slug, color }: { slug: string; color: string }) {
   switch (slug) {
     case "yonder-wonder":
       return (
-        <div className="p-6 sm:p-8 bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 bg-[#1a0a0a] text-white rounded-[2rem] border-2 border-pink-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-pink-500/10 border border-pink-500/20 flex items-center justify-center text-pink-400">
-              <Shield size={24} />
+            <div className="w-14 h-14 rounded-2xl bg-pink-500/20 border-2 border-pink-400 flex items-center justify-center text-pink-300 shrink-0">
+              <Shield size={28} />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Biometric Boundary Guard</span>
-              <h5 className="text-sm font-bold uppercase tracking-wider text-foreground font-outfit mt-0.5">Identity Lock Matrix</h5>
+              <span className="text-[10px] font-mono text-pink-300 font-bold uppercase tracking-widest">Biometric Boundary Guard</span>
+              <h5 className="text-lg font-bold uppercase tracking-wider text-white font-outfit mt-0.5">Identity Lock Matrix</h5>
             </div>
           </div>
-          <div className="text-xs font-mono text-muted-foreground bg-white/50 dark:bg-white/5 px-4 py-2 rounded-xl border border-black/5 dark:border-white/5">
-            Preserves 2 distinct entity geometries before photorealistic lighting synthesis
+          <div className="text-xs font-inter leading-relaxed text-zinc-300 bg-white/10 px-5 py-3 rounded-xl border border-white/15 max-w-lg">
+            Locks individual facial meshes to guarantee Person A and Person B remain distinct entities during AI lighting synthesis.
           </div>
         </div>
       )
 
     case "pocket-fund":
       return (
-        <div className="p-6 sm:p-8 bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 bg-[#1a0a0a] text-white rounded-[2rem] border-2 border-purple-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-purple-400">
-              <Activity size={24} />
+            <div className="w-14 h-14 rounded-2xl bg-purple-500/20 border-2 border-purple-400 flex items-center justify-center text-purple-300 shrink-0">
+              <Activity size={28} />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Gamified Financial Vitals</span>
-              <h5 className="text-sm font-bold uppercase tracking-wider text-foreground font-outfit mt-0.5">Health Score Engine (84/100)</h5>
+              <span className="text-[10px] font-mono text-purple-300 font-bold uppercase tracking-widest">Gamified Financial Vitals</span>
+              <h5 className="text-lg font-bold uppercase tracking-wider text-white font-outfit mt-0.5">Health Score Engine (84/100 HP)</h5>
             </div>
           </div>
-          <div className="text-xs font-mono text-muted-foreground bg-white/50 dark:bg-white/5 px-4 py-2 rounded-xl border border-black/5 dark:border-white/5">
-            Categorizes Need / Want / Ick to eliminate financial anxiety & reframes spend habits
+          <div className="text-xs font-inter leading-relaxed text-zinc-300 bg-white/10 px-5 py-3 rounded-xl border border-white/15 max-w-lg">
+            Automatically categorizes expenses into Need, Want, and Ick to reframe spend habits without punitive financial anxiety.
           </div>
         </div>
       )
 
     case "vidya":
       return (
-        <div className="p-6 sm:p-8 bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 bg-[#1a0a0a] text-white rounded-[2rem] border-2 border-amber-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <Eye size={24} />
+            <div className="w-14 h-14 rounded-2xl bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center text-amber-300 shrink-0">
+              <Eye size={28} />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Inclusive Education Stream</span>
-              <h5 className="text-sm font-bold uppercase tracking-wider text-foreground font-outfit mt-0.5">Accessibility Normalizer</h5>
+              <span className="text-[10px] font-mono text-amber-300 font-bold uppercase tracking-widest">Inclusive Education Normalizer</span>
+              <h5 className="text-lg font-bold uppercase tracking-wider text-white font-outfit mt-0.5">Accessibility Pathway Hub</h5>
             </div>
           </div>
-          <div className="text-xs font-mono text-muted-foreground bg-white/50 dark:bg-white/5 px-4 py-2 rounded-xl border border-black/5 dark:border-white/5">
-            Transforms PDFs & videos into Dyslexia-friendly text, Audio streams & AI summaries
+          <div className="text-xs font-inter leading-relaxed text-zinc-300 bg-white/10 px-5 py-3 rounded-xl border border-white/15 max-w-lg">
+            Transforms PDFs, video links, and handwritten notes into Dyslexia-friendly text, voice guidance, and bite-sized quizzes.
           </div>
         </div>
       )
 
     case "voxa":
       return (
-        <div className="p-6 sm:p-8 bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 bg-[#1a0a0a] text-white rounded-[2rem] border-2 border-sky-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-sky-500/10 border border-sky-500/20 flex items-center justify-center text-sky-400">
-              <Mic size={24} />
+            <div className="w-14 h-14 rounded-2xl bg-sky-500/20 border-2 border-sky-400 flex items-center justify-center text-sky-300 shrink-0">
+              <Mic size={28} />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Web Speech & NLP Engine</span>
-              <h5 className="text-sm font-bold uppercase tracking-wider text-foreground font-outfit mt-0.5">Hands-Free Speech Pipeline</h5>
+              <span className="text-[10px] font-mono text-sky-300 font-bold uppercase tracking-widest">Web Speech & NLP Engine</span>
+              <h5 className="text-lg font-bold uppercase tracking-wider text-white font-outfit mt-0.5">Hands-Free Speech Pipeline</h5>
             </div>
           </div>
-          <div className="text-xs font-mono text-muted-foreground bg-white/50 dark:bg-white/5 px-4 py-2 rounded-xl border border-black/5 dark:border-white/5">
-            Parses streaming speech into intent, task titles, due dates & project tags automatically
+          <div className="text-xs font-inter leading-relaxed text-zinc-300 bg-white/10 px-5 py-3 rounded-xl border border-white/15 max-w-lg">
+            Streams microphone audio into an instant NLP parser that extracts task names, due dates, priorities, and projects.
           </div>
         </div>
       )
 
     case "wassup":
       return (
-        <div className="p-6 sm:p-8 bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 bg-[#1a0a0a] text-white rounded-[2rem] border-2 border-blue-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
-              <Layout size={24} />
+            <div className="w-14 h-14 rounded-2xl bg-blue-500/20 border-2 border-blue-400 flex items-center justify-center text-blue-300 shrink-0">
+              <Layout size={28} />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Spatial Utility Architecture</span>
-              <h5 className="text-sm font-bold uppercase tracking-wider text-foreground font-outfit mt-0.5">Sentiment-Driven Column Grid</h5>
+              <span className="text-[10px] font-mono text-blue-300 font-bold uppercase tracking-widest">Spatial Utility Architecture</span>
+              <h5 className="text-lg font-bold uppercase tracking-wider text-white font-outfit mt-0.5">Sentiment-Driven Column Grid</h5>
             </div>
           </div>
-          <div className="text-xs font-mono text-muted-foreground bg-white/50 dark:bg-white/5 px-4 py-2 rounded-xl border border-black/5 dark:border-white/5">
-            Detects planning intent in messages to instantiate collaborative whiteboards & calendars
+          <div className="text-xs font-inter leading-relaxed text-zinc-300 bg-white/10 px-5 py-3 rounded-xl border border-white/15 max-w-lg">
+            Proactively senses event planning context in chat streams to instantiate collaborative whiteboards & calendar columns.
           </div>
         </div>
       )
 
     case "pippofy":
       return (
-        <div className="p-6 sm:p-8 bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 bg-[#1a0a0a] text-white rounded-[2rem] border-2 border-amber-500/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center text-amber-400">
-              <Disc size={24} />
+            <div className="w-14 h-14 rounded-2xl bg-amber-500/20 border-2 border-amber-400 flex items-center justify-center text-amber-300 shrink-0">
+              <Disc size={28} />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">Analog Physical Protocol</span>
-              <h5 className="text-sm font-bold uppercase tracking-wider text-foreground font-outfit mt-0.5">Spinning Vinyl Acoustic Core</h5>
+              <span className="text-[10px] font-mono text-amber-300 font-bold uppercase tracking-widest">Analog Physical Protocol</span>
+              <h5 className="text-lg font-bold uppercase tracking-wider text-white font-outfit mt-0.5">Spinning Vinyl Acoustic Core</h5>
             </div>
           </div>
-          <div className="text-xs font-mono text-muted-foreground bg-white/50 dark:bg-white/5 px-4 py-2 rounded-xl border border-black/5 dark:border-white/5">
-            Synthesizes 33 RPM vinyl crackle health scores with AI Historian album context
+          <div className="text-xs font-inter leading-relaxed text-zinc-300 bg-white/10 px-5 py-3 rounded-xl border border-white/15 max-w-lg">
+            Synthesizes 33 RPM physical vinyl crackle health scores with AI Historian liner notes and atmospheric rain soundscapes.
           </div>
         </div>
       )
 
     default:
       return (
-        <div className="p-6 sm:p-8 bg-black/5 dark:bg-black/40 border border-black/5 dark:border-white/10 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="p-6 sm:p-8 bg-[#1a0a0a] text-white rounded-[2rem] border-2 border-white/20 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-slate-500/10 border border-slate-500/20 flex items-center justify-center text-foreground">
-              <Code2 size={24} />
+            <div className="w-14 h-14 rounded-2xl bg-white/10 border-2 border-white/20 flex items-center justify-center text-white shrink-0">
+              <Code2 size={28} />
             </div>
             <div>
-              <span className="text-[10px] font-mono text-muted-foreground uppercase tracking-widest">System Architecture</span>
-              <h5 className="text-sm font-bold uppercase tracking-wider text-foreground font-outfit mt-0.5">Production Pipeline Verified</h5>
+              <span className="text-[10px] font-mono text-zinc-300 font-bold uppercase tracking-widest">System Architecture</span>
+              <h5 className="text-lg font-bold uppercase tracking-wider text-white font-outfit mt-0.5">Production Pipeline Verified</h5>
             </div>
           </div>
-          <div className="text-xs font-mono text-muted-foreground bg-white/50 dark:bg-white/5 px-4 py-2 rounded-xl border border-black/5 dark:border-white/5">
-            Type-safe node transitions with high-performance responsive state rendering
+          <div className="text-xs font-inter leading-relaxed text-zinc-300 bg-white/10 px-5 py-3 rounded-xl border border-white/15 max-w-lg">
+            Type-safe node transitions with high-performance responsive state rendering and 60fps physics animations.
           </div>
         </div>
       )
