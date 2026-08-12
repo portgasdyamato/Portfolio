@@ -2,9 +2,8 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, useMotionValue, useSpring, AnimatePresence, MotionValue, useTransform } from "framer-motion"
-import { ArrowUpRight, FileText } from "lucide-react"
+import { ArrowUpRight } from "lucide-react"
 import { useRouter } from "next/navigation"
-import ResumeModal from "./resume-modal"
 
 const TAGS = ["UI/UX Design", "AI Product Design", "Website Development", "Frontend Engineering", "Interaction Designer"]
 
@@ -176,8 +175,6 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </motion.div>
         </div>
       </div>
-
-      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
     </div>
   )
 }

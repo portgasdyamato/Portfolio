@@ -145,8 +145,8 @@ export default function MorphingHero() {
         </motion.div>
       </div>
 
-      {/* ── SCROLL DOWN INDICATOR (Appears when Hero shrinks) ── */}
-      <motion.div 
+      {/* ── SCROLL DOWN INDICATOR ── */}
+      <motion.div
         style={{ opacity: scrollPromptOpacity, y: scrollPromptY }}
         className="absolute inset-x-0 bottom-6 sm:bottom-10 z-40 flex items-center justify-center pointer-events-none"
       >
@@ -159,19 +159,19 @@ export default function MorphingHero() {
               window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
             }
           }}
-          className="pointer-events-auto group flex items-center justify-center gap-3 px-6 sm:px-7 py-3 bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] rounded-full border border-black/10 dark:border-white/20 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+          className="pointer-events-auto group flex flex-col items-center gap-1.5 cursor-pointer"
         >
-          <motion.div
-            animate={{ y: [0, 4, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-5 h-5 rounded-full bg-[#F59E9E]/20 text-[#F59E9E] flex items-center justify-center shrink-0"
-          >
-            <ChevronDown size={14} strokeWidth={3} />
-          </motion.div>
-          
-          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em]">
-            Scroll Down
+          <span className="text-[8px] font-black uppercase tracking-[0.4em] text-[#1a0a0a]/30 group-hover:text-[#F59E9E] transition-colors duration-300">
+            Scroll
           </span>
+          <div className="w-px h-8 bg-gradient-to-b from-[#1a0a0a]/10 to-[#F59E9E]/60 rounded-full" />
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+            className="text-[#F59E9E]"
+          >
+            <ChevronDown size={16} strokeWidth={2.5} />
+          </motion.div>
         </button>
       </motion.div>
 
