@@ -6,7 +6,6 @@ import { Menu, X, Sparkles, Layers, Send, FileText } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import Folder from './ui/Folder'
 import Dock from './ui/dock'
-import ResumeModal from './resume-modal'
 
 const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
@@ -24,7 +23,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [visible, setVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
-  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false)
+
 
   useEffect(() => {
     const onScroll = () => {
@@ -40,7 +39,7 @@ export default function Header() {
 
   const handleNavClick = (id: string, path?: string) => {
     if (id === "resume") {
-      setIsResumeModalOpen(true)
+      window.location.href = "/resume"
       setMenuOpen(false)
       return
     }
@@ -176,8 +175,6 @@ export default function Header() {
         </AnimatePresence>
 
       </motion.header>
-
-      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
     </div>
   )
 }
