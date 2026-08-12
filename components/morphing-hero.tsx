@@ -161,14 +161,14 @@ export default function MorphingHero() {
           }}
           className="pointer-events-auto group flex flex-col items-center gap-1.5 cursor-pointer"
         >
-          <span className="text-[8px] font-black uppercase tracking-[0.4em] text-[#1a0a0a]/30 group-hover:text-[#F59E9E] transition-colors duration-300">
+          <span className="text-[8px] font-black uppercase tracking-[0.4em] text-[#1a0a0a]/50 group-hover:text-[#F59E9E] transition-colors duration-300">
             Scroll
           </span>
-          <div className="w-px h-8 bg-gradient-to-b from-[#1a0a0a]/10 to-[#F59E9E]/60 rounded-full" />
+          <div className="w-px h-8 bg-gradient-to-b from-[#1a0a0a]/40 to-[#F59E9E] rounded-full" />
           <motion.div
             animate={{ y: [0, 5, 0] }}
             transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="text-[#F59E9E]"
+            className="text-[#1a0a0a]/60 group-hover:text-[#F59E9E] transition-colors duration-300"
           >
             <ChevronDown size={16} strokeWidth={2.5} />
           </motion.div>
