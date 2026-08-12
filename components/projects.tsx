@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion"
 import { useState, useEffect, useMemo } from "react"
 import { createPortal } from "react-dom"
-import { ExternalLink, Github, X, ArrowUpRight, CheckCircle2, Sparkles } from "lucide-react"
+import { ExternalLink, Github, X, ArrowUpRight, CheckCircle2, Sparkles, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { projectsData } from "@/lib/projects-data"
@@ -25,7 +25,31 @@ export default function Projects() {
         return typeArr.includes(target);
       })
 
-  // Lock body scroll when modal is open
+  const handlePrevModal = () => {
+    if (selectedProject === null) return
+    const currentProj = projectsData[selectedProject]
+    const currentFilteredIdx = filteredProjects.findIndex(p => p.title === currentProj.title)
+    if (currentFilteredIdx !== -1) {
+      const prevFilteredIdx = (currentFilteredIdx - 1 + filteredProjects.length) % filteredProjects.length
+      const prevProj = filteredProjects[prevFilteredIdx]
+      const globalIdx = projectsData.findIndex(p => p.title === prevProj.title)
+      setSelectedProject(globalIdx)
+    }
+  }
+
+  const handleNextModal = () => {
+    if (selectedProject === null) return
+    const currentProj = projectsData[selectedProject]
+    const currentFilteredIdx = filteredProjects.findIndex(p => p.title === currentProj.title)
+    if (currentFilteredIdx !== -1) {
+      const nextFilteredIdx = (currentFilteredIdx + 1) % filteredProjects.length
+      const nextProj = filteredProjects[nextFilteredIdx]
+      const globalIdx = projectsData.findIndex(p => p.title === nextProj.title)
+      setSelectedProject(globalIdx)
+    }
+  }
+
+  // Lock body scroll when modal is open and handle keyboard arrow navigation
   useEffect(() => {
     if (selectedProject !== null) {
       document.documentElement.classList.add('no-scroll')
@@ -34,11 +58,23 @@ export default function Projects() {
       document.documentElement.classList.remove('no-scroll')
       document.body.classList.remove('no-scroll')
     }
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return
+      if (selectedProject !== null) {
+        if (e.key === "ArrowLeft") handlePrevModal()
+        if (e.key === "ArrowRight") handleNextModal()
+        if (e.key === "Escape") setSelectedProject(null)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
     return () => {
       document.documentElement.classList.remove('no-scroll')
       document.body.classList.remove('no-scroll')
+      window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [selectedProject])
+  }, [selectedProject, filteredProjects])
 
   return (
     <div className="py-6 md:py-16">
@@ -110,6 +146,30 @@ export default function Projects() {
               className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] flex items-center justify-center p-4 md:p-8"
               onClick={() => setSelectedProject(null)}
             >
+                {/* Modal Previous Project Arrow */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handlePrevModal()
+                  }}
+                  aria-label="Previous project"
+                  className="hidden sm:flex fixed left-3 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white items-center justify-center hover:bg-[#F59E9E] hover:border-[#F59E9E] transition-all z-[100000] group cursor-pointer shadow-2xl"
+                >
+                  <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform" />
+                </button>
+
+                {/* Modal Next Project Arrow */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handleNextModal()
+                  }}
+                  aria-label="Next project"
+                  className="hidden sm:flex fixed right-3 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white items-center justify-center hover:bg-[#F59E9E] hover:border-[#F59E9E] transition-all z-[100000] group cursor-pointer shadow-2xl"
+                >
+                  <ChevronRight className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0, y: 100 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
@@ -243,6 +303,12 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
     }
   }, [])
 
+  useEffect(() => {
+    if (index >= projects.length) {
+      setIndex(0)
+    }
+  }, [projects, index])
+
   const spacing = containerWidth < 768 ? containerWidth * 0.8 : Math.min(1000, containerWidth * 0.6)
 
   const handleStep = (distance: number) => {
@@ -253,6 +319,16 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
     })
     setDragProgress(0)
   }
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (['INPUT', 'TEXTAREA'].includes((e.target as HTMLElement)?.tagName)) return
+      if (e.key === "ArrowLeft") handleStep(-1)
+      if (e.key === "ArrowRight") handleStep(1)
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [projects])
 
   const handleDragEnd = (_: any, info: any) => {
     const velocity = info.velocity.x
@@ -271,6 +347,28 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   return (
     <div className="relative w-full h-[550px] sm:h-[700px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
+
+      {/* Previous Project Arrow Button */}
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => handleStep(-1)}
+        aria-label="Previous Project"
+        className="absolute left-2 sm:left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
+      >
+        <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform duration-300" />
+      </motion.button>
+
+      {/* Next Project Arrow Button */}
+      <motion.button
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => handleStep(1)}
+        aria-label="Next Project"
+        className="absolute right-2 sm:right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
+      >
+        <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform duration-300" />
+      </motion.button>
 
       <motion.div 
         drag="x"
@@ -304,24 +402,54 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         </AnimatePresence>
       </motion.div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 z-50 pointer-events-none">
-        <div className="flex gap-2.5">
-          {projects.map((_, i) => (
-            <motion.div 
-              key={i}
-              initial={false}
-              animate={{ 
-                width: index === i ? 40 : 8,
-                backgroundColor: index === i ? "#fff" : "rgba(255,255,255,0.15)"
-              }}
-              className="h-1 rounded-full backdrop-blur-sm" 
-            />
-          ))}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 z-50 pointer-events-auto">
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={() => handleStep(-1)}
+            aria-label="Previous Project"
+            className="p-2 rounded-full bg-white/40 dark:bg-white/10 hover:bg-[#F59E9E] hover:text-white dark:hover:bg-[#F59E9E] text-[#1a0a0a]/70 dark:text-white/70 transition-all duration-300 border border-black/5 dark:border-white/10 cursor-pointer"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+
+          <div className="flex gap-2.5 items-center">
+            {projects.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => {
+                  let diff = i - index
+                  if (diff > projects.length / 2) diff -= projects.length
+                  if (diff < -projects.length / 2) diff += projects.length
+                  handleStep(diff)
+                }}
+                aria-label={`Go to project ${i + 1}`}
+                className="p-1 group cursor-pointer"
+              >
+                <motion.div 
+                  initial={false}
+                  animate={{ 
+                    width: index === i ? 36 : 8,
+                    backgroundColor: index === i ? "#F59E9E" : "rgba(255,255,255,0.25)"
+                  }}
+                  className="h-1.5 rounded-full backdrop-blur-sm group-hover:bg-[#F59E9E]/70 transition-colors" 
+                />
+              </button>
+            ))}
+          </div>
+
+          <button 
+            onClick={() => handleStep(1)}
+            aria-label="Next Project"
+            className="p-2 rounded-full bg-white/40 dark:bg-white/10 hover:bg-[#F59E9E] hover:text-white dark:hover:bg-[#F59E9E] text-[#1a0a0a]/70 dark:text-white/70 transition-all duration-300 border border-black/5 dark:border-white/10 cursor-pointer"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
         </div>
-        <div className="flex items-center gap-4 text-[10px] font-mono text-white/40 tracking-[0.4em] uppercase">
-          <span className="w-10 h-[1px] bg-white/10" />
+
+        <div className="flex items-center gap-4 text-[10px] font-mono text-black/50 dark:text-white/40 tracking-[0.4em] uppercase">
+          <span className="w-10 h-[1px] bg-black/20 dark:bg-white/10" />
           MODULE_INDEX_0{index + 1}
-          <span className="w-10 h-[1px] bg-white/10" />
+          <span className="w-10 h-[1px] bg-black/20 dark:bg-white/10" />
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion"
+import { ChevronDown, Mouse } from "lucide-react"
 
 import Hero from "@/components/hero"
 import Profile from "@/components/profile"
@@ -19,6 +20,10 @@ export default function MorphingHero() {
 
   // Bridge GSAP to Framer
   const sp = useMotionValue(0)
+
+  // Scroll Down Indicator opacity and transform
+  const scrollPromptOpacity = useTransform(sp, [0.05, 0.15, 0.75, 0.85], [0, 1, 1, 0])
+  const scrollPromptY = useTransform(sp, [0.05, 0.15], [20, 0])
 
   // ── MOUSE TILT LOGIC ──
   const mouseX = useMotionValue(0)
@@ -140,6 +145,42 @@ export default function MorphingHero() {
         </motion.div>
       </div>
 
+      {/* ── SCROLL DOWN INDICATOR (Appears when Hero shrinks) ── */}
+      <motion.div 
+        style={{ opacity: scrollPromptOpacity, y: scrollPromptY }}
+        className="absolute bottom-6 sm:bottom-10 md:bottom-12 left-1/2 -translate-x-1/2 z-30 pointer-events-auto flex flex-col items-center gap-2"
+      >
+        <button
+          onClick={() => {
+            const nextEl = document.getElementById("about") || document.querySelector("main")
+            if (nextEl) {
+              nextEl.scrollIntoView({ behavior: "smooth" })
+            } else {
+              window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
+            }
+          }}
+          className="group flex items-center gap-3 px-6 py-3 bg-[#1a0a0a] dark:bg-white text-white dark:text-[#1a0a0a] rounded-full border border-black/10 dark:border-white/20 shadow-[0_15px_35px_rgba(0,0,0,0.25)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
+        >
+          <motion.div
+            animate={{ y: [0, 4, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-6 h-6 rounded-full bg-[#F59E9E]/20 text-[#F59E9E] flex items-center justify-center shrink-0"
+          >
+            <ChevronDown size={14} strokeWidth={3} />
+          </motion.div>
+          
+          <span className="text-[10px] sm:text-[11px] font-black uppercase tracking-[0.25em]">
+            Scroll Down To Explore
+          </span>
+          
+          <Mouse size={14} className="text-[#F59E9E] hidden sm:block" />
+        </button>
+
+        <span className="text-[9px] font-bold text-[#1a0a0a]/60 dark:text-white/60 tracking-[0.2em] uppercase bg-[#FFE0EA]/80 dark:bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm shadow-sm">
+          Keep scrolling down
+        </span>
+      </motion.div>
+
       {/* Fixed Circular Badge */}
       <div className="absolute bottom-[-50px] sm:bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 z-20 pointer-events-none">
         <div className="w-[200px] sm:w-[300px] aspect-square opacity-[0.4] mix-blend-multiply origin-center overflow-hidden">
@@ -154,3 +195,4 @@ export default function MorphingHero() {
     </div>
   )
 }
+

@@ -73,6 +73,16 @@ export const projectsData = [
         typography: "Outfit for headers & Inter for meticulous details",
         components: ["Prompt Input", "Identity Lock", "Unified Loading Spinner", "High-Fidelity Result"]
       },
+      flowchart: {
+        title: "Synthesis of Presence Flowchart",
+        subtitle: "Low-text node architecture for identity preservation",
+        nodes: [
+          { id: "01", label: "Media Ingestion", subtext: "User uploads 2 separate portraits + context prompt", type: "input" },
+          { id: "02", label: "Identity Lock Guard", subtext: "Decision filter: Locks entity boundaries to prevent hybrid morphing", type: "decision" },
+          { id: "03", label: "SD & GAN Engine", subtext: "Context aware background & photorealistic lighting synthesis", type: "engine" },
+          { id: "04", label: "Shared Memory Card", subtext: "High-fidelity synthesized present moment output", type: "output" }
+        ]
+      },
       tools: ["Figma", "Stable Diffusion", "GANs"]
     }
   },
@@ -151,6 +161,16 @@ export const projectsData = [
         colors: ["#9333EA", "#C026D3", "#1A1A1A"],
         typography: "Outfit for headers & Inter for precise legibility",
         components: ["Glow Health Score", "Combat Budget Card", "Educational Shield", "Trophy Case"]
+      },
+      flowchart: {
+        title: "Combat Budget & AI Coaching Flowchart",
+        subtitle: "Gamified expense processing & anxiety reduction pipeline",
+        nodes: [
+          { id: "01", label: "Expense Ingestion", subtext: "User logs transaction amount & custom notes", type: "input" },
+          { id: "02", label: "Combat Budget Filter", subtext: "Decision: Categorizes into Need, Want, or Ick", type: "decision" },
+          { id: "03", label: "Gemini AI Coach", subtext: "Processes anxiety levels & generates pedagogical advice", type: "engine" },
+          { id: "04", label: "Glow Health Dashboard", subtext: "Updates streak, HP bar, & gamified progress cards", type: "output" }
+        ]
       },
       tools: ["Next.js", "Express", "PostgreSQL", "Google Gemini Pro"]
     }
@@ -232,6 +252,16 @@ export const projectsData = [
         typography: "Inter Tight (modern, clear) & Roboto Mono (precise, technical, data)",
         components: ["Web AI Suggestion Bar", "Sentiment Bubble Toolkit", "Summary Lab Concept", "Whiteboard Tab"]
       },
+      flowchart: {
+        title: "Spatial AI Messenger Flowchart",
+        subtitle: "Contextual chat analysis to active column state",
+        nodes: [
+          { id: "01", label: "Chat Context Stream", subtext: "Continuous multi-user message ingestion", type: "input" },
+          { id: "02", label: "Sentiment & Task Filter", subtext: "Decision: Identifies action items vs casual chat", type: "decision" },
+          { id: "03", label: "Active Spatial Utility", subtext: "Populates proactive task & schedule columns", type: "engine" },
+          { id: "04", label: "Dark Glass Dashboard", subtext: "Interactive collaborative workspace interface", type: "output" }
+        ]
+      },
       tools: ["Figma Variables", "Advanced Prototyping"]
     }
   },
@@ -303,6 +333,16 @@ export const projectsData = [
         typography: "Outfit (Headers) & OpenSans (Body/Dyslexia-friendly)",
         components: ["Pedagogical Node", "Multimodal Engine", "Amber High-Contrast Mode"]
       },
+      flowchart: {
+        title: "Multimodal Transformation Flowchart",
+        subtitle: "Inclusive learning pathway with accessibility guards",
+        nodes: [
+          { id: "01", label: "Multimodal Source", subtext: "PDF documents, audio, video & web text sources", type: "input" },
+          { id: "02", label: "Accessibility Adaptor", subtext: "Decision: Checks font scale, contrast & screen reader rules", type: "decision" },
+          { id: "03", label: "Gemini AI Transformer", subtext: "Generates bite-sized summaries & adaptive quizzes", type: "engine" },
+          { id: "04", label: "Inclusive Learning Hub", subtext: "Accessible interactive study workspace", type: "output" }
+        ]
+      },
       tools: ["Next.js", "Gemini API", "OpenAI Whisper", "Tailwind CSS"]
     }
   },
@@ -343,6 +383,16 @@ export const projectsData = [
         colors: ["#FFB5B5", "#FCA5A5", "#1A0A0A", "#FFFFFF"],
         typography: "Outfit & Inter",
         components: ["Pixel Sprite Node", "Quest Timeline", "Glass Stats Card"]
+      },
+      flowchart: {
+        title: "Gamified Interaction Flowchart",
+        subtitle: "Pixel character state machine & layout triggers",
+        nodes: [
+          { id: "01", label: "Visitor Scroll Input", subtext: "Page scroll position & cursor coordinates", type: "input" },
+          { id: "02", label: "State Controller", subtext: "Decision: Determines active section & pixel sprite action", type: "decision" },
+          { id: "03", label: "Framer Physics Engine", subtext: "Executes 60fps spring animations & glass morphing", type: "engine" },
+          { id: "04", label: "Interactive Portfolio Realm", subtext: "Dynamic micro-interactions & feedback cards", type: "output" }
+        ]
       }
     }
   },
@@ -422,6 +472,16 @@ export const projectsData = [
         colors: ["#4A90E2", "#1A1A1A"],
         typography: "Inter Tight (headers, geometric & precise) & Roboto Mono (technical data)",
         components: ["Voice Inbox Conceptual Lab", "Task Vitals Concept", "Global Glow Score", "NLP Parsing Block"]
+      },
+      flowchart: {
+        title: "Voice Task Processing Flowchart",
+        subtitle: "Hands-free speech to parsed NLP system state",
+        nodes: [
+          { id: "01", label: "Audio Voice Input", subtext: "Streaming microphone audio input", type: "input" },
+          { id: "02", label: "NLP Command Parser", subtext: "Decision: Validates intent & system action boundaries", type: "decision" },
+          { id: "03", label: "Contextual AI Agent", subtext: "Executes task logic & query resolution", type: "engine" },
+          { id: "04", label: "Synthesized Voice & UI", subtext: "Low-latency audio response + visual indicator", type: "output" }
+        ]
       },
       tools: ["Next.js", "Node.js / Express", "PostgreSQL", "Drizzle ORM", "Web Speech API"]
     }
