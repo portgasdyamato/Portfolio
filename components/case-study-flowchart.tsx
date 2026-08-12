@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { GitBranch, Mic, Radio, Disc, Cpu, Volume2 } from "lucide-react"
+import { GitBranch, Sparkles, Terminal, Mic, Radio, Disc, Cpu, Volume2 } from "lucide-react"
 
 interface FlowchartNode {
   id: string
@@ -169,17 +169,47 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
           {style === "radar" && <MinimalistRadarScopeDiagram nodes={nodes} color={themeColor} />}
         </div>
 
-        {/* CLEAN HUMAN COMMENTARY CONTAINER */}
+        {/* CREATIVE PREMIUM COMMENTARY BLOCK */}
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-10 max-w-3xl mx-auto relative rounded-3xl bg-white/70 dark:bg-zinc-950/70 backdrop-blur-xl border border-black/5 dark:border-white/10 p-6 sm:p-8 shadow-sm text-center"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-14 max-w-3xl mx-auto relative group"
         >
-          <p className="text-base sm:text-lg text-[#2d3748] dark:text-zinc-200 font-inter leading-relaxed italic font-medium">
-            "{explanationParagraph}"
-          </p>
+          {/* Volumetric Glowing Backdrop Aura */}
+          <div className="absolute -inset-1 rounded-[2.5rem] bg-gradient-to-r from-[#F59E9E]/20 via-[#FF4D7A]/15 to-[#F59E9E]/20 blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+          {/* Main Glass Container */}
+          <div className="relative rounded-[2.2rem] bg-gradient-to-br from-white/90 via-white/75 to-[#FFF5F7]/90 dark:from-zinc-950/90 dark:via-zinc-950/75 dark:to-[#090608]/90 backdrop-blur-2xl border border-[#F59E9E]/30 dark:border-white/15 p-7 sm:p-9 shadow-[0_20px_50px_rgba(245,158,158,0.12)] overflow-hidden">
+            
+            {/* Subtle Background Geometry Accent */}
+            <div className="absolute -right-8 -bottom-8 w-40 h-40 rounded-full border border-[#F59E9E]/10 pointer-events-none" />
+            <div className="absolute right-10 bottom-4 text-7xl font-serif text-[#F59E9E]/10 select-none pointer-events-none">
+              ”
+            </div>
+
+            {/* Creative Architectural Header Tag */}
+            <div className="flex items-center justify-between mb-5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F59E9E]/10 border border-[#F59E9E]/20 shadow-sm">
+                <Sparkles size={12} className="text-[#F59E9E] animate-pulse" />
+                <span className="text-[10px] font-mono font-black text-[#F59E9E] uppercase tracking-[0.25em]">
+                  Architectural Core Logic
+                </span>
+              </div>
+
+              <div className="flex items-center gap-1.5 text-[9px] font-mono font-bold text-black/35 dark:text-white/35 uppercase tracking-widest">
+                <span className="w-2 h-2 rounded-full bg-[#F59E9E] animate-ping" />
+                SYSTEM RATIONALE
+              </div>
+            </div>
+
+            {/* Expressive Quote Text */}
+            <p className="text-base sm:text-lg text-[#1a0a0a] dark:text-zinc-100 font-inter leading-relaxed italic font-medium relative z-10">
+              "{explanationParagraph}"
+            </p>
+
+          </div>
         </motion.div>
 
       </div>
@@ -197,10 +227,10 @@ function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
     <div className="relative py-4 overflow-x-auto">
       <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
         
-        <div className="w-full relative h-[240px]">
-          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 240" fill="none">
+        <div className="w-full relative h-[280px]">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 280" fill="none">
             <path 
-              d="M 125 80 C 200 10, 300 10, 375 80 C 450 150, 550 150, 625 80 C 700 10, 800 10, 875 80" 
+              d="M 125 100 C 200 30, 300 30, 375 100 C 450 170, 550 170, 625 100 C 700 30, 800 30, 875 100" 
               stroke="#1a0a0a" 
               strokeWidth="2.5" 
               strokeDasharray="6 4" 
@@ -210,7 +240,7 @@ function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
             />
             
             <path 
-              d="M 125 80 C 200 150, 300 150, 375 80 C 450 10, 550 10, 625 80 C 700 150, 800 150, 875 80" 
+              d="M 125 100 C 200 170, 300 170, 375 100 C 450 30, 550 30, 625 100 C 700 170, 800 170, 875 100" 
               stroke="#1a0a0a" 
               strokeWidth="2.5" 
               strokeDasharray="6 4" 
@@ -219,16 +249,16 @@ function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
               fill="none" 
             />
 
-            <line x1="125" y1="80" x2="875" y2="80" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+            <line x1="125" y1="100" x2="875" y2="100" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
 
-            <circle cx="125" cy="80" r="5" fill={color} />
-            <circle cx="875" cy="80" r="5" fill={color} />
+            <circle cx="125" cy="100" r="5" fill={color} />
+            <circle cx="875" cy="100" r="5" fill={color} />
 
             <motion.circle 
               r="6" 
               fill="#1a0a0a"
               className="dark:fill-white shadow-md"
-              animate={{ cx: [125, 375, 625, 875], cy: [80, 80, 80, 80] }}
+              animate={{ cx: [125, 375, 625, 875], cy: [100, 100, 100, 100] }}
               transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
             />
 
@@ -236,14 +266,14 @@ function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
               <g key={i}>
                 <circle 
                   cx={x} 
-                  cy="80" 
+                  cy="100" 
                   r="26" 
                   className="fill-[#1a0a0a] dark:fill-white shadow-xl"
                 />
 
                 <text 
                   x={x} 
-                  y="85" 
+                  y="105" 
                   textAnchor="middle" 
                   className="fill-white dark:fill-[#1a0a0a] font-mono font-black text-sm"
                   style={{ fontFamily: "'Inter', sans-serif" }}
@@ -254,7 +284,7 @@ function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
             ))}
           </svg>
 
-          <div className="absolute top-[125px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
+          <div className="absolute top-[145px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
             {nodes.map((node, i) => (
               <motion.div
                 key={node.id}
@@ -360,7 +390,7 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
 
 /* =========================================================================
    STYLE 1: SACRED GEOMETRY HOURGLASS & VENN DIAGRAM (Reference Image 1 - Vidya)
-   Interlocking horizontal Sacred Geometry circles with center node badges
+   100% UNCLIPPED TOP CIRCLES (cy shifted to 150, viewBox 0 0 1000 320)
    ========================================================================= */
 function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   const circleCenters = [125, 375, 625, 875]
@@ -369,16 +399,16 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
     <div className="relative py-4 overflow-x-auto">
       <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
         
-        {/* Pure Integrated SVG Sacred Geometry Rings Canvas */}
-        <div className="w-full relative h-[250px]">
-          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 250" fill="none">
+        {/* Pure Integrated SVG Sacred Geometry Rings Canvas (320px Height for 100% top circle visibility) */}
+        <div className="w-full relative h-[320px]">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 320" fill="none">
             
-            {/* 4 Interlocking Fibonacci Sacred Geometry Circles (Radius = 125) */}
+            {/* 4 Interlocking Fibonacci Sacred Geometry Circles (cy = 150, r = 125 -> top Y = 25, 100% unclipped!) */}
             {circleCenters.map((x, i) => (
               <g key={i}>
                 <circle 
                   cx={x} 
-                  cy="90" 
+                  cy="150" 
                   r="125" 
                   stroke={color} 
                   strokeWidth="2.2" 
@@ -390,7 +420,7 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
                 {/* Secondary Hairline Accent Rings */}
                 <circle 
                   cx={x} 
-                  cy="90" 
+                  cy="150" 
                   r="75" 
                   stroke="#1a0a0a" 
                   strokeWidth="1.2" 
@@ -402,14 +432,14 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
             ))}
 
             {/* Central Axis Horizontal Connector */}
-            <line x1="125" y1="90" x2="875" y2="90" stroke={color} strokeWidth="3" strokeDasharray="4 3" />
+            <line x1="125" y1="150" x2="875" y2="150" stroke={color} strokeWidth="3" strokeDasharray="4 3" />
 
             {/* Glowing Traveling Spark Dot */}
             <motion.circle 
               r="6" 
               fill={color}
               className="shadow-lg"
-              animate={{ cx: [125, 375, 625, 875], cy: [90, 90, 90, 90] }}
+              animate={{ cx: [125, 375, 625, 875], cy: [150, 150, 150, 150] }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             />
 
@@ -418,14 +448,14 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
               <g key={i}>
                 <circle 
                   cx={x} 
-                  cy="90" 
+                  cy="150" 
                   r="26" 
                   className="fill-[#1a0a0a] dark:fill-white shadow-2xl"
                 />
 
                 <text 
                   x={x} 
-                  y="95" 
+                  y="155" 
                   textAnchor="middle" 
                   className="fill-white dark:fill-[#1a0a0a] font-mono font-black text-sm"
                   style={{ fontFamily: "'Inter', sans-serif" }}
@@ -437,7 +467,7 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
           </svg>
 
           {/* Text Cards Positioned Cleanly Underneath Each Sacred Circle */}
-          <div className="absolute top-[135px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
+          <div className="absolute top-[195px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
             {nodes.map((node, i) => (
               <motion.div
                 key={node.id}
@@ -474,15 +504,15 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
     <div className="relative py-4 overflow-x-auto">
       <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
         
-        {/* Pure Integrated SVG Acoustic Wave Canvas */}
-        <div className="w-full relative h-[250px]">
-          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 250" fill="none">
+        {/* Pure Integrated SVG Acoustic Wave Canvas (320px Height) */}
+        <div className="w-full relative h-[320px]">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 320" fill="none">
             
-            {/* Concentric Expanding Acoustic Equalizer Arcs around nodes */}
+            {/* Concentric Expanding Acoustic Equalizer Arcs around nodes (cy = 150) */}
             {positions.map((x, i) => (
               <g key={i}>
                 <path 
-                  d={`M ${x - 60} 90 Q ${x} 10, ${x + 60} 90`} 
+                  d={`M ${x - 60} 150 Q ${x} 70, ${x + 60} 150`} 
                   stroke={color} 
                   strokeWidth="2.5" 
                   strokeDasharray="4 3" 
@@ -490,7 +520,7 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
                   fill="none" 
                 />
                 <path 
-                  d={`M ${x - 60} 90 Q ${x} 170, ${x + 60} 90`} 
+                  d={`M ${x - 60} 150 Q ${x} 230, ${x + 60} 150`} 
                   stroke={color} 
                   strokeWidth="2.5" 
                   strokeDasharray="4 3" 
@@ -501,14 +531,14 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
             ))}
 
             {/* Central Acoustic Flow Line */}
-            <line x1="125" y1="90" x2="875" y2="90" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+            <line x1="125" y1="150" x2="875" y2="150" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
 
             {/* Animated Equalizer Pulse Dots along speech wave axis */}
             <motion.circle 
               r="7" 
               fill="#1a0a0a"
               className="dark:fill-white shadow-lg"
-              animate={{ cx: [125, 375, 625, 875], cy: [90, 90, 90, 90] }}
+              animate={{ cx: [125, 375, 625, 875], cy: [150, 150, 150, 150] }}
               transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
             />
 
@@ -517,14 +547,14 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
               <g key={i}>
                 <circle 
                   cx={x} 
-                  cy="90" 
+                  cy="150" 
                   r="26" 
                   className="fill-[#1a0a0a] dark:fill-white shadow-2xl"
                 />
 
                 <text 
                   x={x} 
-                  y="95" 
+                  y="155" 
                   textAnchor="middle" 
                   className="fill-white dark:fill-[#1a0a0a] font-mono font-black text-sm"
                   style={{ fontFamily: "'Inter', sans-serif" }}
@@ -536,7 +566,7 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
           </svg>
 
           {/* HTML Text Cards Positioned Below Acoustic Arcs */}
-          <div className="absolute top-[135px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
+          <div className="absolute top-[195px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
             {nodes.map((node, i) => (
               <motion.div
                 key={node.id}
