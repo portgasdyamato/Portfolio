@@ -83,14 +83,14 @@ export default function ResumePage() {
                 <div className="p-8 sm:p-10">
                   {/* Header */}
                   <div className="mb-8 flex flex-col items-start text-left">
-                    <h1 className="text-[2.6rem] font-black leading-[0.9] text-white tracking-tight mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic" }}>
-                      Sakshi<br />Agrahari.
-                    </h1>
-                    <div className="w-full h-px bg-white/[0.08] mb-4" />
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 mb-4">
                       <Lock size={11} className="text-white/30" strokeWidth={2} />
-                      <span className="text-[10px] text-white/30 uppercase tracking-[0.3em] font-semibold">Passcode required</span>
+                      <span className="text-[10px] text-white/30 uppercase tracking-[0.3em] font-semibold">Restricted Access</span>
                     </div>
+                    <h1 className="text-[2.2rem] font-black leading-[0.95] text-white tracking-tight mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic" }}>
+                      Enter passcode<br />to view CV.
+                    </h1>
+                    <div className="w-full h-px bg-white/[0.08]" />
                   </div>
 
                   {/* Form */}
