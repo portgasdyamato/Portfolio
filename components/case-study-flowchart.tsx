@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { GitBranch, Sparkles, CheckCircle2, ArrowRight } from "lucide-react"
+import { GitBranch, Sparkles, CheckCircle2 } from "lucide-react"
 
 interface FlowchartNode {
   id: string
@@ -134,9 +134,9 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
   const explanationParagraph = EXPLANATION_PARAGRAPHS[slug] || "This system architecture decouples complex data inputs into clean, type-safe decision gates and high-performance UI states."
 
   return (
-    <section className="py-12 sm:py-16 md:py-20 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/15 dark:border-white/10 relative overflow-hidden">
+    <section className="py-12 sm:py-16 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/15 dark:border-white/10 relative overflow-hidden">
       
-      {/* Portfolio Volumetric Ambient Glow */}
+      {/* Volumetric Ambient Glow */}
       <div 
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] opacity-20 blur-[170px] pointer-events-none rounded-full"
         style={{ background: `radial-gradient(circle, ${themeColor}, transparent 70%)` }}
@@ -145,8 +145,8 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
       <div className="max-w-screen-2xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 relative z-10">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-10 sm:mb-12">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1 rounded-full text-[10px] font-mono font-bold tracking-[0.25em] uppercase shadow-md bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] mb-4">
+        <div className="flex flex-col items-center text-center mb-10">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[10px] font-mono font-bold tracking-[0.25em] uppercase shadow-md bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] mb-4">
             <GitBranch size={13} className="text-[#F59E9E]" /> Architectural Flow Geometry
           </div>
           
@@ -168,8 +168,8 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
           {style === "radar" && <MinimalistRadarScopeDiagram nodes={nodes} color={themeColor} />}
         </div>
 
-        {/* COMPACT SHORT EXPLANATORY PARAGRAPH DIRECTLY BELOW FLOWCHART */}
-        <div className="mt-8 sm:mt-10 max-w-3xl mx-auto text-center space-y-3">
+        {/* SHORT EXPLANATORY PARAGRAPH DIRECTLY BELOW FLOWCHART */}
+        <div className="mt-8 max-w-3xl mx-auto text-center space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] text-[10px] font-mono font-bold uppercase tracking-widest shadow-sm">
             <Sparkles size={11} className="text-[#F59E9E]" /> Architecture Insight
           </div>
@@ -190,85 +190,105 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
 }
 
 /* =========================================================================
-   STYLE 5: BEZIER FLOW NETWORK DIAGRAM (Reference Image 5)
-   Mathematically perfect path & node alignment:
-   - Node circles sit EXACTLY centered on SVG line at Y=50
-   - NO pink borders around black node circles!
-   - Path loops 100% continuously from Node 01 -> Node 02 -> Node 03 -> Node 04
+   STYLE 5: BEZIER FLOW NETWORK DIAGRAM (Pure Single SVG Canvas)
+   - SVG renders both the paths AND the node circles at exact coordinates
+   - (125,80), (375,80), (625,80), (875,80)
+   - ZERO path clipping, ZERO dislocated lines, ZERO pink borders on node circles!
    ========================================================================= */
 function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
-  return (
-    <div className="relative py-6">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative items-start">
-        
-        {nodes.map((node, i, arr) => {
-          const isLast = i === arr.length - 1
+  const nodePositions = [125, 375, 625, 875] // X coordinates in 1000px viewBox
 
-          return (
-            <div key={node.id} className="relative flex flex-col items-center text-center">
-              
-              {/* Node Header Row: Clean Black Circle Badge (NO PINK BORDER) */}
-              <div className="relative flex items-center justify-center mb-6 w-full">
-                
-                {/* Clean Solid Black Circle Badge (NO PINK BORDER) */}
-                <motion.div 
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1, type: "spring", stiffness: 220 }}
-                  className="w-13 h-13 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-black text-sm shadow-xl z-20 shrink-0"
+  return (
+    <div className="relative py-4 overflow-x-auto">
+      <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
+        
+        {/* PURE INTEGRATED SVG CANVAS (Path + Bezier Waves + Node Circles) */}
+        <div className="w-full relative h-[240px]">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 240" fill="none">
+            
+            {/* Top & Bottom Continuous Bezier S-Curves Passing EXACTLY through Node Centers (125,80), (375,80), (625,80), (875,80) */}
+            <path 
+              d="M 125 80 C 200 10, 300 10, 375 80 C 450 150, 550 150, 625 80 C 700 10, 800 10, 875 80" 
+              stroke="#1a0a0a" 
+              strokeWidth="2.5" 
+              strokeDasharray="6 4" 
+              strokeOpacity="0.3" 
+              className="dark:stroke-white/40"
+              fill="none" 
+            />
+            
+            <path 
+              d="M 125 80 C 200 150, 300 150, 375 80 C 450 10, 550 10, 625 80 C 700 150, 800 150, 875 80" 
+              stroke="#1a0a0a" 
+              strokeWidth="2.5" 
+              strokeDasharray="6 4" 
+              strokeOpacity="0.3" 
+              className="dark:stroke-white/40"
+              fill="none" 
+            />
+
+            {/* Continuous Pink Center Axis Flow Line connecting Node 1 (125) to Node 4 (875) */}
+            <line x1="125" y1="80" x2="875" y2="80" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+
+            {/* Terminal Cap Dots */}
+            <circle cx="125" cy="80" r="5" fill={color} />
+            <circle cx="875" cy="80" r="5" fill={color} />
+
+            {/* Animated Flow Dot traveling smoothly along the line */}
+            <motion.circle 
+              r="6" 
+              fill="#1a0a0a"
+              className="dark:fill-white shadow-md"
+              animate={{ cx: [125, 375, 625, 875], cy: [80, 80, 80, 80] }}
+              transition={{ duration: 3.5, repeat: Infinity, ease: "linear" }}
+            />
+
+            {/* INTEGRATED SVG NODE CIRCLES (Clean Solid Dark Circles, NO Pink Borders) */}
+            {nodePositions.map((x, i) => (
+              <g key={i}>
+                {/* Node Circle Background */}
+                <circle 
+                  cx={x} 
+                  cy="80" 
+                  r="26" 
+                  className="fill-[#1a0a0a] dark:fill-white shadow-xl"
+                />
+
+                {/* Node Number Text (01, 02, 03, 04) */}
+                <text 
+                  x={x} 
+                  y="85" 
+                  textAnchor="middle" 
+                  className="fill-white dark:fill-[#1a0a0a] font-mono font-black text-sm"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
                 >
                   0{i + 1}
-                </motion.div>
+                </text>
+              </g>
+            ))}
+          </svg>
 
-                {/* Horizontal Flow Line Connecting Node i to Node i+1 */}
-                {!isLast && (
-                  <div className="hidden md:block absolute left-[55%] right-[-45%] top-1/2 -translate-y-1/2 z-10">
-                    <svg className="w-full h-8 overflow-visible" viewBox="0 0 100 32" fill="none">
-                      {/* Smooth S-Curve Path connecting Node centers */}
-                      <path 
-                        d={i % 2 === 0 ? "M 0 16 C 30 -5, 70 -5, 100 16" : "M 0 16 C 30 37, 70 37, 100 16"} 
-                        stroke={color} 
-                        strokeWidth="2.5" 
-                        strokeDasharray="4 3" 
-                        fill="none" 
-                      />
-                      <line x1="0" y1="16" x2="100" y2="16" stroke={color} strokeWidth="2.5" />
-                      
-                      {/* Animated Flow Dot */}
-                      <motion.circle 
-                        r="3.5" 
-                        fill="#1a0a0a"
-                        className="dark:fill-white"
-                        animate={{ cx: [0, 100], cy: [16, 16] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                      />
-                    </svg>
-                  </div>
-                )}
-              </div>
-
-              {/* Text Card Positioned Cleanly Below Node Circle */}
-              <motion.div 
-                initial={{ opacity: 0, y: 12 }}
+          {/* HTML Text Cards Positioned Below SVG Nodes */}
+          <div className="absolute top-[125px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
+            {nodes.map((node, i) => (
+              <motion.div
+                key={node.id}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 + 0.05 }}
-                className="p-5 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-lg w-full flex flex-col justify-between min-h-[120px]"
+                transition={{ delay: i * 0.1 }}
+                className="p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-lg w-[190px] text-center"
               >
-                <div>
-                  <h5 className="text-sm font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit mb-1.5">
-                    {node.label}
-                  </h5>
-                  <p className="text-xs text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
-                    {node.subtext}
-                  </p>
-                </div>
+                <h5 className="text-xs font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit mb-1">
+                  {node.label}
+                </h5>
+                <p className="text-[10px] text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
+                  {node.subtext}
+                </p>
               </motion.div>
-
-            </div>
-          )
-        })}
+            ))}
+          </div>
+        </div>
 
       </div>
     </div>
