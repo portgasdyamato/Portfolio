@@ -427,12 +427,6 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
             </button>
           ))}
         </div>
-
-        <div className="flex items-center gap-4 text-[10px] font-mono text-black/50 dark:text-white/40 tracking-[0.4em] uppercase">
-          <span className="w-10 h-[1px] bg-black/20 dark:bg-white/10" />
-          MODULE_INDEX_0{index + 1}
-          <span className="w-10 h-[1px] bg-black/20 dark:bg-white/10" />
-        </div>
       </div>
     </div>
   )

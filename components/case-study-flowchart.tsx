@@ -155,7 +155,7 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
             {title.split(" Flow")[0]} <span className="text-[#F59E9E]">Architecture.</span>
           </h2>
           
-          <p className="max-w-xl text-[#4a5568] dark:text-zinc-400 mt-2 text-sm md:text-base font-inter leading-relaxed">
+          <p className="max-w-xl text-[#4a5568] dark:text-zinc-400 mt-2 text-sm md:text-base font-inter leading-relaxed text-justify">
             {subtitle}
           </p>
         </div>
@@ -189,23 +189,18 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
               ”
             </div>
 
-            {/* Creative Architectural Header Tag */}
+            {/* Clean Professional Architectural Tag */}
             <div className="flex items-center justify-between mb-5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F59E9E]/10 border border-[#F59E9E]/20 shadow-sm">
-                <Sparkles size={12} className="text-[#F59E9E] animate-pulse" />
-                <span className="text-[10px] font-mono font-black text-[#F59E9E] uppercase tracking-[0.25em]">
-                  Architectural Core Logic
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F59E9E]" />
+                <span className="text-[10px] font-semibold text-black/70 dark:text-white/70 uppercase tracking-widest font-inter">
+                  Core Logic & Architecture
                 </span>
-              </div>
-
-              <div className="flex items-center gap-1.5 text-[9px] font-mono font-bold text-black/35 dark:text-white/35 uppercase tracking-widest">
-                <span className="w-2 h-2 rounded-full bg-[#F59E9E] animate-ping" />
-                SYSTEM RATIONALE
               </div>
             </div>
 
             {/* Expressive Quote Text */}
-            <p className="text-base sm:text-lg text-[#1a0a0a] dark:text-zinc-100 font-inter leading-relaxed italic font-medium relative z-10">
+            <p className="text-base sm:text-lg text-[#1a0a0a] dark:text-zinc-100 font-inter leading-relaxed italic font-medium relative z-10 text-justify">
               "{explanationParagraph}"
             </p>
 

@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from "react"
 import { motion, useMotionValue, useSpring, AnimatePresence, MotionValue, useTransform } from "framer-motion"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, FileText } from "lucide-react"
 import { useRouter } from "next/navigation"
+import ResumeModal from "./resume-modal"
 
 const TAGS = ["UI/UX Design", "AI Product Design", "Website Development", "Frontend Engineering", "Interaction Designer"]
 
@@ -41,6 +42,15 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
   const router = useRouter()
   const [mounted, setMounted] = useState(false)
   const [tagIdx, setTagIdx] = useState(0)
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false)
+
+  const handleResumeClick = () => {
+    if (typeof window !== "undefined" && sessionStorage.getItem("cv_unlocked") === "true") {
+      window.open(encodeURI("/Sakshi Agrahari 1CV.pdf"), "_blank")
+    } else {
+      setIsResumeModalOpen(true)
+    }
+  }
 
   const mockScroll = useMotionValue(0)
   const sp = scrollProgress || mockScroll
@@ -145,6 +155,13 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
                   <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </Magnetic>
                 <Magnetic
+                  onClick={handleResumeClick}
+                  className="group flex items-center justify-center gap-2 bg-white text-[#1a0a0a] text-[9.5px] sm:text-[10.5px] tracking-[0.25em] font-black uppercase px-7 sm:px-9 py-3 sm:py-4 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:bg-[#F59E9E] hover:text-white hover:scale-[1.03] transition-all duration-300 min-w-[140px] sm:min-w-[170px] border border-black/10"
+                >
+                  <FileText size={14} />
+                  View CV
+                </Magnetic>
+                <Magnetic
                   onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
                   className="flex items-center justify-center gap-2 bg-[#F59E9E] text-white text-[9.5px] sm:text-[10.5px] tracking-[0.25em] font-black uppercase px-7 sm:px-9 py-3 sm:py-4 rounded-full shadow-[0_8px_30px_rgba(245,158,158,0.15)] hover:bg-white hover:text-[#F59E9E] hover:scale-[1.03] hover:shadow-[0_15px_35px_rgba(245,158,158,0.2)] transition-all duration-300 min-w-[140px] sm:min-w-[170px] border border-transparent hover:border-[#F59E9E]/20"
                 >
@@ -173,7 +190,8 @@ export default function Hero({ scrollProgress }: { scrollProgress?: MotionValue<
           </motion.div>
         </div>
       </div>
-    </div>
 
+      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
+    </div>
   )
 }

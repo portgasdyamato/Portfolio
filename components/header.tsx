@@ -2,10 +2,11 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Sparkles, Layers, Folder as FolderIcon, Send } from "lucide-react"
+import { Menu, X, Sparkles, Layers, Folder as FolderIcon, Send, FileText } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import Folder from './ui/Folder'
 import Dock from './ui/dock'
+import ResumeModal from './resume-modal'
 
 const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
@@ -14,6 +15,7 @@ const NAV_ITEMS = [
   { label: "Home", id: "home", path: "/", color: "#FDE047", icon: <Sparkles size={8} /> },
   { label: "Work", id: "work", path: "/work", color: "#1E1E1E", icon: <Layers size={8} /> },
   { label: "Skills", id: "skills", path: "/#skills", color: "#F59E9E", icon: <FolderIcon size={8} /> },
+  { label: "Resume", id: "resume", path: "#resume", color: "#F59E9E", icon: <FileText size={8} /> },
   { label: "Contact", id: "contact", path: "/#contact", color: "#A78BFA", icon: <Send size={8} /> },
 ]
 
@@ -23,6 +25,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [visible, setVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -37,14 +40,22 @@ export default function Header() {
   }, [lastScrollY])
 
   const handleNavClick = (id: string, path?: string) => {
+    if (id === "resume") {
+      if (typeof window !== "undefined" && sessionStorage.getItem("cv_unlocked") === "true") {
+        window.open(encodeURI("/Sakshi Agrahari 1CV.pdf"), "_blank")
+      } else {
+        setIsResumeModalOpen(true)
+      }
+      setMenuOpen(false)
+      return
+    }
+
     if (path) {
       if (path.startsWith("/#")) {
         const targetId = path.replace("/#", "")
         if (pathname === "/") {
           scrollTo(targetId)
         } else {
-          // If we're on a subpage, navigate to home and then the browser should handle the hash
-          // We use router.push but ensure the path is correct
           router.push(`/${path.startsWith("/") ? path.substring(1) : path}`)
         }
       } else {
@@ -170,6 +181,8 @@ export default function Header() {
         </AnimatePresence>
 
       </motion.header>
+
+      <ResumeModal isOpen={isResumeModalOpen} onClose={() => setIsResumeModalOpen(false)} />
     </div>
   )
 }

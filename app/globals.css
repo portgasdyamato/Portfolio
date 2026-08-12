@@ -72,6 +72,9 @@
     @apply font-bold tracking-tight italic;
     line-height: 1.15;
   }
+  .case-study-content p {
+    text-align: justify;
+  }
 }
 
 /* Premium Glassmorphism */
