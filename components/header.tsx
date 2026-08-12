@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Sparkles, Layers, Folder as FolderIcon, Send, FileText } from "lucide-react"
+import { Menu, X, Sparkles, Layers, Send, FileText } from "lucide-react"
 import { useRouter, usePathname } from "next/navigation"
 import Folder from './ui/Folder'
 import Dock from './ui/dock'
@@ -14,8 +14,7 @@ const scrollTo = (id: string) =>
 const NAV_ITEMS = [
   { label: "Home", id: "home", path: "/", color: "#FDE047", icon: <Sparkles size={8} /> },
   { label: "Work", id: "work", path: "/work", color: "#1E1E1E", icon: <Layers size={8} /> },
-  { label: "Skills", id: "skills", path: "/#skills", color: "#F59E9E", icon: <FolderIcon size={8} /> },
-  { label: "Resume", id: "resume", path: "#resume", color: "#38BDF8", icon: <FileText size={8} /> },
+  { label: "Resume", id: "resume", path: "#resume", color: "#F59E9E", icon: <FileText size={8} /> },
   { label: "Contact", id: "contact", path: "/#contact", color: "#A78BFA", icon: <Send size={8} /> },
 ]
 
