@@ -403,47 +403,29 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
       </motion.div>
 
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 z-50 pointer-events-auto">
-        <div className="flex items-center gap-3">
-          <button 
-            onClick={() => handleStep(-1)}
-            aria-label="Previous Project"
-            className="p-2 rounded-full bg-white/40 dark:bg-white/10 hover:bg-[#F59E9E] hover:text-white dark:hover:bg-[#F59E9E] text-[#1a0a0a]/70 dark:text-white/70 transition-all duration-300 border border-black/5 dark:border-white/10 cursor-pointer"
-          >
-            <ChevronLeft className="w-4 h-4" />
-          </button>
-
-          <div className="flex gap-2.5 items-center">
-            {projects.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => {
-                  let diff = i - index
-                  if (diff > projects.length / 2) diff -= projects.length
-                  if (diff < -projects.length / 2) diff += projects.length
-                  handleStep(diff)
+        <div className="flex gap-2.5 items-center">
+          {projects.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => {
+                let diff = i - index
+                if (diff > projects.length / 2) diff -= projects.length
+                if (diff < -projects.length / 2) diff += projects.length
+                handleStep(diff)
+              }}
+              aria-label={`Go to project ${i + 1}`}
+              className="p-1 group cursor-pointer"
+            >
+              <motion.div 
+                initial={false}
+                animate={{ 
+                  width: index === i ? 36 : 8,
+                  backgroundColor: index === i ? "#F59E9E" : "rgba(255,255,255,0.25)"
                 }}
-                aria-label={`Go to project ${i + 1}`}
-                className="p-1 group cursor-pointer"
-              >
-                <motion.div 
-                  initial={false}
-                  animate={{ 
-                    width: index === i ? 36 : 8,
-                    backgroundColor: index === i ? "#F59E9E" : "rgba(255,255,255,0.25)"
-                  }}
-                  className="h-1.5 rounded-full backdrop-blur-sm group-hover:bg-[#F59E9E]/70 transition-colors" 
-                />
-              </button>
-            ))}
-          </div>
-
-          <button 
-            onClick={() => handleStep(1)}
-            aria-label="Next Project"
-            className="p-2 rounded-full bg-white/40 dark:bg-white/10 hover:bg-[#F59E9E] hover:text-white dark:hover:bg-[#F59E9E] text-[#1a0a0a]/70 dark:text-white/70 transition-all duration-300 border border-black/5 dark:border-white/10 cursor-pointer"
-          >
-            <ChevronRight className="w-4 h-4" />
-          </button>
+                className="h-1.5 rounded-full backdrop-blur-sm group-hover:bg-[#F59E9E]/70 transition-colors" 
+              />
+            </button>
+          ))}
         </div>
 
         <div className="flex items-center gap-4 text-[10px] font-mono text-black/50 dark:text-white/40 tracking-[0.4em] uppercase">
