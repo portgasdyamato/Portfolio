@@ -41,11 +41,7 @@ export default function Header() {
 
   const handleNavClick = (id: string, path?: string) => {
     if (id === "resume") {
-      if (typeof window !== "undefined" && sessionStorage.getItem("cv_unlocked") === "true") {
-        router.push("/resume")
-      } else {
-        setIsResumeModalOpen(true)
-      }
+      setIsResumeModalOpen(true)
       setMenuOpen(false)
       return
     }
