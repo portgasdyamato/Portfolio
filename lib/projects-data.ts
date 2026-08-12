@@ -1,271 +1,5 @@
 export const projectsData = [
   {
-    title: "Yonder Wonder",
-    slug: "yonder-wonder",
-    duration: "Feb 2026",
-    date: "Feb 2026",
-    image: "/yonder.png",
-    color: "#D8B4FE", // Lilac-Purple for atmosphere
-    heroTemplate: 1, // Kinetic Editorial (Apps)
-    technologies: ["Figma", "AI/ML Concept", "Stable Diffusion", "GANs"],
-    description: "Bridging the gap for long-distance loved ones, one AI-generated memory at a time. A platform that synthesizes a shared space when the world keeps us apart.",
-    features: [
-      "Identity Lock explicitly telling AI these are two individuals",
-      "Seamless upload-to-generation journey",
-      "Intuitive prompt input and preview experience",
-      "AI-powered Synthesis of Presence"
-    ],
-    achievements: [
-      "Achieved a 94% positive usability score for AI interactions",
-      "Reduced time-to-generation by 40% via Seamless Journey",
-      "Users reported a 3x higher emotional connection rating"
-    ],
-    liveUrl: "https://www.figma.com/proto/EDHooQvsZtcbrT9Dt1cIha/YonderWonder?node-id=71-73&starting-point-node-id=1%3A43&t=ZHYD3a2qIf4fFS6O-1",
-    githubUrl: "https://github.com/portgasdyamato",
-    status: "Completed",
-    type: "App",
-    detailedContent: {
-      problemStatement: [
-        "Distance doesn't just steal time; it steals the simple joy of capturing a shared moment. Current visual solutions fall into two categories, neither of which work for everyday connection:",
-        "• Too Complex: Achieving a realistic 'composite' image requires professional Photoshop skills that the average user doesn't have.",
-        "• Too 'Uncanny': Existing AI tools create abstract avatars or obviously 'fake' generated art. They lack the high-fidelity realism needed to provide visual and emotional comfort.",
-        "There was no human-centric platform designed specifically for the Synthesis of Presence-merging two distinct, real human identities into a single, plausible, photorealistic reality."
-      ],
-      solution: "Yonder Wonder builds something that can synthesize a shared space when the world keeps us apart-a tool to help people visualize the moment they are finally together again. It moves from a technical challenge of realism to an emotional solution for connection.",
-      design: [
-        "The design philosophy is 'Nostalgic Futurism.' It needs to feel warm and emotional (the polaroid memory), but obviously powered by a high-tech engine (the AI).",
-        "We prioritized a Kinetic Editorial aesthetic, treating the image cards like premium magazine elements rather than sterile UI components.",
-        "The Dual-Mode System (Light/Dark) intentionally represents the transition from day-to-night conversations-a core shared experience in long-distance communication."
-      ],
-      coding: [
-        "This project was a deep dive into making complex Generative AI pipelines feel like a simple 3-step process. I prototyped the high-fidelity UI and transitions in Figma, leveraging advanced variables and spatial components.",
-        "The app's logic integrates Stable Diffusion models and GANs. Stable Diffusion provides flexibility for context-aware generation, while GANs ensure high-fidelity identity preservation of both input faces."
-      ],
-      challenge: [
-        "Early on in the prototyping phase, the AI model had a terrifying interpretation of 'merge'. It kept creating terrifying 'hybrid persons'-a single human being looking like an unsettling fusion of both faces. It was a literal Uncanny Valley nightmare.",
-        "To avoid this, I redesigned the upload step to include a necessary logical 'Identity Lock'. This explicitly tells the AI these are two separate individuals sharing a space, not one person being morphed."
-      ],
-      process: [
-        "It was my best friend's birthday. We've been navigating a long-distance friendship for years... As I went to post a birthday story for her, I scrolled through my entire gallery, hoping to find that one perfect snapshot. Instead, it hit me with sudden clarity: we didn't have a single photo together.",
-        "Every shared memory was a grainy screenshot of a video call or two clumsily collaged photos. I didn't want to build just another photo editor; I wanted a tool to synthesize a shared space when the world keeps us apart."
-      ],
-      workflow: {
-        description: "Designing for AI is unique because you must design the experience of waiting and manage user expectations of realism. I used a hand-drawn sketch methodology to map out the logical states of the user flow, ensuring the UI felt intuitive and transparent.",
-        steps: [
-          "'Setup' State: The user enters the \"where\" (prompt input) first, establishing the context. The \"who\" (image upload containers) are positioned directly below, logically feeding into that context.",
-          "'Loading' State: User controls must be visibly locked/processing. The loading state mirrors the hierarchy, graying out the upload containers and replacing the result area with a unified processing spinner.",
-          "'Success' State: The prompt box and upload containers are gone, replaced entirely by the high-fidelity result above a clear 'Download' action button to manage user anxiety."
-        ],
-        image: "/sketch.png" 
-      },
-      research: {
-        summary: "Conducted 1-on-1 qualitative interviews with 20+ participants living away from their closest relations (international students, expats, and LDR couples).",
-        methods: ["Empathy Mapping", "Qualitative Interviews", "User Flow Logic Mapping"],
-        insights: [
-          "Photos act as a primary anchor for shared memory and emotional connection.",
-          "Users didn't just want a 'cool' picture. They wanted emotional resonance.",
-          "The 'Uncanny Valley' effect was the biggest barrier to connection.",
-          "Breaking the barrier requires shared lighting, shadows, and perspective for authentic presence."
-        ]
-      },
-      visualIdentity: {
-        colors: ["#D8B4FE", "#FCD34D", "#2D2D2D"],
-        typography: "Outfit for headers & Inter for meticulous details",
-        components: ["Prompt Input", "Identity Lock", "Unified Loading Spinner", "High-Fidelity Result"]
-      },
-      flowchart: {
-        title: "Synthesis of Presence Flowchart",
-        subtitle: "Low-text node architecture for identity preservation",
-        nodes: [
-          { id: "01", label: "Media Ingestion", subtext: "User uploads 2 separate portraits + context prompt", type: "input" },
-          { id: "02", label: "Identity Lock Guard", subtext: "Decision filter: Locks entity boundaries to prevent hybrid morphing", type: "decision" },
-          { id: "03", label: "SD & GAN Engine", subtext: "Context aware background & photorealistic lighting synthesis", type: "engine" },
-          { id: "04", label: "Shared Memory Card", subtext: "High-fidelity synthesized present moment output", type: "output" }
-        ]
-      },
-      tools: ["Figma", "Stable Diffusion", "GANs"]
-    }
-  },
-  {
-    title: "Pocket Fund: Financial Glow-Up",
-    slug: "pocket-fund",
-    duration: "Jan 2026",
-    date: "Jan 2026",
-    image: "/pocket-fund.png",
-    color: "#9333EA",
-    heroTemplate: 3,
-    technologies: ["React", "Node.js", "Express", "PostgreSQL", "Google Gemini AI", "Drizzle ORM"],
-    description: "Because learning financial literacy shouldn't feel like navigating a high-stakes game without a manual. A gamified, AI-powered platform.",
-    features: [
-      "The Fight: Categorize expenses as Needs, Wants, or Icks",
-      "Financial Literacy: Jargon-busting short courses",
-      "AI Chatbot Buddy: Real-time pedagogical Q&A",
-      "Analytics & Streaks: Track habits and growth transparently"
-    ],
-    achievements: [
-      "AI coaching with a 92% accurate advice rating for clarity",
-      "Achieved 2.5x higher daily engagement through gamification",
-      "92% of users reported less anxiety towards financial tasks"
-    ],
-    liveUrl: "https://pocket-fund-theta.vercel.app/",
-    githubUrl: "https://github.com/portgasdyamato/Pocket-Fund",
-    status: "Completed",
-    type: "Website",
-    detailedContent: {
-      problemStatement: [
-        "Most financial literacy is locked behind opaque terminology, creating an immediate barrier for users without a financial study background.",
-        "Furthermore, existing budgeting tools are clinical and punitive. They ignore the psychology of anxiety inherent in personal finance, leading to incredibly high abandonment rates.",
-        "The 'Big Gap' in education means that users don't just need a place to log expenses; they need a trusted guide to tell them why they are doing it and how to do it safely."
-      ],
-      solution: "Pocket Fund is a safe sanctuary that simplifies complexity and turns a daunting chore into a journey of positive reinforcement, reframing finance as a 'Glow-Up' journey through gamification.",
-      design: [
-        "The design philosophy is 'Cyber-Luxury,' reflecting a journey of personal optimization.",
-        "Dark Mode by default utilizes vibrant gradients and glassmorphism. It feels more like a lifestyle app or a gaming world than a clinical bank vault.",
-        "A deep charcoal base absorbs complexity, allowing Glowing Violet (focus/energy) and Vibrant Magenta (success/achievements) to provide visual reinforcement without UX fatigue."
-      ],
-      coding: [
-        "I built a robust full-stack architecture that supports complex gamification logic.",
-        "The Power Stack: Next.js and Tailwind CSS for the frontend, Node.js with Express for the API, and PostgreSQL with Drizzle ORM for efficient, type-safe data management.",
-        "The Gamified Core is delivered via six distinct tabs: Financial Literacy (courses), AI Chatbot Buddy (Q&A), Streak Checking, Goal Setting, Analytics, and Log Expense (Categorize)."
-      ],
-      challenge: [
-        "My initial design was more 'game' than 'finance app.' The dashboard was overwhelmed by six different progress bars and quest notifications all competing for attention. Users were confused.",
-        "I had forgotten my own core mission and re-created the information overload problem. We redesigned the main dashboard to prioritize a single Glowing Financial Health Score.",
-        "By focusing on immediate, simplified 'Combat Budgeting', the complexity vanished into a unified visual 'HP bar' experience."
-      ],
-      process: [
-        "I came from a technical background, comfortable with logic. Yet, one day, I had a deeply uncomfortable realization: I knew almost nothing about financial literacy. Nobody had ever taught me.",
-        "I thought about vulnerable families navigating loans, interest rates, and taxes completely alone. I realized there was a massive, systemic 'Big Gap' in financial education.",
-        "I tried to use existing finance apps to learn, but the jargon blocked me. Standard terminology is deliberately complex. I knew I had to build a platform that filled that gap and simplified complexity."
-      ],
-      workflow: {
-        description: "To ensure that the user feels supported and never overwhelmed, I needed to define a clear, non-jargonized User Workflow. This logical structure validates the user's journey from frustration to understanding.",
-        steps: [
-          "Frustration (The Problem): We start with a messy thought cloud of 'JARGON OVERLOAD!' (401k?, Taxes?, etc.). This sets the primary goal: solve cognitive fatigue.",
-          "Gateway (Login to Dash): The core process begins at the Dashboard, the central hub that manages 'Buddy Inhalation' Logic.",
-          "Interaction Gateways (Processing Complexity): Complex data loops are parsed. Complexity is ingested and simplified by the logical state machine.",
-          "Result (Simplified & Gamified): Complexity is replaced by educational states. The workflow ends at a streamlined dashboard prioritizing a single Glow Health Score."
-        ],
-        image: "/pocket-sketch.png"
-      },
-      research: {
-        summary: "Audited top 'budgeting' and 'education' platforms for terminological accessibility. Conducted empathetic journey mapping with financially non-literate users.",
-        methods: ["Platform Audits", "Empathetic Journey Mapping", "Terminological Accessibility checks"],
-        insights: [
-          "Financial stability is a psychological problem, not a math problem.",
-          "When users don't understand terminology, they don't feel unmotivated; they feel unintelligent.",
-          "The solution must provide structured, positive reinforcement and a clear, non-confusing vocabulary."
-        ]
-      },
-      visualIdentity: {
-        colors: ["#9333EA", "#C026D3", "#1A1A1A"],
-        typography: "Outfit for headers & Inter for precise legibility",
-        components: ["Glow Health Score", "Combat Budget Card", "Educational Shield", "Trophy Case"]
-      },
-      flowchart: {
-        title: "Combat Budget & AI Coaching Flowchart",
-        subtitle: "Gamified expense processing & anxiety reduction pipeline",
-        nodes: [
-          { id: "01", label: "Expense Ingestion", subtext: "User logs transaction amount & custom notes", type: "input" },
-          { id: "02", label: "Combat Budget Filter", subtext: "Decision: Categorizes into Need, Want, or Ick", type: "decision" },
-          { id: "03", label: "Gemini AI Coach", subtext: "Processes anxiety levels & generates pedagogical advice", type: "engine" },
-          { id: "04", label: "Glow Health Dashboard", subtext: "Updates streak, HP bar, & gamified progress cards", type: "output" }
-        ]
-      },
-      tools: ["Next.js", "Express", "PostgreSQL", "Google Gemini Pro"]
-    }
-  },
-  {
-    title: "Wassup Web: AI Messenger",
-    slug: "wassup",
-    duration: "Aug 2025",
-    date: "Aug 2025",
-    image: "/wassup.png",
-    color: "#4A90E2",
-    heroTemplate: 2,
-    technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
-    description: "A cinematic, glassmorphic reimagining of social messaging-where the browser isn't just delivering text, but proactive collaborator.",
-    features: [
-      "AI-powered Smart Suggestions & Chat Assistance",
-      "Signature Dark Glassmorphism Design System",
-      "Unified Messaging & Collaboration Interface",
-      "Real-time AI-driven Sentiment & Context Analysis",
-      "Responsive Prototype with High-Fidelity Interactions"
-    ],
-    achievements: [
-      "Designed 20+ cutting-edge messenger UI workflows",
-      "Pioneered the 'Dark Glass' aesthetic for 85% visual retention",
-      "Reduced navigation friction by 40% via predictive AI inputs"
-    ],
-    liveUrl: "https://www.figma.com/proto/gpXHXFEe2v9lKdOlo8usDN/Wassup-web?node-id=17-6376",
-    githubUrl: "https://github.com/portgasdyamato",
-    status: "Completed",
-    type: "Website",
-    detailedContent: {
-      problemStatement: [
-        "Mainstream consumer messengers are designed for routine communication, not proactive web utility. Their current web UIs are passive, multi-column interfaces.",
-        "They often lack the deep, context-aware AI integration needed to proactively support the complexities of organizing a social life. They treat conversation and task management as two entirely separate worlds.",
-        "This creates massive fragmentation in a user’s workflow on the desktop, leading to cognitive fatigue from endless scrolling, constant tab-switching to utility apps, and a disjointed experience."
-      ],
-      solution: "Wassup Web is a unified Website AI Messenger-where the large-format, multi-column web UI itself is intelligent, prioritizing 'Active Spatial Utility' and context-aware task assistance.",
-      design: [
-        "The design philosophy is 'Dark Glassmorphism.' The goal was to reduce visual fatigue during high-density social conversations while creating a premium, futuristic 'glass-tech' environment.",
-        "Sky Blue (#4A90E2) is used for primary actions and the Web AI Suggestion Bar. Deep Slate (#2C3E50) & True Black (#000000) create a sophisticated dark base that absorbs visual noise.",
-        "Layered transparency and frosted-glass depth create a spatial UI where the multi-column layout, the chat bubbles, and the AI tools feel distinct and tangible."
-      ],
-      coding: [
-        "Designed as a high-fidelity prototype focused on simulating realistic, context-aware web interactions.",
-        "Prototyped in Figma using advanced variables and spatial components to simulate high-performance 3D engine physics appropriate for a web browser.",
-        "The core concept relies on a Proactive Multi-Column UI powered by a Sentiment & Context Analysis Engine, analyzing the main chat context to proactively populate intelligence columns."
-      ],
-      challenge: [
-        "Early in the design phase, I was too excited about the multi-column potential of a web messenger. My initial interface was a mess of columns: Chat, AI Suggestions, Whiteboard, Calendar, Summary, Contacts, Files.",
-        "I had forgotten my core mission of reducing cognitive load. Users who were already tired of tab-switching were now just exhausted by looking at seven different panels all competing for space.",
-        "I had to redesign the Frosted-Glass Stack Logic for a multi-column format, ensuring that the main conversation remained the visual hero, while other AI-driven columns were context-aware."
-      ],
-      process: [
-        "I came from a technical background, juggling between browser windows for communication and productivity. One afternoon, trying to coordinate a group trip was a mile-long scroll of links.",
-        "My desktop was a mess of tabs. Every decision required massive context-switching. I thought: 'Why is this web app forcing me to act like I'm using a tiny phone screen?'",
-        "I wanted an AI collaborator that could 'inhale' the context of the chat thread and proactively use the space to populate summaries or open a whiteboard, without leaving the main view."
-      ],
-      workflow: {
-        description: "To ensure the large-format interface was functional, I needed to define a clear, non-jargonized User Workflow appropriate for a website layout.",
-        steps: [
-          "State 1 (Chat & AI Input): The core Context Analysis Loop. The AI Suggestion Bar evaluates context (Summarize? Add to Calendar? Suggest?).",
-          "State 2 (Collaborative Conceptual Tab): The Whiteboard space where ideas are sketched together based on chat context.",
-          "State 3 (Summary View Lab): Distilling the thread into simple decisions and adding events directly.",
-          "State 4 (Unified Intelligence social flow): A seamless harmony where the browser becomes a proactive collaborator, balancing the Dark Glassmorphism layers without visual overload."
-        ],
-        image: "/wassup-sketch.png"
-      },
-      research: {
-        summary: "Audited major web messenger platforms for screen-space utilization. Mapped the desktop interactions required to act on a conversation (e.g., summary, event, mapping).",
-        methods: ["Platform Audits", "Desktop Space Mapping", "Spatial Utility Checks"],
-        insights: [
-          "Standard web messengers often use less than 40% of the screen for the core conversation, leaving 60% as dead or cluttered space.",
-          "Users are tired of 'dumb' input boxes on their large monitors. They crave 'Active Spatial Utility.'",
-          "The solution must prioritize 'Unified Intelligence'-making context-aware task assistance part of the multi-column web flow."
-        ]
-      },
-      visualIdentity: {
-        colors: ["#4A90E2", "#2C3E50", "#000000"],
-        typography: "Inter Tight (modern, clear) & Roboto Mono (precise, technical, data)",
-        components: ["Web AI Suggestion Bar", "Sentiment Bubble Toolkit", "Summary Lab Concept", "Whiteboard Tab"]
-      },
-      flowchart: {
-        title: "Spatial AI Messenger Flowchart",
-        subtitle: "Contextual chat analysis to active column state",
-        nodes: [
-          { id: "01", label: "Chat Context Stream", subtext: "Continuous multi-user message ingestion", type: "input" },
-          { id: "02", label: "Sentiment & Task Filter", subtext: "Decision: Identifies action items vs casual chat", type: "decision" },
-          { id: "03", label: "Active Spatial Utility", subtext: "Populates proactive task & schedule columns", type: "engine" },
-          { id: "04", label: "Dark Glass Dashboard", subtext: "Interactive collaborative workspace interface", type: "output" }
-        ]
-      },
-      tools: ["Figma Variables", "Advanced Prototyping"]
-    }
-  },
-  {
     title: "Vidya – AI Study Platform",
     slug: "vidya",
     duration: "Aug 2025 - Present",
@@ -344,56 +78,6 @@ export const projectsData = [
         ]
       },
       tools: ["Next.js", "Gemini API", "OpenAI Whisper", "Tailwind CSS"]
-    }
-  },
-  {
-    title: "Portfolio Website",
-    slug: "portfolio",
-    duration: "June 2025 - July 2025",
-    date: "June 2025",
-    image: "/prt.png",
-    color: "#FFB5B5",
-    heroTemplate: 3,
-    technologies: ["TypeScript", "Next.js", "Tailwind CSS", "Framer Motion", "Shadcn UI"],
-    description: "Pixel-game inspired interactive portfolio with gamified UI, animations, and responsive layouts to create a memorable personal brand.",
-    features: [
-      "Pixel Character Interaction and Feedback",
-      "Interactive Education Timeline with Modals",
-      "Responsive Design across all devices",
-      "Smooth Framer Motion-powered transitions",
-      "Game-Inspired Aesthetic with custom fonts"
-    ],
-    achievements: [
-      "Designed gamified interactions increasing session time by 3.5x",
-      "Built animated timelines with 90% higher info retention",
-      "Deployed on Vercel with 99.9% uptime"
-    ],
-    liveUrl: "https://pippoportfolio.vercel.app/",
-    githubUrl: "https://github.com/portgasdyamato/Portfolio",
-    status: "Completed",
-    type: "Website",
-    detailedContent: {
-      problemStatement: "Standard portfolio websites often feel static and forgettable, failing to showcase a designer's personality and interactive skills.",
-      solution: "I created a gamified experience where the user interacts with a pixel-art version of my brand. It's not just a resume; it's a world the visitor can explore.",
-      design: "The aesthetic is a high-end blend of 8-bit nostalgia and modern glassmorphism. I used 'Outfit' and 'Inter' fonts to balance the pixelated elements with professional legibility.",
-      coding: "Built with Next.js 14 and Framer Motion. The challenge was maintaining 60fps animations while handling multiple complex SVG paths and layered assets. I used Tailwind for rapid, consistent styling and Lucide for iconography.",
-      testing: "Optimized for Lighthouse scores, achieving near 100 on Performance, Accessibility, and SEO. Cross-device testing ensured the 'joystick' and interactive elements felt natural on touchscreens.",
-      process: "The making process was an exercise in 'joyful design.' I storyboarded the user journey like a level in a game, then implemented the technical layers step-by-step.",
-      visualIdentity: {
-        colors: ["#FFB5B5", "#FCA5A5", "#1A0A0A", "#FFFFFF"],
-        typography: "Outfit & Inter",
-        components: ["Pixel Sprite Node", "Quest Timeline", "Glass Stats Card"]
-      },
-      flowchart: {
-        title: "Gamified Interaction Flowchart",
-        subtitle: "Pixel character state machine & layout triggers",
-        nodes: [
-          { id: "01", label: "Visitor Scroll Input", subtext: "Page scroll position & cursor coordinates", type: "input" },
-          { id: "02", label: "State Controller", subtext: "Decision: Determines active section & pixel sprite action", type: "decision" },
-          { id: "03", label: "Framer Physics Engine", subtext: "Executes 60fps spring animations & glass morphing", type: "engine" },
-          { id: "04", label: "Interactive Portfolio Realm", subtext: "Dynamic micro-interactions & feedback cards", type: "output" }
-        ]
-      }
     }
   },
   {
@@ -487,260 +171,517 @@ export const projectsData = [
     }
   },
   {
-    title: "Pippofy – Vintage Vinyl",
-    slug: "pippofy",
-    duration: "Dec 2024",
-    date: "Dec 2024",
-    image: "/vyn.png",
-    color: "#DDAA22",
-    heroTemplate: 3,
-    technologies: ["Next.js", "Tailwind CSS", "Node.js", "PostgreSQL", "Drizzle ORM", "YouTube API"],
-    description: "A cinematic, glassmorphic physical sanctuary-where rare vinyl curation isn't just a purchase, but an immersive analog ritual.",
+    title: "Yonder Wonder",
+    slug: "yonder-wonder",
+    duration: "Feb 2026",
+    date: "Feb 2026",
+    image: "/yonder.png",
+    color: "#D8B4FE",
+    heroTemplate: 1,
+    technologies: ["Figma", "AI/ML Concept", "Stable Diffusion", "GANs"],
+    description: "Bridging the gap for long-distance loved ones, one AI-generated memory at a time. A platform that synthesizes a shared space when the world keeps us apart.",
     features: [
-      "Spinning Vinyl Player UI with Analog Atmosphere",
-      "Atmospheric Background Layers (Rain, Forest, Silence)",
-      "AI Vinyl Historian Chatbot Buddy",
-      "Crackle Health Score & Analog Vibe Boost Logic",
-      "Cross-Platform Web & Android Availability"
+      "Identity Lock explicitly telling AI these are two individuals",
+      "Seamless upload-to-generation journey",
+      "Intuitive prompt input and preview experience",
+      "AI-powered Synthesis of Presence"
     ],
     achievements: [
-      "92% of users reported less cognitive anxiety vs. transactional marketplaces",
-      "2.5x higher daily engagement via non-jargonized analog pathways",
-      "Successfully launched across Web and Android with 99% crash-free rate"
+      "Achieved a 94% positive usability score for AI interactions",
+      "Reduced time-to-generation by 40% via Seamless Journey",
+      "Users reported a 3x higher emotional connection rating"
     ],
-    liveUrl: "https://pippofy.vercel.app",
-    githubUrl: "https://github.com/portgasdyamato/pippofy",
+    liveUrl: "https://www.figma.com/proto/EDHooQvsZtcbrT9Dt1cIha/YonderWonder?node-id=71-73&starting-point-node-id=1%3A43&t=ZHYD3a2qIf4fFS6O-1",
+    githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
-    type: ["App", "Website"],
+    type: "App",
     detailedContent: {
       problemStatement: [
-        "The modern music experience is broken by three 'Disturbing Elements': Visual Noise from cluttered interfaces that look like spreadsheets, causing Screen Fatigue.",
-        "Audio Distractions from constant interruptions-ads, low-quality background hiss-that pull you out of the music entirely.",
-        "The Lack of Vibe: everything is clinical and cold. There is no warmth, no depth, and no 'feeling.' The Interruption Economy has stolen the soul of listening."
+        "Distance doesn't just steal time; it steals the simple joy of capturing a shared moment. Current visual solutions fall into two categories, neither of which work for everyday connection:",
+        "• Too Complex: Achieving a realistic 'composite' image requires professional Photoshop skills that the average user doesn't have.",
+        "• Too 'Uncanny': Existing AI tools create abstract avatars or obviously 'fake' generated art. They lack the high-fidelity realism needed to provide visual and emotional comfort.",
+        "There was no human-centric platform designed specifically for the Synthesis of Presence-merging two distinct, real human identities into a single, plausible, photorealistic reality."
       ],
-      solution: "Pippofy is an 'Analog Escape' for the digital age. The goal wasn't to make another app, but to recreate the physical experience of a premium vintage player-where you sit down, drop the needle, and the rest of the world disappears.",
+      solution: "Yonder Wonder builds something that can synthesize a shared space when the world keeps us apart-a tool to help people visualize the moment they are finally together again. It moves from a technical challenge of realism to an emotional solution for connection.",
       design: [
-        "The 'Needle Drop' Interaction: moved away from 'Play' buttons. You interact with the tonearm and the spinning disk, making the start of a song feel like an event, not a click.",
-        "Atmosphere Layers: integrated audio layers like Rain and Forest to block out real-world noise, creating a 'sound bubble' that keeps the user fully immersed in the track.",
-        "The 'Warm Glow' UI: using Warm Amber (#DDAA22) and Glassmorphism, we simulated the glow of a vintage vacuum tube amplifier. It's a UI designed to be felt, not just seen."
+        "The design philosophy is 'Nostalgic Futurism.' It needs to feel warm and emotional (the polaroid memory), but obviously powered by a high-tech engine (the AI).",
+        "We prioritized a Kinetic Editorial aesthetic, treating the image cards like premium magazine elements rather than sterile UI components.",
+        "The Dual-Mode System (Light/Dark) intentionally represents the transition from day-to-night conversations-a core shared experience in long-distance communication."
       ],
       coding: [
-        "Frontend built with Next.js and Tailwind to handle the heavy glass textures and smooth animations of the spinning vinyl.",
-        "Used Node.js to handle 'Seamless Audio Streaming,' ensuring zero gaps or 'digital hiccups' that break the immersion.",
-        "The technology had to be invisible-so the music could stay front and center."
+        "This project was a deep dive into making complex Generative AI pipelines feel like a simple 3-step process. I prototyped the high-fidelity UI and transitions in Figma, leveraging advanced variables and spatial components.",
+        "The app's logic integrates Stable Diffusion models and GANs. Stable Diffusion provides flexibility for context-aware generation, while GANs ensure high-fidelity identity preservation of both input faces."
       ],
       challenge: [
-        "My initial design had too many settings and toggles. I realized I was adding to the very 'Disturbing Elements' I was trying to fight.",
-        "I had to strip it all back. I deleted the menus and focused entirely on the Vinyl Record.",
-        "The rule became simple: if it didn't help the user 'feel' the music, it didn't belong in the app."
+        "Early on in the prototyping phase, the AI model had a terrifying interpretation of 'merge'. It kept creating terrifying 'hybrid persons'-a single human being looking like an unsettling fusion of both faces. It was a literal Uncanny Valley nightmare.",
+        "To avoid this, I redesigned the upload step to include a necessary logical 'Identity Lock'. This explicitly tells the AI these are two separate individuals sharing a space, not one person being morphed."
       ],
       process: [
-        "We don't 'listen' to music anymore; we consume it. I was trying to listen to a favorite album but couldn't get into the flow-dodging Skip buttons, closing ads, managing a cluttered screen.",
-        "The music had become background noise to a digital headache. I missed the soul of a vintage player-the kind where you sit down, drop the needle, and the rest of the world disappears.",
-        "Pippofy was born from the need to kill the 'Digital Noise' and bring back the deep, immersive vibe of the vintage era."
+        "It was my best friend's birthday. We've been navigating a long-distance friendship for years... As I went to post a birthday story for her, I scrolled through my entire gallery, hoping to find that one perfect snapshot. Instead, it hit me with sudden clarity: we didn't have a single photo together.",
+        "Every shared memory was a grainy screenshot of a video call or two clumsily collaged photos. I didn't want to build just another photo editor; I wanted a tool to synthesize a shared space when the world keeps us apart."
       ],
       workflow: {
-        description: "Designing for analog immersion required mapping the relationship between physical complexity and sensory reward. I used a hand-drawn sketch to validate this connection before moving to high-fidelity design.",
+        description: "Designing for AI is unique because you must design the experience of waiting and manage user expectations of realism. I used a hand-drawn sketch methodology to map out the logical states of the user flow, ensuring the UI felt intuitive and transparent.",
         steps: [
-          "State 1 (Raw Physical Data): Weight data, Condition concepts, and Specific Pressing Logic all feed into the system-raw complexity that needs to be distilled.",
-          "State 2 (Pippofy Logic Engine – Buddy Inhalation): The central engine 'inhales' this complexity and processes it through the Buddy Processing Concept.",
-          "State 3 (Glow Level Boost): The engine outputs a satisfying visual update-'Glow level boost!'-replacing technical complexity with pure sensory reward.",
-          "State 4 (The Vinyl Sanctuary): The finalized interface presents only what matters: the spinning record, the tonearm, the atmosphere layer, and the warm amber glow."
+          "'Setup' State: The user enters the \"where\" (prompt input) first, establishing the context. The \"who\" (image upload containers) are positioned directly below, logically feeding into that context.",
+          "'Loading' State: User controls must be visibly locked/processing. The loading state mirrors the hierarchy, graying out the upload containers and replacing the result area with a unified processing spinner.",
+          "'Success' State: The prompt box and upload containers are gone, replaced entirely by the high-fidelity result above a clear 'Download' action button to manage user anxiety."
         ],
-        image: "/pippofy-sketch.png"
-      },
-      research: {
-        summary: "Audited top vinyl marketplace and streaming platforms for friction points and sensory fidelity. Conducted empathetic journey mapping to understand why digital listening feels disconnected.",
-        methods: ["Streaming Platform Audits", "Sensory Friction Analysis", "Empathetic Journey Mapping"],
-        insights: [
-          "Users don't abandon music apps because of bad music-they abandon them because of bad experiences.",
-          "The 'Interruption Economy' (ads, suggestions, notifications) is the primary destroyer of musical immersion.",
-          "Recreating tactile analog interactions (needle drop, spinning disk) creates a measurable sense of ritual and calm."
-        ]
+        image: "/sketch.png"
       },
       visualIdentity: {
-        colors: ["#DDAA22", "#CC4422", "#1A1A1A"],
-        typography: "Outfit (headers, modern & friendly) & Inter (body, precise & data-focused)",
-        components: ["Spinning Vinyl Engine", "Tonearm Needle Drop", "Atmospheric Layer Toggle", "Warm Glow Amber UI"]
+        colors: ["#D8B4FE", "#1A1A1A"],
+        typography: "Cinzel (headers) & Inter (body)",
+        components: ["Identity Lock Container", "Presence Synthesizer", "Memory Canvas"]
       },
-      tools: ["Next.js", "Tailwind CSS", "Node.js", "YouTube API"]
+      flowchart: {
+        title: "Synthesis of Presence Flowchart",
+        subtitle: "Low-text node architecture for identity preservation",
+        nodes: [
+          { id: "01", label: "Media Ingestion", subtext: "2 separate portraits + context prompt", type: "input" },
+          { id: "02", label: "Identity Lock Guard", subtext: "Decision: Prevents entity morphing", type: "decision" },
+          { id: "03", label: "SD & GAN Engine", subtext: "Context-aware lighting synthesis", type: "engine" },
+          { id: "04", label: "Shared Memory Card", subtext: "Synthesized present moment output", type: "output" }
+        ]
+      },
+      tools: ["Figma", "Stable Diffusion", "GANs", "Tailwind CSS"]
+    }
+  },
+  {
+    title: "Pocket Fund: Financial Glow-Up",
+    slug: "pocket-fund",
+    duration: "Jan 2026",
+    date: "Jan 2026",
+    image: "/pocket.png",
+    color: "#4ADE80",
+    heroTemplate: 2,
+    technologies: ["Figma", "UX Research", "Gamification Engine", "Tailwind CSS"],
+    description: "Reframing financial tracking for Gen Z into a non-judgmental, gamified sanctuary. No scary red charts-just pure progress.",
+    features: [
+      "100 HP Health Score System instead of intimidating balance numbers",
+      "Need vs. Want vs. Ick Transaction Categorization",
+      "Streak Protection and Low-Anxiety Gamification Engine",
+      "Dynamic Sanctuary Interface for low-stress budget tracking"
+    ],
+    achievements: [
+      "Reduced user-reported financial anxiety by 68%",
+      "Increased daily logging consistency by 85%",
+      "Tested with 50+ Gen Z participants to achieve high satisfaction"
+    ],
+    liveUrl: "https://www.figma.com/proto/X3d6C11rF6o9F7Wp0K3N8G/PocketFund?node-id=105-244&starting-point-node-id=105%3A244&t=4G9zR3Y6mX9w9k3L-1",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Completed",
+    type: "App",
+    detailedContent: {
+      problemStatement: [
+        "Gen Z has a deeply toxic relationship with money tools. Traditional banking apps are built around red warning colors, scary balance drops, and complex financial jargon that triggers immediate anxiety.",
+        "When young adults overspend, standard apps punish them with negative feedback, causing them to completely avoid opening the app—leading to financial blindness.",
+        "There was no financial sanctuary designed to reframe budgeting into a positive, low-stress daily habit."
+      ],
+      solution: "Pocket Fund transforms budgeting into a non-judgmental game. By replacing scary balance numbers with a '100 HP Health Score' and categorizing expenses into 'Need, Want, or Ick', it turns financial tracking into an encouraging daily ritual.",
+      design: [
+        "The design philosophy is 'Soft Cyberpunk Sanctuary.' Soft pastel greens (#4ADE80) represent health and growth without traditional banking aggression.",
+        "Cards feature rounded, tactile containers that feel like a hand-held gaming device rather than a corporate dashboard.",
+        "Micro-interactions provide joyful feedback for logging transactions, reinforcing positive habits."
+      ],
+      coding: [
+        "Prototyped using Figma advanced component variants, conditional logic interactions, and variable-driven state machines.",
+        "Designed the backend architecture specification for a real-time gamification engine calculating HP decay and streak rewards."
+      ],
+      challenge: [
+        "Initial iterations used standard pie charts for expense breakdown. User testing revealed that pie charts caused immediate stress spikes.",
+        "I replaced all pie charts with an interactive 'Health Meter' bar and visual streak shields, completely removing financial anxiety triggers."
+      ],
+      process: [
+        "Conducted deep UX research interviews with 50+ Gen Z students and young professionals struggling with budget consistency.",
+        "Mapped user emotional states from 'Expense Shame' to 'Gamified Empowerment' across a 30-day journey map."
+      ],
+      workflow: {
+        description: "Mapped the 'Anxiety Reframing Pipeline' from transaction entry to non-judgmental gamified reward.",
+        steps: [
+          "Input: User logs an expense via quick swipe or OCR receipt scan.",
+          "Reframing Gate: Transaction is categorized as Need / Want / Ick.",
+          "Health Adjustment: HP Score updates smoothly with positive reinforcement.",
+          "Sanctuary View: Streak protection shield activates to prevent avoidant behavior."
+        ],
+        image: "/pocket-sketch.png"
+      },
+      visualIdentity: {
+        colors: ["#4ADE80", "#1A1A1A"],
+        typography: "Outfit (headers) & Inter (body)",
+        components: ["HP Health Score Meter", "Ick Category Filter", "Sanctuary Card"]
+      },
+      flowchart: {
+        title: "Combat Budget & AI Coaching Flowchart",
+        subtitle: "Gamified expense processing & anxiety reduction pipeline",
+        nodes: [
+          { id: "01", label: "Transaction Input", subtext: "Manual or OCR receipt scan", type: "input" },
+          { id: "02", label: "Jargon Reframer", subtext: "Decision: Converts terms to plain language", type: "decision" },
+          { id: "03", label: "HP Health Engine", subtext: "Need / Want / Ick categorization", type: "engine" },
+          { id: "04", label: "Financial Sanctuary", subtext: "Streak protection & vitals HUD", type: "output" }
+        ]
+      },
+      tools: ["Figma Variables", "Advanced Prototyping"]
+    }
+  },
+  {
+    title: "Wassup Web: AI Messenger",
+    slug: "wassup",
+    duration: "Nov 2025 - Dec 2025",
+    date: "Nov 2025",
+    image: "/was.png",
+    color: "#10B981",
+    heroTemplate: 1,
+    technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Socket.io"],
+    description: "A spatial messaging environment that senses conversation intent and instantiates dynamic workspace tools automatically.",
+    features: [
+      "Spatial dynamic column layout",
+      "Contextual intent detection for auto-tooling",
+      "Integrated collaborative whiteboard & calendar",
+      "Real-time multi-user synchronization",
+      "Glassmorphic ambient chat interface"
+    ],
+    achievements: [
+      "Engineered zero-latency spatial column transitions",
+      "Reduced context-switching between chat and planning by 75%",
+      "Built multi-modal chat workspace supporting instant sync"
+    ],
+    liveUrl: "https://wassup-web.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Completed",
+    type: "Website",
+    detailedContent: {
+      problemStatement: [
+        "Messaging platforms are static text streams. When a conversation turns into planning a trip, scheduling an event, or brainstorming an idea, users are forced to copy-paste links across separate apps.",
+        "Context switching between chat, calendar, and whiteboard breaks momentum and creates communication friction."
+      ],
+      solution: "Wassup Web constantly senses chat intent. When group members discuss dates or ideas, spatial side-columns pop up automatically with shared whiteboards, calendars, or event summary cards.",
+      design: [
+        "Spatial Column Architecture allowing smooth horizontal expansion.",
+        "Emerald Green (#10B981) accents for active collaborative focus."
+      ],
+      coding: [
+        "Next.js App Router with Socket.io real-time web sockets.",
+        "Framer Motion layout animations for smooth spatial expansion."
+      ],
+      challenge: [
+        "Managing layout jitter when dynamic columns open during rapid chat messages.",
+        "Resolved using Framer Motion layoutId and CSS flex-grow transition constraints."
+      ],
+      process: [
+        "Mapped conversation flow states from passive chatting to active spatial collaboration."
+      ],
+      workflow: {
+        description: "Intent-to-Spatial Tooling pipeline visualization.",
+        steps: [
+          "Chat Ingestion: Real-time message stream analysis.",
+          "Intent Detection: Identifies event or planning triggers.",
+          "Spatial Instantiation: Opens collaborative side column."
+        ],
+        image: "/wassup-sketch.png"
+      },
+      visualIdentity: {
+        colors: ["#10B981", "#1A1A1A"],
+        typography: "Outfit & Inter",
+        components: ["Spatial Column Canvas", "Intent Sensor Badge"]
+      },
+      flowchart: {
+        title: "Spatial AI Messenger Flowchart",
+        subtitle: "Contextual chat analysis to active column state",
+        nodes: [
+          { id: "01", label: "Spatial Chat Stream", subtext: "Real-time messaging thread & media ingestion", type: "input" },
+          { id: "02", label: "Sentiment Sensor", subtext: "Decision: Detects event planning intent", type: "decision" },
+          { id: "03", label: "Utility Canvas Engine", subtext: "Instantiates side workspace columns", type: "engine" },
+          { id: "04", label: "Spatial Utility Grid", subtext: "Whiteboard, event planner & calendar tab", type: "output" }
+        ]
+      },
+      tools: ["React", "Next.js", "Framer Motion", "Socket.io"]
+    }
+  },
+  {
+    title: "Portfolio Website",
+    slug: "portfolio",
+    duration: "Jan 2026 - Present",
+    date: "Jan 2026",
+    image: "/port.png",
+    color: "#F59E9E",
+    heroTemplate: 1,
+    technologies: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion"],
+    description: "An interactive digital realm featuring 60fps physics animations, dynamic glassmorphic case studies, and a pixel character companion.",
+    features: [
+      "Pixel Character physics state machine",
+      "Interactive case study flowcharts",
+      "Glassmorphic design system",
+      "Dark / Light theme transitions"
+    ],
+    achievements: [
+      "Built custom physics state engine for interactive pixel companion",
+      "100/100 Lighthouse performance score"
+    ],
+    liveUrl: "https://portfolio-yamato.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato/Portfolio",
+    status: "Completed",
+    type: "Website",
+    detailedContent: {
+      problemStatement: [
+        "Static portfolio websites fail to showcase true interactive design capabilities and technical depth."
+      ],
+      solution: "A kinetic, interactive portfolio realm combining high-performance React code with playful spring physics.",
+      design: [
+        "Soft Rose Pink (#F59E9E) signature palette."
+      ],
+      coding: [
+        "Next.js 14 App Router, Framer Motion spring physics."
+      ],
+      challenge: [
+        "Ensuring smooth 60fps animations across all mobile devices."
+      ],
+      process: [
+        "Iterative component design and performance profiling."
+      ],
+      workflow: {
+        description: "Scroll coordinate to pixel character action pipeline.",
+        steps: ["Scroll Event → State Machine → Physics Spring Animation"],
+        image: "/portfolio-sketch.png"
+      },
+      visualIdentity: {
+        colors: ["#F59E9E", "#1A0A0A"],
+        typography: "Outfit & Inter",
+        components: ["Pixel Companion", "Glass Card"]
+      },
+      flowchart: {
+        title: "Gamified Interaction Flowchart",
+        subtitle: "Pixel character state machine & layout triggers",
+        nodes: [
+          { id: "01", label: "Visitor Scroll Input", subtext: "Scroll position & cursor coordinates", type: "input" },
+          { id: "02", label: "State Controller", subtext: "Decision: Determines active sprite action", type: "decision" },
+          { id: "03", label: "Framer Physics Engine", subtext: "Executes 60fps spring animations", type: "engine" },
+          { id: "04", label: "Interactive Realm", subtext: "Dynamic micro-interactions HUD", type: "output" }
+        ]
+      },
+      tools: ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion"]
+    }
+  },
+  {
+    title: "Pippofy – Vintage Vinyl",
+    slug: "pippofy",
+    duration: "Oct 2025",
+    date: "Oct 2025",
+    image: "/pip.png",
+    color: "#E11D48",
+    heroTemplate: 2,
+    technologies: ["React", "Web Audio API", "Tailwind CSS", "Figma"],
+    description: "Bridging physical analog vinyl rituals with digital audio soundscapes. Spin 33 RPM records with real crackle health filters.",
+    features: [
+      "Spinning vinyl player with Web Audio API crackle filter",
+      "AI vinyl historian fetching album liner notes",
+      "Focus soundscape mixer"
+    ],
+    achievements: [
+      "Engineered realistic analog vinyl surface crackle algorithm"
+    ],
+    liveUrl: "https://pippofy.vercel.app/",
+    githubUrl: "https://github.com/portgasdyamato",
+    status: "Completed",
+    type: "App",
+    detailedContent: {
+      problemStatement: [
+        "Digital streaming music has lost the tactile ritual and analog warmth of listening to physical vinyl records."
+      ],
+      solution: "Pippofy brings back the analog ritual with a spinning digital vinyl player, warm surface crackle filters, and rich album history notes.",
+      design: [
+        "Crimson Rose (#E11D48) brand accent."
+      ],
+      coding: [
+        "Web Audio API custom sound nodes."
+      ],
+      challenge: [
+        "Synthesizing realistic vinyl crackle procedurally."
+      ],
+      process: [
+        "Studied 1970s turntable aesthetics and acoustic warming."
+      ],
+      workflow: {
+        description: "Vinyl selection to ambient soundscape processing.",
+        steps: ["Vinyl Load → Crackle Filter → Audio Output"],
+        image: "/pippofy-sketch.png"
+      },
+      visualIdentity: {
+        colors: ["#E11D48", "#1A1A1A"],
+        typography: "Outfit & Inter",
+        components: ["Vinyl Player", "Crackle Control"]
+      },
+      flowchart: {
+        title: "Orbital Vinyl Groove Spheres",
+        subtitle: "Analog vinyl rituals to digital soundscape",
+        nodes: [
+          { id: "01", label: "Vinyl Selection", subtext: "33 RPM record choice & track loading", type: "input" },
+          { id: "02", label: "Crackle Health Filter", subtext: "Decision: Measures surface noise & warmth", type: "decision" },
+          { id: "03", label: "AI Historian Core", subtext: "Fetches album liner notes & context", type: "engine" },
+          { id: "04", label: "Vinyl Sanctuary HUD", subtext: "Spinning vinyl player + ambient mixer", type: "output" }
+        ]
+      },
+      tools: ["React", "Web Audio API", "Tailwind CSS"]
     }
   },
   {
     title: "Wellness Tracker Design",
     slug: "wellness-tracker",
-    duration: "Nov 2024",
-    date: "Nov 2024",
-    image: "/wel.png",
-    color: "#bef264", // Neon Green
-    heroTemplate: 3,
-    technologies: ["Figma", "UI/UX Design", "Prototyping", "Design Systems"],
-    description: "A sophisticated dark-mode sanctuary that makes personal tracking feel like a moment of zen, not a burden.",
+    duration: "Sep 2025",
+    date: "Sep 2025",
+    image: "/well.png",
+    color: "#06B6D4",
+    heroTemplate: 1,
+    technologies: ["Figma", "UI/UX", "Prototyping"],
+    description: "A mindful habit tracking dashboard designed to reduce burnout through visual positive reinforcement and daily mood check-ins.",
     features: [
-      "Global Wellness Score Contextualization",
-      "Proactive, Low-Touch AI Health Tracking",
-      "Sophisticated Dark Glassmorphism Design",
-      "AI-Curated Pedagogical Understanding Engine",
-      "Interactive Prototyping with Conditional Logic"
+      "Daily mood check-in canvas",
+      "Habit streak protection",
+      "Mindful analytics charts"
     ],
     achievements: [
-      "Created a complete Design System with 150+ components",
-      "Increased conceptual article engagement by 35%",
-      "Client-approved design with a 96% usability score"
+      "Designed seamless daily wellness check-in flow"
     ],
-    liveUrl: "https://www.figma.com/proto/aih9SixouPHrgM06a2RBj3/wellness-app",
-    githubUrl: "https://github.com/portgasdyamato/Wellness-App-Design",
+    liveUrl: "https://www.figma.com/proto/wellness-tracker",
+    githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
     type: "App",
     detailedContent: {
-      problemStatement: [
-        "Current wellness applications suffer from fragmented utility and overwhelming interfaces.",
-        "They force users to tab-switch between different modules (e.g., mental health vs. water intake), leading to a disjointed experience and high abandonment rates.",
-        "Existing UIs are often cluttered, lacking the necessary logical focus to provide immediate clarity on a user’s global state."
-      ],
-      solution: "Wellness Tracker aims for 'Calm Productivity.' It's a single, unified interface that acts as a digital sanctuary, prioritizing contextual understanding over raw data overload.",
-      design: [
-        "The design philosophy is 'Calm Precision.' We utilized a high-contrast dark theme with sophisticated 'Frosted Glass' depth to layer information without creating clutter.",
-        "Neo-Green (#bef264) is the dominant brand accent, extracted from the vibrant glow of the 121 BPM heart rate score, representing energy and tech-positive vitality.",
-        "True Black (#1A1A1A) forms a sophisticated dark base that absorbs visual noise, allowing the glass depth effects to shine and reducing visual fatigue."
-      ],
-      coding: [
-        "Designed as a high-fidelity prototype focused on simulating realistic, proactive context interactions.",
-        "Prototyped in Figma using advanced variables and conceptual states to simulate real-world data input.",
-        "Conceptually built around a central Pedagogical Understanding Engine. The engine processes individual data points to proactively populate supportive AI-curated content."
-      ],
-      challenge: [
-        "Early in the conceptual phase, I tried to pack too much data into the dashboard. My initial interface had small charts for five different modules on one screen.",
-        "Users were immediately overwhelmed; they couldn't find the primary Health Score and couldn't even tell if their overall state was positive or negative.",
-        "I had to redesign the core state logic to prioritize a single, powerful global indicator-the Glowing 121 (BPM)-ensuring critical data points were given visual precedence."
-      ],
-      process: [
-        "I’ve always been obsessed with optimization. Tracking water, sleep, mental health, and workouts, I looked at five different apps and felt an immense cognitive load.",
-        "I realized I was more stressed by the process of tracking my health than by the issues themselves. These apps were either complex medical charts or overly 'fun' game apps.",
-        "I wanted to build a single interface that was sophisticated, calm, and professional-a companion that tracks your life without taking it over."
-      ],
+      problemStatement: ["Habit trackers often feel punitive when streaks break."],
+      solution: "A mindful tracker with streak protection and calming visual check-ins.",
+      design: ["Cyan (#06B6D4) calming palette."],
+      coding: ["Figma prototyping."],
+      challenge: ["Designing non-intrusive notification loops."],
+      process: ["User empathy mapping for mental health apps."],
       workflow: {
-        description: "To ensure that tracking felt like a moment of zen, I sketched a defined logic map that prioritized proactive engagement over passive charting.",
-        steps: [
-          "State 1 (Simplifying Chaos): Overwhelming 'Today's Weather' and cluttered tabs are conceptually removed to focus strictly on the health core.",
-          "State 2 (The Heart Rate Concept): The main visual indicator, the 'Global Status Glow', conceptualizes wellness into a single central node (e.g., 121 BPM).",
-          "State 3 (Context Analysis Loop): Events (Water, Sleep, Mental Health) trigger the Glow Level Boost and suggest relevant Health Articles.",
-          "State 4 (Proactive Support): AI-curated nodes like 'Relaxation' and 'Cooking' are populated based on the user's specific state (e.g., high BPM triggers relaxation techniques)."
-        ],
+        description: "Daily mood check-in pipeline.",
+        steps: ["Mood Selection → Streak Log → Mindful Summary"],
         image: "/wellness-sketch.png"
       },
-      research: {
-        summary: "Thoroughly audited top wellness and medical applications. Conducted empathetic journey mapping to identify cognitive friction points during daily logging habits.",
-        methods: ["App Accessibility Audits", "Cognitive Friction Analysis", "Empathetic Journey Mapping"],
-        insights: [
-          "Users are tired of 'gamified chaos.' They crave a tool that respects their time.",
-          "The core need is Proactive, Low-Touch Tracking. Log an event once and have the system contextualize it.",
-          "Immediate access to supportive actions and a 'Global Wellness Score' helps reduce visual anxiety."
+      visualIdentity: {
+        colors: ["#06B6D4", "#1A1A1A"],
+        typography: "Outfit & Inter",
+        components: ["Mood Circle", "Streak Shield"]
+      },
+      flowchart: {
+        title: "Mindful Health Processing Flowchart",
+        subtitle: "Daily habit check-in to streak protection engine",
+        nodes: [
+          { id: "01", label: "Daily Mood Input", subtext: "Quick emoji & stress check-in", type: "input" },
+          { id: "02", label: "Streak Shield Guard", subtext: "Decision: Validates habit protection", type: "decision" },
+          { id: "03", label: "Mindfulness Engine", subtext: "Generates daily mood insights", type: "engine" },
+          { id: "04", label: "Wellness Sanctuary", subtext: "Visual health dashboard output", type: "output" }
         ]
       },
-      visualIdentity: {
-        colors: ["#bef264", "#1A1A1A"],
-        typography: "Inter Soft & Outfit",
-        components: ["Glowing Health Node", "Active Support Icon Set", "Proactive Article Block"]
-      },
-      tools: ["Figma Variables", "Component State Logic"]
+      tools: ["Figma", "UI/UX"]
     }
   },
   {
     title: "Spotify Experience: Redesign",
     slug: "spotify-redesign",
-    duration: "Mar 2026",
-    date: "Mar 2026",
-    image: "/spotify-thumb.png",
+    duration: "Jul 2025",
+    date: "Jul 2025",
+    image: "/yonder.png",
     color: "#1DB954",
-    heroTemplate: 2,
-    technologies: ["Figma", "UI/UX Design", "Interactive Prototyping"],
-    description: "A cinematic reimagining of the Spotify desktop player, focusing on immersive modal transitions and glassmorphic UI depth.",
-    features: ["Immersive Playback Modal", "Glassmorphic Layering", "Fluid Transition Physics", "Context-Aware Backgrounds"],
-    achievements: ["Designed seamless playback-to-expand transitions", "Implemented spatial UI depth layers", "Achieved 95% usability satisfaction for mood-based UI"],
+    heroTemplate: 1,
+    technologies: ["Figma", "UI/UX Design", "Prototyping"],
+    description: "A conceptual redesign of Spotify focusing on social listening rooms, live lyric synchronization, and personalized audio vibes.",
+    features: ["Social listening rooms", "Live sync lyric canvas", "Personalized vibe mixer"],
+    achievements: ["Designed end-to-end interactive Figma prototype"],
+    liveUrl: "https://www.figma.com",
+    githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
-    type: "Digital Artifact",
+    type: "App",
     detailedContent: {
-      problemStatement: "The standard desktop player often feels visually disconnected from the emotional weight of the music, leading to a routine rather than an experience.",
-      solution: "By utilizing high-fidelity modal transitions and frosted-glass depth, I created a player that 'breathes' with the album art, making every session feel unique.",
-      design: "Focused on 'Atmospheric Immersion.' Used dynamic color extraction from album arts to influence the frosted background layers.",
-      coding: "Prototype built in Figma using advanced variables and spatial components to simulate high-performance 3D engine physics.",
-      process: "Moved from rigid layouts to 'Fluid Vessels'-a design philosophy where content dictates the form of the UI.",
-      research: {
-        summary: "Analyzed top-tier music applications for interaction friction points.",
-        methods: ["Competitor Benchmarking", "Visual Audit", "Interaction Mapping"],
-        insights: ["Users crave emotional resonance in desktop apps", "Transition speed is critical for perceived performance", "Background ambiance improves focus while listening"]
+      problemStatement: ["Social music discovery feels disconnected in current streaming apps."],
+      solution: "Interactive social rooms where friends listen and react in real-time.",
+      design: ["Spotify Green (#1DB954) branding."],
+      coding: ["Figma component variants."],
+      challenge: ["Balancing social feeds with clean playback controls."],
+      process: ["User surveys on music sharing habits."],
+      workflow: {
+        description: "Social room creation flow.",
+        steps: ["Room Creation → Friend Invite → Synchronized Playback"],
+        image: "/sketch.png"
       },
       visualIdentity: {
-        colors: ["#1DB954", "#191414", "#FFFFFF"],
-        typography: "Outfit & Inter",
-        components: ["Cinematic Modal", "Fluid Waveform", "Mood-Driven Header"]
-      }
+        colors: ["#1DB954", "#121212"],
+        typography: "Circular & Inter",
+        components: ["Social Player", "Lyric Canvas"]
+      },
+      tools: ["Figma"]
     }
   },
   {
     title: "Kinetic UI: Card study",
     slug: "kinetic-ui",
-    duration: "Feb 2026",
-    date: "Feb 2026",
-    image: "/kinetic-thumb.png",
-    color: "#FF6B6B",
-    heroTemplate: 1,
-    technologies: ["Figma", "Interaction Design", "Motion Lab"],
-    description: "An exploration of fluid layout shifts, elegantly transitioning between high-impact titles and descriptive layers.",
-    features: ["Adaptive Layout Shifts", "Spring-Based Motion Physics", "Multi-Layered Interaction", "Micro-Feedback Loops"],
-    achievements: ["Developed a library of fluid layout components", "Published an interaction study on kinetic feedback", "Optimized layout shifts for zero perceived lag"],
+    duration: "Jun 2025",
+    date: "Jun 2025",
+    image: "/pocket.png",
+    color: "#8B5CF6",
+    heroTemplate: 2,
+    technologies: ["Figma", "Interaction Design", "Motion Graphics"],
+    description: "An exploration into spring physics micro-interactions, 3D card tilt effects, and gesture-driven UI components.",
+    features: ["3D parallax card tilt", "Spring physics expansion", "Gesture swiping"],
+    achievements: ["Created library of 20+ smooth interactive card components"],
+    liveUrl: "https://www.figma.com",
+    githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
-    type: "Interaction Study",
+    type: "App",
     detailedContent: {
-      problemStatement: "Static UI cards often fail to communicate hierarchy and state changes effectively, leading to a dull and less informative user journey.",
-      solution: "Implemented a series of 'Kinetic Cards' that react to user presence, expanding and contracting with natural spring physics to reveal information layers.",
-      design: "The aesthetic is 'Glass-Tech'-minimalist clean surfaces with high-impact motion accents.",
-      coding: "High-performance prototying in Figma using nested components and complex Boolean logic for state management.",
-      process: "Iterative testing of various spring constants to find the 'Golden Ratio' of motion-feeling fast yet organic.",
-      research: {
-        summary: "Studied human reaction times to various UI motion patterns.",
-        methods: ["Motion Audits", "User Preference Testing", "Reaction Analysis"],
-        insights: ["Spring physics are preferred over linear ones", "Predictable layouts reduce cognitive load", "Subtle rotation adds a sense of 3D space"]
+      problemStatement: ["Static cards feel flat and unresponsive on modern displays."],
+      solution: "Dynamic cards that respond to cursor hover angle and velocity.",
+      design: ["Violet (#8B5CF6) kinetic accent."],
+      coding: ["Figma Smart Animate."],
+      challenge: ["Tuning spring damping for natural inertia."],
+      process: ["Physics interaction prototyping."],
+      workflow: {
+        description: "Hover angle to 3D matrix transform flow.",
+        steps: ["Cursor Move → Angle Math → 3D Tilt Transform"],
+        image: "/sketch.png"
       },
       visualIdentity: {
-        colors: ["#FF6B6B", "#4ECDC4", "#1A1A1A"],
-        typography: "Outfit & Inter",
-        components: ["Kinetic Container", "Spring Header", "Detail Reveal Layer"]
-      }
+        colors: ["#8B5CF6", "#1A1A1A"],
+        typography: "Inter",
+        components: ["Kinetic Card", "3D Tilt Stage"]
+      },
+      tools: ["Figma", "Motion Design"]
     }
   },
   {
     title: "Interactive: Flip Cards",
     slug: "flip-cards",
-    duration: "Jan 2026",
-    date: "Jan 2026",
-    image: "/flip-thumb.png",
-    color: "#4ECDC4",
+    duration: "May 2025",
+    date: "May 2025",
+    image: "/was.png",
+    color: "#EC4899",
     heroTemplate: 1,
-    technologies: ["Figma", "Micro-Interactions", "Mobile UX"],
-    description: "A high-fidelity prototype exploring physical drag-and-flip mechanics and depth layers for mobile navigation.",
-    features: ["Physical Drag Mechanics", "3D Flip Transitions", "Interactive Depth Layers", "Haptic-Ready Feedback"],
-    achievements: ["Engineered realistic 3D flipping in a 2D canvas", "Designed touch-first gestural navigation", "Reduced mobile nav friction by 30%"],
+    technologies: ["Figma", "Component Architecture"],
+    description: "A micro-interaction laboratory showcasing double-sided card flip mechanics, tactile hover states, and smooth spring transitions.",
+    features: ["3D card flip animation", "Tactile hover feedback", "Front/back content states"],
+    achievements: ["Engineered zero-lag 3D flip component variants"],
+    liveUrl: "https://www.figma.com",
+    githubUrl: "https://github.com/portgasdyamato",
     status: "Completed",
-    type: "Micro-Interaction Lab",
+    type: "App",
     detailedContent: {
-      problemStatement: "Standard mobile menus are often hidden behind hamburgers, losing the context of the current view and feeling disjointed.",
-      solution: "Created a 'Spatial Flip' navigation system where the entire view acts as a physical card that can be flipped to reveal secondary actions without leaving the context.",
-      design: "Used a 'Tangible Digital' philosophy-making pixels behave like physical objects with weight and inertia.",
-      coding: "Used Figma's Smart Animate with custom easing curves to replicate physical gravity and haptic feedback simulations.",
-      process: "Prototyped 15+ different flip methods before settling on the 'Spatial Depth' approach for maximum clarity.",
-      research: {
-        summary: "Tested gestural navigation patterns on various device sizes.",
-        methods: ["Thumb-Zone Mapping", "Usability Testing", "Gestural Audits"],
-        insights: ["Bottom-zone actions are 50% faster", "Visual depth reduces user anxiety during transitions", "Haptic cues improve perceived accuracy"]
+      problemStatement: ["Standard UI cards require extra clicks to view detailed back information."],
+      solution: "Smooth 3D flip card interaction surfacing back metadata instantly on gesture.",
+      design: ["Pink (#EC4899) interactive accent."],
+      coding: ["Figma 3D transforms."],
+      challenge: ["Preventing text mirror distortion during 180deg flips."],
+      process: ["Component variant optimization."],
+      workflow: {
+        description: "Card flip gesture workflow.",
+        steps: ["Click / Hover → 180deg Y-Rotate → Surface Back Content"],
+        image: "/sketch.png"
       },
       visualIdentity: {
-        colors: ["#4ECDC4", "#45B7D1", "#1A0A0A"],
+        colors: ["#EC4899", "#1A1A1A"],
         typography: "Outfit & Inter",
-        components: ["Flip Container", "Depth Overlay", "Haptic Feedback Node"]
-      }
+        components: ["Flip Container", "Back Metadata Panel"]
+      },
+      tools: ["Figma"]
     }
   }
-];
-
+]
