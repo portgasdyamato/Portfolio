@@ -15,7 +15,7 @@ const NAV_ITEMS = [
   { label: "Home", id: "home", path: "/", color: "#FDE047", icon: <Sparkles size={8} /> },
   { label: "Work", id: "work", path: "/work", color: "#1E1E1E", icon: <Layers size={8} /> },
   { label: "Skills", id: "skills", path: "/#skills", color: "#F59E9E", icon: <FolderIcon size={8} /> },
-  { label: "Resume", id: "resume", path: "#resume", color: "#F59E9E", icon: <FileText size={8} /> },
+  { label: "Resume", id: "resume", path: "#resume", color: "#38BDF8", icon: <FileText size={8} /> },
   { label: "Contact", id: "contact", path: "/#contact", color: "#A78BFA", icon: <Send size={8} /> },
 ]
 
