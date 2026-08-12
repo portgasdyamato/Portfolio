@@ -117,7 +117,7 @@ export default function ResumePage() {
                         autoFocus
                         autoComplete="off"
                         spellCheck={false}
-                        className="w-full h-[52px] px-5 pr-12 rounded-xl bg-white/[0.04] border border-white/[0.1] text-white font-mono text-sm tracking-[0.3em] placeholder:text-white/20 placeholder:tracking-[0.3em] focus:outline-none focus:border-[#F59E9E]/50 focus:bg-white/[0.06] transition-all duration-200 uppercase"
+                        className="w-full h-[52px] px-5 pr-12 rounded-xl bg-white/[0.04] border border-white/[0.07] text-white font-mono text-sm tracking-[0.3em] placeholder:text-white/20 placeholder:tracking-[0.3em] focus:outline-none focus:border-white/25 focus:bg-white/[0.07] focus:shadow-[0_0_0_3px_rgba(255,255,255,0.04)] transition-all duration-200 uppercase"
                       />
                       <button
                         type="button"
