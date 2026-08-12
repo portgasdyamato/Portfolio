@@ -81,21 +81,16 @@ export default function ResumePage() {
                 <div className="h-px w-full bg-gradient-to-r from-transparent via-[#F59E9E]/40 to-transparent" />
 
                 <div className="p-8 sm:p-10">
-                  {/* Lock icon */}
-                  <div className="mb-8 flex flex-col items-center text-center">
-                    <div className="w-12 h-12 rounded-2xl bg-[#F59E9E]/10 flex items-center justify-center mb-5">
-                      <Lock size={20} className="text-[#F59E9E]" strokeWidth={1.5} />
-                    </div>
-
-                    <p className="text-[10px] text-[#F59E9E]/80 font-bold uppercase tracking-[0.35em] mb-3">
-                      Protected Document
-                    </p>
-                    <h1 className="text-[1.65rem] font-bold leading-tight text-white mb-2" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic" }}>
-                      Unlock Sakshi's Resume
+                  {/* Header */}
+                  <div className="mb-8 flex flex-col items-start text-left">
+                    <h1 className="text-[2.6rem] font-black leading-[0.9] text-white tracking-tight mb-4" style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic" }}>
+                      Sakshi<br />Agrahari.
                     </h1>
-                    <p className="text-xs text-white/30 leading-relaxed max-w-[260px]">
-                      Enter the passcode to view the CV within the portfolio.
-                    </p>
+                    <div className="w-full h-px bg-white/[0.08] mb-4" />
+                    <div className="flex items-center gap-2">
+                      <Lock size={11} className="text-white/30" strokeWidth={2} />
+                      <span className="text-[10px] text-white/30 uppercase tracking-[0.3em] font-semibold">Passcode required</span>
+                    </div>
                   </div>
 
                   {/* Form */}
