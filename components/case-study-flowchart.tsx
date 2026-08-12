@@ -134,7 +134,7 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
   const explanationParagraph = EXPLANATION_PARAGRAPHS[slug] || "This system architecture decouples complex data inputs into clean, type-safe decision gates and high-performance UI states."
 
   return (
-    <section className="py-16 sm:py-20 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/15 dark:border-white/10 relative overflow-hidden">
+    <section className="py-16 sm:py-20 bg-[#FFF5F7] dark:bg-[#090608] bg-[radial-gradient(#e5e7eb_1.5px,transparent_1.5px)] dark:bg-[radial-gradient(#1c1417_1.5px,transparent_1.5px)] [background-size:24px_24px] border-y border-pink-500/15 dark:border-white/10 relative overflow-visible">
       
       {/* Volumetric Ambient Glow */}
       <div 
@@ -163,7 +163,7 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
         </div>
 
         {/* UNENCLOSED FLOWCHART DIAGRAM CANVAS */}
-        <div className="py-2">
+        <div className="py-6 overflow-visible">
           {style === "bezier" && <BezierFlowNetworkDiagram nodes={nodes} color={themeColor} />}
           {style === "concentric" && <OrbitalConcentricSpheresDiagram nodes={nodes} color={themeColor} slug={slug} />}
           {style === "sacred" && <SacredGeometryDiagram nodes={nodes} color={themeColor} />}
@@ -177,7 +177,7 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-10 max-w-3xl mx-auto relative rounded-[2rem] bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border border-[#F59E9E]/20 dark:border-white/10 p-6 sm:p-8 shadow-[0_15px_40px_rgba(245,158,158,0.08)] overflow-hidden"
+          className="mt-12 max-w-3xl mx-auto relative rounded-[2rem] bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border border-[#F59E9E]/20 dark:border-white/10 p-6 sm:p-8 shadow-[0_15px_40px_rgba(245,158,158,0.08)] overflow-hidden"
         >
           {/* Subtle Decorative Watermark Quote Mark */}
           <span className="absolute right-6 top-2 text-7xl font-serif text-[#F59E9E]/10 select-none pointer-events-none">
@@ -318,7 +318,7 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
   const IconComponent = slug === "pippofy" ? Disc : Cpu
 
   return (
-    <div className="relative py-6 flex flex-col lg:flex-row items-center justify-between gap-10">
+    <div className="relative py-6 flex flex-col lg:flex-row items-center justify-between gap-10 overflow-visible">
       <div className="relative w-[320px] sm:w-[360px] h-[320px] sm:h-[360px] shrink-0 flex items-center justify-center">
         {[340, 260, 180, 100].map((size, idx) => (
           <motion.div
@@ -394,7 +394,7 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
    ========================================================================= */
 function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
-    <div className="relative py-8 flex flex-col items-center">
+    <div className="relative py-8 flex flex-col items-center overflow-visible">
       <div className="relative w-full max-w-xl flex flex-col items-center">
         <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-1 bg-[#1a0a0a]/15 dark:bg-white/15 z-0" />
 
@@ -435,7 +435,7 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
    ========================================================================= */
 function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
-    <div className="relative py-6 flex flex-col items-center">
+    <div className="relative py-6 flex flex-col items-center overflow-visible">
       
       {/* Microphone Graphic Core */}
       <div className="w-12 h-12 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center mb-6 shadow-xl relative z-10">
@@ -478,35 +478,40 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
 
 /* =========================================================================
    STYLE 2: MINIMALIST TARGET RADAR SCOPE DIAGRAM (Reference Image 2 - Wassup)
+   100% UNCLIPPED & FULLY VISIBLE OVERFLOW
    ========================================================================= */
 function MinimalistRadarScopeDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
-    <div className="relative py-6 flex flex-col items-center text-center">
-      <div className="relative w-[340px] sm:w-[400px] h-[340px] sm:h-[400px] rounded-full border-2 border-black/15 dark:border-white/20 flex items-center justify-center p-8 shadow-inner my-4 overflow-hidden">
+    <div className="relative py-12 flex flex-col items-center text-center overflow-visible">
+      {/* Outer Radar Scope Frame - overflow-visible so node cards are 100% visible */}
+      <div className="relative w-[360px] sm:w-[460px] h-[360px] sm:h-[460px] rounded-full border-2 border-black/15 dark:border-white/20 flex items-center justify-center p-8 my-6 overflow-visible">
         
-        {/* Radar Crosshairs */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-full h-0.5 bg-black/15 dark:bg-white/15" />
-          <div className="h-full w-0.5 bg-black/15 dark:bg-white/15 absolute" />
+        {/* Inner Radar Background & Sweep Line Container (clipped inside the circle) */}
+        <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full h-0.5 bg-black/15 dark:bg-white/15" />
+            <div className="h-full w-0.5 bg-black/15 dark:bg-white/15 absolute" />
+          </div>
+
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <div className="w-1/2 h-0.5 bg-gradient-to-r from-transparent to-[#F59E9E] absolute right-0 top-1/2 -translate-y-1/2 origin-left" />
+          </motion.div>
         </div>
 
-        {/* Tactical Rotating Sweep Line */}
-        <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 flex items-center justify-center pointer-events-none"
-        >
-          <div className="w-1/2 h-0.5 bg-gradient-to-r from-transparent to-[#F59E9E] absolute right-0 top-1/2 -translate-y-1/2 origin-left" />
-        </motion.div>
-
-        <div className="w-3/4 h-3/4 rounded-full border-2 border-dashed border-black/20 dark:border-white/20 flex items-center justify-center">
+        {/* Inner Scope Rings */}
+        <div className="w-3/4 h-3/4 rounded-full border-2 border-dashed border-black/20 dark:border-white/20 flex items-center justify-center pointer-events-none">
           <div className="w-1/2 h-1/2 rounded-full border-2 border-black/30 dark:border-white/30 flex items-center justify-center">
-            <div className="w-9 h-9 rounded-full shadow-lg flex items-center justify-center bg-[#1a0a0a] text-white">
-              <Radio size={16} className="text-[#F59E9E] animate-pulse" />
+            <div className="w-10 h-10 rounded-full shadow-lg flex items-center justify-center bg-[#1a0a0a] text-white">
+              <Radio size={18} className="text-[#F59E9E] animate-pulse" />
             </div>
           </div>
         </div>
 
+        {/* 4 Cardinal Radar Node Cards - 100% UNCLIPPED & FULLY VISIBLE */}
         {nodes.map((node, i) => {
           const positions = [
             "top-0 -translate-y-1/2 left-1/2 -translate-x-1/2",
@@ -522,12 +527,12 @@ function MinimalistRadarScopeDiagram({ nodes, color }: { nodes: FlowchartNode[];
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className={`absolute ${positions[i % 4]} p-3.5 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-xl max-w-[160px] text-center z-20 hover:scale-105 transition-transform`}
+              className={`absolute ${positions[i % 4]} p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-2xl w-[170px] sm:w-[190px] text-center z-30 hover:scale-105 transition-transform`}
             >
-              <span className="text-[10px] font-mono font-black uppercase tracking-widest text-[#1a0a0a] dark:text-white block mb-0.5">
+              <span className="text-[10px] font-mono font-black uppercase tracking-widest text-[#1a0a0a] dark:text-white block mb-1">
                 0{i + 1} {node.label}
               </span>
-              <p className="text-[10px] text-[#4a5568] dark:text-zinc-400 font-inter leading-tight">
+              <p className="text-[10px] text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
                 {node.subtext}
               </p>
             </motion.div>
