@@ -30,7 +30,7 @@ import {
 import Header from "@/components/header"
 import CustomCursor from "@/components/custom-cursor"
 import Footer from "@/components/footer"
-import ProjectBespokeDiagram from "@/components/project-bespoke-diagram"
+import CaseStudyFlowchart from "@/components/case-study-flowchart"
 
 export default function ProjectCaseStudy() {
   const { slug } = useParams()
@@ -449,8 +449,8 @@ export default function ProjectCaseStudy() {
         </div>
       </section>
 
-      {/* ── BESPOKE PROJECT SYSTEM ARCHITECTURE & DIAGRAM ── */}
-      <ProjectBespokeDiagram slug={project.slug} color={project.color} title={project.title} />
+      {/* ── EDITORIAL SYSTEM ARCHITECTURE FLOWCHART ── */}
+      <CaseStudyFlowchart slug={project.slug} color={project.color} flowchart={dc.flowchart} />
 
       {/* ── WORKFLOW EVOLUTION ── */}
       {dc.workflow && (
