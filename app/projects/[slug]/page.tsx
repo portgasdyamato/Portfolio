@@ -148,12 +148,6 @@ export default function ProjectCaseStudy() {
                 </div>
              </div>
 
-             <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1, duration: 1.5 }} className="absolute left-10 bottom-24 max-w-[180px] hidden lg:block opacity-60">
-                <p className="text-[10px] font-inter italic leading-relaxed tracking-tight border-l border-brand-500/30 pl-4 py-2 bg-brand-500/[0.02]">
-                   {project.description.slice(0, 100)}...
-                </p>
-             </motion.div>
-
              <div className="absolute top-8 right-6 md:top-12 md:right-12 text-right flex flex-col items-end gap-12 z-20">
                 <div className="opacity-50">
                    <span className="text-[8px] md:text-[9px] font-black uppercase tracking-[0.6em] text-brand-500">EXHIBIT</span>
@@ -177,7 +171,7 @@ export default function ProjectCaseStudy() {
 
              {/* ── MOBILE CENTER STACK ── */}
              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.5 }} className="max-w-screen-2xl mx-auto w-full px-8 md:px-16 lg:px-20 flex flex-col items-center relative z-10 h-full justify-center text-center">
-                <div className="flex flex-col items-center gap-8 md:gap-12">
+                <div className="flex flex-col items-center gap-6 md:gap-8">
                    <motion.div 
                       animate={{ y: [0, -15, 0] }} 
                       transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} 
@@ -187,16 +181,21 @@ export default function ProjectCaseStudy() {
                          whileHover={{ scale: 1.02 }} 
                          src={project.image} 
                          alt={project.title} 
-                         className="w-full h-auto max-h-[40vh] md:max-h-[50vh] object-contain drop-shadow-[0_40px_150px_rgba(0,0,0,0.15)]" 
+                         className="w-full h-auto max-h-[35vh] md:max-h-[45vh] object-contain drop-shadow-[0_40px_150px_rgba(0,0,0,0.15)]" 
                       />
                       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-500/[0.05] blur-[120px] -z-10 rounded-full" />
                    </motion.div>
 
-                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="px-4">
-                       <h1 className="text-[42px] md:text-[80px] lg:text-[104px] font-bold italic tracking-tighter leading-[0.9] max-w-6xl">
+                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="px-4 max-w-4xl mx-auto flex flex-col items-center">
+                       <h1 className="text-[36px] md:text-[64px] lg:text-[76px] font-bold italic tracking-tight leading-[0.95] text-[#1a0a0a] dark:text-white font-outfit">
                           {project.title}
                        </h1>
-                       <div className="mt-8 flex items-center justify-center gap-4 md:gap-6 opacity-30">
+                       
+                       <p className="mt-3 text-xs md:text-sm text-[#4a5568] dark:text-zinc-400 font-inter italic leading-relaxed max-w-xl">
+                          "{project.description}"
+                       </p>
+
+                       <div className="mt-5 flex items-center justify-center gap-4 md:gap-6 opacity-40">
                           <div className="h-[1px] w-8 md:w-12 bg-foreground" />
                           <span className="text-[10px] font-black uppercase tracking-[0.4em]">{project.type}</span>
                           <div className="h-[1px] w-8 md:w-12 bg-foreground" />
