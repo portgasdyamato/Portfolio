@@ -68,7 +68,7 @@ const PROJECT_FLOWCHARTS: Record<string, { title: string; subtitle: string; styl
     ]
   },
   "voxa": {
-    title: "Acoustic Equalizer Processing Matrix",
+    title: "Acoustic Equalizer Flow Network",
     subtitle: "Streaming microphone speech to parsed NLP parameters",
     style: "arc",
     nodes: [
@@ -494,101 +494,130 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
 }
 
 /* =========================================================================
-   STYLE 4: BESPOKE ACOUSTIC EQUALIZER MATRIX (VoXa - Voice Task Manager)
-   100% Unique Soundwave Studio with Live Frequency Equalizer Bars & Stepped Pods
+   STYLE 4: PURE VECTOR ACOUSTIC SOUNDWAVE FLOWCHART (VoXa - Voice Task Manager)
+   100% Cardless & Boxless Pure Vector Sinusoidal Audio Wave Network
    ========================================================================= */
 function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
-  const podIcons = [Mic, Cpu, Zap, ShieldCheck]
-  const podBadges = ["01 SPEECH INGESTION", "02 NLP TOKEN PARSER", "03 TASK VITALS ENGINE", "04 HANDS-FREE SANCTUARY"]
+  const nodePositions = [125, 375, 625, 875]
 
   return (
-    <div className="relative py-6 max-w-5xl mx-auto px-4 overflow-visible">
-      
-      {/* Central Acoustic Equalizer Studio Bar Header */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-2 border-black/10 dark:border-white/15 rounded-3xl shadow-xl mb-10">
+    <div className="relative py-4 overflow-x-auto">
+      <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
         
-        {/* Microphone Core Pod */}
-        <div className="flex items-center gap-3.5">
-          <div className="w-12 h-12 rounded-2xl bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center shadow-lg relative">
-            <Mic size={22} className="text-[#F59E9E] animate-pulse" />
-            <span className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#F59E9E] border-2 border-white dark:border-zinc-950 animate-ping" />
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono font-black text-[#F59E9E] uppercase tracking-widest">ACOUSTIC CORE // VOXA</span>
-              <span className="px-2 py-0.5 rounded-full bg-[#F59E9E]/10 text-[9px] font-mono text-[#F59E9E] font-bold">SUB-100MS LATENCY</span>
-            </div>
-            <h4 className="text-sm font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
-              Real-Time Speech Processing Stream
-            </h4>
-          </div>
-        </div>
-
-        {/* Live Audio Equalizer Frequency Bars Animation */}
-        <div className="flex items-end gap-1.5 h-9 px-4 py-2 bg-[#1a0a0a]/5 dark:bg-white/5 rounded-2xl border border-black/5 dark:border-white/10">
-          {[16, 32, 12, 40, 24, 36, 18, 28, 44, 20].map((h, i) => (
-            <motion.div
-              key={i}
-              animate={{ height: [h * 0.4, h, h * 0.3, h * 0.9, h * 0.4] }}
-              transition={{ duration: 1.2 + (i % 4) * 0.2, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1.5 rounded-full"
-              style={{ backgroundColor: i % 2 === 0 ? color : "#1a0a0a" }}
+        {/* Pure Integrated SVG Acoustic Soundwave Canvas (NO RECTANGULAR BOXES OR CARDS) */}
+        <div className="w-full relative h-[320px]">
+          <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 320" fill="none">
+            
+            {/* Sinusoidal Acoustic Frequency Soundwave Vector Paths */}
+            <path 
+              d="M 125 150 Q 250 40, 375 150 T 625 150 T 875 150" 
+              stroke={color} 
+              strokeWidth="3.5" 
+              fill="none" 
             />
-          ))}
+
+            <path 
+              d="M 125 150 Q 250 260, 375 150 T 625 150 T 875 150" 
+              stroke={color} 
+              strokeWidth="2" 
+              strokeDasharray="6 4"
+              strokeOpacity="0.45"
+              fill="none" 
+            />
+
+            {/* Central Linear Speech Axis Line */}
+            <line x1="125" y1="150" x2="875" y2="150" stroke="#1a0a0a" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.3" className="dark:stroke-white/30" />
+
+            {/* Concentric Pulsating Soundwave Rings around Node Centers */}
+            {nodePositions.map((x, i) => (
+              <g key={i}>
+                <circle 
+                  cx={x} 
+                  cy="150" 
+                  r="52" 
+                  stroke={color} 
+                  strokeWidth="1.8" 
+                  strokeDasharray="4 3"
+                  strokeOpacity="0.45"
+                  fill="none" 
+                />
+                
+                <circle 
+                  cx={x} 
+                  cy="150" 
+                  r="72" 
+                  stroke="#1a0a0a" 
+                  strokeWidth="1" 
+                  strokeDasharray="2 4"
+                  strokeOpacity="0.2"
+                  className="dark:stroke-white/20"
+                  fill="none" 
+                />
+              </g>
+            ))}
+
+            {/* Animated Equalizer Pulse Dots gliding along the sinusoidal soundwave */}
+            <motion.circle 
+              r="6.5" 
+              fill="#1a0a0a"
+              className="dark:fill-white shadow-lg"
+              animate={{ cx: [125, 375, 625, 875], cy: [150, 150, 150, 150] }}
+              transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
+            />
+
+            {/* Acoustic Microphone & Node Badges (01, 02, 03, 04) */}
+            {nodePositions.map((x, i) => (
+              <g key={i}>
+                <circle 
+                  cx={x} 
+                  cy="150" 
+                  r="28" 
+                  className="fill-[#1a0a0a] dark:fill-white shadow-2xl"
+                  stroke={color}
+                  strokeWidth="2.5"
+                />
+
+                <text 
+                  x={x} 
+                  y="155" 
+                  textAnchor="middle" 
+                  className="fill-white dark:fill-[#1a0a0a] font-mono font-black text-sm"
+                  style={{ fontFamily: "'Inter', sans-serif" }}
+                >
+                  0{i + 1}
+                </text>
+              </g>
+            ))}
+          </svg>
+
+          {/* Pure Typography Flowchart Nodes (NO CONTAINER BOXES OR CARDS) */}
+          <div className="absolute top-[215px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
+            {nodes.map((node, i) => (
+              <motion.div
+                key={node.id}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="w-[200px] text-center flex flex-col items-center"
+              >
+                <div className="inline-flex items-center gap-1.5 mb-1 px-3 py-0.5 rounded-full bg-[#F59E9E]/10 border border-[#F59E9E]/20 text-[9px] font-mono font-bold text-[#F59E9E] uppercase tracking-wider">
+                  <Mic size={10} /> Acoustic Wave
+                </div>
+
+                <h5 className="text-xs font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit mb-1">
+                  {node.label}
+                </h5>
+
+                <p className="text-[10px] text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
+                  {node.subtext}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
       </div>
-
-      {/* 4 Stepped Interactive Soundwave Pods Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative z-10">
-        {nodes.map((node, i) => {
-          const Icon = podIcons[i % 4]
-          return (
-            <motion.div
-              key={node.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="group relative p-6 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl border-2 border-black/10 dark:border-white/15 rounded-3xl shadow-xl hover:shadow-2xl hover:border-[#F59E9E]/40 transition-all duration-300 flex flex-col justify-between"
-            >
-              {/* Top Pod Header */}
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-2xl bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-bold text-xs shadow-md">
-                    0{i + 1}
-                  </div>
-                  <div>
-                    <span className="text-[9px] font-mono font-black text-[#F59E9E] uppercase tracking-widest block">
-                      {podBadges[i]}
-                    </span>
-                    <h5 className="text-base font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
-                      {node.label}
-                    </h5>
-                  </div>
-                </div>
-
-                <div className="w-9 h-9 rounded-xl bg-[#F59E9E]/10 border border-[#F59E9E]/20 flex items-center justify-center text-[#F59E9E]">
-                  <Icon size={18} />
-                </div>
-              </div>
-
-              {/* Subtext Detail */}
-              <p className="text-xs text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed mb-4">
-                {node.subtext}
-              </p>
-
-              {/* Bottom Equalizer Signal Bar */}
-              <div className="pt-3 border-t border-black/5 dark:border-white/10 flex items-center justify-between text-[10px] font-mono text-black/40 dark:text-white/40">
-                <span className="flex items-center gap-1.5">
-                  <Activity size={12} className="text-[#F59E9E]" /> SIGNAL PARSED
-                </span>
-                <span className="text-[#F59E9E] font-bold">100% ACTIVE</span>
-              </div>
-            </motion.div>
-          )
-        })}
-      </div>
-
     </div>
   )
 }
