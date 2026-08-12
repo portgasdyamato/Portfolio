@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { GitBranch, Sparkles, CheckCircle2 } from "lucide-react"
+import { GitBranch, Search } from "lucide-react"
 
 interface FlowchartNode {
   id: string
@@ -146,8 +146,10 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
         
         {/* Section Header */}
         <div className="flex flex-col items-center text-center mb-10">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-[10px] font-mono font-bold tracking-[0.25em] uppercase shadow-md bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] mb-4">
-            <GitBranch size={13} className="text-[#F59E9E]" /> Architectural Flow Geometry
+          
+          {/* Centered Soft Rose Pill Tag (Matching Portfolio Design System) */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-[11px] font-mono font-bold tracking-[0.2em] uppercase bg-[#FFF0F3] text-[#FF4D7A] dark:bg-pink-500/10 dark:text-[#F59E9E] border border-pink-500/20 mb-4 shadow-sm">
+            <GitBranch size={13} className="text-[#FF4D7A] dark:text-[#F59E9E]" /> SYSTEM ARCHITECTURE
           </div>
           
           <h2 className="text-[32px] sm:text-[44px] md:text-[56px] font-bold italic tracking-tight leading-[1.05] text-[#1a0a0a] dark:text-white font-outfit">
@@ -168,20 +170,11 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
           {style === "radar" && <MinimalistRadarScopeDiagram nodes={nodes} color={themeColor} />}
         </div>
 
-        {/* SHORT EXPLANATORY PARAGRAPH DIRECTLY BELOW FLOWCHART */}
-        <div className="mt-8 max-w-3xl mx-auto text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] text-[10px] font-mono font-bold uppercase tracking-widest shadow-sm">
-            <Sparkles size={11} className="text-[#F59E9E]" /> Architecture Insight
-          </div>
-          
+        {/* CLEAN SHORT EXPLANATORY PARAGRAPH DIRECTLY BELOW FLOWCHART */}
+        <div className="mt-8 max-w-3xl mx-auto text-center">
           <p className="text-base sm:text-lg text-[#2d3748] dark:text-zinc-200 font-inter leading-relaxed italic font-medium px-4">
             "{explanationParagraph}"
           </p>
-
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs font-mono font-bold text-emerald-600 dark:text-emerald-400">
-            <CheckCircle2 size={15} />
-            <span>Pipeline Verified • Geometric Precision Architecture</span>
-          </div>
         </div>
 
       </div>
