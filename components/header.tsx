@@ -145,7 +145,7 @@ export default function Header() {
               initial={{ opacity: 0, scale: 0.95, y: 10, x: 0 }}
               animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 10, x: 0 }}
-              className="absolute top-full right-0 mt-4 p-4 bg-white/95 backdrop-blur-3xl rounded-[32px] border border-black/0.05 shadow-2xl w-[85vw] sm:w-[300px] origin-top-right transition-all"
+              className="absolute top-full right-0 mt-4 p-4 bg-white/95 backdrop-blur-3xl rounded-[32px] border border-black/0.05 shadow-2xl w-[calc(100vw-32px)] max-w-[320px] sm:w-[300px] origin-top-right transition-all"
             >
               <div className="grid grid-cols-2 gap-3">
                  {NAV_ITEMS.map((item, idx) => (

@@ -436,9 +436,9 @@ export default function Achievements() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 min-[360px]:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 lg:gap-10 overflow-visible pb-10 max-w-6xl mx-auto">
           {achievements.map((item, i) => (
-            <div key={item.id} className="w-full max-w-[145px] sm:max-w-[320px] mx-auto">
+            <div key={item.id} className="w-full max-w-[280px] sm:max-w-[320px] mx-auto">
               <MilestoneCard item={item} index={i} />
             </div>
           ))}

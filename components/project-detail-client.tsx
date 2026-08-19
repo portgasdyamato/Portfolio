@@ -291,35 +291,35 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
       </section>
 
       {/* ── CASE STUDY CONTENT: THE FOUNDATION ────────── */}
-      <section className="relative z-10 w-full max-w-[1400px] mx-auto px-6 py-40 space-y-64 lg:space-y-96">
+      <section className="relative z-10 w-full max-w-[1400px] mx-auto px-4 sm:px-6 py-20 sm:py-32 lg:py-40 space-y-32 sm:space-y-48 lg:space-y-96">
         
         {/* THE CHALLENGE SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 border-t border-white/5 pt-32">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 border-t border-white/5 pt-16 sm:pt-32">
           <div className="lg:col-span-5">
             <Reveal>
-              <div className="flex items-center gap-3 mb-10">
+              <div className="flex items-center gap-3 mb-6 sm:mb-10">
                 <span className="text-[10px] font-mono text-brand-500 uppercase tracking-[0.3em]">01_The Vision</span>
               </div>
-              <h2 className="text-5xl lg:text-7xl font-outfit font-black uppercase tracking-tighter text-white mb-10 leading-[0.9]">
+              <h2 className="text-3xl sm:text-5xl lg:text-7xl font-outfit font-black uppercase tracking-tighter text-white mb-6 sm:mb-10 leading-[0.95] sm:leading-[0.9]">
                 The problem<br/>Statement.
               </h2>
-              <p className="text-xl lg:text-3xl font-inter font-light text-white/70 leading-relaxed italic">
+              <p className="text-lg sm:text-xl lg:text-3xl font-inter font-light text-white/70 leading-relaxed italic">
                 {project.detailedContent.problemStatement}
               </p>
             </Reveal>
           </div>
-          <div className="lg:col-span-7 space-y-20">
+          <div className="lg:col-span-7 space-y-10 sm:space-y-20">
             <Reveal delay={0.2}>
-              <div className="relative rounded-[3rem] overflow-hidden aspect-video border border-white/10">
+              <div className="relative rounded-[2rem] sm:rounded-[3rem] overflow-hidden aspect-video border border-white/10">
                  <Image src={project.image} alt="Context" fill className="object-cover opacity-60" />
                  <div className="absolute inset-0 bg-gradient-to-tr from-brand-500/10 via-transparent to-transparent" />
               </div>
             </Reveal>
             <Reveal delay={0.3}>
-              <div className="p-12 lg:p-16 bg-white/[0.03] border border-white/5 rounded-[4rem] relative overflow-hidden group">
+              <div className="p-6 sm:p-12 lg:p-16 bg-white/[0.03] border border-white/5 rounded-[2rem] sm:rounded-[4rem] relative overflow-hidden group">
                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/10 blur-[60px] rounded-full translate-x-1/2 -translate-y-1/2" />
-                 <h3 className="text-2xl font-bold font-outfit uppercase tracking-widest text-brand-500 mb-6">The Solution</h3>
-                 <p className="text-xl lg:text-2xl font-light text-white/50 leading-relaxed">
+                 <h3 className="text-xl sm:text-2xl font-bold font-outfit uppercase tracking-widest text-brand-500 mb-4 sm:mb-6">The Solution</h3>
+                 <p className="text-base sm:text-xl lg:text-2xl font-light text-white/50 leading-relaxed">
                    {project.detailedContent.solution}
                  </p>
               </div>
@@ -328,18 +328,17 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
         </div>
 
         {/* CORE MATRIX (BENTO GRID) */}
-        <div className="space-y-20">
+        <div className="space-y-10 sm:space-y-20">
            <div className="flex items-center justify-between mb-1">
               <div className="flex items-center gap-3">
                  <span className="text-[10px] font-mono text-brand-500 uppercase tracking-[0.3em]">02_Features</span>
               </div>
-
            </div>
-                         <div className="flex flex-col gap-4">
-                  <h3 className="text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Amazing Features</h3>
-                </div>
+           <div className="flex flex-col gap-4">
+             <h3 className="text-3xl sm:text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Amazing Features</h3>
+           </div>
            
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
              {project.features.map((feature, i) => (
                <motion.div
                  key={i}
@@ -347,16 +346,16 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
                  whileInView={{ opacity: 1, y: 0 }}
                  viewport={{ once: true }}
                  transition={{ delay: i * 0.1, duration: 0.8 }}
-                 className="group relative h-[380px] p-12 bg-white/[0.02] border border-white/5 rounded-[3.5rem] overflow-hidden hover:border-brand-500/30 transition-all duration-500"
+                 className="group relative h-auto min-h-[300px] sm:h-[380px] p-6 sm:p-12 bg-white/[0.02] border border-white/5 rounded-[2rem] sm:rounded-[3.5rem] overflow-hidden hover:border-brand-500/30 transition-all duration-500"
                >
                  <div className="absolute top-0 right-0 w-32 h-32 bg-brand-500/[0.04] rounded-full blur-[80px] translate-x-1/2 -translate-y-1/2 group-hover:bg-brand-500/10 transition-colors" />
-                 <div className="relative z-10 flex flex-col h-full justify-between">
-                   <div className="w-16 h-16 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-black transition-all">
-                     <Zap size={28} />
+                 <div className="relative z-10 flex flex-col h-full justify-between gap-8 sm:gap-0">
+                   <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-500 group-hover:bg-brand-500 group-hover:text-black transition-all">
+                     <Zap size={24} className="sm:w-[28px] sm:h-[28px]" />
                    </div>
                    <div>
-                     <span className="text-[9px] font-mono tracking-[0.4em] text-white/20 uppercase mb-4 block">FUNCTION_MTRX_{i + 1}</span>
-                     <h4 className="text-2xl lg:text-3xl font-outfit font-bold uppercase tracking-tight text-white group-hover:text-brand-500 transition-colors leading-[1.1]">
+                     <span className="text-[9px] font-mono tracking-[0.4em] text-white/20 uppercase mb-3 sm:mb-4 block">FUNCTION_MTRX_{i + 1}</span>
+                     <h4 className="text-xl sm:text-2xl lg:text-3xl font-outfit font-bold uppercase tracking-tight text-white group-hover:text-brand-500 transition-colors leading-[1.1]">
                        {feature}
                      </h4>
                    </div>
@@ -367,53 +366,53 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
         </div>
 
         {/* DESIGN & PROCESS SECTION */}
-        <div className="space-y-48">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="space-y-10 pl-8 lg:pl-16 border-l border-brand-500/30">
+        <div className="space-y-24 sm:space-y-48">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-24 items-center">
+            <div className="space-y-6 sm:space-y-10 pl-4 sm:pl-8 lg:pl-16 border-l border-brand-500/30">
               <Reveal>
-                <div className="flex flex-col gap-4">
-                  <Palette className="text-brand-500 mb-4" size={40} />
-                  <h3 className="text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Creative<br/>Process.</h3>
+                <div className="flex flex-col gap-3 sm:gap-4">
+                  <Palette className="text-brand-500 mb-2 sm:mb-4" size={32} />
+                  <h3 className="text-3xl sm:text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Creative<br/>Process.</h3>
                 </div>
-                <p className="text-xl lg:text-2xl font-light text-white/50 leading-relaxed mt-8">
+                <p className="text-lg sm:text-xl lg:text-2xl font-light text-white/50 leading-relaxed mt-4 sm:mt-8">
                   {project.detailedContent.process}
                 </p>
               </Reveal>
             </div>
-            <div className="relative aspect-square rounded-[5rem] overflow-hidden bg-white/5">
+            <div className="relative aspect-square rounded-[2.5rem] sm:rounded-[5rem] overflow-hidden bg-white/5">
                <Image src={project.image} alt="Process visual" fill className="object-cover grayscale brightness-[0.7] hover:grayscale-0 transition-all duration-[1.5s]" />
                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-            <div className="order-2 lg:order-1 relative h-[600px] flex items-center justify-center">
-               <div className="w-full h-full bg-gradient-to-br from-[#111] to-black rounded-[5rem] border border-white/5 p-12 lg:p-20 flex flex-col justify-center relative shadow-2xl overflow-hidden">
-                  <div className="font-mono text-[10px] text-brand-500/40 space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-24 items-center">
+            <div className="order-2 lg:order-1 relative h-auto min-h-[380px] sm:h-[600px] flex items-center justify-center">
+               <div className="w-full h-full bg-gradient-to-br from-[#111] to-black rounded-[2.5rem] sm:rounded-[5rem] border border-white/5 p-6 sm:p-12 lg:p-20 flex flex-col justify-center relative shadow-2xl overflow-hidden">
+                  <div className="font-mono text-[10px] text-brand-500/40 space-y-4 sm:space-y-6">
                     <p className="flex gap-4"><span>DEPLOY_ID:</span> {project.slug.toUpperCase()}_v1.0</p>
                     <p className="flex gap-4 text-white/60"><span>LATENCY:</span> 24MS_STABLE</p>
-                    <div className="h-[1px] w-full bg-white/5 my-10" />
-                    <div className="grid grid-cols-2 gap-10 uppercase">
+                    <div className="h-[1px] w-full bg-white/5 my-6 sm:my-10" />
+                    <div className="grid grid-cols-2 gap-6 sm:gap-10 uppercase">
                        <div>
                           <p className="text-white/20 mb-2">Build Integrity</p>
-                          <p className="text-2xl font-bold text-white">99%</p>
+                          <p className="text-xl sm:text-2xl font-bold text-white">99%</p>
                        </div>
                        <div>
                           <p className="text-white/20 mb-2">Performance</p>
-                          <p className="text-2xl font-bold text-brand-500 tracking-tighter">ELITE</p>
+                          <p className="text-xl sm:text-2xl font-bold text-brand-500 tracking-tighter">ELITE</p>
                        </div>
                     </div>
                   </div>
-                  <Terminal className="absolute -bottom-10 -right-10 text-white/5" size={300} strokeWidth={0.5} />
+                  <Terminal className="absolute -bottom-10 -right-10 text-white/5" size={200} strokeWidth={0.5} />
                </div>
             </div>
-            <div className="order-1 lg:order-2 space-y-10 pr-8 lg:pr-16 lg:text-right border-r border-brand-500/30">
+            <div className="order-1 lg:order-2 space-y-6 sm:space-y-10 pr-4 sm:pr-8 lg:pr-16 lg:text-right border-r border-brand-500/30">
               <Reveal>
-                <div className="flex flex-col lg:items-end gap-4">
-                  <Code2 className="text-brand-500 mb-4" size={40} />
-                  <h3 className="text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Technical<br/>Craft.</h3>
+                <div className="flex flex-col lg:items-end gap-3 sm:gap-4">
+                  <Code2 className="text-brand-500 mb-2 sm:mb-4" size={32} />
+                  <h3 className="text-3xl sm:text-4xl lg:text-7xl font-outfit font-black uppercase text-white leading-none">Technical<br/>Craft.</h3>
                 </div>
-                <p className="text-xl lg:text-2xl font-light text-white/50 leading-relaxed mt-8">
+                <p className="text-lg sm:text-xl lg:text-2xl font-light text-white/50 leading-relaxed mt-4 sm:mt-8">
                   {project.detailedContent.coding}
                 </p>
               </Reveal>
@@ -422,18 +421,18 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
         </div>
 
         {/* TESTING & RESEARCH SECTION */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 border-t border-white/5 pt-32 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 sm:gap-16 border-t border-white/5 pt-16 sm:pt-32 items-center">
            <div className="lg:col-span-5">
               <SectionTitle num="03" title="Testing" subtitle="Research & Validation" />
-              <p className="text-xl lg:text-2xl font-light text-white/40 leading-relaxed">
+              <p className="text-lg sm:text-xl lg:text-2xl font-light text-white/40 leading-relaxed">
                 {project.detailedContent.testing}
               </p>
            </div>
            <div className="lg:col-span-7 flex justify-end">
-              <div className="w-full lg:max-w-xl h-[400px] bg-white/[0.02] border border-white/5 rounded-[4rem] p-12 flex flex-col justify-center relative overflow-hidden group">
+              <div className="w-full lg:max-w-xl h-auto min-h-[300px] sm:h-[400px] bg-white/[0.02] border border-white/5 rounded-[2.5rem] sm:rounded-[4rem] p-6 sm:p-12 flex flex-col justify-center relative overflow-hidden group">
                  <div className="absolute top-0 left-0 w-32 h-32 bg-brand-500/5 blur-[80px] rounded-full" />
-                 <Beaker className="text-brand-500 mb-8" size={48} />
-                 <h4 className="text-3xl font-outfit font-black uppercase text-white mb-6">Validation Phase</h4>
+                 <Beaker className="text-brand-500 mb-6 sm:mb-8" size={38} />
+                 <h4 className="text-2xl sm:text-3xl font-outfit font-black uppercase text-white mb-4 sm:mb-6">Validation Phase</h4>
                  <div className="space-y-4">
                     <div className="flex justify-between text-[10px] font-mono text-white/30 uppercase">
                        <span>User Sat Score</span>
@@ -453,9 +452,9 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
         </div>
 
         {/* KEY ACHIEVEMENTS */}
-        <div className="pt-20 space-y-32">
+        <div className="pt-10 sm:pt-20 space-y-16 sm:space-y-32">
            <SectionTitle num="04" title="Outcome" subtitle="Measurable Impact" />
-           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
              {project.achievements.map((achievement, i) => (
                <motion.div
                  key={i}
@@ -463,12 +462,12 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
                  whileInView={{ scale: 1, opacity: 1 }}
                  viewport={{ once: true }}
                  transition={{ delay: i * 0.1 }}
-                 className="group p-12 bg-white/[0.01] border border-white/5 rounded-[4rem] hover:bg-brand-500 transition-all duration-700 h-full flex flex-col justify-between"
+                 className="group p-6 sm:p-12 bg-white/[0.01] border border-white/5 rounded-[2.5rem] sm:rounded-[4rem] hover:bg-brand-500 transition-all duration-700 h-full flex flex-col justify-between"
                >
-                 <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-500 group-hover:bg-black group-hover:text-brand-500 transition-all mb-12">
-                   <CheckCircle2 size={32} />
+                 <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-500 group-hover:bg-black group-hover:text-brand-500 transition-all mb-6 sm:mb-12">
+                   <CheckCircle2 size={24} className="sm:w-[32px] sm:h-[32px]" />
                  </div>
-                 <p className="text-2xl font-outfit font-black uppercase tracking-tight text-white group-hover:text-black transition-colors">
+                 <p className="text-xl sm:text-2xl font-outfit font-black uppercase tracking-tight text-white group-hover:text-black transition-colors">
                    {achievement}
                  </p>
                </motion.div>

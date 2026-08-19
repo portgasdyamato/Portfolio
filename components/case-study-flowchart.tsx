@@ -213,15 +213,15 @@ export default function CaseStudyFlowchart({ slug, flowchart }: CaseStudyFlowcha
 }
 
 /* =========================================================================
-   STYLE 5: BEZIER FLOW NETWORK DIAGRAM (Pure Single SVG Canvas)
+   STYLE 5: BEZIER FLOW NETWORK DIAGRAM (Responsive SVG + Adaptive Cards)
    ========================================================================= */
 function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   const nodePositions = [125, 375, 625, 875]
 
   return (
-    <div className="relative py-2 overflow-x-auto">
-      <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
-        
+    <div className="relative py-4 w-full overflow-hidden">
+      {/* Desktop View (lg screens 1024px+) */}
+      <div className="hidden lg:block min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
         <div className="w-full relative h-[250px]">
           <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 250" fill="none">
             <path 
@@ -301,20 +301,48 @@ function BezierFlowNetworkDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
         </div>
 
       </div>
+
+      {/* Mobile & Tablet Responsive View (< 1024px) */}
+      <div className="block lg:hidden w-full space-y-3 px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          {nodes.map((node, i) => (
+            <motion.div
+              key={node.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-md flex items-center gap-3.5"
+            >
+              <span className="w-9 h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-black text-xs shrink-0 shadow-md">
+                0{i + 1}
+              </span>
+              <div>
+                <h5 className="text-xs font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
+                  {node.label}
+                </h5>
+                <p className="text-[11px] text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
+                  {node.subtext}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
 
 /* =========================================================================
-   STYLE 3: ORBITAL CONCENTRIC SPHERES DIAGRAM (Reference Image 3)
+   STYLE 3: ORBITAL CONCENTRIC SPHERES DIAGRAM (Responsive Spheres)
    ========================================================================= */
 function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: FlowchartNode[]; color: string; slug?: string }) {
   const IconComponent = slug === "pippofy" ? Disc : Cpu
 
   return (
-    <div className="relative py-4 flex flex-col lg:flex-row items-center justify-between gap-10 overflow-visible">
-      <div className="relative w-[320px] sm:w-[360px] h-[320px] sm:h-[360px] shrink-0 flex items-center justify-center">
-        {[340, 260, 180, 100].map((size, idx) => (
+    <div className="relative py-4 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10 overflow-hidden w-full">
+      <div className="relative w-[260px] sm:w-[320px] md:w-[360px] h-[260px] sm:h-[320px] md:h-[360px] shrink-0 flex items-center justify-center mx-auto">
+        {[260, 200, 140, 80].map((size, idx) => (
           <motion.div
             key={idx}
             initial={{ scale: 0.8, opacity: 0 }}
@@ -330,9 +358,9 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
           />
         ))}
 
-        <div className="w-16 h-16 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex flex-col items-center justify-center shadow-2xl z-10">
-          <IconComponent size={20} className="text-[#F59E9E]" />
-          <span className="text-[9px] font-mono font-bold uppercase tracking-widest mt-0.5">CORE</span>
+        <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex flex-col items-center justify-center shadow-2xl z-10">
+          <IconComponent size={18} className="text-[#F59E9E]" />
+          <span className="text-[8px] sm:text-[9px] font-mono font-bold uppercase tracking-widest mt-0.5">CORE</span>
         </div>
 
         <motion.div
@@ -340,7 +368,7 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
           transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
         >
-          <div className="w-4 h-4 rounded-full shadow-lg" style={{ backgroundColor: color, transform: "translate(130px, 0)" }} />
+          <div className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full shadow-lg" style={{ backgroundColor: color, transform: "translate(100px, 0)" }} />
         </motion.div>
 
         <motion.div
@@ -348,11 +376,11 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
           transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
         >
-          <div className="w-3 h-3 rounded-full bg-[#1a0a0a] dark:bg-white shadow-md" style={{ transform: "translate(-90px, 0)" }} />
+          <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[#1a0a0a] dark:bg-white shadow-md" style={{ transform: "translate(-70px, 0)" }} />
         </motion.div>
       </div>
 
-      <div className="flex-1 space-y-3.5 w-full">
+      <div className="flex-1 space-y-3 sm:space-y-3.5 w-full">
         {nodes.map((node, i) => (
           <motion.div
             key={node.id}
@@ -360,22 +388,22 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="p-4 bg-white dark:bg-zinc-950 rounded-2xl border-2 border-black/10 dark:border-white/15 flex items-center justify-between gap-5 hover:shadow-xl transition-all"
+            className="p-3.5 sm:p-4 bg-white dark:bg-zinc-950 rounded-2xl border-2 border-black/10 dark:border-white/15 flex items-center justify-between gap-3 sm:gap-5 hover:shadow-xl transition-all"
           >
-            <div className="flex items-center gap-4">
-              <span className="w-9 h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-md">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-bold text-xs shrink-0 shadow-md">
                 0{i + 1}
               </span>
               <div>
-                <h5 className="text-sm font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
+                <h5 className="text-xs sm:text-sm font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
                   {node.label}
                 </h5>
-                <p className="text-xs text-[#4a5568] dark:text-zinc-400 font-inter">
+                <p className="text-[10px] sm:text-xs text-[#4a5568] dark:text-zinc-400 font-inter">
                   {node.subtext}
                 </p>
               </div>
             </div>
-            <div className="w-3 h-3 rounded-full shrink-0 shadow-sm" style={{ backgroundColor: color }} />
+            <div className="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full shrink-0 shadow-sm" style={{ backgroundColor: color }} />
           </motion.div>
         ))}
       </div>
@@ -384,21 +412,17 @@ function OrbitalConcentricSpheresDiagram({ nodes, color, slug }: { nodes: Flowch
 }
 
 /* =========================================================================
-   STYLE 1: SACRED GEOMETRY HOURGLASS & VENN DIAGRAM (Reference Image 1 - Vidya)
-   100% UNCLIPPED TOP CIRCLES (cy = 130, viewBox 0 0 1000 280)
+   STYLE 1: SACRED GEOMETRY DIAGRAM (Vidya)
    ========================================================================= */
 function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   const circleCenters = [125, 375, 625, 875]
 
   return (
-    <div className="relative py-2 overflow-x-auto">
-      <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
-        
-        {/* Pure Integrated SVG Sacred Geometry Rings Canvas */}
+    <div className="relative py-4 w-full overflow-hidden">
+      {/* Desktop View (lg screens 1024px+) */}
+      <div className="hidden lg:block min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
         <div className="w-full relative h-[280px]">
           <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 280" fill="none">
-            
-            {/* 4 Interlocking Fibonacci Sacred Geometry Circles (cy = 130, r = 125 -> top Y = 5, 100% unclipped!) */}
             {circleCenters.map((x, i) => (
               <g key={i}>
                 <circle 
@@ -412,7 +436,6 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
                   fill="none" 
                 />
                 
-                {/* Secondary Hairline Accent Rings */}
                 <circle 
                   cx={x} 
                   cy="130" 
@@ -426,10 +449,8 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
               </g>
             ))}
 
-            {/* Central Axis Horizontal Connector */}
             <line x1="125" y1="130" x2="875" y2="130" stroke={color} strokeWidth="3" strokeDasharray="4 3" />
 
-            {/* Glowing Traveling Spark Dot */}
             <motion.circle 
               r="6" 
               fill={color}
@@ -438,7 +459,6 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             />
 
-            {/* Center Sacred Geometry Node Circles (01, 02, 03, 04) */}
             {circleCenters.map((x, i) => (
               <g key={i}>
                 <circle 
@@ -461,7 +481,6 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
             ))}
           </svg>
 
-          {/* Text Cards Positioned Cleanly Underneath Each Sacred Circle */}
           <div className="absolute top-[175px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
             {nodes.map((node, i) => (
               <motion.div
@@ -484,26 +503,50 @@ function SacredGeometryDiagram({ nodes, color }: { nodes: FlowchartNode[]; color
         </div>
 
       </div>
+
+      {/* Mobile & Tablet View (< 1024px) */}
+      <div className="block lg:hidden w-full space-y-3 px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          {nodes.map((node, i) => (
+            <motion.div
+              key={node.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-md flex items-center gap-3.5"
+            >
+              <span className="w-9 h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-black text-xs shrink-0 shadow-md">
+                0{i + 1}
+              </span>
+              <div>
+                <h5 className="text-xs font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
+                  {node.label}
+                </h5>
+                <p className="text-[11px] text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
+                  {node.subtext}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
 
 /* =========================================================================
-   STYLE 4: PURE VECTOR ACOUSTIC SOUNDWAVE FLOWCHART (VoXa - Voice Task Manager)
-   Tight Top Padding (cy = 100, h = 230px, Tag Removed)
+   STYLE 4: PURE VECTOR ACOUSTIC SOUNDWAVE FLOWCHART (VoXa)
    ========================================================================= */
 function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   const nodePositions = [125, 375, 625, 875]
 
   return (
-    <div className="relative py-2 overflow-x-auto">
-      <div className="min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
-        
-        {/* Pure Integrated SVG Acoustic Soundwave Canvas (h-[230px], cy = 100) */}
+    <div className="relative py-4 w-full overflow-hidden">
+      {/* Desktop View (lg screens 1024px+) */}
+      <div className="hidden lg:block min-w-[800px] max-w-[1000px] mx-auto relative flex flex-col items-center">
         <div className="w-full relative h-[230px]">
           <svg className="w-full h-full overflow-visible" viewBox="0 0 1000 230" fill="none">
-            
-            {/* Sinusoidal Acoustic Frequency Soundwave Vector Paths */}
             <path 
               d="M 125 100 Q 250 25, 375 100 T 625 100 T 875 100" 
               stroke={color} 
@@ -520,10 +563,8 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
               fill="none" 
             />
 
-            {/* Central Linear Speech Axis Line */}
             <line x1="125" y1="100" x2="875" y2="100" stroke="#1a0a0a" strokeWidth="2" strokeDasharray="3 3" strokeOpacity="0.3" className="dark:stroke-white/30" />
 
-            {/* Concentric Pulsating Soundwave Rings around Node Centers */}
             {nodePositions.map((x, i) => (
               <g key={i}>
                 <circle 
@@ -551,7 +592,6 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
               </g>
             ))}
 
-            {/* Animated Equalizer Pulse Dots gliding along the sinusoidal soundwave */}
             <motion.circle 
               r="6.5" 
               fill="#1a0a0a"
@@ -560,7 +600,6 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
               transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
             />
 
-            {/* Acoustic Microphone & Node Badges (01, 02, 03, 04) */}
             {nodePositions.map((x, i) => (
               <g key={i}>
                 <circle 
@@ -585,7 +624,6 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
             ))}
           </svg>
 
-          {/* Pure Typography Flowchart Nodes (Tag Removed, Positioned Tight) */}
           <div className="absolute top-[150px] left-0 right-0 grid grid-cols-4 justify-items-center px-4">
             {nodes.map((node, i) => (
               <motion.div
@@ -609,17 +647,46 @@ function ConcentricArcWaveDiagram({ nodes, color }: { nodes: FlowchartNode[]; co
         </div>
 
       </div>
+
+      {/* Mobile & Tablet View (< 1024px) */}
+      <div className="block lg:hidden w-full space-y-3 px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          {nodes.map((node, i) => (
+            <motion.div
+              key={node.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-md flex items-center gap-3.5"
+            >
+              <span className="w-9 h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-black text-xs shrink-0 shadow-md">
+                0{i + 1}
+              </span>
+              <div>
+                <h5 className="text-xs font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
+                  {node.label}
+                </h5>
+                <p className="text-[11px] text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
+                  {node.subtext}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
 
 /* =========================================================================
-   STYLE 2: MINIMALIST TARGET RADAR SCOPE DIAGRAM (Reference Image 2 - Wassup)
+   STYLE 2: MINIMALIST TARGET RADAR SCOPE DIAGRAM (Wassup - Overflow Fix)
    ========================================================================= */
 function MinimalistRadarScopeDiagram({ nodes, color }: { nodes: FlowchartNode[]; color: string }) {
   return (
-    <div className="relative py-12 flex flex-col items-center text-center overflow-visible">
-      <div className="relative w-[360px] sm:w-[460px] h-[360px] sm:h-[460px] rounded-full border-2 border-black/15 dark:border-white/20 flex items-center justify-center p-8 my-6 overflow-visible">
+    <div className="relative py-6 flex flex-col items-center text-center overflow-hidden w-full">
+      {/* Desktop Protruding Scope View (lg screens 1024px+) */}
+      <div className="hidden lg:flex relative w-[460px] h-[460px] rounded-full border-2 border-black/15 dark:border-white/20 items-center justify-center p-8 my-6">
         
         <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
           <div className="absolute inset-0 flex items-center justify-center">
@@ -659,7 +726,7 @@ function MinimalistRadarScopeDiagram({ nodes, color }: { nodes: FlowchartNode[];
               whileInView={{ scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.15 }}
-              className={`absolute ${positions[i % 4]} p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-2xl w-[170px] sm:w-[190px] text-center z-30 hover:scale-105 transition-transform`}
+              className={`absolute ${positions[i % 4]} p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-2xl w-[190px] text-center z-30 hover:scale-105 transition-transform`}
             >
               <span className="text-[10px] font-mono font-black uppercase tracking-widest text-[#1a0a0a] dark:text-white block mb-1">
                 0{i + 1} {node.label}
@@ -670,6 +737,59 @@ function MinimalistRadarScopeDiagram({ nodes, color }: { nodes: FlowchartNode[];
             </motion.div>
           )
         })}
+      </div>
+
+      {/* Mobile & Tablet Responsive View (< 1024px - Zero Horizontal Overflow!) */}
+      <div className="block lg:hidden w-full px-2 space-y-6">
+        {/* Animated Radar Center Core */}
+        <div className="relative w-[220px] sm:w-[260px] h-[220px] sm:h-[260px] rounded-full border-2 border-black/15 dark:border-white/20 flex items-center justify-center mx-auto my-2 overflow-hidden">
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-full h-0.5 bg-black/15 dark:bg-white/15" />
+            <div className="h-full w-0.5 bg-black/15 dark:bg-white/15 absolute" />
+          </div>
+
+          <motion.div 
+            animate={{ rotate: 360 }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <div className="w-1/2 h-0.5 bg-gradient-to-r from-transparent to-[#F59E9E] absolute right-0 top-1/2 -translate-y-1/2 origin-left" />
+          </motion.div>
+
+          <div className="w-3/4 h-3/4 rounded-full border-2 border-dashed border-black/20 dark:border-white/20 flex items-center justify-center pointer-events-none">
+            <div className="w-1/2 h-1/2 rounded-full border-2 border-black/30 dark:border-white/30 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full shadow-lg flex items-center justify-center bg-[#1a0a0a] text-white">
+                <Radio size={18} className="text-[#F59E9E] animate-pulse" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* 4 Radar Target Cards in Responsive Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 max-w-xl mx-auto w-full">
+          {nodes.map((node, i) => (
+            <motion.div
+              key={node.id}
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-4 bg-white dark:bg-zinc-950 border-2 border-black/10 dark:border-white/15 rounded-2xl shadow-md flex items-center gap-3.5 text-left"
+            >
+              <span className="w-9 h-9 rounded-full bg-[#1a0a0a] text-white dark:bg-white dark:text-[#1a0a0a] flex items-center justify-center font-mono font-black text-xs shrink-0 shadow-md">
+                0{i + 1}
+              </span>
+              <div>
+                <h5 className="text-xs font-bold uppercase tracking-tight text-[#1a0a0a] dark:text-white font-outfit">
+                  {node.label}
+                </h5>
+                <p className="text-[11px] text-[#4a5568] dark:text-zinc-400 font-inter leading-relaxed">
+                  {node.subtext}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </div>
   )

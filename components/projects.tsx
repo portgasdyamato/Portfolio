@@ -143,7 +143,7 @@ export default function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] flex items-center justify-center p-4 md:p-8"
+              className="fixed inset-0 bg-black/95 backdrop-blur-3xl z-[99999] flex items-center justify-center p-3 sm:p-6 md:p-8"
               onClick={() => setSelectedProject(null)}
             >
                 {/* Modal Previous Project Arrow */}
@@ -153,9 +153,9 @@ export default function Projects() {
                     handlePrevModal()
                   }}
                   aria-label="Previous project"
-                  className="hidden sm:flex fixed left-3 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white items-center justify-center hover:bg-[#F59E9E] hover:border-[#F59E9E] transition-all z-[100000] group cursor-pointer shadow-2xl"
+                  className="flex fixed left-2 sm:left-4 md:left-6 lg:left-10 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white items-center justify-center hover:bg-[#F59E9E] hover:border-[#F59E9E] transition-all z-[100000] group cursor-pointer shadow-2xl"
                 >
-                  <ChevronLeft className="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform" />
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform" />
                 </button>
 
                 {/* Modal Next Project Arrow */}
@@ -165,9 +165,9 @@ export default function Projects() {
                     handleNextModal()
                   }}
                   aria-label="Next project"
-                  className="hidden sm:flex fixed right-3 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white items-center justify-center hover:bg-[#F59E9E] hover:border-[#F59E9E] transition-all z-[100000] group cursor-pointer shadow-2xl"
+                  className="flex fixed right-2 sm:right-4 md:right-6 lg:right-10 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 text-white items-center justify-center hover:bg-[#F59E9E] hover:border-[#F59E9E] transition-all z-[100000] group cursor-pointer shadow-2xl"
                 >
-                  <ChevronRight className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform" />
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform" />
                 </button>
 
                 <motion.div
@@ -175,39 +175,39 @@ export default function Projects() {
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.9, opacity: 0, y: 100 }}
                   transition={{ type: "spring", damping: 30, stiffness: 200, mass: 0.8 }}
-                  className="w-full max-w-6xl max-h-[90vh] overflow-y-auto scrollbar-hide bg-background rounded-[2rem] md:rounded-[3.5rem] p-5 md:p-10 lg:p-12 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground touch-auto"
+                  className="w-full max-w-6xl max-h-[92vh] overflow-y-auto scrollbar-hide bg-background rounded-[1.8rem] sm:rounded-[2.5rem] md:rounded-[3.5rem] p-4 sm:p-8 md:p-10 lg:p-12 relative border border-white/10 shadow-[0_50px_100px_-20px_rgba(0,0,0,1)] text-foreground touch-auto"
                   onClick={(e) => e.stopPropagation()}
                   onWheel={(e) => e.stopPropagation()}
                 >
                   <button
-                    className="absolute top-4 right-4 md:top-12 md:right-12 w-12 h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground"
+                    className="absolute top-3 right-3 sm:top-6 sm:right-6 md:top-12 md:right-12 w-9 h-9 sm:w-12 sm:h-12 md:w-16 md:h-16 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-500 hover:text-white transition-all z-50 text-foreground"
                     onClick={() => setSelectedProject(null)}
                   >
-                    <X className="w-6 h-6 md:w-8 md:h-8" />
+                    <X className="w-5 h-5 sm:w-6 sm:h-6 md:w-8 md:h-8" />
                   </button>
 
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-20">
-                    <div className="space-y-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 md:gap-20 pt-4 sm:pt-0">
+                    <div className="space-y-6 sm:space-y-10">
                       {/* BOUNDLESS IMAGE UNIT WITHIN MODAL */}
                       <div className="relative w-full h-auto flex items-center justify-center">
                         <img
                           src={projectsData[selectedProject].image || "/placeholder.svg"}
                           alt={projectsData[selectedProject].title}
-                          className="w-full h-auto max-h-[300px] md:max-h-[500px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+                          className="w-full h-auto max-h-[220px] sm:max-h-[350px] md:max-h-[500px] object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.15)] dark:drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
                         />
                       </div>
                       
-                      <div className="flex flex-col gap-5">
-                        <div className="grid grid-cols-2 gap-5">
+                      <div className="flex flex-col gap-4 sm:gap-5">
+                        <div className="grid grid-cols-2 gap-3 sm:gap-5">
                           {projectsData[selectedProject].liveUrl && (
                             <a
                               href={projectsData[selectedProject].liveUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="group relative h-14 md:h-16 bg-foreground text-background font-black transition-all rounded-2xl flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest overflow-hidden"
+                              className="group relative h-12 sm:h-14 md:h-16 bg-foreground text-background font-black transition-all rounded-2xl flex items-center justify-center gap-2 text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest overflow-hidden"
                             >
                               <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-foreground">
-                                <ExternalLink size={18} /> Live Demo
+                                <ExternalLink size={16} className="sm:w-[18px] sm:h-[18px]" /> Live Demo
                               </span>
                               <div className="absolute inset-0 bg-background translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                             </a>
@@ -217,10 +217,10 @@ export default function Projects() {
                               href={projectsData[selectedProject].githubUrl}
                               target="_blank"
                               rel="noreferrer"
-                              className="group relative h-14 md:h-16 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[10px] md:text-xs uppercase tracking-widest text-foreground overflow-hidden"
+                              className="group relative h-12 sm:h-14 md:h-16 bg-white/5 border border-white/10 hover:bg-white/10 transition-all rounded-2xl font-black flex items-center justify-center gap-2 text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-foreground overflow-hidden"
                             >
                               <span className="relative z-10 flex items-center gap-2 group-hover:text-background transition-colors duration-500">
-                                <Github size={18} /> Source
+                                <Github size={16} className="sm:w-[18px] sm:h-[18px]" /> Source
                               </span>
                               <div className="absolute inset-0 bg-foreground translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                             </a>
@@ -229,10 +229,10 @@ export default function Projects() {
                         
                         <Link
                           href={`/projects/${projectsData[selectedProject].slug}`}
-                          className="group relative w-full h-16 md:h-20 bg-brand-600 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-3 text-xs md:text-lg uppercase tracking-[0.25em] shadow-2xl shadow-brand-500/20 overflow-hidden"
+                          className="group relative w-full h-14 sm:h-16 md:h-20 bg-brand-600 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-lg uppercase tracking-[0.2em] md:tracking-[0.25em] shadow-2xl shadow-brand-500/20 overflow-hidden"
                         >
-                           <span className="relative z-10 flex items-center gap-3 transition-colors duration-500 group-hover:text-white text-white">
-                             View Full Case Study <ArrowUpRight size={22} />
+                           <span className="relative z-10 flex items-center gap-2 sm:gap-3 transition-colors duration-500 group-hover:text-white text-white">
+                             View Full Case Study <ArrowUpRight size={18} className="sm:w-[22px] sm:h-[22px]" />
                            </span>
                            <div className="absolute inset-0 bg-brand-500 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                         </Link>
@@ -240,38 +240,38 @@ export default function Projects() {
                     </div>
 
                     <div className="flex flex-col text-left">
-                      <span className="text-brand-600 dark:text-brand-400 font-black tracking-[0.4em] uppercase text-[10px] md:text-xs mb-8 flex items-center gap-4">
-                        <span className="w-12 h-[1px] bg-brand-600" />
+                      <span className="text-brand-600 dark:text-brand-400 font-black tracking-[0.25em] sm:tracking-[0.4em] uppercase text-[9px] sm:text-[10px] md:text-xs mb-4 sm:mb-8 flex items-center gap-3 sm:gap-4">
+                        <span className="w-8 sm:w-12 h-[1px] bg-brand-600" />
                         {projectsData[selectedProject].status} • {projectsData[selectedProject].duration}
                       </span>
-                      <h2 className="text-4xl md:text-6xl font-black font-outfit mb-8 uppercase tracking-tighter leading-[0.9] text-foreground">
+                      <h2 className="text-3xl sm:text-4xl md:text-6xl font-black font-outfit mb-4 sm:mb-8 uppercase tracking-tighter leading-[0.95] sm:leading-[0.9] text-foreground">
                         {projectsData[selectedProject].title}
                       </h2>
-                      <p className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12 font-inter font-medium">
+                      <p className="text-base sm:text-xl md:text-2xl text-muted-foreground leading-relaxed mb-6 sm:mb-12 font-inter font-medium">
                         {projectsData[selectedProject].description}
                       </p>
 
-                      <div className="space-y-10 md:space-y-14">
+                      <div className="space-y-6 sm:space-y-10 md:space-y-14">
                         <div>
-                          <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-6 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Stack Overview</h4>
-                          <div className="flex flex-wrap gap-2.5">
+                          <h4 className="text-[10px] md:text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-4 sm:mb-6 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Stack Overview</h4>
+                          <div className="flex flex-wrap gap-2 sm:gap-2.5">
                             {projectsData[selectedProject].technologies.map((tech: string) => (
-                              <span key={tech} className="px-4 py-2 bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-xl text-[10px] font-bold uppercase tracking-widest text-foreground">
+                              <span key={tech} className="px-3 sm:px-4 py-1.5 sm:py-2 bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10 rounded-xl text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-foreground">
                                 {tech}
                               </span>
                             ))}
                           </div>
                         </div>
 
-                        <div className="hidden md:block">
-                           <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-8 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Core Impact</h4>
-                           <div className="grid grid-cols-1 gap-5 text-foreground">
+                        <div>
+                           <h4 className="text-xs font-black uppercase tracking-[0.2em] text-muted-foreground mb-4 sm:mb-8 font-outfit border-b border-black/10 dark:border-white/10 pb-2 inline-block">Core Impact</h4>
+                           <div className="grid grid-cols-1 gap-3 sm:gap-5 text-foreground">
                              {projectsData[selectedProject].achievements.slice(0, 3).map((achievement: string, i: number) => (
-                               <div key={i} className="flex items-center gap-5 p-6 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[1.5rem] group/item hover:border-brand-500/50 transition-all duration-500 shadow-sm">
-                                 <div className="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/10">
-                                   <CheckCircle2 size={24} />
+                               <div key={i} className="flex items-center gap-3 sm:gap-5 p-4 sm:p-6 bg-black/[0.02] dark:bg-white/[0.02] border border-black/5 dark:border-white/5 rounded-[1.2rem] sm:rounded-[1.5rem] group/item hover:border-brand-500/50 transition-all duration-500 shadow-sm">
+                                 <div className="w-8 h-8 sm:w-12 sm:h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center shrink-0 shadow-lg shadow-brand-500/10">
+                                   <CheckCircle2 size={18} className="sm:w-[24px] sm:h-[24px]" />
                                  </div>
-                                 <span className="text-sm md:text-base font-bold uppercase tracking-tight text-foreground/70 group-hover/item:text-foreground transition-colors leading-snug">{achievement}</span>
+                                 <span className="text-xs sm:text-sm md:text-base font-bold uppercase tracking-tight text-foreground/70 group-hover/item:text-foreground transition-colors leading-snug">{achievement}</span>
                                </div>
                              ))}
                            </div>
@@ -309,7 +309,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
     }
   }, [projects, index])
 
-  const spacing = containerWidth < 768 ? containerWidth * 0.8 : Math.min(1000, containerWidth * 0.6)
+  const spacing = containerWidth < 640 ? containerWidth * 0.85 : containerWidth < 768 ? containerWidth * 0.8 : Math.min(1000, containerWidth * 0.6)
 
   const handleStep = (distance: number) => {
     setIndex((prev) => {
@@ -345,7 +345,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[550px] sm:h-[700px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
+    <div className="relative w-full h-[500px] sm:h-[650px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
 
       {/* Previous Project Arrow Button */}
@@ -354,9 +354,9 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         whileTap={{ scale: 0.9 }}
         onClick={() => handleStep(-1)}
         aria-label="Previous Project"
-        className="absolute left-2 sm:left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
+        className="absolute left-1 sm:left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
       >
-        <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform duration-300" />
+        <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform duration-300" />
       </motion.button>
 
       {/* Next Project Arrow Button */}
@@ -365,9 +365,9 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         whileTap={{ scale: 0.9 }}
         onClick={() => handleStep(1)}
         aria-label="Next Project"
-        className="absolute right-2 sm:right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-11 h-11 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
+        className="absolute right-1 sm:right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
       >
-        <ChevronRight className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform duration-300" />
+        <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform duration-300" />
       </motion.button>
 
       <motion.div 
@@ -402,7 +402,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         </AnimatePresence>
       </motion.div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 z-50 pointer-events-auto">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 z-50 pointer-events-auto">
         <div className="flex gap-2.5 items-center">
           {projects.map((_, i) => (
             <button
@@ -446,7 +446,6 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
   
   const handleMouseEnter = () => {
     setIsHovered(true)
-    // Significantly increased tilt for a more 'breathtaking' creative interaction
     const val = (Math.random() * 5 + 7) * (Math.random() > 0.5 ? 1 : -1);
     setCurrentRotation(val)
   }
@@ -475,16 +474,16 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
       transition={{ type: "spring", stiffness: 220, damping: 28, mass: 1 }}
       style={{
         position: "absolute",
-        width: "min(650px, 92vw)",
+        width: "min(650px, 90vw)",
         height: "auto", 
-        minHeight: "500px",
+        minHeight: "420px",
         transformStyle: "preserve-3d",
         zIndex: Math.round(100 - Math.abs(offset) * 40),
         pointerEvents: isActive ? "auto" : "none",
       }}
-      className="bg-transparent group/project cursor-pointer flex flex-col items-center gap-4 md:gap-6"
+      className="bg-transparent group/project cursor-pointer flex flex-col items-center gap-3 sm:gap-4 md:gap-6"
     >
-      <div className="relative w-full h-[280px] sm:h-[320px] md:h-[380px] shrink-0 pointer-events-none">
+      <div className="relative w-full h-[200px] sm:h-[300px] md:h-[380px] shrink-0 pointer-events-none">
         <motion.div 
           animate={{ 
             scale: isHovered ? 1.05 : 1,
@@ -502,13 +501,13 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         </motion.div>
       </div>
 
-      <div className="flex flex-col items-center w-full z-10 mt-2 md:mt-6">
+      <div className="flex flex-col items-center w-full z-10 mt-1 sm:mt-2 md:mt-6">
         <motion.div 
           animate={{ y: [0, -4, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-wrap justify-center items-center gap-4 md:gap-6 mb-4 md:mb-6"
+          className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6"
         >
-          <div className={`px-3 py-1 rounded-[0.4rem] text-white text-[7px] md:text-[9px] font-black uppercase tracking-[0.3em] flex items-center gap-2 shadow-sm ${
+          <div className={`px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-[0.4rem] text-white text-[7px] sm:text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] flex items-center gap-1.5 sm:gap-2 shadow-sm ${
             project.status === 'Completed' ? 'bg-[#28B880]' : 'bg-amber-500'
           }`}>
             <div className="w-1 h-1 bg-white rounded-full animate-pulse" />
@@ -516,16 +515,16 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
           </div>
 
           {project.technologies.slice(0, 3).map((tech) => (
-            <div key={tech} className="flex items-center gap-2.5">
+            <div key={tech} className="flex items-center gap-1.5 sm:gap-2.5">
               <span className="text-[#F59E9E]/40 font-light translate-y-[-1px]">|</span>
-              <span className="text-[#1a0a0a]/60 dark:text-white/60 text-[8px] md:text-[9px] font-bold uppercase tracking-[0.3em]">
+              <span className="text-[#1a0a0a]/60 dark:text-white/60 text-[7.5px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">
                 {tech}
               </span>
             </div>
           ))}
         </motion.div>
         
-        <h3 className="text-3xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-5 md:mb-8 text-center" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+        <h3 className="text-2xl sm:text-4xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-4 sm:mb-5 md:mb-8 text-center" style={{ fontFamily: "'Libre Baskerville', serif" }}>
           {project.title}
         </h3>
         
@@ -537,14 +536,14 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
                     transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }} 
-                    className="flex flex-row items-center justify-center gap-3 md:gap-8 w-full"
+                    className="flex flex-row items-center justify-center gap-2 sm:gap-4 md:gap-8 w-full"
                   >
                     <button 
                       onClick={(e) => {
                         e.stopPropagation()
                         onProjectClick(project)
                       }}
-                      className="group relative h-10 md:h-[52px] px-4 md:px-10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden shadow-sm shrink-0"
+                      className="group relative h-9 sm:h-11 md:h-[52px] px-3.5 sm:px-6 md:px-10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden shadow-sm shrink-0"
                     >
                       <span className="relative z-10 transition-colors duration-500 group-hover:text-white dark:group-hover:text-[#1a0a0a]">Quick View</span>
                       <div className="absolute inset-0 bg-[#1a0a0a] dark:bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
@@ -558,10 +557,10 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative h-10 md:h-[52px] px-6 md:px-12 bg-[#F59E9E] text-white rounded-full text-[8px] md:text-[10px] font-black uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
+                      className="group relative h-9 sm:h-11 md:h-[52px] px-4 sm:px-7 md:px-12 bg-[#F59E9E] text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
                     >
-                       <span className="relative z-10 flex items-center gap-2 transition-colors duration-500 group-hover:text-white text-white">
-                          Case Study <ArrowUpRight size={14} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 md:w-4 md:h-4" />
+                       <span className="relative z-10 flex items-center gap-1.5 sm:gap-2 transition-colors duration-500 group-hover:text-white text-white">
+                          Case Study <ArrowUpRight size={13} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 sm:w-4 sm:h-4" />
                        </span>
                       <div className="absolute inset-0 bg-[#E87A7A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                     </motion.div>
