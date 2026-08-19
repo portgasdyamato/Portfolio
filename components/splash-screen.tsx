@@ -186,8 +186,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         <Polaroid src="/slpash.gif" caption="mood_01" rotate={-8} delay={0.4} />
       </div>
 
-      {/* Mid Left: Figma Folder */}
-      <div className="absolute top-[22%] sm:top-[45%] left-[2%] sm:left-[6%] z-20 scale-90 sm:scale-100 origin-left">
+      {/* Mid Left: Figma Folder (Centered on left side) */}
+      <div className="absolute top-[32%] sm:top-[45%] left-[2%] sm:left-[6%] z-20 scale-90 sm:scale-100 origin-left">
         <BoutiqueFolder 
           color="#1E1E1E" 
           tabColor="#2C2C2C" 
@@ -204,8 +204,8 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         <StickyNote text="Crafting digital magic." color="#FFF9E5" delay={0.5} />
       </div>
 
-      {/* Mid Right: Design Gear Folder */}
-      <div className="absolute top-[22%] sm:top-[42%] right-[2%] sm:right-[8%] z-20 scale-90 sm:scale-100 origin-right">
+      {/* Mid Right: Design Gear Folder (Centered on right side) */}
+      <div className="absolute top-[32%] sm:top-[42%] right-[2%] sm:right-[8%] z-20 scale-90 sm:scale-100 origin-right">
         <BoutiqueFolder 
           color="#F59E9E" 
           tabColor="#E88C8C" 
