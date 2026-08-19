@@ -121,7 +121,7 @@ export default function ProjectDetailClient({ project }: { project: Project }) {
   const progressWidth = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 })
 
   return (
-    <div ref={containerRef} className="bg-[#050505] text-[#f5f5f5] min-h-screen selection:bg-brand-500 selection:text-black font-inter relative overflow-x-hidden">
+    <div ref={containerRef} className="bg-[#050505] text-[#f5f5f5] min-h-screen selection:bg-brand-500 selection:text-black font-inter relative overflow-x-hidden w-full max-w-full">
       
       {/* ── AMBIENT GLOW ──────────────────────────── */}
       <div 

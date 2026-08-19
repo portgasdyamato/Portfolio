@@ -145,10 +145,10 @@ export default function MorphingHero() {
         </motion.div>
       </div>
 
-      {/* ── SCROLL DOWN INDICATOR ── */}
+      {/* ── SCROLL DOWN INDICATOR (Hidden on Mobile/Tablet to prevent overlapping text) ── */}
       <motion.div
         style={{ opacity: scrollPromptOpacity, y: scrollPromptY }}
-        className="absolute inset-x-0 bottom-6 sm:bottom-10 z-40 flex items-center justify-center pointer-events-none"
+        className="hidden md:flex absolute inset-x-0 bottom-6 sm:bottom-10 z-40 items-center justify-center pointer-events-none"
       >
         <button
           onClick={() => {

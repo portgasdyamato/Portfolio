@@ -345,7 +345,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
   }
 
   return (
-    <div className="relative w-full h-[500px] sm:h-[650px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
+    <div className="relative w-full h-[560px] sm:h-[680px] md:h-[850px] flex items-center justify-center overflow-visible perspective-[3500px] select-none">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(245,126,126,0.01),transparent_70%)] pointer-events-none" />
 
       {/* Previous Project Arrow Button */}
@@ -354,9 +354,9 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         whileTap={{ scale: 0.9 }}
         onClick={() => handleStep(-1)}
         aria-label="Previous Project"
-        className="absolute left-1 sm:left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
+        className="absolute left-1 sm:left-6 md:left-10 lg:left-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
       >
-        <ChevronLeft className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform duration-300" />
+        <ChevronLeft className="w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:-translate-x-0.5 transition-transform duration-300" />
       </motion.button>
 
       {/* Next Project Arrow Button */}
@@ -365,9 +365,9 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         whileTap={{ scale: 0.9 }}
         onClick={() => handleStep(1)}
         aria-label="Next Project"
-        className="absolute right-1 sm:right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-9 h-9 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
+        className="absolute right-1 sm:right-6 md:right-10 lg:right-14 top-1/2 -translate-y-1/2 z-50 pointer-events-auto group w-8 h-8 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-white/80 dark:bg-black/70 backdrop-blur-xl border border-black/10 dark:border-white/15 text-[#1a0a0a] dark:text-white flex items-center justify-center hover:bg-[#F59E9E] hover:text-white hover:border-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white dark:hover:border-[#F59E9E] transition-all duration-300 shadow-[0_10px_30px_rgba(0,0,0,0.12)] cursor-pointer"
       >
-        <ChevronRight className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform duration-300" />
+        <ChevronRight className="w-4 h-4 sm:w-7 sm:h-7 md:w-8 md:h-8 group-hover:translate-x-0.5 transition-transform duration-300" />
       </motion.button>
 
       <motion.div 
@@ -402,7 +402,7 @@ function CarouselContainer({ projects, onProjectClick }: { projects: typeof proj
         </AnimatePresence>
       </motion.div>
 
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 z-50 pointer-events-auto">
+      <div className="absolute bottom-1 sm:bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-5 z-50 pointer-events-auto">
         <div className="flex gap-2.5 items-center">
           {projects.map((_, i) => (
             <button
@@ -476,14 +476,14 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         position: "absolute",
         width: "min(650px, 90vw)",
         height: "auto", 
-        minHeight: "420px",
+        minHeight: "360px",
         transformStyle: "preserve-3d",
         zIndex: Math.round(100 - Math.abs(offset) * 40),
         pointerEvents: isActive ? "auto" : "none",
       }}
-      className="bg-transparent group/project cursor-pointer flex flex-col items-center gap-3 sm:gap-4 md:gap-6"
+      className="bg-transparent group/project cursor-pointer flex flex-col items-center gap-2 sm:gap-4 md:gap-6"
     >
-      <div className="relative w-full h-[200px] sm:h-[300px] md:h-[380px] shrink-0 pointer-events-none">
+      <div className="relative w-full h-[160px] sm:h-[280px] md:h-[380px] shrink-0 pointer-events-none">
         <motion.div 
           animate={{ 
             scale: isHovered ? 1.05 : 1,
@@ -505,9 +505,9 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
         <motion.div 
           animate={{ y: [0, -4, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="flex flex-wrap justify-center items-center gap-2 sm:gap-4 md:gap-6 mb-3 sm:mb-4 md:mb-6"
+          className="flex flex-wrap justify-center items-center gap-1.5 sm:gap-4 md:gap-6 mb-2 sm:mb-4 md:mb-6"
         >
-          <div className={`px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-[0.4rem] text-white text-[7px] sm:text-[8px] md:text-[9px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] flex items-center gap-1.5 sm:gap-2 shadow-sm ${
+          <div className={`px-2 py-0.5 sm:px-3 sm:py-1 rounded-[0.4rem] text-white text-[7px] sm:text-[8px] md:text-[9px] font-black uppercase tracking-[0.15em] sm:tracking-[0.3em] flex items-center gap-1.5 sm:gap-2 shadow-sm ${
             project.status === 'Completed' ? 'bg-[#28B880]' : 'bg-amber-500'
           }`}>
             <div className="w-1 h-1 bg-white rounded-full animate-pulse" />
@@ -515,20 +515,20 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
           </div>
 
           {project.technologies.slice(0, 3).map((tech) => (
-            <div key={tech} className="flex items-center gap-1.5 sm:gap-2.5">
+            <div key={tech} className="flex items-center gap-1 sm:gap-2.5">
               <span className="text-[#F59E9E]/40 font-light translate-y-[-1px]">|</span>
-              <span className="text-[#1a0a0a]/60 dark:text-white/60 text-[7.5px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em]">
+              <span className="text-[#1a0a0a]/60 dark:text-white/60 text-[7px] sm:text-[8px] md:text-[9px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.3em]">
                 {tech}
               </span>
             </div>
           ))}
         </motion.div>
         
-        <h3 className="text-2xl sm:text-4xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-4 sm:mb-5 md:mb-8 text-center" style={{ fontFamily: "'Libre Baskerville', serif" }}>
+        <h3 className="text-xl sm:text-4xl md:text-[52px] font-medium text-[#1a0a0a] dark:text-white leading-[1.1] mb-2 sm:mb-5 md:mb-8 text-center" style={{ fontFamily: "'Libre Baskerville', serif" }}>
           {project.title}
         </h3>
         
-        <div className="flex items-center justify-center pointer-events-auto w-full">
+        <div className="flex items-center justify-center pointer-events-auto w-full mb-2 sm:mb-0">
            <AnimatePresence>
              {isActive && (
                   <motion.div
@@ -543,7 +543,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                         e.stopPropagation()
                         onProjectClick(project)
                       }}
-                      className="group relative h-9 sm:h-11 md:h-[52px] px-3.5 sm:px-6 md:px-10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden shadow-sm shrink-0"
+                      className="group relative h-8 sm:h-11 md:h-[52px] px-3 sm:px-6 md:px-10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden shadow-sm shrink-0"
                     >
                       <span className="relative z-10 transition-colors duration-500 group-hover:text-white dark:group-hover:text-[#1a0a0a]">Quick View</span>
                       <div className="absolute inset-0 bg-[#1a0a0a] dark:bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
@@ -557,10 +557,10 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative h-9 sm:h-11 md:h-[52px] px-4 sm:px-7 md:px-12 bg-[#F59E9E] text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
+                      className="group relative h-8 sm:h-11 md:h-[52px] px-3.5 sm:px-7 md:px-12 bg-[#F59E9E] text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
                     >
-                       <span className="relative z-10 flex items-center gap-1.5 sm:gap-2 transition-colors duration-500 group-hover:text-white text-white">
-                          Case Study <ArrowUpRight size={13} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 sm:w-4 sm:h-4" />
+                       <span className="relative z-10 flex items-center gap-1 sm:gap-2 transition-colors duration-500 group-hover:text-white text-white">
+                          Case Study <ArrowUpRight size={12} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 sm:w-4 sm:h-4" />
                        </span>
                       <div className="absolute inset-0 bg-[#E87A7A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                     </motion.div>

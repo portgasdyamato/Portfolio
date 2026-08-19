@@ -60,7 +60,7 @@ export default function ProjectCaseStudy() {
   const technologies = project.technologies || []
 
   return (
-    <div ref={containerRef} className="case-study-content min-h-screen bg-background text-foreground selection:bg-brand-500/30">
+    <div ref={containerRef} className="case-study-content min-h-screen bg-background text-foreground selection:bg-brand-500/30 overflow-x-hidden w-full max-w-full">
       <CustomCursor />
       
       {/* ── ELITE HOME NAVIGATION ── */}
