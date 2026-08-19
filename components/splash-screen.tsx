@@ -179,15 +179,15 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         </div>
       </motion.div>
 
-      {/* ── Scattered Artifacts (Adjusted for mobile to prevent overlapping title text) ── */}
+      {/* ── Scattered Artifacts ── */}
       
       {/* Top Left: Polaroid */}
-      <div className="absolute top-[7%] sm:top-[12%] left-[2%] sm:left-[10%] z-20 scale-[0.7] sm:scale-100 origin-top-left">
+      <div className="absolute top-[7%] sm:top-[12%] left-[3%] sm:left-[10%] z-20 scale-90 sm:scale-100 origin-top-left">
         <Polaroid src="/slpash.gif" caption="mood_01" rotate={-8} delay={0.4} />
       </div>
 
-      {/* Mid Left: Figma Folder (Positioned higher on mobile to clear text) */}
-      <div className="absolute top-[20%] sm:top-[45%] left-[1%] sm:left-[6%] z-20 scale-[0.7] sm:scale-100 origin-left">
+      {/* Mid Left: Figma Folder */}
+      <div className="absolute top-[22%] sm:top-[45%] left-[2%] sm:left-[6%] z-20 scale-90 sm:scale-100 origin-left">
         <BoutiqueFolder 
           color="#1E1E1E" 
           tabColor="#2C2C2C" 
@@ -200,12 +200,12 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       </div>
 
       {/* Top Right: Status Sticky */}
-      <div className="absolute top-[7%] sm:top-[15%] right-[2%] sm:right-[10%] z-20 scale-[0.7] sm:scale-100 origin-top-right">
+      <div className="absolute top-[7%] sm:top-[15%] right-[3%] sm:right-[10%] z-20 scale-90 sm:scale-100 origin-top-right">
         <StickyNote text="Crafting digital magic." color="#FFF9E5" delay={0.5} />
       </div>
 
-      {/* Mid Right: Design Gear Folder (Positioned higher on mobile to clear text) */}
-      <div className="absolute top-[20%] sm:top-[42%] right-[1%] sm:right-[8%] z-20 scale-[0.7] sm:scale-100 origin-right">
+      {/* Mid Right: Design Gear Folder */}
+      <div className="absolute top-[22%] sm:top-[42%] right-[2%] sm:right-[8%] z-20 scale-90 sm:scale-100 origin-right">
         <BoutiqueFolder 
           color="#F59E9E" 
           tabColor="#E88C8C" 
@@ -217,7 +217,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
         />
       </div>
 
-      {/* Floating Characters - Showed on mobile too to fill space */}
+      {/* Floating Characters */}
       <motion.div 
         animate={{ y: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
@@ -228,7 +228,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           alt="pot"
           width={112} 
           height={112}
-          className="w-16 sm:w-28 drop-shadow-2xl opacity-90" 
+          className="w-20 sm:w-28 drop-shadow-2xl opacity-90" 
           unoptimized
           priority
         />
@@ -244,7 +244,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           alt="deer"
           width={200} 
           height={200} 
-          className="w-24 sm:w-48 drop-shadow-2xl opacity-90" 
+          className="w-30 sm:w-48 drop-shadow-2xl opacity-90" 
           unoptimized
           priority
         />
@@ -272,7 +272,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                   initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                   animate={{ opacity: progress > 10 + i * 5 ? 1 : 0, y: progress > 10 + i * 5 ? 0 : 30, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[40px] min-[380px]:text-[50px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-bold text-[#1a0a0a] tracking-tight sm:tracking-tighter leading-[0.85] sm:leading-[0.8]"
+                  className="text-[46px] min-[380px]:text-[56px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-bold text-[#1a0a0a] tracking-tight sm:tracking-tighter leading-[0.85] sm:leading-[0.8]"
                 >
                   {char}
                 </motion.span>
@@ -286,7 +286,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
                   initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
                   animate={{ opacity: progress > 40 + i * 4 ? 1 : 0, y: progress > 40 + i * 4 ? 0 : 30, filter: "blur(0px)" }}
                   transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                  className="text-[40px] min-[380px]:text-[50px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-light text-[#F59E9E] tracking-tight sm:tracking-tighter leading-[0.85] sm:leading-[0.8]"
+                  className="text-[46px] min-[380px]:text-[56px] sm:text-[100px] md:text-[140px] lg:text-[180px] font-light text-[#F59E9E] tracking-tight sm:tracking-tighter leading-[0.85] sm:leading-[0.8]"
                 >
                   {char}
                 </motion.span>
