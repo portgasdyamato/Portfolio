@@ -187,7 +187,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       </div>
 
       {/* Mid Left: Figma Folder (Centered on left side) */}
-      <div className="absolute top-[32%] sm:top-[45%] left-[2%] sm:left-[6%] z-20 scale-90 sm:scale-100 origin-left">
+      <div className="absolute top-[42%] sm:top-[45%] left-[2%] sm:left-[6%] z-20 scale-90 sm:scale-100 origin-left">
         <BoutiqueFolder 
           color="#1E1E1E" 
           tabColor="#2C2C2C" 
@@ -205,7 +205,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       </div>
 
       {/* Mid Right: Design Gear Folder (Centered on right side) */}
-      <div className="absolute top-[32%] sm:top-[42%] right-[2%] sm:right-[8%] z-20 scale-90 sm:scale-100 origin-right">
+      <div className="absolute top-[42%] sm:top-[42%] right-[2%] sm:right-[8%] z-20 scale-90 sm:scale-100 origin-right">
         <BoutiqueFolder 
           color="#F59E9E" 
           tabColor="#E88C8C" 
@@ -221,14 +221,14 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
       <motion.div 
         animate={{ y: [0, -8, 0] }}
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-        className="absolute bottom-[6%] sm:bottom-[22%] left-[4%] sm:left-[18%] z-20"
+        className="absolute bottom-[5%] sm:bottom-[15%] left-[4%] sm:left-[10%] z-20"
       >
         <Image 
           src="/pot.gif" 
           alt="pot"
-          width={112} 
-          height={112}
-          className="w-20 sm:w-28 drop-shadow-2xl opacity-90" 
+          width={200} 
+          height={200}
+          className="w-28 sm:w-44 md:w-48 drop-shadow-2xl opacity-90" 
           unoptimized
           priority
         />
@@ -244,7 +244,7 @@ export default function SplashScreen({ finishLoadingAction }: { finishLoadingAct
           alt="deer"
           width={200} 
           height={200} 
-          className="w-30 sm:w-48 drop-shadow-2xl opacity-90" 
+          className="w-28 sm:w-44 md:w-48 drop-shadow-2xl opacity-90" 
           unoptimized
           priority
         />
