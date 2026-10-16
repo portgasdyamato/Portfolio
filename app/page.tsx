@@ -14,6 +14,7 @@ import Scrapbook from "@/components/scrapbook"
 import NewsTicker from "@/components/news-ticker"
 import CustomCursor from "@/components/custom-cursor"
 import WorkCta from "@/components/work-cta"
+import Experience from "@/components/experience"
 import { Sparkles } from "lucide-react"
 
 // Global session tracker (Survivies SPA navigations, resets on Refresh)
@@ -107,6 +108,9 @@ export default function Home() {
                   <FunFacts />
                   <Education />
                 </section>
+
+                {/* ── PROFESSIONAL EXPERIENCE SECTION ── */}
+                <Experience />
 
                 {/* ── SELECTED WORKS CTA ── */}
                 <WorkCta />

@@ -63,7 +63,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
         
         {/* Back Cover of the Folder (Manila Interior) */}
         <div 
-          className={`absolute inset-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm' : 'rounded-r-2xl rounded-l-sm'} shadow-2xl pointer-events-none bg-[#f3ebd4] dark:bg-[#2d2a22] overflow-hidden`}
+          className={`absolute inset-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm' : 'rounded-r-2xl rounded-l-sm'} shadow-[0_4px_16px_rgba(0,0,0,0.04)] pointer-events-none bg-[#f3ebd4] dark:bg-[#2d2a22] overflow-hidden`}
           style={{ transform: "translateZ(-10px)" }} 
         >
           {coverNode
@@ -71,7 +71,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
             : <img src={coverImage || "/cover.png"} alt="Cover" className={`absolute inset-0 w-full h-full object-fill ${direction === 'ltr' ? 'scale-[1.12]' : 'scale-[1.10]'} opacity-80 z-0`} />
           }
           {/* Back cover vignette */}
-          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_20%,rgba(0,0,0,0.1)_120%)] pointer-events-none ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
+          <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_40%,rgba(0,0,0,0.03)_120%)] pointer-events-none ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
         </div>
         
         {/* The Internal Files / Documents Stack */}
@@ -98,7 +98,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
                     opacity: isPast ? 0 : 1 - (offset * 0.1)
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className={`absolute inset-y-1 right-1 left-0 bg-white ${direction === 'rtl' ? 'rounded-l-xl rounded-r-sm' : 'rounded-r-xl rounded-l-sm'} shadow-2xl p-6 flex flex-col ${isTop ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
+                  className={`absolute inset-y-1 right-1 left-0 bg-white ${direction === 'rtl' ? 'rounded-l-xl rounded-r-sm' : 'rounded-r-xl rounded-l-sm'} shadow-sm shadow-black/[0.03] p-6 flex flex-col ${isTop ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
                   style={{ transformStyle: "preserve-3d", zIndex: items.length - idx, transformOrigin: direction === 'rtl' ? "100% 50%" : "0% 50%" }}
                 >
                   {/* Physical Manila Tab */}
@@ -204,7 +204,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
         >
              {/* Outside of the Front Cover */}
            <div 
-             className={`absolute inset-0 bg-transparent ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[-5px_0_20px_rgba(0,0,0,0.6)]' : 'rounded-r-2xl rounded-l-sm shadow-[5px_0_20px_rgba(0,0,0,0.6)]'} flex flex-col overflow-hidden`}
+             className={`absolute inset-0 bg-transparent ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm shadow-[-1px_3px_12px_rgba(0,0,0,0.035)]' : 'rounded-r-2xl rounded-l-sm shadow-[1px_3px_12px_rgba(0,0,0,0.035)]'} flex flex-col overflow-hidden`}
              style={{ backfaceVisibility: "hidden" }}
            >
              {coverNode
@@ -212,8 +212,8 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
                : <img src={coverImage || "/cover.png"} alt="Cover" className={`absolute inset-0 w-full h-full object-fill ${direction === 'ltr' ? 'scale-[1.12]' : 'scale-[1.10]'} z-0`} />
              }
              
-             {/* Vintage Vignette */}
-             <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_10%,rgba(0,0,0,0.1)_120%)] pointer-events-none z-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
+             {/* Subtle paper vignette */}
+             <div className={`absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.02)_120%)] pointer-events-none z-0 ${direction === 'rtl' ? 'rounded-l-2xl rounded-r-sm scale-[1.10]' : 'rounded-r-2xl rounded-l-sm'}`} />
 
              {/* Subtle paper edge shadow */}
              <div className="absolute inset-0 shadow-[inset_-2px_0_12px_rgba(255,255,255,0.03)] pointer-events-none rounded-r-2xl rounded-l-sm z-0" />

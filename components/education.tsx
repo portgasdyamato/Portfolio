@@ -118,28 +118,9 @@ function FolderTimelineItem({ item, index, drawProgress, totalItems, isMobile }:
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 z-0 pointer-events-none flex items-center justify-center -translate-x-6"
-                >
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0.8 }}
-                    animate={{ scale: 1.35, opacity: 0 }}
-                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut" }}
-                    className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
-                  />
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0.8 }}
-                    animate={{ scale: 1.35, opacity: 0 }}
-                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 0.8 }}
-                    className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
-                  />
-                  <motion.div
-                    initial={{ scale: 0.9, opacity: 0.8 }}
-                    animate={{ scale: 1.35, opacity: 0 }}
-                    transition={{ duration: 2.4, repeat: Infinity, ease: "easeOut", delay: 1.6 }}
-                    className="absolute inset-0 m-auto w-[330px] h-[330px] rounded-full border-[2px] border-[#F59E9E]"
-                  />
-                </motion.div>
+                  transition={{ duration: 0.6 }}
+                  className="absolute inset-0 -m-6 rounded-[2.5rem] bg-[#F59E9E]/10 blur-2xl pointer-events-none -translate-x-3"
+                />
               )}
             </AnimatePresence>
             <div className="relative z-10 w-full h-full">
@@ -206,12 +187,20 @@ export default function Education() {
       ? dimensions.width * 0.5 
       : (i % 2 === 0 ? xOffset : dimensions.width - xOffset);
     const y = (i + 0.5) * (dimensions.height / educationJourney.length);
-    return `${x} ${y}`;
+    return { x, y };
   });
   
-  const pathD = dimensions.width > 0 
-    ? `M ${pathPoints[0]} ` + pathPoints.slice(1).map(p => `L ${p}`).join(' ') 
-    : "";
+  // Create smooth S-curves between checkpoints instead of rigid diagonal lines
+  let pathD = "";
+  if (dimensions.width > 0 && pathPoints.length > 0) {
+    pathD = `M ${pathPoints[0].x} ${pathPoints[0].y}`;
+    for (let i = 0; i < pathPoints.length - 1; i++) {
+      const p0 = pathPoints[i];
+      const p1 = pathPoints[i + 1];
+      const midY = (p0.y + p1.y) / 2;
+      pathD += ` C ${p0.x} ${midY}, ${p1.x} ${midY}, ${p1.x} ${p1.y}`;
+    }
+  }
 
   return (
     <div className="py-16 sm:py-20 md:py-28 relative">
@@ -227,55 +216,64 @@ export default function Education() {
           >
             Some clues about <span className="text-[#F59E9E]">me.</span>
           </motion.h2>
-          <motion.div 
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.8, ease: "circOut", delay: 0.2 }}
-            className="h-[3px] w-32 bg-[#F59E9E] mx-auto mt-6 origin-center shadow-[0_0_8px_rgba(245,158,158,0.8)]"
-          />
+          
+          {/* Delicate hand-crafted curved underline */}
+          <div className="relative w-36 sm:w-44 h-3 mx-auto mt-3">
+            <svg viewBox="0 0 160 12" fill="none" className="w-full h-full overflow-visible">
+              <motion.path 
+                d="M 6 7 C 45 2, 95 10, 154 5"
+                stroke="#F59E9E"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                initial={{ pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: false, margin: "-50px" }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+              />
+            </svg>
+          </div>
         </div>
 
         <div ref={containerRef} className="relative flex flex-col gap-20 sm:gap-24 md:gap-40 py-10 px-0 sm:px-4 md:px-24">
           <div className="absolute inset-0 z-0 pointer-events-none">
             {dimensions.width > 0 && (
               <>
-                {/* Background faint rope - dashed map trail */}
-                <svg className="absolute inset-0 w-full h-full opacity-40">
+                {/* Background faint guide trail */}
+                <svg className="absolute inset-0 w-full h-full">
                   <path 
                     d={pathD}
                     fill="none"
-                    stroke="#000000"
-                    strokeOpacity="0.15"
+                    stroke="#1a0a0a"
+                    strokeOpacity="0.12"
                     strokeWidth="4"
-                    strokeDasharray="8 12"
+                    strokeDasharray="6 9"
                     strokeLinecap="round"
-                    strokeLinejoin="round"
                   />
+                  {/* Waypoint beads */}
+                  {pathPoints.map((pt, idx) => (
+                    <circle 
+                      key={idx} 
+                      cx={pt.x} 
+                      cy={pt.y} 
+                      r="6" 
+                      fill="#FFFDF9" 
+                      stroke="#1a0a0a" 
+                      strokeOpacity="0.2" 
+                      strokeWidth="2.5" 
+                    />
+                  ))}
                 </svg>
                 
-                {/* Animated fill rope - Glowing string */}
+                {/* Animated active journey trail */}
                 <div className="absolute inset-0">
-                  <svg className="w-full h-full drop-shadow-[0_0_12px_rgba(245,158,158,0.8)]">
-                    {/* Outer Glow */}
+                  <svg className="w-full h-full">
                     <motion.path 
                       d={pathD}
                       fill="none"
                       stroke="#F59E9E"
-                      strokeOpacity="0.4"
-                      strokeWidth="10"
+                      strokeWidth="5.5"
+                      strokeDasharray="8 8"
                       strokeLinecap="round"
-                      strokeLinejoin="round"
-                      style={{ pathLength: drawProgress }}
-                    />
-                    {/* Solid Pink Core */}
-                    <motion.path 
-                      d={pathD}
-                      fill="none"
-                      stroke="#F59E9E"
-                      strokeWidth="4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
                       style={{ pathLength: drawProgress }}
                     />
                   </svg>
