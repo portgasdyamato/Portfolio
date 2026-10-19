@@ -14,10 +14,12 @@ const skillCategories = [
     accent: "#1a0a0a",
     description: "Methodologies for creating human-centered, accessible, and stunning digital experiences.",
     items: [
-      { name: "Design Tooling", desc: "Figma, Adobe XD, Framer, Photoshop, Illustrator, Procreate.", level: 95 },
-      { name: "Design Systems", desc: "Component Libraries, Design Tokens, Atomic Design, Shadcn UI.", level: 90 },
-      { name: "Interaction Design", desc: "Prototyping, Microinteractions, Motion Design, Gestural UI.", level: 88 },
-      { name: "User Research", desc: "Usability Testing, User Interviews, Affinity Mapping, JTBD.", level: 85 }
+      { name: "Design Tools & 3D", desc: "Figma (Dev Mode), Framer, Adobe XD, Photoshop, Illustrator, After Effects, InDesign, Blender 3D.", level: 95 },
+      { name: "UX Research & Discovery", desc: "Contextual Inquiries, Usability Testing, Semi-structured Interviews, Heuristic Audits, Affinity Mapping, JTBD.", level: 92 },
+      { name: "Design Systems & Tokens", desc: "Design Tokens, Component Libraries, Atomic Design, Style Guides, Shadcn UI, Human Interface Guidelines.", level: 90 },
+      { name: "Interaction & Micro-Motion", desc: "High-Fidelity Prototyping, Framer Motion, Microinteractions, Gestural UI, Adaptive & Responsive Design.", level: 88 },
+      { name: "Product Strategy & IA", desc: "SaaS Product Design (B2B/B2C), Information Architecture, User Journey Mapping, Design-to-Code Ownership.", level: 88 },
+      { name: "Accessibility & Standards", desc: "WCAG 2.1 AA Compliance, Cognitive Load Optimization, Inclusive Design, DesignOps Auditing.", level: 85 }
     ]
   },
   {
@@ -29,10 +31,11 @@ const skillCategories = [
     accent: "#61DAFB",
     description: "The core frontend stack I use to build robust and scalable applications.",
     items: [
-      { name: "Frontend Frameworks", desc: "React.js, Next.js, Redux, React Router, Vite.", level: 95 },
-      { name: "Languages & Core", desc: "TypeScript, JavaScript (ES6+), HTML5, CSS3.", level: 90 },
-      { name: "UI & Styling", desc: "Tailwind CSS, Shadcn UI, Bootstrap, Material UI.", level: 90 },
-      { name: "Animation & Interaction", desc: "Framer Motion, CSS Animations, Lottie, Micro-interactions.", level: 85 }
+      { name: "Frontend Frameworks", desc: "React.js 19, Next.js 15, Redux Toolkit, Vite, React Router, React Hook Form.", level: 95 },
+      { name: "Languages & Core", desc: "TypeScript, JavaScript (ES6+), HTML5, Semantic CSS3, Lua (Roblox Dev).", level: 92 },
+      { name: "Modern UI & Styling", desc: "Tailwind CSS, Shadcn UI, CSS Variables, Radix UI, Responsive Layouts.", level: 90 },
+      { name: "Animation & Interaction", desc: "Framer Motion, CSS Animations, Lottie, Micro-interactions, Canvas / SVG Art.", level: 88 },
+      { name: "Design-to-Code Mastery", desc: "Pixel-perfect Figma Handoff, Zero-lag 3D flip variants, Cross-browser performance.", level: 90 }
     ]
   },
   {
@@ -44,10 +47,11 @@ const skillCategories = [
     accent: "#1A0A0A",
     description: "Integrating powerful generative AI models into seamless, end-to-end product experiences.",
     items: [
-      { name: "Core LLM Integration", desc: "OpenAI API (GPT-4, Vision), Gemini API, Claude Code & Anthropic.", level: 90 },
-      { name: "AI Automation & Workflows", desc: "Agentic AI workflows, n8n automations, LLM logic orchestration.", level: 90 },
-      { name: "Prompting & Processing", desc: "Prompt Engineering, NLP, Vibe Coding, Web Speech API.", level: 95 },
-      { name: "Product Implementation", desc: "End-to-End AI Product Development, Design-to-Code Ownership.", level: 90 }
+      { name: "Core LLMs & Agents", desc: "Claude Code & Agent Skills (Anthropic), OpenAI API (GPT-4o, Vision), Gemini 1.5/2.0 Pro, DeepSeek.", level: 92 },
+      { name: "AI-Assisted Development", desc: "Cursor, Antigravity, Lovable, Bolt, v0, VS Code, Vibe Coding, Agentic AI Workflows.", level: 95 },
+      { name: "Prompt Engineering & NLP", desc: "Certified Prompt Engineer (Columbia Univ & DeepLearning.AI), NLP, Web Speech API, Progressive Disclosure UI.", level: 95 },
+      { name: "Enterprise AI Training", desc: "Conducted full-day AI buildathon for 70+ industry professionals at Ozone Group, n8n automations.", level: 90 },
+      { name: "End-to-End AI Products", desc: "AI SaaS UX architecture, Reduced upload anxiety patterns, Real-world classroom prototypes (IIT Delhi).", level: 90 }
     ]
   },
   {
@@ -59,10 +63,10 @@ const skillCategories = [
     accent: "#68A063",
     description: "Scalable backend services, REST APIs, and robust DevOps infrastructure.",
     items: [
-      { name: "Server & APIs", desc: "Node.js, Express.js, REST APIs, GraphQL, FastAPI, WebSockets.", level: 85 },
-      { name: "Databases & ORMs", desc: "PostgreSQL, MongoDB, MySQL, Prisma, Drizzle ORM, Redis.", level: 80 },
-      { name: "Backend Languages", desc: "Python, Django, Java, C++.", level: 75 },
-      { name: "DevOps & Automation", desc: "Git, GitHub, Vercel, Docker, CI/CD, n8n Workflow Automation.", level: 85 }
+      { name: "Server & APIs", desc: "Node.js, Express.js, RESTful Architecture, GraphQL, FastAPI, WebSockets.", level: 85 },
+      { name: "Databases & ORMs", desc: "PostgreSQL, MongoDB, Supabase, MySQL, Prisma ORM, Drizzle ORM, Redis.", level: 82 },
+      { name: "Containerization & Linux", desc: "Podman (CNCF / Red Hat mentee), Docker, Linux environments, Shell scripting, CI/CD.", level: 80 },
+      { name: "Cloud & DevOps", desc: "Vercel, AWS Solutions Architecture Virtual, Git, GitHub, n8n Workflow Automation.", level: 85 }
     ]
   }
 ]

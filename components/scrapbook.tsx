@@ -151,7 +151,7 @@ const NEGATIVE_WORDS = [
 ];
 
 export default function Scrapbook() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLElement>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
   const [isMounted, setIsMounted] = useState(false)
@@ -237,7 +237,7 @@ export default function Scrapbook() {
   }
 
   return (
-    <section id="scrapbook" className="w-full relative scroll-mt-32 h-[90vh] sm:h-[110vh] md:h-[130vh] overflow-hidden bg-transparent select-none scroll-mt-32">
+    <section ref={containerRef} id="scrapbook" className="w-full relative scroll-mt-32 h-[90vh] sm:h-[110vh] md:h-[130vh] overflow-hidden bg-transparent select-none scroll-mt-32">
       {/* Ambient Audio Element */}
       <audio ref={audioRef} src="/pippo.mpeg" loop />
 

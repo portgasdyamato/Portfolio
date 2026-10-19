@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { useMotionValue, motion, useSpring, useTransform } from "framer-motion"
-import { ChevronDown, Mouse } from "lucide-react"
+import { ChevronDown, Mouse, ArrowDown } from "lucide-react"
 
 import Hero from "@/components/hero"
 import Profile from "@/components/profile"
@@ -145,12 +145,12 @@ export default function MorphingHero() {
         </motion.div>
       </div>
 
-      {/* ── SCROLL DOWN INDICATOR (Hidden on Mobile/Tablet to prevent overlapping text) ── */}
+      {/* ── BESPOKE ARCHIVAL SCROLL PROMPT ── */}
       <motion.div
         style={{ opacity: scrollPromptOpacity, y: scrollPromptY }}
         className="hidden md:flex absolute inset-x-0 bottom-6 sm:bottom-10 z-40 items-center justify-center pointer-events-none"
       >
-        <button
+        <motion.button
           onClick={() => {
             const nextEl = document.getElementById("about") || document.querySelector("main")
             if (nextEl) {
@@ -159,20 +159,25 @@ export default function MorphingHero() {
               window.scrollBy({ top: window.innerHeight, behavior: "smooth" })
             }
           }}
-          className="pointer-events-auto group flex flex-col items-center gap-1.5 cursor-pointer"
+          whileHover={{ scale: 1.04, y: -2 }}
+          whileTap={{ scale: 0.98 }}
+          className="pointer-events-auto group flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#FFFDF9]/90 backdrop-blur-xl border border-black/[0.08] shadow-[0_6px_24px_rgba(0,0,0,0.05),inset_0_1px_0_rgba(255,255,255,0.8)] hover:border-[#F59E9E]/60 hover:shadow-[0_10px_32px_rgba(245,158,158,0.22)] transition-all duration-300 cursor-pointer"
         >
-          <span className="text-[8px] font-black uppercase tracking-[0.4em] text-[#1a0a0a]/50 group-hover:text-[#F59E9E] transition-colors duration-300">
-            Scroll
-          </span>
-          <div className="w-px h-8 bg-gradient-to-b from-[#1a0a0a]/40 to-[#F59E9E] rounded-full" />
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-            className="text-[#1a0a0a]/60 group-hover:text-[#F59E9E] transition-colors duration-300"
+          <span className="w-1.5 h-1.5 rounded-full bg-[#F59E9E] shadow-[0_0_8px_rgba(245,158,158,0.8)]" />
+          <span 
+            className="text-[11px] sm:text-[12px] font-medium tracking-wide text-[#1a0a0a]/75 group-hover:text-[#1a0a0a] transition-colors"
+            style={{ fontFamily: "'Inter', sans-serif" }}
           >
-            <ChevronDown size={16} strokeWidth={2.5} />
+            Scroll to explore
+          </span>
+          <motion.div
+            animate={{ y: [0, 3, 0] }}
+            transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+            className="text-[#1a0a0a]/40 group-hover:text-[#F59E9E] transition-colors"
+          >
+            <ArrowDown size={12} strokeWidth={2.2} />
           </motion.div>
-        </button>
+        </motion.button>
       </motion.div>
 
       {/* Fixed Circular Badge */}

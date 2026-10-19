@@ -122,6 +122,47 @@ const WOODBLOCK_ARTWORKS = {
       <circle cx="60" cy="36" r="1.5" fill={paper} />
     </>
   ), 0.56),
+  sunburst: (ink: string, paper: string) => renderMaritimeStamp(ink, paper, (
+    <>
+      <circle cx="50" cy="50" r="13" fill={ink} />
+      <circle cx="50" cy="50" r="6" fill={paper} />
+      <circle cx="50" cy="50" r="2.5" fill={ink} />
+      <line x1="50" y1="20" x2="50" y2="30" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="50" y1="70" x2="50" y2="80" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="20" y1="50" x2="30" y2="50" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="70" y1="50" x2="80" y2="50" strokeWidth="2.5" strokeLinecap="round" />
+      <line x1="29" y1="29" x2="36" y2="36" strokeWidth="2.2" strokeLinecap="round" />
+      <line x1="64" y1="64" x2="71" y2="71" strokeWidth="2.2" strokeLinecap="round" />
+      <line x1="71" y1="29" x2="64" y2="36" strokeWidth="2.2" strokeLinecap="round" />
+      <line x1="36" y1="64" x2="29" y2="71" strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx="50" cy="16" r="1.5" fill={ink} />
+      <circle cx="50" cy="84" r="1.5" fill={ink} />
+      <circle cx="16" cy="50" r="1.5" fill={ink} />
+      <circle cx="84" cy="50" r="1.5" fill={ink} />
+    </>
+  ), 0.55),
+  quill: (ink: string, paper: string) => renderMaritimeStamp(ink, paper, (
+    <>
+      <path d="M68,16 C58,30 46,52 32,80" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M68,16 C60,20 48,25 40,40 C46,38 56,34 62,28 Z" fill={ink} />
+      <path d="M62,28 C54,34 44,40 38,52 C44,50 52,46 58,40 Z" fill={ink} />
+      <path d="M58,40 C50,46 42,54 36,64 C42,62 48,58 54,52 Z" fill={ink} />
+      <path d="M68,16 C66,24 64,32 66,42 C64,36 64,28 68,16 Z" fill={ink} />
+      <polygon points="32,80 28,85 35,82" fill={ink} />
+      <line x1="56" y1="24" x2="48" y2="28" stroke={paper} strokeWidth="1" opacity="0.8" />
+      <line x1="50" y1="36" x2="42" y2="42" stroke={paper} strokeWidth="1" opacity="0.8" />
+    </>
+  ), 0.56),
+  astrolabe: (ink: string, paper: string) => renderMaritimeStamp(ink, paper, (
+    <>
+      <circle cx="50" cy="50" r="30" strokeWidth="2" />
+      <circle cx="50" cy="50" r="26" strokeDasharray="2 2" strokeWidth="0.8" />
+      <ellipse cx="50" cy="50" rx="28" ry="12" strokeWidth="1.5" transform="rotate(-25 50 50)" />
+      <ellipse cx="50" cy="50" rx="28" ry="12" strokeWidth="1.5" transform="rotate(35 50 50)" />
+      <polygon points="50,38 52.5,46.5 61,46.5 54,51.5 56.5,60 50,55 43.5,60 46,51.5 39,46.5 47.5,46.5" fill={ink} />
+      <circle cx="50" cy="50" r="2.5" fill={paper} />
+    </>
+  ), 0.56),
 }
 
 const achievements = [
@@ -129,85 +170,97 @@ const achievements = [
     id: "solvathon",
     label: "25c",
     title: "UI/UX SOLVATHON",
-    org: "700+ Participants",
+    org: "700+ Participants · 1st Place",
     summary: "WON FIRST PLACE SOLVATHON", // Exactly four words
-    detail: "Secured first place for conducting deep UX research and crafting a high-fidelity, user-centric interface.",
+    detail: "Secured first place among 700+ participants for conducting deep UX research and crafting a high-fidelity, user-centric interface.",
     year: "2025",
     accent: "#0ea5e9", // Sky Blue
     paperColor: "#f0f9ff",
     art: WOODBLOCK_ARTWORKS.ginkgo
   },
   {
+    id: "ozone",
+    label: "45c",
+    title: "OZONE AI WORKSHOP",
+    org: "Enterprise AI Trainer",
+    summary: "TRAINED SEVENTY INDUSTRY LEADERS", // Exactly four words
+    detail: "Invited to lead a full-day, hands-on AI buildathon for 70+ industry professionals at Ozone Group, training on Claude Code & advanced workflows.",
+    year: "2026",
+    accent: "#f59e0b", // Amber
+    paperColor: "#fffbeb",
+    art: WOODBLOCK_ARTWORKS.sunburst
+  },
+  {
+    id: "bootcamp",
+    label: "35c",
+    title: "UX COLLECTIVE AUTHOR",
+    org: "Bootcamp Publication",
+    summary: "FEATURED GLOBAL UX ARTICLE", // Exactly four words
+    detail: "Published author in leading UX design publication Bootcamp (UX Collective) reaching 113k+ designers on AI and design inspiration.",
+    year: "2026",
+    accent: "#ec4899", // Pink
+    paperColor: "#fdf2f8",
+    art: WOODBLOCK_ARTWORKS.quill
+  },
+  {
     id: "harvard",
     label: "28c",
     title: "HARVARD ASPIRE",
-    org: "Leadership Program",
+    org: "Cohort V Leadership",
     summary: "SELECTED HARVARD LEADER COHORT", // Exactly four words
-    detail: "Chosen for the Harvard Aspire Leadership Program, engaging in AI-integrated leadership modules.",
-    year: "2025",
+    detail: "Exclusively invited to the inaugural AI-Integrated Leadership Program for top-performing scholars demonstrating leadership and social impact.",
+    year: "2026",
     accent: "#8b5cf6", // Purple
     paperColor: "#faf5ff",
     art: WOODBLOCK_ARTWORKS.laurel
   },
   {
-    id: "techfest",
-    label: "10c",
-    title: "STATE TECHFEST",
-    org: "State Level Competition",
-    summary: "THIRD PLACE STATE TECHFEST", // Exactly four words
-    detail: "Won 3rd place in the state-level TechFest for developing a culinary platform with an AI chatbot.",
-    year: "2024",
-    accent: "#10b981", // Green
-    paperColor: "#f0fdf4",
-    art: WOODBLOCK_ARTWORKS.fern
-  },
-  {
     id: "shefi",
     label: "30c",
     title: "SHEFI 14 SCHOLAR",
-    org: "Web3 & Blockchain",
+    org: "Web3 & Blockchain · USA",
     summary: "SELECTED GLOBAL SHEFI SCHOLAR", // Exactly four words
-    detail: "Selected for a prestigious US-based cohort empowering women in Web3 and decentralized technologies.",
+    detail: "Awarded a full scholarship for SheFi's global cohort empowering women leaders in Web3, DeFi, and decentralized systems.",
     year: "2025",
     accent: "#f43f5e", // Rose
     paperColor: "#fff1f2",
     art: WOODBLOCK_ARTWORKS.rose
   },
   {
+    id: "gmi",
+    label: "40c",
+    title: "GLOBAL MENTORSHIP",
+    org: "Global Mentorship Initiative",
+    summary: "MENTORED BY GLOBAL SCIENTIST", // Exactly four words
+    detail: "Selected for structured mentorship by a UK/Australia-based Scientist spanning 8+ countries on research, ethics, and career pathways.",
+    year: "2025",
+    accent: "#06b6d4", // Cyan
+    paperColor: "#ecfeff",
+    art: WOODBLOCK_ARTWORKS.astrolabe
+  },
+  {
+    id: "techfest",
+    label: "10c",
+    title: "STATE TECHFEST",
+    org: "State Level · 2nd Runner-Up",
+    summary: "THIRD PLACE STATE TECHFEST", // Exactly four words
+    detail: "Won 2nd Runner-Up in the state-level TechFest for developing an AI culinary platform judged on UX quality and technical execution.",
+    year: "2024",
+    accent: "#10b981", // Green
+    paperColor: "#f0fdf4",
+    art: WOODBLOCK_ARTWORKS.fern
+  },
+  {
     id: "hackathon",
     label: "15c",
-    title: "AI HACKATHON",
-    org: "Design-to-Code",
+    title: "24-HOUR HACKATHON",
+    org: "Design-to-Code · 2nd Runner-Up",
     summary: "SECURED HACKATHON RUNNER UP", // Exactly four words
-    detail: "Secured the runner-up position in an intense hackathon bridging UI design and AI code generation.",
+    detail: "Designed and shipped a full-stack solution within a 24-hour sprint bridging intuitive UX design with rapid execution.",
     year: "2025",
     accent: "#f97316", // Orange
     paperColor: "#fff7ed",
     art: WOODBLOCK_ARTWORKS.clover
-  },
-  {
-    id: "gssoc",
-    label: "5c",
-    title: "GSSOC OPEN SOURCE",
-    org: "Event Organiser",
-    summary: "GSSOC CAMPUS EVENT ORGANISER", // Exactly four words
-    detail: "Led and organized campus events while making significant contributions to global open-source projects.",
-    year: "2025",
-    accent: "#eab308", // Yellow
-    paperColor: "#fefce8",
-    art: WOODBLOCK_ARTWORKS.butterfly
-  },
-  {
-    id: "genai",
-    label: "50c",
-    title: "GEN AI EXCHANGE",
-    org: "Google Cloud",
-    summary: "GOOGLE CLOUD AI BUILDER", // Exactly four words
-    detail: "Architected and built practical AI solutions utilizing Google Cloud's Generative AI infrastructure.",
-    year: "2025",
-    accent: "#14b8a6", // Teal
-    paperColor: "#f0fdfa",
-    art: WOODBLOCK_ARTWORKS.wildflower
   },
 ]
 

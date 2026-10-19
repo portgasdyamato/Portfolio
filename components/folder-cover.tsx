@@ -34,7 +34,7 @@ const STAGE_CONFIGS: Record<FolderStage, StageConfig> = {
     label: '03',
     title: ['HIGH SCHOOL', 'GRADUATION'],
     subtitle: 'Academic Records',
-    year: '2021 – 2022',
+    year: '2020 – 2022',
   },
   btech: {
     bg: '#FCFAF6',        // Clean Light Cream

@@ -9,6 +9,7 @@ import Footer from "@/components/footer"
 import FunFacts from "@/components/fun-facts"
 import Education from "@/components/education"
 import Achievements from "@/components/achievements"
+import VolunteerSpeaking from "@/components/volunteer-speaking"
 import SkillsShowcase, { InterpersonalSkills } from "@/components/skills-showcase"
 import Scrapbook from "@/components/scrapbook"
 import NewsTicker from "@/components/news-ticker"
@@ -121,6 +122,8 @@ export default function Home() {
                 </section>
 
                 <Achievements />
+
+                <VolunteerSpeaking />
 
                 <InterpersonalSkills />
 

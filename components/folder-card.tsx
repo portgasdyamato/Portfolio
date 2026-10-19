@@ -98,7 +98,7 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
                     opacity: isPast ? 0 : 1 - (offset * 0.1)
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className={`absolute inset-y-1 right-1 left-0 bg-white ${direction === 'rtl' ? 'rounded-l-xl rounded-r-sm' : 'rounded-r-xl rounded-l-sm'} shadow-sm shadow-black/[0.03] p-6 flex flex-col ${isTop ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
+                  className={`absolute inset-y-1 right-1 left-0 bg-white ${direction === 'rtl' ? 'rounded-l-xl rounded-r-sm' : 'rounded-r-xl rounded-l-sm'} shadow-sm shadow-black/[0.03] p-4 sm:p-5 flex flex-col justify-between overflow-hidden ${isTop ? 'pointer-events-auto cursor-pointer' : 'pointer-events-none'}`}
                   style={{ transformStyle: "preserve-3d", zIndex: items.length - idx, transformOrigin: direction === 'rtl' ? "100% 50%" : "0% 50%" }}
                 >
                   {/* Physical Manila Tab */}
@@ -111,36 +111,38 @@ export function FolderCard({ items, currentIndex, onNext, onPrev, direction = 'l
                   {/* Subtle lined paper texture */}
                   <div className="absolute inset-0 bg-[linear-gradient(transparent_95%,#00000005_100%)] bg-[size:100%_24px] pointer-events-none rounded-r-xl" />
 
-                  <div className="flex flex-col relative z-10 h-full">
-                     <div className="flex justify-between items-start mb-2">
-                       <motion.h3 className="font-bold text-[17px] leading-tight text-[#1a1a1a] pr-2">
-                         {item.level}
-                       </motion.h3>
-                       <span className="text-[9px] font-mono font-bold text-brand-600 bg-brand-50 px-2 py-1 rounded-sm border border-brand-100 whitespace-nowrap">{item.duration}</span>
+                  <div className="flex flex-col relative z-10 h-full justify-between">
+                     <div>
+                       <div className="flex justify-between items-start mb-1">
+                         <motion.h3 className="font-bold text-[15px] sm:text-[16px] leading-snug text-[#1a1a1a] pr-2">
+                           {item.level}
+                         </motion.h3>
+                         <span className="text-[8.5px] font-mono font-bold text-brand-600 bg-brand-50 px-1.5 py-0.5 rounded-sm border border-brand-100 whitespace-nowrap shrink-0">{item.duration}</span>
+                       </div>
+                       
+                       <motion.p className="text-[10px] text-gray-500 font-bold mb-2 uppercase tracking-wider line-clamp-1">
+                         {item.institution}
+                       </motion.p>
+                       
+                       <div className="w-6 h-[2px] bg-brand-200 rounded-full mb-2" />
+                       
+                       <p className="text-[9.5px] text-gray-600 font-medium leading-relaxed mb-3 line-clamp-3">{item.description}</p>
                      </div>
                      
-                     <motion.p className="text-[11px] text-gray-500 font-bold mb-3 uppercase tracking-wider">
-                       {item.institution}
-                     </motion.p>
-                     
-                     <div className="w-6 h-[2px] bg-brand-200 rounded-full mb-3" />
-                     
-                     <p className="text-[10px] text-gray-600 font-medium leading-relaxed mb-4">{item.description}</p>
-                     
-                     <div className="mb-auto">
-                       <div className="text-[9px] uppercase tracking-widest text-gray-400 font-bold mb-1.5">Distinctions</div>
-                       <ul className="text-[8.5px] leading-tight text-gray-700 grid grid-cols-2 gap-x-2 gap-y-1.5 list-inside list-disc font-medium">
+                     <div className="my-auto">
+                       <div className="text-[8.5px] uppercase tracking-widest text-gray-400 font-bold mb-1">Distinctions</div>
+                       <ul className="text-[8px] leading-tight text-gray-700 grid grid-cols-2 gap-x-2 gap-y-1 list-inside list-disc font-medium">
                          {item.achievements.slice(0, 6).map((ach, i) => (
-                           <li key={i} className="pr-1">{ach}</li>
+                           <li key={i} className="pr-0.5 truncate" title={ach}>{ach}</li>
                          ))}
-                         {item.achievements.length > 6 && <li className="text-brand-500 font-bold list-none">+{item.achievements.length - 6} more</li>}
+                         {item.achievements.length > 6 && <li className="text-brand-500 font-bold list-none text-[8px]">+{item.achievements.length - 6} more</li>}
                        </ul>
                      </div>
                      
-                     <div className="pt-3 border-t border-black/10 mt-4 flex items-end justify-between">
+                     <div className="pt-2 border-t border-black/10 mt-auto flex items-end justify-between shrink-0">
                        <div>
-                         <div className="text-[8px] uppercase tracking-widest text-gray-400 font-bold mb-0.5">Performance</div>
-                         <motion.div className="text-[11px] font-black text-brand-500 whitespace-nowrap pr-2">
+                         <div className="text-[7.5px] uppercase tracking-widest text-gray-400 font-bold mb-0.5">Performance</div>
+                         <motion.div className="text-[10.5px] font-black text-brand-500 whitespace-nowrap pr-2">
                            {item.gpa}
                          </motion.div>
                        </div>
