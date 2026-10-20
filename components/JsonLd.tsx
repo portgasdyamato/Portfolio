@@ -29,10 +29,26 @@ export default function JsonLd() {
           },
         ],
         affiliation: [
-          { "@type": "Organization", name: "DIVINE Lab, IIT Delhi" },
-          { "@type": "Organization", name: "Red Hat" },
-          { "@type": "Organization", name: "BrightChamps" },
-          { "@type": "Organization", name: "Ozone Group" },
+          {
+            "@type": "Organization",
+            name: "DIVINE Lab, IIT Delhi",
+            description: "Design Research Intern (G2C AI Educational Frameworks)",
+          },
+          {
+            "@type": "Organization",
+            name: "Linux Foundation / Red Hat",
+            description: "LFX Mentee (Podman Desktop Platform & Open-Source DX)",
+          },
+          {
+            "@type": "Organization",
+            name: "BrightChamps",
+            description: "Coding & Design Instructor (Generative AI & Design Systems)",
+          },
+          {
+            "@type": "Organization",
+            name: "OpenSphere & LegalBridge",
+            description: "Product Designer & Web Developer",
+          },
         ],
         knowsAbout: [
           "AI product design",
@@ -58,9 +74,10 @@ export default function JsonLd() {
           { "@type": "Occupation", name: "UI/UX Designer" },
         ],
         award: [
-          "UI/UX Solvathon, 1st place among 700+ participants",
+          "UI/UX Solvathon 1st place among 700+ participants (2025)",
+          "Invited Enterprise AI Trainer for Ozone Group (2026)",
           "SheFi Global Scholar, Cohort 14",
-          "Aspire Leadership Programme, Cohort V",
+          "Aspire Leadership Programme Graduate, Cohort V (Harvard Aspire Institute)",
           "Columbia University Prompt Engineering Certification",
         ],
         sameAs: [
@@ -89,7 +106,7 @@ export default function JsonLd() {
         "@id": `${SITE}/#profile`,
         url: SITE,
         mainEntity: { "@id": `${SITE}/#person` },
-        dateModified: new Date().toISOString().split("T")[0],
+        dateModified: "2026-10-20",
       },
       {
         "@type": "Service",

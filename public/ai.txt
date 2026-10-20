@@ -1,0 +1,18 @@
+# ai.txt - AI Crawler & Generative Engine Directives
+# Website: https://pippoportfolio.vercel.app
+
+User-Agent: *
+Allow: /
+
+# Canonical LLM summary files
+LLMs-Txt: https://pippoportfolio.vercel.app/llms.txt
+LLMs-Full-Txt: https://pippoportfolio.vercel.app/llms-full.txt
+Sitemap: https://pippoportfolio.vercel.app/sitemap.xml
+
+# Identity & Professional Inquiries
+Owner: Sakshi Agrahari (Pippo)
+Roles: AI Product Designer, Applied AI Product Builder, Design Engineer, Frontend Engineer
+Booking: https://cal.com/sakshi-pippo/contactme
+Contact: sakshiagrahari2004@gmail.com
+LinkedIn: https://www.linkedin.com/in/ethsakshi
+GitHub: https://github.com/portgasdyamato
