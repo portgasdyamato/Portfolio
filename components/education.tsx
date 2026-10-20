@@ -192,63 +192,34 @@ export default function Education() {
     return { x, y };
   });
   
-  // Create expressive, continuous fluid curves that emerge naturally from each folder
+  // Create continuous, fluid curves connecting each education milestone with zero straight segments
   let pathD = "";
-  if (dimensions.width > 0 && pathPoints.length > 0) {
+  if (dimensions.width > 0 && dimensions.height > 0 && pathPoints.length > 1) {
     const isMobile = dimensions.width < 768;
-    // Folder height is 380px on desktop (half: 190px) and 298px on mobile (half: 149px)
-    const exitOffsetY = isMobile ? 130 : 170;
-    const entryOffsetY = isMobile ? 125 : 165;
-
-    // Start directly from the bottom exit of the first folder (inside cover)
-    const firstP = pathPoints[0];
-    const initialExit = { x: firstP.x, y: firstP.y + exitOffsetY - 10 };
-    pathD = `M ${initialExit.x} ${initialExit.y}`;
+    const pStart = pathPoints[0];
+    pathD = `M ${pStart.x} ${pStart.y}`;
 
     for (let i = 0; i < pathPoints.length - 1; i++) {
       const p0 = pathPoints[i];
       const p1 = pathPoints[i + 1];
-
-      // Exit point: at the BOTTOM of current folder p0
-      const pExit = {
-        x: p0.x,
-        y: p0.y + exitOffsetY - (i === 0 ? 10 : 0)
-      };
-
-      // Entry point: at the TOP of next folder p1
-      const pEntry = {
-        x: p1.x,
-        y: p1.y - entryOffsetY
-      };
-
-      const dx = pEntry.x - pExit.x;
-      const dy = pEntry.y - pExit.y;
+      const dy = p1.y - p0.y;
 
       if (isMobile) {
-        // On mobile, create a continuous playful wave from bottom of folder i to top of folder i+1
-        const wave = (i % 2 === 0 ? 1 : -1) * 40;
-        pathD += ` C ${pExit.x + wave * 0.4} ${pExit.y + dy * 0.25}, ${pExit.x + wave} ${pExit.y + dy * 0.65}, ${pEntry.x} ${pEntry.y}`;
+        // Continuous, organic wave on mobile weaving gracefully from side to side
+        const wave = (i % 2 === 0 ? 1 : -1) * Math.min(48, dimensions.width * 0.12);
+        const cp1x = p0.x + wave;
+        const cp1y = p0.y + dy * 0.42;
+        const cp2x = p1.x + wave;
+        const cp2y = p1.y - dy * 0.42;
+        pathD += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p1.x} ${p1.y}`;
       } else {
-        // On desktop, the path immediately curves gracefully in an expansive, fully continuous S-curve
-        // with no straight vertical drops, sweeping smoothly across towards the next dossier card
-        const cp1x = pExit.x + dx * 0.32;
-        const cp1y = pExit.y + dy * 0.36;
-        const cp2x = pEntry.x - dx * 0.32;
-        const cp2y = pEntry.y - dy * 0.36;
-        pathD += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${pEntry.x} ${pEntry.y}`;
-      }
-
-      // Inside next folder: connect smoothly down to its bottom exit (hidden behind folder card)
-      const nextExit = {
-        x: p1.x,
-        y: p1.y + exitOffsetY
-      };
-      
-      if (i < pathPoints.length - 2) {
-        pathD += ` L ${nextExit.x} ${nextExit.y}`;
-      } else {
-        // At final folder, enter and terminate nicely at center
-        pathD += ` L ${p1.x} ${p1.y}`;
+        // Expansive, elegant serpentine S-curve across alternating desktop milestones.
+        // Pure cubic Bezier with matching vertical tangents at each waypoint (C1 continuity, no straight lines anywhere).
+        const cp1x = p0.x;
+        const cp1y = p0.y + dy * 0.5;
+        const cp2x = p1.x;
+        const cp2y = p1.y - dy * 0.5;
+        pathD += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${p1.x} ${p1.y}`;
       }
     }
   }
