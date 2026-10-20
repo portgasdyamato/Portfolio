@@ -5,7 +5,7 @@ export const projectsData = [
     duration: "Aug 2025 - Present",
     date: "Aug 2025",
     image: "/vid.png",
-    color: "#F59E0B",
+    color: "#0284C7",
     heroTemplate: 3,
     technologies: ["Next.js", "Gemini AI", "OpenAI Vision", "Tailwind CSS", "React"],
     description: "A cinematic, AA-compliant learning sanctuary—where 'inclusive education' isn't just a checklist, but a multimodal AI experience.",
@@ -13,7 +13,7 @@ export const projectsData = [
       "Inclusive Learning Pathway mapping",
       "Multimodal Transformation Engine",
       "Screen-reader optimized UI architecture",
-      "High-contrast 'Amber Glow' visual theme",
+      "High-contrast 'Electric Pulse' visual theme",
       "Real-time AI-driven pedagogical summaries"
     ],
     achievements: [
@@ -34,7 +34,7 @@ export const projectsData = [
       solution: "Vidya acts as a universal translator for knowledge. It 'inhales' any medium—a complex PDF, a fast-paced video, or messy handwritten notes—and 'exhale' it in the specific format a student needs: be it audio, simplified text, or interactive quizzes.",
       design: [
         "The design philosophy is 'Inclusive Clarity.' We balanced strict accessibility standards with a modern, high-end feel.",
-        "Amber Glow (#F59E0B) represents focus and warmth, while Ebony Brown (#451A03) ensures AAA color contrast ratios.",
+        "Electric AI Pulse (#0284C7) represents focus and multimodal energy, while Deep Obsidian (#0D1117) ensures AAA color contrast ratios alongside calming teal accents (#2DD4BF).",
         "Typography choice: Outfit for premium headers and OpenSans for dyslexic-friendly body text readability."
       ],
       coding: [
@@ -63,9 +63,9 @@ export const projectsData = [
         image: "/vidya-sketch.png"
       },
       visualIdentity: {
-        colors: ["#F59E0B", "#451A03", "#FFFBEB"],
+        colors: ["#0284C7", "#0D1117", "#2DD4BF"],
         typography: "Outfit (Headers) & OpenSans (Body/Dyslexia-friendly)",
-        components: ["Pedagogical Node", "Multimodal Engine", "Amber High-Contrast Mode"]
+        components: ["Pedagogical Node", "Multimodal Engine", "Electric Pulse Mode"]
       },
       flowchart: {
         title: "Multimodal Transformation Flowchart",
@@ -86,7 +86,7 @@ export const projectsData = [
     duration: "May 2025 - June 2025",
     date: "May 2025",
     image: "/voxa.png",
-    color: "#4A90E2",
+    color: "#2563EB",
     heroTemplate: 2,
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Web Speech API", "Drizzle ORM"],
     description: "A cinematic, glassmorphic productivity sanctuary-where task management isn't a manual chore, but a hands-free conversation.",
@@ -115,8 +115,7 @@ export const projectsData = [
       solution: "VoXa fills that gap. The mission was to build an intelligent sanctuary-a tool that allows you to manage your entire workflow using only your voice, creating 'Hands-Free Precision.'",
       design: [
         "The design philosophy is 'Dark Glassmorphism.' The goal was to reduce visual fatigue while creating a premium, futuristic 'voice-tech' sanctuary.",
-        "Sky Blue (#4A90E2) is the dominant brand accent, representing clarity, intelligence, and a calming tech presence. Used in the active microphone glow, overall health score, and primary action highlights.",
-        "True Black (#1A1A1A) forms a sophisticated dark base that absorbs visual noise, allowing the frosted-glass depth effects to shine and reducing visual fatigue."
+        "Cyber Cobalt (#2563EB) and glowing Electric Cyan (#00D2FF) represent acoustic clarity and intelligence in the active microphone glow.\",\n        \"Deep Space Obsidian (#080C14) forms a sophisticated dark base that absorbs visual noise, allowing frosted-glass depth effects to shine."
       ],
       coding: [
         "Built with a robust, type-safe full-stack architecture: Next.js for performance and SSR, Node.js with Express for the API, and PostgreSQL with Drizzle ORM for efficient, type-safe data management.",
@@ -153,7 +152,7 @@ export const projectsData = [
         ]
       },
       visualIdentity: {
-        colors: ["#4A90E2", "#1A1A1A"],
+        colors: ["#2563EB", "#00D2FF", "#080C14"],
         typography: "Inter Tight (headers, geometric & precise) & Roboto Mono (technical data)",
         components: ["Voice Inbox Conceptual Lab", "Task Vitals Concept", "Global Glow Score", "NLP Parsing Block"]
       },
@@ -176,7 +175,7 @@ export const projectsData = [
     duration: "Feb 2026",
     date: "Feb 2026",
     image: "/yonder.png",
-    color: "#D8B4FE",
+    color: "#C084FC",
     heroTemplate: 1,
     technologies: ["Figma", "AI/ML Concept", "Stable Diffusion", "GANs"],
     description: "Bridging the gap for long-distance loved ones, one AI-generated memory at a time. A platform that synthesizes a shared space when the world keeps us apart.",
@@ -205,8 +204,7 @@ export const projectsData = [
       solution: "Yonder Wonder builds something that can synthesize a shared space when the world keeps us apart-a tool to help people visualize the moment they are finally together again. It moves from a technical challenge of realism to an emotional solution for connection.",
       design: [
         "The design philosophy is 'Nostalgic Futurism.' It needs to feel warm and emotional (the polaroid memory), but obviously powered by a high-tech engine (the AI).",
-        "We prioritized a Kinetic Editorial aesthetic, treating the image cards like premium magazine elements rather than sterile UI components.",
-        "The Dual-Mode System (Light/Dark) intentionally represents the transition from day-to-night conversations-a core shared experience in long-distance communication."
+        "Soft Pastel Lilac (#C084FC) memory containers are complemented by joyful Mango Gold (#F59E0B) branding.\",\n        \"The Dual-Mode System (Light/Dark) seamlessly bridges warm off-white daytime canvas (#FAF6F0) and Charcoal Stone (#1C1917) night mode."
       ],
       coding: [
         "This project was a deep dive into making complex Generative AI pipelines feel like a simple 3-step process. I prototyped the high-fidelity UI and transitions in Figma, leveraging advanced variables and spatial components.",
@@ -230,7 +228,7 @@ export const projectsData = [
         image: "/sketch.png"
       },
       visualIdentity: {
-        colors: ["#D8B4FE", "#1A1A1A"],
+        colors: ["#C084FC", "#F59E0B", "#1C1917"],
         typography: "Cinzel (headers) & Inter (body)",
         components: ["Identity Lock Container", "Presence Synthesizer", "Memory Canvas"]
       },
@@ -252,8 +250,8 @@ export const projectsData = [
     slug: "pocket-fund",
     duration: "Jan 2026",
     date: "Jan 2026",
-    image: "/pocket.png",
-    color: "#4ADE80",
+    image: "/pocket-fund.png",
+    color: "#00D2FF",
     heroTemplate: 2,
     technologies: ["Figma", "UX Research", "Gamification Engine", "Tailwind CSS"],
     description: "Reframing financial tracking for Gen Z into a non-judgmental, gamified sanctuary. No scary red charts-just pure progress.",
@@ -307,7 +305,7 @@ export const projectsData = [
         image: "/pocket-sketch.png"
       },
       visualIdentity: {
-        colors: ["#4ADE80", "#1A1A1A"],
+        colors: ["#00D2FF", "#FBBF24", "#0B0E14"],
         typography: "Outfit (headers) & Inter (body)",
         components: ["HP Health Score Meter", "Ick Category Filter", "Sanctuary Card"]
       },
@@ -329,8 +327,8 @@ export const projectsData = [
     slug: "wassup",
     duration: "Nov 2025 - Dec 2025",
     date: "Nov 2025",
-    image: "/was.png",
-    color: "#10B981",
+    image: "/wassup.png",
+    color: "#14B8A6",
     heroTemplate: 1,
     technologies: ["React", "Next.js", "Tailwind CSS", "Framer Motion", "Socket.io"],
     description: "A spatial messaging environment that senses conversation intent and instantiates dynamic workspace tools automatically.",
@@ -358,7 +356,7 @@ export const projectsData = [
       solution: "Wassup Web constantly senses chat intent. When group members discuss dates or ideas, spatial side-columns pop up automatically with shared whiteboards, calendars, or event summary cards.",
       design: [
         "Spatial Column Architecture allowing smooth horizontal expansion.",
-        "Emerald Green (#10B981) accents for active collaborative focus."
+        "Forest Sea-Teal (#14B8A6) accents provide soothing collaborative focus against a deep charcoal onyx canvas (#121518)."
       ],
       coding: [
         "Next.js App Router with Socket.io real-time web sockets.",
@@ -381,7 +379,7 @@ export const projectsData = [
         image: "/wassup-sketch.png"
       },
       visualIdentity: {
-        colors: ["#10B981", "#1A1A1A"],
+        colors: ["#14B8A6", "#121518", "#E2E8F0"],
         typography: "Outfit & Inter",
         components: ["Spatial Column Canvas", "Intent Sensor Badge"]
       },
@@ -467,8 +465,8 @@ export const projectsData = [
     slug: "pippofy",
     duration: "Oct 2025",
     date: "Oct 2025",
-    image: "/pip.png",
-    color: "#E11D48",
+    image: "/vyn.png",
+    color: "#D4AF37",
     heroTemplate: 2,
     technologies: ["React", "Web Audio API", "Tailwind CSS", "Figma"],
     description: "Bridging physical analog vinyl rituals with digital audio soundscapes. Spin 33 RPM records with real crackle health filters.",
@@ -490,7 +488,7 @@ export const projectsData = [
       ],
       solution: "Pippofy brings back the analog ritual with a spinning digital vinyl player, warm surface crackle filters, and rich album history notes.",
       design: [
-        "Crimson Rose (#E11D48) brand accent."
+        "The aesthetic honors physical 1970s audio equipment with warm metallic Champagne Gold (#D4AF37) typography and controls.\",\n        \"A deep Cosmic Charcoal canvas (#121316) evokes a late-night listening sanctuary under starry starlight."
       ],
       coding: [
         "Web Audio API custom sound nodes."
@@ -507,7 +505,7 @@ export const projectsData = [
         image: "/pippofy-sketch.png"
       },
       visualIdentity: {
-        colors: ["#E11D48", "#1A1A1A"],
+        colors: ["#D4AF37", "#121316", "#E6BE8A"],
         typography: "Outfit & Inter",
         components: ["Vinyl Player", "Crackle Control"]
       },
@@ -529,8 +527,8 @@ export const projectsData = [
     slug: "wellness-tracker",
     duration: "Sep 2025",
     date: "Sep 2025",
-    image: "/well.png",
-    color: "#06B6D4",
+    image: "/wel.png",
+    color: "#22C55E",
     heroTemplate: 1,
     technologies: ["Figma", "UI/UX", "Prototyping"],
     description: "A mindful habit tracking dashboard designed to reduce burnout through visual positive reinforcement and daily mood check-ins.",
@@ -549,7 +547,7 @@ export const projectsData = [
     detailedContent: {
       problemStatement: ["Habit trackers often feel punitive when streaks break."],
       solution: "A mindful tracker with streak protection and calming visual check-ins.",
-      design: ["Cyan (#06B6D4) calming palette."],
+      design: ["Vitality Lime Green (#22C55E) energizes daily habit rings and bottom navigation without inducing clinical anxiety.\",\n        \"Pulse Crimson Red (#EF4444) marks cardiovascular heart rate vitals against a deep matte obsidian backdrop (#0F1210)."],
       coding: ["Figma prototyping."],
       challenge: ["Designing non-intrusive notification loops."],
       process: ["User empathy mapping for mental health apps."],
@@ -559,7 +557,7 @@ export const projectsData = [
         image: "/wellness-sketch.png"
       },
       visualIdentity: {
-        colors: ["#06B6D4", "#1A1A1A"],
+        colors: ["#22C55E", "#EF4444", "#0F1210"],
         typography: "Outfit & Inter",
         components: ["Mood Circle", "Streak Shield"]
       },
@@ -574,114 +572,6 @@ export const projectsData = [
         ]
       },
       tools: ["Figma", "UI/UX"]
-    }
-  },
-  {
-    title: "Spotify Experience: Redesign",
-    slug: "spotify-redesign",
-    duration: "Jul 2025",
-    date: "Jul 2025",
-    image: "/yonder.png",
-    color: "#1DB954",
-    heroTemplate: 1,
-    technologies: ["Figma", "UI/UX Design", "Prototyping"],
-    description: "A conceptual redesign of Spotify focusing on social listening rooms, live lyric synchronization, and personalized audio vibes.",
-    features: ["Social listening rooms", "Live sync lyric canvas", "Personalized vibe mixer"],
-    achievements: ["Designed end-to-end interactive Figma prototype"],
-    liveUrl: "https://www.figma.com",
-    githubUrl: "https://github.com/portgasdyamato",
-    status: "Completed",
-    type: "App",
-    detailedContent: {
-      problemStatement: ["Social music discovery feels disconnected in current streaming apps."],
-      solution: "Interactive social rooms where friends listen and react in real-time.",
-      design: ["Spotify Green (#1DB954) branding."],
-      coding: ["Figma component variants."],
-      challenge: ["Balancing social feeds with clean playback controls."],
-      process: ["User surveys on music sharing habits."],
-      workflow: {
-        description: "Social room creation flow.",
-        steps: ["Room Creation → Friend Invite → Synchronized Playback"],
-        image: "/sketch.png"
-      },
-      visualIdentity: {
-        colors: ["#1DB954", "#121212"],
-        typography: "Circular & Inter",
-        components: ["Social Player", "Lyric Canvas"]
-      },
-      tools: ["Figma"]
-    }
-  },
-  {
-    title: "Kinetic UI: Card study",
-    slug: "kinetic-ui",
-    duration: "Jun 2025",
-    date: "Jun 2025",
-    image: "/pocket.png",
-    color: "#8B5CF6",
-    heroTemplate: 2,
-    technologies: ["Figma", "Interaction Design", "Motion Graphics"],
-    description: "An exploration into spring physics micro-interactions, 3D card tilt effects, and gesture-driven UI components.",
-    features: ["3D parallax card tilt", "Spring physics expansion", "Gesture swiping"],
-    achievements: ["Created library of 20+ smooth interactive card components"],
-    liveUrl: "https://www.figma.com",
-    githubUrl: "https://github.com/portgasdyamato",
-    status: "Completed",
-    type: "App",
-    detailedContent: {
-      problemStatement: ["Static cards feel flat and unresponsive on modern displays."],
-      solution: "Dynamic cards that respond to cursor hover angle and velocity.",
-      design: ["Violet (#8B5CF6) kinetic accent."],
-      coding: ["Figma Smart Animate."],
-      challenge: ["Tuning spring damping for natural inertia."],
-      process: ["Physics interaction prototyping."],
-      workflow: {
-        description: "Hover angle to 3D matrix transform flow.",
-        steps: ["Cursor Move → Angle Math → 3D Tilt Transform"],
-        image: "/sketch.png"
-      },
-      visualIdentity: {
-        colors: ["#8B5CF6", "#1A1A1A"],
-        typography: "Inter",
-        components: ["Kinetic Card", "3D Tilt Stage"]
-      },
-      tools: ["Figma", "Motion Design"]
-    }
-  },
-  {
-    title: "Interactive: Flip Cards",
-    slug: "flip-cards",
-    duration: "May 2025",
-    date: "May 2025",
-    image: "/was.png",
-    color: "#EC4899",
-    heroTemplate: 1,
-    technologies: ["Figma", "Component Architecture"],
-    description: "A micro-interaction laboratory showcasing double-sided card flip mechanics, tactile hover states, and smooth spring transitions.",
-    features: ["3D card flip animation", "Tactile hover feedback", "Front/back content states"],
-    achievements: ["Engineered zero-lag 3D flip component variants"],
-    liveUrl: "https://www.figma.com",
-    githubUrl: "https://github.com/portgasdyamato",
-    status: "Completed",
-    type: "App",
-    detailedContent: {
-      problemStatement: ["Standard UI cards require extra clicks to view detailed back information."],
-      solution: "Smooth 3D flip card interaction surfacing back metadata instantly on gesture.",
-      design: ["Pink (#EC4899) interactive accent."],
-      coding: ["Figma 3D transforms."],
-      challenge: ["Preventing text mirror distortion during 180deg flips."],
-      process: ["Component variant optimization."],
-      workflow: {
-        description: "Card flip gesture workflow.",
-        steps: ["Click / Hover → 180deg Y-Rotate → Surface Back Content"],
-        image: "/sketch.png"
-      },
-      visualIdentity: {
-        colors: ["#EC4899", "#1A1A1A"],
-        typography: "Outfit & Inter",
-        components: ["Flip Container", "Back Metadata Panel"]
-      },
-      tools: ["Figma"]
     }
   }
 ]

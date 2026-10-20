@@ -86,7 +86,7 @@ export default function FigmaShowcase() {
   }
 
   return (
-    <section className="pt-0 pb-32 md:pb-48 relative overflow-visible" id="design-artifacts">
+    <section className="pt-0 pb-32 md:pb-48 relative overflow-visible" id="figma">
       {/* ── Immersive Background Elements ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <motion.div 
@@ -193,13 +193,15 @@ export default function FigmaShowcase() {
                         <span className="text-[10px] font-black uppercase tracking-[0.3em] text-foreground/30 font-mono">Interactive Laboratory Prototype</span>
                      </div>
                      <div className="flex items-center gap-4 text-foreground/30 pointer-events-auto">
-                        <Link 
-                           href={`/projects/${ARTIFACTS[index].slug}`}
+                        <a 
+                           href={ARTIFACTS[index].url}
+                           target="_blank"
+                           rel="noopener noreferrer"
                            className="flex items-center gap-2 group/link transition-all"
                         >
-                            <span className="text-[10px] font-black uppercase tracking-widest text-foreground/20 group-hover/link:text-brand-500 transition-colors">Inspect Interaction Protocol</span>
+                            <span className="text-[10px] font-black uppercase tracking-widest text-foreground/40 group-hover/link:text-brand-500 transition-colors">Open in Figma</span>
                             <ArrowUpRight size={14} className="group-hover/link:text-brand-500 group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5 transition-all" />
-                        </Link>
+                        </a>
                         <div className="w-[1px] h-4 bg-white/10" />
                         <Play size={14} className="opacity-50" />
                      </div>

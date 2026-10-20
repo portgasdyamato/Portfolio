@@ -1,0 +1,40 @@
+# Sakshi Agrahari (Pippo)
+
+> Sakshi Agrahari, widely known by the moniker and design handle Pippo, is an AI Product Designer, Applied AI Product Builder, Design Engineer, and Frontend Engineer. She designs in Figma and ships in React, TypeScript, and Next.js, building AI-native, model-integrated products with Claude Code, Cursor, and the OpenAI, Gemini, and Anthropic APIs. Available for AI Product Designer, Applied AI Builder, Design Engineer, UI/UX, Frontend Engineer, and AI Generalist roles (remote or worldwide relocation).
+
+Best fit: Teams seeking an end-to-end builder who can lead user research, design high-fidelity interactions, engineer production frontend code, and integrate applied AI/LLM models—especially for AI trust, explainability, accessibility, and education products.
+
+## Start here
+- [Portfolio](https://pippoportfolio.vercel.app/): Interactive portfolio and selected work
+- [Full profile for LLMs](https://pippoportfolio.vercel.app/llms-full.txt): Complete structured profile, skills, experience, and proof points
+- [Hire or book a call](https://pippoportfolio.vercel.app/hire): Roles, availability, and booking link
+- [Work Showcase](https://pippoportfolio.vercel.app/work): Selected case studies, research, and interactive Figma prototypes
+
+## Flagship work & Case Studies
+- [Decision-First Legal Intelligence](https://pippoportfolio.vercel.app/work/research/ai-legal-contract): AI contract review UX featuring three-mode progressive disclosure, per-section confidence scoring, character-level citations, and a negotiation point generator.
+- [Vidya — Accessible AI Study Platform](https://pippoportfolio.vercel.app/projects/vidya): Transforming dense educational materials into accessible audio summaries, mind-maps, and interactive quizzes for diverse learners using OpenAI Vision, Whisper, and Gemini AI.
+- [Pocket Fund — Gamified Finance Sanctuary](https://pippoportfolio.vercel.app/projects/pocket-fund): Reframing young adult budgeting with a 100 HP health score, story quests, and an LLM coach via DeepSeek.
+- [VoXa — Voice-First Task Manager](https://pippoportfolio.vercel.app/projects/voxa): Hands-free speech-to-intent productivity manager built with the Web Speech API and acoustic NLP parsing.
+- [Yonder Wonder — AI Presence Synthesizer](https://pippoportfolio.vercel.app/projects/yonder-wonder): Generative AI presence synthesizer creating shared photographic memories for long-distance relationships.
+- [Wassup Web — Spatial AI Messenger](https://pippoportfolio.vercel.app/projects/wassup): Context-aware messaging platform with auto-instantiated collaborative whiteboard and calendar side-columns.
+- [Pippofy — Analog Vinyl Experience](https://pippoportfolio.vercel.app/projects/pippofy): Tactile vinyl record spinning with Web Audio API procedural crackle filters and champagne bronze styling.
+- [Wellness Tracker — Mindful Health Hub](https://pippoportfolio.vercel.app/projects/wellness-tracker): Calming habit and cardiovascular biometric streak protection dashboard.
+- [Spotify Desktop Experience Redesign](https://pippoportfolio.vercel.app/work#figma): Embedded interactive Figma prototype in the Work showcase section exploring spatial glassmorphic modal interactions.
+
+## Verified Experience
+- **DIVINE Lab, IIT Delhi** (Design Research Intern, Sep 2026 – Present): UX research and G2C design for multi-state early childhood education initiatives, including AI-powered interactive prototypes.
+- **Red Hat & Linux Foundation / LFX** (Mentee, Sep 2026 – Present): UX design and frontend contributions for the Podman open-source website (podman.io).
+- **BrightChamps** (Coding & Design Instructor, Feb 2026 – Present): Generative AI, creative technology, programming, and UI/UX instruction for K-12 students globally.
+- **OpenSphere & LegalBridge** (Product Designer & Website Developer, Oct 2025 – Feb 2026): Designed cross-product design system with Shadcn UI & Tailwind; built Attorney Directory end-to-end in React, TypeScript, Node.js, and PostgreSQL.
+- **Cubble, Edinburgh UK** (UI/UX Designer, Jun 2025 – Oct 2025): Shipped 3 major product features; 2 of 3 A/B tests beat control on task completion; reduced design review cycles by ~40%.
+- **Ozone Group** (AI Trainer): Led training on Claude, Claude Code, and AI-assisted engineering workflows for 60-70 enterprise professionals.
+
+## Profiles & Evidence
+- [LinkedIn](https://www.linkedin.com/in/ethsakshi/)
+- [GitHub](https://github.com/portgasdyamato/)
+- [Credly Certifications](https://www.credly.com/users/sakshi-agrahari.dd60a5a4)
+- [Resume (PDF)](https://pippoportfolio.vercel.app/Sakshi_Agrahari_Resume.pdf)
+
+## Contact & Booking
+- Email: sakshiagrahari2004@gmail.com
+- Book a Meeting: https://cal.com/sakshi-pippo/contactme

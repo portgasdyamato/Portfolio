@@ -192,18 +192,18 @@ export default function Education() {
     return { x, y };
   });
   
-  // Create expressive, fluid curves where the path enters the top of each folder
-  // and the outgoing path emerges directly from the BOTTOM of the folder
+  // Create expressive, continuous fluid curves that emerge naturally from each folder
   let pathD = "";
   if (dimensions.width > 0 && pathPoints.length > 0) {
     const isMobile = dimensions.width < 768;
     // Folder height is 380px on desktop (half: 190px) and 298px on mobile (half: 149px)
-    const exitOffsetY = isMobile ? 130 : 175;
-    const entryOffsetY = isMobile ? 125 : 170;
+    const exitOffsetY = isMobile ? 130 : 170;
+    const entryOffsetY = isMobile ? 125 : 165;
 
-    // Start seamlessly at the bottom of the first folder (with a small 20px lead-in behind the cover)
+    // Start directly from the bottom exit of the first folder (inside cover)
     const firstP = pathPoints[0];
-    pathD = `M ${firstP.x} ${firstP.y + exitOffsetY - 25} L ${firstP.x} ${firstP.y + exitOffsetY}`;
+    const initialExit = { x: firstP.x, y: firstP.y + exitOffsetY - 10 };
+    pathD = `M ${initialExit.x} ${initialExit.y}`;
 
     for (let i = 0; i < pathPoints.length - 1; i++) {
       const p0 = pathPoints[i];
@@ -212,7 +212,7 @@ export default function Education() {
       // Exit point: at the BOTTOM of current folder p0
       const pExit = {
         x: p0.x,
-        y: p0.y + exitOffsetY
+        y: p0.y + exitOffsetY - (i === 0 ? 10 : 0)
       };
 
       // Entry point: at the TOP of next folder p1
@@ -225,17 +225,16 @@ export default function Education() {
       const dy = pEntry.y - pExit.y;
 
       if (isMobile) {
-        // On mobile, create a playful wave from bottom of folder i to top of folder i+1
-        const wave = (i % 2 === 0 ? 1 : -1) * 36;
-        pathD += ` C ${pExit.x} ${pExit.y + dy * 0.25}, ${pExit.x + wave} ${pExit.y + dy * 0.5}, ${pEntry.x} ${pEntry.y}`;
+        // On mobile, create a continuous playful wave from bottom of folder i to top of folder i+1
+        const wave = (i % 2 === 0 ? 1 : -1) * 40;
+        pathD += ` C ${pExit.x + wave * 0.4} ${pExit.y + dy * 0.25}, ${pExit.x + wave} ${pExit.y + dy * 0.65}, ${pEntry.x} ${pEntry.y}`;
       } else {
-        // On desktop, the outgoing path emerges directly downwards from the BOTTOM of folder i,
-        // sweeps gracefully across the canvas in a rich, prominent S-curve,
-        // and enters into the TOP of folder i+1 heading smoothly downwards.
-        const cp1x = pExit.x + dx * 0.05;
-        const cp1y = pExit.y + dy * 0.58;
-        const cp2x = pEntry.x - dx * 0.05;
-        const cp2y = pEntry.y - dy * 0.58;
+        // On desktop, the path immediately curves gracefully in an expansive, fully continuous S-curve
+        // with no straight vertical drops, sweeping smoothly across towards the next dossier card
+        const cp1x = pExit.x + dx * 0.32;
+        const cp1y = pExit.y + dy * 0.36;
+        const cp2x = pEntry.x - dx * 0.32;
+        const cp2y = pEntry.y - dy * 0.36;
         pathD += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${pEntry.x} ${pEntry.y}`;
       }
 
@@ -248,7 +247,7 @@ export default function Education() {
       if (i < pathPoints.length - 2) {
         pathD += ` L ${nextExit.x} ${nextExit.y}`;
       } else {
-        // At final folder, enter and terminate nicely at center/bottom
+        // At final folder, enter and terminate nicely at center
         pathD += ` L ${p1.x} ${p1.y}`;
       }
     }

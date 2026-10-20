@@ -6,6 +6,8 @@ import Projects from "@/components/projects"
 import FigmaShowcase from "@/components/figma-showcase"
 import UserResearch from "@/components/user-research"
 import Certificates from "@/components/certificates"
+import Experience from "@/components/experience"
+import VolunteerSpeaking from "@/components/volunteer-speaking"
 import CustomCursor from "@/components/custom-cursor"
 import Footer from "@/components/footer"
 
@@ -26,10 +28,16 @@ export default function WorkPage() {
           <div className="flex flex-col gap-24 md:gap-48">
             <Projects />
             <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
+              <Experience />
+            </div>
+            <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
               <UserResearch />
             </div>
             <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
               <FigmaShowcase />
+            </div>
+            <div className="pt-24 md:pt-32 border-t border-black/5 dark:border-white/5">
+              <VolunteerSpeaking />
             </div>
           </div>
           <Certificates />

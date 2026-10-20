@@ -415,17 +415,24 @@ export default function SkillsShowcase() {
                 {/* SINGLE PREMIUM DOCUMENT - Fully rounded (top & bottom) */}
                 <motion.div 
                   className="absolute left-[10%] w-[80%] h-[160px] bg-[#FFFDF9] rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.06)] flex flex-col pt-3.5 px-4 z-0 border border-black/[0.04]"
-                  initial={{ bottom: 15, rotate: 0 }}
+                  initial="initial"
                   variants={{
-                    initial: { bottom: 15, rotate: 0, scale: 1 },
+                    initial: { bottom: 15, rotate: 0, scale: 1, opacity: 1 },
                     hover: { 
-                      bottom: 20, // Stays tucked inside folder on hover
-                      rotate: -0.5,
-                      scale: 1.01
+                      bottom: 75,
+                      rotate: -1,
+                      scale: 1.03,
+                      opacity: 1
+                    },
+                    active: { 
+                      bottom: 110, 
+                      rotate: -1, 
+                      scale: 1.04, 
+                      opacity: 0.3 
                     }
                   }}
-                  animate={activeFolder === folder.id ? { bottom: 105, rotate: -1, scale: 1.04, opacity: 0.3 } : { bottom: 15, rotate: 0, scale: 1, opacity: 1 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 24 }}
+                  animate={activeFolder === folder.id ? "active" : undefined}
+                  transition={{ type: "spring", stiffness: 350, damping: 22 }}
                 >
                   {/* High-End Document Placeholder Details */}
                   <div className="flex items-center gap-2 mb-3 mt-1">
@@ -442,11 +449,12 @@ export default function SkillsShowcase() {
                 <motion.div 
                   className="absolute bottom-0 left-0 w-full h-[180px] rounded-2xl origin-bottom border border-black/[0.06] p-6 flex flex-col justify-end overflow-hidden"
                   variants={{
-                    initial: { rotateX: 0 },
-                    hover: { rotateX: -12 },
+                    initial: { rotateX: 0, y: 0 },
+                    hover: { rotateX: -16, y: 1 },
+                    active: { rotateX: -22, y: 2 }
                   }}
-                  animate={activeFolder === folder.id ? { rotateX: -22 } : { rotateX: 0 }}
-                  transition={{ type: "spring", stiffness: 350, damping: 24 }}
+                  animate={activeFolder === folder.id ? "active" : undefined}
+                  transition={{ type: "spring", stiffness: 350, damping: 22 }}
                   style={{ 
                     transformStyle: "preserve-3d",
                     backgroundColor: folder.color,

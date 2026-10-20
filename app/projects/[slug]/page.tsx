@@ -43,6 +43,21 @@ export default function ProjectCaseStudy() {
     offset: ["start start", "end end"]
   })
 
+  useEffect(() => {
+    if (slug === "spotify-redesign" || slug === "kinetic-ui" || slug === "flip-cards") {
+      router.replace("/work#figma")
+    }
+  }, [slug, router])
+
+  if (slug === "spotify-redesign" || slug === "kinetic-ui" || slug === "flip-cards") {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground flex-col gap-6">
+        <div className="w-10 h-10 border-2 border-brand-500 border-t-transparent rounded-full animate-spin" />
+        <p className="text-xs uppercase tracking-widest text-muted-foreground font-mono">Redirecting to Figma Showcase in Work...</p>
+      </div>
+    )
+  }
+
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background text-foreground flex-col gap-6">
