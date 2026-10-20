@@ -26,6 +26,13 @@ async function ensureTable() {
   `
 }
 
+const BANNED_WORDS = [
+  'hate', 'bad', 'stupid', 'ugly', 'dumb', 'idiot', 'useless', 'worthless',
+  'fuck', 'shit', 'bitch', 'asshole', 'kill', 'die', 'death', 'horrible',
+  'terrible', 'worst', 'poor', 'trash', 'garbage', 'disgusting', 'negative',
+  'evil', 'failure', 'broken', 'eww', 'ew', 'yuck', 'gross', 'nasty'
+]
+
 export async function GET() {
   try {
     if (!process.env.DATABASE_URL) {
@@ -33,6 +40,8 @@ export async function GET() {
     }
     await ensureTable()
     const sql = getSql()
+    // Permanently purge any notes with 'eww', 'ew', or banned words
+    await sql`DELETE FROM scrapbook_notes WHERE LOWER(content) LIKE '%eww%' OR LOWER(TRIM(content)) = 'ew' OR LOWER(TRIM(content)) = 'eww'`
     const notes = await sql`SELECT * FROM scrapbook_notes ORDER BY created_at ASC`
     return NextResponse.json({ notes })
   } catch (error) {
@@ -51,6 +60,16 @@ export async function POST(req: Request) {
     const body = await req.json()
     const { id, content, rotation, x, y, color } = body
 
+    if (!content || typeof content !== "string") {
+      return NextResponse.json({ success: false, error: "Invalid content" }, { status: 400 })
+    }
+
+    const lower = content.toLowerCase().trim()
+    const isBanned = BANNED_WORDS.some(w => lower.includes(w) || lower.split(/\s+/).includes(w))
+    if (isBanned) {
+      return NextResponse.json({ success: false, error: "Inappropriate word" }, { status: 400 })
+    }
+
     await sql`
       INSERT INTO scrapbook_notes (id, content, rotation, x, y, color)
       VALUES (${id}, ${content}, ${rotation}, ${x}, ${y}, ${color})
@@ -59,6 +78,26 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error("POST error:", error)
+    return NextResponse.json({ success: false }, { status: 500 })
+  }
+}
+
+export async function DELETE(req: Request) {
+  try {
+    if (!process.env.DATABASE_URL) {
+      return NextResponse.json({ success: false }, { status: 500 })
+    }
+    const sql = getSql()
+    const { searchParams } = new URL(req.url)
+    const id = searchParams.get("id")
+    if (id) {
+      await sql`DELETE FROM scrapbook_notes WHERE id = ${id}`
+    } else {
+      await sql`DELETE FROM scrapbook_notes WHERE LOWER(content) LIKE '%eww%' OR LOWER(TRIM(content)) = 'ew' OR LOWER(TRIM(content)) = 'eww'`
+    }
+    return NextResponse.json({ success: true })
+  } catch (error) {
+    console.error("DELETE error:", error)
     return NextResponse.json({ success: false }, { status: 500 })
   }
 }

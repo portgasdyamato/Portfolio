@@ -121,7 +121,7 @@ export default function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
 
               <button
                 type="submit"
-                className="w-full h-14 bg-[#1a0a0a] dark:bg-white text-white dark:text-black rounded-2xl font-black text-xs uppercase tracking-[0.25em] flex items-center justify-center gap-2 hover:bg-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white transition-all shadow-lg active:scale-[0.98]"
+                className="w-full h-12 sm:h-13 bg-[#1a0a0a] dark:bg-white text-white dark:text-black rounded-2xl font-medium text-[13px] tracking-wide flex items-center justify-center gap-2 hover:bg-[#F59E9E] dark:hover:bg-[#F59E9E] dark:hover:text-white transition-all shadow-lg active:scale-[0.98]"
               >
                 <span>Unlock & View CV</span>
                 <ArrowRight size={16} />

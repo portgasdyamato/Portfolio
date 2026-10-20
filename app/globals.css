@@ -7,6 +7,22 @@
   font-family: 'Cormorant Garamond', Georgia, serif !important;
 }
 
+.font-syne {
+  font-family: 'Syne', sans-serif !important;
+}
+
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.font-space-mono {
+  font-family: 'Space Mono', monospace !important;
+}
+
+.font-baskerville {
+  font-family: 'Libre Baskerville', Georgia, serif !important;
+}
+
 :root {
   --background: 350 100% 97%; /* #FFECF0 — vivid cool rose tint */
   --foreground: 240 10% 3.9%;
@@ -80,6 +96,17 @@
   .case-study-content p {
     text-align: justify;
   }
+}
+
+/* Hidden scrollbar with full mouse/wheel/touch scrolling enabled */
+.modal-scroll {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.modal-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+  width: 0px;
+  height: 0px;
 }
 
 /* Premium Glassmorphism */

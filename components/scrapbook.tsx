@@ -147,8 +147,19 @@ const NEGATIVE_WORDS = [
   'hate', 'bad', 'stupid', 'ugly', 'dumb', 'idiot', 'useless', 'worthless',
   'fuck', 'shit', 'bitch', 'asshole', 'kill', 'die', 'death', 'horrible',
   'terrible', 'worst', 'poor', 'trash', 'garbage', 'disgusting', 'negative',
-  'evil', 'failure', 'broken'
+  'evil', 'failure', 'broken', 'eww', 'ew', 'ewww', 'yuck', 'gross', 'nasty'
 ];
+
+function isMessageNegative(text: string): boolean {
+  if (!text) return false
+  const cleanText = text.toLowerCase().trim()
+  const tokens = cleanText.split(/[\s,?.!]+/)
+  return NEGATIVE_WORDS.some(bad => 
+    tokens.includes(bad) || 
+    cleanText === bad ||
+    cleanText.includes(bad)
+  )
+}
 
 export default function Scrapbook() {
   const containerRef = useRef<HTMLElement>(null)
@@ -172,12 +183,14 @@ export default function Scrapbook() {
         const data = await res.json()
         if (data.notes) {
           // Normalize coordinates if coming from DB (removing % if present before merge)
-          const dbNotes = data.notes.map((n: any) => ({
-            ...n,
-            type: "note" as const,
-            zIndex: 30,
-            scale: 0.85,
-          }))
+          const dbNotes = data.notes
+            .filter((n: any) => n.content && !isMessageNegative(n.content))
+            .map((n: any) => ({
+              ...n,
+              type: "note" as const,
+              zIndex: 30,
+              scale: 0.85,
+            }))
           setItems([...INITIAL_ITEMS, ...dbNotes])
         }
       } catch (e) {
@@ -201,10 +214,7 @@ export default function Scrapbook() {
   const handleAddMessage = async () => {
     if (!inputValue.trim()) return
 
-    const lowerMessage = inputValue.toLowerCase()
-    const isNegative = NEGATIVE_WORDS.some(word => lowerMessage.includes(word))
-
-    if (isNegative) {
+    if (isMessageNegative(inputValue)) {
       setShowError(true)
       setTimeout(() => setShowError(false), 3000)
     } else {

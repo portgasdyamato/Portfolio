@@ -80,7 +80,7 @@ const educationJourney = [
 
 function FolderTimelineItem({ item, index, drawProgress, totalItems, isMobile }: { item: typeof educationJourney[0], index: number, drawProgress: MotionValue<number>, totalItems: number, isMobile: boolean }) {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { amount: 0.2, once: false });
+  const isInView = useInView(ref, { amount: 0.15, once: true });
   const [hasReached, setHasReached] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -192,15 +192,65 @@ export default function Education() {
     return { x, y };
   });
   
-  // Create smooth S-curves between checkpoints instead of rigid diagonal lines
+  // Create expressive, fluid curves where the path enters the top of each folder
+  // and the outgoing path emerges directly from the BOTTOM of the folder
   let pathD = "";
   if (dimensions.width > 0 && pathPoints.length > 0) {
-    pathD = `M ${pathPoints[0].x} ${pathPoints[0].y}`;
+    const isMobile = dimensions.width < 768;
+    // Folder height is 380px on desktop (half: 190px) and 298px on mobile (half: 149px)
+    const exitOffsetY = isMobile ? 130 : 175;
+    const entryOffsetY = isMobile ? 125 : 170;
+
+    // Start seamlessly at the bottom of the first folder (with a small 20px lead-in behind the cover)
+    const firstP = pathPoints[0];
+    pathD = `M ${firstP.x} ${firstP.y + exitOffsetY - 25} L ${firstP.x} ${firstP.y + exitOffsetY}`;
+
     for (let i = 0; i < pathPoints.length - 1; i++) {
       const p0 = pathPoints[i];
       const p1 = pathPoints[i + 1];
-      const midY = (p0.y + p1.y) / 2;
-      pathD += ` C ${p0.x} ${midY}, ${p1.x} ${midY}, ${p1.x} ${p1.y}`;
+
+      // Exit point: at the BOTTOM of current folder p0
+      const pExit = {
+        x: p0.x,
+        y: p0.y + exitOffsetY
+      };
+
+      // Entry point: at the TOP of next folder p1
+      const pEntry = {
+        x: p1.x,
+        y: p1.y - entryOffsetY
+      };
+
+      const dx = pEntry.x - pExit.x;
+      const dy = pEntry.y - pExit.y;
+
+      if (isMobile) {
+        // On mobile, create a playful wave from bottom of folder i to top of folder i+1
+        const wave = (i % 2 === 0 ? 1 : -1) * 36;
+        pathD += ` C ${pExit.x} ${pExit.y + dy * 0.25}, ${pExit.x + wave} ${pExit.y + dy * 0.5}, ${pEntry.x} ${pEntry.y}`;
+      } else {
+        // On desktop, the outgoing path emerges directly downwards from the BOTTOM of folder i,
+        // sweeps gracefully across the canvas in a rich, prominent S-curve,
+        // and enters into the TOP of folder i+1 heading smoothly downwards.
+        const cp1x = pExit.x + dx * 0.05;
+        const cp1y = pExit.y + dy * 0.58;
+        const cp2x = pEntry.x - dx * 0.05;
+        const cp2y = pEntry.y - dy * 0.58;
+        pathD += ` C ${cp1x} ${cp1y}, ${cp2x} ${cp2y}, ${pEntry.x} ${pEntry.y}`;
+      }
+
+      // Inside next folder: connect smoothly down to its bottom exit (hidden behind folder card)
+      const nextExit = {
+        x: p1.x,
+        y: p1.y + exitOffsetY
+      };
+      
+      if (i < pathPoints.length - 2) {
+        pathD += ` L ${nextExit.x} ${nextExit.y}`;
+      } else {
+        // At final folder, enter and terminate nicely at center/bottom
+        pathD += ` L ${p1.x} ${p1.y}`;
+      }
     }
   }
 

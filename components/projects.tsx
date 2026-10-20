@@ -229,10 +229,10 @@ export default function Projects() {
                         
                         <Link
                           href={`/projects/${projectsData[selectedProject].slug}`}
-                          className="group relative w-full h-14 sm:h-16 md:h-20 bg-brand-600 text-white rounded-2xl md:rounded-[2rem] font-black transition-all flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-lg uppercase tracking-[0.2em] md:tracking-[0.25em] shadow-2xl shadow-brand-500/20 overflow-hidden"
+                          className="group relative w-full h-12 sm:h-14 md:h-16 bg-brand-600 text-white rounded-2xl md:rounded-[2rem] font-medium transition-all flex items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm md:text-base tracking-wide shadow-2xl shadow-brand-500/20 overflow-hidden"
                         >
                            <span className="relative z-10 flex items-center gap-2 sm:gap-3 transition-colors duration-500 group-hover:text-white text-white">
-                             View Full Case Study <ArrowUpRight size={18} className="sm:w-[22px] sm:h-[22px]" />
+                             View Full Case Study <ArrowUpRight size={18} className="sm:w-[20px] sm:h-[20px]" />
                            </span>
                            <div className="absolute inset-0 bg-brand-500 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                         </Link>
@@ -543,7 +543,7 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                         e.stopPropagation()
                         onProjectClick(project)
                       }}
-                      className="group relative h-8 sm:h-11 md:h-[52px] px-3 sm:px-6 md:px-10 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden shadow-sm shrink-0"
+                      className="group relative h-8 sm:h-10 md:h-11 px-3.5 sm:px-6 md:px-8 bg-white/40 dark:bg-black/40 backdrop-blur-2xl border border-[#1a0a0a]/5 dark:border-white/10 text-[#1a0a0a] dark:text-white rounded-full text-[11px] sm:text-xs md:text-[13px] font-medium tracking-wide transition-all flex items-center justify-center overflow-hidden shadow-sm shrink-0"
                     >
                       <span className="relative z-10 transition-colors duration-500 group-hover:text-white dark:group-hover:text-[#1a0a0a]">Quick View</span>
                       <div className="absolute inset-0 bg-[#1a0a0a] dark:bg-white translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
@@ -557,10 +557,10 @@ function ProjectCard({ project, offset, isActive, onProjectClick, onMove, spacin
                     <motion.div 
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className="group relative h-8 sm:h-11 md:h-[52px] px-3.5 sm:px-7 md:px-12 bg-[#F59E9E] text-white rounded-full text-[7.5px] sm:text-[9px] md:text-[10px] font-black uppercase tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em] transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
+                      className="group relative h-8 sm:h-10 md:h-11 px-4 sm:px-7 md:px-9 bg-[#F59E9E] text-white rounded-full text-[11px] sm:text-xs md:text-[13px] font-medium tracking-wide transition-all flex items-center justify-center overflow-hidden border border-[#1a0a0a]/5 dark:border-white/5 shadow-[0_15px_40px_-10px_rgba(245,158,158,0.4)]"
                     >
-                       <span className="relative z-10 flex items-center gap-1 sm:gap-2 transition-colors duration-500 group-hover:text-white text-white">
-                          Case Study <ArrowUpRight size={12} strokeWidth={2.5} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 sm:w-4 sm:h-4" />
+                       <span className="relative z-10 flex items-center gap-1.5 sm:gap-2 transition-colors duration-500 group-hover:text-white text-white">
+                          Case Study <ArrowUpRight size={14} strokeWidth={2.2} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-500 sm:w-4 sm:h-4" />
                        </span>
                       <div className="absolute inset-0 bg-[#E87A7A] translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]"/>
                     </motion.div>
