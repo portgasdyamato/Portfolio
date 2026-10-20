@@ -1,0 +1,21 @@
+{
+  "name": "Sakshi Agrahari (Pippo) | AI Product Designer & Design Engineer",
+  "short_name": "Pippo Portfolio",
+  "description": "AI Product Designer, Applied AI Builder, and Design Engineer portfolio featuring AI systems, UI/UX, and production Next.js apps.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF5F5",
+  "theme_color": "#F59E9E",
+  "icons": [
+    {
+      "src": "/hehe.gif",
+      "sizes": "192x192",
+      "type": "image/gif"
+    },
+    {
+      "src": "/og.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
