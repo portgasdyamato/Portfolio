@@ -47,5 +47,9 @@ User-agent: Meta-ExternalAgent
 Allow: /
 User-agent: MistralAI-User
 Allow: /
-
 Sitemap: https://pippoportfolio.vercel.app/sitemap.xml
+
+# LLM & AI Knowledge Manifests
+# LLMs-Txt: https://pippoportfolio.vercel.app/llms.txt
+# LLMs-Full-Txt: https://pippoportfolio.vercel.app/llms-full.txt
+# AI-Directives: https://pippoportfolio.vercel.app/ai.txt
