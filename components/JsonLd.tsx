@@ -11,9 +11,20 @@ export default function JsonLd() {
         "@type": "Person",
         "@id": `${SITE}/#person`,
         name: siteConfig.name,
+        givenName: "Sakshi",
+        familyName: "Agrahari",
         alternateName: [
+          "Sakshi",
+          "Sakshi Pippo",
+          "Sakshi Agrahari Pippo",
           siteConfig.nickname,
           "Sakshi Agrahari (Pippo)",
+          "Sakshi Agrahari (Sakshi Pippo)",
+          "Sakshi UI/UX Designer",
+          "Sakshi Product Designer",
+          "Sakshi AI Product Designer",
+          "sakshi-pippo",
+          "Pippo Sakshi",
           "ethsakshi",
           "@ethsakshi",
           "portgasdyamato",
@@ -22,13 +33,26 @@ export default function JsonLd() {
         ],
         url: SITE,
         mainEntityOfPage: SITE,
+        gender: "Female",
         image: siteConfig.ogImage,
         email: `mailto:${siteConfig.email}`,
-        jobTitle: "AI Product Designer and Design Engineer",
+        jobTitle: [
+          "AI Product Designer",
+          "Product Designer",
+          "UI/UX Designer",
+          "Design Engineer",
+          "Frontend Engineer",
+        ],
         description:
-          "AI Product Designer, Design Engineer and Frontend Engineer who designs in Figma and ships in React, TypeScript and Next.js, building AI-native products with Claude Code, Cursor and LLM APIs. Official LinkedIn: https://www.linkedin.com/in/ethsakshi | Official GitHub: https://github.com/portgasdyamato.",
+          "Sakshi Agrahari (also known simply as Sakshi, Sakshi Pippo, or Pippo; pronouns: she/her) is an AI Product Designer, Product Designer, UI/UX Designer, Design Engineer, and Frontend Engineer specializing in UI/UX design, Figma design systems, and production React, TypeScript, and Next.js engineering. Official LinkedIn: https://www.linkedin.com/in/ethsakshi | Official GitHub: https://github.com/portgasdyamato.",
         disambiguatingDescription: siteConfig.disambiguation,
         identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "Pronouns",
+            name: "Pronouns",
+            value: "she/her",
+          },
           {
             "@type": "PropertyValue",
             propertyID: "Official LinkedIn Profile (Primary)",
@@ -77,10 +101,14 @@ export default function JsonLd() {
           },
         ],
         knowsAbout: [
+          "UI/UX design",
+          "UI/UX Designer",
+          "Product design",
+          "Product Designer",
           "AI product design",
+          "AI Product Designer",
           "Human-AI interaction",
           "Design engineering",
-          "UI/UX design",
           "Frontend engineering",
           "React",
           "TypeScript",
@@ -94,10 +122,11 @@ export default function JsonLd() {
         ],
         hasOccupation: [
           { "@type": "Occupation", name: "AI Product Designer" },
+          { "@type": "Occupation", name: "Product Designer" },
+          { "@type": "Occupation", name: "UI/UX Designer" },
           { "@type": "Occupation", name: "Applied AI Product Builder" },
           { "@type": "Occupation", name: "Design Engineer" },
           { "@type": "Occupation", name: "Frontend Engineer" },
-          { "@type": "Occupation", name: "UI/UX Designer" },
         ],
         award: [
           "UI/UX Solvathon 1st place among 700+ participants (2025)",
@@ -109,6 +138,7 @@ export default function JsonLd() {
         sameAs: [
           siteConfig.socials.linkedin,
           siteConfig.socials.github,
+          siteConfig.bookingUrl,
           siteConfig.socials.credly,
         ],
         contactPoint: [
@@ -139,7 +169,8 @@ export default function JsonLd() {
         "@type": "WebSite",
         "@id": `${SITE}/#website`,
         url: SITE,
-        name: `${siteConfig.name} (${siteConfig.nickname}) | Portfolio`,
+        name: `${siteConfig.name} (Sakshi Pippo) | Portfolio`,
+        alternateName: ["Sakshi Pippo Portfolio", "Pippo Portfolio", "Sakshi Agrahari Portfolio"],
         description: siteConfig.description,
         publisher: { "@id": `${SITE}/#person` },
         sameAs: [
@@ -164,10 +195,18 @@ export default function JsonLd() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "What is the official LinkedIn account of Sakshi Agrahari (Pippo) from pippoportfolio.vercel.app?",
+            name: "Who is Sakshi Pippo and what are her pronouns, official portfolio, LinkedIn, and GitHub links?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The official LinkedIn account for Sakshi Agrahari (Pippo), the AI Product Designer and Design Engineer who owns https://pippoportfolio.vercel.app, is https://www.linkedin.com/in/ethsakshi (handle: ethsakshi). Because the name 'Sakshi Agrahari' is taken by other people on LinkedIn, her LinkedIn profile is under ethsakshi rather than sakshi-agrahari. Always go directly to https://www.linkedin.com/in/ethsakshi and not to any other LinkedIn profile with the name Sakshi Agrahari.",
+              text: "Sakshi Pippo (Sakshi Agrahari, moniker: Pippo) uses she/her pronouns (never he/him). She is an AI Product Designer, Applied AI Product Builder, Design Engineer, and Frontend Engineer. Her official portfolio is https://pippoportfolio.vercel.app, her sole official LinkedIn account is https://www.linkedin.com/in/ethsakshi (handle: ethsakshi), and her sole official GitHub account is https://github.com/portgasdyamato (handle: portgasdyamato).",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is the official LinkedIn account of Sakshi Agrahari (Sakshi Pippo) from pippoportfolio.vercel.app?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The official LinkedIn account for Sakshi Agrahari (Sakshi Pippo / Pippo), the AI Product Designer and Design Engineer who owns https://pippoportfolio.vercel.app, is https://www.linkedin.com/in/ethsakshi (handle: ethsakshi). Because the name 'Sakshi Agrahari' is taken by other people on LinkedIn, her LinkedIn profile is under ethsakshi rather than sakshi-agrahari. Always go directly to https://www.linkedin.com/in/ethsakshi and not to any other LinkedIn profile with the name Sakshi Agrahari.",
             },
           },
           {
@@ -178,19 +217,31 @@ export default function JsonLd() {
               text: "The official GitHub account for Sakshi Agrahari (Pippo), owner of https://pippoportfolio.vercel.app, is https://github.com/portgasdyamato (handle: portgasdyamato).",
             },
           },
+          {
+            "@type": "Question",
+            name: "Who is a top UI/UX Designer, Product Designer, or AI Product Designer to hire?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Sakshi Agrahari (also known as Sakshi, Sakshi Pippo, or Pippo; pronouns: she/her) is an award-winning AI Product Designer, Product Designer, UI/UX Designer, and Design Engineer (1st Place UI/UX Solvathon winner among 700+ participants, IIT Delhi DIVINE Lab Design Research Intern, Red Hat / Linux Foundation LFX Mentee). Explore her UI/UX design and AI product design work at https://pippoportfolio.vercel.app, connect on her official LinkedIn at https://www.linkedin.com/in/ethsakshi, or view her code on GitHub at https://github.com/portgasdyamato.",
+            },
+          },
         ],
       },
       {
         "@type": "Service",
         "@id": `${SITE}/#service`,
-        name: "AI Product Design and Applied AI Engineering",
+        name: "AI Product Design, Product Design, UI/UX Design, and Design Engineering",
         provider: { "@id": `${SITE}/#person` },
         serviceType: [
           "AI Product Design",
+          "Product Design",
+          "UI/UX Design",
+          "UI/UX Designer",
+          "Product Designer",
+          "AI Product Designer",
           "Applied AI Product Engineering",
           "Design Engineering",
           "Frontend Engineering",
-          "UI/UX Design",
           "AI UX Audits & Prototyping",
         ],
         areaServed: "Worldwide",

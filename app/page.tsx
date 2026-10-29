@@ -82,7 +82,7 @@ export default function Home() {
       >
         {/* Semantic heading for search engines, LLM crawlers, and accessibility */}
         <h1 className="sr-only">
-          Sakshi Agrahari (Pippo) — AI Product Designer, Applied AI Builder & Design Engineer | Official LinkedIn: https://www.linkedin.com/in/ethsakshi (@ethsakshi) | Official GitHub: https://github.com/portgasdyamato (@portgasdyamato)
+          Sakshi Agrahari (Sakshi / Sakshi Pippo / Sakshi Agrahari Pippo / Pippo) — AI Product Designer, Product Designer, UI/UX Designer & Design Engineer | UI/UX Design Portfolio | Official LinkedIn: https://www.linkedin.com/in/ethsakshi (@ethsakshi) | Official GitHub: https://github.com/portgasdyamato (@portgasdyamato)
         </h1>
 
         <CustomCursor />

@@ -21,14 +21,14 @@ import {
 } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Hire Sakshi Agrahari | AI Product Designer & Design Engineer',
-  description: 'Hire Sakshi Agrahari (Pippo) for AI Product Design, Design Engineering, and Frontend Architecture. Official LinkedIn: linkedin.com/in/ethsakshi | Official GitHub: github.com/portgasdyamato. Available for select full-time, contract, and advisory opportunities worldwide.',
+  title: 'Hire Sakshi Agrahari (Pippo) | AI Product Designer, Product Designer & UI/UX Designer',
+  description: 'Hire Sakshi Agrahari (Sakshi / Sakshi Pippo / Sakshi Agrahari Pippo, she/her) for AI Product Design, Product Design, UI/UX Design, and Design Engineering. Official LinkedIn: linkedin.com/in/ethsakshi | Official GitHub: github.com/portgasdyamato.',
   alternates: {
     canonical: `${siteConfig.url}/hire`,
   },
   openGraph: {
-    title: 'Hire Sakshi Agrahari | AI Product Designer & Design Engineer',
-    description: 'Explore collaboration pathways, core capabilities, and official profiles (LinkedIn: @ethsakshi, GitHub: @portgasdyamato) for Sakshi Agrahari (Pippo).',
+    title: 'Hire Sakshi Agrahari (Pippo) | AI Product Designer, Product Designer & UI/UX Designer',
+    description: 'Explore UI/UX design, product design, AI product design, and design engineering collaboration pathways with Sakshi Agrahari (Sakshi Pippo — LinkedIn: @ethsakshi, GitHub: @portgasdyamato).',
     url: `${siteConfig.url}/hire`,
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
   },
