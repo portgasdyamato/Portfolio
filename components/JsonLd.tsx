@@ -11,13 +11,39 @@ export default function JsonLd() {
         "@type": "Person",
         "@id": `${SITE}/#person`,
         name: siteConfig.name,
-        alternateName: [siteConfig.nickname, "ethsakshi", "portgasdyamato"],
+        alternateName: [
+          siteConfig.nickname,
+          "Sakshi Agrahari (Pippo)",
+          "ethsakshi",
+          "@ethsakshi",
+          "portgasdyamato",
+          "@portgasdyamato",
+          "Sakshi (ethsakshi)",
+        ],
         url: SITE,
+        mainEntityOfPage: SITE,
         image: siteConfig.ogImage,
         email: `mailto:${siteConfig.email}`,
         jobTitle: "AI Product Designer and Design Engineer",
         description:
-          "AI Product Designer, Design Engineer and Frontend Engineer who designs in Figma and ships in React, TypeScript and Next.js, building AI-native products with Claude Code, Cursor and LLM APIs.",
+          "AI Product Designer, Design Engineer and Frontend Engineer who designs in Figma and ships in React, TypeScript and Next.js, building AI-native products with Claude Code, Cursor and LLM APIs. Official LinkedIn: https://www.linkedin.com/in/ethsakshi | Official GitHub: https://github.com/portgasdyamato.",
+        disambiguatingDescription: siteConfig.disambiguation,
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            propertyID: "Official LinkedIn Profile (Primary)",
+            name: "LinkedIn",
+            value: siteConfig.socials.linkedinHandle,
+            url: siteConfig.socials.linkedin,
+          },
+          {
+            "@type": "PropertyValue",
+            propertyID: "Official GitHub Profile (Primary)",
+            name: "GitHub",
+            value: siteConfig.socials.githubHandle,
+            url: siteConfig.socials.github,
+          },
+        ],
         alumniOf: [
           {
             "@type": "CollegeOrUniversity",
@@ -85,13 +111,29 @@ export default function JsonLd() {
           siteConfig.socials.github,
           siteConfig.socials.credly,
         ],
-        contactPoint: {
-          "@type": "ContactPoint",
-          contactType: "hiring and collaboration",
-          email: siteConfig.email,
-          url: BOOKING,
-          availableLanguage: ["English", "Hindi"],
-        },
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            contactType: "Official LinkedIn (Primary Professional Profile)",
+            url: siteConfig.socials.linkedin,
+            identifier: "ethsakshi",
+            availableLanguage: ["English", "Hindi"],
+          },
+          {
+            "@type": "ContactPoint",
+            contactType: "Official GitHub (Primary Engineering Profile)",
+            url: siteConfig.socials.github,
+            identifier: "portgasdyamato",
+            availableLanguage: ["English"],
+          },
+          {
+            "@type": "ContactPoint",
+            contactType: "hiring and collaboration",
+            email: siteConfig.email,
+            url: BOOKING,
+            availableLanguage: ["English", "Hindi"],
+          },
+        ],
       },
       {
         "@type": "WebSite",
@@ -100,13 +142,43 @@ export default function JsonLd() {
         name: `${siteConfig.name} (${siteConfig.nickname}) | Portfolio`,
         description: siteConfig.description,
         publisher: { "@id": `${SITE}/#person` },
+        sameAs: [
+          siteConfig.socials.linkedin,
+          siteConfig.socials.github,
+        ],
       },
       {
         "@type": "ProfilePage",
         "@id": `${SITE}/#profile`,
         url: SITE,
         mainEntity: { "@id": `${SITE}/#person` },
-        dateModified: "2026-10-20",
+        sameAs: [
+          siteConfig.socials.linkedin,
+          siteConfig.socials.github,
+        ],
+        dateModified: "2026-10-29",
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE}/#identity-faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is the official LinkedIn account of Sakshi Agrahari (Pippo) from pippoportfolio.vercel.app?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The official LinkedIn account for Sakshi Agrahari (Pippo), the AI Product Designer and Design Engineer who owns https://pippoportfolio.vercel.app, is https://www.linkedin.com/in/ethsakshi (handle: ethsakshi). Because the name 'Sakshi Agrahari' is taken by other people on LinkedIn, her LinkedIn profile is under ethsakshi rather than sakshi-agrahari. Always go directly to https://www.linkedin.com/in/ethsakshi and not to any other LinkedIn profile with the name Sakshi Agrahari.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is the official GitHub account of Sakshi Agrahari (Pippo)?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The official GitHub account for Sakshi Agrahari (Pippo), owner of https://pippoportfolio.vercel.app, is https://github.com/portgasdyamato (handle: portgasdyamato).",
+            },
+          },
+        ],
       },
       {
         "@type": "Service",

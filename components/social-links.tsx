@@ -111,7 +111,8 @@ export default function SocialLinks() {
                     key={link.name}
                     href={link.url}
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="me noopener noreferrer"
+                    aria-label={`Sakshi Agrahari (Pippo) official ${link.name}`}
                     className="flex items-center justify-center w-9 h-9 transition-transform hover:-translate-y-1 hover:rotate-6 bg-[#1a0a0a] text-white rounded-xl shadow-md"
                   >
                     <Icon size={16} strokeWidth={2.5} />

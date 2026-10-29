@@ -22,13 +22,13 @@ import {
 
 export const metadata: Metadata = {
   title: 'Hire Sakshi Agrahari | AI Product Designer & Design Engineer',
-  description: 'Hire Sakshi Agrahari (Pippo) for AI Product Design, Design Engineering, and Frontend Architecture. Available for select full-time, contract, and advisory opportunities worldwide.',
+  description: 'Hire Sakshi Agrahari (Pippo) for AI Product Design, Design Engineering, and Frontend Architecture. Official LinkedIn: linkedin.com/in/ethsakshi | Official GitHub: github.com/portgasdyamato. Available for select full-time, contract, and advisory opportunities worldwide.',
   alternates: {
     canonical: `${siteConfig.url}/hire`,
   },
   openGraph: {
     title: 'Hire Sakshi Agrahari | AI Product Designer & Design Engineer',
-    description: 'Explore collaboration pathways, core capabilities, and booking links for Sakshi Agrahari (Pippo).',
+    description: 'Explore collaboration pathways, core capabilities, and official profiles (LinkedIn: @ethsakshi, GitHub: @portgasdyamato) for Sakshi Agrahari (Pippo).',
     url: `${siteConfig.url}/hire`,
     images: [{ url: siteConfig.ogImage, width: 1200, height: 630 }],
   },
@@ -129,6 +129,22 @@ export default function HirePage() {
               className="inline-flex items-center gap-2 px-8 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/10 text-foreground rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black/5 dark:hover:bg-white/20 transition-all shadow-sm"
             >
               <Mail size={16} /> Email Directly
+            </a>
+            <a
+              href={siteConfig.socials.linkedin}
+              target="_blank"
+              rel="me noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/10 text-foreground rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black/5 dark:hover:bg-white/20 transition-all shadow-sm"
+            >
+              LinkedIn (@ethsakshi) <ArrowUpRight size={14} />
+            </a>
+            <a
+              href={siteConfig.socials.github}
+              target="_blank"
+              rel="me noopener noreferrer"
+              className="inline-flex items-center gap-2 px-6 py-4 bg-white/80 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/10 text-foreground rounded-full font-bold text-xs uppercase tracking-widest hover:bg-black/5 dark:hover:bg-white/20 transition-all shadow-sm"
+            >
+              GitHub (@portgasdyamato) <ArrowUpRight size={14} />
             </a>
             <a
               href={siteConfig.resumeUrl}

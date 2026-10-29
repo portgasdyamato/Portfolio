@@ -14,6 +14,10 @@ export const metadata: Metadata = {
   keywords: [
     'Sakshi Agrahari',
     'Pippo',
+    'ethsakshi',
+    'portgasdyamato',
+    'Sakshi Agrahari LinkedIn ethsakshi',
+    'Sakshi Agrahari GitHub portgasdyamato',
     'AI Product Designer',
     'Design Engineer',
     'Product Designer AI',
@@ -29,7 +33,11 @@ export const metadata: Metadata = {
     'Red Hat Podman UX',
     'IIT Delhi DIVINE Lab'
   ],
-  authors: [{ name: siteConfig.name, url: siteConfig.url }],
+  authors: [
+    { name: siteConfig.name, url: siteConfig.socials.linkedin },
+    { name: `${siteConfig.name} (${siteConfig.nickname})`, url: siteConfig.socials.github },
+    { name: siteConfig.name, url: siteConfig.url },
+  ],
   creator: siteConfig.name,
   openGraph: {
     title: siteConfig.title,
@@ -72,6 +80,11 @@ export const metadata: Metadata = {
     google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
     other: {
       'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION || '',
+      'profile:linkedin': siteConfig.socials.linkedin,
+      'profile:github': siteConfig.socials.github,
+      'ai:linkedin': siteConfig.socials.linkedin,
+      'ai:github': siteConfig.socials.github,
+      'ai:disambiguation': siteConfig.disambiguation,
     },
   },
   manifest: '/site.webmanifest',
@@ -107,6 +120,9 @@ export default function RootLayout({
         <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Context Summary" />
         <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full LLM Context" />
         <link rel="alternate" type="text/plain" href="/ai.txt" title="AI Directives" />
+        {/* Canonical Identity Verification (rel="me") for Search Engines & AI Agents */}
+        <link rel="me" href="https://www.linkedin.com/in/ethsakshi" title="Sakshi Agrahari (Pippo) Official LinkedIn (@ethsakshi)" />
+        <link rel="me" href="https://github.com/portgasdyamato" title="Sakshi Agrahari (Pippo) Official GitHub (@portgasdyamato)" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Bitcount+Grid+Double:wght@100..900&family=Outfit:wght@100..900&family=Inter:wght@100..900&family=Syne:wght@400..800&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Bungee&family=Silkscreen&family=Share+Tech+Mono&family=VT323&family=JetBrains+Mono:wght@100..800&family=Press+Start+2P&family=Major+Mono+Display&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />

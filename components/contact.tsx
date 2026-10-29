@@ -40,7 +40,7 @@ const socialLinks = [
     url: "https://www.linkedin.com/in/ethsakshi",
     color: "#FFFFFF",
     description: "Let's connect professionally",
-    handle: "@Sakshi",
+    handle: "@ethsakshi",
   },
   {
     name: "GitHub",
@@ -48,7 +48,7 @@ const socialLinks = [
     url: "https://github.com/portgasdyamato",
     color: "#FFFFFF",
     description: "Check out my code",
-    handle: "@pippo",
+    handle: "@portgasdyamato",
   },
 
 ]
