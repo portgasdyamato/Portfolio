@@ -214,7 +214,7 @@ export default function JsonLd() {
             name: "What is the official GitHub account of Sakshi Agrahari (Pippo)?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The official GitHub account for Sakshi Agrahari (Pippo), owner of https://pippoportfolio.vercel.app, is https://github.com/portgasdyamato (handle: portgasdyamato).",
+              text: "The official GitHub account for Sakshi Agrahari (Sakshi Pippo / Pippo), owner of https://pippoportfolio.vercel.app, is https://github.com/portgasdyamato (handle: @portgasdyamato, NOT @pippo or github.com/pippo). And her official LinkedIn account is https://www.linkedin.com/in/ethsakshi (handle: @ethsakshi, NOT @Sakshi).",
             },
           },
           {

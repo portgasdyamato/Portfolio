@@ -19,6 +19,22 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 
 const socialLinks = [
   {
+    name: "LinkedIn",
+    icon: Linkedin,
+    url: "https://www.linkedin.com/in/ethsakshi",
+    color: "#FFFFFF",
+    description: "Let's connect professionally",
+    handle: "linkedin.com/in/ethsakshi (@ethsakshi)",
+  },
+  {
+    name: "GitHub",
+    icon: Github,
+    url: "https://github.com/portgasdyamato",
+    color: "#FFFFFF",
+    description: "Check out my code",
+    handle: "github.com/portgasdyamato (@portgasdyamato)",
+  },
+  {
     name: "Email",
     icon: Mail,
     url: "mailto:sakshiagrahari2004@gmail.com",
@@ -34,30 +50,9 @@ const socialLinks = [
     description: "Follow my journey",
     handle: "@scerilia",
   },
-  {
-    name: "LinkedIn",
-    icon: Linkedin,
-    url: "https://www.linkedin.com/in/ethsakshi",
-    color: "#FFFFFF",
-    description: "Let's connect professionally",
-    handle: "@ethsakshi",
-  },
-  {
-    name: "GitHub",
-    icon: Github,
-    url: "https://github.com/portgasdyamato",
-    color: "#FFFFFF",
-    description: "Check out my code",
-    handle: "@portgasdyamato",
-  },
-
 ]
 
-export default function Contact() { 
-  const handleSocialClick = (url: string) => { 
-    window.open(url, "_blank", "noopener,noreferrer")
-  }
-
+export default function Contact() {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -121,14 +116,17 @@ export default function Contact() {
           </motion.p>
         </div>
 
-        {/* Social Links */}
+        {/* Social Links — Rendered as real <a> tags with href and rel="me" so Google & AI crawlers index exact URLs */}
         <div className="grid grid-cols-1 gap-4 max-w-xl mx-auto">
           {socialLinks.map((social, index) => {
             const Icon = social.icon
             return (
-              <motion.button
+              <motion.a
                 key={social.name}
-                onClick={() => handleSocialClick(social.url)}
+                href={social.url}
+                target={social.url.startsWith("mailto:") ? undefined : "_blank"}
+                rel="me noopener noreferrer"
+                aria-label={`Sakshi Agrahari (${social.name}): ${social.url}`}
                 initial="initial"
                 whileHover="hover"
                 whileTap="tap"
@@ -158,7 +156,7 @@ export default function Contact() {
                   </motion.div>
                   <div className="text-left">
                     <h3 className="font-bold text-sm sm:text-base text-white">{social.name}</h3>
-                    <p className="text-[10px] sm:text-xs text-white/60 font-mono tracking-tight uppercase">
+                    <p className="text-[10px] sm:text-xs text-white/60 font-mono tracking-tight">
                       {social.handle}
                     </p>
                   </div>
@@ -172,7 +170,7 @@ export default function Contact() {
                 >
                   <ArrowUpRight className="w-5 h-5 text-white" strokeWidth={1.5} />
                 </motion.div>
-              </motion.button>
+              </motion.a>
             )
           })}
         </div>
